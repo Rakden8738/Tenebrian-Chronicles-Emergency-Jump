@@ -237,9 +237,9 @@ var animationPaused=false;
 
 
 function newDisplayIntro(outputDocument) {
-	//setTimeout(newDisplayIntroPartOne,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
+	setTimeout(newDisplayIntroPartOne,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
 	//setTimeout(newDisplayIntroPartTwo,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
-	setTimeout(newDisplayIntroPartThree,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
+	//setTimeout(newDisplayIntroPartThree,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
 }
 	
 function newDisplayIntroPartOne(outputDocument, tickCounter = 0) {
