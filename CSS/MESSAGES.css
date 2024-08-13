@@ -8,11 +8,17 @@ margin:0 auto;
 
 }
 
+
+.messagesLayer{
+	position:fixed;
+	width:100%;
+	height:100%;
+}
 .animationMessages{
-	;
+	height:100%;
 }
 .messagesGroup{
-	
+	height:100%;
 }
 .floatingText{
 	visibility: hidden;
@@ -86,8 +92,6 @@ margin:0 auto;
     right: 0;
     /*bottom: 0;*/
 }
-
-
 .AIwindow{
 	
 	visibility: hidden;
@@ -99,7 +103,9 @@ margin:0 auto;
 	color: hsl(180,100%,80%);
 	border: solid hsl(180,75%,75%) 0px;
 	
-	top: 50px;
+	/*top: 50px;*/
+	top: calc( (100% - 600px) * 0.5);
+	
     left: 0;
     right: 0;
     /*bottom: 0;*/

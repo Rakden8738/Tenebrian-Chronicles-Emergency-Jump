@@ -1358,7 +1358,7 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[0],ConsoleX,ConsoleY,[introPopupMessages[43][0]+"...",textColors[4]]);
 	}
 	if(tickCounter==6500) { //'operational' finish 1
-		newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[1], ConsoleX_2,ConsoleY,introPopupMessages[5],0.55,true);
+		newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[1], ConsoleX_2,ConsoleY,introPopupMessages[6],0.55,true);
 	}
 	if(tickCounter==6600) { //move 1
 		//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
@@ -1754,7 +1754,6 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	if(tickCounter==11975) { //.
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+".",textColors[4]]);
 	}
-	
 	if(tickCounter==12025) { //..
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+"..",textColors[4]]);
 	}
@@ -1794,8 +1793,7 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	}
 	if(tickCounter==12475) { //...
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+"...",textColors[4]]);
-	}
-	
+	}	
 	if(tickCounter==12525) { // 
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+" ",textColors[4]]);
 	}
@@ -1835,8 +1833,7 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	}
 	if(tickCounter==12750) { //fade to black
 		newAnimatedElementOpacity(outputDocument,"introOverInterfaceAICover",3.0,0.0);
-	}
-	
+	}	
 	if(tickCounter==IntroAnimationPartThreeDelay) { //stage 3
 		newDisplayIntroPartThree(outputDocument);
 	}
