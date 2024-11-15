@@ -6,279 +6,13 @@ var outputWarningHeaders = ["introWarningWindowHeader_1","introWarningWindowHead
 var outputWarningText = ["introWarningWindowText_1","introWarningWindowText_2","introWarningWindowText_3","introWarningWindowText_4","introWarningWindowText_5","introWarningWindowText_6"];
 
 var textColors = [
-	"hsl(0,100%,65%)", //red 0
-	"hsl(120,100%,65%)", //green 1
-	"hsl(240,100%,65%)", //blue 2
+	"hsl(0,100%,75%)", //red 0
+	"hsl(120,100%,75%)", //green 1
+	"hsl(240,100%,75%)", //blue 2
 	"hsl(0,100%,50%)", //alert 3
 	"hsl(180,75%,75%)", //cyan text 4
-	"hsl(60,100%,65%)"//orange 5
+	"hsl(60,100%,75%)"//orange 5
 ]
-var introMessagesDelays = [
-
-	   0,	//init 
-	 100,	//show 1
-	  95,	//... 1
-	 100,	//finish 1	
-	  75,	//move 1	
-	  50,	//show 2	
-	  90, 	//... 2		
-	 100,	//finish 2	
-	  80,	//move 2
-	  50,	//show 3	
-	 145,	//... 3		
-	 100,	//finish 3	
-	  70,	//move 3	
-	  50,	//show 4	
-	  65,	//fade 1	
-	 110,	//... 4		
-	 210,	//fade 2	
-	  80,	//reset 1
-	 285,	//fade 3	 
-	  45,	//reset 2
-	 355,	//reset 3	
-	  25,	//alarm 1	
-	  75,	//downscale alarm 1
-	 150,	//finish 4
-	  60,	//move 4	
-	  
-	  50,	//show 5	
-	 210,	//... 5		
-	 100,	//finish 5	
-	  80,	//move 5		
-	  50,	//show 1	
-	 230,	//... 1		
-	  80,	//fade 4	
-	 220,	//alarm 2	
-	  75,	//downscale alarm 2
-	 100,	//finish 1	
-	   5,	//reset 4	
-	  40,	//fade 5	
-	  10,	//move 1	
-	  50,	//show 2	
-	 220,	//... 2		
-	 120,	//reset 5
-	 
-	 130,	//finish 2	
-	 100,	//move 2
-	  50,	//show 3
-	 185,	//... 3
-	 100,	//finish 3
-	  80,	//move 3
-	  50,	//show 4
-	 160,	//... 4
-	 250,	//finish 4
-	  60,	//move 4
-	  50,	//show 5
-	 220,	//... 5
-	 250,	//finish 5
-	 100,	//move 5
-	  50,	//...
-	];
-
-var OLDintroMessagesDelays = [
-
-	100,100, 25, 25, 50,100, 50,125, 25, 25,	//  625
-	 50,100, 50,150, 25, 25, 50, 75, 50,200,	// 1400
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 1850
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2300
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2750
-	 75, 50,225, 25, 25, 50,100, 50,250, 25,	// 3625
-	 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,	// 3875
-	 25, 25, 25, 50, 75, 25, 25,225, 25, 25,	// 4400
-	 50,100, 25, 50,200, 25, 25, 50,100, 50,	// 5075
-	175, 50, 25, 25, 25, 50, 25, 50, 50,225,	// 5775
-	 50, 50, 50, 50, 50, 50, 50,125, 25, 25,	// 6300
-	100, 75, 25, 25, 50, 75, 50,150, 25, 25,	// 6900
-	 25, 50, 75, 50, 75, 50, 25, 25, 50, 75,	// 7400
-	 25, 25, 10, 40,200,						// 7700 part 1 end
-	800,										// 8500 part 2 start
-	100, 50, 50, 75,125, 50, 50, 50, 50, 50,	//  650
-	 50, 50, 50, 50, 50, 75, 75, 50,200, 50,	// 1350
-	 50, 50, 50, 50, 50, 75, 75, 50, 50,100,	// 1950
-	 50,225, 50, 25, 25, 75,150, 50,125, 25,	// 2750
-	 25, 50, 50, 50, 50, 25, 25, 50, 50, 50,	// 3175
-	 25, 25, 50, 50, 25, 25, 50, 50, 50, 50,	// 3575
-	 50, 75,100, 25, 50,150, 50, 50, 75, 50,	// 4250
-	175, 50, 50, 75, 25, 25,200, 50, 50, 50,	// 5000
-	 25, 50, 50, 50,150, 50, 25, 25, 25, 50,	// 5500
-	 75, 50,150, 50, 25, 25, 50, 25,125, 50,	// 6125
-	200, 50, 50, 75,100, 50,150, 25, 25, 25,	// 6875
-	 25, 75,100, 50,200, 50, 25, 25, 75, 75,	// 7575
-	 50,225, 25, 25, 50, 75, 75, 50,175, 50,	// 8375
-	 50, 50, 75,125, 50,100, 75, 25, 50, 50,	// 9025
-	 75, 75, 50,125, 75, 50, 50, 50, 50, 50,	// 9675
-	 50, 75, 75, 50, 50,100, 50, 50, 50, 50,	//10275
-	 50, 50, 50, 50, 50, 50, 75, 25, 50, 25,	//10750
-	 50,275, 50,250, 50, 50, 50, 25, 25, 50,	//11625
-	 50, 50, 50, 50, 50, 50, 50, 25, 25, 50,	//12075
-	 50, 50, 50, 50, 25, 25, 50, 50, 50, 50,	//12525
-	 50, 50, 50, 50, 25,						//12750 part 2 end
-	450,										//13200 part 3 start
-	];
-		
-var introMessagesTiming = [];
-
-function calculateTimings(baseArray){
-	newArray = [];
-	newArray[0] = baseArray[0];
-	for(var i = 1; i < baseArray.length; i++) {
-		newArray[i] = baseArray[i]+newArray[i-1];
-	}
-	return newArray;
-}
-var combinedIntroMessagesTiming = [
-	  0,	//init			0
-	 10,	//show old		10
-	 15,	//move old		25
-	 25,	//show last		50
-	 25,	//fade old		75
-	 25,	//slowly show	100
-	 50,	//move last		150
-	 50,	//critical		200
-	150,	//move			350
-	 50,	//autopilot		400
-	 75,	//...			475
-	100,	//enabled		575
-	 75,	//move			650
-	 50,	//initiating	700
-	200,	//move			900
-	 50,	//redirecting	950
-	250,	//move			1350
-	 50,	//charged at	1400
-	150,	//0-100%		1550
-	250,	//border flash
-	275,	//move			2300
-	 50,	//JUMPING		2350
-	 75,	//blue fade in	2425
-	 25,	//shake shake	2450
-	250,	//discharge 	2800
-	 50,	//blue fade out	2850
-	200,	//shake shake 2	
-	150,	//shake shake 3	
-	125,	//move
-	 50,	//Emergency
-	100,	//...
-	100,	//successful
-	 75,	//move
-	 50,	//CHECKING
-	125,	//...
-	100,	//operational
-	100,	//move
-	 50,	//SEARCHING
-	150,	//...
-	100,	//not found
-	 75,	//move
-	 50,	//combat mode
-	100,	//lifted
-	 75,	//move
-	 50,	//general check
-	175,	//...
-	
-	
-			//skip			
-];
-var combinedIntroMessages = [
-/*	0	*/	["SHIELDS CRITICAL",textColors[0]],
-/*	1	*/	["SHIELDS DOWN",textColors[0]],
-/*	2	*/	["EXPLOSION IN [ENGINE SECTOR]",textColors[0]],
-/*	3	*/	["HULL BREACH DETECTED IN [ENGINE SECTOR]",textColors[0]],
-/*	4	*/	["[MAIN ENGINE] DAMAGED",textColors[0]],
-/*	5	*/	["[HYPERDRIVE] DAMAGED",textColors[0]],
-/*	6	*/	["EXPLOSION IN [NAVIGATION BRIDGE]",textColors[0]],
-/*	7	*/	["HULL BREACH DETECTED IN [NAVIGATION BRIDGE]",textColors[0]],
-/*	8	*/	["RECEIVED CRITICAL DAMAGE",textColors[0]],
-/*	9	*/	["AUTOPILOT",textColors[4]],
-
-/*	10	*/	["ENABLED",textColors[1]],
-/*	11	*/	["INITIATING EMERGENCY JUMP PROCEDURE",textColors[4]],
-/*	12	*/	["REDIRECTING AVAILABLE POWER TO [JUMPDRIVE]",textColors[4]],	
-/*	13	*/	["[JUMPDRIVE] CHARGED AT:",textColors[4]],
-/*	14	*/	["JUMPING",textColors[4]],	
-/* 	15	*/	["EMERGENCY JUMP",textColors[4]],
-/*  16	*/	["SUCCESSFUL",textColors[1]],
-/*  17	*/	["CHECKING [SENSORS]",textColors[4]],
-/*  18	*/	["OPERATIONAL",textColors[1]],
-/*  19	*/	["SEARCHING FOR [HOSTILES]",textColors[4]],
-
-/*  20	*/	["NOT FOUND",textColors[1]],
-/*  21	*/	["COMBAT ALARM",textColors[4]],
-/*  22	*/	["LIFTED",textColors[1]],
-/*  23	*/	["RUNNING GENERAL SYSTEM CHECKUP",textColors[4]],
-/*  24	*/	["WARNING",textColors[3]],
-/*  25	*/	["PLANET ON COLLISION COURSE",textColors[3]],
-/*  26	*/	["ABORTED",textColors[5]],
-/*  27	*/	["CHECKING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
-/*  28	*/	["OPERATIONAL",textColors[1]],
-/*  29	*/	["ATTEMPTING [COLLISION AVOIDANCE MANEUVER]",textColors[4]],
-
-/* 30*/	["WARNING",textColors[3]],
-/* 31*/	["[COLLISION AVOIDANCE SYSTEM]<br>FATAL ERROR",textColors[3]],
-/* 32*/	["FAILED",textColors[0]],
-/* 33*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
-/* 34*/	["FAILED TO START",textColors[0]],
-/* 35*/	["CHECKING [MANEUVERING THRUSTERS]",textColors[4]],
-/* 36*/	["OPERATIONAL",textColors[1]],
-/* 37*/	["BURNING [REVERSE THRUSTERS]",textColors[4]],
-/* 38*/	["WARNING",textColors[3]],
-/* 39*/	["ENTERING ATMOSPHERE",textColors[3]],
-
-/* 40*/	["SUCCESS",textColors[1]],
-/* 41*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
-/* 42*/	["FAILED TO START",textColors[0]],
-/* 43*/	["CHECKING [SHIELD SYSTEMS]",textColors[4]],
-/* 44*/	["WARNING",textColors[3]],
-/* 45*/	["[MAIN REVERSE THRUSTER]<br>DAMAGED",textColors[3]],
-/* 46*/	["INACTIVE",textColors[5]],
-/* 47*/	["STARTING [SHIELDS SYSTEM]",textColors[4]],
-/* 48*/	["SUCCESS",textColors[1]],
-/* 49*/	["RAISING [SHIELDS]",textColors[4]],
-
-/* 50*/	["WARNING",textColors[3]],
-/* 51*/	["PLANETARY CRASH IMMINIENT<br>BRACE FOR IMPACT",textColors[3]],//30
-/* 52*/	["SHIELDS ACTIVE",textColors[1]],
-/* 53*/	["WARNING",textColors[3]],
-/* 47*/	["<br>SHIELDS<br>CRITICAL",textColors[3]],
-/* 48*/	["RESTORING SYSTEM",textColors[4]],
-/* 49*/	["SUCCESS",textColors[1]],
-
-/* 50*/	["RUNNING GENERAL SYSTEM CHECKUP",textColors[4]],
-/* 51*/	["ABORTED",textColors[5]],
-/* 52*/	["SEVERE DAMAGE DETECTED",textColors[3]],
-/* 53*/	["CHECKING COMMANDER'S VITAL SIGNATURE",textColors[4]],
-/* 54*/	["ALIVE, NOT RESPONDING",textColors[5]],
-/* 55*/	["CALLING [COMBAT BRIDGE]",textColors[4]],
-/* 56*/	["NOT RESPONDING",textColors[0]],
-/* 57*/	["ENTERING EMERGENCY MODE",textColors[4]],
-/* 58*/	["STARTING EMERGENCY CHECKUP",textColors[4]],
-/* 59*/	["CHECKING [LIFE SUPPORT SYSTEM]",textColors[4]],
-
-/* 60*/	["OPERATIONAL",textColors[1]],
-/* 61*/	["CHECKING [T.E.S.A.]",textColors[4]],
-/* 62*/	["INACTIVE",textColors[5]],
-/* 63*/	["STARTING [T.E.S.A.]",textColors[4]],
-/* 64*/	["INSUFFICIENT POWER",textColors[3]],
-/* 65*/	["CHECKING [POWER MANAGEMENT SYSTEM]",textColors[4]],
-/* 66*/	["OPERATIONAL",textColors[1]],
-/* 67*/	["CHECKING [MAIN POWER GENERATOR]",textColors[4]],
-/* 68*/	["NOT RESPONDING",textColors[0]],
-/* 69*/	["CHECKING [SECONDARY POWER GENERATOR]",textColors[4]],
-
-/* 70*/	["NOT RESPONDING",textColors[0]],
-/* 71*/	["RESTARTING [MAIN POWER GENERATOR]",textColors[4]],
-/* 72*/	["FAILED TO START",textColors[0]],
-/* 73*/	["RESTARTING [SECONDARY POWER GENERATOR]",textColors[4]],
-/* 74*/	["FAILED TO START",textColors[0]],
-/* 75*/	["CHECKING [EMERGENCY GENERATOR]",textColors[4]],
-/* 76*/	["INACTIVE",textColors[5]],
-/* 77*/	["STARTING [EMERGENCY GENERATOR]",textColors[4]],
-/* 78*/	["SUCCESS",textColors[1]],
-/* 79*/	["STARTING [T.E.S.A.]",textColors[4]],
-
-/* 80*/	["SUCCESS",textColors[1]],
-/* 81*/	["[T.E.S.A.] ACTIVATED IN EMERGENCY CONTROL MODE",textColors[4]],
-/* 82*/	["TRANSFERING MAIN CONTROL TO [T.E.S.A.]",textColors[4]]
-
-];
 
 var introPopupMessages = [
 	
@@ -357,13 +91,12 @@ var introPopupMessages = [
 	];
 	
 var introAIMessages = [
-	//["Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",textColors[4]], //0
 	["Tenebrian Emergency Situation AI successfully activated in emergency control mode.",textColors[4]], //0
 	["Received no response from commander and bridge. Emergency status upheld.",textColors[4]], //1
 	["Primary directive: Assure survival of crew.",textColors[4]], //1
 	["Secondary directive: Restore ship functionality.",textColors[4]], //1
 	["Taking control over available systems.",textColors[4]], //1
-	["Actions undertaken by T.E.S.A. will be logged for later review.",textColors[4]], //1
+	["Actions undertaken by TESA will be logged for later review.",textColors[4]], //1
 	["Reading events recorded by ship's black box...",textColors[4]], //1
 	["Conclusion: ship has crashed on planet after executing emergency jump.",textColors[4]], //2
 	["General repairs might be required.",textColors[4]], //3
@@ -441,7 +174,33 @@ var introAIMessages = [
 	["Command transfer request confirmed. Transfering main control to bridge.",textColors[4]], //68
 	["Exiting emergency mode.",textColors[4]], //69
 	["T.",textColors[4]], //70	
-];
+]
+	
+function warningTest(outputDocument) {
+	newAnimatedElementOpacity(outputDocument, outputWarningWindows[0], 0.5, 1.0);
+	newAnimatedElementOpacity(outputDocument, outputWarningWindows[1], 2, 1.0);
+	newAnimatedElementOpacity(outputDocument, outputWarningWindows[2], 3, 1.0);
+	newAnimatedElementOpacity(outputDocument, outputWarningWindows[3], 4, 1.0);
+	newAnimatedElementOpacity(outputDocument, outputWarningWindows[4], 5, 1.0);
+	
+	newDisplayElement(outputDocument,outputWarningWindows[0],"15%","5%","70%");
+	newDisplayElement(outputDocument,outputWarningWindows[1],250,200);
+	newDisplayElement(outputDocument,outputWarningWindows[2],250,350);
+	newDisplayElement(outputDocument,outputWarningWindows[3],250,500);
+	newDisplayElement(outputDocument,outputWarningWindows[4],250,650);
+	
+	newDisplayFixedMessage(outputDocument,outputWarningHeaders[0],0,0,introPopupMessages[8]);
+	newDisplayFixedMessage(outputDocument,outputWarningHeaders[1],0,0,introPopupMessages[8]);
+	newDisplayFixedMessage(outputDocument,outputWarningHeaders[2],0,0,introPopupMessages[8]);
+	newDisplayFixedMessage(outputDocument,outputWarningHeaders[3],0,0,introPopupMessages[8]);
+	newDisplayFixedMessage(outputDocument,outputWarningHeaders[4],0,0,introPopupMessages[8]);
+	
+	newDisplayAnimatedMessage(outputDocument, outputWarningText[0], 0,0,introPopupMessages[15],0.5);
+	newDisplayAnimatedMessage(outputDocument, outputWarningText[1], 0,0,introPopupMessages[16],0.5);
+	newDisplayAnimatedMessage(outputDocument, outputWarningText[2], 0,0,introPopupMessages[17],0.5);
+	newDisplayAnimatedMessage(outputDocument, outputWarningText[3], 0,0,introPopupMessages[18],0.5);
+	newDisplayAnimatedMessage(outputDocument, outputWarningText[4], 0,0,introPopupMessages[19],0.5);
+}
 	
 var activeAlertID;
 
@@ -456,7 +215,7 @@ var AIMessageBlurrProgressValue = 0;
 var ConsoleX = 30;
 var ConsoleY = 300;
 var ConsoleX_2 = 450;
-var ConsoleMessageOffset = 24;	
+var ConsoleMessageOffset = 20;	
 var ConsoleMessageFadeDefaultTime = 4.0;
 
 var AlertBaseX = 0;
@@ -468,1225 +227,26 @@ var AlertOffsetExtraX = 30;
 var AlertOffsetBaseY = 0;
 var AlertOffsetExtraY = 0;
 
-var IntroAnimationStartDelay = 0;
 var IntroAnimationPartOneDelay = 0;
 var IntroAnimationPartTwoDelay = 8500;
 var IntroAnimationPartThreeDelay = 13200;
 var IntroAnimationPartFourDelay = 10000;
 
-var IntroFadeInTime = 6;
-var IntroFadeCoverName = "introOverInterfaceInitCover";
-
-var IntroFloatingTextGroupID = "introFloatingTextGroup";
-var IntroFloatingTextMessagesArray = [];
-var IntroFloatingTextRepliesArray = [];
-var IntroFloatingTextClass = "floatingText"
-var IntroFloatingReplyClass = "floatingTextReply"
-var IntroFloatingTextID = "introFloatingText_";
-var IntroFloatingReplyID = "introFloatingReply_";
-
-var IntroFloatingTextFadeDelay = 9;
-var IntroFloatingTextFadeLength = 6;
-var IntroFloatingTextResetDelay = 500;
-var IntroFloatingTextResetAfterFade = false;
-
-var IntroJumpChargingTime = 5;
-var IntroJumpChargingCoverName = "introOverInterfaceChargingCover"; 
-var IntroJumpingCoverName = "introOverInterfaceJumpdriveCover";
-var IntroJumpFlashFadeInTime = 0.25;
-var IntroJumpFlashFadeOutTime = 3;
-
-var IntroMessagesLayerName = "introMessages"
-var IntroFloatingMessagesLayerName = "introFloatingTextGroup";
-
-
 var animationPaused=false;
 
-/*
-	testArray=[];
-	testArray = calculateTimings(introMessagesDelays);
-	tmpOutput ="";
-	for(var i = 0; i < testArray.length;i++) {
-		if(i%10==0) {
-			console.log(tmpOutput);
-			tmpOutput="";
-		};
-		tmpOutput+=testArray[i]+' ';
-	}
-*/
+
 
 function newDisplayIntro(outputDocument) {
-	
-	setTimeout(animationDisplayIntroLoop,1000 * minorTickLength * IntroAnimationStartDelay,outputDocument);
-	//setTimeout(newDisplayIntroPartOne,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
+	setTimeout(newDisplayIntroPartOne,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
 	//setTimeout(newDisplayIntroPartTwo,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
 	//setTimeout(newDisplayIntroPartThree,1000 * minorTickLength * IntroAnimationPartOneDelay,outputDocument);
-}
-
-function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationStep = 0){
-	if(animationPaused) {
-		setTimeout(() => {animationDisplayIntroLoop(outputDocument, tickCounter, animationStep);},1000);
-	}
-	else {
-		
-		dynamicCondition = 0;
-		switch(animationStep) {
-			case dynamicCondition++: 	//init
-				if(tickCounter == 0) {
-					introInit(outputDocument);		
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//show old
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[0],0.01); //critical
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[1],0.01); //down
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[2],0.01); //explo engi
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[3],0.01); //hull engi
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[4],0.01); //main engine
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[5],0.01); //hyperdrive 
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[6],0.01); //explo nav
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++: 	//move old
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,1,3);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,1,3);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++: 	//show last
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[7],0.01); //hull nav
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++: 	//fade old
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-7.25)*1000);
-					
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[1], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-5.75)*1000);
-					
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[2], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[3], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[4], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[5], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					
-					animationStep++;
-				}
-				break;
-					
-			case dynamicCondition++:	//slowly show
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, IntroFadeCoverName, IntroFadeInTime, 0, 1);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++: 	//move last
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[6], IntroFloatingTextFadeLength, 0.0, 1.0);},IntroFloatingTextFadeDelay*1000);
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//critical damage
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[8],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//autopilot
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[9],0.05);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//...
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-				}
-
-			case dynamicCondition++:	//enabled
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[10],0.05, true);
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-					}
-				break;
-				
-			case dynamicCondition++:	//initiating
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[11],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//redirecting
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[12],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//charged at
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[13],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,[" ",textColors[1]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//0-100%
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendChangingNumeric(outputDocument, IntroFloatingTextRepliesArray[IntroFloatingTextRepliesArray.length-1], 0.03, IntroJumpChargingTime, 0, 100, finishMode="default", numericDecimals = 1, "", "%");
-					//newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, IntroJumpChargingTime, 1, 0);
-					animationStep++;
-				}
-				break;	
-				
-			case dynamicCondition++:	//0-100%
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, IntroJumpChargingTime/2, 1, 0);
-					animationStep++;
-				}
-				break;	
-				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;	
-			
-			case dynamicCondition++:	//JUMPING
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[14],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;
-
-			case dynamicCondition++:	//blue fade in
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, IntroJumpingCoverName, IntroJumpFlashFadeInTime, 1, 0);
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.03,0.25,16,16,"stay");
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//shake shake
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,5,32,32,"stay");
-					animationStep++;
-				}
-				break;
-			
-			case dynamicCondition++:	//discharge
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, 0.1, 0, 1);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//blue fade out
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, IntroJumpingCoverName, IntroJumpFlashFadeOutTime, 0, 1);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//shake shake 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,1.5,16,16,"stay");
-					animationStep++;
-				}
-				break;
-			
-			case dynamicCondition++:	//shake shake 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,0.75,8,8,"zero");
-					animationStep++;
-				}
-				break;
-			
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-				}
-				break;	
-				
-			case dynamicCondition++:	//emergency jump
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[15],0.05);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//...
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-				}
-
-			case dynamicCondition++:	//successful
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[16],0.05, true);
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-					}
-				break;
-				
-			case dynamicCondition++:	//sensors
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[17],0.05);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//...
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-				}
-
-			case dynamicCondition++:	//operational
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[18],0.05, true);
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-					}
-				break;
-				
-			case dynamicCondition++:	//searching
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[19],0.05);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//...
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-				}
-
-			case dynamicCondition++:	//not found
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[20],0.05, true);
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-					}
-				break;	
-				
-			case dynamicCondition++:	//alarm
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[21],0.05);
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//lifted
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[22],0.05, true);
-					animationStep++;
-				}
-				break;				
-				
-			case dynamicCondition++:	//move
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					animationStep++;
-					}
-				break;
-
-			case dynamicCondition++:	//general checkup
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[23],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
-					animationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//...
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 7.5, "...", "skip", "")
-					animationStep++;
-										animationStep=9999;	
-
-				}
-	
-				
-			case dynamicCondition++:	//skip
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[3], ConsoleX_2,ConsoleY,combinedIntroMessages[3],0.55);
-					animationStep++;
-					animationStep=9999;
-					//console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[4], ConsoleX,ConsoleY,combinedIntroMessages[4],1.2);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[4], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[5], ConsoleX_2,ConsoleY,combinedIntroMessages[5],0.45);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[4],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[5],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[6], ConsoleX,ConsoleY,combinedIntroMessages[6],1.5);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 4 
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[6], 0.25, 12.0, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;	
-			case dynamicCondition++:	//reset 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[0]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[1]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;	
-			case dynamicCondition++:	//reset 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[2]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[3]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[4]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[5]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-			case dynamicCondition++:	//alarm 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					redAlert(outputDocument);
-					activeAlertID = setInterval(redAlert, 2500, outputDocument);
-		
-					newDisplayElement(outputDocument,outputWarningWindows[0],AlertPopupPositionX,AlertPopupPositionY);
-					newDisplayFixedMessage(outputDocument,outputWarningHeaders[0],NaN,NaN,combinedIntroMessages[7],true);
-					newDisplayAnimatedMessage(outputDocument, outputWarningText[0], NaN,NaN,combinedIntroMessages[8],0.5,true);
-		
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[0], 0.2, 1.0);
-					newAnimatedElementScale(outputDocument,outputWarningWindows[0],0.2,1.5);
-					
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//downscale alarm 1 
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementScale(outputDocument,outputWarningWindows[0],1,1);
-					animatedMoveElement(outputDocument,outputWarningWindows[0],0,0,AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,0,1);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[7], ConsoleX_2,ConsoleY,combinedIntroMessages[9],0.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++: 	//move 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[8], ConsoleX,ConsoleY,combinedIntroMessages[10],1.85);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[8], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[9], ConsoleX_2,ConsoleY,combinedIntroMessages[11],0.55);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[8],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[9],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[0], ConsoleX,ConsoleY,combinedIntroMessages[12],2.05);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[0], 0.25, 4.5, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[6], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[7], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//alarm 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayElement(outputDocument,outputWarningWindows[1],AlertPopupPositionX,AlertPopupPositionY);
-					newDisplayFixedMessage(outputDocument,outputWarningHeaders[1],NaN,NaN,combinedIntroMessages[13],true);
-					newDisplayAnimatedMessage(outputDocument, outputWarningText[1], NaN,NaN,combinedIntroMessages[14],0.5,true);
-		
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[1], 0.2, 1.0);
-					newAnimatedElementScale(outputDocument,outputWarningWindows[1],0.2,1.5);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//downscale alarm 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementScale(outputDocument,outputWarningWindows[1],1,1);
-					animatedMoveElement(outputDocument,outputWarningWindows[1],0,0,AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,0,1);
-		
-					animatedMoveElement(outputDocument,outputWarningWindows[0],AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,AlertBaseX-AlertPopupPositionX+AlertOffsetBaseX,AlertBaseY-AlertPopupPositionY+AlertOffsetBaseY,0,1);
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[0], 1, 0.8);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[1], ConsoleX_2,ConsoleY,combinedIntroMessages[15],0.3);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[6]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[7]);
-		
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[6], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[7], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[8], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[9], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[2], ConsoleX,ConsoleY,combinedIntroMessages[16],1.95);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[2], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[8]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[9]);
-		
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[8], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[9], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[3], ConsoleX_2,ConsoleY,combinedIntroMessages[17],0.75);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[4], ConsoleX,ConsoleY,combinedIntroMessages[18],1.6);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[4], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[5], ConsoleX_2,ConsoleY,combinedIntroMessages[19],0.55);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[4],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[5],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[6], ConsoleX,ConsoleY,combinedIntroMessages[20],1.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[6], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[7], ConsoleX_2,ConsoleY,combinedIntroMessages[23],0.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[8], ConsoleX,ConsoleY,combinedIntroMessages[24],1.95);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[8], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[9], ConsoleX_2,ConsoleY,combinedIntroMessages[25],0.75);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-		}
-		tickCounter++;
-		
-		
-		
-		if(animationStep <= introMessagesTiming.length) {
-			setTimeout(() => {animationDisplayIntroLoop(outputDocument, tickCounter, animationStep);},10);
-		}
-	}
-}
-
-function introInit(outputDocument){
-	
-	mainMessagesLayer = outputDocument.getElementById("mainMessagesLayer");
-	if(mainMessagesLayer === null) {
-		tmpMainMessageLayer = outputDocument.createElement("div");
-		tmpMainMessageLayer.className = "messagesLayer";
-		tmpMainMessageLayer.id = "mainMessagesLayer";
-	}
-	
-	messagesLayer = outputDocument.getElementById(IntroMessagesLayerName);
-	
-	if(messagesLayer === null) {
-		tmpMessageLayer = outputDocument.createElement("div");
-		tmpMessageLayer.className = "animationMessages";
-		tmpMessageLayer.id = IntroMessagesLayerName;
-	}
-	
-	messagesLayer.innerHTML = " ";
-	
-	tmpGroup = outputDocument.createElement("div");
-	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introFloatingTextGroup";
-	
-	messagesLayer.append(tmpGroup);
-	
-	tmpGroup = outputDocument.createElement("div");
-	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introWarningMessages";
-	
-	messagesLayer.append(tmpGroup);
-	
-	tmpGroup = outputDocument.createElement("div");
-	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introAIMessages";
-	
-	messagesLayer.append(tmpGroup);
-	
-	tmpGroup = outputDocument.createElement("div");
-	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introOverInterfaceCovers";
-	
-	messagesLayer.append(tmpGroup);
-	
-	coverLayer = outputDocument.getElementById("introOverInterfaceCovers");
-	if(coverLayer === null) {
-		tmpCoverLayer = outputDocument.createElement("div");
-		tmpCoverLayer.className = "messagesGroup";
-		tmpCoverLayer.id = "introOverInterfaceCovers";
-	}
-	
-	tmpCover = outputDocument.createElement("div");
-	tmpCover.className = "interfaceBackgroundCover";
-	tmpCover.id = IntroFadeCoverName;
-	
-	coverLayer.append(tmpCover);
-	
-	tmpCover = outputDocument.createElement("div");
-	tmpCover.className = "interfaceBackgroundCover";
-	tmpCover.id = IntroJumpChargingCoverName;
-	
-	coverLayer.append(tmpCover);
-	
-	tmpCover = outputDocument.createElement("div");
-	tmpCover.className = "interfaceBackgroundCover";
-	tmpCover.id = IntroJumpingCoverName;
-	
-	coverLayer.append(tmpCover);
-	
-	//newAnimatedElementOpacity(outputDocument, "introOverInterfaceInitCover", IntroFadeInTime, 0, 1);
-	
-	IntroFloatingTextMessagesArray = [];
-	IntroFloatingTextRepliesArray = [];
-	
-	//introMessagesTiming = calculateTimings(introMessagesDelays);
-	introMessagesTiming = calculateTimings(combinedIntroMessagesTiming);
-	/*
-	console.log("OK1");
-	introMessagesTiming = calculateTimings(introMessagesDelays);
-	console.log("OK2");
-	outputDocument.getElementById("introFloatingTextGroup").innerHTML=" ";
-	console.log("OK3");
-	outputDocument.getElementById("introWarningMessages").innerHTML=" ";
-	console.log("OK4");*/
-}
-
-function introNewLogMessage(outputDocument, logArray, messageStruct, displaySpeed, logIsReply=false){
-	if(messagesGroup = outputDocument.getElementById(IntroFloatingTextGroupID)) {
-		tmpElement = outputDocument.createElement("div");
-		
-		if(!logIsReply){
-			tmpElement.className = IntroFloatingTextClass;
-			tmpElement.id = IntroFloatingTextID+logArray.length;
-		}
-		else {
-			tmpElement.className = IntroFloatingReplyClass;
-			tmpElement.id = IntroFloatingReplyID+logArray.length;
-		}
-	
-		messagesGroup.append(tmpElement);
-		logArray.push(tmpElement.id);
-		
-		if(logIsReply)newDisplayAnimatedMessage(outputDocument,tmpElement.id,ConsoleX_2,ConsoleY,messageStruct,messageStruct[0].length*displaySpeed);
-		else newDisplayAnimatedMessage(outputDocument,tmpElement.id,ConsoleX,ConsoleY,messageStruct,messageStruct[0].length*displaySpeed);
-	}
-	else {
-		console.log("Intro not initialised");
-	}
-}
-
-function introNewAlert(outputDocument){
-	
-}
-function introNewAIReport(outputDocument){
-	
-}
-
-function animationStepInit(outputDocument) {
-	introMessagesTiming = calculateTimings(introMessagesDelays);
-	
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[6], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[7], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[8], 6, 1.0);
-	newAnimatedElementOpacity(outputDocument, outputNoWindowElements[9], 6, 1.0);
-}
-
-function introMoveLogMessages(outputDocument, logArray, logOffset, fadeLast = false, fadeIndex = 0, fadeDelay = 1, fadeTime = 1 ){
-	var logLength = logArray.length;
-	
-	for(var i = 0; i<logArray.length;i++){
-		animatedMoveElement(outputDocument,logArray[i],0,-1*(logLength-1-i)*logOffset,0,-1*(logLength	-i)*logOffset,0,0.25);
-	}
-	if(fadeLast && logArray.length > fadeIndex){
-		setTimeout(() => {
-			newAnimatedElementOpacity(outputDocument, logArray[logLength-1-fadeIndex], fadeTime, 0.0, 1.0);
-			},fadeDelay*1000);
-	}
-}
-
-function animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, appendedText, finishMode="default", fixedText = "", currentStep = 0, elapsedTime = 0) {
-	//interrupt, skip, finish, clear,
-	defaultMode = "finish";
-	if(finishMode == "default") finishMode=defaultMode;
-	
-	targetElement = outputDocument.getElementById(elementID);
-	targetText = targetElement.innerHTML;
-	
-	if(appendedText.length == 0) return;
-	
-	if(elapsedTime == 0 && fixedText.length == 0){
-		if(targetText.length > 0) fixedText = targetText;
-	}
-	
-	targetElement.innerHTML = fixedText + appendedText.substr(0, currentStep);
-	
-	currentStep++;
-	if(currentStep > appendedText.length) currentStep = 1;
-	
-	
-	
-	if(elapsedTime <= totalTime) {
-		elapsedTime += stepTime;
-		
-		setTimeout(() => {animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, appendedText, finishMode, fixedText, currentStep, elapsedTime);},stepTime*1000);
-	}
-	else{
-		if(finishMode == "interrupt") return;
-		if(finishMode == "skip") targetElement.innerHTML = fixedText + appendedText;
-		if(finishMode == "clear") targetElement.innerHTML = fixedText;
-		if(finishMode == "finish") {
-			if(currentStep != 0) setTimeout(() => {animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, appendedText, finishMode, fixedText, currentStep, elapsedTime);},stepTime*1000);
-		}
-	}
-	
-	/*
-	
-	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
-	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
-	var msgPart = messageStruct[0].substr(0,msgLength);
-	
-	if(animationStep < introMessagesTiming.length) {
-		
-		elapsedTime+=stepTime;
-		currentStep += 1;
-		if(elapsedTime > totalTime
-		
-		setTimeout(() => {animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, fixedText, currentStep, elapsedTime);},stepTime*1000);
-	}*/
-}
-
-function animationAppendChangingNumeric(outputDocument, elementID, stepTime, totalTime, startValue, endValue, finishMode="default", numericDecimals = 0, fixedText = "", extraText = "", elapsedTime = 0){
-	//interrupt, skip, finish, clear,
-	defaultMode = "finish";
-	if(finishMode == "default") finishMode=defaultMode;
-	
-	targetElement = outputDocument.getElementById(elementID);
-	targetText = targetElement.innerHTML;
-	
-	if(totalTime == 0) return;
-	
-	if(elapsedTime == 0 && fixedText.length == 0){
-		if(targetText.length > 0) fixedText = targetText;
-	}
-	
-	newValue = (startValue + ((endValue - startValue) * elapsedTime/totalTime )).toFixed(numericDecimals);
-	if(newValue > endValue) newValue = endValue;
-	
-	targetElement.innerHTML = fixedText + newValue + extraText;
-	
-	if(elapsedTime <= totalTime) {
-		elapsedTime += stepTime;
-		setTimeout(() => {animationAppendChangingNumeric(outputDocument, elementID, stepTime, totalTime, startValue, endValue, finishMode, numericDecimals, fixedText, extraText, elapsedTime);},stepTime*1000);
-	}
-	else{
-		if(finishMode == "interrupt") return;
-		if(finishMode == "skip" || finishMode == "finish") targetElement.innerHTML = fixedText + endValue + extraText;
-		if(finishMode == "clear") targetElement.innerHTML = fixedText + extraText;	
-	}
-}
-
-function animationShakeElement(outputDocument, elementID, stepTime, totalTime, xValue, yValue, finishMode = "default", elapsedTime = 0, initialTransform = "not set"){
-	//default, stay, return, zero,
-	targetElement = outputDocument.getElementById(elementID);
-	
-	defaultMode = "stay";
-	
-	if(initialTransform == "not set") initialTransform = getComputedStyle(outputDocument.getElementById(elementID)).transform;
-
-	newValueX = ((Math.random() - 0.5) * xValue).toFixed(1);
-	newValueY = ((Math.random() - 0.5) * yValue).toFixed(1);
-	newTransform = "matrix(1, 0, 0, 1," + newValueX + "," + newValueY +")";
-	
-	targetElement.style.transform = newTransform;
-	
-	if(elapsedTime <= totalTime) {
-		elapsedTime += stepTime;
-		setTimeout(() => {animationShakeElement(outputDocument, elementID, stepTime, totalTime, xValue, yValue, finishMode, elapsedTime, initialTransform);},stepTime*1000);
-	}
-	else{
-		if(finishMode == "stay") return;
-		if(finishMode == "return") targetElement.style.transform = initialTransform;
-		if(finishMode == "zero") targetElement.style.transform = "matrix(1, 0, 0, 1, 0, 0)";
-	}
-	
 }
 	
 function newDisplayIntroPartOne(outputDocument, tickCounter = 0) {
 	//console.log(tickCounter);
 	if(!animationPaused) {
 	if(tickCounter===0) {//init
-		tickCounter=8400;
+	//	tickCounter=8400;
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], 6, 1.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], 6, 1.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], 6, 1.0);
@@ -2317,16 +877,16 @@ function newDisplayIntroPartOne(outputDocument, tickCounter = 0) {
 		//newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], ConsoleMessageFadeDefaultTime, 0.0);
 		//newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], ConsoleMessageFadeDefaultTime, 0.0);
 	}
-	if(tickCounter==7460) { //CRASH
-		clearInterval(activeAlertID);
-		newAnimatedElementOpacity(outputDocument,"introOverInterfaceCrashCover",0.05,1.0);
-	}
 	if(tickCounter==7500) { //reset 2
 		//newResetDisplayedMessage(outputDocument,outputNoWindowElements[2]);
 		//newResetDisplayedMessage(outputDocument,outputNoWindowElements[3]);
 		
 		//newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], 0.2, 1.0);
 		//newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], 0.2, 1.0);
+	}
+	if(tickCounter==7460) { //CRASH
+		clearInterval(activeAlertID);
+		newAnimatedElementOpacity(outputDocument,"introOverInterfaceCrashCover",0.05,1.0);
 	}
 	if(tickCounter==7500) { //general reset
 		newAnimatedElementOpacity(outputDocument,"introOverInterfaceAlertCover",0.0,0.0);
@@ -2862,12 +1422,12 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	if(tickCounter==7375) { //..
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[4],ConsoleX,ConsoleY,[introPopupMessages[46][0]+"..",textColors[4]]);
 	}
+	if(tickCounter==7425) { //... 
+		newDisplayFixedMessage(outputDocument,outputNoWindowElements[4],ConsoleX,ConsoleY,[introPopupMessages[46][0]+"...",textColors[4]]);
+	}
 	if(tickCounter==7400) { //fade 1
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], ConsoleMessageFadeDefaultTime, 0.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], ConsoleMessageFadeDefaultTime, 0.0);
-	}
-	if(tickCounter==7425) { //... 
-		newDisplayFixedMessage(outputDocument,outputNoWindowElements[4],ConsoleX,ConsoleY,[introPopupMessages[46][0]+"...",textColors[4]]);
 	}
 	if(tickCounter==7500) { //'damaged' finish 3
 		newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[5], ConsoleX_2,ConsoleY,introPopupMessages[9],0.35,true);
@@ -2888,16 +1448,16 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	if(tickCounter==7850) { //.
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[6],ConsoleX,ConsoleY,[introPopupMessages[48][0]+".",textColors[4]]);
 	}
+	if(tickCounter==7875) { //fade 2
+		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], ConsoleMessageFadeDefaultTime, 0.0);
+		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], ConsoleMessageFadeDefaultTime, 0.0);
+	}
 	if(tickCounter==7850) { //reset 1
 		newResetDisplayedMessage(outputDocument,outputNoWindowElements[0]);
 		newResetDisplayedMessage(outputDocument,outputNoWindowElements[1]);
 		
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], 0.2, 1.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], 0.2, 1.0);
-	}
-	if(tickCounter==7875) { //fade 2
-		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], ConsoleMessageFadeDefaultTime, 0.0);
-		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], ConsoleMessageFadeDefaultTime, 0.0);
 	}
 	if(tickCounter==7900) { //..
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[6],ConsoleX,ConsoleY,[introPopupMessages[48][0]+"..",textColors[4]]);
@@ -3149,12 +1709,12 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	if(tickCounter==11475) { //...
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+"...",textColors[4]]);
 	}
-	if(tickCounter==11525) { // 
-		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+" ",textColors[4]]);
-	}
 	if(tickCounter==11550) { //fade 3
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], ConsoleMessageFadeDefaultTime, 0.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], ConsoleMessageFadeDefaultTime, 0.0);
+	}
+	if(tickCounter==11525) { // 
+		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+" ",textColors[4]]);
 	}
 	if(tickCounter==11575) { //.
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+".",textColors[4]]);
@@ -3184,15 +1744,15 @@ function newDisplayIntroPartTwo(outputDocument, tickCounter = 0) {
 	if(tickCounter==11925) { // 
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+" ",textColors[4]]);
 	}
-	if(tickCounter==11975) { //.
-		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+".",textColors[4]]);
-	}
 	if(tickCounter==12000) { //reset 3
 		newResetDisplayedMessage(outputDocument,outputNoWindowElements[4]);
 		newResetDisplayedMessage(outputDocument,outputNoWindowElements[5]);
 		
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], 0.2, 1.0);
 		newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], 0.2, 1.0);
+	}
+	if(tickCounter==11975) { //.
+		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+".",textColors[4]]);
 	}
 	if(tickCounter==12025) { //..
 		newDisplayFixedMessage(outputDocument,outputNoWindowElements[8],ConsoleX,ConsoleY,[introPopupMessages[53][0]+"..",textColors[4]]);
@@ -3409,22 +1969,61 @@ function AIMessageBlurr(outputDocument,elementID, blurrColor) {
 	if(AIMessageBlurrProgressValue>(2*Math.PI)) AIMessageBlurrProgressValue-=2*Math.PI;
 }
 
-
-function introFloatingMessage(outputDocument, floatingTextArray, messageStruct, displaySpeed){
-	if(messagesGroup = outputDocument.getElementById(IntroFloatingTextGroupID)) {
-		tmpElement = outputDocument.createElement("div");
-		tmpElement.className = IntroFloatingTextClass;
-		tmpElement.id = IntroFloatingTextID+floatingTextArray.length;
+function newSmoothIncreaseWidth(outputDocument, elementID, growthRate, absVal, effectSpeed, targetWidth, startWidth=-1){
+    
+	//startWidth = startWidth + (targetWidth - startWidth)*growthRate + targetWidth/absVal;
+	startWidth = startWidth + (targetWidth - startWidth)*growthRate + absVal;
 	
-		messagesGroup.append(tmpElement);
-		floatingTextArray.push(tmpElement);
-		
-		newDisplayAnimatedMessage(outputDocument,tmpElement.id,ConsoleX,ConsoleY,messageStruct,messageStruct[0].length*displaySpeed);
+	if(startWidth >= targetWidth) {
+		outputDocument.getElementById(elementID).style.width = targetWidth+"px";
 	}
-	else {
-		console.log("Intro not initialised");
+	else{
+		outputDocument.getElementById(elementID).style.width = startWidth+"px";
+		setTimeout(() => {newSmoothIncreaseWidth(outputDocument, elementID, growthRate, absVal, effectSpeed, targetWidth, startWidth);},1000/effectSpeed);
 	}
 }
+function newSmoothDecreaseWidth(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetWidth, startWidth=-1){
+
+    //startWidth = startWidth - (startWidth-targetWidth)*shrinkRate - targetWidth/absVal;
+	startWidth = startWidth - (startWidth-targetWidth)*shrinkRate - absVal;
+	
+	if(startWidth<=targetWidth) {
+		outputDocument.getElementById(elementID).style.width = targetWidth+"px";
+	}
+	else{
+		outputDocument.getElementById(elementID).style.width = startWidth+"px";
+		setTimeout(() => {newSmoothDecreaseWidth(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetWidth, startWidth);},1000/effectSpeed);
+	}
+}
+
+function newSmoothIncreaseHeight(outputDocument, elementID, growthRate, absVal, effectSpeed, targetHeight, startHeight=0){
+    
+	//startHeight = startHeight + (targetHeight - startHeight)*growthRate + targetHeight/absVal;
+	startHeight = startHeight + (targetHeight - startHeight)*growthRate + absVal;
+	
+	if(startHeight>=targetHeight) {
+		outputDocument.getElementById(elementID).style.height = targetHeight+"px";
+	}
+	else{
+		outputDocument.getElementById(elementID).style.height = startHeight+"px";
+		setTimeout(() => {newSmoothIncreaseHeight(outputDocument, elementID, growthRate, absVal, effectSpeed, targetHeight, startHeight);},1000/effectSpeed);
+	}
+}
+function newSmoothDecreaseHeight(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetHeight, startHeight=0){
+
+    //startHeight = startHeight - (startHeight - targetHeight)*shrinkRate - targetHeight/absVal;
+	startHeight = startHeight - (startHeight - targetHeight)*shrinkRate - absVal;
+	
+	if(startHeight<=targetHeight) {
+		outputDocument.getElementById(elementID).style.height = targetHeight+"px";
+	}
+	else{
+		outputDocument.getElementById(elementID).style.height = startHeight+"px";
+		setTimeout(() => {newSmoothDecreaseHeight(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetHeight, startHeight);},1000/effectSpeed);
+	}
+}
+
+
 
 function newResetAlertMessage(outputDocument, alertID, headerID, messageID){
 	targetAlert = outputDocument.getElementById(alertID);
@@ -3444,7 +2043,33 @@ function newResetAlertMessage(outputDocument, alertID, headerID, messageID){
 	targetMessage.style.color = "black";
 	targetMessage.innerHTML = " ";
 }
-
+function newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, tickCounter = 0, elapsedTime = 0) {
+	if(animationLength<=0) return;
+	
+	targetTextbox = outputDocument.getElementById(elementID);
+	
+	if(tickCounter%(rotationSpeed * 4) == 0){
+		targetTextbox.innerHTML = "|";
+	}
+	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed){
+		targetTextbox.innerHTML = "/";
+	}
+	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed*2){
+		targetTextbox.innerHTML = "-";
+	}
+	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed*3){
+		targetTextbox.innerHTML = "\\";
+	}
+	
+	elapsedTime+=minorTickLength;
+	tickCounter++;
+	
+	if(elapsedTime<=animationLength){
+		setTimeout(() => {newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, tickCounter, elapsedTime);},minorTickLength*1000);
+	}
+	
+	
+}
 function newResetDisplayedMessage(outputDocument, elementID) {
 	targetTextbox = outputDocument.getElementById(elementID);
 	targetTextbox.style.top = "";
@@ -3497,8 +2122,6 @@ function newDisplayElement(outputDocument, elementID, positionX, positionY, elem
 }
 function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positionY, messageStruct, animationLength, textBlurr = false, elapsedTime = 0) {
 	
-	//console.log(elapsedTime);
-	
 	if(animationLength<=0) return;
 	targetTextbox = outputDocument.getElementById(elementID);
 	
@@ -3523,6 +2146,9 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 	}
 	
 }	
+function newAppendFixedMessage(outputDocument, elementID, messageStruct, textBlurr = false) {
+	
+}
 function newAppendAnimatedMessage(outputDocument, elementID, messageStruct, animationLength, textBlurr = false, animatedBlurr = false, elapsedTime = 0, initMessage="") {
 	if(animationLength<=0) return;
 	targetTextbox = outputDocument.getElementById(elementID);
@@ -3538,18 +2164,9 @@ function newAppendAnimatedMessage(outputDocument, elementID, messageStruct, anim
 	
 	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
 	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
-	
 	var msgPart = messageStruct[0].substr(0,msgLength);
-	var msgSpanPartLength = messageStruct[0].length-msgLength;
 	
-	var msgSpanPart = "";
-	if(msgSpanPartLength > 0) {
-		msgSpanPart = messageStruct[0].substr(msgLength,msgSpanPartLength);
-		targetTextbox.innerHTML = initMessage+msgPart+"<span class='messagesHiddenText'>"+msgSpanPart+"</span>";
-	}
-	else{
-		targetTextbox.innerHTML = initMessage+msgPart;
-	}
+	targetTextbox.innerHTML = initMessage+msgPart;
 	
 	if(elapsedTime<=animationLength){
 		setTimeout(() => {newAppendAnimatedMessage(outputDocument, elementID, messageStruct, animationLength, textBlurr, animatedBlurr, elapsedTime, initMessage);},minorTickLength*1000);
@@ -3564,6 +2181,8 @@ function newAppendNewLine(outputDocument, elementID){
 	
 	targetTextbox.scrollTop = targetTextbox.scrollHeight;
 }
+
+
 
 function displayIntro(outputDocument) {
 		
@@ -3602,6 +2221,40 @@ function displayIntro(outputDocument) {
 	animatedHideElement(outputDocument,outputNoWindowElements[5], 18, 22.5);
 	
 	
+	
+	
+	
+	/*
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[0],150,250,introPopupMessages[7],1,false);
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[1],350,250,introPopupMessages[4],1,false);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[0],1,2);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[1],3,3.5);
+	
+	animatedMoveElement(outputDocument,outputNoWindowElements[0],0,0,0,-120,4,5);
+	animatedMoveElement(outputDocument,outputNoWindowElements[1],0,0,0,-120,4,5);
+	animatedHideElement(outputDocument,outputNoWindowElements[0], 4.5, 5);
+	animatedHideElement(outputDocument,outputNoWindowElements[1], 4.5, 5);
+	
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[2],150,250,introPopupMessages[8],1,false);
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[3],350,250,introPopupMessages[9],1,false);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[2],4,5);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[3],6,6.5);
+	
+	animatedMoveElement(outputDocument,outputNoWindowElements[2],0,0,0,-120,7,8);
+	animatedMoveElement(outputDocument,outputNoWindowElements[3],0,0,0,-120,7,8);
+	animatedHideElement(outputDocument,outputNoWindowElements[2], 7.5, 8);
+	animatedHideElement(outputDocument,outputNoWindowElements[3], 7.5, 8);
+	
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[4],150,250,introPopupMessages[10],1,false);
+	animatedDisplayMessage(outputDocument,outputNoWindowElements[5],350,250,introPopupMessages[11],1,false);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[4],7,8);
+	animatedUnhideElement(outputDocument,outputNoWindowElements[5],9,9.5);
+	
+	animatedMoveElement(outputDocument,outputNoWindowElements[4],0,0,0,-120,11,12);
+	animatedMoveElement(outputDocument,outputNoWindowElements[5],0,0,0,-120,11,12);
+	animatedHideElement(outputDocument,outputNoWindowElements[4], 11.5, 12);
+	animatedHideElement(outputDocument,outputNoWindowElements[5], 11.5, 12);
+	*/
 }
 function oldAnimatedDisplayMessage(outputDocument, elementID, messageStruct, elapsedTime = 0) {
 	
@@ -3681,8 +2334,6 @@ function animatedMoveElement(outputDocument, elementID, currentX, currentY, endX
 	}
 	
 }
-
-
 function newAnimatedElementScale(outputDocument, elementID, animationLength, endScale, startingScale = -1, elapsedTime = 0) {
 	if(animationLength <= 0) return;
 	scaleElement = outputDocument.getElementById(elementID);
@@ -3707,7 +2358,6 @@ function newAnimatedElementScale(outputDocument, elementID, animationLength, end
 function newAnimatedElementOpacity(outputDocument, elementID, animationLength, endOpacity, startingOpacity = -1, elapsedTime = 0) {
 	if(animationLength <= 0) return;
 	opacityElement = outputDocument.getElementById(elementID);
-	
 	if(startingOpacity==-1) startingOpacity = opacityElement.style.opacity*1;
 	
 	var newOpacity = (endOpacity-startingOpacity)*(elapsedTime/animationLength)+startingOpacity;
@@ -3768,85 +2418,5 @@ function animatedUnhideElement(outputDocument, elementID, startTime, endTime, el
 	}
 	
 }
-function newSmoothIncreaseWidth(outputDocument, elementID, growthRate, absVal, effectSpeed, targetWidth, startWidth=-1){
-    
-	//startWidth = startWidth + (targetWidth - startWidth)*growthRate + targetWidth/absVal;
-	startWidth = startWidth + (targetWidth - startWidth)*growthRate + absVal;
-	
-	if(startWidth >= targetWidth) {
-		outputDocument.getElementById(elementID).style.width = targetWidth+"px";
-	}
-	else{
-		outputDocument.getElementById(elementID).style.width = startWidth+"px";
-		setTimeout(() => {newSmoothIncreaseWidth(outputDocument, elementID, growthRate, absVal, effectSpeed, targetWidth, startWidth);},1000/effectSpeed);
-	}
-}
-function newSmoothDecreaseWidth(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetWidth, startWidth=-1){
-
-    //startWidth = startWidth - (startWidth-targetWidth)*shrinkRate - targetWidth/absVal;
-	startWidth = startWidth - (startWidth-targetWidth)*shrinkRate - absVal;
-	
-	if(startWidth<=targetWidth) {
-		outputDocument.getElementById(elementID).style.width = targetWidth+"px";
-	}
-	else{
-		outputDocument.getElementById(elementID).style.width = startWidth+"px";
-		setTimeout(() => {newSmoothDecreaseWidth(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetWidth, startWidth);},1000/effectSpeed);
-	}
-}
-function newSmoothIncreaseHeight(outputDocument, elementID, growthRate, absVal, effectSpeed, targetHeight, startHeight=0){
-    
-	//startHeight = startHeight + (targetHeight - startHeight)*growthRate + targetHeight/absVal;
-	startHeight = startHeight + (targetHeight - startHeight)*growthRate + absVal;
-	
-	if(startHeight>=targetHeight) {
-		outputDocument.getElementById(elementID).style.height = targetHeight+"px";
-	}
-	else{
-		outputDocument.getElementById(elementID).style.height = startHeight+"px";
-		setTimeout(() => {newSmoothIncreaseHeight(outputDocument, elementID, growthRate, absVal, effectSpeed, targetHeight, startHeight);},1000/effectSpeed);
-	}
-}
-function newSmoothDecreaseHeight(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetHeight, startHeight=0){
-
-    //startHeight = startHeight - (startHeight - targetHeight)*shrinkRate - targetHeight/absVal;
-	startHeight = startHeight - (startHeight - targetHeight)*shrinkRate - absVal;
-	
-	if(startHeight<=targetHeight) {
-		outputDocument.getElementById(elementID).style.height = targetHeight+"px";
-	}
-	else{
-		outputDocument.getElementById(elementID).style.height = startHeight+"px";
-		setTimeout(() => {newSmoothDecreaseHeight(outputDocument, elementID, shrinkRate, absVal, effectSpeed, targetHeight, startHeight);},1000/effectSpeed);
-	}
-}
 	
 	
-	
-	
-	
-function newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, tickCounter = 0, elapsedTime = 0) {
-	if(animationLength<=0) return;
-	
-	targetTextbox = outputDocument.getElementById(elementID);
-	
-	if(tickCounter%(rotationSpeed * 4) == 0){
-		targetTextbox.innerHTML = "|";
-	}
-	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed){
-		targetTextbox.innerHTML = "/";
-	}
-	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed*2){
-		targetTextbox.innerHTML = "-";
-	}
-	else if(tickCounter%(rotationSpeed * 4) == rotationSpeed*3){
-		targetTextbox.innerHTML = "\\";
-	}
-	
-	elapsedTime+=minorTickLength;
-	tickCounter++;
-	
-	if(elapsedTime<=animationLength){
-		setTimeout(() => {newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, tickCounter, elapsedTime);},minorTickLength*1000);
-	}
-}

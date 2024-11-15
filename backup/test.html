@@ -20,83 +20,13 @@
 				<div class="messageWindowContent" id="AIMessageWindowContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 				<div class="messageWindowBottom" id="AIMessageWindowBottom">footer</div>
 			</div>
-			
-			<!---<div class="messageWindowForeground" id="AIMessageWindowForeground"></div>--->
+			<div class="messageWindowForeground" id="AIMessageWindowForeground"></div>
 		</div>
 		</div>
-		<span id="TestBox" style='color=yellow'>TEST</span>
 	</body>
 
 	<script>
-		var ArrayOfChances = [];
-		var ArrayOfValues = [];
-		var ArrayOfResults = [];
-		var SumOfChances = 0;
-		var LastResult = -1;
-	
-		function initTestRNG(elements){
-			ArrayOfChances = [];
-			ArrayOfResults = [];
-			ArrayOfValues = [];
-			SumOfChances = 0;
-			for(var i = 0; i < elements; i++){
-				ArrayOfChances[i] = 1;
-				ArrayOfResults[i] = 0;
-				ArrayOfValues[i] = i;
-				SumOfChances++;
-			}
-		}
-		function updateOddsTestRNG(){
-			
-			ArrayOfValues[0] = ArrayOfChances[0]-1;
-			for(var i = 1; i< ArrayOfValues.length; i++){
-				ArrayOfValues[i] = ArrayOfChances[i]+ArrayOfValues[i-1];
-			}
-		}
-		function debugTestRNG(){
-			console.log("ArrayOfChances: "+ArrayOfChances);
-			console.log("ArrayOfValues: "+ArrayOfValues);
-			console.log("ArrayOfResults: "+ArrayOfResults);
-			console.log("SumOfChances: "+SumOfChances);
-			console.log("LastResult: "+LastResult);
-		}
-		function rollTestRNG(times = 1){
-			if(ArrayOfChances.length > 0){
-				for(var tmpI = 0; tmpI < times; tmpI++){
-				
-				var RNGResult = Math.random() * SumOfChances;
-				LastResult = Math.floor(RNGResult);
-				
-				//console.log("Rolled: "+RNGResult+" / "+LastResult);
-				
-				for(var i = 0; i<ArrayOfChances.length;i++){
-					if(LastResult<=ArrayOfValues[i]) {
-						//console.log("Matches "+i+" with chance of "+(ArrayOfChances[i]/SumOfChances * 100)+"%");
-						ArrayOfChances[i]++;
-						ArrayOfResults[i]++;
-						SumOfChances++;
-						updateOddsTestRNG();
-						break;
-					}
-					if(i==ArrayOfChances.length-1){
-					console.log("Value not found in: "+ArrayOfValues)
-					}
-				}
-				
-				
-				}
-			}
-		}
-		
-		function getResultsTestRNG(){
-			for(var i = 0; i<ArrayOfResults.length;i++){
-				var tmpString = "";
-				for(var j = 0; j<ArrayOfResults[i];j++){
-					tmpString+="#";
-				}
-				console.log(i+" "+tmpString);
-			}
-		}
+
 	</script>
 </html>
 

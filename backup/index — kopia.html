@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>MATEUSZ SANDBOX</title>
+		<link rel="stylesheet" type="text/css" href="CSS\base.css">
+		<link href='https://fonts.googleapis.com/css?family=Kdam Thmor Pro' rel='stylesheet'>
+		<script src="SCRIPTS\main.js"></script>
+		<script src="SCRIPTS\animations.js"></script>
+		<script src="SCRIPTS\CSVTEST.js"></script>
+		<script src="SCRIPTS\starmap.js"></script>
+	</head>
+
+	<body onLoad="newDisplayIntro(document);">
+		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundCover"> </div>
+		<div class="interfaceTopBar" id="mainInterfaceTopBar">
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarLeft">LEFT</div>
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarMiddle">MIDDLE</div>
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarRight">RIGHT</div>
+		</div>
+		<div class="interfaceWindow" id="mainInterfaceWindow">
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowPlanetButton">PLANETS</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSystemButton">STAR SYSTEMS</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowStarmapButton">GALAXY MAP</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowNetworkButton">GATE NETWORKS</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowFleetsButton">MANAGE FLEETS</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowResearchButton">RESEARCH PANEL</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowDiplomacyButton">DIPLOMACY MENU</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSettingsButton">SETTINGS MENU</div>
+		</div>
+		<div class="interfaceBottomBar" id="mainInterfaceBottomBar">
+			bottom bar
+		</div>
+		<div class="interfaceBackgroundCover" id="overInterfaceBackgroundCover"> </div>
+		<div class="messagesLayer" id="messagesLayer_1">
+			<div class="backgroundlessWindow" id="textWindow_1"> </div>
+			<div class="backgroundlessWindow" id="textWindow_2"> </div>
+			<div class="backgroundlessWindow" id="textWindow_3"> </div>
+			<div class="backgroundlessWindow" id="textWindow_4"> </div>
+			<div class="backgroundlessWindow" id="textWindow_5"> </div>
+			<div class="backgroundlessWindow" id="textWindow_6"> </div>
+			<div class="backgroundlessWindow" id="textWindow_7"> </div>
+			<div class="backgroundlessWindow" id="textWindow_8"> </div>
+			<div class="backgroundlessWindow" id="textWindow_9"> </div>
+			<div class="backgroundlessWindow" id="textWindow_10"> </div>
+			
+			<div class="backgroundWindow warningWindow" id="warningWindow_1"> <h2 class="warningWindowHeader" id="warningHeader_1">HEADER1</h2><span class="warningWindowText" id="warningText_1">WARNING1</span><span class="closeWindow">X</span></div>
+			<div class="backgroundWindow warningWindow" id="warningWindow_2"> <h2 class="warningWindowHeader" id="warningHeader_2">HEADER2</h2><span class="warningWindowText" id="warningText_2">WARNING2</span><span class="closeWindow">X</span></div>
+			<div class="backgroundWindow warningWindow" id="warningWindow_3"> <h2 class="warningWindowHeader" id="warningHeader_3">HEADER3</h2><span class="warningWindowText" id="warningText_3">WARNING3</span><span class="closeWindow">X</span></div>
+			<div class="backgroundWindow warningWindow" id="warningWindow_4"> <h2 class="warningWindowHeader" id="warningHeader_4">HEADER4</h2><span class="warningWindowText" id="warningText_4">WARNING4</span><span class="closeWindow">X</span></div>
+			<div class="backgroundWindow warningWindow" id="warningWindow_5"> <h2 class="warningWindowHeader" id="warningHeader_5">HEADER5</h2><span class="warningWindowText" id="warningText_5">WARNING5</span><span class="closeWindow">X</span></div>
+			<div class="backgroundWindow warningWindow" id="warningWindow_6"> <h2 class="warningWindowHeader" id="warningHeader_6">HEADER6</h2><span class="warningWindowText" id="warningText_6">WARNING6</span><span class="closeWindow">X</span></div>
+			
+			<div class="backgroundWindow AIwindow" id="AIMessageWindow">
+			<div class="messageWindowBackground" id="AIMessageWindowBackground"></div>
+			<div id="AIMessageWindowText">
+				<div class="messageWindowTop" id="AIMessageWindowTop"> </div>
+				<div class="messageWindowContent" id="AIMessageWindowContent"> </div>
+				<div class="messageWindowBottom" id="AIMessageWindowBottom"> </div>
+			</div>
+			<div class="messageWindowForeground" id="AIMessageWindowForeground"></div>
+		</div>
+			
+			<div class="interfaceBackgroundCover" id="overInterfaceAlertCover"> </div>
+			<div class="interfaceBackgroundCover" id="overInterfaceCrashCover"> </div>
+			<div class="interfaceBackgroundCover" id="overInterfaceAICover"> </div>
+		</div>
+		
+	</body>
+
+	<script>
+		var ConnectionTestElementID = "CONNECTION_TEST";
+
+		function ConnectionTest(){
+			try{
+				MAIN_ConnectionTest(document, ConnectionTestElementID);
+			}
+			catch (error) {
+				console.error(error);
+				document.getElementById(ConnectionTestElementID).innerHTML="Failed to load.";
+			}
+		}
+	</script>
+</html>
+

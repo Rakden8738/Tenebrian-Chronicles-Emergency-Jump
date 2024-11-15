@@ -8,6 +8,7 @@ margin:0 auto;
 
 }
 
+
 .messagesLayer{
 	position:fixed;
 	width:100%;
@@ -20,29 +21,13 @@ margin:0 auto;
 	height:100%;
 }
 .floatingText{
-	visibility: visible;
+	visibility: hidden;
 	padding:0px;
 	margin:0px;
 	position:fixed;
 	height:0px;
 	left:0px;
-	font-size: 100%;
-	opacity: 1;
-	pointer-events: none;
-}
-.floatingTextReply{
-	visibility: visible;
-	padding:0px;
-	margin:0px;
-	position:fixed;
-	height:0px;
-	left:0px;
-	font-size: 100%;
-	opacity: 1;
-	pointer-events: none;
-	text-align: right;
-	direction:rtl;
-	display: inline-block;
+	font-size: 90%;
 }
 
 .backgroundlessWindow{
@@ -71,28 +56,6 @@ margin:0 auto;
 }
 #introOverInterfaceAICover{
 	background-color: hsl(180,100%,15%);
-}
-#introOverInterfaceInitCover{
-	background-color: hsl(0,0%,0%);
-	visibility: visible;
-	opacity: 1;
-}
-#introOverInterfaceChargingCover{
-	/*background-color: hsl(180,25%,75%);*/
-	background: 
-		
-		linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,255,255,1) 0.5%, rgba(0,0,0,0) 1.5%, rgba(0,0,0,0) 98.5%, rgba(0,255,255,1) 99.5%, rgba(255,255,255,1) 100%),
-		linear-gradient(0deg, rgba(0,255,255,1) 0%, rgba(0,0,0,0) 3%, rgba(0,0,0,0) 97%, rgba(0,255,255,1) 100%);
-	visibility: visible;
-	opacity: 0;
-}
-#introOverInterfaceJumpdriveCover{
-	/*background-color: hsl(180,25%,75%);*/
-	background: 
-		
-		hsl(180,100%,85%);
-	visibility: visible;
-	opacity: 0;
 }
 
 .backgroundWindow{
@@ -248,7 +211,6 @@ margin:0 auto;
 	
 	overflow-y: scroll;
 	text-align: justify;
-	/*text-wrap: pretty;*/
 	scrollbar-width: none;
 	
 	outline: solid hsla(180,75%,75%,0.5) 1px;
@@ -319,13 +281,6 @@ margin:0 auto;
 .warningWindowText{
 	
 }
-
-
-.messagesHiddenText{
-	opacity: 0;
-	user-select: none;
-}
-
 
 #TMPAIMessageWindow {
 	top:100px;
