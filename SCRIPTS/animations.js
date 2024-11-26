@@ -135,44 +135,49 @@ var combinedIntroMessagesTiming = [
 	 25,	//slowly show	100
 	 50,	//move last		150
 	 50,	//critical		200
-	150,	//move			350
-	 50,	//autopilot		400
-	 75,	//...			475
-	100,	//enabled		575
-	 75,	//move			650
-	 50,	//initiating	700
-	200,	//move			900
-	 50,	//redirecting	950
-	250,	//move			1350
-	 50,	//charged at	1400
-	150,	//0-100%		1550
-	250,	//border flash
-	275,	//move			2300
-	 50,	//JUMPING		2350
-	 75,	//blue fade in	2425
-	 25,	//shake shake	2450
-	250,	//discharge 	2800
-	 50,	//blue fade out	2850
-	200,	//shake shake 2	
-	150,	//shake shake 3	
-	125,	//move
-	 50,	//Emergency
-	100,	//...
-	100,	//successful
-	 75,	//move
-	 50,	//CHECKING
-	125,	//...
-	100,	//operational
-	100,	//move
-	 50,	//SEARCHING
-	150,	//...
-	100,	//not found
-	 75,	//move
-	 50,	//combat mode
-	100,	//lifted
-	 75,	//move
-	 50,	//general check
-	175,	//...
+	145,	//move			345
+	 50,	//autopilot		395
+	 45,	//...			440
+	100,	//enabled		540
+	 60,	//move			600
+	 50,	//initiating	650
+	200,	//move			850
+	 50,	//redirecting	900
+	235,	//move			1135
+	 50,	//charged at	1185
+	140,	//0-100%		1325
+	250,	//border flash	1575
+	275,	//move			1850
+	 50,	//JUMPING		1900
+	 75,	//blue fade in	1975
+	 25,	//shake shake	2000
+	250,	//discharge 	2250
+	 50,	//blue fade out	2300
+	200,	//shake shake 2	2500
+	150,	//shake shake 3	2650
+	125,	//move			2775
+	 50,	//Emergency		2825
+	 70,	//...			2895
+	100,	//successful	2995
+	 75,	//move			3070
+	 50,	//CHECKING		3120
+	 90,	//...			3210
+	100,	//operational	3310
+	 80,	//move			3390
+	 50,	//SEARCHING		3440
+	120,	//...			3560
+	100,	//not found		3660
+	 70,	//move			3730
+	 50,	//combat mode	3780
+	 85,	//lifted		3865
+	 75,	//move			3940
+	 50,	//general check	3990
+	175,	//...			4165
+	600,	//alert			4765
+	125,	//move alert	4890
+	 50,	//aborted		4940
+	 60,	//move			5000
+	
 	
 	
 			//skip			
@@ -455,7 +460,7 @@ var AIMessageBlurrProgressValue = 0;
 
 var ConsoleX = 30;
 var ConsoleY = 300;
-var ConsoleX_2 = 450;
+var ConsoleX_2 = 530;
 var ConsoleMessageOffset = 24;	
 var ConsoleMessageFadeDefaultTime = 4.0;
 
@@ -477,13 +482,66 @@ var IntroAnimationPartFourDelay = 10000;
 var IntroFadeInTime = 6;
 var IntroFadeCoverName = "introOverInterfaceInitCover";
 
-var IntroFloatingTextGroupID = "introFloatingTextGroup";
+var IntroMessagesLayerName = "introMessages"
+
+//var IntroFloatingTextGroupID = "introFloatingTextGroup";
+
+var IntroFloatingMessagesLayerName = "introFloatingTextGroup";
 var IntroFloatingTextMessagesArray = [];
-var IntroFloatingTextRepliesArray = [];
-var IntroFloatingTextClass = "floatingText"
-var IntroFloatingReplyClass = "floatingTextReply"
+var IntroFloatingTextClass = "floatingText";
 var IntroFloatingTextID = "introFloatingText_";
+var IntroFloatingTextRepliesArray = [];
+var IntroFloatingReplyClass = "floatingTextReply";
 var IntroFloatingReplyID = "introFloatingReply_";
+
+
+
+var IntroAlertMessagesLayerName = "introWarningMessages";
+
+var IntroAlertMessagesWindowsArray = [];
+var IntroAlertMessagesWindowClass = "backgroundWindow warningWindow";
+var IntroAlertMessagesWindowID = "introWarningWindow_";
+
+var IntroAlertMessagesBackgroundsArray = [];
+var IntroAlertMessagesBackgroundClass = "messageWindowBackground warningWindowBackground";
+var IntroAlertMessagesBackgroundID = "introWarningWindowBackground_";
+
+var IntroAlertMessagesContentArray = [];
+var IntroAlertMessagesContentClass = "messageWindowContent warningWindowContent";
+var IntroAlertMessagesContentID = "introWarningWindowContent_";
+
+var IntroAlertMessagesHeadersArray = [];
+var IntroAlertMessagesHeadersClass = "messageWindowHeader warningWindowHeader";
+var IntroAlertMessagesHeadersID = "introWarningWindowHeader_";
+
+var IntroAlertMessagesTextArray = [];
+var IntroAlertMessagesTextClass = "messageWindowText warningWindowText";
+var IntroAlertMessagesTextID = "introWarningWindowText_";
+
+var IntroAlertMessagesFootersArray = [];
+var IntroAlertMessagesFooterClass = "messageWindowFooter warningWindowFooter";
+var IntroAlertMessagesFooterID = "introWarningWindowFooter_";
+
+var IntroAlertMessagesForegroundsArray = [];
+var IntroAlertMessagesForegroundClass = "messageWindowForeground warningWindowForeground";
+var IntroAlertMessagesForegroundID = "introWarningWindowForeground_";
+
+var IntroAlertOpacityTargetValue = 1.0;
+var introAlertOpacityTime = 0.1;
+
+var IntroAlertTextDelay = 0.25;
+var IntroAlertTextSpeed = 0.02;
+var IntroAlertHeaderSpeed = 0.015;
+
+var IntroAlertScaleGrowthDelay = 0.05;
+var IntroAlertScaleGrowthScale = 1.25;
+var IntroAlertScaleGrowthTime = 0.2;
+
+var introAlertScaleShrinkDelay = 0;
+var introAlertScaleShrinkScale = 0.8;
+var introAlertScaleShrinkTime = 1;
+
+
 
 var IntroFloatingTextFadeDelay = 9;
 var IntroFloatingTextFadeLength = 6;
@@ -496,24 +554,9 @@ var IntroJumpingCoverName = "introOverInterfaceJumpdriveCover";
 var IntroJumpFlashFadeInTime = 0.25;
 var IntroJumpFlashFadeOutTime = 3;
 
-var IntroMessagesLayerName = "introMessages"
-var IntroFloatingMessagesLayerName = "introFloatingTextGroup";
 
 
 var animationPaused=false;
-
-/*
-	testArray=[];
-	testArray = calculateTimings(introMessagesDelays);
-	tmpOutput ="";
-	for(var i = 0; i < testArray.length;i++) {
-		if(i%10==0) {
-			console.log(tmpOutput);
-			tmpOutput="";
-		};
-		tmpOutput+=testArray[i]+' ';
-	}
-*/
 
 function newDisplayIntro(outputDocument) {
 	
@@ -581,14 +624,14 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				
 			case dynamicCondition++: 	//fade old
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-7.25)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-6.95)*1000);
 					
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[1], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-5.75)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[1], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-5.6)*1000);
 					
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[2], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[3], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[4], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
-					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[5], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-3)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[2], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-2.9)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[3], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-2.9)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[4], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-2.9)*1000);
+					setTimeout(() => {newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[5], IntroFloatingTextFadeLength, 0.0, 1.0);},(IntroFloatingTextFadeDelay+0.75-2.9)*1000);
 					
 					animationStep++;
 				}
@@ -789,6 +832,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
 					animationStep++;
 				}
+				break;
 
 			case dynamicCondition++:	//successful
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -817,6 +861,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
 					animationStep++;
 				}
+				break;
 
 			case dynamicCondition++:	//operational
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -845,6 +890,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
 					animationStep++;
 				}
+				break;
 
 			case dynamicCondition++:	//not found
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -886,7 +932,6 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 			case dynamicCondition++:	//general checkup
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[23],0.05);
-					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					animationStep++;
 				}
 				break;
@@ -895,10 +940,42 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 7.5, "...", "skip", "")
 					animationStep++;
-										animationStep=9999;	
 
 				}
-	
+				break;
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[25],IntroAlertTextSpeed,combinedIntroMessages[24],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;			
+				
+			case dynamicCondition++:	//aborted
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[26],0.05, true);
+					animationStep++;	
+				}
+				break;			
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+					
+					
+					animationStep=9999;
+				}
+				break;
+		
 				
 			case dynamicCondition++:	//skip
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -1452,13 +1529,13 @@ function introInit(outputDocument){
 	
 	tmpGroup = outputDocument.createElement("div");
 	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introFloatingTextGroup";
+	tmpGroup.id = IntroFloatingMessagesLayerName;
 	
 	messagesLayer.append(tmpGroup);
 	
 	tmpGroup = outputDocument.createElement("div");
 	tmpGroup.className = "messagesGroup";
-	tmpGroup.id = "introWarningMessages";
+	tmpGroup.id = IntroAlertMessagesLayerName;
 	
 	messagesLayer.append(tmpGroup);
 	
@@ -1517,7 +1594,7 @@ function introInit(outputDocument){
 }
 
 function introNewLogMessage(outputDocument, logArray, messageStruct, displaySpeed, logIsReply=false){
-	if(messagesGroup = outputDocument.getElementById(IntroFloatingTextGroupID)) {
+	if(messagesGroup = outputDocument.getElementById(IntroFloatingMessagesLayerName)) {
 		tmpElement = outputDocument.createElement("div");
 		
 		if(!logIsReply){
@@ -1540,8 +1617,75 @@ function introNewLogMessage(outputDocument, logArray, messageStruct, displaySpee
 	}
 }
 
-function introNewAlert(outputDocument){
-	
+function introNewAlert(outputDocument, messageStruct, messageSpeed, headerStruct=["WARNING","rgb(200,0,0)"], headerSpeed){
+	if(messagesGroup = outputDocument.getElementById(IntroAlertMessagesLayerName)) {
+		var AlertsCounter = IntroAlertMessagesWindowsArray.length;
+		
+		tmpAlertWindow = outputDocument.createElement("div");
+		tmpAlertWindow.className = IntroAlertMessagesWindowClass;
+		tmpAlertWindow.id = IntroAlertMessagesWindowID + AlertsCounter;
+		IntroAlertMessagesWindowsArray.push(tmpAlertWindow.id);
+		
+		tmpAlertBackground = outputDocument.createElement("div");
+		tmpAlertBackground.className = IntroAlertMessagesBackgroundClass;
+		tmpAlertBackground.id = IntroAlertMessagesBackgroundID + AlertsCounter;
+		IntroAlertMessagesBackgroundsArray.push(tmpAlertBackground.id);
+		
+		tmpAlertContent = outputDocument.createElement("div");
+		tmpAlertContent.className = IntroAlertMessagesContentClass;
+		tmpAlertContent.id = IntroAlertMessagesContentID + AlertsCounter;
+		IntroAlertMessagesContentArray.push(tmpAlertContent.id);
+		
+		tmpAlertHeader = outputDocument.createElement("div");
+		tmpAlertHeader.className = IntroAlertMessagesHeadersClass;
+		tmpAlertHeader.id = IntroAlertMessagesHeadersID + AlertsCounter;
+		IntroAlertMessagesHeadersArray.push(tmpAlertHeader.id);
+		
+		tmpAlertText = outputDocument.createElement("div");
+		tmpAlertText.className = IntroAlertMessagesTextClass;
+		tmpAlertText.id = IntroAlertMessagesTextID + AlertsCounter;
+		IntroAlertMessagesTextArray.push(tmpAlertText.id);
+		
+		tmpAlertFooter = outputDocument.createElement("div");
+		tmpAlertFooter.className = IntroAlertMessagesFooterClass;
+		tmpAlertFooter.id = IntroAlertMessagesFooterID + AlertsCounter;
+		IntroAlertMessagesFootersArray.push(tmpAlertFooter.id);
+		
+		tmpAlertForeground = outputDocument.createElement("div");
+		tmpAlertForeground.className = IntroAlertMessagesForegroundClass;
+		tmpAlertForeground.id = IntroAlertMessagesForegroundID + AlertsCounter;
+		IntroAlertMessagesForegroundsArray.push(tmpAlertForeground.id);
+		
+		tmpAlertWindow.append(tmpAlertBackground);
+		tmpAlertContent.append(tmpAlertHeader);
+		tmpAlertContent.append(tmpAlertText);
+		tmpAlertContent.append(tmpAlertFooter);
+		tmpAlertWindow.append(tmpAlertContent);
+		tmpAlertWindow.append(tmpAlertForeground);
+		messagesGroup.append(tmpAlertWindow);
+		
+		newDisplayElement(outputDocument,tmpAlertWindow.id,AlertPopupPositionX,AlertPopupPositionY);
+		newAnimatedElementOpacity(outputDocument, tmpAlertWindow.id, 0.2, 1.0);
+		
+		setTimeout(() => {
+			newDisplayAnimatedMessage(outputDocument,tmpAlertText.id,NaN,NaN,messageStruct,messageStruct[0].length*messageSpeed);
+			newDisplayAnimatedMessage(outputDocument,tmpAlertHeader.id,NaN,NaN,headerStruct,headerStruct[0].length*headerSpeed);
+		},1000*IntroAlertTextDelay);
+		
+		setTimeout(() => {
+			newAnimatedElementScale(outputDocument,tmpAlertWindow.id,IntroAlertScaleGrowthTime,IntroAlertScaleGrowthScale);
+		},1000*IntroAlertScaleGrowthDelay);
+		
+		/*
+		setTimeout(() => {
+			newAnimatedElementScale(outputDocument,tmpAlertWindow.id,introAlertScaleShrinkTime,introAlertScaleShrinkScale);
+		},1000*introAlertScaleShrinkDelay);
+		*/
+	}
+	else
+	{
+		console.log("Intro not initialised");
+	}
 }
 function introNewAIReport(outputDocument){
 	
@@ -1573,6 +1717,19 @@ function introMoveLogMessages(outputDocument, logArray, logOffset, fadeLast = fa
 			newAnimatedElementOpacity(outputDocument, logArray[logLength-1-fadeIndex], fadeTime, 0.0, 1.0);
 			},fadeDelay*1000);
 	}
+}
+
+function introMoveAlertMessages(outputDocument, alertsArray, effectSpeed) {
+	var alertsLength = alertsArray.length;
+	
+	newAnimatedElementScale(outputDocument,alertsArray[alertsArray.length-1],effectSpeed,1);
+	animatedMoveElement(outputDocument,alertsArray[alertsArray.length-1],0,0,AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,0,effectSpeed);
+				
+	for(var i = 0; i<alertsLength-1;i++){
+		animatedMoveElement(outputDocument,alertsArray[i],AlertBaseX - AlertPopupPositionX + (AlertOffsetBaseX*(alertsLength - i - 2)),AlertBaseY - AlertPopupPositionY + (AlertOffsetBaseY*(alertsLength - i - 2)),AlertBaseX - AlertPopupPositionX + (AlertOffsetBaseX*(alertsLength - i - 1)),AlertBaseY - AlertPopupPositionY + (AlertOffsetBaseY*(alertsLength - i - 1)),0,effectSpeed);
+		newAnimatedElementOpacity(outputDocument, alertsArray[i], effectSpeed, Math.pow(introAlertScaleShrinkScale,(alertsLength - i - 1)), Math.pow(introAlertScaleShrinkScale,(alertsLength - i - 2)));
+	}
+	
 }
 
 function animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, appendedText, finishMode="default", fixedText = "", currentStep = 0, elapsedTime = 0) {
@@ -1610,20 +1767,6 @@ function animationAppendLoopedMessage(outputDocument, elementID, stepTime, total
 		}
 	}
 	
-	/*
-	
-	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
-	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
-	var msgPart = messageStruct[0].substr(0,msgLength);
-	
-	if(animationStep < introMessagesTiming.length) {
-		
-		elapsedTime+=stepTime;
-		currentStep += 1;
-		if(elapsedTime > totalTime
-		
-		setTimeout(() => {animationAppendLoopedMessage(outputDocument, elementID, stepTime, totalTime, fixedText, currentStep, elapsedTime);},stepTime*1000);
-	}*/
 }
 
 function animationAppendChangingNumeric(outputDocument, elementID, stepTime, totalTime, startValue, endValue, finishMode="default", numericDecimals = 0, fixedText = "", extraText = "", elapsedTime = 0){
@@ -3411,7 +3554,7 @@ function AIMessageBlurr(outputDocument,elementID, blurrColor) {
 
 
 function introFloatingMessage(outputDocument, floatingTextArray, messageStruct, displaySpeed){
-	if(messagesGroup = outputDocument.getElementById(IntroFloatingTextGroupID)) {
+	if(messagesGroup = outputDocument.getElementById(IntroFloatingMessagesLayerName)) {
 		tmpElement = outputDocument.createElement("div");
 		tmpElement.className = IntroFloatingTextClass;
 		tmpElement.id = IntroFloatingTextID+floatingTextArray.length;
@@ -3514,9 +3657,19 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 	
 	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
 	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
-	var msgPart = messageStruct[0].substr(0,msgLength);
 	
-	targetTextbox.innerHTML = msgPart;
+	var msgPart = messageStruct[0].substr(0,msgLength);
+	var msgSpanPartLength = messageStruct[0].length-msgLength;
+	
+	var msgSpanPart = "";
+	
+	if(msgSpanPartLength > 0) {
+		msgSpanPart = messageStruct[0].substr(msgLength,msgSpanPartLength);
+		targetTextbox.innerHTML = msgPart+"<span class='messagesHiddenText'>"+msgSpanPart+"</span>";
+	}
+	else{
+		targetTextbox.innerHTML = msgPart;
+	}
 	
 	if(elapsedTime<=animationLength){
 		setTimeout(() => {newDisplayAnimatedMessage(outputDocument, elementID, positionX, positionY, messageStruct, animationLength, textBlurr, elapsedTime);},minorTickLength*1000);
