@@ -177,9 +177,54 @@ var combinedIntroMessagesTiming = [
 	125,	//move alert	4890
 	 50,	//aborted		4940
 	 60,	//move			5000
-	
-	
-	
+	 50,	//checking		5050
+	185,	//...			5235
+	100,	//operational	5335
+	 80,	//move			5415
+	 50,	//attempting	5465
+	205,	//...			
+	250,	//alert
+	125,	//move alert
+	100,	//failed
+	 55,	//move
+	 50,	//restarting
+	195,	//...
+	250,	//failed
+	100,	//move
+	 50,	//ch thrust
+	160,	//...
+	100,	//operat
+	 80,	//move
+	 50,	//activat
+	150,	//...
+	 25,	//alert
+	 75,	//success
+	 50,	//move alert
+	 10,	//move
+	 
+	 50,	//restarting
+	195,	//...
+	250,	//failed
+	100,	//move
+	 50,	//checking
+	 30,	//alert
+	 90,	//...
+	 35,	//move alert
+	 65,	//inactive
+	 65,	//move
+	 50,	//starting
+	125,	//...
+	250,	//success
+	 60,	//move
+	 50,	//raising
+	 85,	//...
+	125,	//alert
+	125,	//move alert
+	150,	//active
+	 95,	//move
+	  5,	//alert
+	 45,	//fade to black
+	200,	//
 			//skip			
 ];
 var combinedIntroMessages = [
@@ -216,72 +261,73 @@ var combinedIntroMessages = [
 /*  28	*/	["OPERATIONAL",textColors[1]],
 /*  29	*/	["ATTEMPTING [COLLISION AVOIDANCE MANEUVER]",textColors[4]],
 
-/* 30*/	["WARNING",textColors[3]],
-/* 31*/	["[COLLISION AVOIDANCE SYSTEM]<br>FATAL ERROR",textColors[3]],
-/* 32*/	["FAILED",textColors[0]],
-/* 33*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
-/* 34*/	["FAILED TO START",textColors[0]],
-/* 35*/	["CHECKING [MANEUVERING THRUSTERS]",textColors[4]],
-/* 36*/	["OPERATIONAL",textColors[1]],
-/* 37*/	["BURNING [REVERSE THRUSTERS]",textColors[4]],
-/* 38*/	["WARNING",textColors[3]],
-/* 39*/	["ENTERING ATMOSPHERE",textColors[3]],
+/*	30	*/	["WARNING",textColors[3]],
+/*	31	*/	["[COLLISION AVOIDANCE SYSTEM] FATAL ERROR",textColors[3]],
+/*	32	*/	["FAILED",textColors[0]],
+/*	33	*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
+/*	34	*/	["FAILED TO START",textColors[0]],
+/*	35	*/	["CHECKING [MANEUVERING THRUSTERS]",textColors[4]],
+/*	36	*/	["OPERATIONAL",textColors[1]],
+/*	37	*/	["ACTIVATING [REVERSE THRUSTERS]",textColors[4]],
+/*	38	*/	["WARNING",textColors[3]],
+/*	39	*/	["ENTERING ATMOSPHERE",textColors[3]],
 
-/* 40*/	["SUCCESS",textColors[1]],
-/* 41*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
-/* 42*/	["FAILED TO START",textColors[0]],
-/* 43*/	["CHECKING [SHIELD SYSTEMS]",textColors[4]],
-/* 44*/	["WARNING",textColors[3]],
-/* 45*/	["[MAIN REVERSE THRUSTER]<br>DAMAGED",textColors[3]],
-/* 46*/	["INACTIVE",textColors[5]],
-/* 47*/	["STARTING [SHIELDS SYSTEM]",textColors[4]],
-/* 48*/	["SUCCESS",textColors[1]],
-/* 49*/	["RAISING [SHIELDS]",textColors[4]],
+/*	40	*/	["SUCCESS",textColors[1]],
+/*	41	*/	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",textColors[4]],
+/*	42	*/	["FAILED TO START",textColors[0]],
+/*	43	*/	["CHECKING [SHIELD SYSTEM]",textColors[4]],
+/*	44	*/	["WARNING",textColors[3]],
+/*	45	*/	["[MAIN REVERSE THRUSTER] DAMAGED",textColors[3]],
+/*	46	*/	["INACTIVE",textColors[5]],
+/*	47	*/	["STARTING [SHIELDS SYSTEM]",textColors[4]],
+/*	48	*/	["SUCCESS",textColors[1]],
+/*	49	*/	["RAISING [SHIELDS]",textColors[4]],
 
-/* 50*/	["WARNING",textColors[3]],
-/* 51*/	["PLANETARY CRASH IMMINIENT<br>BRACE FOR IMPACT",textColors[3]],//30
-/* 52*/	["SHIELDS ACTIVE",textColors[1]],
-/* 53*/	["WARNING",textColors[3]],
-/* 47*/	["<br>SHIELDS<br>CRITICAL",textColors[3]],
-/* 48*/	["RESTORING SYSTEM",textColors[4]],
-/* 49*/	["SUCCESS",textColors[1]],
+/*	50	*/	["WARNING",textColors[3]],
+/*	51	*/	["PLANETARY CRASH IMMINIENT BRACE FOR IMPACT",textColors[3]],//30
+/*	52	*/	["SHIELDS ACTIVE",textColors[1]],
+/*	53	*/	["WARNING",textColors[3]],
+/*	54	*/	["SHIELDS CRITICAL",textColors[3]],
 
-/* 50*/	["RUNNING GENERAL SYSTEM CHECKUP",textColors[4]],
-/* 51*/	["ABORTED",textColors[5]],
-/* 52*/	["SEVERE DAMAGE DETECTED",textColors[3]],
-/* 53*/	["CHECKING COMMANDER'S VITAL SIGNATURE",textColors[4]],
-/* 54*/	["ALIVE, NOT RESPONDING",textColors[5]],
-/* 55*/	["CALLING [COMBAT BRIDGE]",textColors[4]],
-/* 56*/	["NOT RESPONDING",textColors[0]],
-/* 57*/	["ENTERING EMERGENCY MODE",textColors[4]],
-/* 58*/	["STARTING EMERGENCY CHECKUP",textColors[4]],
-/* 59*/	["CHECKING [LIFE SUPPORT SYSTEM]",textColors[4]],
+/* 55*/	["RESTORING SYSTEM",textColors[4]],
+/* 56*/	["SUCCESS",textColors[1]],
+/* 57*/	["RUNNING GENERAL SYSTEM CHECKUP",textColors[4]],
+/* 58*/	["ABORTED",textColors[5]],
+/* 59*/	["SEVERE DAMAGE DETECTED",textColors[3]],
 
-/* 60*/	["OPERATIONAL",textColors[1]],
-/* 61*/	["CHECKING [T.E.S.A.]",textColors[4]],
-/* 62*/	["INACTIVE",textColors[5]],
-/* 63*/	["STARTING [T.E.S.A.]",textColors[4]],
-/* 64*/	["INSUFFICIENT POWER",textColors[3]],
-/* 65*/	["CHECKING [POWER MANAGEMENT SYSTEM]",textColors[4]],
-/* 66*/	["OPERATIONAL",textColors[1]],
-/* 67*/	["CHECKING [MAIN POWER GENERATOR]",textColors[4]],
-/* 68*/	["NOT RESPONDING",textColors[0]],
-/* 69*/	["CHECKING [SECONDARY POWER GENERATOR]",textColors[4]],
+/* 60*/	["CHECKING COMMANDER'S VITAL SIGNATURE",textColors[4]],
+/* 61*/	["ALIVE, NOT RESPONDING",textColors[5]],
+/* 62*/	["CALLING [COMBAT BRIDGE]",textColors[4]],
+/* 63*/	["NOT RESPONDING",textColors[0]],
+/* 64*/	["ENTERING EMERGENCY MODE",textColors[4]],
+/* 65*/	["STARTING EMERGENCY CHECKUP",textColors[4]],
+/* 66*/	["CHECKING [LIFE SUPPORT SYSTEM]",textColors[4]],
+/* 68*/	["OPERATIONAL",textColors[1]],
+/* 69*/	["CHECKING [T.E.S.A.]",textColors[4]],
 
-/* 70*/	["NOT RESPONDING",textColors[0]],
-/* 71*/	["RESTARTING [MAIN POWER GENERATOR]",textColors[4]],
-/* 72*/	["FAILED TO START",textColors[0]],
-/* 73*/	["RESTARTING [SECONDARY POWER GENERATOR]",textColors[4]],
-/* 74*/	["FAILED TO START",textColors[0]],
-/* 75*/	["CHECKING [EMERGENCY GENERATOR]",textColors[4]],
-/* 76*/	["INACTIVE",textColors[5]],
-/* 77*/	["STARTING [EMERGENCY GENERATOR]",textColors[4]],
-/* 78*/	["SUCCESS",textColors[1]],
-/* 79*/	["STARTING [T.E.S.A.]",textColors[4]],
+/* 70*/	["INACTIVE",textColors[5]],
+/* 71*/	["STARTING [T.E.S.A.]",textColors[4]],
+/* 72*/	["INSUFFICIENT POWER",textColors[3]],
+/* 73*/	["CHECKING [POWER MANAGEMENT SYSTEM]",textColors[4]],
+/* 74*/	["OPERATIONAL",textColors[1]],
+/* 75*/	["CHECKING [MAIN POWER GENERATOR]",textColors[4]],
+/* 76*/	["NOT RESPONDING",textColors[0]],
+/* 77*/	["CHECKING [SECONDARY POWER GENERATOR]",textColors[4]],
+/* 78*/	["NOT RESPONDING",textColors[0]],
+/* 79*/	["RESTARTING [MAIN POWER GENERATOR]",textColors[4]],
 
-/* 80*/	["SUCCESS",textColors[1]],
-/* 81*/	["[T.E.S.A.] ACTIVATED IN EMERGENCY CONTROL MODE",textColors[4]],
-/* 82*/	["TRANSFERING MAIN CONTROL TO [T.E.S.A.]",textColors[4]]
+/* 80*/	["FAILED TO START",textColors[0]],
+/* 81*/	["RESTARTING [SECONDARY POWER GENERATOR]",textColors[4]],
+/* 82*/	["FAILED TO START",textColors[0]],
+/* 83*/	["CHECKING [EMERGENCY GENERATOR]",textColors[4]],
+/* 84*/	["INACTIVE",textColors[5]],
+/* 85*/	["STARTING [EMERGENCY GENERATOR]",textColors[4]],
+/* 86*/	["SUCCESS",textColors[1]],
+/* 87*/	["STARTING [T.E.S.A.]",textColors[4]],
+/* 88*/	["SUCCESS",textColors[1]],
+/* 89*/	["[T.E.S.A.] ACTIVATED IN EMERGENCY CONTROL MODE",textColors[4]],
+
+/* 90*/	["TRANSFERING MAIN CONTROL TO [T.E.S.A.]",textColors[4]]
 
 ];
 
@@ -458,9 +504,9 @@ var AIMessageBlurrStepChange = 0.02;
 var AIMessageBlurrProgressValue = 0;
 
 
-var ConsoleX = 30;
+var ConsoleX = 25;
 var ConsoleY = 300;
-var ConsoleX_2 = 530;
+var ConsoleX_2 = 550;
 var ConsoleMessageOffset = 24;	
 var ConsoleMessageFadeDefaultTime = 4.0;
 
@@ -554,6 +600,8 @@ var IntroJumpingCoverName = "introOverInterfaceJumpdriveCover";
 var IntroJumpFlashFadeInTime = 0.25;
 var IntroJumpFlashFadeOutTime = 3;
 
+var IntroCrashFadeTime = 0.05;
+var IntroCrashCoverName = "introOverInterfaceCrashCover";
 
 
 var animationPaused=false;
@@ -745,7 +793,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
-			case dynamicCondition++:	//0-100%
+			case dynamicCondition++:	//border flash
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, IntroJumpChargingTime/2, 1, 0);
 					animationStep++;
@@ -772,14 +820,14 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 			case dynamicCondition++:	//blue fade in
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroJumpingCoverName, IntroJumpFlashFadeInTime, 1, 0);
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.03,0.25,16,16,"stay");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.25,16,16,"stay");
 					animationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//shake shake
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,5,32,32,"stay");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,5,32,32,"stay");
 					animationStep++;
 				}
 				break;
@@ -800,14 +848,14 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				
 			case dynamicCondition++:	//shake shake 2
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,1.5,16,16,"stay");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,1.5,16,16,"stay");
 					animationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//shake shake 3
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroFloatingMessagesLayerName,0.05,0.75,8,8,"zero");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,0.75,8,8,"zero");
 					animationStep++;
 				}
 				break;
@@ -940,7 +988,6 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 7.5, "...", "skip", "")
 					animationStep++;
-
 				}
 				break;
 				
@@ -970,13 +1017,341 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					animationStep++;
-					
-					
-					animationStep=9999;
 				}
 				break;
-		
 				
+			case dynamicCondition++:	//checking
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[27],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//operational
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[28],0.05, true);
+					animationStep++;	
+				}
+				break;		
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//attempting
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[29],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 4.50, "...", "skip", "")
+					animationStep++;
+				}
+				break;
+					
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[31],IntroAlertTextSpeed,combinedIntroMessages[30],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;			
+			
+			case dynamicCondition++:	//failed
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[32],0.05, true);
+					animationStep++;	
+				}
+				break;		
+					
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//restarting
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[33],0.05);
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//failed to start
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[34],0.05, true);
+					animationStep++;	
+				}
+				break;	
+					
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//checking thrusters
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[35],0.05);
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//operational
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[36],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//activating thrusters
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[37],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[39],IntroAlertTextSpeed,combinedIntroMessages[38],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//success
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[40],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;			
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//restarting cas
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[41],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//failed
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[42],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//checking shields
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[43],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[45],IntroAlertTextSpeed,combinedIntroMessages[44],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;			
+				
+			case dynamicCondition++:	//inactive
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[46],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//starting shields
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[47],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//success
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[48],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//raising shields
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[49],0.05);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//...
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 3.75, "...", "skip", "")
+					animationStep++;
+				}
+				break;	
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[51],IntroAlertTextSpeed,combinedIntroMessages[50],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;			
+				
+			case dynamicCondition++:	//shields active
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,combinedIntroMessages[52],0.05, true);
+					animationStep++;	
+				}
+				break;	
+				
+			case dynamicCondition++:	//move
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[54],IntroAlertTextSpeed,combinedIntroMessages[53],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+			
+			case dynamicCondition++:	//crash fade in
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					newAnimatedElementOpacity(outputDocument, IntroCrashCoverName, IntroCrashFadeTime, 1, 0);
+					animationStep++;
+				}
+				break;
+				
+		
 			case dynamicCondition++:	//skip
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					//newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[3], ConsoleX_2,ConsoleY,combinedIntroMessages[3],0.55);
@@ -986,6 +1361,23 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				//console.log(animationStep, dynamicCondition);
 				break;
+				
+			case dynamicCondition++:	//alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[54],IntroAlertTextSpeed,combinedIntroMessages[53],IntroAlertHeaderSpeed);
+					animationStep++;
+				}
+				break;
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			case dynamicCondition++:	//move 2
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
@@ -1549,7 +1941,7 @@ function introInit(outputDocument){
 	tmpGroup.className = "messagesGroup";
 	tmpGroup.id = "introOverInterfaceCovers";
 	
-	messagesLayer.append(tmpGroup);
+	mainMessagesLayer.append(tmpGroup);
 	
 	coverLayer = outputDocument.getElementById("introOverInterfaceCovers");
 	if(coverLayer === null) {
@@ -1573,6 +1965,12 @@ function introInit(outputDocument){
 	tmpCover = outputDocument.createElement("div");
 	tmpCover.className = "interfaceBackgroundCover";
 	tmpCover.id = IntroJumpingCoverName;
+	
+	coverLayer.append(tmpCover);
+	
+	tmpCover = outputDocument.createElement("div");
+	tmpCover.className = "interfaceBackgroundCover";
+	tmpCover.id = IntroCrashCoverName;
 	
 	coverLayer.append(tmpCover);
 	

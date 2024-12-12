@@ -144,6 +144,7 @@ margin:0 auto;
 	hsla(0,100%,50%,0) 67%,	
 	hsla(0,100%,50%,0) 100%);
 	
+	pointer-events: none;
 	
 	top: 0;
     left: 0;
