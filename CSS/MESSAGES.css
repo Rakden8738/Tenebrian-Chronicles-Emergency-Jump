@@ -138,9 +138,9 @@ margin:0 auto;
 	background-image: linear-gradient(150deg, 
 	hsla(0,100%,50%,0) 0%, 
 	hsla(0,100%,50%,0) 33%,
-	hsla(0,100%,50%,1) 48%, 
-	hsla(0,100%,50%,1) 50%, 
-	hsla(0,100%,50%,1) 52%, 
+	hsla(0,100%,50%,0.5) 48%, 
+	hsla(0,100%,50%,0.5) 50%, 
+	hsla(0,100%,50%,0.5) 52%, 
 	hsla(0,100%,50%,0) 67%,	
 	hsla(0,100%,50%,0) 100%);
 	
@@ -194,7 +194,7 @@ margin:0 auto;
 }
 .warningWindowBackground{
 	background: hsla(0,0%,0%,1);
-	opacity: 0.9;
+	opacity: 0.5;
 }
 .AIMessageWindowBackground{
 	background-image: url("../RESOURCES/Background_honeycomb_1_crop.png");
@@ -258,7 +258,7 @@ margin:0 auto;
 	margin-bottom: 35px;
 	
 	padding:0em;
-	padding-top:1em;
+	padding-top:1.5em;
 }
 .AIMessageWindowText{
 	

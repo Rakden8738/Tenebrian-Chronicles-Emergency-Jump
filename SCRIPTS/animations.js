@@ -173,7 +173,8 @@ var combinedIntroMessagesTiming = [
 	 75,	//move			3940
 	 50,	//general check	3990
 	175,	//...			4165
-	600,	//alert			4765
+	575,	//start alerts	4740
+	 25,	//alert			4765
 	125,	//move alert	4890
 	 50,	//aborted		4940
 	 60,	//move			5000
@@ -182,49 +183,65 @@ var combinedIntroMessagesTiming = [
 	100,	//operational	5335
 	 80,	//move			5415
 	 50,	//attempting	5465
-	205,	//...			
-	250,	//alert
-	125,	//move alert
-	100,	//failed
-	 55,	//move
-	 50,	//restarting
-	195,	//...
-	250,	//failed
-	100,	//move
-	 50,	//ch thrust
-	160,	//...
-	100,	//operat
-	 80,	//move
-	 50,	//activat
-	150,	//...
-	 25,	//alert
-	 75,	//success
-	 50,	//move alert
-	 10,	//move
+	205,	//...			5670
+	200,	//shake			5870
+	 50,	//alert			5920
+	125,	//move alert	6045
+	100,	//failed		6145
+	 55,	//move			6200
+	 50,	//restarting	6250
+	195,	//...			6445
+	250,	//failed		6695
+	100,	//move			6795
+	 50,	//ch thrust		6845
+	160,	//...			7005
+	100,	//operat		7105
+	
+	 40,	//shake	atmo	7145
 	 
-	 50,	//restarting
-	195,	//...
-	250,	//failed
-	100,	//move
-	 50,	//checking
-	 30,	//alert
-	 90,	//...
-	 35,	//move alert
-	 65,	//inactive
-	 65,	//move
-	 50,	//starting
-	125,	//...
-	250,	//success
-	 60,	//move
-	 50,	//raising
-	 85,	//...
-	125,	//alert
-	125,	//move alert
-	150,	//active
-	 95,	//move
-	  5,	//alert
-	 45,	//fade to black
-	200,	//
+	 40,	//move			7185
+	 10,	//alert atmo	7195
+	 40,	//activat		7235
+	 
+	 85,	//move alert	7320
+	  
+	 65,	//...			7385
+	 
+	 50,	//thrust shake	7435	 
+	 50,	//success		7485
+	 10,	//more shake	7495
+	 
+	 50,	//move			7545
+	 50,	//restarting	7595
+	195,	//...			7790
+	250,	//failed		8040
+	100,	//move			8140
+	
+	 30,	//shake			8170
+	 
+	 20,	//checking		8190
+	 
+	 30,	//alert			8220
+	 10,	//shake strong	8230
+	 80,	//...			8310
+	 35,	//move alert	8345
+	 65,	//inactive		8410
+	 65,	//move			8475
+	 50,	//starting		8525
+	125,	//...			8650
+	250,	//success		8900
+	 30,	//shake stronge	8930
+	 30,	//move			8960
+	 50,	//raising		9010
+	 85,	//...			9095
+	125,	//alert			9220
+	125,	//move alert	9345
+	150,	//active		9495
+	 85,	//shake crash	9575
+	 10,	//move			9590
+	  5,	//alert			9595
+	 45,	//fade to red	9640
+	200,	//				9840
 			//skip			
 ];
 var combinedIntroMessages = [
@@ -494,7 +511,12 @@ var introAIMessages = [
 	["T.",textColors[4]], //70	
 ];
 	
-var activeAlertID;
+var IntroActiveAlertID;
+var IntroActiveAlertCoverName = "introOverInterfaceAlertCover";
+var IntroActiveAlertFullLength = 3;
+var IntroActiveAlertIncreaseTime = 0.3;
+var IntroActiveAlertActiveTime = 0.3;
+var IntroActiveAlertDecreaseTime = 0.9;
 
 var AIMessageBlurrID;
 var AIMessageBlurrMinVal = 0;
@@ -504,10 +526,10 @@ var AIMessageBlurrStepChange = 0.02;
 var AIMessageBlurrProgressValue = 0;
 
 
-var ConsoleX = 25;
+var ConsoleX = 30;
 var ConsoleY = 300;
-var ConsoleX_2 = 550;
-var ConsoleMessageOffset = 24;	
+var ConsoleX_2 = 600;
+var ConsoleMessageOffset = 20;	
 var ConsoleMessageFadeDefaultTime = 4.0;
 
 var AlertBaseX = 0;
@@ -827,7 +849,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				
 			case dynamicCondition++:	//shake shake
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,5,32,32,"stay");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,5,32,32,"stay");
 					animationStep++;
 				}
 				break;
@@ -848,14 +870,14 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				
 			case dynamicCondition++:	//shake shake 2
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,1.5,16,16,"stay");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,1.5,16,16,"stay");
 					animationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//shake shake 3
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationShakeElement(outputDocument,IntroMessagesLayerName,0.05,0.75,8,8,"zero");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.75,8,8,"zero");
 					animationStep++;
 				}
 				break;
@@ -991,6 +1013,14 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;
 				
+			case dynamicCondition++:	//start alerts
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					//activeAlertID = setInterval(introRedAlert, 2500, outputDocument);
+					IntroActiveAlertID = setInterval(introRedAlert, IntroActiveAlertFullLength*1000, outputDocument);
+					animationStep++;
+				}
+				break;
+				
 			case dynamicCondition++:	//alert
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introNewAlert(outputDocument, combinedIntroMessages[25],IntroAlertTextSpeed,combinedIntroMessages[24],IntroAlertHeaderSpeed);
@@ -1059,6 +1089,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 			case dynamicCondition++:	//...
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 4.50, "...", "skip", "")
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//shake shake
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.6,16,16,"zero");
 					animationStep++;
 				}
 				break;
@@ -1142,10 +1179,24 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
+			case dynamicCondition++:	//shake atmo
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,2.90,2,2,"zero");
+					animationStep++;
+				}
+				break;	
+				
 			case dynamicCondition++:	//move
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					animationStep++;
+				}
+				break;
+				
+			case dynamicCondition++:	//alert atmo
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introNewAlert(outputDocument, combinedIntroMessages[39],IntroAlertTextSpeed,combinedIntroMessages[38],IntroAlertHeaderSpeed);
 					animationStep++;
 				}
 				break;
@@ -1157,6 +1208,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;
 				
+			case dynamicCondition++:	//move alert
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
+					animationStep++;	
+				}
+				break;	
+				
 			case dynamicCondition++:	//...
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
@@ -1164,12 +1222,12 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
-			case dynamicCondition++:	//alert
+			case dynamicCondition++:	//thrust shake
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					introNewAlert(outputDocument, combinedIntroMessages[39],IntroAlertTextSpeed,combinedIntroMessages[38],IntroAlertHeaderSpeed);
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.6,8,8,"stay");
 					animationStep++;
 				}
-				break;
+				break;	
 			
 			case dynamicCondition++:	//success
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -1178,10 +1236,10 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
-			case dynamicCondition++:	//move alert
+			case dynamicCondition++:	//thrust shake
 				if(tickCounter == introMessagesTiming[animationStep]) {
-					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,introAlertScaleShrinkTime);
-					animationStep++;	
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,6.85,4,4,"stay");
+					animationStep++;
 				}
 				break;			
 				
@@ -1222,6 +1280,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;
 				
+			case dynamicCondition++:	//thrust shake
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.6,16,16,"stay");
+					animationStep++;
+				}
+				break;			
+				
 			case dynamicCondition++:	//checking shields
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,combinedIntroMessages[43],0.05);
@@ -1236,6 +1301,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;
 			
+			case dynamicCondition++:	//thrust shake
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,7,4,4,"stay");
+					animationStep++;
+				}
+				break;			
+				
 			case dynamicCondition++:	//...
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
@@ -1286,6 +1358,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
+			case dynamicCondition++:	//shake stronger
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,7,8,8,"stay");
+					animationStep++;
+				}
+				break;			
+				
 			case dynamicCondition++:	//move
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
@@ -1329,6 +1408,13 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;	
 				
+			case dynamicCondition++:	//shake crash
+				if(tickCounter == introMessagesTiming[animationStep]) {
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,1,48,48,"stay");
+					animationStep++;
+				}
+				break;			
+				
 			case dynamicCondition++:	//move
 				if(tickCounter == introMessagesTiming[animationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
@@ -1343,6 +1429,7 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 					animationStep++;
 				}
 				break;
+				
 			
 			case dynamicCondition++:	//crash fade in
 				if(tickCounter == introMessagesTiming[animationStep]) {
@@ -1369,526 +1456,6 @@ function animationDisplayIntroLoop(outputDocument, tickCounter = 0, animationSte
 				}
 				break;
 			
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			case dynamicCondition++:	//move 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[4], ConsoleX,ConsoleY,combinedIntroMessages[4],1.2);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[4], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[5], ConsoleX_2,ConsoleY,combinedIntroMessages[5],0.45);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[4],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[5],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[6], ConsoleX,ConsoleY,combinedIntroMessages[6],1.5);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 4 
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[6], 0.25, 12.0, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;	
-			case dynamicCondition++:	//reset 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[0]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[1]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[0], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[1], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;	
-			case dynamicCondition++:	//reset 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[2]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[3]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[2], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[3], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[4]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[5]);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[4], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[5], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-			case dynamicCondition++:	//alarm 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					redAlert(outputDocument);
-					activeAlertID = setInterval(redAlert, 2500, outputDocument);
-		
-					newDisplayElement(outputDocument,outputWarningWindows[0],AlertPopupPositionX,AlertPopupPositionY);
-					newDisplayFixedMessage(outputDocument,outputWarningHeaders[0],NaN,NaN,combinedIntroMessages[7],true);
-					newDisplayAnimatedMessage(outputDocument, outputWarningText[0], NaN,NaN,combinedIntroMessages[8],0.5,true);
-		
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[0], 0.2, 1.0);
-					newAnimatedElementScale(outputDocument,outputWarningWindows[0],0.2,1.5);
-					
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//downscale alarm 1 
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementScale(outputDocument,outputWarningWindows[0],1,1);
-					animatedMoveElement(outputDocument,outputWarningWindows[0],0,0,AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,0,1);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[7], ConsoleX_2,ConsoleY,combinedIntroMessages[9],0.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++: 	//move 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[8], ConsoleX,ConsoleY,combinedIntroMessages[10],1.85);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[8], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[9], ConsoleX_2,ConsoleY,combinedIntroMessages[11],0.55);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[8],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[9],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[0], ConsoleX,ConsoleY,combinedIntroMessages[12],2.05);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[0], 0.25, 4.5, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[6], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[7], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//alarm 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayElement(outputDocument,outputWarningWindows[1],AlertPopupPositionX,AlertPopupPositionY);
-					newDisplayFixedMessage(outputDocument,outputWarningHeaders[1],NaN,NaN,combinedIntroMessages[13],true);
-					newDisplayAnimatedMessage(outputDocument, outputWarningText[1], NaN,NaN,combinedIntroMessages[14],0.5,true);
-		
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[1], 0.2, 1.0);
-					newAnimatedElementScale(outputDocument,outputWarningWindows[1],0.2,1.5);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//downscale alarm 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementScale(outputDocument,outputWarningWindows[1],1,1);
-					animatedMoveElement(outputDocument,outputWarningWindows[1],0,0,AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,0,1);
-		
-					animatedMoveElement(outputDocument,outputWarningWindows[0],AlertBaseX-AlertPopupPositionX,AlertBaseY-AlertPopupPositionY,AlertBaseX-AlertPopupPositionX+AlertOffsetBaseX,AlertBaseY-AlertPopupPositionY+AlertOffsetBaseY,0,1);
-					newAnimatedElementOpacity(outputDocument, outputWarningWindows[0], 1, 0.8);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[1], ConsoleX_2,ConsoleY,combinedIntroMessages[15],0.3);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[6]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[7]);
-		
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[6], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[7], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//fade 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[8], ConsoleMessageFadeDefaultTime, 0.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[9], ConsoleMessageFadeDefaultTime, 0.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 1
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[2], ConsoleX,ConsoleY,combinedIntroMessages[16],1.95);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[2], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//reset 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[8]);
-					newResetDisplayedMessage(outputDocument,outputNoWindowElements[9]);
-		
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[8], 0.2, 1.0);
-					newAnimatedElementOpacity(outputDocument, outputNoWindowElements[9], 0.2, 1.0);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[3], ConsoleX_2,ConsoleY,combinedIntroMessages[17],0.75);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 2
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[4], ConsoleX,ConsoleY,combinedIntroMessages[18],1.6);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[4], 0.25, 0.75, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[5], ConsoleX_2,ConsoleY,combinedIntroMessages[19],0.55);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 3
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[6],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[7],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[4],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[5],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[6], ConsoleX,ConsoleY,combinedIntroMessages[20],1.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[6], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[7], ConsoleX_2,ConsoleY,combinedIntroMessages[23],0.35);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//move 4
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					//animatedMoveElement(outputDocument,outputNoWindowElements[8],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[9],0,-4*ConsoleMessageOffset,0,-5*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[0],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[1],0,-3*ConsoleMessageOffset,0,-4*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[2],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[3],0,-2*ConsoleMessageOffset,0,-3*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[4],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					//animatedMoveElement(outputDocument,outputNoWindowElements[5],0,-ConsoleMessageOffset,0,-2*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[6],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animatedMoveElement(outputDocument,outputNoWindowElements[7],0,0,0,-1*ConsoleMessageOffset,0,0.25);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//show 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[8], ConsoleX,ConsoleY,combinedIntroMessages[24],1.95);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//... 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					animationAppendLoopedMessage(outputDocument, outputNoWindowElements[8], 0.25, 2.25, "...", "skip", "")
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:	//finish 5
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					newDisplayAnimatedMessage(outputDocument, outputNoWindowElements[9], ConsoleX_2,ConsoleY,combinedIntroMessages[25],0.75);
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
-			case dynamicCondition++:
-				if(tickCounter == introMessagesTiming[animationStep]) {
-					/*do something*/
-					animationStep++;
-					console.log(animationStep,introMessagesTiming[animationStep-1], introMessagesDelays[animationStep], introMessagesTiming[animationStep]);
-				}
-				//console.log(animationStep, dynamicCondition);
-				break;
 		}
 		tickCounter++;
 		
@@ -1959,6 +1526,12 @@ function introInit(outputDocument){
 	tmpCover = outputDocument.createElement("div");
 	tmpCover.className = "interfaceBackgroundCover";
 	tmpCover.id = IntroJumpChargingCoverName;
+	
+	coverLayer.append(tmpCover);
+	
+	tmpCover = outputDocument.createElement("div");
+	tmpCover.className = "interfaceBackgroundCover";
+	tmpCover.id = IntroActiveAlertCoverName;
 	
 	coverLayer.append(tmpCover);
 	
@@ -3925,15 +3498,18 @@ function newDisplayIntroPartThree(outputDocument, tickCounter=0) {
 		setTimeout(() => {newDisplayIntroPartThree(outputDocument, tickCounter);},10);
 	}
 }
-function redAlert(outputDocument) {
-	redAlertOn(outputDocument);
-	setTimeout(redAlertOff,500,outputDocument);
+function introRedAlert(outputDocument) {
+	introRedAlertOn(outputDocument);
+	//setTimeout(introRedAlertOff,500,outputDocument);
+	setTimeout(introRedAlertOff,1000*(IntroActiveAlertIncreaseTime+IntroActiveAlertActiveTime),outputDocument);
 }
-function redAlertOn(outputDocument) {
-	newAnimatedElementOpacity(outputDocument, "introOverInterfaceAlertCover", 0.25, 0.2);
+function introRedAlertOn(outputDocument) {
+	//newAnimatedElementOpacity(outputDocument, "introOverInterfaceAlertCover", 0.25, 0.2);
+	newAnimatedElementOpacity(outputDocument, IntroActiveAlertCoverName, IntroActiveAlertIncreaseTime, 0.2);
 }
-function redAlertOff(outputDocument) {
-	newAnimatedElementOpacity(outputDocument, "introOverInterfaceAlertCover", 0.75, 0.0);
+function introRedAlertOff(outputDocument) {
+	//newAnimatedElementOpacity(outputDocument, "introOverInterfaceAlertCover", 0.75, 0.0);
+	newAnimatedElementOpacity(outputDocument, IntroActiveAlertCoverName, IntroActiveAlertDecreaseTime, 0.0);
 }
 function AIMessageBlurr(outputDocument,elementID, blurrColor) {
 	targetTextbox=outputDocument.getElementById(elementID);
