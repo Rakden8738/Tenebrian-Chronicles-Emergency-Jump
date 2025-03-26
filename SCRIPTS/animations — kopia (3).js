@@ -13,6 +13,108 @@ var textColors = [
 	"hsl(180,75%,75%)", //cyan text 4
 	"hsl(60,100%,65%)"//yellow 5
 ]
+var introMessagesDelays = [
+
+	   0,	//init 
+	 100,	//show 1
+	  95,	//... 1
+	 100,	//finish 1	
+	  75,	//move 1	
+	  50,	//show 2	
+	  90, 	//... 2		
+	 100,	//finish 2	
+	  80,	//move 2
+	  50,	//show 3	
+	 145,	//... 3		
+	 100,	//finish 3	
+	  70,	//move 3	
+	  50,	//show 4	
+	  65,	//fade 1	
+	 110,	//... 4		
+	 210,	//fade 2	
+	  80,	//reset 1
+	 285,	//fade 3	 
+	  45,	//reset 2
+	 355,	//reset 3	
+	  25,	//alarm 1	
+	  75,	//downscale alarm 1
+	 150,	//finish 4
+	  60,	//move 4	
+	  
+	  50,	//show 5	
+	 210,	//... 5		
+	 100,	//finish 5	
+	  80,	//move 5		
+	  50,	//show 1	
+	 230,	//... 1		
+	  80,	//fade 4	
+	 220,	//alarm 2	
+	  75,	//downscale alarm 2
+	 100,	//finish 1	
+	   5,	//reset 4	
+	  40,	//fade 5	
+	  10,	//move 1	
+	  50,	//show 2	
+	 220,	//... 2		
+	 120,	//reset 5
+	 
+	 130,	//finish 2	
+	 100,	//move 2
+	  50,	//show 3
+	 185,	//... 3
+	 100,	//finish 3
+	  80,	//move 3
+	  50,	//show 4
+	 160,	//... 4
+	 250,	//finish 4
+	  60,	//move 4
+	  50,	//show 5
+	 220,	//... 5
+	 250,	//finish 5
+	 100,	//move 5
+	  50,	//...
+	];
+
+var OLDintroMessagesDelays = [
+
+	100,100, 25, 25, 50,100, 50,125, 25, 25,	//  625
+	 50,100, 50,150, 25, 25, 50, 75, 50,200,	// 1400
+	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 1850
+	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2300
+	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2750
+	 75, 50,225, 25, 25, 50,100, 50,250, 25,	// 3625
+	 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,	// 3875
+	 25, 25, 25, 50, 75, 25, 25,225, 25, 25,	// 4400
+	 50,100, 25, 50,200, 25, 25, 50,100, 50,	// 5075
+	175, 50, 25, 25, 25, 50, 25, 50, 50,225,	// 5775
+	 50, 50, 50, 50, 50, 50, 50,125, 25, 25,	// 6300
+	100, 75, 25, 25, 50, 75, 50,150, 25, 25,	// 6900
+	 25, 50, 75, 50, 75, 50, 25, 25, 50, 75,	// 7400
+	 25, 25, 10, 40,200,						// 7700 part 1 end
+	800,										// 8500 part 2 start
+	100, 50, 50, 75,125, 50, 50, 50, 50, 50,	//  650
+	 50, 50, 50, 50, 50, 75, 75, 50,200, 50,	// 1350
+	 50, 50, 50, 50, 50, 75, 75, 50, 50,100,	// 1950
+	 50,225, 50, 25, 25, 75,150, 50,125, 25,	// 2750
+	 25, 50, 50, 50, 50, 25, 25, 50, 50, 50,	// 3175
+	 25, 25, 50, 50, 25, 25, 50, 50, 50, 50,	// 3575
+	 50, 75,100, 25, 50,150, 50, 50, 75, 50,	// 4250
+	175, 50, 50, 75, 25, 25,200, 50, 50, 50,	// 5000
+	 25, 50, 50, 50,150, 50, 25, 25, 25, 50,	// 5500
+	 75, 50,150, 50, 25, 25, 50, 25,125, 50,	// 6125
+	200, 50, 50, 75,100, 50,150, 25, 25, 25,	// 6875
+	 25, 75,100, 50,200, 50, 25, 25, 75, 75,	// 7575
+	 50,225, 25, 25, 50, 75, 75, 50,175, 50,	// 8375
+	 50, 50, 75,125, 50,100, 75, 25, 50, 50,	// 9025
+	 75, 75, 50,125, 75, 50, 50, 50, 50, 50,	// 9675
+	 50, 75, 75, 50, 50,100, 50, 50, 50, 50,	//10275
+	 50, 50, 50, 50, 50, 50, 75, 25, 50, 25,	//10750
+	 50,275, 50,250, 50, 50, 50, 25, 25, 50,	//11625
+	 50, 50, 50, 50, 50, 50, 50, 25, 25, 50,	//12075
+	 50, 50, 50, 50, 25, 25, 50, 50, 50, 50,	//12525
+	 50, 50, 50, 50, 25,						//12750 part 2 end
+	450,										//13200 part 3 start
+	];
 		
 var introMessagesTiming = [];
 
@@ -25,119 +127,124 @@ function calculateTimings(baseArray){
 	return newArray;
 }
 var IntroCombinedMessagesTiming = [
-	  0,	//init			0		0
-	 10,	//show old		10		1
-	 15,	//move old		25		2
-	 25,	//show last		50		3
-	 25,	//fade old		75		4
-	 25,	//slowly show	100		5
-	 50,	//move last		150		6
-	 50,	//critical		200		7
-	120,	//impact 1 		320		8
-	 25,	//move			345		9
-	 50,	//initiating	395		10
-	175,	//impact 2 		570		11
-	 75,	//move			645		12
-	 50,	//autopilot		695		13
-	 55,	//...			750		14
-	 90,	//impact 3		840		15
-	 20,	//enabled		860		16
-	 60,	//move			920		17
-	 50,	//redirecting	970		18
-	220,	//impact 4 		1190	19
-	 15,	//move			1205	20
-	 50,	//charged at	1255	21
-	140,	//0-100%		1395	22
-	 25,	//move			1420	23
-	 10,	//impact 5		1430	24
-	  5,	//notice		1435	25
-	 30,	//move			1465	26
-	 15,	//known emerg	1480	27
-	 45,	//impact 6		1525	28
-	120,	//move			1645	29
-	 15,	//perception	1660	30
-	 30,	//impact 7		1690	31
-	160,	//move			1850	32
-	 15,	//by an auto	1865	33
-	 10,	//border flash	1875	34
-	 50,	//impact 8		1925	35
-	300,	//impact 9		2225	36
-	150,	//move			2375	37
-	 50,	//JUMPING		2425	38
-	 85,	//blue fade in	2510	39
-	 25,	//shake shake	2535	40
-	250,	//discharge 	2785	41
-	 50,	//blue fade out	2835	42
-	200,	//shake shake 2	3035	43
-	150,	//shake shake 3	3185	44
-	// 50,	//SKIP POINT 1a	3235
-	// 75,	//move			3310
-	125,	//move			3310	45
-	 50,	//Emergency		3360	46
-	 70,	//...			3430	47
-	100,	//successful	3530	48
-	 75,	//move			3605	49
-	 50,	//CHECKING		3655	50
-	 90,	//...			3745	51
-	100,	//operational	3845	52
-	 80,	//move			3925	53
-	 50,	//SEARCHING		3975	54
-	120,	//...			4095	55
-	100,	//not found		4195	56
-	 20,	//SKIP POINT 1b	4215	57
-	 50,	//move			4265	58
-	 //70,	//move			4265
-	 50,	//combat mode	4315	59
-	 85,	//lifted		4400	60
-	 75,	//move			4475	61
-	 50,	//general check	4525	62
-	120,	//...			4645	63
-	575,	//start alerts	5220	64
-	 25,	//alert			5245	65
-	125,	//move alert	5370	66
-	 50,	//aborted		5420	67
-	 60,	//move			5480	68
-	 50,	//checking		5530	69
-	200,	//...			5730	70
-	100,	//operational	5830	71
-	 80,	//move			5910	72
-	 50,	//attempting	5960	73
-	205,	//...			6165	74
-	200,	//shake			6365	75
-	 50,	//alert			6415	76
-	125,	//move alert	6540	77
-	100,	//failed		6640	78
-	 55,	//move			6695	79
-	 50,	//restarting	6745	80
-	210,	//...			6955	81
-	250,	//failed		7205	82
-	100,	//move			7305	83
-	 50,	//ch thrust		7355	84
-	160,	//...			7515	85
-	100,	//operat		7615	86
-	 40,	//shake	atmo	7655	87
-	 40,	//move			7695	88
-	 10,	//alert atmo	7705	89
-	 40,	//activat		7745	90
-	 85,	//move alert	7830	91
-	 65,	//...			7895	92
-	 50,	//thrust shake	7945	93
-	 50,	//success		7995	94
-	 10,	//more shake	8005	95
-	 50,	//move			8055	96
-	 50,	//restarting	8105	97
-	210,	//...			8315	98
-	250,	//failed		8565	99
+	  0,	//init			0
+	 10,	//show old		10
+	 15,	//move old		25
+	 25,	//show last		50
+	 25,	//fade old		75
+	 25,	//slowly show	100
+	 50,	//move last		150
+	 50,	//critical		200
+	120,	//impact 1 
+	 25,	//move			345
+	 50,	//initiating
+	175,	//impact 2 
+	 75,	//move
+	 50,	//autopilot		395
+	 55,	//...			440
+	 90,	//impact 3
+	 20,	//enabled		540
+	 60,	//move			600
+	 50,	//redirecting	900
+	220,	//impact 4 
+	 15,	//move			1135
+	 50,	//charged at	1185
+	140,	//0-100%		1325
+	 25,	//move
+	 10,	//impact 5
+	  5,	//notice
+	 30,	//move
+	 15,	//known emerg
+	 45,	//impact 6
+	120,	//move
+	 15,	//perception
+	 30,	//impact 7
+	160,	//move
+	 15,	//by an auto
+	 10,	//border flash	1575
+	 50,	//impact 8
+	300,	//impact 9
 	
-	100,	//move			8140	
-	 30,	//shake t fail	8170	
-	 20,	//checking		8190	
-	 50,	//alert			8220	
-	 10,	//shake strong	8230	
-	 80,	//...			8310	
-	 35,	//move alert	8345	
-	 65,	//inactive		8410	
-	 65,	//move			8475	
+	150,	//move			1850
+	 50,	//JUMPING		1900
+	 85,	//blue fade in	1975
+	 25,	//shake shake	2000
+	250,	//discharge 	2250
+	 50,	//blue fade out	2300
+	200,	//shake shake 2	2500
+	150,	//shake shake 3	2650
+	125,	//move			2775
+	 50,	//Emergency		2825
+	 70,	//...			2895
+	100,	//successful	2995
+	 75,	//move			3070
+	 50,	//CHECKING		3120
+	 90,	//...			3210
+	100,	//operational	3310
+	 80,	//move			3390
+	 50,	//SEARCHING		3440
+	120,	//...			3560
+	100,	//not found		3660
+	 70,	//move			3730
+	 50,	//combat mode	3780
+	 85,	//lifted		3865
+	 75,	//move			3940
+	 50,	//general check	3990
+	120,	//...			4165
+	575,	//start alerts	4740
+	 25,	//alert			4765
+	125,	//move alert	4890
+	 50,	//aborted		4940
+	 60,	//move			5000
+	 50,	//checking		5050
+	200,	//...			5235
+	100,	//operational	5335
+	 80,	//move			5415
+	 50,	//attempting	5465
+	205,	//...			5670
+	200,	//shake			5870
+	 50,	//alert			5920
+	125,	//move alert	6045
+	100,	//failed		6145
+	 55,	//move			6200
+	 50,	//restarting	6250
+	210,	//...			6445
+	250,	//failed		6695
+	100,	//move			6795
+	 50,	//ch thrust		6845
+	160,	//...			7005
+	100,	//operat		7105
+	
+	 40,	//shake	atmo	7145
+	 
+	 40,	//move			7185
+	 10,	//alert atmo	7195
+	 40,	//activat		7235
+	 
+	 85,	//move alert	7320
+	  
+	 65,	//...			7385
+	 
+	 50,	//thrust shake	7435	 
+	 50,	//success		7485
+	 10,	//more shake	7495
+	 
+	 50,	//move			7545
+	 50,	//restarting	7595
+	210,	//...			7790
+	250,	//failed		8040
+	100,	//move			8140
+	
+	 30,	//shake t fail	8170
+	 
+	 20,	//checking		8190
+	 
+	 50,	//alert			8220
+	 10,	//shake strong	8230
+	 80,	//...			8310
+	 35,	//move alert	8345
+	 65,	//inactive		8410
+	 65,	//move			8475
 	 50,	//starting		8525
 	140,	//...			8650
 	250,	//success		8900
@@ -149,7 +256,6 @@ var IntroCombinedMessagesTiming = [
 	125,	//move alert	9345
 	  5,	//shield glow	9350
 	145,	//active		9495
-	
 	 75,	//shake crash	9570
 	 20,	//move			9590
 	  5,	//alert			9595
@@ -551,6 +657,92 @@ var IntroCombinedMessages = [
 
 ];
 
+var introAIMessages = [
+	//["Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",textColors[4]], //0
+	["Tenebrian Emergency Situation AI successfully activated in emergency control mode.",textColors[4]], //0
+	["Received no response from commander and bridge. Emergency status upheld.",textColors[4]], //1
+	["Primary directive: Assure survival of crew.",textColors[4]], //1
+	["Secondary directive: Restore ship functionality.",textColors[4]], //1
+	["Taking control over available systems.",textColors[4]], //1
+	["Actions undertaken by T.E.S.A. will be logged for later review.",textColors[4]], //1
+	["Reading events recorded by ship's black box...",textColors[4]], //1
+	["Conclusion: ship has crashed on planet after executing emergency jump.",textColors[4]], //2
+	["General repairs might be required.",textColors[4]], //3
+	["Running damage checkup...",textColors[4]], //3
+	["WARNING: detected multiple damaged systems and sectors.",textColors[4]], //4
+	["Detected multiple hull breaches.",textColors[4]], //5
+	["Production sector damaged.",textColors[4]], //6
+	["Main power generator damaged.",textColors[4]], //7
+	["Secondary generator damaged.",textColors[4]], //8
+	["Main engine damaged.",textColors[4]], //9
+	["Navigation systems damaged.",textColors[4]], //10
+	["Jump drive damaged.",textColors[4]], //11
+	["Communication system damaged.",textColors[4]], //12
+	["Medical sector damaged.",textColors[4]], //13
+	["Cargo bay damaged.",textColors[4]], //14
+	["Defensive systems damaged.",textColors[4]], //15
+	["Ofensive systems damaged.",textColors[4]], //16
+	["Analysing optimal course of actions and order of repairs.",textColors[4]], //17
+	["CREATING NEW TASK: 'RESTORE SHIP SYSTEMS FUNCTIONALITY'.",textColors[4]], //18
+	["Detailed report has been generated.",textColors[4]], //19
+	
+	["Beggining scheduled repairs...",textColors[4]], //20
+	["Activating available maintenance drones.",textColors[4]], //21
+	["Restoring basic functionality of production sector.",textColors[4]], //22
+	["WARNING: full ship repair is currently impossible. Available resources are insufficient.",textColors[4]], //23
+	["CREATING NEW TASK: 'OBTAIN RESOURCES NEEDED FOR REPAIRS'.",textColors[4]], //24
+	["Detailed report has been generated.",textColors[4]], //25
+	
+	["Attempting to establish communication with fleet",textColors[4]], //26
+	["Restoring basic functionality of communication system...",textColors[4]], //27
+	["No signals detected in ship's vicinity.",textColors[4]], //28
+	["Sending distress signal at default time intervals. System capabilities and available power insufficient for distress call broadcast at interstellar range.",textColors[4]], //29
+	["WARNING: current location unknown, found no reference points after emergency jump. Required for point to point and directional communication",textColors[4]], //30
+	["CREATING NEW TASK: 'FIND CURREN LOCATION AND RESTORE COMMUNICATION'.",textColors[4]], //31
+	["Detailed report has been generated.",textColors[4]], //32
+	
+	["Checking status of crew...",textColors[4]], //33
+	["Detected vital signs of 348 crew members of which 37 are at acceptable condition or are capable of self regeneration. Remaining 311 require urgent medical attention.",textColors[4]], //34
+	["Medical sector condition insufficient to meet requirements. Searching for alternative solutions...",textColors[4]], //35
+	["Cryogenic sector slightly damaged. Currently unused. Condition acceptable. Reactivating cryopods.",textColors[4]], //36
+	["Wounded crew members will be send to cold sleep until needed medical care can be provided.",textColors[4]], //37
+	["CREATING NEW TASK: 'RECOVERY OF CRYOSLEEPING CREW'.",textColors[4]], //38
+	["Detailed report has been generated.",textColors[4]], //39
+	
+	["Checking surroundings...",textColors[4]], //40
+	["Temperature at acceptable level.",textColors[4]], //41
+	["Gravity force at acceptable level.",textColors[4]], //42
+	["Atmospheric pressure at acceptable level.",textColors[4]], //43
+	["Primary air component: nitrogen. Secondary: oxygen.",textColors[4]], //44
+	["No toxins detected in the surrounding air.",textColors[4]], //45
+	["Radiation levels close to zero.",textColors[4]], //46
+	["Dispatching scout drones...",textColors[4]], //47
+	["Flora and fauna detected.",textColors[4]], //48
+	["Local organisms are showing no active hostility. No major predator threat detected.",textColors[4]], //49
+	["Conclusion: planet of terrestial type. Surface risk at acceptable level.",textColors[4]], //50
+	["Found resources suitable for ship repair.",textColors[4]], //51
+	["Found resources suitable for energy production.",textColors[4]], //52
+	["CREATING NEW TASK: 'CONSTRUCT RESOURCES EXTRACTORS'.",textColors[4]], //53
+	["Detailed report has been generated.",textColors[4]], //54
+	
+	["Analysing recent events...",textColors[4]], //55
+	["Unknown drive malfunction has been reported. Data inconclusive.",textColors[4]], //56
+	["Searching for records of similar event in the database.",textColors[4]], //57
+	["WARNING: database corrupted.",textColors[4]], //58
+	["Starting deep analysis of accumulated data...",textColors[4]], //59
+	["WARNING: analysis aborted. Not enough energy available.",textColors[4]], //60
+	["Starting database restoration...",textColors[4]], //61
+	["WARNING: restoration aborted. Not enough energy available.",textColors[4]], //62
+	["CREATING NEW TASK: 'INCREASE AVAILABLE POWER, RESTORE DATABASE, INVESTIGATE JUMP DRIVE MALFUNCTION'.",textColors[4]], //63
+	["Detailed report has been generated.",textColors[4]], //64
+	
+	["Commander's activity detected at bridge.",textColors[4]], //65
+	["According to Tenebrian Emergency Protocols, main control will be transfered to commander upon request.",textColors[4]], //66
+	["Awaiting commander's response...",textColors[4]], //67
+	["Command transfer request confirmed. Transfering main control to bridge.",textColors[4]], //68
+	["Exiting emergency mode.",textColors[4]], //69
+	["T.",textColors[4]], //70	
+];
 	
 var IntroCombatAlertID;
 var IntroCombatAlertCoverName = "introOverInterfaceCombatAlertCover";
@@ -558,7 +750,6 @@ var IntroCombatAlertFullLength = 1.5;
 var IntroCombatAlertIncreaseTime = 0.2;
 var IntroCombatAlertActiveTime = 0.2;
 var IntroCombatAlertDecreaseTime = 0.6;
-var IntroCombatAlertActive = false;
 	
 var IntroCollisionAlertID;
 var IntroCollisionAlertCoverName = "introOverInterfaceCollisionAlertCover";
@@ -566,7 +757,6 @@ var IntroCollisionAlertFullLength = 4;
 var IntroCollisionAlertIncreaseTime = 0.3;
 var IntroCollisionAlertActiveTime = 0.3;
 var IntroCollisionAlertDecreaseTime = 0.9;
-var IntroCollisionAlertActive = false;
 
 var AIMessageBlurrID;
 var AIMessageBlurrMinVal = 0;
@@ -637,10 +827,7 @@ var IntroFloatingTextRepliesArray = [];
 var IntroFloatingReplyClass = "floatingTextReply";
 var IntroFloatingReplyID = "introFloatingReply_";
 
-var IntroVisibleCommentsLayerName = "introCommentsGroup";
-var IntroVisibleCommentsArray = [];
-var IntroVisibleCommentsClass = "introComment";
-var IntroVisibleCommentsID = "introComment_";
+
 
 var IntroAlertMessagesLayerName = "introWarningMessages";
 
@@ -694,7 +881,6 @@ var IntroFloatingTextFadeDelay = 9;
 var IntroFloatingTextFadeLength = 6;
 var IntroFloatingTextResetDelay = 500;
 var IntroFloatingTextResetAfterFade = false;
-var IntroFloatingTextFadeTMPArray = [];
 
 var IntroJumpChargingTime = 10;
 var IntroJumpChargingCoverName = "introOverInterfaceChargingCover"; 
@@ -742,7 +928,6 @@ function introPlayIntro(outputDocument){
 			case (dynamicCondition++): 	//init
 				if(IntroTickCounter == 0) {
 					introInit(outputDocument);		
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -768,7 +953,6 @@ function introPlayIntro(outputDocument){
 					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					
 					IntroCombatAlertID = setInterval(introCombatAlert, IntroCombatAlertFullLength*1000, outputDocument);
-					IntroCombatAlertActive = true;
 					introCombatAlert(outputDocument);
 					
 					IntroAnimationStep++;
@@ -779,15 +963,14 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,1,3);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,1,3);
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++: 	//show last
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[7],0.01)); //hull nav
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[7],0.01); //hull nav
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					
 					IntroAnimationStep++;
 				}
@@ -795,15 +978,50 @@ function introPlayIntro(outputDocument){
 				
 			case dynamicCondition++: 	//fade old
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
+					if(IntroFastForwardStage != -1){ 
+						IntroActiveAnimationCounter+=6;
+						if(IntroDebugActive)console.log("Fade old delay start x6, "+IntroActiveAnimationCounter);
+					}
+					
+					//console.log(introMessagesTiming[IntroAnimationStep]);
+					//console.log(introMessagesTiming[IntroAnimationStep+2]);
 					//console.log(introMessagesTiming[IntroAnimationStep+2]-introMessagesTiming[IntroAnimationStep]);  //75 == 0.75
+					
+					//
 					introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0],IntroFloatingTextFadeDelay + 0.75 - 6.95, IntroFloatingTextFadeLength, 0.0, 1.0);
 					introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[1],IntroFloatingTextFadeDelay + 0.75 - 5.60, IntroFloatingTextFadeLength, 0.0, 1.0);
-					introDelayedElementOpacity(outputDocument, [
-						IntroFloatingTextMessagesArray[2],
-						IntroFloatingTextMessagesArray[3],
-						IntroFloatingTextMessagesArray[4],
-						IntroFloatingTextMessagesArray[5]
-					],IntroFloatingTextFadeDelay + 0.75 - 2.90, IntroFloatingTextFadeLength, 0.0, 1.0);
+					introDelayedElementOpacity(outputDocument, [IntroFloatingTextMessagesArray[2],
+					IntroFloatingTextMessagesArray[3],
+					IntroFloatingTextMessagesArray[4],
+					IntroFloatingTextMessagesArray[5]],IntroFloatingTextFadeDelay + 0.75 - 5.60, IntroFloatingTextFadeLength, 0.0, 1.0);
+					
+					/*setTimeout(() => {
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0], IntroFloatingTextFadeLength, 0.0, 1.0);
+						if(IntroFastForwardStage != -1){ 
+							IntroActiveAnimationCounter--;
+							if(IntroDebugActive)console.log("Fade old delay stop x1, "+IntroActiveAnimationCounter);
+						}
+					},(IntroFloatingTextFadeDelay+0.75-6.95)*1000);
+					
+					setTimeout(() => {
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[1], IntroFloatingTextFadeLength, 0.0, 1.0);
+						if(IntroFastForwardStage != -1){ 
+							IntroActiveAnimationCounter--;
+							if(IntroDebugActive)console.log("Fade old delay stop x1, "+IntroActiveAnimationCounter);
+						}
+					},(IntroFloatingTextFadeDelay+0.75-5.6)*1000);
+					
+					setTimeout(() => {
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[2], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[3], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[4], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[5], IntroFloatingTextFadeLength, 0.0, 1.0);
+						
+						if(IntroFastForwardStage != -1){ 
+							IntroActiveAnimationCounter-=4;
+							if(IntroDebugActive)console.log("Fade old delay stop x4, "+IntroActiveAnimationCounter);
+						}
+					},(IntroFloatingTextFadeDelay+0.75-2.9)*1000);*/
 					
 					IntroAnimationStep++;
 				}
@@ -812,92 +1030,86 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//slowly show
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroFadeCoverName, IntroFadeInTime, 0, 1);
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++: 	//move last
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introDelayedElementOpacity(outputDocument, [IntroFloatingTextMessagesArray[6],IntroFloatingTextMessagesArray[7]],IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-										
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					
-					IntroFastForwardAllowed = true;
+					if(IntroFastForwardStage != -1){ 
+						IntroActiveAnimationCounter++;
+						if(IntroDebugActive)console.log("Fade last delay start, "+IntroActiveAnimationCounter);
+					}
+					
+					introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[6],IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
+					/*
+					setTimeout(() => {
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[6], IntroFloatingTextFadeLength, 0.0, 1.0);
+						if(IntroFastForwardStage != -1){ 
+							IntroActiveAnimationCounter--;
+							if(IntroDebugActive)console.log("Fade last delay stop, "+IntroActiveAnimationCounter);
+						}
+					},IntroFloatingTextFadeDelay*1000);*/
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					
 					IntroAnimationStep++;
+					
+					//IntroAnimationStep=96;
+					//IntroTickCounter=introMessagesTiming[IntroAnimationStep]-100;
 				}
 				break;
 				
 			case dynamicCondition++:	//critical damage
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[8],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[8],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//impact 1
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.55 , 16 , 16, "zero");
-					IntroShakingEnabled = true;
-					introActiveShaking();
-					
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.55,16,16,"zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.55,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0],IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[0],IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-					
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//initiating
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[9],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[9],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;				
 
 			case dynamicCondition++:	//impact 2
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.35 , 16 , 16, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-					
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//autopilot
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[10],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[10],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -905,72 +1117,58 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 
 			case dynamicCondition++:	//impact 3
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.45,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.45 , 16 , 16, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.45,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//enabled
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[11],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[11],0.05, true);
 					IntroAnimationStep++;
 				}
 				break;				
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-					
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//redirecting
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[12],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[12],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//impact 4
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.65,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.65 , 16 , 16, "zero");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.65,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-					
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//charged at
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[13],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,[" ",textColors[1]],0.01, true)); //empty reply
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[13],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,[" ",textColors[1]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;				
@@ -978,7 +1176,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//0-100%
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendChangingNumeric(outputDocument, IntroFloatingTextRepliesArray[IntroFloatingTextRepliesArray.length-1], 0.03, IntroJumpChargingTime, 0, 100, finishMode="default", numericDecimals = 1, "", "%");
-					
 					IntroAnimationStep++;
 				}
 				break;	
@@ -987,28 +1184,21 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//impact 5
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.35 , 16 , 16, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//Notice
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[14],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[12],IntroFloatingTextFadeDelay + 9.40, IntroFloatingTextFadeLength, 0.0, 1.0);
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[12],IntroFloatingTextFadeDelay + 9.40, IntroFloatingTextFadeLength, 0.0, 1.0);
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[14],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
@@ -1017,28 +1207,21 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//known emergency
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[15],0.03));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[13],IntroFloatingTextFadeDelay + 8.95, IntroFloatingTextFadeLength, 0.0, 1.0);
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[13],IntroFloatingTextFadeDelay + 8.95, IntroFloatingTextFadeLength, 0.0, 1.0);
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[15],0.03);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//impact 6
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,8,8,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.75 , 8 , 8, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,8,8,"zero");
 					IntroAnimationStep++;
 				}
 				break;
@@ -1047,28 +1230,21 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//perception
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[16],0.03));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[14],IntroFloatingTextFadeDelay + 7.15, IntroFloatingTextFadeLength, 0.0, 1.0);
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[14],IntroFloatingTextFadeDelay + 7.15, IntroFloatingTextFadeLength, 0.0, 1.0);
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[16],0.03);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//impact 7
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,8,8,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.35, 8, 8, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.35,8,8,"zero");
 					IntroAnimationStep++;
 				}
 				break;
@@ -1077,19 +1253,14 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//by an auto
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[17],0.03));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[15],IntroFloatingTextFadeDelay + 5.10, IntroFloatingTextFadeLength, 0.0, 1.0);
-					//introDelayedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[15],IntroFloatingTextFadeDelay + 5.10, IntroFloatingTextFadeLength, 0.0, 1.0);
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[17],0.03);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
@@ -1098,26 +1269,22 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//border flash
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroJumpChargingImageName, IntroJumpChargingTime/2, 1, 0);
-					
 					IntroAnimationStep++;
+					
 					IntroFastForwardAllowed = false;
 				}
 				break;	
 				
 			case dynamicCondition++:	//impact 8
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.75, 16, 16, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
 				
-			case dynamicCondition++:	//impact 9
+			case dynamicCondition++:	//impact 8
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.55,8,8,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, 0.55, 8, 8, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.55,8,8,"zero");
 					IntroAnimationStep++;
 				}
 				break;
@@ -1126,19 +1293,39 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-				
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					
+					if(IntroFastForwardStage != -1){ 
+						IntroActiveAnimationCounter+=10;
+						if(IntroDebugActive)console.log("Fade notice delay start x10, "+IntroActiveAnimationCounter);
+					}
+					
+					setTimeout(() => {
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[12], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[12], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[13], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[13], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[14], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[14], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[15], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[15], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextMessagesArray[16], IntroFloatingTextFadeLength, 0.0, 1.0);
+						newAnimatedElementOpacity(outputDocument, IntroFloatingTextRepliesArray[16],IntroFloatingTextFadeLength, 0.0, 1.0);
+
+						if(IntroFastForwardStage != -1){ 
+							IntroActiveAnimationCounter-=10;
+							if(IntroDebugActive)console.log("Fade notice delay stop x10, "+IntroActiveAnimationCounter);
+						}
+
+					},(IntroFloatingTextFadeDelay+0.25)*1000);
+					
 					IntroAnimationStep++;
 				}
 				break;	
 			
 			case dynamicCondition++:	//JUMPING
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[18],0.05));
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true)); //empty reply
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[18],0.05);
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,["",textColors[0]],0.01, true); //empty reply
 					IntroAnimationStep++;
 				}
 				break;
@@ -1146,18 +1333,14 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//blue fade in
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroJumpingCoverName, IntroJumpFlashFadeInTime, 1, 0);
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.25,16,16,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.03, -1,16,16, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.03,0.25,16,16,"stay");
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//shake shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,5.1,32,32,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, -1,32,32, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,5.1,32,32,"stay");
 					IntroAnimationStep++;
 				}
 				break;
@@ -1174,61 +1357,44 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//blue fade out
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroJumpingCoverName, IntroJumpFlashFadeOutTime, 0, 1);
-					
-					IntroFastForwardAllowed = true;
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//shake shake 2
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,1.6,16,16,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02, -1,16,16, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,1.6,16,16,"stay");
 					IntroAnimationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//shake shake 3
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,8,8,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,0.75,8,8, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.75,8,8,"zero");
 					IntroAnimationStep++;
 				}
 				break;
-				
-			/*case dynamicCondition++:	//SKIP POINT 1
-				
+			
+			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					if(IntroFastForwardInProgress){
 						console.log("Skipped to after-jump.");
 						introFastFOFF(outputDocument);
 					}
+					console.log("Skipped to after-jump.");
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					IntroAnimationStep++;
+					
 					IntroFastForwardAllowed = true;
-					IntroFastForwardStage = 1;
 					
-					IntroAnimationStep++;
-				}
-				break;*/
-			
-			case dynamicCondition++:	//move
-				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-					
-					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//emergency jump
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[19],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[19],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1236,35 +1402,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 
 			case dynamicCondition++:	//successful
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[20],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[20],0.05, true);
 					IntroAnimationStep++;
 				}
 				break;				
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//sensors
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[21],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[21],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1272,35 +1431,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 
 			case dynamicCondition++:	//operational
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[22],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[22],0.05, true);
 					IntroAnimationStep++;
 				}
 				break;				
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
-				}
+					}
 				break;
 				
 			case dynamicCondition++:	//searching
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[23],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[23],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1308,81 +1460,51 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 
 			case dynamicCondition++:	//not found
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[24],0.05, true));
-					
-					IntroAnimationStep++;
-				}
-				break;	
-
-			case dynamicCondition++:	//SKIP POINT 1				
-				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					
-					//console.log((dynamicCondition-1) + " / " +IntroTickCounter);
-					
-					if(IntroFastForwardInProgress){
-						console.log("Skipped to after-jump.");
-						introFastFOFF(outputDocument);
-					}
-					
-					IntroFastForwardStage = 1;
-					IntroAnimationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//move
-				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
-					IntroAnimationStep++;
-				}
-				break;	
-				
-			case dynamicCondition++:	//alarm
-				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[25],0.05));
-					
-					IntroAnimationStep++;
-				}
-				break;
-				
-			case dynamicCondition++:	//lifted
-				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[26],0.05, true));
-					
-					clearInterval(IntroCombatAlertID);
-					IntroCombatAlertActive = false;
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[24],0.05, true);
 					IntroAnimationStep++;
 				}
 				break;				
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					IntroAnimationStep++;
+					}
+				break;	
 				
+			case dynamicCondition++:	//alarm
+				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[25],0.05);
 					IntroAnimationStep++;
 				}
+				break;
+				
+			case dynamicCondition++:	//lifted
+				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[26],0.05, true);
+					clearInterval(IntroCombatAlertID);
+					IntroAnimationStep++;
+				}
+				break;				
+				
+			case dynamicCondition++:	//move
+				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					IntroAnimationStep++;
+					}
 				break;
 
 			case dynamicCondition++:	//full dmg scan
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[27],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[27],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1390,7 +1512,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 7.5, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1399,9 +1520,7 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					//activeAlertID = setInterval(introRedAlert, 2500, outputDocument);
 					IntroCollisionAlertID = setInterval(introCollisionAlert, IntroCollisionAlertFullLength*1000, outputDocument);
-					IntroCollisionAlertActive = true;
 					introCollisionAlert(outputDocument);
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1409,7 +1528,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introNewAlert(outputDocument, IntroCombinedMessages[29],IntroAlertTextSpeed,IntroCombinedMessages[28],IntroAlertHeaderSpeed);
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1417,35 +1535,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//move alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,IntroAlertScaleShrinkTime);
-					
 					IntroAnimationStep++;	
 				}
 				break;			
 				
 			case dynamicCondition++:	//aborted
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[30],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[30],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;			
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//checking
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[31],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[31],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1453,34 +1564,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//operational
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[32],0.05, true));
-					
-					IntroAnimationStep++;
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[32],0.05, true);
+					IntroAnimationStep++;	
 				}
 				break;		
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//attempting
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[33],0.05));
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[33],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1494,8 +1599,7 @@ function introPlayIntro(outputDocument){
 				
 			case dynamicCondition++:	//shake shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.6,16,16,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,0.6,16,16, "zero");
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.6,16,16,"zero");
 					IntroAnimationStep++;
 				}
 				break;
@@ -1516,27 +1620,22 @@ function introPlayIntro(outputDocument){
 			
 			case dynamicCondition++:	//failed
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[36],0.05, true));
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[36],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;		
 					
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//restarting
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[37],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[37],0.05);
 					IntroAnimationStep++;
 				}
 				break;	
@@ -1544,35 +1643,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//failed to start
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[38],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[38],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 					
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//checking thrusters
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[39],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[39],0.05);
 					IntroAnimationStep++;
 				}
 				break;	
@@ -1580,36 +1672,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//operational
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[40],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[40],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//shake atmo
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,2.90,2,2,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,2,2, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,2.90,2,2,"zero");
 					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1617,15 +1701,13 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//alert atmo
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introNewAlert(outputDocument, IntroCombinedMessages[42],IntroAlertTextSpeed,IntroCombinedMessages[41],IntroAlertHeaderSpeed);
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//activating thrusters
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[43],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[43],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1633,7 +1715,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//move alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,IntroAlertScaleShrinkTime);
-					
 					IntroAnimationStep++;	
 				}
 				break;	
@@ -1641,59 +1722,42 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//thrust shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.6,8,8,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,8,8, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.6,8,8,"stay");
 					IntroAnimationStep++;
 				}
 				break;	
 			
 			case dynamicCondition++:	//success
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[44],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[44],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//more shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,7,4,4,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,4,4, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,7,4,4,"stay");
 					IntroAnimationStep++;
 				}
 				break;			
 				
-				
-				
-				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
-				
-				
-				
 			case dynamicCondition++:	//restarting cas
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[45],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[45],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1701,44 +1765,35 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//failed
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[46],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[46],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//thrust shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.8,16,16,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,16,16, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,0.8,16,16,"stay");
 					IntroAnimationStep++;
 				}
 				break;			
 				
 			case dynamicCondition++:	//checking shields
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[47],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[47],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1746,16 +1801,13 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introNewAlert(outputDocument, IntroCombinedMessages[49],IntroAlertTextSpeed,IntroCombinedMessages[48],IntroAlertHeaderSpeed);
-					
 					IntroAnimationStep++;
 				}
 				break;
 			
 			case dynamicCondition++:	//thrust shake
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,8,4,4,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,4,4, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,8,4,4,"stay");
 					IntroAnimationStep++;
 				}
 				break;			
@@ -1763,7 +1815,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 0.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;	
@@ -1771,35 +1822,28 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//move alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,IntroAlertScaleShrinkTime);
-					
 					IntroAnimationStep++;	
 				}
 				break;			
 				
 			case dynamicCondition++:	//inactive
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[50],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[50],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//starting shields
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[51],0.05));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[51],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1807,44 +1851,35 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 2.25, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;	
 				
 			case dynamicCondition++:	//success
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[52],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[52],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//shake stronger
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,7,6,6,"stay");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,6,6, "stay");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,7,6,6,"stay");
 					IntroAnimationStep++;
 				}
 				break;			
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay,IntroFloatingTextFadeLength);
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//raising shields
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[53],0.05));
-
+					introNewLogMessage(outputDocument,IntroFloatingTextMessagesArray,IntroCombinedMessages[53],0.05);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1852,7 +1887,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//...
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					animationAppendLoopedMessage(outputDocument, IntroFloatingTextMessagesArray[IntroFloatingTextMessagesArray.length-1], 0.25, 3.75, "...", "skip", "")
-					
 					IntroAnimationStep++;
 				}
 				break;	
@@ -1860,7 +1894,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introNewAlert(outputDocument, IntroCombinedMessages[55],IntroAlertTextSpeed,IntroCombinedMessages[54],IntroAlertHeaderSpeed);
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1868,7 +1901,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//move alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introMoveAlertMessages(outputDocument,IntroAlertMessagesWindowsArray,IntroAlertScaleShrinkTime);
-					
 					IntroAnimationStep++;	
 				}
 				break;		
@@ -1878,37 +1910,28 @@ function introPlayIntro(outputDocument){
 					//newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, 1.2, 0.25, 0);
 					newAnimatedElementOpacity(outputDocument, IntroJumpChargingImageName, 1.2, 0.25, 0);
 					
-					IntroFastForwardAllowed = false;
-					
 					IntroAnimationStep++;
 				}
 				break;
 				
 			case dynamicCondition++:	//shields active
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					IntroFloatingTextFadeTMPArray.push(introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[56],0.05, true));
-					
+					introNewLogMessage(outputDocument,IntroFloatingTextRepliesArray,IntroCombinedMessages[56],0.05, true);
 					IntroAnimationStep++;	
 				}
 				break;	
 				
 			case dynamicCondition++:	//shake crash
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					//animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,1,48,48,"zero");
-					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.02,-1,48,48, "zero");
-					
+					animationShakeElement(outputDocument,IntroMessagesLayerName,0.02,1,48,48,"zero");
 					IntroAnimationStep++;
 				}
 				break;			
 				
 			case dynamicCondition++:	//move
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
-					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay, 0.5);
-					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,false,0,IntroFloatingTextFadeDelay, 0.5);
-					
-					introDelayedElementOpacity(outputDocument, IntroFloatingTextFadeTMPArray,IntroFloatingTextFadeDelay, IntroFloatingTextFadeLength, 0.0, 1.0);
-					IntroFloatingTextFadeTMPArray = [];
-				
+					introMoveLogMessages(outputDocument, IntroFloatingTextMessagesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay, 0.5);
+					introMoveLogMessages(outputDocument, IntroFloatingTextRepliesArray, ConsoleMessageOffset,true,0,IntroFloatingTextFadeDelay, 0.5);
 					IntroAnimationStep++;
 				}
 				break;
@@ -1916,7 +1939,6 @@ function introPlayIntro(outputDocument){
 			case dynamicCondition++:	//alert
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					introNewAlert(outputDocument, IntroCombinedMessages[58],IntroAlertTextSpeed,IntroCombinedMessages[57],IntroAlertHeaderSpeed);
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1925,7 +1947,6 @@ function introPlayIntro(outputDocument){
 				if(IntroTickCounter == introMessagesTiming[IntroAnimationStep]) {
 					newAnimatedElementOpacity(outputDocument, IntroCrashCoverName, IntroCrashFadeTime, 1, 0);
 					newAnimatedElementOpacity(outputDocument, IntroFadeCoverName, IntroCrashFadeTime, 1, 0);
-					
 					IntroAnimationStep++;
 				}
 				break;
@@ -1935,9 +1956,7 @@ function introPlayIntro(outputDocument){
 					//newAnimatedElementOpacity(outputDocument, IntroJumpChargingCoverName, 0.1, 0, 0.25);
 					newAnimatedElementOpacity(outputDocument, IntroJumpChargingImageName, 0.1, 0, 0.25);
 					
-					IntroShakingEnabled = false;
 					clearInterval(IntroCollisionAlertID);
-					IntroCollisionAlertActive = false;
 					IntroAnimationStep++;
 				}
 				break;
@@ -3440,10 +3459,12 @@ function introInit(outputDocument){
 	IntroAnimationPaused = false;
 	IntroImageButtonPauseON = false;
 	
-	IntroFastForwardAllowed = false;
+	IntroFastForwardAllowed = true;
 	IntroFastForwardInProgress = false;
 	IntroImageButtonFastFON = false;
 	IntroFastForwardStage = 0;
+	
+	
 	
 	IntroImageButtonSkipON = false;
 	
@@ -3461,21 +3482,12 @@ function introInit(outputDocument){
 	
 	introLayer.innerHTML = "";
 	
-	commentsLayer = introNewElement(outputDocument,mainMessagesLayer,IntroVisibleCommentsLayerName,"messagesGroup");
-	
-	fastForwardComment = introNewElement(outputDocument,commentsLayer,"IntroFastForwardComment",IntroVisibleCommentsClass);
-	fastForwardComment.innerHTML = "Fast forward in progress.";
-	fastForwardNNComment = introNewElement(outputDocument,commentsLayer,"IntroFastForwardNotAvailableComment",IntroVisibleCommentsClass);
-	fastForwardNNComment.innerHTML = "Fast forward not available at the moment.";
-	
 	backgroundImagesLayer = introNewElement(outputDocument,introLayer,IntroBackgroundImagesLayerName,"messagesGroup");
 	introNewElement(outputDocument,backgroundImagesLayer,IntroImageConsoleBackgroundID,"imageClass","img",IntroImageConsoleBackgroundPath);
 	
 	introNewElement(outputDocument,introLayer,IntroFloatingMessagesLayerName,"messagesGroup");
 	introNewElement(outputDocument,introLayer,IntroAlertMessagesLayerName,"messagesGroup");
 	introNewElement(outputDocument,introLayer,"introAIMessages","messagesGroup");
-	
-	
 	
 	coversLayer = outputDocument.getElementById("introOverInterfaceCovers");
 	if(coversLayer === null) {
@@ -3507,9 +3519,6 @@ function introInit(outputDocument){
 	introResetAlerts(outputDocument);
 	
 	introMessagesTiming = calculateTimings(IntroCombinedMessagesTiming);
-	
-	introChangeShaking(outputDocument, IntroMessagesLayerName, 0, 0, 0, 0);
-	IntroShakingEnabled = true;
 	
 	introRegisterEvent(outputDocument);
 	
@@ -3551,10 +3560,6 @@ function introFastFON(outputDocument){
 	if(IntroFastForwardAllowed) {
 		
 		IntroFastForwardInProgress = true;
-		
-		//outputDocument.getElementById("IntroFastForwardComment").style.visibility = "visible";
-		newAnimatedElementOpacity(outputDocument, "IntroFastForwardComment", 0.25, 0.5, 0);
-		
 		IntroImageButtonFastFON = true;
 		introPauseON(outputDocument);
 		
@@ -3562,30 +3567,10 @@ function introFastFON(outputDocument){
 		
 		introFastForward(outputDocument);
 	}
-	else{
-		if(!IntroFastForwardInProgress) {
-			
-			//outputDocument.getElementById("IntroFastForwardNotAvailableComment").style.visibility = "visible";
-			newAnimatedElementOpacity(outputDocument, "IntroFastForwardNotAvailableComment", 0.25, 0.5, 0);
-			
-			setTimeout(() => {
-				//outputDocument.getElementById("IntroFastForwardNotAvailableComment").style.visibility = "hidden";
-				newAnimatedElementOpacity(outputDocument, "IntroFastForwardNotAvailableComment", 1, 0, 0.5);
-				},4000);
-		}
-	}
-	
 }
 function introFastFOFF(outputDocument, skipToStage = -1){
 	IntroImageButtonFastFON = false;
 	IntroFastForwardInProgress = false;
-	
-	setTimeout(() => {
-		//outputDocument.getElementById("IntroFastForwardComment").style.visibility = "hidden";
-		newAnimatedElementOpacity(outputDocument, "IntroFastForwardComment", 2, 0, 0.5);
-		},1000);
-	
-	
 	if(skipToStage != -1) IntroFastForwardStage = skipToStage;
 	outputDocument.getElementById(IntroImageButtonFastFID).src = IntroImageButtonFastFPathOFF
 }
@@ -3598,26 +3583,19 @@ function introFastForward(outputDocument){
 				console.log("Not at intro.");
 				break;
 			case 0:
-				console.log("Skipping combat alarm stage.");
-				
-				//IntroTickCounter = (3235 - 5);
-				IntroTickCounter = (introMessagesTiming[57]-5);
-				//IntroAnimationStep = 45;
-				IntroAnimationStep = 57;
+				console.log("Skipping pre-jump stage.");
+				IntroTickCounter = (3310 - 5);
+				IntroAnimationStep = 45;
 				IntroFastForwardStage++;
+				
+				//console.log(outputDocument);
 				
 				//introFastFOFF(outputDocument);
 				introPauseOFF(outputDocument);
+				
 				break;
 			case 1:
-				if(IntroCombatAlertActive){
-					clearInterval(IntroCombatAlertID);
-					IntroCombatAlertActive = false;
-				}
-				if(IntroCollisionAlertActive){
-					clearInterval(IntroCollisionAlertID);
-					IntroCollisionAlertActive = false;
-				}
+			
 				break;
 		}
 	}
@@ -3756,7 +3734,7 @@ function introDelayedElementOpacity(outputDocument, fadingElement, fadeDelay, fa
 	var currentFadingElement = fadingElement;
 	
 	if(elapsedTime==0){		
-		//console.log("Delayed Opacity Start");
+		console.log("Delayed Opacity Start");
 		if(IntroFastForwardStage != -1) {
 			//IntroActiveAnimationCounter++;
 			if(IntroDebugActive)console.log("Delayed Opacity Element start, "+IntroActiveAnimationCounter);
@@ -3779,7 +3757,7 @@ function introDelayedElementOpacity(outputDocument, fadingElement, fadeDelay, fa
 	}
 	else
 	{
-		//console.log("Delayed Opacity End");
+		console.log("Delayed Opacity End");
 		if(Array.isArray(currentFadingElement)){
 			for(var i = 0; i < currentFadingElement.length; i++) {
 				introAnimatedElementOpacity(outputDocument, currentFadingElement[i], fadeTime, endOpacity, startOpacity);
@@ -3849,19 +3827,15 @@ function introNewLogMessage(outputDocument, logArray, messageStruct, displaySpee
 		
 		if(logIsReply)newDisplayAnimatedMessage(outputDocument,tmpElement.id,IntroConsoleX_2,IntroConsoleY,messageStruct,messageStruct[0].length*displaySpeed);
 		else newDisplayAnimatedMessage(outputDocument,tmpElement.id,IntroConsoleX,IntroConsoleY,messageStruct,messageStruct[0].length*displaySpeed);
-		
-		return tmpElement.id;
 	}
 	else {
 		console.log("Intro not initialised");
-		return "";
 	}
 }
 function introResetLogMessages(outputDocument){
 	if(messagesGroup = outputDocument.getElementById(IntroFloatingMessagesLayerName)) {
 		IntroFloatingTextMessagesArray = [];
 		IntroFloatingTextRepliesArray = [];
-		IntroFloatingTextFadeTMPArray = [];
 		
 		messagesGroup.innerHTML = "";
 	}
@@ -4028,7 +4002,7 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 		targetTextbox.style.left = positionX+"px";
 		targetTextbox.style.color = messageStruct[1];
 		if(textBlurr) targetTextbox.style.textShadow = "0 0 10px "+messageStruct[1];
-		else targetTextbox.style.textShadow = "inherit";
+		else targetTextbox.style.textShadow = "initial";
 		
 		if(IntroFastForwardStage != -1) {
 			IntroActiveAnimationCounter++;
@@ -4317,113 +4291,6 @@ function animationAppendLoopedMessage(outputDocument, elementID, stepTime, total
 		}
 	}
 }
-
-var IntroShakingEnabled = false;
-var IntroShakingActive = false;
-var IntroShakingChanged = false;
-
-var IntroShakingTargetElement = NaN;
-var IntroShakingFinishMode = "default";
-var IntroShakingInitialTransform = "";
-
-var IntroShakingValueX = 0;
-var IntroShakingValueY = 0;
-var IntroShakingSpeed = 0;
-var IntroShakingLength = 0;
-var IntroShakingElapsedTime = 0;
-var IntroShakingIdleWaitTime = 100;
-
-
-function introChangeShaking(outputDocument, elementID, stepTime, shakingTime, xValue, yValue, finishMode = "default"){
-	//IntroShakingChanged = true;
-	
-	IntroShakingTargetElement = outputDocument.getElementById(elementID);
-	
-	switch(finishMode){
-		case "defaut":
-			IntroShakingFinishMode = "default";
-			break;
-		case "zero":
-			IntroShakingFinishMode = "zero";
-			break;
-		case "stay":
-			IntroShakingFinishMode = "stay";
-			break;
-		case "revert":
-			IntroShakingFinishMode = "revert";
-			break;
-		default:
-			IntroShakingFinishMode = "default";
-			break;
-	}
-	
-	if(!IntroShakingActive){
-		IntroShakingInitialTransform = getComputedStyle(IntroShakingTargetElement).transform;
-	}
-	
-	IntroShakingValueX = xValue;
-	IntroShakingValueY = yValue;
-	IntroShakingSpeed = stepTime;
-	IntroShakingLength = shakingTime;
-	
-	//if time not set, special value for ElapsedTime - standby mode.
-	if(shakingTime == 0) IntroShakingElapsedTime = -1;
-	else IntroShakingElapsedTime = 0;
-}
-function introActiveShaking(){
-	//	To stop/interrupt loop:
-	//IntroShakingEnabled = false;
-	if(IntroShakingEnabled){
-		
-		
-		//start shaking
-		if(!IntroShakingActive && IntroShakingElapsedTime == 0) {
-			IntroShakingActive = true;
-			
-			if(IntroFastForwardStage != -1) {
-				IntroActiveAnimationCounter++;
-				if(IntroDebugActive) console.log("Active element shaking start, "+IntroActiveAnimationCounter);
-			}
-		}
-		
-		//if should be shaking
-		if(IntroShakingElapsedTime != -1){
-			var newValueX = ((Math.random() - 0.5) * IntroShakingValueX).toFixed(1);
-			var newValueY = ((Math.random() - 0.5) * IntroShakingValueY).toFixed(1);
-			var newTransform = "matrix(1, 0, 0, 1," + newValueX + "," + newValueY +")";
-		}
-		
-		//if is still shaking
-		if(IntroShakingElapsedTime <= IntroShakingLength || IntroShakingLength == -1) {
-			
-			IntroShakingTargetElement.style.transform = newTransform;
-			
-			IntroShakingElapsedTime += IntroShakingSpeed;
-			setTimeout(() => {introActiveShaking();},IntroShakingSpeed*1000);
-		}
-		
-		//if it isn't shaking
-		else{
-			//if it also finishes shaking
-			if(IntroShakingActive){
-				if(IntroFastForwardStage != -1){ 
-					IntroActiveAnimationCounter--;
-					if(IntroDebugActive) console.log("Active element shaking stop, "+IntroActiveAnimationCounter);
-				}
-				
-				//default == stay
-				if(IntroShakingFinishMode == "stay") IntroShakingTargetElement.style.transform = newTransform;
-				if(IntroShakingFinishMode == "revert") IntroShakingTargetElement.style.transform = IntroShakingInitialTransform;
-				if(IntroShakingFinishMode == "zero") IntroShakingTargetElement.style.transform = "matrix(1, 0, 0, 1, 0, 0)";
-				
-				IntroShakingActive = false;
-				
-			}
-			setTimeout(() => {introActiveShaking();},IntroShakingIdleWaitTime);
-		}
-	}
-}
-
 function animationShakeElement(outputDocument, elementID, stepTime, totalTime, xValue, yValue, finishMode = "default", elapsedTime = 0, initialTransform = "not set"){
 	//default, stay, return, zero,
 	targetElement = outputDocument.getElementById(elementID);
@@ -4469,108 +4336,8 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 
 //outdated code
 
-/*var introMessagesDelays = [
 
-	   0,	//init 
-	 100,	//show 1
-	  95,	//... 1
-	 100,	//finish 1	
-	  75,	//move 1	
-	  50,	//show 2	
-	  90, 	//... 2		
-	 100,	//finish 2	
-	  80,	//move 2
-	  50,	//show 3	
-	 145,	//... 3		
-	 100,	//finish 3	
-	  70,	//move 3	
-	  50,	//show 4	
-	  65,	//fade 1	
-	 110,	//... 4		
-	 210,	//fade 2	
-	  80,	//reset 1
-	 285,	//fade 3	 
-	  45,	//reset 2
-	 355,	//reset 3	
-	  25,	//alarm 1	
-	  75,	//downscale alarm 1
-	 150,	//finish 4
-	  60,	//move 4	
-	  
-	  50,	//show 5	
-	 210,	//... 5		
-	 100,	//finish 5	
-	  80,	//move 5		
-	  50,	//show 1	
-	 230,	//... 1		
-	  80,	//fade 4	
-	 220,	//alarm 2	
-	  75,	//downscale alarm 2
-	 100,	//finish 1	
-	   5,	//reset 4	
-	  40,	//fade 5	
-	  10,	//move 1	
-	  50,	//show 2	
-	 220,	//... 2		
-	 120,	//reset 5
-	 
-	 130,	//finish 2	
-	 100,	//move 2
-	  50,	//show 3
-	 185,	//... 3
-	 100,	//finish 3
-	  80,	//move 3
-	  50,	//show 4
-	 160,	//... 4
-	 250,	//finish 4
-	  60,	//move 4
-	  50,	//show 5
-	 220,	//... 5
-	 250,	//finish 5
-	 100,	//move 5
-	  50,	//...
-	];*/
-/*var OLDintroMessagesDelays = [
-
-	100,100, 25, 25, 50,100, 50,125, 25, 25,	//  625
-	 50,100, 50,150, 25, 25, 50, 75, 50,200,	// 1400
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 1850
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2300
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2750
-	 75, 50,225, 25, 25, 50,100, 50,250, 25,	// 3625
-	 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,	// 3875
-	 25, 25, 25, 50, 75, 25, 25,225, 25, 25,	// 4400
-	 50,100, 25, 50,200, 25, 25, 50,100, 50,	// 5075
-	175, 50, 25, 25, 25, 50, 25, 50, 50,225,	// 5775
-	 50, 50, 50, 50, 50, 50, 50,125, 25, 25,	// 6300
-	100, 75, 25, 25, 50, 75, 50,150, 25, 25,	// 6900
-	 25, 50, 75, 50, 75, 50, 25, 25, 50, 75,	// 7400
-	 25, 25, 10, 40,200,						// 7700 part 1 end
-	800,										// 8500 part 2 start
-	100, 50, 50, 75,125, 50, 50, 50, 50, 50,	//  650
-	 50, 50, 50, 50, 50, 75, 75, 50,200, 50,	// 1350
-	 50, 50, 50, 50, 50, 75, 75, 50, 50,100,	// 1950
-	 50,225, 50, 25, 25, 75,150, 50,125, 25,	// 2750
-	 25, 50, 50, 50, 50, 25, 25, 50, 50, 50,	// 3175
-	 25, 25, 50, 50, 25, 25, 50, 50, 50, 50,	// 3575
-	 50, 75,100, 25, 50,150, 50, 50, 75, 50,	// 4250
-	175, 50, 50, 75, 25, 25,200, 50, 50, 50,	// 5000
-	 25, 50, 50, 50,150, 50, 25, 25, 25, 50,	// 5500
-	 75, 50,150, 50, 25, 25, 50, 25,125, 50,	// 6125
-	200, 50, 50, 75,100, 50,150, 25, 25, 25,	// 6875
-	 25, 75,100, 50,200, 50, 25, 25, 75, 75,	// 7575
-	 50,225, 25, 25, 50, 75, 75, 50,175, 50,	// 8375
-	 50, 50, 75,125, 50,100, 75, 25, 50, 50,	// 9025
-	 75, 75, 50,125, 75, 50, 50, 50, 50, 50,	// 9675
-	 50, 75, 75, 50, 50,100, 50, 50, 50, 50,	//10275
-	 50, 50, 50, 50, 50, 50, 75, 25, 50, 25,	//10750
-	 50,275, 50,250, 50, 50, 50, 25, 25, 50,	//11625
-	 50, 50, 50, 50, 50, 50, 50, 25, 25, 50,	//12075
-	 50, 50, 50, 50, 25, 25, 50, 50, 50, 50,	//12525
-	 50, 50, 50, 50, 25,						//12750 part 2 end
-	450,										//13200 part 3 start
-	];*/
-/*var introPopupMessages = [
+var introPopupMessages = [
 	
 	["FAILED",textColors[0]],//0
 	["DAMAGED",textColors[0]],//1
@@ -4644,93 +4411,15 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 	["TRANSFERING MAIN CONTROL TO [AI PERSONA]",textColors[4]]//53
 	
 	
-	];*/
-/*var introAIMessages = [
-	//["Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",textColors[4]], //0
-	["Tenebrian Emergency Situation AI successfully activated in emergency control mode.",textColors[4]], //0
-	["Received no response from commander and bridge. Emergency status upheld.",textColors[4]], //1
-	["Primary directive: Assure survival of crew.",textColors[4]], //1
-	["Secondary directive: Restore ship functionality.",textColors[4]], //1
-	["Taking control over available systems.",textColors[4]], //1
-	["Actions undertaken by T.E.S.A. will be logged for later review.",textColors[4]], //1
-	["Reading events recorded by ship's black box...",textColors[4]], //1
-	["Conclusion: ship has crashed on planet after executing emergency jump.",textColors[4]], //2
-	["General repairs might be required.",textColors[4]], //3
-	["Running damage checkup...",textColors[4]], //3
-	["WARNING: detected multiple damaged systems and sectors.",textColors[4]], //4
-	["Detected multiple hull breaches.",textColors[4]], //5
-	["Production sector damaged.",textColors[4]], //6
-	["Main power generator damaged.",textColors[4]], //7
-	["Secondary generator damaged.",textColors[4]], //8
-	["Main engine damaged.",textColors[4]], //9
-	["Navigation systems damaged.",textColors[4]], //10
-	["Jump drive damaged.",textColors[4]], //11
-	["Communication system damaged.",textColors[4]], //12
-	["Medical sector damaged.",textColors[4]], //13
-	["Cargo bay damaged.",textColors[4]], //14
-	["Defensive systems damaged.",textColors[4]], //15
-	["Ofensive systems damaged.",textColors[4]], //16
-	["Analysing optimal course of actions and order of repairs.",textColors[4]], //17
-	["CREATING NEW TASK: 'RESTORE SHIP SYSTEMS FUNCTIONALITY'.",textColors[4]], //18
-	["Detailed report has been generated.",textColors[4]], //19
+	];
 	
-	["Beggining scheduled repairs...",textColors[4]], //20
-	["Activating available maintenance drones.",textColors[4]], //21
-	["Restoring basic functionality of production sector.",textColors[4]], //22
-	["WARNING: full ship repair is currently impossible. Available resources are insufficient.",textColors[4]], //23
-	["CREATING NEW TASK: 'OBTAIN RESOURCES NEEDED FOR REPAIRS'.",textColors[4]], //24
-	["Detailed report has been generated.",textColors[4]], //25
-	
-	["Attempting to establish communication with fleet",textColors[4]], //26
-	["Restoring basic functionality of communication system...",textColors[4]], //27
-	["No signals detected in ship's vicinity.",textColors[4]], //28
-	["Sending distress signal at default time intervals. System capabilities and available power insufficient for distress call broadcast at interstellar range.",textColors[4]], //29
-	["WARNING: current location unknown, found no reference points after emergency jump. Required for point to point and directional communication",textColors[4]], //30
-	["CREATING NEW TASK: 'FIND CURREN LOCATION AND RESTORE COMMUNICATION'.",textColors[4]], //31
-	["Detailed report has been generated.",textColors[4]], //32
-	
-	["Checking status of crew...",textColors[4]], //33
-	["Detected vital signs of 348 crew members of which 37 are at acceptable condition or are capable of self regeneration. Remaining 311 require urgent medical attention.",textColors[4]], //34
-	["Medical sector condition insufficient to meet requirements. Searching for alternative solutions...",textColors[4]], //35
-	["Cryogenic sector slightly damaged. Currently unused. Condition acceptable. Reactivating cryopods.",textColors[4]], //36
-	["Wounded crew members will be send to cold sleep until needed medical care can be provided.",textColors[4]], //37
-	["CREATING NEW TASK: 'RECOVERY OF CRYOSLEEPING CREW'.",textColors[4]], //38
-	["Detailed report has been generated.",textColors[4]], //39
-	
-	["Checking surroundings...",textColors[4]], //40
-	["Temperature at acceptable level.",textColors[4]], //41
-	["Gravity force at acceptable level.",textColors[4]], //42
-	["Atmospheric pressure at acceptable level.",textColors[4]], //43
-	["Primary air component: nitrogen. Secondary: oxygen.",textColors[4]], //44
-	["No toxins detected in the surrounding air.",textColors[4]], //45
-	["Radiation levels close to zero.",textColors[4]], //46
-	["Dispatching scout drones...",textColors[4]], //47
-	["Flora and fauna detected.",textColors[4]], //48
-	["Local organisms are showing no active hostility. No major predator threat detected.",textColors[4]], //49
-	["Conclusion: planet of terrestial type. Surface risk at acceptable level.",textColors[4]], //50
-	["Found resources suitable for ship repair.",textColors[4]], //51
-	["Found resources suitable for energy production.",textColors[4]], //52
-	["CREATING NEW TASK: 'CONSTRUCT RESOURCES EXTRACTORS'.",textColors[4]], //53
-	["Detailed report has been generated.",textColors[4]], //54
-	
-	["Analysing recent events...",textColors[4]], //55
-	["Unknown drive malfunction has been reported. Data inconclusive.",textColors[4]], //56
-	["Searching for records of similar event in the database.",textColors[4]], //57
-	["WARNING: database corrupted.",textColors[4]], //58
-	["Starting deep analysis of accumulated data...",textColors[4]], //59
-	["WARNING: analysis aborted. Not enough energy available.",textColors[4]], //60
-	["Starting database restoration...",textColors[4]], //61
-	["WARNING: restoration aborted. Not enough energy available.",textColors[4]], //62
-	["CREATING NEW TASK: 'INCREASE AVAILABLE POWER, RESTORE DATABASE, INVESTIGATE JUMP DRIVE MALFUNCTION'.",textColors[4]], //63
-	["Detailed report has been generated.",textColors[4]], //64
-	
-	["Commander's activity detected at bridge.",textColors[4]], //65
-	["According to Tenebrian Emergency Protocols, main control will be transfered to commander upon request.",textColors[4]], //66
-	["Awaiting commander's response...",textColors[4]], //67
-	["Command transfer request confirmed. Transfering main control to bridge.",textColors[4]], //68
-	["Exiting emergency mode.",textColors[4]], //69
-	["T.",textColors[4]], //70	
-]; */
+
+
+
+
+
+
+
 
 /*function IntroAnimationStepInit(outputDocument) {
 	introMessagesTiming = calculateTimings(introMessagesDelays);
@@ -6757,4 +6446,4 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 	}
 }
 */
-//AAAAAAAAAAAAAAAAAA
+///AAAAAAAAAAAAAAAAAA
