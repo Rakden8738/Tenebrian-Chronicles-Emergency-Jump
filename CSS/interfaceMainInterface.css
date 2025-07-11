@@ -12,10 +12,18 @@
 	text-align: center;
 	vertical-align: bottom;
 	
+	box-sizing: border-box;
 	border: solid hsl(180,75%,75%) 2px;
 	background: hsla(240,25%,25%,0.25);
 	
 	margin: 15px;
+}
+.mainInterfaceButton:hover{
+	font-style: italic;
+	
+	border: solid hsl(180,75%,75%) 3px;
+	outline: solid hsl(180,75%,75%) 1px;
+	background: hsla(240,25%,30%,0.33);
 }
 
 #mainInterfaceTopBar{

@@ -30,6 +30,7 @@
 	opacity: 1;
 	pointer-events: none;
 	text-wrap: nowrap;
+	white-space: pre;
 }
 .floatingTextReply{
 	visibility: visible;
@@ -45,6 +46,7 @@
 	direction: rtl;
 	width: 0px;
 	text-wrap: nowrap;
+	white-space: pre;
 }
 .introComment{
 	
@@ -55,25 +57,26 @@
 	height:0px;
 	
 	font-size: 75%;
-	opacity: 0.35;
+	opacity: 0.00;
 	pointer-events: none;
 	text-wrap: nowrap;
 	
-	visibility: visible;
+	visibility: hidden;
 	left:20px;
 	bottom:40px;
 }
 #IntroFastForwardComment{
-	visibility: hidden;
-	left:20px;
-	bottom:40px;
-	opacity: 0.0;
+
 }
 #IntroFastForwardNotAvailableComment{
-	visibility: hidden;
-	left:20px;
-	bottom:40px;
-	opacity: 0.0;
+
+}
+#IntroCommanderCallComment{
+	bottom: 48px;
+}
+#IntroCommanderRefusesComment{
+	left:30px;
+	bottom: 32px;
 }
 
 
@@ -169,13 +172,13 @@
 
 #introOverInterfaceCombatAlertCover{
 	
-	background: radial-gradient(circle, rgba(0,0,0) 0%, rgba(255,0,0,1) 100%);
+	background: radial-gradient(circle, rgba(0,0,0) 0%, rgba(0,0,0) 50%, rgba(255,0,0,1) 100%);
 	
 }
 
 #introOverInterfaceCollisionAlertCover{
 	
-	background: radial-gradient(circle, rgba(0,0,0) 0%, rgba(0,0,0) 25%, rgba(255,63,0,1) 100%);
+	background: radial-gradient(circle, rgba(0,0,0) 0%, rgba(0,0,0) 50%, rgba(255,63,0,1) 100%);
 	
 }
 
@@ -218,7 +221,7 @@
 	/*background-color: hsl(180,25%,75%);*/
 	background: 
 		
-		hsl(195,100%,75%);
+		hsl(195,80%,80%);
 	visibility: visible;
 	opacity: 0;
 }
