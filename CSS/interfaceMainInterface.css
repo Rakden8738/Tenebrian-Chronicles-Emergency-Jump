@@ -7,23 +7,74 @@
 .mainInterfaceButton{
 	width: 250px;
 	
-	height:150px;
+	min-height:150px;
 	
 	text-align: center;
 	vertical-align: bottom;
+	align-content: center;
 	
 	box-sizing: border-box;
-	border: solid hsl(180,75%,75%) 2px;
+	border: solid hsla(180,75%,75%,0.75) 1px;
+	outline: solid hsla(180,75%,75%,0.7	5) 2px;
+	
 	background: hsla(240,25%,25%,0.25);
 	
 	margin: 15px;
 }
+.mainInterfaceButton .mainInterfaceButtonImage{
+	border-bottom: solid hsla(180,75%,75%,0.75) 0px;
+}
+.mainInterfaceButton .mainInterfaceButtonText{
+	border-top: solid hsla(180,75%,75%,0.75) 1px;
+}
+
+
 .mainInterfaceButton:hover{
-	font-style: italic;
+	font-style: bold;
 	
-	border: solid hsl(180,75%,75%) 3px;
-	outline: solid hsl(180,75%,75%) 1px;
-	background: hsla(240,25%,30%,0.33);
+	box-sizing: border-box;
+	border: solid hsla(180,75%,75%,1) 1px;
+	outline: solid hsla(180,75%,75%,1) 3px;
+	background: hsla(240,25%,30%,0.4);
+}
+.mainInterfaceButton:hover .mainInterfaceButtonImage{
+	border-bottom: solid hsla(180,75%,75%,1) 0px;
+}
+.mainInterfaceButton:hover .mainInterfaceButtonText{
+	
+	padding-top: 4px;
+	border-top: solid hsla(180,75%,75%,1) 2px;
+	box-shadow: 0 -1px 0 hsla(180,75%,75%,1);
+	
+	color: hsla(180,100%,80%,1);
+}
+
+.mainInterfaceBlankSpace{
+	width: 250px;
+	
+	min-height:150px;
+	box-sizing: border-box;
+	border: solid hsla(180,75%,75%,0.0) 2px;
+	
+	margin: 15px;
+}
+
+.mainInterfaceButtonImage{
+	width:50%;
+	height:auto;
+	object-fit: contain;
+
+	position: relative;
+}
+.mainInterfaceButtonText{
+	display: block;
+	bottom: 0px;
+	height: 20%;
+	position: relative;
+	
+	color: hsla(180,100%,80%,0.75);
+	
+	padding: 5px;
 }
 
 #mainInterfaceTopBar{
@@ -47,20 +98,19 @@
 	background: linear-gradient(180deg, hsla(180,75%,75%,1) 1%, hsla(240,25%,25%,0.25) 5%, hsla(240,25%,25%,0.25) 95%, hsla(180,75%,75%,1) 99%);
 	border: solid hsla(180,75%,75%,1) 3px;
 	
-	position: absolute;
-	top:10%;
+	top:MAX(10%,100px);
+	bottom: MAX(8%, 80px);
 	
-	max-width: 60%;
+	width: 80%;
+	max-width: 1200px;
 	min-width:600px;
-	
+	max-height:600px;
 	
 	margin: auto;
-	top: 0;
     left: 0;
     right: 0;
-    bottom: 0;	
 	
-	max-height:600px;
+	position: fixed;
 	
 	display: flex;
 	flex-wrap: wrap;

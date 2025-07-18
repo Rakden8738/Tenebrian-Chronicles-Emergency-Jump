@@ -321,7 +321,7 @@
 	opacity: 0.5;
 }
 .AIMessageWindowBackground{
-	background-image: url("../RESOURCES/Background_honeycomb_1_crop.png");
+	/*background-image: url("../RESOURCES/MAIN_INTERFACE/Background_honeycomb_1_crop.png");*/
 }
 
 .messageWindowContent{
@@ -453,13 +453,6 @@
 
 
 
-
-
-
-
-
-
-
 .warningWindowHeader{
 	
 }
@@ -478,7 +471,7 @@
 	width: 200px;
 	
 	background-color: hsl(240,50%,75%);
-	background-image: url("../RESOURCES/Background_honeycomb_1_crop.png");
+	/*background-image: url("../RESOURCES/MAIN_INTERFACE/Background_honeycomb_1_crop.png");*/
 	background-position: -20px, -20px;
 	
 	font-family: "Copperplate", fantasy, "Lucida Console", monospace;

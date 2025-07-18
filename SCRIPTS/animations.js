@@ -8,6 +8,15 @@ function connectionTest_animations(outputDocument){
 	}
 }
 
+var AnimationMoveBackgroundEnabled = true;
+var AnimationMoveBackgroundStep = 0.25;
+var AnimationMoveBackgroundTime = 1.0;
+var AnimationMoveBackgroundStartPosition = 0.0;
+var AnimationMoveBackgroundCurrentPosition = 0.0;
+var AnimationMoveBackgroundReturnPoint = -2000.0;
+var AnimationMoveBackgroundElementID = "underInterfaceBackgroundStars";
+var AnimationMoveBackgroundElement = null;
+
 function animationDisplayIntro(outputDocument) {
 	
 	IntroAnimationStep = 0;
@@ -17,6 +26,26 @@ function animationDisplayIntro(outputDocument) {
 		introPlayIntro(outputDocument);
 	},1000 * minorTickLength * IntroAnimationStartDelay,outputDocument);
 	//introInit(outputDocument);
+}
+
+function animationMoveBackground(outputDocument){
+	if(AnimationMoveBackgroundElement === null) {
+		AnimationMoveBackgroundElement = outputDocument.getElementById(AnimationMoveBackgroundElementID);
+	}
+	
+	AnimationMoveBackgroundCurrentPosition-=AnimationMoveBackgroundStep;
+	
+	if(AnimationMoveBackgroundCurrentPosition < AnimationMoveBackgroundReturnPoint) {
+		AnimationMoveBackgroundCurrentPosition = AnimationMoveBackgroundStartPosition;
+	}
+	
+	AnimationMoveBackgroundElement.style.backgroundPositionX = (AnimationMoveBackgroundCurrentPosition+"px");
+	
+	if(AnimationMoveBackgroundEnabled){
+		setTimeout(() => {
+			animationMoveBackground(outputDocument);
+		},1000*AnimationMoveBackgroundTime);
+	}
 }
 
 function newDisplayElement(outputDocument, elementID, positionX, positionY, elementWidth="auto") {

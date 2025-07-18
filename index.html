@@ -10,27 +10,65 @@
 		<script src="SCRIPTS\saveLoad.js"></script>
 		<script src="SCRIPTS\animations.js"></script>
 		<script src="SCRIPTS\intro.js"></script>
-		<script src="SCRIPTS\interfaceEvents.js"></script>
-		<script src="SCRIPTS\CSVTEST.js"></script>
-		<script src="SCRIPTS\starmap.js"></script>
+		<script src="SCRIPTS\interface.js"></script>
 	</head>
 
 	<body id="mainBody" onLoad="mainLoadGame(document);" >
-		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundCover"> </div>
+		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundStars"> </div>
+		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundGrid"> </div>
 		<div class="interfaceTopBar" id="mainInterfaceTopBar">
 			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarLeft">LEFT</div>
 			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarMiddle">MIDDLE</div>
 			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarRight">RIGHT</div>
 		</div>
 		<div class="interfaceWindow" id="mainInterfaceWindow">
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowPlanetButton">PLANETS</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSystemButton">STAR SYSTEMS</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowStarmapButton">GALAXY MAP</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowNetworkButton">GATE NETWORKS</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowFleetsButton">MANAGE FLEETS</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowResearchButton">RESEARCH PANEL</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowDiplomacyButton">DIPLOMACY MENU</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSettingsButton">SETTINGS MENU</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowPlanetsButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowPlanetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowPlanetsText">PLANETS</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSystemsButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSystemsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowSystemsText">STAR SYSTEMS</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowGalaxyButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowGalaxyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowGalaxyText">GALAXY MAP</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowNetworksButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowNetworksImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowNetworksText">GATE NETWORKS</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowFleetsButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowFleetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowFleetsText">MANAGE FLEETS</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowResearchButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowResearchImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowResearchText">RESEARCH PANEL</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowMissionsButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowMissionsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowMissionsText">PROJECTS AND MISSIONS</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowGovernmentButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowGovernmentImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowGovernmentText">GOVERNMENT OVERVIEW</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowDiplomacyButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowDiplomacyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowDiplomacyText">DIPLOMACY MENU</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowArchivesButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowArchivesImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowArchivesText">ARCHIVES</span>
+			</div>
+			<div class="interfaceWindowElement mainInterfaceBlankSpace" id="mainInterfaceWindowDiplomacyButton">
+				
+			</div>
+			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSettingsButton">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSettingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowSettingsText">GAME SETTINGS</span>
+			</div>
 		</div>
 		<div class="interfaceBottomBar" id="mainInterfaceBottomBar">
 			bottom bar

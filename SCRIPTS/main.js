@@ -33,6 +33,8 @@ function mainLoadGame(outputDocument){
 		connectionTest_saveLoad(outputDocument);
 		TestedModule = "animations";
 		connectionTest_animations(outputDocument);
+		TestedModule = "interface";
+		connectionTest_interface(outputDocument);
 		TestedModule = "intro";
 		connectionTest_intro(outputDocument);
 	}
@@ -49,6 +51,9 @@ function mainLoadGame(outputDocument){
 	
 	loadLoadGame();
 	saveAutosaveLoop();
+	
+	interfaceRefreshMenuButtons(outputDocument);
+	animationMoveBackground(outputDocument);
 	
 	if(SaveIntroDisplayedOrSkipped){
 		newAnimatedElementOpacity(outputDocument, mainIntroInterfaceCoverID, mainLoadFadeSpeed, 0, 1);

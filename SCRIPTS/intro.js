@@ -571,7 +571,6 @@ var IntroCombinedMessages = [
 
 var IntroCalculatedMessagesTiming = [];
 
-
 //MAIN VARIABLES
 
 var IntroAnimationStartDelay = 0;
@@ -619,24 +618,28 @@ var IntroBackgroundImagesLayerName = "introBackgroundImagesGroup";
 var IntroForegroundImagesLayerName = "introForegroundImagesGroup";
 
 var IntroCoversLayerName = "introOverInterfaceCovers";
+var IntroCoverChargingID = "introOverInterfaceChargingImage";
+var IntroCoverChargingPath = "RESOURCES/INTRO/ChargeFrame.png";
+
+var IntroMainInterfaceCoverID = "overInterfaceBackgroundCover";
 
 var IntroImageConsoleBackgroundID = "introImageConsoleBackground";
-var IntroImageConsoleBackgroundPath = "RESOURCES/Console Background.png";
+var IntroImageConsoleBackgroundPath = "RESOURCES/INTRO/Console Background.png";
 
 var IntroImageButtonPanelID = "introImageButtonPanel";
-var IntroImageButtonPanelPath = "RESOURCES/Intro Button Panel v2.png";
+var IntroImageButtonPanelPath = "RESOURCES/INTRO/Intro Button Panel v2.png";
 
 var IntroImageButtonPauseID = "introImageButtonPanelPause";
-var IntroImageButtonPausePathON = "RESOURCES/Intro Button Panel Pause ON.png";
-var IntroImageButtonPausePathOFF = "RESOURCES/Intro Button Panel Pause OFF.png";
+var IntroImageButtonPausePathON = "RESOURCES/INTRO/Intro Button Panel Pause ON.png";
+var IntroImageButtonPausePathOFF = "RESOURCES/INTRO/Intro Button Panel Pause OFF.png";
 
 var IntroImageButtonFastFID = "introImageButtonPanelFastForward";
-var IntroImageButtonFastFPathON = "RESOURCES/Intro Button Panel FastF ON.png";
-var IntroImageButtonFastFPathOFF = "RESOURCES/Intro Button Panel FastF OFF.png";
+var IntroImageButtonFastFPathON = "RESOURCES/INTRO/Intro Button Panel FastF ON.png";
+var IntroImageButtonFastFPathOFF = "RESOURCES/INTRO/Intro Button Panel FastF OFF.png";
 
 var IntroImageButtonSkipID = "introImageButtonPanelSkip";
-var IntroImageButtonSkipPathON = "RESOURCES/Intro Button Panel Skip ON.png";
-var IntroImageButtonSkipPathOFF = "RESOURCES/Intro Button Panel Skip OFF.png";
+var IntroImageButtonSkipPathON = "RESOURCES/INTRO/Intro Button Panel Skip ON.png";
+var IntroImageButtonSkipPathOFF = "RESOURCES/INTRO/Intro Button Panel Skip OFF.png";
 
 var IntroFloatingMessagesLayerName = "introFloatingTextGroup";
 var IntroFloatingTextClass = "floatingText";
@@ -722,6 +725,9 @@ var IntroAlertScaleShrinkDelay = 0;
 var IntroAlertScaleShrinkScale = 0.8;
 var IntroAlertScaleShrinkTime = 1;
 
+var IntroWindowResizeEventRegistered = false;
+var IntroOutputDocument = ""; //used for handling resize event
+var IntroResizeEventsCounter = 0;
 
 //COMMENTS
 
@@ -793,6 +799,9 @@ var IntroCrashCoverName = "introOverInterfaceCrashCover";
 	//START
 var IntroGameStartIntroMessagesFade = 3.5;
 var IntroGameStartIntroCoverFade = 2.5;
+var IntroCleanupTimer = 10000;
+var IntroCleanupEnabled = true;
+var IntroCleanupInitiated = false;
 
 
 //OBSOLETE VARIABLES
@@ -1445,6 +1454,8 @@ var IntroAIMessageBlurrProgressValue = 0;*/
 
 function introInit(outputDocument){
 	
+	newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, IntroGameStartIntroCoverFade, 1, 0.95);				
+	
 	IntroAnimationPaused = false;
 	IntroImageButtonPauseON = false;
 	
@@ -1456,6 +1467,8 @@ function introInit(outputDocument){
 	
 	IntroImageButtonSkipON = false;
 	IntroSkipInProgress = false;
+	
+	IntroCleanupInitiated = false;
 	
 	var mainBody = outputDocument.getElementById("mainBody");
 	var mainMessagesLayer = outputDocument.getElementById("mainMessagesLayer");
@@ -1502,7 +1515,7 @@ function introInit(outputDocument){
 	coversLayer.innerHTML = "";
 	
 	//introNewElement(outputDocument,coversLayer,IntroJumpChargingCoverName,"introInterfaceForegroundCover");
-	introNewElement(outputDocument,coversLayer,"introOverInterfaceChargingImage","coverImageClass","img","RESOURCES/ChargeFrame.png");
+	introNewElement(outputDocument,coversLayer,IntroCoverChargingID,"coverImageClass","img",IntroCoverChargingPath);
 	
 	introNewElement(outputDocument,coversLayer,IntroCombatAlertCoverName,"introInterfaceForegroundCover");
 	introNewElement(outputDocument,coversLayer,IntroCollisionAlertCoverName,"introInterfaceForegroundCover");
@@ -4115,7 +4128,10 @@ function introPlayIntro(outputDocument){
 					}
 					
 					IntroFastForwardStage = 5;
+					
+					introChangeShaking(outputDocument, IntroMessagesLayerName, 0.05, 0, 0, 0);
 					IntroShakingEnabled = true;
+					introActiveShaking();
 					
 					IntroAnimationStep++;
 				} break;
@@ -4495,7 +4511,7 @@ function introPlayIntro(outputDocument){
 			
 			case dynamicCondition++:	//fade messages
 				if(IntroTickCounter == IntroCalculatedMessagesTiming[IntroAnimationStep]) {
-					newAnimatedElementOpacity(outputDocument, "overInterfaceBackgroundCover", IntroGameStartIntroCoverFade, 0, 1);
+					newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, IntroGameStartIntroCoverFade, 0, 1);
 					
 					IntroAnimationStep++;
 				} break;
@@ -4506,14 +4522,20 @@ function introPlayIntro(outputDocument){
 					
 					IntroAnimationStep++;
 					
-					IntroDebugTimeoutCounter++;
-					setTimeout(() => {
-						outputDocument.getElementById("mainMessagesLayer").innerHTML="";
-						IntroDebugTimeoutCounter--;
-						console.log("Cleaned up intro.");
-						saveSaveGame();
-					},10000);
-		
+					if(IntroCleanupEnabled) {
+						IntroDebugTimeoutCounter++;
+						IntroCleanupInitiated = true;
+						setTimeout(() => {
+							IntroDebugTimeoutCounter--;
+							if(IntroCleanupInitiated){
+								outputDocument.getElementById("mainMessagesLayer").innerHTML="";
+								console.log("Cleaned up intro.");
+								IntroCleanupInitiated = false;
+								saveSaveGame();
+							}
+							
+						},IntroCleanupTimer);
+					}
 					
 					if(IntroAnimationStep <= IntroCalculatedMessagesTiming.length) {
 						//console.log("START!");
@@ -5002,7 +5024,7 @@ function introSkip(outputDocument){
 		
 		console.log("Hard skip to intro end.");
 		
-		newAnimatedElementOpacity(outputDocument, "overInterfaceBackgroundCover", 0.1, 0, 1);
+		newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, 0.1, 0, 1);
 		newAnimatedElementOpacity(outputDocument, IntroMessagesLayerName, 0.1, 0, 1);
 		newAnimatedElementOpacity(outputDocument, IntroVisibleCommentsLayerName, 0.1, 0, 1);
 		newAnimatedElementOpacity(outputDocument, IntroCoversLayerName, 0.1, 0, 1);
@@ -5111,11 +5133,9 @@ function introMoveAlertMessages(outputDocument, alertsArray, effectSpeed) {
 	IntroAlertIsMoving = true;
 	
 	newAnimatedElementScale(outputDocument,alertsArray[alertsArray.length-1],effectSpeed,1);
-	//animatedMoveElement(outputDocument,alertsArray[alertsArray.length-1],0,0,IntroAlertBaseX-IntroAlertPopupPositionX,IntroAlertBaseY-IntroAlertPopupPositionY,0,effectSpeed);
 	animatedMoveElement(outputDocument,alertsArray[alertsArray.length-1],0,0,newBaseX-IntroAlertPopupPositionX,IntroAlertBaseY-IntroAlertPopupPositionY,0,effectSpeed);
 				
 	for(var i = 0; i < (alertsLength - 1); i++){
-		//animatedMoveElement(outputDocument,alertsArray[i],IntroAlertBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 2)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 2)),IntroAlertBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 1)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1)),0,effectSpeed);
 		animatedMoveElement(outputDocument,alertsArray[i],newBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 2)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 2)),newBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 1)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1)),0,effectSpeed);
 		newAnimatedElementOpacity(outputDocument, alertsArray[i], effectSpeed, Math.pow(IntroAlertScaleShrinkScale,(alertsLength - i - 1)), Math.pow(IntroAlertScaleShrinkScale,(alertsLength - i - 2)));
 	}	
@@ -5126,29 +5146,42 @@ function introMoveAlertMessages(outputDocument, alertsArray, effectSpeed) {
 		IntroDebugTimeoutCounter--;	
 	},(effectSpeed*1000+100));
 }
+
+function introRegisterEvent(outputDocument){
+	if(!IntroWindowResizeEventRegistered) {
+		IntroOutputDocument = outputDocument;
+		window.addEventListener("resize", introWindowResize);
+		IntroWindowResizeEventRegistered = true;
+	}
+}
+
+function introWindowResize() {
+	if(IntroWindowResizeEventRegistered) {
+		IntroResizeEventsCounter++;
+		if(!IntroResizeFixInProgress) {
+			var tmpResizeCounter = IntroResizeEventsCounter;
+			setTimeout(() => {
+				introMoveAlertMessagesOnResize(IntroOutputDocument, tmpResizeCounter);
+			},250);
+			IntroResizeFixInProgress = true;
+		}
+	}
+}
+
 function introMoveAlertMessagesOnResize(outputDocument, resizeEventCounter, alertsArray = IntroAlertMessagesWindowsArray, effectSpeed = 0.25){
 	
 	if(!IntroAlertIsMoving) {
 		
 		if(resizeEventCounter==IntroResizeEventsCounter) {
-		
-			//console.log("Repositioning element");
-			
 			var alertsLength = alertsArray.length;
 			var newBaseX = window.innerWidth/2 - 150 - 30;
 						
 			for(var i = 0; i<=alertsLength-1;i++){
-				console.log(getComputedStyle(outputDocument.getElementById(alertsArray[i])).transform);
+				//console.log(getComputedStyle(outputDocument.getElementById(alertsArray[i])).transform);
 				var tmpMatrix = getComputedStyle(outputDocument.getElementById(alertsArray[i])).transform.split(')')[0].substring(7).split(',');
 				var oldX = tmpMatrix[4].trim();
 				var oldY = tmpMatrix[5].trim();
 				
-				//console.log("oldX: " + oldX);
-				//console.log("newX: " + newBaseX);
-				//console.log("oldY: " + oldY);
-				//console.log("newY: " + (IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1))));
-				
-				//animatedMoveElement(outputDocument,alertsArray[i],newBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 1)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1)),newBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 1)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1)),0,effectSpeed);
 				animatedMoveElement(outputDocument,alertsArray[i],oldX,oldY,newBaseX - IntroAlertPopupPositionX + (IntroAlertOffsetBaseX*(alertsLength - i - 1)),IntroAlertBaseY - IntroAlertPopupPositionY + (IntroAlertOffsetBaseY*(alertsLength - i - 1)),0,effectSpeed);
 			}
 			
@@ -5160,7 +5193,6 @@ function introMoveAlertMessagesOnResize(outputDocument, resizeEventCounter, aler
 			},(effectSpeed*1000+100));
 		}
 		else{
-			//console.log("Resize in progress");
 			var tmpResizeCounter = IntroResizeEventsCounter;
 			
 			IntroDebugTimeoutCounter++;
@@ -5178,6 +5210,8 @@ function introMoveAlertMessagesOnResize(outputDocument, resizeEventCounter, aler
 		},250);
 	}
 }
+
+
 
 function introDelayedElementOpacity(outputDocument, fadingElement, fadeDelay, fadeTime, endOpacity = 0, startOpacity = 1, elapsedTime = 0){
 	
@@ -5366,6 +5400,12 @@ function introActiveShaking(){
 				IntroDebugTimeoutCounter--;
 			},IntroShakingIdleWaitTime);
 		}
+	}
+	else{
+		
+		if(IntroShakingFinishMode == "stay") IntroShakingTargetElement.style.transform = newTransform;
+		if(IntroShakingFinishMode == "revert") IntroShakingTargetElement.style.transform = IntroShakingInitialTransform;
+		if(IntroShakingFinishMode == "zero") IntroShakingTargetElement.style.transform = "matrix(1, 0, 0, 1, 0, 0)";
 	}
 }
 

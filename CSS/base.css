@@ -7,9 +7,7 @@
 
 body {
 	background-color: hsl(240,50%,75%);
-	background-image: url("../RESOURCES/Background_honeycomb_1_crop.png");
-	background-position: -20px, -20px;
-
+	
 	/*font-family: "Copperplate", fantasy, "Lucida Console", monospace;*/
 	font-family: 'Kdam Thmor Pro';
 	
@@ -18,10 +16,10 @@ body {
 	margin: 0px;
 	padding: 0px;
 
-/*display: flex;*/
-justify-content: center;
-align-content: space-around;
-flex-wrap: wrap;	
+	/*display: flex;*/
+	justify-content: center;
+	/*align-content: space-around;*/
+	flex-wrap: wrap;	
 }
 
 .interfaceTopBar{}
@@ -36,13 +34,19 @@ flex-wrap: wrap;
 	position:fixed;
 	width:100%;
 	height:100%;
-}
-
-
-#underInterfaceBackgroundCover{
 	
-}
+	
 
+}
+#underInterfaceBackgroundStars{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/Background stars_2.png");
+	background-position: 0px, 0px;
+}
+#underInterfaceBackgroundGrid{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/Background honeycombTransparent_2.png");
+	background-position: -20px, 0px;
+	opacity: 0.15;
+}
 #overInterfaceBackgroundCover{
 	visibility:visible;
 	background-color: black;
