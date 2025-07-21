@@ -25,6 +25,8 @@ var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/ICONS/Diplomacy.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Book.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Settings.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Home.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Settings.png",
 ];
 
 var InterfaceMainMenuButtonImagesID = [
@@ -44,7 +46,8 @@ var InterfaceMainMenuButtonImagesID = [
 	"mainInterfaceWindowDiplomacyImage",
 	"mainInterfaceWindowArchivesImage",
 	"mainInterfaceWindowSettingsImage",
-	
+	"mainInterfaceWindowHomeImage",
+	"mainInterfaceWindowSettingsShortcutImage",
 ];
 
 var InterfaceAutoRefreshMainMenu = false;
@@ -77,6 +80,11 @@ function interfaceRefreshMenuButtons(outputDocument){
 		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[11]).src = InterfaceMainMenuIconPaths[11];
 		//settings
 		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
+		
+		//home
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).src = InterfaceMainMenuIconPaths[13];
+		//mini settings
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).src = InterfaceMainMenuIconPaths[14];
 	}
 	
 	

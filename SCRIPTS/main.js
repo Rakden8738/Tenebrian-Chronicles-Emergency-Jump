@@ -8,8 +8,7 @@ var MainGameVersion = "v0.0.4";
 var mainIntroInterfaceCoverID = "overInterfaceBackgroundCover";
 var mainLoadFadeSpeed = 1;
 
-var majorTickLength = 1.0;
-var minorTickLength = 0.01;
+
 
 
 function MAIN_TEST(){
@@ -29,6 +28,8 @@ function MAIN_ConnectionTest(outputDocument, ConnectionTestElementID){
 function mainLoadGame(outputDocument){
 	var TestedModule = "";
 	try{
+		TestedModule = "timer";
+		connectionTest_timer(outputDocument);
 		TestedModule = "saveLoad";
 		connectionTest_saveLoad(outputDocument);
 		TestedModule = "animations";

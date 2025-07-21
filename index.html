@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="CSS\base.css">
 		<link href='https://fonts.googleapis.com/css?family=Kdam Thmor Pro' rel='stylesheet'>
 		<script src="SCRIPTS\main.js"></script>
+		<script src="SCRIPTS\timeController.js"></script>
 		<script src="SCRIPTS\saveLoad.js"></script>
 		<script src="SCRIPTS\animations.js"></script>
 		<script src="SCRIPTS\intro.js"></script>
@@ -17,9 +18,25 @@
 		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundStars"> </div>
 		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundGrid"> </div>
 		<div class="interfaceTopBar" id="mainInterfaceTopBar">
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarLeft">LEFT</div>
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarMiddle">MIDDLE</div>
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarRight">RIGHT</div>
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarLeft">
+				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Operators: 
+					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsAvailableText">4</span> 
+					(Max: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsMaxText">20</span>)
+				</span>
+				<br>
+				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Influence: 
+					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceInfluenceText">21 37</span> 
+				</span>
+			</div>
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarMiddle">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowHomeImage" onClick = "console.log('Main menu!');">
+			</div>
+			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarRight">
+				<span class="interfaceBarText" id="mainInterfaceRightSideText">
+					Cycle: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceDateYearText">2002</span> 
+					Day: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceDateDayText">92</span> 
+				</span>
+			</div>
 		</div>
 		<div class="interfaceWindow" id="mainInterfaceWindow">
 			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowPlanetsButton">
@@ -71,7 +88,20 @@
 			</div>
 		</div>
 		<div class="interfaceBottomBar" id="mainInterfaceBottomBar">
-			bottom bar
+			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarLeft">
+				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Researching: 
+					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsAvailableText">Interstellar Travel II</span> 
+					Progress: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceResearchAvailableText">253</span> / <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceResearchMaxText">1000</span> ( <span class="interfaceBarText interfaceBarPositiveText" id="mainInterfaceResearchGainText">+43.2/day</span> ) 
+				</span>
+			</div>
+			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarMiddle">
+				<div class="" id="mainInterfaceBottomTextContainer">
+					<span class="interfaceBarText interfaceBarDimmedText" id="mainInterfaceBottomText">Game autosaved successfully.</span> 
+				</div>
+			</div>
+			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarRight">
+				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSettingsShortcutImage" onClick = "console.log('Settings!');">
+			</div>
 		</div>
 		<div class="interfaceBackgroundCover" id="overInterfaceBackgroundCover"> </div>
 		<div class="messagesLayer" id="mainMessagesLayer">
