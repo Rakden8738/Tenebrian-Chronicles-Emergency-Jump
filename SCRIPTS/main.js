@@ -1,29 +1,19 @@
+//var InterfaceDocument;
 
-var InterfaceDocument;
+var MainGameVersion = "v0.0.8";
 
-var MainGameVersion = "v0.0.4";
+var messagesMainLayerClass = "messagesLayer";
+var messagesLayerClass = "animationMessages";
+var messagesGroupClass = "messagesGroup";
 
 
+var mainBodyID = "mainBody";
+var mainMessagesLayerID = "mainMessagesLayer";
+var mainIntroInterfaceCoverID = "mainOverInterfaceBackgroundCover";
 
-var mainIntroInterfaceCoverID = "overInterfaceBackgroundCover";
 var mainLoadFadeSpeed = 1;
 
-
-
-
-function MAIN_TEST(){
-console.log("MAIN OK");
-}
-
-function MAIN_ConnectionTest(outputDocument, ConnectionTestElementID){
-	outputDocument.getElementById(ConnectionTestElementID).innerHTML = "Loaded!";
-	outputDocument.getElementById(ConnectionTestElementID).hidden = true;
-
-	console.log("Main module loaded.");
-	console.log("Version: "+MainGameVersion);
-
-
-}
+var mainDebugMode = true;
 
 function mainLoadGame(outputDocument){
 	var TestedModule = "";
@@ -52,9 +42,15 @@ function mainLoadGame(outputDocument){
 	
 	loadLoadGame();
 	saveAutosaveLoop();
+	timerStart(outputDocument);
 	
 	interfaceRefreshMenuButtons(outputDocument);
 	animationMoveBackground(outputDocument);
+	
+	if(mainDebugMode) {
+		//interfaceChangeMenuTab(outputDocument,SettingsMenuID);
+		//interfaceChangeMenuTab(outputDocument,InterfaceMainMenuID);
+	}
 	
 	if(SaveIntroDisplayedOrSkipped){
 		newAnimatedElementOpacity(outputDocument, mainIntroInterfaceCoverID, mainLoadFadeSpeed, 0, 1);

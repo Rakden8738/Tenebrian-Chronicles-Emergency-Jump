@@ -1,53 +1,40 @@
-@import "interfaceMainInterface.css";
-@import "test.css";
-@import "starmap.css";
-@import "planetInterface.css";
-@import "MESSAGES.css";
+@import "mainInterface.css";
+@import "introMessages.css";
+@import "mainMenu.css";
+@import "settingsMenu.css";
+@import "planetOverview.css";
+@import "combinedFix.css";
 
+
+/* kdam-thmor-pro-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Kdam Thmor Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+  src: url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('./FONT/kdam-thmor-pro-v6-latin_latin-ext-regular.svg#KdamThmorPro') format('svg'); /* Legacy iOS */
+}
 
 body {
-	background-color: hsl(240,50%,75%);
+	background-color: hsl(240,0%,0%);
+	
+	user-select: none;
+	justify-content: center;
+	flex-wrap: wrap;	
+	/*display: flex;*/
+	/*align-content: space-around;*/
 	
 	/*font-family: "Copperplate", fantasy, "Lucida Console", monospace;*/
 	font-family: 'Kdam Thmor Pro';
-	
 	color: hsl(180,100%,80%);
 
 	margin: 0px;
 	padding: 0px;
-
-	/*display: flex;*/
-	justify-content: center;
-	/*align-content: space-around;*/
-	flex-wrap: wrap;	
 }
 
-.interfaceTopBar{}
 
-.interfaceWindow{}
-
-.interfaceBottomBar{}
-
-.interfaceBackgroundCover{
-	padding:0px;
-	margin:0px;
-	position:fixed;
-	width:100%;
-	height:100%;
-	
-	
-
-}
-#underInterfaceBackgroundStars{
-	background-image: url("../RESOURCES/MAIN_INTERFACE/Background stars_2.png");
-	background-position: 0px, 0px;
-}
-#underInterfaceBackgroundGrid{
-	background-image: url("../RESOURCES/MAIN_INTERFACE/Background honeycombTransparent_2.png");
-	background-position: -20px, 0px;
-	opacity: 0.15;
-}
-#overInterfaceBackgroundCover{
-	visibility:visible;
-	background-color: black;
-}

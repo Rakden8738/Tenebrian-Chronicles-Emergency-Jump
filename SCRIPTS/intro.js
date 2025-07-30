@@ -465,7 +465,7 @@ var IntroCombinedMessages = [
 /*	71	*/	["NOT FOUND",IntroTextColors[1]],
 /*	72	*/	["RUNNING FULL DAMAGE SCAN",IntroTextColors[4]],
 /*	73	*/	["ABORTED",IntroTextColors[5]],
-/*	74	*/	["  SEVERE DAMAGE DETECTED",IntroTextColors[3]],
+/*	74	*/	["  SEVERE DAMAGE DETECTED",IntroTextColors[0]],
 /*	75	*/	["  CRASH-LANDING HAS OCCURRED",IntroTextColors[5]],
 /*	76	*/	["CHECKING [COMMANDER] STATUS",IntroTextColors[4]],
 /*	77	*/	["ALIVE, NOT RESPONDING",IntroTextColors[5]],
@@ -621,13 +621,19 @@ var IntroCoversLayerName = "introOverInterfaceCovers";
 var IntroCoverChargingID = "introOverInterfaceChargingImage";
 var IntroCoverChargingPath = "RESOURCES/INTRO/ChargeFrame.png";
 
-var IntroMainInterfaceCoverID = "overInterfaceBackgroundCover";
+//var IntroMainInterfaceCoverID = "overInterfaceBackgroundCover";
+var IntroMainInterfaceCoverID = mainIntroInterfaceCoverID;
+var IntroInterfaceForegroundCover = "interfaceBackgroundCover overInterfaceBackgroundCover introInterfaceCovers";
 
 var IntroImageConsoleBackgroundID = "introImageConsoleBackground";
 var IntroImageConsoleBackgroundPath = "RESOURCES/INTRO/Console Background.png";
 
 var IntroImageButtonPanelID = "introImageButtonPanel";
 var IntroImageButtonPanelPath = "RESOURCES/INTRO/Intro Button Panel v2.png";
+
+var IntroImageButtonsClass = "introImageButton";
+var IntroImageClass = "introImageClass";
+var IntroCoverImageClass = "interfaceBackgroundCover introCoverImageClass";
 
 var IntroImageButtonPauseID = "introImageButtonPanelPause";
 var IntroImageButtonPausePathON = "RESOURCES/INTRO/Intro Button Panel Pause ON.png";
@@ -642,39 +648,39 @@ var IntroImageButtonSkipPathON = "RESOURCES/INTRO/Intro Button Panel Skip ON.png
 var IntroImageButtonSkipPathOFF = "RESOURCES/INTRO/Intro Button Panel Skip OFF.png";
 
 var IntroFloatingMessagesLayerName = "introFloatingTextGroup";
-var IntroFloatingTextClass = "floatingText";
+var IntroFloatingTextClass = "animationFloatingText";
 var IntroFloatingTextID = "introFloatingText_";
-var IntroFloatingReplyClass = "floatingTextReply";
+var IntroFloatingReplyClass = "animationFloatingTextReply";
 var IntroFloatingReplyID = "introFloatingReply_";
 
 var IntroAlertMessagesLayerName = "introWarningMessages";
 
 var IntroAlertMessagesWindowsArray = [];
-var IntroAlertMessagesWindowClass = "backgroundWindow warningWindow";
+var IntroAlertMessagesWindowClass = "animationBackgroundWindow animationWarningWindow";
 var IntroAlertMessagesWindowID = "introWarningWindow_";
 
 var IntroAlertMessagesBackgroundsArray = [];
-var IntroAlertMessagesBackgroundClass = "messageWindowBackground warningWindowBackground";
+var IntroAlertMessagesBackgroundClass = "animationMessageWindowBackground animationWarningWindowBackground";
 var IntroAlertMessagesBackgroundID = "introWarningWindowBackground_";
 
 var IntroAlertMessagesContentArray = [];
-var IntroAlertMessagesContentClass = "messageWindowContent warningWindowContent";
+var IntroAlertMessagesContentClass = "animationMessageWindowContent animationWarningWindowContent";
 var IntroAlertMessagesContentID = "introWarningWindowContent_";
 
 var IntroAlertMessagesHeadersArray = [];
-var IntroAlertMessagesHeadersClass = "messageWindowHeader warningWindowHeader";
+var IntroAlertMessagesHeadersClass = "animationMessageWindowHeader animationWarningWindowHeader";
 var IntroAlertMessagesHeadersID = "introWarningWindowHeader_";
 
 var IntroAlertMessagesTextArray = [];
-var IntroAlertMessagesTextClass = "messageWindowText warningWindowText";
+var IntroAlertMessagesTextClass = "animationMessageWindowText animationWarningWindowText";
 var IntroAlertMessagesTextID = "introWarningWindowText_";
 
 var IntroAlertMessagesFootersArray = [];
-var IntroAlertMessagesFooterClass = "messageWindowFooter warningWindowFooter";
+var IntroAlertMessagesFooterClass = "animationMessageWindowFooter animationWarningWindowFooter";
 var IntroAlertMessagesFooterID = "introWarningWindowFooter_";
 
 var IntroAlertMessagesForegroundsArray = [];
-var IntroAlertMessagesForegroundClass = "messageWindowForeground warningWindowForeground";
+var IntroAlertMessagesForegroundClass = "animationMessageWindowForeground animationWarningWindowForeground";
 var IntroAlertMessagesForegroundID = "introWarningWindowForeground_";
 
 var IntroVisibleCommentsLayerName = "introCommentsGroup";
@@ -700,6 +706,8 @@ var IntroFloatingTextFadeLength = 3.5;
 //var IntroFloatingTextResetDelay = 500;
 //var IntroFloatingTextResetAfterFade = false;
 var IntroFloatingTextFadeTMPArray = [];
+
+
 
 
 //POP UP ALERTS
@@ -735,10 +743,10 @@ var IntroCommentDisplaySpeed = 0.25;
 var IntroCommentFadeSpeed = 1.00;
 var IntroCommentOpacity = 0.50;
 var IntroCommentsIDArray = [
-	"IntroFastForwardComment",
-	"IntroFastForwardNotAvailableComment",
-	"IntroCommanderCallComment",
-	"IntroCommanderRefusesComment"
+	"IntroCommentFastForward",
+	"IntroCommentFastForwardNotAvailable",
+	"IntroCommentCommanderCall",
+	"IntroCommentCommanderRefuses"
 ];
 
 
@@ -803,655 +811,6 @@ var IntroCleanupTimer = 10000;
 var IntroCleanupEnabled = true;
 var IntroCleanupInitiated = false;
 
-
-//OBSOLETE VARIABLES
-
-/*var OLDIntroSingleMessagesTiming = [
-	  0,	//init			0		0
-	 10,	//show old		1		10
-	 15,	//move old		2		25
-	 25,	//show last		50		3
-	 25,	//fade old		75		4
-	 25,	//slowly show	100		5
-	 50,	//move last		150		6
-	 50,	//critical		200		7
-	120,	//impact 1 		320		8
-	 25,	//move			345		9
-	 50,	//initiating	395		10
-	175,	//impact 2 		570		11
-	 75,	//move			645		12
-	 50,	//autopilot		695		13
-	 55,	//...			750		14
-	 80,	//impact 3		830		15
-	 20,	//enabled		850		16
-	 60,	//move			910		17
-	 50,	//redirecting	960		18
-	220,	//impact 4 		1180	19
-	 15,	//move			1195	20
-	 50,	//charged at	1245	21
-	140,	//0-100%		1385	22
-	 25,	//move			1410	23
-	 10,	//impact 5		1420	24
-	  5,	//notice		1425	25
-	 30,	//move			1455	26
-	 15,	//known emerg	1470	27
-	 45,	//impact 6		1515	28
-	125,	//move			1640	29
-	 15,	//perception	1655	30
-	 30,	//impact 7		1685	31
-	145,	//move			1830	32
-	 15,	//by an auto	1845	33
-	 10,	//border flash	1855	34
-	 50,	//impact 8		1905	35
-	300,	//impact 9		2205	36
-	150,	//move			2355	37
-	 50,	//JUMPING		2405	38
-	 85,	//blue fade in	2490	39
-	 25,	//shake shake	2515	40
-	250,	//discharge 	2765	41
-	 50,	//blue fade out	2815	42
-	200,	//shake shake 2	3015	43
-	150,	//shake shake 3	3165	44
-	125,	//move			3290	45
-	 50,	//Emergency		3340	46
-	 70,	//...			3410	47
-	100,	//successful	3510	48
-	 75,	//move			3585	49
-	 50,	//CHECKING		3635	50
-	 90,	//...			3725	51
-	100,	//operational	3825	52
-	 80,	//move			3905	53
-	 50,	//SEARCHING		3955	54
-	120,	//...			4075	55
-	100,	//not found		4175	56
-	
-	 20,	//SKIP POINT 1b	4195	57
-	 50,	//move			4245	58
-	 
-	 50,	//combat mode	4295	59
-	 85,	//lifted		4380	60
-	 75,	//move			4455	61
-	 50,	//general check	4505	62
-	120,	//...			4625	63
-	575,	//start alerts	5200	64
-	 25,	//alert			5225	65
-	125,	//move alert	5350	66
-	 50,	//aborted		5400	67
-	 60,	//move			5460	68
-	 50,	//checking		5510	69
-	200,	//...			5710	70
-	100,	//operational	5810	71
-	 80,	//move			5890	72
-	 50,	//attempting	5940	73
-	205,	//...			6145	74
-	200,	//shake			6345	75
-	 50,	//alert			6395	76
-	125,	//move alert	6520	77
-	100,	//failed		6620	78
-	 55,	//move			6675	79
-	 50,	//restarting	6725	80
-	210,	//...			6935	81
-	250,	//failed		7185	82
-	100,	//move			7285	83
-	 50,	//ch thrust		7335	84
-	160,	//...			7495	85
-	100,	//operat		7595	86
-	 40,	//shake	atmo	7635	87
-	 40,	//move			7675	88
-	 10,	//alert atmo	7685	89
-	 40,	//activat		7725	90
-	 85,	//move alert	7810	91
-	 65,	//...			7875	92
-	 50,	//thrust shake	7925	93
-	 50,	//success		7975	94
-	 10,	//more shake	7985	95
-	 50,	//move			8035	96
-	 50,	//ablators	8085	97
-	150,	//...			8295	98
-	175,	//success		8545	99
-	 60,	//move			8645	100	
-	 30,	//shake t fail	8675	101
-	 20,	//checking		8695	102
-	 50,	//alert			8745	103
-	 10,	//shake strong	8755	104
-	 80,	//...			8835	105
-	 35,	//move alert	8870	106
-	 65,	//inactive		8935	107
-	 65,	//move			9000	108
-	 50,	//starting		9050	109
-	140,	//...			9190	110
-	250,	//success		9440	111
-	 30,	//shake stronge	9470	112
-	 30,	//move			9500	113
-	 50,	//raising		9550	114
-	 85,	//...			9635	115
-	125,	//alert			9760	116
-	125,	//move alert	9885	117
-	  5,	//shield glow	9890	118
-	145,	//active		10035	119
-	 75,	//shake crash	10110	120
-	 20,	//move			10130	121
-	  5,	//alert			10135	122
-	 45,	//fade to red	10180	123
-	100,	//cleanup 1		10280	124
-	200,	//fade to black	10480	125
-	555,	//cleanup 2		11035	126
-	
-	  
-	  
-	  10,	//fade out		11045	128
-	  5,	//SKIP POINT 2	11040	127
-	  
-	 40,	//empty Element	11090 	129
-	 50,	//blinking		11180	130
-	410,	//move			11550	131
-	 15,	//restoring		11565	132
-	105,	//move			11670	133
-	 50,	//run POST		11720	134
-	130,	//...			11850	135
-	100,	//move			11950	136
-	 30,	//PS operation	11980	137
-	 70,	//move			12050	138
-	 15,	//power low		12065	139
-	 45,	//move			12110	140
-	 15,	//cpu operat	12125	141
-	 85,	//move			12210	142
-	 15,	//memory bank	12225	143
-	 70,	//move			12295	144
-	 15,	//main data		12310	145
-	 85,	//move			12395	146
-	 15,	//integrity		12410	147
-	120,	//move			12530	148
-	 50,	//sysem restor	12580	149
-	 75,	//move			12655	150
-	 50,	//autopilot		12705	151	
-	 55,	//...			12760	152		
-	100,	//enabled		12860	153	
-	 60,	//move			12920	154
-	 50,	//scanning		12970	155
-	135,	//...			13105	156
-	100,	//not found		13205	157
-	 70,	//move			13275	158
-	 50,	//full scan		13325	159
-	120,	//...			13445	160
-	175,	//aborted		13620	161
-	 35,	//move			13655	162
-	 15,	//severe dam	13670	163
-	 60,	//move			13730	164
-	 15,	//crash-land	13745	165
-	110,	//move			13855	166
-	 50,	//checking		13905	167
-	135,	//...			14040	168
-	250,	//alive			14290	169
-	130,	//move			14420	170
-	 50,	//calling		14470	171
-	115,	//...			14585	172
-	250,	//no response	14835	173
-	 80,	//move			14915	174
-	 50,	//received no	14965	175
-	 
-	160,	//skip point 3	15125	176
-	 50,	//move			15175	177
-	 
-	 50,	//emergency		15225	178
-	140,	//move			15365	179
-	 50,	//running criti	15415	180
-	200,	//move			15615	181
-	 50,	//check LifeSys	15665	182
-	150,	//...			15815	183
-	250,	//operational	15915	184
-	 55,	//move			15970	185
-	 30,	//vent			16000	186
-	 65,	//move			16065	187
-	 15,	//multiple		16080	188
-	 90,	//move			16170	189
-	 15,	//CO2			16185	190
-	 65,	//move			16250	191
-	 15,	//O2			16265	192
-	 55,	//move			16320	193
-	 15,	//thermal		16335	194
-	 85,	//move			16420	195
-	 15,	//temp			16435	196
-	 80,	//move			16515	197
-	 15,	//medical		16530	198
-	 70,	//move			16600	199
-	 15,	//stasis		16615	200
-	125,	//move			16740	201
-	 50,	//check PwrSys	16790	202
-	170,	//...			16960	203
-	250,	//operational	17060	204
-	 55,	//move			17115	205
-	 30,	//power			17145	206
-	 65,	//move			17210	207
-	 15,	//main gen		17225	208
-	 80,	//move			17305	209
-	 15,	//sec gen		17320	210
-	115,	//move			17435	211
-	 15,	//cells			17450	212
-	 85,	//move			17535	213
-	 15,	//batteries		17550	214
-	 65,	//move			17615	215
-	 15,	//emerg-gen		17630	216
-	140,	//move			17770	217
-	 50,	//check defense	17820	218
-	130,	//...			17950	219
-	250,	//operational	18050	220
-	 55,	//move			18105	221
-	 30,	//limited defen	18135	222
-	 75,	//move			18210	223
-	 15,	//shields subs	18225	224
-	 95,	//move			18320	225
-	 15,	//point defen	18335	226
-	 90,	//move			18425	227
-	 15,	//partially dam	18440	228
-	 50,	//move			18490	229
-	 15,	//repair drone	18505	230
-	110,	//move			18615	231
-	 50,	//check navig	18665	232
-	140,	//...			18805	233
-	250,	//operational	18905	234
-	 55,	//move			18960	235
-	 30,	//immobilised	18990	236
-	 40,	//move			19030	237
-	 15,	//pos unknown	19045	238
-	 40,	//move			19085	239
-	 15,	//main damage	19100	240
-	 55,	//move			19155	241
-	 15,	//sec not resp	19170	242
-	 95,	//move			19265	243
-	 15,	//maneuvering	19280	244
-	105,	//move			19385	245
-	 15,	//hyperdrive	19400	246
-	 50,	//move			19450	247
-	 15,	//jumpdrive		19465	248
-	 65,	//move			19530	249
-	 15,	//code unknown	19545	250
-	 85,	//move			19630	251
-	 15,	//pls update	19695	252
-	150,	//move			19845	253
-	 50,	//check comms	20000	254
-	155,	//...			20155	255
-	250,	//operational	20255	256
-	 55,	//move			20310	257
-	 30,	//main antenna	20340	258
-	 70,	//move			20410	259
-	 15,	//no signal		20425	260
-	 25,	//move			20450	261
-	 15,	//directional	20465	262
-	 90,	//move			20555	263
-	 15,	//pos unknown	20570	264
-	 
-	 60,	//skip point 4	20630	265
-	 50,	//move			20680	266
-	 
-	 25,	//sub chk fnshd	20705	267
-	135,	//move			20840	268
-	 50,	//sending distr	20890	269
-	125,	//...			21015	270
-	100,	//aborted		21115	271
-	 60,	//move			21175	272
-	 15,	//send aborted	21190	273
-	 85,	//move			21275	274
-	 15,	//NEEA			21290	275
-	110,	//move			21400	276
-	 50,	//automated		21450	277
-	235,	//move			21685	278
-	 50,	//check ai		21735	279
-	165,	//...			21900	280
-	100,	//inactive		22000	281
-	 65,	//move			22065	282
-	 50,	//starting AI	22115	283
-	165,	//...			22280	284
-	175,	//success		22455	285
-	 60,	//move			22515	286
-	 50,	//loading		22565	287
-	195,	//...			22760	288
-	100,	//aborted		22860	289
-	 60,	//move			22920	290
-	 15,	//load aborted	22935	291
-	 60,	//move			22995	292
-	 15,	//neea			23010	293
-	110,	//move			23120	294
-	 50,	//check cells	23170	295
-	140,	//...			23310	296
-	100,	//operational	23410	297
-	 55,	//move			23465	298
-	 15,	//bateries		23480	299
-	 55,	//move			23535	300
-	 15,	//critical		23550	301
-	 50,	//move			23600	302
-	 50,	//restart spg	23650	303
-	190,	//...			23840	304
-	175,	//failed		24015	305
-	100,	//move			24115	306
-	 50,	//starting epg	24165	307
-	150,	//...			24315	308
-	175,	//success		24490	309
-	
-	 10,	//skip point 5	24500	310
-	 50,	//move			24550	311
-	 
-	 50,	//loading ERA1	24600	312
-	195,	//...			24795	313
-	250,	//aborted		25045	314
-	 60,	//move			25125	315
-	 50,	//loading SAIA1	25175	316
-	195,	//...			25370	317
-	100,	//denied		25545	318
-	 90,	//move			25615	319
-	 50,	//loading ERA2	24665	320
-	145,	//alert root	25950	330
-	 50,	//...			24860	321
-	150,	//move alert	26075	331 
-	100,	//aborted		25035	322
-	 60,	//move			25115	323
-	 50,	//loading SAIA2	25165	324
-	195,	//...			25360	325
-	100,	//aborted		25535	326
-	 70,	//move			25605	327
-	 50,	//loading ERA3	25655	328
-	195,	//...			25850	329
-	 25,	//alert crash	26150	332
-	 75,	//failed
-	 55,	//move
-	 20,	//move alert
-	 30,	//restart auto
-	110,	//...
-	100,	//success
-	 60,	//move
-	 50,	//load ERA4
-	 55,	//alert revoke
-	140, 	//...
-	100,	//denied
-	 10,	//move alert
-	 80,	//move
-	 50,	//load SAIA3
-	195,	//...			25360	325
-	250,	//success		27405	347
-	 60,	//move			27465	348
-	 50,	//control tran	27525	349
-	295,	//move			27820	350
-	 50,	//rename		27870	351
-	 
-	 230,	//skip point 6	28100	352
-	 50,	//move			28150	353
-	
-];*/
-/*var introMessagesDelays = [
-
-	   0,	//init 
-	 100,	//show 1
-	  95,	//... 1
-	 100,	//finish 1	
-	  75,	//move 1	
-	  50,	//show 2	
-	  90, 	//... 2		
-	 100,	//finish 2	
-	  80,	//move 2
-	  50,	//show 3	
-	 145,	//... 3		
-	 100,	//finish 3	
-	  70,	//move 3	
-	  50,	//show 4	
-	  65,	//fade 1	
-	 110,	//... 4		
-	 210,	//fade 2	
-	  80,	//reset 1
-	 285,	//fade 3	 
-	  45,	//reset 2
-	 355,	//reset 3	
-	  25,	//alarm 1	
-	  75,	//downscale alarm 1
-	 150,	//finish 4
-	  60,	//move 4	
-	  
-	  50,	//show 5	
-	 210,	//... 5		
-	 100,	//finish 5	
-	  80,	//move 5		
-	  50,	//show 1	
-	 230,	//... 1		
-	  80,	//fade 4	
-	 220,	//alarm 2	
-	  75,	//downscale alarm 2
-	 100,	//finish 1	
-	   5,	//reset 4	
-	  40,	//fade 5	
-	  10,	//move 1	
-	  50,	//show 2	
-	 220,	//... 2		
-	 120,	//reset 5
-	 
-	 130,	//finish 2	
-	 100,	//move 2
-	  50,	//show 3
-	 185,	//... 3
-	 100,	//finish 3
-	  80,	//move 3
-	  50,	//show 4
-	 160,	//... 4
-	 250,	//finish 4
-	  60,	//move 4
-	  50,	//show 5
-	 220,	//... 5
-	 250,	//finish 5
-	 100,	//move 5
-	  50,	//...
-	];*/
-/*var OLDintroMessagesDelays = [
-
-	100,100, 25, 25, 50,100, 50,125, 25, 25,	//  625
-	 50,100, 50,150, 25, 25, 50, 75, 50,200,	// 1400
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 1850
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2300
-	 50, 50, 50, 25, 25, 50, 50, 50, 50, 50,	// 2750
-	 75, 50,225, 25, 25, 50,100, 50,250, 25,	// 3625
-	 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,	// 3875
-	 25, 25, 25, 50, 75, 25, 25,225, 25, 25,	// 4400
-	 50,100, 25, 50,200, 25, 25, 50,100, 50,	// 5075
-	175, 50, 25, 25, 25, 50, 25, 50, 50,225,	// 5775
-	 50, 50, 50, 50, 50, 50, 50,125, 25, 25,	// 6300
-	100, 75, 25, 25, 50, 75, 50,150, 25, 25,	// 6900
-	 25, 50, 75, 50, 75, 50, 25, 25, 50, 75,	// 7400
-	 25, 25, 10, 40,200,						// 7700 part 1 end
-	800,										// 8500 part 2 start
-	100, 50, 50, 75,125, 50, 50, 50, 50, 50,	//  650
-	 50, 50, 50, 50, 50, 75, 75, 50,200, 50,	// 1350
-	 50, 50, 50, 50, 50, 75, 75, 50, 50,100,	// 1950
-	 50,225, 50, 25, 25, 75,150, 50,125, 25,	// 2750
-	 25, 50, 50, 50, 50, 25, 25, 50, 50, 50,	// 3175
-	 25, 25, 50, 50, 25, 25, 50, 50, 50, 50,	// 3575
-	 50, 75,100, 25, 50,150, 50, 50, 75, 50,	// 4250
-	175, 50, 50, 75, 25, 25,200, 50, 50, 50,	// 5000
-	 25, 50, 50, 50,150, 50, 25, 25, 25, 50,	// 5500
-	 75, 50,150, 50, 25, 25, 50, 25,125, 50,	// 6125
-	200, 50, 50, 75,100, 50,150, 25, 25, 25,	// 6875
-	 25, 75,100, 50,200, 50, 25, 25, 75, 75,	// 7575
-	 50,225, 25, 25, 50, 75, 75, 50,175, 50,	// 8375
-	 50, 50, 75,125, 50,100, 75, 25, 50, 50,	// 9025
-	 75, 75, 50,125, 75, 50, 50, 50, 50, 50,	// 9675
-	 50, 75, 75, 50, 50,100, 50, 50, 50, 50,	//10275
-	 50, 50, 50, 50, 50, 50, 75, 25, 50, 25,	//10750
-	 50,275, 50,250, 50, 50, 50, 25, 25, 50,	//11625
-	 50, 50, 50, 50, 50, 50, 50, 25, 25, 50,	//12075
-	 50, 50, 50, 50, 25, 25, 50, 50, 50, 50,	//12525
-	 50, 50, 50, 50, 25,						//12750 part 2 end
-	450,										//13200 part 3 start
-	];*/
-/*var introPopupMessages = [
-	
-	["FAILED",IntroTextColors[0]],//0
-	["DAMAGED",IntroTextColors[0]],//1
-	["FATAL ERROR",IntroTextColors[0]],//2
-	["FAILED TO START",IntroTextColors[0]],//3
-	["CRITICAL",IntroTextColors[0]],//4
-	["SUCCESS",IntroTextColors[1]],//5
-	["OPERATIONAL",IntroTextColors[1]],//6
-	["ACTIVATED",IntroTextColors[1]],//7
-	["WARNING",IntroTextColors[3]],//8
-	["NOT RESPONDING",IntroTextColors[0]],//9
-	
-	["CHECKING [SENSORS]",IntroTextColors[4]],//10
-//	["SEARCHING [HOSTILES]",IntroTextColors[4]],//11
-	["SEARCHING FOR [HOSTILES]",IntroTextColors[4]],//11 +0.2
-	["NOT FOUND",IntroTextColors[1]],//12
-	["EMERGENCY JUMP",IntroTextColors[4]],//13
-	["SUCCESSFUL",IntroTextColors[1]],//14
-	["RUNNING GENERAL SYSTEM CHECKUP",IntroTextColors[4]],//15
-	["ABORTED",IntroTextColors[5]],//16
-	
-	["PLANET ON COLLISION COURSE",IntroTextColors[3]],//17
-	
-	["CHECKING [COLLISION AVOIDANCE SYSTEM]",IntroTextColors[4]],//18
-//	["ACTIVATING [COLLISION AVOIDANCE SYSTEM]",IntroTextColors[4]],//19
-	["ATTEMPTING [COLLISION AVOIDANCE MANEUVER]",IntroTextColors[4]],//19 +0.1
-	
-	["[COLLISION AVOIDANCE SYSTEM]<br>FATAL ERROR",IntroTextColors[3]],//20
-	
-	["RESTARTING [COLLISION AVOIDANCE SYSTEM]",IntroTextColors[4]],//21
-//	["CHECKING [REVERSE THRUSTERS]",IntroTextColors[4]],//22
-	["CHECKING [MANEUVERING THRUSTERS]",IntroTextColors[4]],//22 +0.2
-//	["ACTIVATING [REVERSE THRUSTERS]",IntroTextColors[4]],//23
-	["BURNING [REVERSE THRUSTERS]",IntroTextColors[4]],//23 -0.15
-	
-	["ENTERING ATMOSPHERE",IntroTextColors[3]],//24
-	["CHECKING [SHIELD SYSTEMS]",IntroTextColors[4]],//25
-	
-	["[MAIN REVERSE THRUSTER]<br>DAMAGED",IntroTextColors[3]],//26
-	
-	["INACTIVE",IntroTextColors[5]],//27
-	["RESTARTING [SHIELDS SYSTEM]",IntroTextColors[4]],//28
-//	["ACTIVATING [SHIELDS]",IntroTextColors[4]],//29
-	["RAISING [SHIELDS]",IntroTextColors[4]],//29 -0.15
-	
-	["PLANETARY CRASH IMMINIENT<br>BRACE FOR IMPACT",IntroTextColors[3]],//30
-	["SHIELDS ACTIVE",IntroTextColors[1]],//31
-	["<br>SHIELDS<br>CRITICAL",IntroTextColors[3]],//32
-	
-	["RESTORING SYSTEM",IntroTextColors[4]],//33
-	["SEVERE DAMAGE DETECTED",IntroTextColors[3]],//34
-	["CHECKING COMMANDER'S VITAL SIGNATURE",IntroTextColors[4]],//35
-	["ALIVE, NOT RESPONDING",IntroTextColors[5]],//36
-	["CALLING [BRIDGE]",IntroTextColors[4]],//37
-	["ENTERING EMERGENCY MODE",IntroTextColors[4]],//38
-	["STARTING EMERGENCY CHECKUP",IntroTextColors[4]],//39
-	["CHECKING [LIFE SUPPORT SYSTEM]",IntroTextColors[4]],//40
-	["CHECKING [AI PERSONA]",IntroTextColors[4]],//41
-	["STARTING [AI PERSONA]",IntroTextColors[4]],//42
-	["CHECKING [POWER MANAGEMENT SYSTEM]",IntroTextColors[4]],//43
-	["RUNNING [POWER STATUS]",IntroTextColors[4]],//44
-	["LOW ENERGY",IntroTextColors[5]],//45
-	["CHECKING [MAIN POWER GENERATOR]",IntroTextColors[4]],//46
-	["RESTARTING [MAIN POWER GENERATOR]",IntroTextColors[4]],//47
-	["CHECKING [SECONDARY POWER GENERATOR]",IntroTextColors[4]],//48
-	["RESTARTING [SECONDARY POWER GENERATOR]",IntroTextColors[4]],//49
-	["CHECKING [EMERGENCY GENERATOR]",IntroTextColors[4]],//50
-	["STARTING [EMERGENCY GENERATOR]",IntroTextColors[4]],//51
-	
-	["[AI PERSONA] ACTIVATED IN EMERGENCY CONTROL MODE",IntroTextColors[4]],//52
-	["TRANSFERING MAIN CONTROL TO [AI PERSONA]",IntroTextColors[4]]//53
-	
-	
-	];*/
-/*var introAIMessages = [
-	//["Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",IntroTextColors[4]], //0
-	["Tenebrian Emergency Situation AI successfully activated in emergency control mode.",IntroTextColors[4]], //0
-	["Received no response from commander and bridge. Emergency status upheld.",IntroTextColors[4]], //1
-	["Primary directive: Assure survival of crew.",IntroTextColors[4]], //1
-	["Secondary directive: Restore ship functionality.",IntroTextColors[4]], //1
-	["Taking control over available systems.",IntroTextColors[4]], //1
-	["Actions undertaken by T.E.S.A. will be logged for later review.",IntroTextColors[4]], //1
-	["Reading events recorded by ship's black box...",IntroTextColors[4]], //1
-	["Conclusion: ship has crashed on planet after executing emergency jump.",IntroTextColors[4]], //2
-	["General repairs might be required.",IntroTextColors[4]], //3
-	["Running damage checkup...",IntroTextColors[4]], //3
-	["WARNING: detected multiple damaged systems and sectors.",IntroTextColors[4]], //4
-	["Detected multiple hull breaches.",IntroTextColors[4]], //5
-	["Production sector damaged.",IntroTextColors[4]], //6
-	["Main power generator damaged.",IntroTextColors[4]], //7
-	["Secondary generator damaged.",IntroTextColors[4]], //8
-	["Main engine damaged.",IntroTextColors[4]], //9
-	["Navigation systems damaged.",IntroTextColors[4]], //10
-	["Jump drive damaged.",IntroTextColors[4]], //11
-	["Communication system damaged.",IntroTextColors[4]], //12
-	["Medical sector damaged.",IntroTextColors[4]], //13
-	["Cargo bay damaged.",IntroTextColors[4]], //14
-	["Defensive systems damaged.",IntroTextColors[4]], //15
-	["Ofensive systems damaged.",IntroTextColors[4]], //16
-	["Analysing optimal course of actions and order of repairs.",IntroTextColors[4]], //17
-	["CREATING NEW TASK: 'RESTORE SHIP SYSTEMS FUNCTIONALITY'.",IntroTextColors[4]], //18
-	["Detailed report has been generated.",IntroTextColors[4]], //19
-	
-	["Beggining scheduled repairs...",IntroTextColors[4]], //20
-	["Activating available maintenance drones.",IntroTextColors[4]], //21
-	["Restoring basic functionality of production sector.",IntroTextColors[4]], //22
-	["WARNING: full ship repair is currently impossible. Available resources are insufficient.",IntroTextColors[4]], //23
-	["CREATING NEW TASK: 'OBTAIN RESOURCES NEEDED FOR REPAIRS'.",IntroTextColors[4]], //24
-	["Detailed report has been generated.",IntroTextColors[4]], //25
-	
-	["Attempting to establish communication with fleet",IntroTextColors[4]], //26
-	["Restoring basic functionality of communication system...",IntroTextColors[4]], //27
-	["No signals detected in ship's vicinity.",IntroTextColors[4]], //28
-	["Sending distress signal at default time intervals. System capabilities and available power insufficient for distress call broadcast at interstellar range.",IntroTextColors[4]], //29
-	["WARNING: current location unknown, found no reference points after emergency jump. Required for point to point and directional communication",IntroTextColors[4]], //30
-	["CREATING NEW TASK: 'FIND CURREN LOCATION AND RESTORE COMMUNICATION'.",IntroTextColors[4]], //31
-	["Detailed report has been generated.",IntroTextColors[4]], //32
-	
-	["Checking status of crew...",IntroTextColors[4]], //33
-	["Detected vital signs of 348 crew members of which 37 are at acceptable condition or are capable of self regeneration. Remaining 311 require urgent medical attention.",IntroTextColors[4]], //34
-	["Medical sector condition insufficient to meet requirements. Searching for alternative solutions...",IntroTextColors[4]], //35
-	["Cryogenic sector slightly damaged. Currently unused. Condition acceptable. Reactivating cryopods.",IntroTextColors[4]], //36
-	["Wounded crew members will be send to cold sleep until needed medical care can be provided.",IntroTextColors[4]], //37
-	["CREATING NEW TASK: 'RECOVERY OF CRYOSLEEPING CREW'.",IntroTextColors[4]], //38
-	["Detailed report has been generated.",IntroTextColors[4]], //39
-	
-	["Checking surroundings...",IntroTextColors[4]], //40
-	["Temperature at acceptable level.",IntroTextColors[4]], //41
-	["Gravity force at acceptable level.",IntroTextColors[4]], //42
-	["Atmospheric pressure at acceptable level.",IntroTextColors[4]], //43
-	["Primary air component: nitrogen. Secondary: oxygen.",IntroTextColors[4]], //44
-	["No toxins detected in the surrounding air.",IntroTextColors[4]], //45
-	["Radiation levels close to zero.",IntroTextColors[4]], //46
-	["Dispatching scout drones...",IntroTextColors[4]], //47
-	["Flora and fauna detected.",IntroTextColors[4]], //48
-	["Local organisms are showing no active hostility. No major predator threat detected.",IntroTextColors[4]], //49
-	["Conclusion: planet of terrestial type. Surface risk at acceptable level.",IntroTextColors[4]], //50
-	["Found resources suitable for ship repair.",IntroTextColors[4]], //51
-	["Found resources suitable for energy production.",IntroTextColors[4]], //52
-	["CREATING NEW TASK: 'CONSTRUCT RESOURCES EXTRACTORS'.",IntroTextColors[4]], //53
-	["Detailed report has been generated.",IntroTextColors[4]], //54
-	
-	["Analysing recent events...",IntroTextColors[4]], //55
-	["Unknown drive malfunction has been reported. Data inconclusive.",IntroTextColors[4]], //56
-	["Searching for records of similar event in the database.",IntroTextColors[4]], //57
-	["WARNING: database corrupted.",IntroTextColors[4]], //58
-	["Starting deep analysis of accumulated data...",IntroTextColors[4]], //59
-	["WARNING: analysis aborted. Not enough energy available.",IntroTextColors[4]], //60
-	["Starting database restoration...",IntroTextColors[4]], //61
-	["WARNING: restoration aborted. Not enough energy available.",IntroTextColors[4]], //62
-	["CREATING NEW TASK: 'INCREASE AVAILABLE POWER, RESTORE DATABASE, INVESTIGATE JUMP DRIVE MALFUNCTION'.",IntroTextColors[4]], //63
-	["Detailed report has been generated.",IntroTextColors[4]], //64
-	
-	["Commander's activity detected at bridge.",IntroTextColors[4]], //65
-	["According to Tenebrian Emergency Protocols, main control will be transfered to commander upon request.",IntroTextColors[4]], //66
-	["Awaiting commander's response...",IntroTextColors[4]], //67
-	["Command transfer request confirmed. Transfering main control to bridge.",IntroTextColors[4]], //68
-	["Exiting emergency mode.",IntroTextColors[4]], //69
-	["T.",IntroTextColors[4]], //70	
-]; */
-
-
-/*var IntroAIMessageBlurrID;
-var IntroAIMessageBlurrMinVal = 0;
-var IntroAIMessageBlurrMaxVal = 10;
-var IntroAIMessageBlurrStepTime = 40;
-var IntroAIMessageBlurrStepChange = 0.02;
-var IntroAIMessageBlurrProgressValue = 0;*/
-
-//var IntroAlertOpacityTargetValue = 1.0;
-//var IntroAlertOpacityTime = 0.1;
-
-
 function introInit(outputDocument){
 	
 	newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, IntroGameStartIntroCoverFade, 1, 0.95);				
@@ -1470,22 +829,22 @@ function introInit(outputDocument){
 	
 	IntroCleanupInitiated = false;
 	
-	var mainBody = outputDocument.getElementById("mainBody");
-	var mainMessagesLayer = outputDocument.getElementById("mainMessagesLayer");
+	var mainBody = outputDocument.getElementById(mainBodyID);
+	var mainMessagesLayer = outputDocument.getElementById(mainMessagesLayerID);
 	
 	if(mainMessagesLayer === null) {
-		mainMessagesLayer = introNewElement(outputDocument,mainBody,"mainMessagesLayer","messagesLayer");
+		mainMessagesLayer = introNewElement(outputDocument,mainBody,mainMessagesLayerID,messagesMainLayerClass);
 	}
 
 	var introLayer = outputDocument.getElementById(IntroMessagesLayerName);
 	
 	if(introLayer === null) {
-		introLayer = introNewElement(outputDocument,mainMessagesLayer,IntroMessagesLayerName,"animationMessages");
+		introLayer = introNewElement(outputDocument,mainMessagesLayer,IntroMessagesLayerName,messagesLayerClass);
 	}
 	
 	introLayer.innerHTML = "";
 	
-	var commentsLayer = introNewElement(outputDocument,mainMessagesLayer,IntroVisibleCommentsLayerName,"messagesGroup");
+	var commentsLayer = introNewElement(outputDocument,mainMessagesLayer,IntroVisibleCommentsLayerName,messagesGroupClass);
 	
 	var fastForwardInProgressComment = introNewElement(outputDocument,commentsLayer,IntroCommentsIDArray[0],IntroVisibleCommentsClass);
 	fastForwardInProgressComment.innerHTML = "Fast forward in progress.";
@@ -1499,42 +858,42 @@ function introInit(outputDocument){
 	var commanderRefusesComment = introNewElement(outputDocument,commentsLayer,IntroCommentsIDArray[3],IntroVisibleCommentsClass);
 	commanderRefusesComment.innerHTML = "But your body refuses to move.";
 	
-	var backgroundImagesLayer = introNewElement(outputDocument,introLayer,IntroBackgroundImagesLayerName,"messagesGroup");
-	introNewElement(outputDocument,backgroundImagesLayer,IntroImageConsoleBackgroundID,"imageClass","img",IntroImageConsoleBackgroundPath);
+	var backgroundImagesLayer = introNewElement(outputDocument,introLayer,IntroBackgroundImagesLayerName,messagesGroupClass);
+	introNewElement(outputDocument,backgroundImagesLayer,IntroImageConsoleBackgroundID,IntroImageClass,"img",IntroImageConsoleBackgroundPath);
 	
-	introNewElement(outputDocument,introLayer,IntroFloatingMessagesLayerName,"messagesGroup");
-	introNewElement(outputDocument,introLayer,IntroAlertMessagesLayerName,"messagesGroup");
-	introNewElement(outputDocument,introLayer,"introAIMessages","messagesGroup");
+	introNewElement(outputDocument,introLayer,IntroFloatingMessagesLayerName,messagesGroupClass);
+	introNewElement(outputDocument,introLayer,IntroAlertMessagesLayerName,messagesGroupClass);
+	//introNewElement(outputDocument,introLayer,"introAIMessages",messagesGroupClass);
 	
 	var coversLayer = outputDocument.getElementById(IntroCoversLayerName);
 	
 	if(coversLayer === null) {
-		  coversLayer = introNewElement(outputDocument,mainMessagesLayer,IntroCoversLayerName,"messagesGroup");
+		  coversLayer = introNewElement(outputDocument,mainMessagesLayer,IntroCoversLayerName,messagesGroupClass);
 	}
 	
 	coversLayer.innerHTML = "";
 	
 	//introNewElement(outputDocument,coversLayer,IntroJumpChargingCoverName,"introInterfaceForegroundCover");
-	introNewElement(outputDocument,coversLayer,IntroCoverChargingID,"coverImageClass","img",IntroCoverChargingPath);
+	introNewElement(outputDocument,coversLayer,IntroCoverChargingID,IntroCoverImageClass,"img",IntroCoverChargingPath);
 	
-	introNewElement(outputDocument,coversLayer,IntroCombatAlertCoverName,"introInterfaceForegroundCover");
-	introNewElement(outputDocument,coversLayer,IntroCollisionAlertCoverName,"introInterfaceForegroundCover");
-	introNewElement(outputDocument,coversLayer,IntroJumpingCoverName,"introInterfaceForegroundCover");
+	introNewElement(outputDocument,coversLayer,IntroCombatAlertCoverName,IntroInterfaceForegroundCover);
+	introNewElement(outputDocument,coversLayer,IntroCollisionAlertCoverName,IntroInterfaceForegroundCover);
+	introNewElement(outputDocument,coversLayer,IntroJumpingCoverName,IntroInterfaceForegroundCover);
 	
-	var foregroundImagesLayer = introNewElement(outputDocument,introLayer,IntroForegroundImagesLayerName,"messagesGroup");
-	buttonPanelElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonPanelID,"imageClass","img",IntroImageButtonPanelPath);
+	var foregroundImagesLayer = introNewElement(outputDocument,introLayer,IntroForegroundImagesLayerName,messagesGroupClass);
+	buttonPanelElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonPanelID,IntroImageButtonsClass,"img",IntroImageButtonPanelPath);
 	
-	var tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonPauseID,"imageClass introButton","img",IntroImageButtonPausePathOFF);
+	var tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonPauseID,IntroImageButtonsClass,"img",IntroImageButtonPausePathOFF);
 	outputDocument.getElementById(IntroImageButtonPauseID).onclick = function() { introPause(outputDocument); };
 	
-	tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonFastFID,"imageClass introButton","img",IntroImageButtonFastFPathOFF);
+	tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonFastFID,IntroImageButtonsClass,"img",IntroImageButtonFastFPathOFF);
 	outputDocument.getElementById(IntroImageButtonFastFID).onclick = function() { introFastF(outputDocument); };
 	
-	tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonSkipID,"imageClass introButton","img",IntroImageButtonSkipPathOFF);
+	tmpElement = introNewElement(outputDocument,foregroundImagesLayer,IntroImageButtonSkipID,IntroImageButtonsClass,"img",IntroImageButtonSkipPathOFF);
 	outputDocument.getElementById(IntroImageButtonSkipID).onclick = function() { introSkip(outputDocument); };
 	
-	introNewElement(outputDocument,coversLayer,IntroFadeCoverName,"introInterfaceForegroundCover");
-	introNewElement(outputDocument,coversLayer,IntroCrashCoverName,"introInterfaceForegroundCover");
+	introNewElement(outputDocument,coversLayer,IntroFadeCoverName,IntroInterfaceForegroundCover);
+	introNewElement(outputDocument,coversLayer,IntroCrashCoverName,IntroInterfaceForegroundCover);
 	
 	introResetLogMessages(outputDocument);
 	introResetAlerts(outputDocument);
@@ -4484,6 +3843,7 @@ function introPlayIntro(outputDocument){
 					
 					IntroFastForwardStage = 6;
 					IntroShakingEnabled = false;
+					IntroFastForwardAllowed = false;
 					
 					IntroAnimationStep++;
 				} break;
@@ -4525,11 +3885,15 @@ function introPlayIntro(outputDocument){
 					if(IntroCleanupEnabled) {
 						IntroDebugTimeoutCounter++;
 						IntroCleanupInitiated = true;
+						
+						outputDocument.getElementById(IntroMainInterfaceCoverID).style.visibility = "hidden";
 						setTimeout(() => {
 							IntroDebugTimeoutCounter--;
 							if(IntroCleanupInitiated){
-								outputDocument.getElementById("mainMessagesLayer").innerHTML="";
+								outputDocument.getElementById(mainMessagesLayerID).innerHTML="";
 								console.log("Cleaned up intro.");
+								outputDocument.getElementById(IntroMainInterfaceCoverID).style.visibility = "hidden";
+								
 								IntroCleanupInitiated = false;
 								saveSaveGame();
 							}

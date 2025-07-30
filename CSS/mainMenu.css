@@ -1,0 +1,125 @@
+#mainMenuWindow{
+	background: hsla(120,100%,00%,0.35);	
+
+	bottom: MAX(10%, 100px);
+	
+	width: 80%;
+	max-width: 1200px;
+	min-width:600px;
+	
+	visibility: visible;
+	opacity: 1.0;
+	
+	/*
+	mask-image: linear-gradient(180deg,
+	hsla(0,100%,100%,0.0) 0px,
+	hsla(0,100%,100%,1) 5%,
+	hsla(0,100%,100%,1) 90%,
+	hsla(0,100%,100%,0.0) 100%);*/
+	
+	overflow: hidden;
+	
+}
+
+#mainMenuContent{
+	display: flex;
+	flex-wrap: wrap;
+	flex:1;
+	justify-content: space-around;
+	align-content: space-around;
+	
+	height: calc(95%);
+}
+
+.mainMenuButton{
+	width: 250px;
+	
+	min-height:150px;
+	
+	text-align: center;
+	vertical-align: bottom;
+	align-content: center;
+	
+	padding-top: 1px;
+	padding-bottom: 1px;
+	
+	box-sizing: border-box;
+	border: solid hsla(180,100%,75%,1) 1px;
+	outline: solid hsla(180,100%,75%,1) 2px;
+	border-radius:0px;
+
+	background: hsla(210,100%,75%,0.05);
+	
+	margin: 15px;
+	
+	cursor: pointer;
+}
+.mainMenuButton .mainMenuButtonImage{
+	border-bottom: solid hsla(180,100%,75%,0.75) 0px;
+	opacity: 0.75;
+	
+	pointer-events: none;
+}
+.mainMenuButton .mainMenuButtonText{
+	border-top: solid hsla(180,100%,75%,0.75) 1px;
+	
+	pointer-events: none;
+}
+.mainMenuButton:hover{
+	font-style: bold;
+	
+	padding-top: 0px;
+	padding-bottom: 0px;
+	
+	margin-bottom:15px;
+	border-radius:1px;
+	
+	box-sizing: border-box;
+	border: solid hsla(180,100%,85%,1) 2px;
+	outline: solid hsla(180,100%,75%,1) 3px;
+	background: hsla(210,100%,0%,0.25);
+	
+}
+.mainMenuButton:hover .mainMenuButtonImage{
+	border-bottom: solid hsla(180,100%,75%,1) 0px;
+	opacity: 1.0;
+	
+}
+.mainMenuButton:hover .mainMenuButtonText{
+	
+	padding-top: 4px;
+	border-top: solid hsla(180,100%,75%,1) 2px;
+	box-shadow: 0 -1px 0 hsla(180,100%,75%,1);
+	
+	color: hsla(180,100%,80%,1);
+	
+}
+.mainMenuBlankSpace{
+	width: 250px;
+	
+	min-height:150px;
+	box-sizing: border-box;
+	border: solid hsla(180,75%,75%,0.0) 2px;
+	
+	margin: 15px;
+}
+.mainMenuButtonImage{
+	width:150px;
+	height:auto;
+	object-fit: contain;
+
+	position: relative;
+	pointer-events: none;
+	
+}
+.mainMenuButtonText{
+	display: block;
+	bottom: 0px;
+	height: 20%;
+	position: relative;
+	
+	color: hsla(180,100%,80%,0.75);
+	
+	padding: 5px;
+	pointer-events: none;
+}

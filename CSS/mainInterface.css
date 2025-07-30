@@ -1,0 +1,383 @@
+/* STRUCTURAL */
+.messagesLayer{
+	width:auto;
+	padding:0px;
+	height: auto;
+	position:relative;
+	margin:0 auto;
+	pointer-events: none;
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+.animationMessages{
+	height:100%;
+}
+.messagesGroup{
+	height:100%;
+}
+#mainMessagesLayer{
+	
+	/*z-index: 100;*/
+}
+
+/* BACKGROUNDS AND FOREGROUNDS */
+
+.interfaceBackgroundCover{
+	position:fixed;
+	
+	width:100%;
+	height:100%;
+	
+	top: 0px;
+	
+	margin:0px;
+	padding:0px;
+}
+.underInterfaceBackgroundCover{
+	/*z-index: -20;*/
+}
+.overInterfaceBackgroundCover{
+	/*z-index: 20;*/
+}
+.introInterfaceCovers{
+	visibility: hidden;
+}
+
+#mainOverInterfaceBackgroundCover{
+	visibility:visible;
+	background-color: black;
+}
+
+#interfaceBackgroundCoverStars{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/Background stars_2.png");
+	background-position: 0px, 0px;
+}
+#interfaceBackgroundCoverGrid{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/Background honeycombTransparent_2.png");
+	background-position: -20px, 0px;
+	
+	opacity: 0.15;
+}
+
+
+/* TOP/BOTTOM BARS */
+
+.interfaceBar{
+	display: flex;
+	justify-content: center;
+	
+	box-sizing: border-box;
+	
+	user-select: none;
+	
+	text-align: center;
+	
+	width:100%;
+}
+.mainInterfaceBar{
+	position: fixed;
+	height: 100px;
+}
+.mainInterfaceBar .interfaceTopBarElement{
+	padding-top: 15px;
+}
+.mainInterfaceBar .interfaceBarLeftElement{
+	width: 400px;
+}
+.mainInterfaceBar .interfaceBarMiddleElement{	
+	width: max(calc(100% - 800px), 200px);
+}
+.mainInterfaceBar .interfaceBarRightElement{
+	width: 400px;
+}
+
+.interfaceTopBar{
+	top: 0px;
+	
+	margin-bottom: 0%;
+}
+.interfaceBottomBar{
+	bottom: 0px;
+	
+	margin-top:0%;
+}
+
+.interfaceBarElement{
+	position: relative;
+	
+	margin-top: 0px;
+	margin-bottom: 0px;
+	
+	box-sizing: border-box;
+}
+.interfaceTopBarElement{
+	
+}
+.interfaceBottomBarElement{
+
+	padding-bottom: 0px;
+}
+#mainInterfaceTopBar{
+	background: rgba(0,0,100,0.0);
+	border: solid hsla(0,100%,75%,0.5) 0px;
+}
+#mainInterfaceBottomBar{
+	background: rgba(0,0,100,0.0);
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	
+	height:100px;
+}
+
+.interfaceBarLeftElement{
+	background-position: right;
+	
+	padding-right: 90px;
+	padding-left:30px;
+	
+	text-align: left;
+	
+	right:0px;
+	z-index:1;
+}
+#mainInterfaceBottomBarLeft{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/BottomBar_Left_3.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	padding-top: 40px;
+}
+#mainInterfaceTopBarLeft{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Left.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	padding-bottom: 25px;
+}
+
+.interfaceBarMiddleElement{
+	left: 0;
+    right: 0;
+	
+	z-index:2;
+}
+#mainInterfaceBottomBarMiddle{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/BottomBar_Middle_3.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+}
+#mainInterfaceTopBarMiddle{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Middle.png");
+	border: solid hsla(180,100%,75%,0.5) 0px;
+	
+	padding-top: 0px;
+}
+
+.interfaceBarRightElement{
+	background-position: left;
+	
+	padding-left: 90px;
+	padding-right: 30px;
+	
+	text-align: right;
+	
+	left: 0px;
+	
+	z-index:1;
+}
+#mainInterfaceBottomBarRight{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/BottomBar_Right_3.png");
+	border: solid hsla(270,100%,75%,0.5) 0px;
+	
+	padding-top: 30px;
+}
+#mainInterfaceTopBarRight{
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Right.png");
+	border: solid hsla(270,100%,75%,0.5) 0px;
+	
+	padding-bottom: 25px;
+}
+
+/* INTERFACE TEXT */
+
+.interfaceTextContainer{
+	height:100%;
+	
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.interfaceText{
+	pointer-events: none;
+}
+.interfaceDynamicText{
+	color: hsla(0,0%,100%,1);
+}
+.interfaceDimmedText{
+	color: hsla(0,0%,100%,0.5);
+}
+.interfacePositiveText{
+	color: hsla(120,100%,65%,1);
+}
+.interfaceNegativeText{
+	color: hsla(0,100%,65%,1);
+}
+.interfaceWarningText{
+	color: hsla(60,100%,65%,1);
+}
+
+
+/* IMAGES AND BUTTONS */
+
+.interfaceButton{
+	
+}
+.interfaceBarImage{
+	width: 75px;
+	opacity: 0.75;
+}
+.interfaceBarButton{
+	width: 75px;
+	opacity: 0.75;
+	
+	pointer-events: auto;
+	cursor: pointer;
+}
+.interfaceBarButton:hover{
+	opacity: 1;
+	scale: 1.2;
+	
+	transition-duration: 0.25s;
+}
+.interfaceReturnButton{
+	opacity: 0.75;
+	
+	background: hsla(90,100%,50%,0.0);
+	
+	position: relative;
+	
+	right: 0px;
+	top: 20px;
+	
+	width: auto;
+	height: 80%;
+	
+	pointer-events: auto;
+	cursor: pointer;
+}
+.interfaceReturnButton:hover{
+	opacity: 1;
+	scale:1.20;
+	
+	 transition-duration: 0.4s;
+}
+
+.interfaceWindowHeaderText{
+	
+	background: hsla(30,100%,50%,0.0);
+	border: solid hsla(180,75%,75%,1) 0px;
+	border-radius: 0px;
+	border-top: 0px;
+	
+	font-size: 125%;
+	text-align: center;
+	
+	display: inline-block;
+	
+	min-width:max(80%, 180px);
+	left: 0;
+	right: 0;
+	height: 100%;
+	margin:auto;
+	
+	padding-top: 10px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	position: relative;
+	
+	z-index:1;
+}
+.interfaceMenuIconImage{
+	
+	background: hsla(60,100%,50%,0.0);
+	
+	position: relative;
+	
+	scale: 1.2;
+	
+	left: 0px;
+	top: 20px;
+	
+	height: min(100px,100%);
+	width: auto;
+}
+
+.interfaceToggleableMenuElement{
+	visibility: hidden;
+	opacity: 0.0;
+}
+.interfaceWindow{
+	position: fixed;
+	
+	user-select: none;
+	background: hsla(0,0%,0%,0.35);	
+	
+	border: solid hsla(180,75%,75%,1) 0px;
+	
+	top: MAX(10%,120px);
+	left: 0;
+    right: 0;
+	
+	max-height:min(90%,1200px);
+	
+	margin: auto;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	
+	overflow:auto;
+}
+.interfaceWindow::-webkit-scrollbar {
+    /*width: 0px;
+    background: transparent;*/
+}
+
+.interfaceWindowContent{
+	
+	background: linear-gradient(90deg, 
+	hsla(120,100%,0%,0.0) 0px, 
+	hsla(120,100%,0%,0.35) 25px, 
+	hsla(120,100%,0%,0.35) calc(100% - 25px), 
+	hsla(120,100%,0%,0.0) 100%);
+	
+	box-sizing: border-box;
+	
+	padding: 3%;
+	
+	
+	bottom:0;
+	top: 0;
+	margin: auto;
+	
+	width: 100%;
+	
+	position: relative;
+	
+	overflow-y:auto;
+	
+	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 10%, hsla(0,100%,100%,1) 90%,hsla(0,100%,100%,0.0) 100%);
+	
+	scrollbar-color: hsla(180,100%,50%,0.1) transparent;
+}
+/*.interfaceWindowContent::-webkit-scrollbar {
+    scrollbar-color: hsla(180, 100%, 50%, 1) transparent;
+    scrollbar-width: thin;
+}
+
+.interfaceWindowContent::-webkit-scrollbar { width: 2px; height: 2px;  background: hsla(180,100%,50%,0.0);}
+.interfaceWindowContent::-webkit-scrollbar-track { background: hsla(180,100%,50%,0.0);}
+.interfaceWindowContent::-webkit-scrollbar-track:hover { background: hsla(180,100%,50%,0.0);}
+.interfaceWindowContent::-webkit-scrollbar-thumb { background: hsla(180,100%,75%,0.10);}
+
+.interfaceWindowContent:hover::-webkit-scrollbar-thumb { background: hsla(180,100%,50%,0.15);}
+
+*/

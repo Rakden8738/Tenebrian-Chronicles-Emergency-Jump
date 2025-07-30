@@ -5,119 +5,227 @@
 	<head>
 		<title>TC: Emergency Jump</title>
 		<link rel="stylesheet" type="text/css" href="CSS\base.css">
+		<!--
+		Font downloaded in form of file in case if font itself cannot be loaded through googleapis
 		<link href='https://fonts.googleapis.com/css?family=Kdam Thmor Pro' rel='stylesheet'>
+		<link rel="stylesheet" type="text/css" href="CSS\FONT\FONT.css">
+		-->
+		
 		<script src="SCRIPTS\main.js"></script>
 		<script src="SCRIPTS\timeController.js"></script>
 		<script src="SCRIPTS\saveLoad.js"></script>
 		<script src="SCRIPTS\animations.js"></script>
 		<script src="SCRIPTS\intro.js"></script>
 		<script src="SCRIPTS\interface.js"></script>
+		
 	</head>
 
 	<body id="mainBody" onLoad="mainLoadGame(document);" >
-		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundStars"> </div>
-		<div class="interfaceBackgroundCover" id="underInterfaceBackgroundGrid"> </div>
-		<div class="interfaceTopBar" id="mainInterfaceTopBar">
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarLeft">
-				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Operators: 
-					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsAvailableText">4</span> 
-					(Max: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsMaxText">20</span>)
+		<div class="interfaceBackgroundCover underInterfaceBackgroundCover" id="interfaceBackgroundCoverStars"> </div>
+		<div class="interfaceBackgroundCover underInterfaceBackgroundCover" id="interfaceBackgroundCoverGrid"> </div>
+		
+		
+		<div class="interfaceBar interfaceTopBar mainInterfaceBar" id="mainInterfaceTopBar">
+		
+			<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="mainInterfaceTopBarLeft">
+				<span class="interfaceText" id="mainInterfaceLeftSideText1">
+					Operators: 
+					<span class="interfaceText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
+						4
+					</span> 
+					(Max: 
+					<span class="interfaceText interfaceDynamicText" id="mainInterfaceOperatorsMaxText">
+						20
+					</span>
+					)
 				</span>
 				<br>
-				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Influence: 
-					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceInfluenceText">21 37</span> 
+				<span class="interfaceText" id="mainInterfaceLeftSideText2">
+					Influence: 
+					<span class="interfaceText interfaceDynamicText" id="mainInterfaceInfluenceText">
+						21 37
+					</span> 
 				</span>
 			</div>
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarMiddle">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowHomeImage" onClick = "console.log('Main menu!');">
+			<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="mainInterfaceTopBarMiddle">
+				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowHomeImage">
 			</div>
-			<div class="interfaceBarElement mainInterfaceTopBarElement" id="mainInterfaceTopBarRight">
-				<span class="interfaceBarText" id="mainInterfaceRightSideText">
-					Cycle: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceDateYearText">2002</span> 
-					Day: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceDateDayText">92</span> 
+			<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="mainInterfaceTopBarRight">
+				<span class="interfaceText" id="mainInterfaceRightSideText">
+					Cycle: 
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateYearText">
+						2002
+					</span> 
+					Day: 
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateDayText">
+						92
+					</span> 
 				</span>
 			</div>
+			
 		</div>
-		<div class="interfaceWindow" id="mainInterfaceWindow">
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowPlanetsButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowPlanetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowPlanetsText">PLANETS</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSystemsButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSystemsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowSystemsText">STAR SYSTEMS</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowGalaxyButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowGalaxyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowGalaxyText">GALAXY MAP</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowNetworksButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowNetworksImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowNetworksText">GATE NETWORKS</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowFleetsButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowFleetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowFleetsText">MANAGE FLEETS</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowResearchButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowResearchImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowResearchText">RESEARCH PANEL</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowMissionsButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowMissionsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowMissionsText">PROJECTS AND MISSIONS</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowGovernmentButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowGovernmentImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowGovernmentText">GOVERNMENT OVERVIEW</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowDiplomacyButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowDiplomacyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowDiplomacyText">DIPLOMACY MENU</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowArchivesButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowArchivesImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowArchivesText">ARCHIVES</span>
-			</div>
-			<div class="interfaceWindowElement mainInterfaceBlankSpace" id="mainInterfaceWindowDiplomacyButton">
-				
-			</div>
-			<div class="interfaceWindowElement mainInterfaceButton" id="mainInterfaceWindowSettingsButton">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSettingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<span class="interfaceWindowElement mainInterfaceButtonText" id="mainInterfaceWindowSettingsText">GAME SETTINGS</span>
-			</div>
-		</div>
-		<div class="interfaceBottomBar" id="mainInterfaceBottomBar">
-			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarLeft">
-				<span class="interfaceBarText" id="mainInterfaceLeftSideText">Researching: 
-					<span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceOperatorsAvailableText">Interstellar Travel II</span> 
-					Progress: <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceResearchAvailableText">253</span> / <span class="interfaceBarText interfaceBarDynamicText" id="mainInterfaceResearchMaxText">1000</span> ( <span class="interfaceBarText interfaceBarPositiveText" id="mainInterfaceResearchGainText">+43.2/day</span> ) 
-				</span>
-			</div>
-			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarMiddle">
-				<div class="" id="mainInterfaceBottomTextContainer">
-					<span class="interfaceBarText interfaceBarDimmedText" id="mainInterfaceBottomText">Game autosaved successfully.</span> 
+		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
+			<div class="interfaceWindowContent" id="mainMenuContent">
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowPlanetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowPlanetsText">PLANETS</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowSystemsButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowSystemsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowSystemsText">STAR SYSTEMS</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowGalaxyButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowGalaxyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowGalaxyText">GALAXY MAP</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowNetworksButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowNetworksImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowNetworksText">GATE NETWORKS</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowFleetsButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowFleetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowFleetsText">MANAGE FLEETS</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowResearchButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowResearchImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowResearchText">RESEARCH PANEL</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowMissionsButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowMissionsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowMissionsText">PROJECTS AND MISSIONS</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowGovernmentButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowGovernmentImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowGovernmentText">GOVERNMENT OVERVIEW</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowDiplomacyButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowDiplomacyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowDiplomacyText">DIPLOMACY MENU</span>
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowArchivesButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowArchivesImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowArchivesText">ARCHIVES</span>
+				</div>
+				<div class="mainMenuBlankSpace" id="mainMenuWindowEmptySpace1">
+					
+				</div>
+				<div class="interfaceButton mainMenuButton" id="mainMenuWindowSettingsButton">
+					<img class="mainMenuButtonImage" id="mainMenuWindowSettingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="mainMenuButtonText" id="mainMenuWindowSettingsText">GAME SETTINGS</span>
 				</div>
 			</div>
-			<div class="interfaceBarElement mainInterfaceBottomBarElement" id="mainInterfaceBottomBarRight">
-				<img class="interfaceWindowElement mainInterfaceButtonImage" id="mainInterfaceWindowSettingsShortcutImage" onClick = "console.log('Settings!');">
+		</div>		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
+			<div class="interfaceBar interfaceTopBar settingsMenuBar" id="settingsMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="settingsMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="settingsMenuWindowHeaderText">SETTINGS MENU</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="settingsMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			<div class="interfaceWindowContent" id="settingsMenuContent">
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
+					</div>
+				</div>
+			</div>
+			<div class="interfaceBar interfaceBottomBar settingsMenuBar" id="settingsMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="settingsMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="settingsMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="settingsMenuBottomBarRight"></div>
 			</div>
 		</div>
-		<div class="interfaceBackgroundCover" id="overInterfaceBackgroundCover"> </div>
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
+			<div class="interfaceBar interfaceTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetOverviewMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="planetOverviewMenuWindowHeaderText">PLANET OVERVIEW</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="planetOverviewMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="planetOverviewMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			<div class="interfaceWindowContent" id="planetOverviewMenuContent">
+				
+			</div>
+			<div class="interfaceBar interfaceBottomBar planetOverviewMenuBar" id="planetOverviewMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="planetOverviewMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="planetOverviewMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="planetOverviewMenuBottomBarRight"></div>
+			</div>
+		</div>
+		
+		<div class="interfaceBar interfaceBottomBar mainInterfaceBar" id="mainInterfaceBottomBar">
+			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="mainInterfaceBottomBarLeft">
+				<span class="interfaceBarText" id="mainInterfaceLeftSideText">
+					Researching: 
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
+						Interstellar Travel II
+					</span> 
+					Progress: 
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceResearchAvailableText">
+						253
+					</span>
+					/
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceResearchMaxText">
+						1000
+					</span>
+					(
+					<span class="interfaceBarText interfacePositiveText" id="mainInterfaceResearchGainText">
+						+43.2/day
+					</span>
+					) 
+				</span>
+			</div>
+			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="mainInterfaceBottomBarMiddle">
+				<div class="interfaceTextContainer" id="mainInterfaceBottomBarTextContainer">
+					<span class="interfaceText interfaceDimmedText" id="mainInterfaceBottomText">
+						Game autosaved successfully.
+					</span> 
+				</div>
+			</div>
+			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="mainInterfaceBottomBarRight">
+				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowSettingsShortcutImage">
+			</div>
+		</div>
+		
+		
+		<div class="interfaceBackgroundCover overInterfaceBackgroundCover" id="mainOverInterfaceBackgroundCover"> </div>
 		<div class="messagesLayer" id="mainMessagesLayer">
-			    
+			<!--
 			<div class="animationMessages" id="introMessages">
 				<div class="messagesGroup" id="introFloatingTextGroup">
 					<div class="floatingText" id="introFloatingText_1"> </div>
-					<div class="floatingText" id="introFloatingText_2"> </div>
-					<div class="floatingText" id="introFloatingText_3"> </div>
-					<div class="floatingText" id="introFloatingText_4"> </div>
-					<div class="floatingText" id="introFloatingText_5"> </div>
-					<div class="floatingText" id="introFloatingText_6"> </div>
-					<div class="floatingText" id="introFloatingText_7"> </div>
-					<div class="floatingText" id="introFloatingText_8"> </div>
-					<div class="floatingText" id="introFloatingText_9"> </div>
-					<div class="floatingText" id="introFloatingText_10"> </div>
 				</div>
 				
 				<div class="messagesGroup" id="introWarningMessages">
@@ -130,63 +238,6 @@
 						</div>
 						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_1"></div>
 					</div>
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_2">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_2"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_2">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_2">HEADER 2</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_2">WARNING 2</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_2"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_2"></div>
-					</div>
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_3">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_3"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_3">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_3">HEADER 3</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_3">WARNING 3</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_3"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_3"></div>
-					</div>
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_4">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_4"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_4">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_4">HEADER 4</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_4">WARNING 4</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_4"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_4"></div>
-					</div>
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_5">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_5"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_5">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_5">HEADER 5</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_5">WARNING 5</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_5"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_5"></div>
-					</div>
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_6">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_6"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_6">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_6">HEADER 6</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_6">WARNING 6</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_6"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_6"></div>
-					</div>
-				</div>
-				<div class="messagesGroup" id="introAIMessages">
-					<div class="backgroundWindow AIwindow" id="introAIMessageWindow_1">
-						<div class="messageWindowBackground AIMessageWindowBackground" id="introAIMessageWindowBackground_1"></div>
-						<div class="messageWindowContent AIMessageWindowContent"  id="introAIMessageWindowContent_1">
-							
-							<div class="messageWindowText AIMessageWindowText" id="introAIMessageWindowText_1"> </div>
-							<div class="messageWindowHeader AIMessageWindowHeader" id="introAIMessageWindowTop_1"> </div>
-							<div class="messageWindowFooter AIMessageWindowFooter" id="introAIMessageWindowBottom_1"> </div>
-						</div>
-						<div class="messageWindowForeground AIMessageWindowForeground" id="introAIMessageWindowForeground_1"></div>
-					</div>
 				</div>
 				<div class="messagesGroup" id="introOverInterfaceCovers">
 					<div class="interfaceBackgroundCover" id="introOverInterfaceAlertCover"> </div>
@@ -194,28 +245,13 @@
 					<div class="interfaceBackgroundCover" id="introOverInterfaceAICover"> </div>
 				</div>
 			</div>
-			
-			
-			
-		
-			
-			
+			-->
 		</div>
 		
 	</body>
 
 	<script>
-		var ConnectionTestElementID = "CONNECTION_TEST";
 
-		function ConnectionTest(){
-			try{
-				MAIN_ConnectionTest(document, ConnectionTestElementID);
-			}
-			catch (error) {
-				console.error(error);
-				document.getElementById(ConnectionTestElementID).innerHTML="Failed to load.";
-			}
-		}
 	</script>
 </html>
 

@@ -9,13 +9,15 @@ function connectionTest_animations(outputDocument){
 }
 
 var AnimationMoveBackgroundEnabled = true;
-var AnimationMoveBackgroundStep = 0.25;
+var AnimationMoveBackgroundStep = 0.5;
 var AnimationMoveBackgroundTime = 1.0;
 var AnimationMoveBackgroundStartPosition = 0.0;
 var AnimationMoveBackgroundCurrentPosition = 0.0;
 var AnimationMoveBackgroundReturnPoint = -2000.0;
-var AnimationMoveBackgroundElementID = "underInterfaceBackgroundStars";
+var AnimationMoveBackgroundElementID = "interfaceBackgroundCoverStars";
 var AnimationMoveBackgroundElement = null;
+
+var animationHiddenTextMaskClass = "animationMessagesHiddenText";
 
 function animationDisplayIntro(outputDocument) {
 	
@@ -111,7 +113,7 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 	
 	if(msgSpanPartLength > 0) {
 		msgSpanPart = messageStruct[0].substr(msgLength,msgSpanPartLength);
-		targetTextbox.innerHTML = msgPart+"<span class='messagesHiddenText'>"+msgSpanPart+"</span>";
+		targetTextbox.innerHTML = msgPart+"<span class="+animationHiddenTextMaskClass+">"+msgSpanPart+"</span>";
 	}
 	else{
 		targetTextbox.innerHTML = msgPart;
@@ -208,7 +210,8 @@ function newAnimatedElementOpacity(outputDocument, elementID, animationLength, e
 	if(startingOpacity==-1) startingOpacity = opacityElement.style.opacity*1;
 	
 	var newOpacity = (endOpacity-startingOpacity)*(elapsedTime/animationLength)+startingOpacity;
-	opacityElement.style.opacity=newOpacity;
+	
+	opacityElement.style.opacity = newOpacity;
 	
 	if(endOpacity > startingOpacity && opacityElement.style.visibility != "visible") opacityElement.style.visibility="visible";
 	

@@ -1,7 +1,0 @@
-#TEST_CANVAS{
-	width: 800px;
-	height: 600px;
-	border: solid black 2px;
-	background-color: hsl(240,100%,15%);
-	background-color: hsl(240,0%,100%);
-}

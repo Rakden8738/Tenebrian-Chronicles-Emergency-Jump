@@ -4,6 +4,9 @@ var SaveProperties = [
 	"introDisplayed",
 	"introSkipCounter",
 	"saveTime",
+	"settingsInstantMenuSwitch",
+	"settingsAutosaveEnabled",
+	"mainMenuUnlockedTabs",
 ];
 
 var SaveAutosave = true;
@@ -11,6 +14,8 @@ var SaveDisableAutosaveOnLoadError = true;
 
 var SaveIntroDisplayedOrSkipped = false;
 var SaveIntroSkipCounter = 0;
+
+var SaveUnlockedMainMenuTabs = [true,false,false,false,false,false,false,false,false,false,true];
 
 function connectionTest_saveLoad(outputDocument){
 	if(outputDocument.getElementById("mainBody") !== null) {
@@ -26,16 +31,20 @@ function loadLoadGame(){
 	var tmpSaveObject = JSON.parse(localStorage.getItem("currentSave"));
 	var saveOK = false;
 	
-	if(tmpSaveObject === null){
+	if(tmpSaveObject === null) {
 		console.log("Game save data not found.");
-	}else{
+	}
+	else {
 		saveOK = loadVerifySave(tmpSaveObject);
 	}
 	
-	if(saveOK) {SaveObject = tmpSaveObject;
+	if(saveOK) {
+		SaveObject = tmpSaveObject;
 	
 		SaveIntroDisplayedOrSkipped = SaveObject.introDisplayed;
 		SaveIntroSkipCounter = SaveObject.introSkipCounter;
+		InterfaceChangeMenuTabInstant = SaveObject.settingsInstantMenuSwitch;
+		SaveAutosave = SaveObject.settingsAutosaveEnabled;
 	
 		console.log("Game loaded successfully.");
 	}
@@ -75,9 +84,12 @@ function loadVerifySave(unverifiedSave) {
 function saveCreateSaveObject(){
 	var newSaveObject = {};
 	newSaveObject["gameVersion"] = MainGameVersion;
-	newSaveObject["saveTime"] = ((Date.now()-Date.now()%1000)/1000);
+	newSaveObject["saveTime"] = Math.round(Date.now()/1000);
 	newSaveObject["introDisplayed"] = SaveIntroDisplayedOrSkipped;
 	newSaveObject["introSkipCounter"] = SaveIntroSkipCounter;
+	newSaveObject["settingsInstantMenuSwitch"] = InterfaceChangeMenuTabInstant;
+	newSaveObject["settingsAutosaveEnabled"] = SaveAutosave;
+	newSaveObject["mainMenuUnlockedTabs"] = SaveUnlockedMainMenuTabs;
 	
 	return newSaveObject;
 }

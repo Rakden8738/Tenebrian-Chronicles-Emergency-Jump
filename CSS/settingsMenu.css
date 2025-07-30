@@ -1,0 +1,231 @@
+
+
+#settingsMenuWindow{
+	background: hsla(240,100%,00%,0.35);
+	
+	bottom: MAX(15%, 120px);
+	
+	width: 40%;
+	max-width: 600px;
+	min-width:400px;
+	
+	padding: 0px;
+	padding-bottom: 0%;
+
+	text-align: center;
+	align-content: center;
+	
+	overflow:hidden;
+	
+	/*background: linear-gradient(90deg, hsla(0,0%,0%,0.0) 0px, hsla(0,0%,0%,0.35) 25px, hsla(0,0%,0%,0.35) calc(100% - 25px), hsla(0,0%,0%,0.0) 100%);*/
+	/*mask-image: linear-gradient(90deg, hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px), hsla(0,100%,100%,0.0) 100%);*/
+}
+
+#settingsMenuContent{
+	height: calc(90% - max(10%, 160px));
+	margin-top: 5%;
+}
+
+.settingsMenuBar{
+	position: relative;
+	height: 80px;
+}
+#settingsMenuTopBar{
+	/*background: rgba(0,0,100,0.3);*/
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	
+	height: 80px;
+	
+	padding: 0px;
+}
+#settingsMenuTopBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#settingsMenuTopBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	display: flex;
+    justify-content: center;
+	
+	padding-top: 10px;
+}
+#settingsMenuTopBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#settingsMenuBottomBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#settingsMenuBottomBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	padding-bottom: 10px;
+}
+#settingsMenuBottomBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+
+.settingsMenuOption{
+	position:relative;
+	padding: 5px;
+
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+	border: solid hsla(60,75%,75%,1) 0px;
+	box-sizing: border-box;
+	
+	text-align: center;
+	vertical-align: center;
+	
+	display: flex;
+	
+	background: hsla(0,100%,75%,0.0);
+}
+.settingsMenuSpace{
+	position:relative;
+	padding: 10px;
+	margin: 20px;
+	
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height:5px;
+	
+	border: solid hsla(60,75%,75%,1) 0px;
+	box-sizing: border-box;
+	
+	text-align: center;
+	vertical-align: center;
+	
+	display: flex;
+	
+	background: hsla(0,100%,75%,0.0);
+}
+.settingsMenuOptionCheckbox{
+	position:relative;
+	
+	height: 35px;
+	left: max(5%,15px);
+	width: auto;
+	
+	border: solid hsla(180,75%,75%,1) 0px;
+	outline: solid hsla(180,75%,75%,0.5) 1px;
+	
+	padding:0px;
+	
+	box-sizing: border-box;
+	
+	justify-content: right;
+    align-items: center;
+	
+	display: flex;
+	
+	pointer-events: auto;
+	cursor: pointer;
+
+	background: hsla(60,100%,75%,0.0);
+}
+.settingsMenuOptionCheckbox:hover{
+	outline: solid hsla(180,75%,75%,1) 1px;
+	
+	 transition-duration: 0.2s;
+}
+.settingsMenuOptionButton{
+	position:relative;
+	
+	height: 50px;
+	left: max(5%,15px);
+	width: 150px;
+	
+	outline: solid hsla(180,75%,75%,0.0) 1px;
+	
+	padding:0px;
+	
+	box-sizing: border-box;
+	
+	
+	justify-content: right;
+    align-items: center;
+	
+	display: flex;
+	
+	pointer-events: auto;
+	cursor: pointer;
+
+	background: hsla(60,100%,75%,0.0);
+	
+	opacity: 0.8;
+}
+.settingsMenuOptionButton:hover{
+	opacity:1.0;
+}
+.settingsMenuOptionButton:hover .settingsMenuOptionButtonImage{
+	outline: solid hsla(180,75%,75%,1) 1px;
+	
+	transition-duration: 0.2s;
+}
+.settingsMenuOptionButtonImage{
+	height:100%;
+	width:auto;
+	
+	left:0px;
+	
+	outline: solid hsla(180,75%,75%,0.5) 1px;
+	
+	position:absolute;
+}
+.settingsMenuOptionButtonText{
+	width:80%;
+	margin:auto;
+	left:10%;
+	
+	position:absolute;
+	
+	text-transform:uppercase;
+}
+.settingsMenuOptionText{
+	position:relative;
+	
+	width: 75%;
+	right: max(5%,15px);
+	margin-left: auto;
+	
+	text-align: left;
+	
+	border: solid hsla(300,75%,75%,1) 0px;
+	box-sizing: border-box;
+	
+	justify-content: left;
+    align-items: center;
+	
+	display: flex;
+
+	background: hsla(120,100%,75%,0.0);
+}
