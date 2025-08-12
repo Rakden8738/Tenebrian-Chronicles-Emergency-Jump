@@ -9,14 +9,14 @@ function connectionTest_interface(outputDocument){
 }
 
 var InterfaceMainMenuID = "mainMenuWindow";
-var SettingsMenuID = "settingsMenuWindow";
 var PlanetOverviewMenuID = "planetOverviewMenuWindow";
+var SettingsMenuID = "settingsMenuWindow";
 
 var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png", 
 	"RESOURCES/MAIN_INTERFACE/ICONS/Padlock.png",
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Planets.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/PlanetsV2.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/System.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Galaxy.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Networks.png",
@@ -40,6 +40,11 @@ var InterfaceMainMenuIconPaths = [
 	
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_OFF.png",
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_ON.png",	//20
+	
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Down.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Up.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png",
 ];
 var InterfaceMainMenuButtonImagesID = [
 	"questionmark placeholder",
@@ -68,12 +73,16 @@ var InterfaceMainMenuButtonImagesID = [
 	"gridButton300px",
 	
 	"planetOverviewMenuWindowHeaderImage",
+	"planetOverviewInfoPanelHeaderPreviousPlanetImage",
+	"planetOverviewInfoPanelHeaderNextPlanetImage", //20
 ];
+
+
+//interface refresh and init
 
 var InterfaceAutoRefreshMainMenu = false;
 var InterfaceAutoRefreshSeconds = 5.0;
 var InterfaceMainMenuDebugAccess = false;
-
 var InterfaceButtonsTurnOffClickEffectTimer = 0.20;
 
 
@@ -138,17 +147,14 @@ function interfaceRefreshMenuButtons(outputDocument){
 			},1000*InterfaceAutoRefreshSeconds);
 	}
 }
-
 function interfaceInitMainInterface(outputDocument){
 		
 	//home
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).src = InterfaceMainMenuIconPaths[13];
-	//outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).onclick = function() { interfaceChangeMenuTab(outputDocument,InterfaceMainMenuID); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).onclick = function() { interfaceEnterMainMenu(outputDocument,InterfaceMainMenuID); };
 	
 	//mini settings
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).src = InterfaceMainMenuIconPaths[14];
-	//outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).onclick = function() { interfaceChangeMenuTab(outputDocument,SettingsMenuID); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
 	
 	//all returns
@@ -161,7 +167,7 @@ function interfaceInitMainInterface(outputDocument){
 	//300px buttons if present
 	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[17]);
 	for(var i = 0; i < tmpArray.length; i++){
-		tmpArray[i].src = InterfaceMainMenuIconPaths[19];
+		tmpArray[i].src = InterfaceMainMenuIconPaths[20];
 	}
 }
 function interfaceInitPlanetOverviewMenu(outputDocument){
@@ -171,11 +177,54 @@ function interfaceInitPlanetOverviewMenu(outputDocument){
 	
 	//topbar image in settings menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[18]).src = InterfaceMainMenuIconPaths[2];
+	
+	//planet navigation buttons
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[19]).src = InterfaceMainMenuIconPaths[23];
+	outputDocument.getElementById("planetOverviewInfoPanelHeaderPreviousPlanet").onclick = function() { interfacePlanetOverviewPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[20]).src = InterfaceMainMenuIconPaths[24];
+	outputDocument.getElementById("planetOverviewInfoPanelHeaderNextPlanet").onclick = function() { interfacePlanetOverviewNextPlanet(outputDocument); };
+	
+	//function buttons
+	
+	outputDocument.getElementById("planetOverviewPlanetBuildingsButton").onclick = 
+		function() { interfacePlanetOverviewPlanetBuildings(outputDocument); };
+	outputDocument.getElementById("planetOverviewGoToSystemButton").onclick = 
+		function() { interfacePlanetOverviewGoToSystem(outputDocument); };
+	outputDocument.getElementById("planetOverviewGoToHubButton").onclick = 
+		function() { interfacePlanetOverviewGoToHub(outputDocument); };
+	outputDocument.getElementById("planetOverviewPlanetRoutesButton").onclick = 
+		function() { interfacePlanetOverviewPlanetBuildings(outputDocument); };
+		
+	//planet resource tabs
+	outputDocument.getElementById("planetOverviewResourcesPanelStorageButton").onclick = function() { 
+		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
+		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
+	};
+	outputDocument.getElementById("planetOverviewResourcesPanelProductionButton").onclick = function() { 
+		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelProduction"); 
+		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelProductionButton");
+	};
+	outputDocument.getElementById("planetOverviewResourcesPanelConsumptionButton").onclick = function() { 
+		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelConsumption"); 
+		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelConsumptionButton");
+	};
+	outputDocument.getElementById("planetOverviewResourcesPanelBalanceButton").onclick = function() { 
+		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelBalance"); 
+		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelBalanceButton");
+	};
+	outputDocument.getElementById("planetOverviewResourcesPanelResourcesButton").onclick = function() { 
+		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelResources"); 
+		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
+	};
+	
 }
 function interfaceInitSettingsMenu(outputDocument){
 	//settings in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
 	outputDocument.getElementById("mainMenuWindowSettingsButton").onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
+	
+	//topbar image in settings menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[16]).src = InterfaceMainMenuIconPaths[16];
 	
 	//settings buttons
 	outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").onclick = function() { interfaceSettingsSwitchFastMenuChange(outputDocument); };
@@ -183,32 +232,37 @@ function interfaceInitSettingsMenu(outputDocument){
 	outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").onclick = function() { interfaceSettingsSwitchAutosave(outputDocument); };
 	
 	outputDocument.getElementById("settingsMenuOptionReplayIntroButton").onclick = function() { 
-		outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[20];
+		/*outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[20];
 		setTimeout(() => {
 			outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[19];
-		},InterfaceButtonsTurnOffClickEffectTimer*1000);
+		},InterfaceButtonsTurnOffClickEffectTimer*1000);*/
 		animationDisplayIntro(outputDocument);
 	};
 	
 	outputDocument.getElementById("settingsMenuOptionSaveGameButton").onclick = function() { 
-		outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[20];
+		/*outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[20];
 		setTimeout(() => {
 			outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[19];
-		},InterfaceButtonsTurnOffClickEffectTimer*1000);
+		},InterfaceButtonsTurnOffClickEffectTimer*1000);*/
 		saveSaveGame();
 	};
 	
-	//outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[19];
-	//outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[19];
+	outputDocument.getElementById("settingsMenuOptionExportSaveButton").onclick = function() { 
+		saveExportSave(outputDocument);
+	};
+	outputDocument.getElementById("settingsMenuOptionImportSaveButton").onclick = function() { 
+		loadImportSave(outputDocument);
+	};
+	outputDocument.getElementById("settingsMenuOptionWipeSaveButton").onclick = function() { 
+		saveLoadWipeSave(outputDocument);
+	};
 	
 	//button on/off
 	if(InterfaceChangeMenuTabInstant){
 		outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").src = InterfaceMainMenuIconPaths[17];
-		//outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeText").innerHTML = "Instant movement between menus.";
 	}
 	else{
 		outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").src = InterfaceMainMenuIconPaths[18];
-		//outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeText").innerHTML = "";
 	}
 	
 	//button on/off
@@ -227,8 +281,6 @@ function interfaceInitSettingsMenu(outputDocument){
 		outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").src = InterfaceMainMenuIconPaths[18];
 	}
 			
-	//topbar image in settings menu
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[16]).src = InterfaceMainMenuIconPaths[16];
 	
 }
 
@@ -251,12 +303,14 @@ function interfaceSettingsSwitchAutosave(outputDocument){
 	interfaceInitSettingsMenu(outputDocument);
 }
 
-var InterfaceChangeMenuTabCurrentID = InterfaceMainMenuID;
 
+//interface menu navigation
+
+var InterfaceChangeMenuTabCurrentID = InterfaceMainMenuID;
 var InterfaceChangeMenuTabInstant = false;
-var InterfaceChangeMenuTabFadeOutTime = 0.2;
+var InterfaceChangeMenuTabFadeOutTime = 0.25;
 var InterfaceChangeMenuTabFadeInDelay = 0.1;
-var InterfaceChangeMenuTabFadeInTime = 0.2;
+var InterfaceChangeMenuTabFadeInTime = 0.25;
 var InterfaceChangeMenuTabPathStack = [];
 
 function interfaceEnterElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
@@ -349,3 +403,162 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 }
 
 
+//bottom messages, pseudo-console output
+
+var InterfaceBottomMessagesContainerID = "mainInterfaceBottomBarTextContainer";
+var InterfaceBottomMessagesSingleMessageClass = "interfaceText interfaceDimmedText interfaceBlockText";
+var InterfaceBottomMessagesSingleMessageID = "mainInterfaceBottomTextMessage_";
+var InterfaceBottomMessagesArray = [];
+var InterfaceBottomMessagesClearOld = true;
+var InterfaceBottomMessagesLifeTime = 10;
+var InterfaceBottomMessagesKeepLast = true;
+var InterfaceBottomMessagesDisplayTime = true;
+
+function interfaceAddBottomMessage(outputDocument, messageText){
+	var tmpMessageTime = new Date().toLocaleTimeString();
+	var tmpMessageExpire = Math.round(Date.now()/1000) + InterfaceBottomMessagesLifeTime;
+	
+	InterfaceBottomMessagesArray.push([messageText,tmpMessageTime,tmpMessageExpire]);
+	interfaceRefreshBottomMessages(outputDocument);
+}
+function interfaceRefreshBottomMessages(outputDocument){
+	var tmpElement = outputDocument.getElementById(InterfaceBottomMessagesContainerID);
+	var tmpTime = Math.round(Date.now()/1000);
+	
+	for(var i = 0; i < InterfaceBottomMessagesArray.length; )
+	{
+		if(InterfaceBottomMessagesKeepLast && InterfaceBottomMessagesArray.length <= 1) break;
+		
+		if(InterfaceBottomMessagesArray[i][2] <= tmpTime){
+			InterfaceBottomMessagesArray.shift();
+		}
+		else i++;
+	}
+	
+	tmpElement.innerHTML = "";
+	
+	for(var i = 0; i < InterfaceBottomMessagesArray.length; i++){
+		var tmpNewLine = outputDocument.createElement("div");
+		tmpNewLine.className = InterfaceBottomMessagesSingleMessageClass;
+		tmpNewLine.id = (InterfaceBottomMessagesSingleMessageID + i);
+		if(InterfaceBottomMessagesDisplayTime) tmpNewLine.innerHTML = "[" + InterfaceBottomMessagesArray[i][1]+"]: "+InterfaceBottomMessagesArray[i][0];
+		else tmpNewLine.innerHTML = InterfaceBottomMessagesArray[i][0];
+		tmpElement.append(tmpNewLine);
+	}
+	
+	tmpElement.scrollTop = tmpElement.scrollHeight;
+}
+
+
+//planet overview buttonsvar PlanetOverviewMenuID = "planetOverviewMenuWindow";
+
+var InterfacePlanetOverviewCurrentTab = "";
+var InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
+
+function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
+	
+	/*
+	if(InterfacePlanetOverviewCurrentTab == "") {
+		InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
+		
+		var tmpElementsArray = outputDocument.getElementsByClassName("planetOverviewToggleableResourcesPanel");
+		
+		if(InterfaceChangeMenuTabInstant) {
+			for(var i = 0; i<tmpElementsArray.length; i++){
+				if(tmpElementsArray[i].id == InterfacePlanetOverviewCurrentTab) {
+					tmpElementsArray[i].style.visibility = "inherit";
+					tmpElementsArray[i].style.opacity = 1.0;
+				}
+				else {
+					tmpElementsArray[i].style.visibility = "hidden";
+					tmpElementsArray[i].style.opacity = 0.0;
+				}
+			}
+		}
+		else {
+			for(var i = 0; i<tmpElementsArray.length; i++){
+				if(tmpElementsArray[i].id == InterfacePlanetOverviewCurrentTab) {
+					if(window.getComputedStyle(outputDocument.getElementById(tmpElementsArray[i].id)).visibility != "hidden") {
+						var tmpOpacity = parseFloat(window.getComputedStyle(outputDocument.getElementById(tmpElementsArray[i].id)).opacity);
+						
+						newAnimatedElementOpacity_Inherit(
+							outputDocument, 
+							tmpElementsArray[i].id, 
+							InterfaceChangeMenuTabFadeOutTime, 
+							0, 
+							tmpOpacity
+						);
+					}
+				}
+				else {
+					setTimeout(()=>{
+						newAnimatedElementOpacity_Inherit(
+							outputDocument, 
+							tmpElementsArray[i].id, 
+							InterfaceChangeMenuTabFadeInTime, 
+							1, 
+							0);
+					},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
+				}
+			}
+		}
+		
+		return;
+	}*/
+	
+	if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
+	
+	if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
+	
+	var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTab);
+	var tmpDestinationTab = outputDocument.getElementById(destinationTabID);	
+	
+	if(InterfaceChangeMenuTabInstant) {
+		tmpOriginTab.style.visibility = "hidden";
+		tmpOriginTab.style.opacity = 0.0;
+		
+		tmpDestinationTab.style.visibility = "inherit";
+		tmpDestinationTab.style.opacity = 1.0;
+		}
+	else {
+		var tmpOpacity = parseFloat(window.getComputedStyle(tmpOriginTab).opacity);
+		newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewCurrentTab, InterfaceChangeMenuTabFadeOutTime, 0, tmpOpacity);
+		setTimeout(()=>{
+				newAnimatedElementOpacity_Inherit(outputDocument, destinationTabID, InterfaceChangeMenuTabFadeInTime, 1, 0);
+			},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
+	}
+	
+	InterfacePlanetOverviewCurrentTab = destinationTabID;
+	
+	return;
+}
+function interfacePlanetOverviewActivateTabHeader(outputDocument, headerTabID){
+	if(InterfacePlanetOverviewCurrentTabHeader == "") InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
+	
+	var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTabHeader);
+	var tmpDestinationTab = outputDocument.getElementById(headerTabID);
+	
+	tmpOriginTab.style.opacity = "";
+	tmpDestinationTab.style.opacity = 1.0;
+	
+	InterfacePlanetOverviewCurrentTabHeader = headerTabID;
+}
+
+function interfacePlanetOverviewPlanetBuildings(outputDocument){
+	console.log("Buildings on planet, yay. Wow.");
+}
+function interfacePlanetOverviewGoToSystem(outputDocument){
+	console.log("System overview, yay. Wow.");
+}
+function interfacePlanetOverviewGoToHub(outputDocument){
+	console.log("System hub station, yay. Wow.");
+}
+function interfacePlanetOverviewPlanetRoutes(outputDocument){
+	console.log("Planet auto routes, yay. Wow.");
+}
+function interfacePlanetOverviewPreviousPlanet(outputDocument){
+	console.log("Previous planet, yay. Wow.");
+}
+function interfacePlanetOverviewNextPlanet(outputDocument){
+	console.log("Next planet, yay. Wow.");
+}

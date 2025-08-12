@@ -199,13 +199,40 @@
 
 .interfaceTextContainer{
 	height:100%;
+	width:100%;
 	
 	display: flex;
-    justify-content: center;
+	flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+	
+	overflow-y:scroll;
+	
+	position:relative;
+	box-sizing: border-box;
+}.interfaceTextContainer::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
+#mainInterfaceBottomBarTextContainer{
+	padding-bottom: 5px;
+	padding-top: 5px;
+	height:80px;
+	top:15px;
+	
+	mask-image: linear-gradient(0deg, 
+	hsla(0,100%,100%,0.0) 0px, 
+	hsla(0,100%,100%,1) 10px, 
+	hsla(0,100%,100%,1) calc(100% - 10px), 
+	hsla(0,100%,100%,0.0) 100%);
+}
+
 .interfaceText{
 	pointer-events: none;
+}
+.interfaceBlockText{
+	width:100%;
+	margin-bottom: -3px;
 }
 .interfaceDynamicText{
 	color: hsla(0,0%,100%,1);
@@ -287,7 +314,7 @@
 	height: 100%;
 	margin:auto;
 	
-	padding-top: 10px;
+	padding-top: 0px;
 	
 	display: flex;
 	justify-content: center;
@@ -303,7 +330,7 @@
 	
 	position: relative;
 	
-	scale: 1.2;
+	scale: 1.0;
 	
 	left: 0px;
 	top: 20px;
@@ -324,11 +351,11 @@
 	
 	border: solid hsla(180,75%,75%,1) 0px;
 	
-	top: MAX(10%,120px);
+	top: 100px;
 	left: 0;
     right: 0;
 	
-	max-height:min(90%,1200px);
+	height: min(calc(100% - 200px),1200px);
 	
 	margin: auto;
 	margin-bottom: 0px;
@@ -353,6 +380,7 @@
 	
 	padding: 3%;
 	
+	height: calc(100% - 160px);
 	
 	bottom:0;
 	top: 0;

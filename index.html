@@ -6,18 +6,23 @@
 		<title>TC: Emergency Jump</title>
 		<link rel="stylesheet" type="text/css" href="CSS\base.css">
 		<!--
-		Font downloaded in form of file in case if font itself cannot be loaded through googleapis
+			Font downloaded in form of file in case if font itself cannot be loaded through googleapis
 		<link href='https://fonts.googleapis.com/css?family=Kdam Thmor Pro' rel='stylesheet'>
 		<link rel="stylesheet" type="text/css" href="CSS\FONT\FONT.css">
 		-->
 		
 		<script src="SCRIPTS\main.js"></script>
-		<script src="SCRIPTS\timeController.js"></script>
-		<script src="SCRIPTS\saveLoad.js"></script>
-		<script src="SCRIPTS\animations.js"></script>
-		<script src="SCRIPTS\intro.js"></script>
-		<script src="SCRIPTS\interface.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\timeController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\saveLoadController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\animationController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\introController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\interfaceController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\planetController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\systemController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\resourceController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\buildingController.js"></script>
 		
+		<script src="SCRIPTS\SCENARIOS\earlyAlpha.js"></script>
 	</head>
 
 	<body id="mainBody" onLoad="mainLoadGame(document);" >
@@ -130,6 +135,32 @@
 			</div>
 			<div class="interfaceWindowContent" id="settingsMenuContent">
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
+					</div>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionExportImportSave">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionExportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
+					</div>
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionImportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
+					</div>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionExportImportTextareaRow">
+					<div class="settingsMenuOptionTextarea" id="settingsMenuOptionExportImportTextareaContainer">
+						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
 					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
@@ -146,14 +177,10 @@
 					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
-				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
+				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
 					</div>
 				</div>
 			</div>
@@ -176,7 +203,173 @@
 				</div>
 			</div>
 			<div class="interfaceWindowContent" id="planetOverviewMenuContent">
+				<div class="planetOverviewElementsContainer" id="planetOverviewLeftSide">
+					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
+					<div class="planetOverviewElementsContainer" id="planetOverviewButtonsContainer">
+						<div class="planetOverviewButton" id="planetOverviewPlanetBuildingsButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetBuildingsButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewPlanetBuildingsButtonText">Planet buildings</span>
+						</div>
+						<div class="planetOverviewButton" id="planetOverviewPlanetShipyardButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetShipyardButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewPlanetShipyardButtonText">Planet shipyard</span>
+						</div>
+						<div class="planetOverviewButton" id="planetOverviewGoToSystemButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToSystemButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewGoToSystemButtonText">Go to system</span>
+						</div>
+						<div class="planetOverviewButton" id="planetOverviewGoToHubButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToHubButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewGoToHubButtonText">Hub station</span>
+						</div>
+						<div class="planetOverviewButton" id="planetOverviewPlanetRoutesButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetRoutesButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewPlanetRoutesButtonText">Delivery routes</span>
+						</div>
+					</div>
+				</div>
+				<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanel">
+					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeader">
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderPreviousPlanet">
+							<img class="planetOverviewInfoPanelHeaderPlanetArrow" id="planetOverviewInfoPanelHeaderPreviousPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderCurrentPlanet">
+							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderPlanetNameContainer">
+								<span class="interfaceText interfaceDynamicText" id="planetOverviewInfoPanelHeaderPlanetNameText">Argon Prime</span>
+							</div>
+							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderSystemNameContainer">
+								<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNameText">Sonra</span>&nbsp;<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNamePrefix">system</span>
+							</div>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderNextPlanet">
+							<img class="planetOverviewInfoPanelHeaderPlanetArrow" id="planetOverviewInfoPanelHeaderNextPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						</div>
+					</div>
+					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_1">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_1">Name_1</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_1">Value_1</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_2">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_2">Name_2</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_2">Value_2</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_3">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_3">Name_3</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_3">Value_3</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_4">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_4">Name_4</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_4">Value_4</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_5">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_5">Name_5</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_5">Value_5</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_6">
+							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_6">Name_6</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_6">Value_6</span>
+						</div>
+					</div>
+				</div>
+				<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanel">
+					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelHeader">
+						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelStorageButton">
+							Storage
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelProductionButton">
+							Production
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelConsumptionButton">
+							Consumption
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelBalanceButton">
+							Balance
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelResourcesButton">
+							Natural resources
+						</div>
+					</div>
+					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelStorage">
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_1">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_1">Name_1</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_1">Value_1</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_2">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_2">Name_2</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_2">Value_2</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_3">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_3">Name_3</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_3">Value_3</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_4">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_4">Name_4</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_4">Value_4</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_5">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_5">Name_5</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_5">Value_5</span>
+						</div>
+						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_6">
+							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_6">Name_6</span>
+							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_6">Value_6</span>
+						</div>
+					</div>
+					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelProduction">
+						Production
+					</div>
+					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelConsumption">
+						Consumption
+					</div>
+					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelBalance">
+						Balance
+					</div>
+					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelResources">
+						Natural resources
+					</div>
+				</div>
 				
+				<!--
+				<div class="planetOverviewElementsContainer" id="planetOverviewInfoContainer">
+					<div class="planetOverviewElementsContainer" id="planetOverviewPlanetImageContainer">
+						<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
+					</div>
+					<div class="planetOverviewElementsContainer" id="planetOverviewPlanetDetailsContainer">
+					aaa
+					</div>
+				</div>
+				<div class="planetOverviewElementsContainer" id="planetOverviewInteractiveContainer">
+					<div class="planetOverviewElementsContainer" id="planetOverviewButtonsContainer">
+					
+					</div>
+					bbb
+				</div>
+				
+				<div class="" id="planetOverviewMenuPlanetImageContainer">
+					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
+				</div>
+				<div class="" id="planetOverviewMenuPlanetInfoContainer">
+				aaa
+				</div>
+				<div class="" id="planetOverviewMenuPlanetInfo">interfaceImage planetLargeImage
+					<div class="" id="planetOverviewMenuPlanetInfoHeader">
+						<div class="" id="planetOverviewMenuPreviousButtonContainer">
+							<img class="interfaceButton" id="planetOverviewMenuPreviousButton" src="RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png">
+							PREV
+						</div>
+						<div class="" id="planetOverviewMenuPlanetNameContainer">
+							<span class="interfaceText" id="planetOverviewMenuPlanetName">ZBĄSZYNEK</span>
+						</div>
+						<div class="" id="planetOverviewMenuPlanetNextButtonContainer" >
+							<img class="interfaceButton" id="planetOverviewMenuNextButton" src="RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png">
+							NEXT
+						</div>
+					</div>
+					<div class="" id="planetOverviewMenuPlanetInfo">
+						Kurwa jebany Zbąszynek, kurwa jego mać, 2 fakultety, angielski perfect, prawo jazdy kurwa, cały alfabet i co? i gówno... <br><br> pieprzona wiocha
+					</div>
+				</div>-->
 			</div>
 			<div class="interfaceBar interfaceBottomBar planetOverviewMenuBar" id="planetOverviewMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="planetOverviewMenuBottomBarLeft"></div>
@@ -209,9 +402,9 @@
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="mainInterfaceBottomBarMiddle">
 				<div class="interfaceTextContainer" id="mainInterfaceBottomBarTextContainer">
-					<span class="interfaceText interfaceDimmedText" id="mainInterfaceBottomText">
-						Game autosaved successfully.
-					</span> 
+					<div class="interfaceText interfaceDimmedText interfaceBlockText" id="mainInterfaceBottomTextMessage">
+						Log is empty.
+					</div> 
 				</div>
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="mainInterfaceBottomBarRight">

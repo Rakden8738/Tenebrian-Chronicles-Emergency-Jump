@@ -9,8 +9,8 @@ function connectionTest_animations(outputDocument){
 }
 
 var AnimationMoveBackgroundEnabled = true;
-var AnimationMoveBackgroundStep = 0.5;
-var AnimationMoveBackgroundTime = 1.0;
+var AnimationMoveBackgroundStep = 0.1;
+var AnimationMoveBackgroundTime = 0.2;
 var AnimationMoveBackgroundStartPosition = 0.0;
 var AnimationMoveBackgroundCurrentPosition = 0.0;
 var AnimationMoveBackgroundReturnPoint = -2000.0;
@@ -219,6 +219,42 @@ function newAnimatedElementOpacity(outputDocument, elementID, animationLength, e
 	{
 		elapsedTime+=minorTickLength;
 		setTimeout(() => {newAnimatedElementOpacity(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},minorTickLength*1000);
+	}
+	else{
+		opacityElement.style.opacity=endOpacity;
+		if(endOpacity==0.0) opacityElement.style.visibility="hidden";
+		
+		if(IntroFastForwardStage != -1){ 
+			IntroActiveAnimationCounter--;
+			if(IntroDebugActive)console.log("Opacity Element stop, "+IntroActiveAnimationCounter);
+		}
+	}
+}
+
+function newAnimatedElementOpacity_Inherit(outputDocument, elementID, animationLength, endOpacity, startingOpacity = -1, elapsedTime = 0) {
+	if(animationLength <= 0) return;
+	
+	if(elapsedTime==0){		
+		if(IntroFastForwardStage != -1) {
+			IntroActiveAnimationCounter++;
+			if(IntroDebugActive)console.log("Opacity Element start, "+IntroActiveAnimationCounter);
+		}
+	}
+	
+	opacityElement = outputDocument.getElementById(elementID);
+	
+	if(startingOpacity==-1) startingOpacity = opacityElement.style.opacity*1;
+	
+	var newOpacity = (endOpacity-startingOpacity)*(elapsedTime/animationLength)+startingOpacity;
+	
+	opacityElement.style.opacity = newOpacity;
+	
+	if(endOpacity > startingOpacity && opacityElement.style.visibility != "inherit") opacityElement.style.visibility = "inherit";
+	
+	if(elapsedTime<animationLength)
+	{
+		elapsedTime+=minorTickLength;
+		setTimeout(() => {newAnimatedElementOpacity_Inherit(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},minorTickLength*1000);
 	}
 	else{
 		opacityElement.style.opacity=endOpacity;
