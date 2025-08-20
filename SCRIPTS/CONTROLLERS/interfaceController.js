@@ -233,7 +233,6 @@ function interfaceInitPlanetOverviewMenu(outputDocument){
 	};
 	
 	interfaceRefreshPlanetOverview(outputDocument);
-	interfaceRefreshPlanetResources(outputDocument);
 	
 }
 function interfaceInitSettingsMenu(outputDocument){
@@ -349,8 +348,8 @@ function interfaceRefreshPlanetOverview(outputDocument){
 		outputDocument.getElementById("planetOverviewInfoTemperatureValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].averageTemperature + "°C";
 		outputDocument.getElementById("planetOverviewInfoHazardValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].hazard;
 		
-		outputDocument.getElementById("planetOverviewInfoPeroidValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].orbitalPeroid + " days";
-		outputDocument.getElementById("planetOverviewInfoDistanceValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].orbitalDistance+ " AU";
+		outputDocument.getElementById("planetOverviewInfoPeroidValue").innerHTML = Number(PlanetsArray[PlanetsCurrentPlanet].orbitalPeroid).toFixed(1) + " days";
+		outputDocument.getElementById("planetOverviewInfoDistanceValue").innerHTML = Number(PlanetsArray[PlanetsCurrentPlanet].orbitalDistance).toFixed(2) + " AU";
 	
 		outputDocument.getElementById("planetOverviewInfoRadiusValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].radius+" km";
 		outputDocument.getElementById("planetOverviewInfoGravityValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].gravity+" m/s²";
@@ -364,9 +363,16 @@ function interfaceRefreshPlanetOverview(outputDocument){
 		}
 		else{
 			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(0,100%,65%,1)";
-		}	
+		}
+
+		interfaceRefreshPlanetResources(outputDocument);		
 	}
 }
+
+function interfaceRefreshInterface(outputDocument){
+	//interfaceRefreshPlanetResources(outputDocument);
+}
+
 function interfaceRefreshPlanetResources(outputDocument){
 	interfaceRefreshPlanetStorage(outputDocument);
 	interfaceRefreshPlanetNaturalResources(outputDocument);
@@ -758,8 +764,6 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 				}
 			}
 		}
-		
-		
 		return;
 	}
 	
@@ -793,6 +797,8 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 			interfaceRefreshPlanetOverview(outputDocument);
 		break;
 	}
+	
+	interfaceRefreshInterface(outputDocument);
 	
 	return;
 }
@@ -883,6 +889,7 @@ function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, inst
 	
 	InterfacePlanetOverviewCurrentTab = destinationTabID;
 	
+	interfaceRefreshInterface(outputDocument);
 	
 	return;
 }
@@ -912,8 +919,12 @@ function interfacePlanetOverviewPlanetRoutes(outputDocument){
 	console.log("Planet auto routes, yay. Wow.");
 }
 function interfacePlanetOverviewPreviousPlanet(outputDocument){
-	console.log("Previous planet, yay. Wow.");
+	PlanetsCurrentPlanet = planetsGetPreviousOverallPlanet();
+	
+	interfaceRefreshPlanetOverview(outputDocument);
 }
 function interfacePlanetOverviewNextPlanet(outputDocument){
-	console.log("Next planet, yay. Wow.");
+	PlanetsCurrentPlanet = planetsGetNextOverallPlanet();
+	
+	interfaceRefreshPlanetOverview(outputDocument);
 }

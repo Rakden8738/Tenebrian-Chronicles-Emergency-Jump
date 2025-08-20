@@ -1,6 +1,6 @@
 //var InterfaceDocument;
 
-var MainGameVersion = [0,0,10];
+var MainGameVersion = [0,0,11];
 
 var messagesMainLayerClass = "messagesLayer";
 var messagesLayerClass = "animationMessages";
