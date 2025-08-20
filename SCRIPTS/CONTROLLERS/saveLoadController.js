@@ -145,6 +145,7 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 	}
 	
 	if(saveOK) {
+		//console.log("Save ok");
 		SaveObject = tmpSaveObject;
 	
 		SaveIntroDisplayedOrSkipped = SaveObject.introDisplayed;
@@ -170,9 +171,12 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 		
 		console.log("Game loaded successfully.");
 		interfaceAddBottomMessage(mainOutputDocument, "Game loaded successfully.");
+		
+		return;
 	}
 	
 	if(forceLoad){
+		//console.log("Force Load");
 		if(tmpSaveObject === null){
 			SaveObject = saveCreateSaveObject();
 			SaveAutosave = true;

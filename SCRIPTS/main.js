@@ -32,6 +32,8 @@ function mainLoadGame(outputDocument){
 		connectionTest_resources(outputDocument);
 		TestedModule = "resources";
 		connectionTest_systems(outputDocument);
+		TestedModule = "diplomacy";
+		connectionTest_diplomacy(outputDocument);
 		TestedModule = "planets";
 		connectionTest_planets(outputDocument);
 		TestedModule = "buildings";
@@ -55,10 +57,13 @@ function mainLoadGame(outputDocument){
 	saveAutosaveLoop(outputDocument);
 	timerStart(outputDocument);
 	
+	resourcesInitResources(outputDocument);
+	
 	interfaceRefreshMenuButtons(outputDocument);
 	interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
 	interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
 	
+	scenario_earlyAlpha();
 	
 	animationMoveBackground(outputDocument);
 	

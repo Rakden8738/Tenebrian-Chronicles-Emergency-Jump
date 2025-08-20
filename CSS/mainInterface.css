@@ -147,7 +147,7 @@
 	padding-top: 40px;
 }
 #mainInterfaceTopBarLeft{
-	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Left.png");
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Left_2.png");
 	border: solid hsla(90,100%,75%,0.5) 0px;
 	
 	padding-bottom: 25px;
@@ -164,7 +164,7 @@
 	border: solid hsla(90,100%,75%,0.5) 0px;
 }
 #mainInterfaceTopBarMiddle{
-	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Middle.png");
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Middle_2.png");
 	border: solid hsla(180,100%,75%,0.5) 0px;
 	
 	padding-top: 0px;
@@ -189,10 +189,11 @@
 	padding-top: 30px;
 }
 #mainInterfaceTopBarRight{
-	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Right.png");
+	background-image: url("../RESOURCES/MAIN_INTERFACE/TopBar_Right_2.png");
 	border: solid hsla(270,100%,75%,0.5) 0px;
 	
 	padding-bottom: 25px;
+	padding-top: 10px;
 }
 
 /* INTERFACE TEXT */
@@ -238,7 +239,8 @@
 	color: hsla(0,0%,100%,1);
 }
 .interfaceDimmedText{
-	color: hsla(0,0%,100%,0.5);
+	
+	opacity: 0.5;
 }
 .interfacePositiveText{
 	color: hsla(120,100%,65%,1);
@@ -261,7 +263,7 @@
 	opacity: 0.75;
 }
 .interfaceBarButton{
-	width: 75px;
+	width: 65px;
 	opacity: 0.75;
 	
 	pointer-events: auto;
@@ -409,3 +411,76 @@
 .interfaceWindowContent:hover::-webkit-scrollbar-thumb { background: hsla(180,100%,50%,0.15);}
 
 */
+.interfaceTextarea{
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	
+	max-width: 100%;
+	
+	padding: 0.5em;
+	
+	background-color: hsla(180, 50%, 5%, 0.75);
+	border: solid hsla(180,100%,75%,1) 2px;
+	outline: solid hsla(180,75%,75%,1) 0px;
+	color: hsl(180,100%,80%);
+	
+	opacity: 0.7;
+}
+.interfaceTextarea:hover{
+	transition-duration: 0.2s;
+	outline: solid hsla(180,75%,75%,1) 1px;
+	
+	max-width: 100%;
+	opacity: 1;
+}
+.interfaceTextarea::placeholder{
+	color: hsla(180,100%,80%,0.5);
+}
+
+.interfaceTable{
+	border: solid hsla(0,100%,50%,1) 0px;
+	background: hsla(0,50%,25%,0);
+	
+	right:0;
+	position: relative;
+	
+	display: table;
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
+#mainInterfaceDateTable{
+	float: right;
+}
+#planetOverviewInfoPanelTable{
+	width: 100%;
+}
+.interfaceTableBody{
+	border: solid hsla(90,100%,50%,1) 0px;
+	background: hsla(90,50%,25%,0);
+}
+.interfaceTableRow{
+	border: solid hsla(180,100%,50%,1) 0px;
+	background: hsla(180,50%,25%,0);
+}
+.interfaceTableCell{
+	border: solid hsla(270,100%,50%,1) 0px;
+	background: hsla(270,50%,25%,0);
+	
+	/*max-width: 5em;*/
+	min-width: 3em;
+    text-align: center;
+	
+	padding: 2px;
+}
+.interfaceDimmedRow{
+	opacity: 0.4;
+}
+#mainInterfaceAFKTimeTableRow{
+	font-size: 75%;
+	text-wrap: wrap;
+}
+#planetOverviewInfoPanelTable td{
+	text-align: left;
+	vertical-align: top;
+}

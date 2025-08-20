@@ -11,6 +11,8 @@
 		<link rel="stylesheet" type="text/css" href="CSS\FONT\FONT.css">
 		-->
 		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
 		<script src="SCRIPTS\main.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\timeController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\saveLoadController.js"></script>
@@ -21,6 +23,7 @@
 		<script src="SCRIPTS\CONTROLLERS\systemController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\resourceController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\buildingController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\diplomacyController.js"></script>
 		
 		<script src="SCRIPTS\SCENARIOS\earlyAlpha.js"></script>
 	</head>
@@ -56,16 +59,48 @@
 				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowHomeImage">
 			</div>
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="mainInterfaceTopBarRight">
-				<span class="interfaceText" id="mainInterfaceRightSideText">
-					Cycle: 
-					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateYearText">
-						2002
-					</span> 
-					Day: 
-					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateDayText">
-						92
-					</span> 
-				</span>
+				<div class="interfaceElementContainer" id="mainInterfaceDateContainer">
+					<table class="interfaceTable" id="mainInterfaceDateTable">
+						<tbody class="interfaceTableBody" id="mainInterfaceDateTableBody">
+							<tr class="interfaceTableRow" id="mainInterfaceDateTableRow">
+								<td class="interfaceTableCell" id="mainInterfaceDateCyclePrefixCell">
+									Cycle: 
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceDateCycleCell">
+									<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateYearText">
+										???
+									</span>	
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceDateDayPrefixCell">
+									Day: 
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceDateDayCell">
+									<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceDateDayText">
+										???
+									</span> 
+								</td>
+							</tr>
+							<tr class="interfaceTableRow interfaceDimmedRow" id="mainInterfaceAFKTimeTableRow">
+								<td class="interfaceTableCell" id="mainInterfaceClockSpeedPrefixCell">
+									Clock speed: 
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceClockSpeedCell">
+									<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceClockSpeedText">
+										???
+									</span>	
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceAFKTimePrefixCell">
+									 Bonus AFK time:
+								</td>
+								<td class="interfaceTableCell" id="mainInterfaceAFKTimeCell">
+									<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceAFKTimeText">
+										???
+									</span> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			
 		</div>
@@ -246,30 +281,74 @@
 						</div>
 					</div>
 					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_1">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_1">Name_1</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_1">Value_1</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_2">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_2">Name_2</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_2">Value_2</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_3">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_3">Name_3</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_3">Value_3</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_4">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_4">Name_4</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_4">Value_4</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_5">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_5">Name_5</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_5">Value_5</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelSingleInfo" id="planetOvervievInfoSingleInfo_6">
-							<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoName_6">Name_6</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoValue_6">Value_6</span>
-						</div>
+						<table class="interfaceTable" id="planetOverviewInfoPanelTable">
+							<tbody class="interfaceTableBody" id="planetOverviewInfoPanelTableBody">	
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow1">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelOwnerCell" colspan=2>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoOwnerName">Owner: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoOwnerValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow2">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelTypeCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTypeName">Planet type: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTypeValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelSubtypeCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoSubtypeName">Subtype: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoSubtypeValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow3">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=2>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDescriptionName">Description: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDescriptionValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell" colspan=2>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow5">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoAtmosphereName">Atmosphere: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoAtmosphereValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelTemperatureCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTemperatureName">Avg temperature: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTemperatureValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow6">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelPeroidCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoPeroidName">Orbital peroid: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoPeroidValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelDistanceCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDistanceName">Orbital distance: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDistanceValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow7">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelRadiusCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoRadiusName">Planet radius: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoRadiusValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelGravityCell" colspan=1>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoGravityName">Surface gravity: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoGravityValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow8">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelEnergyCell" colspan=2>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoEnergyName">Energy balance: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoEnergyValue">???</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanel">
@@ -329,47 +408,6 @@
 						Natural resources
 					</div>
 				</div>
-				
-				<!--
-				<div class="planetOverviewElementsContainer" id="planetOverviewInfoContainer">
-					<div class="planetOverviewElementsContainer" id="planetOverviewPlanetImageContainer">
-						<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
-					</div>
-					<div class="planetOverviewElementsContainer" id="planetOverviewPlanetDetailsContainer">
-					aaa
-					</div>
-				</div>
-				<div class="planetOverviewElementsContainer" id="planetOverviewInteractiveContainer">
-					<div class="planetOverviewElementsContainer" id="planetOverviewButtonsContainer">
-					
-					</div>
-					bbb
-				</div>
-				
-				<div class="" id="planetOverviewMenuPlanetImageContainer">
-					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
-				</div>
-				<div class="" id="planetOverviewMenuPlanetInfoContainer">
-				aaa
-				</div>
-				<div class="" id="planetOverviewMenuPlanetInfo">interfaceImage planetLargeImage
-					<div class="" id="planetOverviewMenuPlanetInfoHeader">
-						<div class="" id="planetOverviewMenuPreviousButtonContainer">
-							<img class="interfaceButton" id="planetOverviewMenuPreviousButton" src="RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png">
-							PREV
-						</div>
-						<div class="" id="planetOverviewMenuPlanetNameContainer">
-							<span class="interfaceText" id="planetOverviewMenuPlanetName">ZBĄSZYNEK</span>
-						</div>
-						<div class="" id="planetOverviewMenuPlanetNextButtonContainer" >
-							<img class="interfaceButton" id="planetOverviewMenuNextButton" src="RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png">
-							NEXT
-						</div>
-					</div>
-					<div class="" id="planetOverviewMenuPlanetInfo">
-						Kurwa jebany Zbąszynek, kurwa jego mać, 2 fakultety, angielski perfect, prawo jazdy kurwa, cały alfabet i co? i gówno... <br><br> pieprzona wiocha
-					</div>
-				</div>-->
 			</div>
 			<div class="interfaceBar interfaceBottomBar planetOverviewMenuBar" id="planetOverviewMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="planetOverviewMenuBottomBarLeft"></div>
@@ -402,7 +440,7 @@
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="mainInterfaceBottomBarMiddle">
 				<div class="interfaceTextContainer" id="mainInterfaceBottomBarTextContainer">
-					<div class="interfaceText interfaceDimmedText interfaceBlockText" id="mainInterfaceBottomTextMessage">
+					<div class="interfaceText interfaceDynamicText interfaceDimmedText interfaceBlockText" id="mainInterfaceBottomTextMessage">
 						Log is empty.
 					</div> 
 				</div>

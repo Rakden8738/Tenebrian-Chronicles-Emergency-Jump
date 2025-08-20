@@ -11,6 +11,8 @@ function connectionTest_planets(outputDocument){
 var PlanetsArray = [];
 var PlanetsCurrentPlanet = -1;
 
+var PlanetImageDefaultPath = "RESOURCES/PLANETS/";
+
 var PlanetTypes = [
 	"Unknown",
 	"Terrestrial",
@@ -37,6 +39,8 @@ class PlanetObject{
 		this.naturalResources = resourcesGetNewResourcesObject();
 		
 		this.resourceStorage = resourcesGetNewResourcesObject(0.0);
+		this.resourceProduction = resourcesGetNewResourcesObject(0.0);
+		this.resourceConsumption = resourcesGetNewResourcesObject(0.0);
 	}
 	
 	name = "Unknown planet";
@@ -55,10 +59,12 @@ class PlanetObject{
 	orbitalDistance = 1.0;
 	radius = 6371.0;
 	averageTemperature = 15.0;
-	gravity = 9.8;
+	gravity = 9.81;
 	
 	buildings = {};
 	operators = 0;
+	
+	hazard = 0;
 	
 	naturalResources = {};
 	
@@ -76,5 +82,22 @@ class PlanetObject{
 		
 	}
 	
+	calculateHazard(){
+		this.hazard = 1;	
+	}
+	getEnergyBalanceValue(){
+		if(this.energyRequired == 0) return 1;
+		else return this.energyAvailable/this.energyRequired;
+	}
+	getEnergyBalanceString(){
+		var tmpReply = "";
+		
+		tmpReply += this.energyAvailable + " / " + this.energyRequired + " ( ";
+		if(this.energyRequired == 0) tmpReply+= "100% )";
+		else if(this.energyAvailable/this.energyRequired >= 1) tmpReply+= "100% )";
+		else tmpReply += Number(this.energyAvailable / this.energyRequired).toFixed(2) + "% )";
+		
+		return tmpReply;
+	}
 	
 }

@@ -7,6 +7,13 @@ function connectionTest_resources(outputDocument){
 		return false;
 	}
 }
+
+function resourcesInitResources(outputDocument){
+	resourcesNames = resourcesRecreateResourceNames();
+	resourcesDiscovered = resourcesRecreateDiscoveredResources();
+	resourcesNaturalResources = resourcesRecreateNaturalResources();
+}
+
 var resourcesNames = [
 	"Gravel",
 	"Stone",
@@ -66,6 +73,8 @@ var resourcesResourceCategories = [
 	"Reagents",				//8
 	"Military",				//9
 ];
+var resourcesDiscovered = [];
+var resourcesNaturalResources = [];
 var resourcesResourceProperties = {
 	//name: pre-discovered, categories, base efficiency (1.0 for produced, 0.0 for mined)
 	"Gravel":[true,[0,1],0.0],
@@ -111,7 +120,7 @@ var resourcesResourceProperties = {
 	"Steel":[true,[1,2],1.0],
 	"Plastic":[false,[2],1.0],
 	"Alloys":[false,[7],1.0],
-	"Construction materials":[true,[1],1.0],
+	"Building materials":[true,[1],1.0],
 	"Ship parts":[true,[1],1.0],
 };
 
@@ -120,6 +129,23 @@ function resourcesRecreateResourceNames(){
 	var tmpArray = [];
 	for(var i = 0; i<tmpKeys.length; i++){
 		tmpArray.push(tmpKeys[i]);
+	}
+	return tmpArray;
+}
+function resourcesRecreateDiscoveredResources(){
+	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpArray = [];
+	for(var i = 0; i<tmpKeys.length; i++){
+		tmpArray.push(resourcesResourceProperties[tmpKeys[i]][0]);
+	}
+	return tmpArray;
+}
+function resourcesRecreateNaturalResources(){
+	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpArray = [];
+	for(var i = 0; i<tmpKeys.length; i++){
+		if(resourcesResourceProperties[tmpKeys[i]][2] == 0.0) tmpArray.push(true);
+		else tmpArray.push(false);
 	}
 	return tmpArray;
 }

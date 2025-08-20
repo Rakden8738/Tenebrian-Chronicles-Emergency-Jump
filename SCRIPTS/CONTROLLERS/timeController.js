@@ -187,6 +187,9 @@ function timerTriggerNewDay(outputDocument, elapsedSeconds){
 function timerUpdateCallendar(outputDocument){
 	outputDocument.getElementById("mainInterfaceDateYearText").innerHTML = (TimerElapsedYears + 1);
 	outputDocument.getElementById("mainInterfaceDateDayText").innerHTML = (TimerDayOfYear + 1);
+	
+	outputDocument.getElementById("mainInterfaceClockSpeedText").innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerFasterSpeedSeconds).toFixed(2);
+	outputDocument.getElementById("mainInterfaceAFKTimeText").innerHTML = (TimerAccumulatedFasterTime);
 }
 
 function timerOutputDebug(outputDocument, elapsedSeconds){

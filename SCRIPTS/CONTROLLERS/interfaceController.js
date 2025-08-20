@@ -197,25 +197,43 @@ function interfaceInitPlanetOverviewMenu(outputDocument){
 		
 	//planet resource tabs
 	outputDocument.getElementById("planetOverviewResourcesPanelStorageButton").onclick = function() { 
-		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
-		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
+		if(!InterfacePlanetOverviewTabChanging) {
+			
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelStorageTabID); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
+		}
 	};
 	outputDocument.getElementById("planetOverviewResourcesPanelProductionButton").onclick = function() { 
-		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelProduction"); 
-		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelProductionButton");
+		if(!InterfacePlanetOverviewTabChanging) {
+			
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelProductionTabID); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelProductionButton");
+		}
 	};
 	outputDocument.getElementById("planetOverviewResourcesPanelConsumptionButton").onclick = function() { 
-		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelConsumption"); 
-		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelConsumptionButton");
+		if(!InterfacePlanetOverviewTabChanging) {
+			
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelConsumptionTabID); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelConsumptionButton");
+		}
 	};
 	outputDocument.getElementById("planetOverviewResourcesPanelBalanceButton").onclick = function() { 
-		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelBalance"); 
-		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelBalanceButton");
+		if(!InterfacePlanetOverviewTabChanging) {
+			
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelBalanceTabID); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelBalanceButton");
+		}
 	};
 	outputDocument.getElementById("planetOverviewResourcesPanelResourcesButton").onclick = function() { 
-		interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelResources"); 
-		interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
+		if(!InterfacePlanetOverviewTabChanging) {
+			
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
+		}
 	};
+	
+	interfaceRefreshPlanetOverview(outputDocument);
+	interfaceRefreshPlanetResources(outputDocument);
 	
 }
 function interfaceInitSettingsMenu(outputDocument){
@@ -303,6 +321,376 @@ function interfaceSettingsSwitchAutosave(outputDocument){
 	interfaceInitSettingsMenu(outputDocument);
 }
 
+//refresh interface elements
+
+function interfaceRefreshPlanetOverview(outputDocument){
+	//planet data
+	if(PlanetsCurrentPlanet != -1){
+		outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
+		
+		outputDocument.getElementById("planetOverviewInfoPanelHeaderPlanetNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].name;
+		outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].system;
+		
+		outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
+		
+		if(DiplomacyFactionNames[PlanetsArray[PlanetsCurrentPlanet].owner] === undefined){
+			outputDocument.getElementById("planetOverviewInfoOwnerValue").innerHTML = DiplomacyFactionFallbackName;
+		}
+		else{
+			outputDocument.getElementById("planetOverviewInfoOwnerValue").innerHTML = DiplomacyFactionNames[PlanetsArray[PlanetsCurrentPlanet].owner];
+		}
+		
+		outputDocument.getElementById("planetOverviewInfoTypeValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].type;
+		outputDocument.getElementById("planetOverviewInfoSubtypeValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].subtype;
+		
+		outputDocument.getElementById("planetOverviewInfoDescriptionValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].description;
+		
+		outputDocument.getElementById("planetOverviewInfoAtmosphereValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].atmosphere[0] + " ("+PlanetsArray[PlanetsCurrentPlanet].atmosphere[1]+")";
+		outputDocument.getElementById("planetOverviewInfoTemperatureValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].averageTemperature + "°C";
+		outputDocument.getElementById("planetOverviewInfoHazardValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].hazard;
+		
+		outputDocument.getElementById("planetOverviewInfoPeroidValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].orbitalPeroid + " days";
+		outputDocument.getElementById("planetOverviewInfoDistanceValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].orbitalDistance+ " AU";
+	
+		outputDocument.getElementById("planetOverviewInfoRadiusValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].radius+" km";
+		outputDocument.getElementById("planetOverviewInfoGravityValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].gravity+" m/s²";
+		
+		outputDocument.getElementById("planetOverviewInfoEnergyValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceString();
+		if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() >= 1) {
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(120,100%,65%,1)";
+		}
+		else if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() > 0.5) {
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(60,100%,65%,1)";
+		}
+		else{
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(0,100%,65%,1)";
+		}	
+	}
+}
+function interfaceRefreshPlanetResources(outputDocument){
+	interfaceRefreshPlanetStorage(outputDocument);
+	interfaceRefreshPlanetNaturalResources(outputDocument);
+}
+
+var ResourcePanelStorageTabID = "planetOverviewResourcesPanelStorage";
+var ResourcePanelProductionTabID = "planetOverviewResourcesPanelProduction";
+var ResourcePanelConsumptionTabID = "planetOverviewResourcesPanelConsumption";
+var ResourcePanelBalanceTabID = "planetOverviewResourcesPanelBalance";
+var ResourcePanelNaturalResourcesTabID = "planetOverviewResourcesPanelResources";
+
+var ResourcePanelTableClass = "interfaceTable planetOverviewResourcesTabTable";
+var ResourcePanelStorageTableID = "planetOverviewResourcesPanelStorageTable";
+var ResourcePanelProductionTableID = "planetOverviewResourcesPanelProductionTable";
+var ResourcePanelConsumptionTableID = "planetOverviewResourcesPanelConsumptionTable";
+var ResourcePanelBalanceTableID = "planetOverviewResourcesPanelBalanceTable";
+var ResourcePanelNaturalResourcesTableID = "planetOverviewResourcesPanelNaturalResourcesTable";
+
+var ResourcePanelTableRowClass = "interfaceTableRow";
+var ResourcePanelStorageTableRowID = "planetOverviewResourcesPanelStorageTableRow_";
+var ResourcePanelProductionTableRowID = "planetOverviewResourcesPanelProductionTableRow_";
+var ResourcePanelConsumptionTableRowID = "planetOverviewResourcesPanelConsumptionTableRow_";
+var ResourcePanelBalanceTableRowID = "planetOverviewResourcesPanelBalanceTableRow_";
+var ResourcePanelNaturalResourcesTableRowID = "planetOverviewResourcesPanelNaturalResourcesTableRow_";
+
+var ResourcePanelTableCellClass = "interfaceTableCell";
+var ResourcePanelTableCellClassName = "planetOverviewResourcesTabResourceName";
+var ResourcePanelTableCellClassSpacing = "planetOverviewResourcesTabResourceSpacing";
+var ResourcePanelTableCellClassValue = "planetOverviewResourcesTabResourceValue";
+var ResourcePanelStorageTableCellID = "planetOverviewResourcesPanelStorageTableCell";
+var ResourcePanelProductionTableCellID = "planetOverviewResourcesPanelProductionTableCell";
+var ResourcePanelConsumptionTableCellID = "planetOverviewResourcesPanelConsumptionTableCell";
+var ResourcePanelBalanceTableCellID = "planetOverviewResourcesPanelBalanceTableCell";
+var ResourcePanelNaturalResourcesTableCellID = "planetOverviewResourcesPanelNaturalResourcesTableCell";
+
+var ResourcePanelSingleResourceNameClass = "interfaceText planetOverviewResourceName"; 
+var ResourcePanelStorageSingleResourceNameID = "planetOverviewStorageResourceName_";
+var ResourcePanelProductionSingleResourceNameID = "planetOverviewProductionResourceName_";
+var ResourcePanelConsumptionSingleResourceNameID = "planetOverviewConsumptionResourceName_";
+var ResourcePanelBalanceSingleResourceNameID = "planetOverviewBalanceResourceName_";
+var ResourcePanelNaturalResourcesSingleResourceNameID = "planetOverviewNaturalResourcesResourceName_";
+
+var ResourcePanelSingleResourceValueClass = "interfaceText interfaceDynamicText planetOverviewResourceValue"; 
+var ResourcePanelStorageSingleResourceValueID = "planetOverviewStorageResourceValue_";
+var ResourcePanelProductionSingleResourceValueID = "planetOverviewProductionResourceValue_";
+var ResourcePanelConsumptionSingleResourceValueID = "planetOverviewConsumptionResourceValue_";
+var ResourcePanelBalanceSingleResourceValueID = "planetOverviewBalanceResourceValue_";
+var ResourcePanelNaturalResourcesSingleResourceValueID = "planetOverviewNaturalResourcesResourceValue_";
+
+
+function interfaceRefreshPlanetStorage(outputDocument){
+	if(PlanetsCurrentPlanet != -1) {
+		var tmpElement = outputDocument.getElementById(ResourcePanelStorageTabID);
+		tmpElement.innerHTML = "";
+		
+		var tmpResourceCounter = 0;
+		
+		var tmpTableElement = outputDocument.createElement("table");
+		tmpTableElement.className = ResourcePanelTableClass;
+		tmpTableElement.id = ResourcePanelStorageTableID;
+		
+		var tmpTableRow;
+		var tmpTableRowsCounter = 0;
+		
+		for(var i = 0; i < resourcesNames.length; i++) {
+			//if resource got discovered
+			if(resourcesDiscovered[i]){
+				var tmpResourceName = resourcesNames[i];
+				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].resourceStorage[tmpResourceName];
+				
+				tmpResourceCounter++;
+				
+				if(tmpResourceCounter%2 == 1){
+					tmpTableRowsCounter++;
+					
+					tmpTableRow = outputDocument.createElement("tr");
+					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.id = ResourcePanelStorageTableRowID+tmpTableRowsCounter;
+				}
+				
+				var tmpResourceNameCell = outputDocument.createElement("td");
+				tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+				tmpResourceNameCell.id = ResourcePanelStorageTableCellID + "Name_" + i;
+				
+				var tmpSpanResourceName = outputDocument.createElement("span");
+				tmpSpanResourceName.className = ResourcePanelSingleResourceNameClass;
+				tmpSpanResourceName.id = ResourcePanelStorageSingleResourceNameID + i;
+				
+				tmpSpanResourceName.innerHTML = tmpResourceName+":&nbsp;";
+				
+				var tmpResourceValueCell = outputDocument.createElement("td");
+				tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+				tmpResourceValueCell.id = ResourcePanelStorageTableCellID + "Value_" + i;
+				
+				var tmpSpanResourceValue = outputDocument.createElement("span");
+				tmpSpanResourceValue.className = ResourcePanelSingleResourceValueClass;
+				tmpSpanResourceValue.id = ResourcePanelStorageSingleResourceValueID + i;
+				
+				tmpSpanResourceValue.innerHTML = Number(tmpResourceAmount).toFixed(1);
+				
+				tmpResourceNameCell.append(tmpSpanResourceName);
+				tmpResourceValueCell.append(tmpSpanResourceValue);
+				
+				tmpTableRow.append(tmpResourceNameCell);
+				tmpTableRow.append(tmpResourceValueCell);
+				
+				if(tmpResourceCounter%2 == 0){
+					tmpTableElement.append(tmpTableRow);
+				}
+				else{
+					var tmpResourceSpacingCell = outputDocument.createElement("td");
+					tmpResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+					tmpResourceSpacingCell.id = ResourcePanelStorageTableCellID + "Space_" + i;	
+					
+					tmpTableRow.append(tmpResourceSpacingCell);
+				}
+			}
+		}
+		if(tmpResourceCounter%2 == 1){
+			var tmpResourceNameCell = outputDocument.createElement("td");
+			tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+			tmpResourceNameCell.id = ResourcePanelStorageTableCellID + "Name_Empty";
+			
+			var tmpResourceValueCell = outputDocument.createElement("td");
+			tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+			tmpResourceValueCell.id = ResourcePanelStorageTableCellID + "Value_Empty";
+			
+			tmpTableRow.append(tmpResourceNameCell);
+			tmpTableRow.append(tmpResourceValueCell);
+			
+			tmpTableElement.append(tmpTableRow);
+		}
+		tmpElement.append(tmpTableElement);
+	}
+}
+
+
+function interfaceRefreshPlanetNaturalResources(outputDocument){
+	if(PlanetsCurrentPlanet != -1) {
+		var tmpElement = outputDocument.getElementById(ResourcePanelNaturalResourcesTabID);
+		tmpElement.innerHTML = "";
+		
+		var tmpResourceCounter = 0;
+		var tmpBonusCounter = 0;
+		
+		var tmpTableElement = outputDocument.createElement("table");
+		tmpTableElement.className = ResourcePanelTableClass;
+		tmpTableElement.id = ResourcePanelNaturalResourcesTableID;
+		
+		var tmpTableRow;
+		var tmpTableRowsCounter = 0;
+		
+		//natural resources if default efficiency at 0.0
+		for(var i = 0; i < resourcesNames.length; i++) {
+			if(resourcesDiscovered[i] && resourcesNaturalResources[i]) {
+				var tmpResourceName = resourcesNames[i];
+				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].naturalResources[tmpResourceName];
+				
+				//skip if it is still at 0
+				if(tmpResourceAmount == 0) continue;
+				
+				tmpResourceCounter++;
+				
+				if(tmpResourceCounter%2 == 1){
+					tmpTableRowsCounter++;
+					
+					tmpTableRow = outputDocument.createElement("tr");
+					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.id = ResourcePanelNaturalResourcesTableRowID + tmpTableRowsCounter;
+				}
+				
+				var tmpResourceNameCell = outputDocument.createElement("td");
+				tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+				tmpResourceNameCell.id = ResourcePanelNaturalResourcesTableCellID + "Name_" + tmpResourceCounter;
+				
+				var tmpSpanResourceName = outputDocument.createElement("span");
+				tmpSpanResourceName.className = ResourcePanelSingleResourceNameClass;
+				tmpSpanResourceName.id = ResourcePanelNaturalResourcesSingleResourceNameID + tmpResourceCounter;
+				
+				tmpSpanResourceName.innerHTML = tmpResourceName+":&nbsp;";
+				
+				var tmpResourceValueCell = outputDocument.createElement("td");
+				tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+				tmpResourceValueCell.id = ResourcePanelNaturalResourcesTableCellID + "Value_" + tmpResourceCounter;
+				
+				var tmpSpanResourceValue = outputDocument.createElement("span");
+				tmpSpanResourceValue.className = ResourcePanelSingleResourceValueClass;
+				tmpSpanResourceValue.id = ResourcePanelNaturalResourcesSingleResourceValueID + tmpResourceCounter;
+				
+				tmpSpanResourceValue.innerHTML = "x" + Number(tmpResourceAmount).toFixed(2);
+				
+				tmpResourceNameCell.append(tmpSpanResourceName);
+				tmpResourceValueCell.append(tmpSpanResourceValue);
+				
+				tmpTableRow.append(tmpResourceNameCell);
+				tmpTableRow.append(tmpResourceValueCell);
+				
+				if(tmpResourceCounter%2 == 0){
+					tmpTableElement.append(tmpTableRow);
+				}
+				else{
+					var tmpResourceSpacingCell = outputDocument.createElement("td");
+					tmpResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+					tmpResourceSpacingCell.id = ResourcePanelNaturalResourcesTableCellID + "Space_" + tmpResourceCounter;	
+					
+					tmpTableRow.append(tmpResourceSpacingCell);
+				}
+			}
+		}
+		if(tmpResourceCounter%2 == 1){
+			var tmpResourceNameCell = outputDocument.createElement("td");
+			tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+			tmpResourceNameCell.id = ResourcePanelNaturalResourcesTableCellID + "Name_Empty";
+			
+			var tmpResourceValueCell = outputDocument.createElement("td");
+			tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+			tmpResourceValueCell.id = ResourcePanelNaturalResourcesTableCellID + "Value_Empty";
+			
+			tmpTableRow.append(tmpResourceNameCell);
+			tmpTableRow.append(tmpResourceValueCell);
+			
+			tmpTableElement.append(tmpTableRow);
+			
+			//extra for proper positioning
+			tmpResourceCounter++;
+		}
+		
+		//extra empty row
+		tmpTableRowsCounter++;
+					
+		tmpTableRow = outputDocument.createElement("tr");
+		tmpTableRow.className = ResourcePanelTableClass;
+		tmpTableRow.id = ResourcePanelNaturalResourcesTableRowID + tmpTableRowsCounter;
+		
+		var tmpSingleResourceSpacingCell = outputDocument.createElement("td");
+		tmpSingleResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+		tmpSingleResourceSpacingCell.id = ResourcePanelNaturalResourcesTableCellID + "Space_Extra";	
+		
+		tmpSingleResourceSpacingCell.innerHTML = "&nbsp;";
+		
+		tmpTableRow.append(tmpSingleResourceSpacingCell);
+		
+		tmpTableElement.append(tmpTableRow);
+		
+		
+		
+		//production bonuses and penalties if efficiency other than default efficiency of 1.0
+		for(var i = 0; i < resourcesNames.length; i++) {
+			if(resourcesDiscovered[i] && !resourcesNaturalResources[i]) {
+				var tmpResourceName = resourcesNames[i];
+				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].naturalResources[tmpResourceName];
+				
+				//skip if it is still at default 1.0
+				if(tmpResourceAmount == 1.0) continue;
+				
+				tmpResourceCounter++;
+				tmpBonusCounter++;
+				
+				if(tmpBonusCounter%2 == 1){
+					tmpTableRowsCounter++;
+					
+					tmpTableRow = outputDocument.createElement("tr");
+					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.id = ResourcePanelNaturalResourcesTableRowID + tmpTableRowsCounter;
+				}
+				
+				var tmpResourceNameCell = outputDocument.createElement("td");
+				tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+				tmpResourceNameCell.id = ResourcePanelNaturalResourcesTableCellID + "Name_" + tmpBonusCounter;
+				
+				var tmpSpanResourceName = outputDocument.createElement("span");
+				tmpSpanResourceName.className = ResourcePanelSingleResourceNameClass;
+				tmpSpanResourceName.id = ResourcePanelNaturalResourcesSingleResourceNameID + tmpBonusCounter;
+				
+				tmpSpanResourceName.innerHTML = tmpResourceName+":&nbsp;";
+				
+				var tmpResourceValueCell = outputDocument.createElement("td");
+				tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+				tmpResourceValueCell.id = ResourcePanelNaturalResourcesTableCellID + "Value_" + tmpBonusCounter;
+				
+				var tmpSpanResourceValue = outputDocument.createElement("span");
+				tmpSpanResourceValue.className = ResourcePanelSingleResourceValueClass;
+				if(tmpResourceAmount > 1.0) tmpSpanResourceValue.className += " interfacePositiveText";
+				else tmpSpanResourceValue.className += " interfaceNegativeText";
+				tmpSpanResourceValue.id = ResourcePanelNaturalResourcesSingleResourceValueID + tmpBonusCounter;
+				
+				tmpSpanResourceValue.innerHTML = "x" + Number(tmpResourceAmount).toFixed(2);
+				
+				tmpResourceNameCell.append(tmpSpanResourceName);
+				tmpResourceValueCell.append(tmpSpanResourceValue);
+				
+				tmpTableRow.append(tmpResourceNameCell);
+				tmpTableRow.append(tmpResourceValueCell);
+				
+				if(tmpBonusCounter%2 == 0){
+					tmpTableElement.append(tmpTableRow);
+				}
+				else{
+					var tmpResourceSpacingCell = outputDocument.createElement("td");
+					tmpResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+					tmpResourceSpacingCell.id = ResourcePanelNaturalResourcesTableCellID + "Space_" + tmpBonusCounter;	
+					
+					tmpTableRow.append(tmpResourceSpacingCell);
+				}
+			}
+		}
+		if(tmpBonusCounter%2 == 1){
+			var tmpResourceNameCell = outputDocument.createElement("td");
+			tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+			tmpResourceNameCell.id = ResourcePanelNaturalResourcesTableCellID + "Name_Empty";
+			
+			var tmpResourceValueCell = outputDocument.createElement("td");
+			tmpResourceValueCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+			tmpResourceValueCell.id = ResourcePanelNaturalResourcesTableCellID + "Value_Empty";
+			
+			tmpTableRow.append(tmpResourceNameCell);
+			tmpTableRow.append(tmpResourceValueCell);
+			
+			tmpTableElement.append(tmpTableRow);
+		}
+		
+		tmpElement.append(tmpTableElement);
+	}
+}
 
 //interface menu navigation
 
@@ -399,6 +787,13 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 	
 	InterfaceChangeMenuTabCurrentID = destinationTabID;
 	
+	//what to do on tab enter
+	switch(InterfaceChangeMenuTabCurrentID){
+		case PlanetOverviewMenuID:
+			interfaceRefreshPlanetOverview(outputDocument);
+		break;
+	}
+	
 	return;
 }
 
@@ -406,7 +801,7 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 //bottom messages, pseudo-console output
 
 var InterfaceBottomMessagesContainerID = "mainInterfaceBottomBarTextContainer";
-var InterfaceBottomMessagesSingleMessageClass = "interfaceText interfaceDimmedText interfaceBlockText";
+var InterfaceBottomMessagesSingleMessageClass = "interfaceText interfaceDynamicText interfaceDimmedText interfaceBlockText";
 var InterfaceBottomMessagesSingleMessageID = "mainInterfaceBottomTextMessage_";
 var InterfaceBottomMessagesArray = [];
 var InterfaceBottomMessagesClearOld = true;
@@ -454,58 +849,10 @@ function interfaceRefreshBottomMessages(outputDocument){
 
 var InterfacePlanetOverviewCurrentTab = "";
 var InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
+var InterfacePlanetOverviewTabChanging = false;
 
 function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
-	
-	/*
-	if(InterfacePlanetOverviewCurrentTab == "") {
-		InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
-		
-		var tmpElementsArray = outputDocument.getElementsByClassName("planetOverviewToggleableResourcesPanel");
-		
-		if(InterfaceChangeMenuTabInstant) {
-			for(var i = 0; i<tmpElementsArray.length; i++){
-				if(tmpElementsArray[i].id == InterfacePlanetOverviewCurrentTab) {
-					tmpElementsArray[i].style.visibility = "inherit";
-					tmpElementsArray[i].style.opacity = 1.0;
-				}
-				else {
-					tmpElementsArray[i].style.visibility = "hidden";
-					tmpElementsArray[i].style.opacity = 0.0;
-				}
-			}
-		}
-		else {
-			for(var i = 0; i<tmpElementsArray.length; i++){
-				if(tmpElementsArray[i].id == InterfacePlanetOverviewCurrentTab) {
-					if(window.getComputedStyle(outputDocument.getElementById(tmpElementsArray[i].id)).visibility != "hidden") {
-						var tmpOpacity = parseFloat(window.getComputedStyle(outputDocument.getElementById(tmpElementsArray[i].id)).opacity);
-						
-						newAnimatedElementOpacity_Inherit(
-							outputDocument, 
-							tmpElementsArray[i].id, 
-							InterfaceChangeMenuTabFadeOutTime, 
-							0, 
-							tmpOpacity
-						);
-					}
-				}
-				else {
-					setTimeout(()=>{
-						newAnimatedElementOpacity_Inherit(
-							outputDocument, 
-							tmpElementsArray[i].id, 
-							InterfaceChangeMenuTabFadeInTime, 
-							1, 
-							0);
-					},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
-				}
-			}
-		}
-		
-		return;
-	}*/
-	
+
 	if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
 	
 	if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
@@ -522,17 +869,25 @@ function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, inst
 		}
 	else {
 		var tmpOpacity = parseFloat(window.getComputedStyle(tmpOriginTab).opacity);
+		
+		InterfacePlanetOverviewTabChanging = true;
+		
 		newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewCurrentTab, InterfaceChangeMenuTabFadeOutTime, 0, tmpOpacity);
 		setTimeout(()=>{
 				newAnimatedElementOpacity_Inherit(outputDocument, destinationTabID, InterfaceChangeMenuTabFadeInTime, 1, 0);
+				setTimeout(()=>{
+					InterfacePlanetOverviewTabChanging = false;
+				},1000*(InterfaceChangeMenuTabFadeInTime+0.025));
 			},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
 	}
 	
 	InterfacePlanetOverviewCurrentTab = destinationTabID;
 	
+	
 	return;
 }
 function interfacePlanetOverviewActivateTabHeader(outputDocument, headerTabID){
+	
 	if(InterfacePlanetOverviewCurrentTabHeader == "") InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
 	
 	var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTabHeader);
