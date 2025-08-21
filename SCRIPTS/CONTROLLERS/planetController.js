@@ -19,11 +19,13 @@ var PlanetTypes = [
 	"Unknown",
 	"Terrestrial",
 	"Desert",
+	"Metallic",
 ];
 var PlanetSubtypes = [
 	"Unknown",
 	"Paradise world",
 	"Wasteland",
+	"Barren",
 ];
 var PlanetAtmospheres = [
 	["Unknown","Unknown"],
@@ -55,6 +57,8 @@ class PlanetObject{
 	subtype = PlanetSubtypes[0];
 	atmosphere = PlanetAtmospheres[0];
 	owner = -1;
+	
+	arrayID = -1;
 	
 	system = "Unknown sector";
 	system_id = -1;
@@ -145,11 +149,69 @@ function planetsGetPlanetById(planetID){
 	return tmpPlanet;
 }
 
-function planetsGetNextOverallPlanet(){
+function planetsGetNextOverallPlanetIndex(){
 	if((PlanetsCurrentPlanet + 1) < PlanetsArray.length) return (PlanetsCurrentPlanet + 1);
 	else return 0;
 }
-function planetsGetPreviousOverallPlanet(){
+function planetsGetNextFactionPlanetIndex(factionID = -1){
+	if(factionID != -1) var tmpFaction = factionID;
+	else var tmpFaction = PlanetsArray[PlanetsCurrentPlanet].owner;
+	var tmpCurrent = PlanetsCurrentPlanet + 1;
+	
+	while(tmpCurrent != PlanetsCurrentPlanet) {
+		if(tmpCurrent >= PlanetsArray.length) tmpCurrent = 0;
+		if(PlanetsArray[tmpCurrent].owner == tmpFaction) return tmpCurrent;
+		else tmpCurrent++;
+	}
+	
+	console.log("Next planet belonging to faction " + tmpFaction + " not found");
+	return tmpCurrent;
+}
+function planetsGetNextSystemPlanetIndex(){
+	var tmpSystem = PlanetsArray[PlanetsCurrentPlanet].system_id;
+	var tmpCurrent = PlanetsCurrentPlanet + 1;
+	
+	while(tmpCurrent != PlanetsCurrentPlanet) {
+		if(tmpCurrent >= PlanetsArray.length) tmpCurrent = 0;
+		if(PlanetsArray[tmpCurrent].system_id == tmpSystem) return tmpCurrent;
+		else tmpCurrent++;
+	}
+	
+	console.log("Next planet in system " + tmpSystem + " not found");
+	return tmpCurrent;
+}
+
+
+
+function planetsGetPreviousOverallPlanetIndex(){
 	if((PlanetsCurrentPlanet - 1) >= 0) return (PlanetsCurrentPlanet - 1);
 	else return (PlanetsArray.length - 1);
+}
+function planetsGetPreviousFactionPlanetIndex(factionID = -1){
+	if(factionID != -1) var tmpFaction = factionID;
+	else var tmpFaction = PlanetsArray[PlanetsCurrentPlanet].owner;
+	
+	var tmpCurrent = PlanetsCurrentPlanet - 1;
+	
+	while(tmpCurrent != PlanetsCurrentPlanet) {
+		if(tmpCurrent < 0) tmpCurrent = PlanetsArray.length - 1;
+		if(PlanetsArray[tmpCurrent].owner == tmpFaction) return tmpCurrent;
+		else tmpCurrent--;
+	}
+	
+	console.log("Next planet belonging to faction " + tmpFaction + " not found");
+	return tmpCurrent;
+}
+function planetsGetPreviousSystemPlanetIndex(){
+	var tmpSystem = PlanetsArray[PlanetsCurrentPlanet].system_id;
+	var tmpCurrent = PlanetsCurrentPlanet - 1;
+	
+	while(tmpCurrent != PlanetsCurrentPlanet) {
+		if(tmpCurrent < 0) tmpCurrent = PlanetsArray.length - 1;
+		if(PlanetsArray[tmpCurrent].system_id == tmpSystem) return tmpCurrent;
+		else tmpCurrent--;
+	}
+	
+	console.log("Next planet in system " + tmpSystem + " not found");
+	return tmpCurrent;
 }

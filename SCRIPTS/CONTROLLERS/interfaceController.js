@@ -41,10 +41,15 @@ var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_OFF.png",
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_ON.png",	//20
 	
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Down.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Up.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Left.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Right.png",	//24
+	
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Down.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Up.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png",	//28
 ];
 var InterfaceMainMenuButtonImagesID = [
 	"questionmark placeholder",
@@ -73,8 +78,10 @@ var InterfaceMainMenuButtonImagesID = [
 	"gridButton300px",
 	
 	"planetOverviewMenuWindowHeaderImage",
-	"planetOverviewInfoPanelHeaderPreviousPlanetImage",
-	"planetOverviewInfoPanelHeaderNextPlanetImage", //20
+	"planetOverviewInfoPanelHeaderSystemPreviousPlanetImage",
+	"planetOverviewInfoPanelHeaderSystemNextPlanetImage", //20
+	"planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage",
+	"planetOverviewInfoPanelHeaderPlayerNextPlanetImage", //22
 ];
 
 
@@ -180,9 +187,14 @@ function interfaceInitPlanetOverviewMenu(outputDocument){
 	
 	//planet navigation buttons
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[19]).src = InterfaceMainMenuIconPaths[23];
-	outputDocument.getElementById("planetOverviewInfoPanelHeaderPreviousPlanet").onclick = function() { interfacePlanetOverviewPreviousPlanet(outputDocument); };
+	outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemPreviousPlanet").onclick = function() { interfacePlanetOverviewSystemPreviousPlanet(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[20]).src = InterfaceMainMenuIconPaths[24];
-	outputDocument.getElementById("planetOverviewInfoPanelHeaderNextPlanet").onclick = function() { interfacePlanetOverviewNextPlanet(outputDocument); };
+	outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNextPlanet").onclick = function() { interfacePlanetOverviewSystemNextPlanet(outputDocument); };
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[21]).src = InterfaceMainMenuIconPaths[27];
+	outputDocument.getElementById("planetOverviewPlayerPreviousPlanetContainer").onclick = function() { interfacePlanetOverviewPlayerPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[22]).src = InterfaceMainMenuIconPaths[28];
+	outputDocument.getElementById("planetOverviewPlayerNextPlanetContainer").onclick = function() { interfacePlanetOverviewPlayerNextPlanet(outputDocument); };
 	
 	//function buttons
 	
@@ -918,13 +930,24 @@ function interfacePlanetOverviewGoToHub(outputDocument){
 function interfacePlanetOverviewPlanetRoutes(outputDocument){
 	console.log("Planet auto routes, yay. Wow.");
 }
-function interfacePlanetOverviewPreviousPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetPreviousOverallPlanet();
+
+function interfacePlanetOverviewPlayerPreviousPlanet(outputDocument){
+	PlanetsCurrentPlanet = planetsGetPreviousFactionPlanetIndex(1);
 	
 	interfaceRefreshPlanetOverview(outputDocument);
 }
-function interfacePlanetOverviewNextPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetNextOverallPlanet();
+function interfacePlanetOverviewSystemPreviousPlanet(outputDocument){
+	PlanetsCurrentPlanet = planetsGetPreviousSystemPlanetIndex();
+	
+	interfaceRefreshPlanetOverview(outputDocument);
+}
+function interfacePlanetOverviewPlayerNextPlanet(outputDocument){
+	PlanetsCurrentPlanet = planetsGetNextFactionPlanetIndex(1);
+	
+	interfaceRefreshPlanetOverview(outputDocument);
+}
+function interfacePlanetOverviewSystemNextPlanet(outputDocument){
+	PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();
 	
 	interfaceRefreshPlanetOverview(outputDocument);
 }

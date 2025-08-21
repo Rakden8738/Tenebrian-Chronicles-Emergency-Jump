@@ -19,5 +19,6 @@ function diplomacyDefaultFactions(){
 	tmpArray[0] = DiplomacyFactionNoFaction;
 	tmpArray[1] = DiplomacyFactionDefaultName;
 	tmpArray[2] = "Contested";
+	tmpArray[3] = "Independent";
 	return tmpArray;
 }

@@ -38,6 +38,8 @@ class SystemObject{
 	
 	owner = -1;
 	
+	arrayID = -1;
+	
 	network = "Not part of a network";
 	network_id = -1;
 	
@@ -81,7 +83,7 @@ class SystemObject{
 				}
 			}
 			else {
-				if(planetsGetPlanetById(this.planetsIDArray[i]).owner != tmpOwner){
+				if(planetsGetPlanetById(this.planetsIDArray[i]).owner != tmpOwner && planetsGetPlanetById(this.planetsIDArray[i]).owner != 0){
 					this.owner = 2;
 					return 2;
 				}
