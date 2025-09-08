@@ -10,7 +10,7 @@ function connectionTest_diplomacy(outputDocument){
 
 var DiplomacyFactionNames = [];
 
-var DiplomacyFactionDefaultName = "New Erebian Stratocracy";
+var DiplomacyFactionDefaultName = "Erebian Autonomy";
 var DiplomacyFactionFallbackName = "Unrecognised faction";
 var DiplomacyFactionNoFaction = "No owner";
 

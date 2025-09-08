@@ -1,0 +1,551 @@
+#systemOverviewMenuWindow{
+	background: hsla(240,100%,00%,0.35);
+	
+	bottom: 100px;
+
+	
+	width: 45%;
+	max-width: 800px;
+	min-width: 600px;
+	
+	padding: 0px;
+
+	padding-bottom: 0%;
+
+	text-align: center;
+	align-content: center;
+	
+	overflow:hidden;
+	
+	/*background: linear-gradient(90deg, hsla(0,0%,0%,0.0) 0px, hsla(0,0%,0%,0.35) 25px, hsla(0,0%,0%,0.35) calc(100% - 25px), hsla(0,0%,0%,0.0) 100%);*/
+	/*mask-image: linear-gradient(90deg, hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px), hsla(0,100%,100%,0.0) 100%);*/
+}
+
+.systemOverviewMenuBar{
+	position: relative;
+	height: 80px;
+}
+#systemOverviewMenuTopBar{
+	/*background: rgba(0,0,100,0.3);*/
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	
+	height: 80px;
+	
+	padding: 0px;
+}
+#systemOverviewMenuTopBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#systemOverviewMenuTopBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	display: flex;
+    justify-content: center;
+	
+	padding-top: 10px;
+}
+#systemOverviewMenuTopBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#systemOverviewMenuBottomBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#systemOverviewMenuBottomBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	padding-bottom: 10px;
+}
+#systemOverviewMenuBottomBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+
+#systemOverviewMenuContent{
+	background: hsla(240,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	box-sizing: border-box;
+	
+	height: calc(100% - 160px);
+	padding: 2.5%;
+	padding-bottom: 0;
+	
+	position: relative;
+	overflow: auto;
+	
+	mask-image: none;
+}
+
+.systemOverviewElementsContainer{
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+}
+
+#systemOverviewLeftSide{
+	background: hsla(180,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;	
+	
+	width: 33%;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	
+	align-content: middle;
+	align-items: middle;
+	
+	float: left;
+}
+
+#systemOverviewButtonsContainer{
+	background: hsla(300,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width:auto;
+	max-width: 100%;
+	height: auto;
+	max-height: calc(55% - 10px);
+	
+	top: 0px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+	position: relative;
+	scrollbar-gutter: stable both-edges;
+	overflow: auto;
+	
+	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
+}
+
+.systemOverviewButton{
+	position:relative;
+	
+	max-width: 90%;
+	height: auto;
+	min-height: 50px;
+	/*max-height: 15%;*/
+	
+	left:0;
+	right:0;
+	bottom: 0;
+	
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+	outline: solid hsla(180,75%,75%,0.0) 1px;
+	
+	padding:0px;
+	
+	box-sizing: border-box;
+	
+	
+	justify-content: right;
+	align-items: center;
+	
+	display: flex;
+	
+	pointer-events: auto;
+	cursor: pointer;
+
+	background: hsla(60,100%,75%,0.0);
+	
+	opacity: 0.70;
+}
+.systemOverviewButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.systemOverviewButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.systemOverviewButton:disabled{
+	opacity:0.2;
+}
+.systemOverviewButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.systemOverviewButton:hover .systemOverviewButtonImage{
+	outline: solid hsla(180,75%,75%,1) 1px;
+}
+.systemOverviewButton:active .systemOverviewButtonImage{
+	outline: solid hsla(180,100%,75%,1) 1px;
+}
+.systemOverviewButtonImage{
+	width:100%;
+	height:auto;
+	
+	left:0px;
+	object-fit: contain;
+	
+	outline: solid hsla(180,75%,75%,0.5) 1px;
+	
+	position: relative;
+}
+.systemOverviewButtonText{
+	width:80%;
+	margin:auto;
+	left:10%;
+	
+	position:absolute;
+	
+	text-transform:uppercase;
+}
+
+#systemOverviewAsteroidsContainer{
+	background: hsla(360,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width:auto;
+	max-width: 100%;
+	height: calc(45% - 10px);
+	
+	
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 10px;
+	
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+	position: relative;
+	
+	overflow: auto;
+	
+	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
+}
+
+#systemOverviewInfoPanel{
+	background: hsla(120,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;	
+	
+	float:right;
+	
+	height: calc(35% - 5px);
+	width: calc(66% - 10px);
+	
+	padding: 0px;
+}
+	#systemOverviewPlayerPreviousSystemContainer{
+		background: hsla(300,100%,25%,0.0);
+		border: solid hsla(120,100%,50%,0.5) 0px;
+		padding: 0px;
+		left:0%;
+		float: left;
+		width: 10%;
+		height: 20%;
+		top: 5px;
+		
+		opacity: 0.8;
+		
+		z-index: 1;
+	}
+	#systemOverviewPlayerPreviousSystemContainer:hover{
+		scale:1.1;
+		opacity: 1;
+		
+		transition-duration: 0.15s;
+	}
+	#systemOverviewInfoPanelHeader{
+		background: hsla(60,100%,25%,0.0);
+		border: solid hsla(120,100%,50%,0.5) 0px;
+		
+		top: 5px;
+		height: 20%;
+		width: 80%;
+		left: 10%;
+		
+		display: flex;
+		justify-content: center;
+		
+		padding: 0px;
+		
+		position: absolute;
+	}
+	#systemOverviewPlayerNextSystemContainer{
+		background: hsla(180,100%,25%,0.0);
+		border: solid hsla(120,100%,50%,0.5) 0px;
+		
+		padding: 0px;
+		right:0%;
+		float: right;
+		width: 10%;
+		height: 20%;
+		top: 5px;
+		
+		opacity: 0.8;
+		
+		z-index: 1;
+	}
+	#systemOverviewPlayerNextSystemContainer:hover{
+		scale:1.1;
+		opacity: 1;
+		
+		transition-duration: 0.15s;
+	}
+	.systemOverviewInfoPanelHeaderElement{
+		    display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			height:100%;
+			
+			padding: 0px;
+			
+			
+			position:relative;
+	}
+		.systemOverviewInfoPanelHeaderSystemSmallArrow{
+			height: 100%;
+			width: auto;
+			top: 0%;
+			
+			left:0;
+			right:0;
+			margin: auto;
+			
+			display: inline-block;
+		}
+		.systemOverviewInfoPanelHeaderSystemLargeArrow{
+			width: 100%;
+			height: auto;
+			top: 0%;
+			
+			top:0;
+			bottom:0;
+			margin: auto;
+			
+			display: inline-block;
+		}
+		#systemOverviewInfoPanelHeaderPlayerPreviousSystemImage{
+			left: 0;
+			float: left;
+			position: relative;
+			right: auto;
+			
+		}
+		#systemOverviewInfoPanelHeaderPlayerNextSystemImage{
+			right: 0;
+			float: right;
+			position: relative;
+			left: auto;
+		}
+		#systemOverviewInfoPanelHeaderNetworkPreviousSystem{
+			background: hsla(180,50%,25%,0.0);
+			border: solid hsla(120,100%,50%,0.5) 0px;
+		
+			height:62.5%;
+		
+			width: auto;
+			opacity: 0.8;
+			
+			z-index: 1;
+		}
+		#systemOverviewInfoPanelHeaderNetworkPreviousSystem:hover{
+			scale:1.1;
+			opacity: 1;
+			
+			transition-duration: 0.15s;
+		}
+		#systemOverviewInfoPanelHeaderCurrentSystem{
+			background: hsla(180,50%,50%,0.0);
+			border: solid hsla(120,100%,50%,0.5) 0px;
+			
+			min-width:20%;
+			
+			padding-left: calc(10px + 0.0%);
+			padding-right: calc(10px + 0.0%);
+			
+			display: block;
+			
+			z-index: 0;
+		}
+			#systemOverviewInfoPanelHeaderSystemNameContainer{
+				background: hsla(0,100%,50%,0.0);
+				border: solid hsla(120,100%,50%,0.5) 0px;
+				
+				width:100%;
+				height: 62.5%;
+				
+				
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				padding: 0px;
+			}
+			#systemOverviewInfoPanelHeaderSystemNameText{
+				font-size: 120%;
+				opacity: 1;
+				font-style: bold;
+				
+				padding: 0px;
+			}
+			#systemOverviewInfoPanelHeaderNetworkNameContainer{
+				background: hsla(120,100%,50%,0.0);
+				border: solid hsla(120,100%,50%,0.5) 0px;
+				
+				width:100%;
+				height: 35%;
+				bottom: 0;
+				
+				
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				padding: 0px;
+			}
+			#systemOverviewInfoPanelHeaderNetworkNameText, #systemOverviewInfoPanelHeaderNetworkNamePrefix{
+				font-size: 75%;
+				opacity: 0.8;
+				font-style: italic;
+				
+				padding: 0px;
+			}
+		#systemOverviewInfoPanelHeaderNetworkNextSystem{
+			background: hsla(180,50%,75%,0.0);
+			border: solid hsla(120,100%,50%,0.5) 0px;
+			
+			height:62.5%;
+			
+			opacity: 0.8;
+			
+			width: auto;
+			z-index: 1;
+		}
+		#systemOverviewInfoPanelHeaderNetworkNextSystem:hover{
+			scale:1.1;
+			opacity: 1;
+			
+			transition-duration: 0.15s;
+		}
+	
+#systemOverviewInfoPanelContent{
+		background: hsla(30,100%,50%,0.0);
+		border: solid hsla(120,100%,50%,0.5) 0px;
+		
+		top: calc(20% + 10px);
+		max-height: calc(80% - 10px);
+		width: 100%;
+		
+		float: left;
+		
+		
+		padding-left: 5%;
+		padding-right: 5%;
+		
+		padding-top: 25px;
+		padding-bottom: 25px;
+		mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
+		
+		overflow: auto;
+		position: absolute;
+		
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+		.systemOverviewInfoPanelSingleInfo{
+			background: hsla(90,100%,25%,0.0);
+			border: solid hsla(120,100%,50%,0.5) 0px;
+			margin: 0px;
+			
+			width: auto;
+			min-width:30%;
+			margin: 2px;
+			
+			padding: 0px;
+			
+			flex-grow: 1;
+			
+			text-align: left;
+		}
+		.systemOverviewInfoName{
+			font-size: 80%;
+			
+			text-align: left;
+		}
+		.systemOverviewInfoValue{
+			font-size: 80%;
+			
+			text-align: left;
+		}
+
+#systemOverviewCanvasContainer{
+	
+	display: flex;
+	justify-content: center;
+	align-items: bottom;
+	
+	background: hsla(300,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;	
+	
+	float:right;
+	
+	margin-top: 5%;
+	height: calc(60% - 5px);
+	width: calc(66% - 10px);
+	
+	padding: 0px;
+	
+	bottom: 0px;
+	
+	position: relative;
+}
+
+#systemOverviewCanvas{
+	width: auto;
+	height: 100%;
+	bottom: 0px;
+	position: relative;
+}
+
+.systemOverviewAsteroidsResourceName{
+	text-align: left;
+	font-size: 110%;
+}
+.systemOverviewTableColumnSpacing{
+	min-width: 1em;
+	width: 20px;
+}
+
+.systemOverviewAsteroidsResourceValue{
+	text-align: right;
+	font-size: 110%;
+}
+#systemOverviewAsteroidsTable{
+	width: 100%;
+	table-layout: fixed;
+}

@@ -28,11 +28,13 @@
 	justify-content: space-around;
 	align-content: space-around;
 	
+	scrollbar-gutter: stable both-edges;
+	
 	height: calc(95%);
 }
 
 .mainMenuButton{
-	width: 250px;
+	width: 240px;
 	
 	min-height:150px;
 	
@@ -40,6 +42,7 @@
 	vertical-align: bottom;
 	align-content: center;
 	
+	padding: 0px;
 	padding-top: 1px;
 	padding-bottom: 1px;
 	
@@ -94,8 +97,11 @@
 	color: hsla(180,100%,80%,1);
 	
 }
+.mainMenuButton:disabled{
+	opacity: 0.5;
+}
 .mainMenuBlankSpace{
-	width: 250px;
+	width: 240px;
 	
 	min-height:150px;
 	box-sizing: border-box;
@@ -104,7 +110,7 @@
 	margin: 15px;
 }
 .mainMenuButtonImage{
-	width:150px;
+	width:120px;
 	height:auto;
 	object-fit: contain;
 

@@ -33,6 +33,7 @@ var TimerLastTime = -1;
 var TimerRegularSpeedSeconds = 4;
 var TimerFasterSpeedSeconds = 1;
 var TimerAccumulatedFasterTime = 0;
+var TimerAFKBonusActive = true;
 var TimerAFKMarginSeconds = 15;
 var TimerAFKDetected = false;
 var TimerAFKExtraSeconds = 0;
@@ -100,12 +101,15 @@ function timerMain(outputDocument){
 	
 	if(TimerGamePaused){
 		TimerAccumulatedFasterTime += elapsedSeconds;
+		setTimeout(() => {
+				timerMain(outputDocument);
+		}, 1000 * TimerFasterSpeedSeconds);
 	}
 	else{
 		
 		if(!TimerAFKDetected) timerTriggerNewDay(outputDocument, elapsedSeconds);
 		
-		if(TimerAccumulatedFasterTime > TimerStandardFasterDifference){
+		if(TimerAccumulatedFasterTime >= TimerStandardFasterDifference && TimerAFKBonusActive){
 			
 			if(!TimerAFKDetected) TimerAccumulatedFasterTime -= TimerStandardFasterDifference;
 			setTimeout(() => {
@@ -117,6 +121,25 @@ function timerMain(outputDocument){
 				timerMain(outputDocument);
 			}, 1000 * TimerRegularSpeedSeconds);
 		}
+	}
+	
+	timerUpdateCallendar(outputDocument);
+}
+
+function timerSwitchGamePause(){
+	if(TimerGamePaused) {
+		TimerGamePaused = false;
+	}
+	else {
+		TimerGamePaused = true;
+	}
+}
+function timerSwitchAFKTimeBonus(){
+	if(TimerAFKBonusActive) {
+		TimerAFKBonusActive = false;
+	}
+	else {
+		TimerAFKBonusActive = true;
 	}
 }
 
@@ -179,17 +202,66 @@ function timerTriggerNewDay(outputDocument, elapsedSeconds){
 		TimerElapsedYears++;
 	}
 	
-	timerUpdateCallendar(outputDocument);
-	
 	if(TimerDebugActive) timerOutputDebug(outputDocument, elapsedSeconds);
 	
+	//planet rotation
+	//systemRefreshSystemCanvas(outputDocument);
 }
+
+var timerCallendarLoaded = false;
+var timerCallendarYear;
+var timerCallendarDay;
+var timerCallendarClockSpeed;
+var timerCallendarAFKTime;
+var timerCallendarSecondRow;
+var timerCallendarTable;
+
+var timerAFKBonusButton;
+var timerPauseGameButton;
+
 function timerUpdateCallendar(outputDocument){
-	outputDocument.getElementById("mainInterfaceDateYearText").innerHTML = (TimerElapsedYears + 1);
-	outputDocument.getElementById("mainInterfaceDateDayText").innerHTML = (TimerDayOfYear + 1);
+	if(!timerCallendarLoaded){
+		timerCallendarYear = outputDocument.getElementById("mainInterfaceDateYearText");
+		timerCallendarDay = outputDocument.getElementById("mainInterfaceDateDayText");
 	
-	outputDocument.getElementById("mainInterfaceClockSpeedText").innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerFasterSpeedSeconds).toFixed(2);
-	outputDocument.getElementById("mainInterfaceAFKTimeText").innerHTML = (TimerAccumulatedFasterTime);
+		timerCallendarClockSpeed = outputDocument.getElementById("mainInterfaceClockSpeedText");
+		timerCallendarAFKTime = outputDocument.getElementById("mainInterfaceAFKTimeText");
+		
+		timerCallendarSecondRow = outputDocument.getElementById("mainInterfaceAFKTimeTableRow");
+		timerCallendarTable = outputDocument.getElementById("mainInterfaceDateTableBody");
+		
+		timerPauseGameButton = outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]);
+		timerAFKBonusButton = outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]);
+		
+		timerCallendarLoaded = true;
+	}
+	
+	timerCallendarYear.innerHTML = (TimerElapsedYears + 1);
+	timerCallendarDay.innerHTML = (TimerDayOfYear + 1);
+	
+	if(TimerAFKBonusActive) {
+		timerCallendarClockSpeed.innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerFasterSpeedSeconds).toFixed(2);
+		timerAFKBonusButton.src = InterfaceMainMenuIconPaths[34];
+	}	
+	else {
+		timerCallendarClockSpeed.innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerRegularSpeedSeconds).toFixed(2);
+		timerAFKBonusButton.src = InterfaceMainMenuIconPaths[33];
+	}
+	
+	if(TimerGamePaused){
+		timerPauseGameButton.src = InterfaceMainMenuIconPaths[30];
+		timerCallendarClockSpeed.innerHTML = "x"+ Number(0).toFixed(2);
+	}
+	else {
+		timerPauseGameButton.src = InterfaceMainMenuIconPaths[29];
+	}
+	
+	timerCallendarAFKTime.innerHTML = (TimerAccumulatedFasterTime);
+	
+	if(TimerAccumulatedFasterTime < TimerStandardFasterDifference) {
+		timerCallendarSecondRow.style.visibility = "hidden";
+	}
+	else timerCallendarSecondRow.style.visibility = ""; 
 }
 
 function timerOutputDebug(outputDocument, elapsedSeconds){

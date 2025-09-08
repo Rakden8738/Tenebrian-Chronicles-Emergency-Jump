@@ -18,7 +18,7 @@ var SaveDisableAutosaveOnLoadError = true;
 var SaveIntroDisplayedOrSkipped = false;
 var SaveIntroSkipCounter = 0;
 
-var SaveUnlockedMainMenuTabs = [true,false,false,false,false,false,false,false,false,false,true];
+var SaveUnlockedMainMenuTabs = [true,true,false,false,false,false,false,false,false,false,true];
 
 function connectionTest_saveLoad(outputDocument){
 	if(outputDocument.getElementById("mainBody") !== null) {
@@ -154,7 +154,7 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 		
 		InterfaceChangeMenuTabInstant = SaveObject.settingsInstantMenuSwitch;
 		
-		TimerDayOfYear = SaveObject.totalElapsedDays;
+		//TimerDayOfYear = SaveObject.totalElapsedDays;
 		
 		var timeNow = Math.round(Date.now()/1000);
 		var elapsedTime = timeNow - SaveObject.saveTime;
@@ -168,6 +168,8 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 		}
 		
 		TimerAccumulatedFasterTime = SaveObject.accumulatedAFKTime;
+		TimerTotalElapsedDays = SaveObject.totalElapsedDays;
+		TimerDayOfYear = SaveObject.totalElapsedDays;
 		
 		console.log("Game loaded successfully.");
 		interfaceAddBottomMessage(mainOutputDocument, "Game loaded successfully.");

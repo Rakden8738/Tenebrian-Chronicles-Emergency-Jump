@@ -90,7 +90,7 @@
 									</span>	
 								</td>
 								<td class="interfaceTableCell" id="mainInterfaceAFKTimePrefixCell">
-									 Bonus AFK time:
+									 Bonus time:
 								</td>
 								<td class="interfaceTableCell" id="mainInterfaceAFKTimeCell">
 									<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceAFKTimeText">
@@ -105,57 +105,59 @@
 			
 		</div>
 		
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
 			<div class="interfaceWindowContent" id="mainMenuContent">
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton">
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowPlanetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowPlanetsText">PLANETS</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowSystemsButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSystemsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowSystemsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowSystemsText">STAR SYSTEMS</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowGalaxyButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGalaxyButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowGalaxyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowGalaxyText">GALAXY MAP</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowNetworksButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowNetworksButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowNetworksImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowNetworksText">GATE NETWORKS</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowFleetsButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowFleetsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowFleetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowFleetsText">MANAGE FLEETS</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowResearchButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowResearchButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowResearchImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowResearchText">RESEARCH PANEL</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowMissionsButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowMissionsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowMissionsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowMissionsText">PROJECTS AND MISSIONS</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowGovernmentButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGovernmentButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowGovernmentImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowGovernmentText">GOVERNMENT OVERVIEW</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowDiplomacyButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowDiplomacyButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowDiplomacyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowDiplomacyText">DIPLOMACY MENU</span>
-				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowArchivesButton">
+				</button>
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowArchivesButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowArchivesImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowArchivesText">ARCHIVES</span>
-				</div>
+				</button>
 				<div class="mainMenuBlankSpace" id="mainMenuWindowEmptySpace1">
 					
 				</div>
-				<div class="interfaceButton mainMenuButton" id="mainMenuWindowSettingsButton">
+				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSettingsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowSettingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowSettingsText">GAME SETTINGS</span>
-				</div>
+				</button>
 			</div>
 		</div>		
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
 			<div class="interfaceBar interfaceTopBar settingsMenuBar" id="settingsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
@@ -195,12 +197,12 @@
 						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
 					</div>
 				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
 					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
 				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
 					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
@@ -211,7 +213,14 @@
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
 					</div>
 				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace4"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
 						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
@@ -225,11 +234,12 @@
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="settingsMenuBottomBarRight"></div>
 			</div>
 		</div>
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					</div>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetOverviewMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="planetOverviewMenuWindowHeaderText">PLANET OVERVIEW</span>
 				</div>
@@ -241,32 +251,35 @@
 				<div class="planetOverviewElementsContainer" id="planetOverviewLeftSide">
 					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
 					<div class="planetOverviewElementsContainer" id="planetOverviewButtonsContainer">
-						<div class="planetOverviewButton" id="planetOverviewPlanetBuildingsButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetBuildingsButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-							<span class="planetOverviewButtonText" id="planetOverviewPlanetBuildingsButtonText">Planet buildings</span>
-						</div>
-						<div class="planetOverviewButton" id="planetOverviewPlanetShipyardButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetShipyardButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-							<span class="planetOverviewButtonText" id="planetOverviewPlanetShipyardButtonText">Planet shipyard</span>
-						</div>
-						<div class="planetOverviewButton" id="planetOverviewGoToSystemButton">
+						<button class="planetOverviewButton" id="planetOverviewGoToSystemButton">
 							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToSystemButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewGoToSystemButtonText">Go to system</span>
-						</div>
-						<div class="planetOverviewButton" id="planetOverviewGoToHubButton">
+						</button>
+						<button class="planetOverviewButton" id="planetOverviewPlanetBuildingsButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetBuildingsButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewPlanetBuildingsButtonText">Planet buildings</span>
+						</button>
+						<button class="planetOverviewButton" id="planetOverviewPlanetShipyardButton">
+							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetShipyardButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="planetOverviewButtonText" id="planetOverviewPlanetShipyardButtonText">Planet shipyard</span>
+						</button>
+						<button class="planetOverviewButton" id="planetOverviewGoToHubButton">
 							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToHubButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewGoToHubButtonText">Hub station</span>
-						</div>
-						<div class="planetOverviewButton" id="planetOverviewPlanetRoutesButton">
+						</button>
+						<button class="planetOverviewButton" id="planetOverviewPlanetRoutesButton">
 							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetRoutesButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewPlanetRoutesButtonText">Delivery routes</span>
-						</div>
+						</button>
 					</div>
 				</div>
+				
 				<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanel">
+					
 					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerPreviousPlanetContainer">
 						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
+					
 					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeader">
 						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderSystemPreviousPlanet">
 							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
@@ -283,135 +296,139 @@
 							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemNextPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 						</div>
 					</div>
+					
 					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerNextPlanetContainer">
 						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerNextPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
+					
 					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
 						<table class="interfaceTable" id="planetOverviewInfoPanelTable">
-							<tbody class="interfaceTableBody" id="planetOverviewInfoPanelTableBody">	
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTablePseudoHeaderRow">
+									<td class="interfaceTableCell">
+										<span class="interfaceText planetOverviewInfoName"></span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue"></span>
+									</td>
+									<td class="interfaceTableCell planetOverviewTableColumnSpacing">
+										<!-- collspan on first row makes table ignore column widths, needs "proper" row-->
+									</td>
+									<td class="interfaceTableCell">
+										<span class="interfaceText planetOverviewInfoName"></span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue"></span>
+									</td>
+								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow1">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelOwnerCell" colspan=2>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelOwnerCell" colspan=3>
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoOwnerName">Owner: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoOwnerValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow2">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelTypeCell" colspan=1>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelTypeCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTypeName">Planet type: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTypeValue">???</span>
 									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelSubtypeCell" colspan=1>
+									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_0">
+									
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelSubtypeCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoSubtypeName">Subtype: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoSubtypeValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow3">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=2>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=3>
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDescriptionName">Description: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDescriptionValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell" colspan=2>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell" colspan=3>
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow5">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell" colspan=1>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoAtmosphereName">Atmosphere: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoAtmosphereValue">???</span>
 									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelTemperatureCell" colspan=1>
+									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_1">
+									
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelTemperatureCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTemperatureName">Avg temperature: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTemperatureValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow6">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelPeroidCell" colspan=1>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelPeroidCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoPeroidName">Orbital peroid: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoPeroidValue">???</span>
 									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelDistanceCell" colspan=1>
+									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_2">
+									
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelDistanceCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDistanceName">Orbital distance: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDistanceValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow7">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelRadiusCell" colspan=1>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelRadiusCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoRadiusName">Planet radius: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoRadiusValue">???</span>
 									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelGravityCell" colspan=1>
+									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_3">
+									
+									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelGravityCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoGravityName">Surface gravity: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoGravityValue">???</span>
 									</td>
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow8">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelEnergyCell" colspan=2>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelEnergyCell" colspan=3>
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoEnergyName">Energy balance: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoEnergyValue">???</span>
 									</td>
 								</tr>
-							</tbody>
 						</table>
 					</div>
 				</div>
 				<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanel">
 					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelHeader">
-						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelStorageButton">
+						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelResourcesButton">
+							Natural resources
+						</button>
+						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelStorageButton">
 							Storage
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelProductionButton">
+						</button>
+						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelProductionButton" disabled>
 							Production
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelConsumptionButton">
+						</button>
+						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelConsumptionButton" disabled>
 							Consumption
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelBalanceButton">
+						</button>
+						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelBalanceButton" disabled>
 							Balance
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelResourcesButton">
+						</button>
+					</div>
+					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelContent">
+						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelResources">
 							Natural resources
 						</div>
-					</div>
-					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelStorage">
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_1">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_1">Name_1</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_1">Value_1</span>
+						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelStorage">
+							Storage
 						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_2">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_2">Name_2</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_2">Value_2</span>
+						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelProduction">
+							Production
 						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_3">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_3">Name_3</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_3">Value_3</span>
+						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelConsumption">
+							Consumption
 						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_4">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_4">Name_4</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_4">Value_4</span>
+						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelBalance">
+							Balance
 						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_5">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_5">Name_5</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_5">Value_5</span>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewResourcePanelSingleResource" id="planetOvervievResourceSingleResource_6">
-							<span class="interfaceText planetOverviewResourceName" id="planetOverviewResourceName_6">Name_6</span>
-							<span class="interfaceText interfaceDynamicText planetOverviewResourceValue" id="planetOverviewResourceValue_6">Value_6</span>
-						</div>
-					</div>
-					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelProduction">
-						Production
-					</div>
-					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelConsumption">
-						Consumption
-					</div>
-					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelBalance">
-						Balance
-					</div>
-					<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelResources">
-						Natural resources
 					</div>
 				</div>
 			</div>
@@ -421,6 +438,220 @@
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="planetOverviewMenuBottomBarRight"></div>
 			</div>
 		</div>
+		
+		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="systemOverviewMenuWindow">
+			<div class="interfaceBar interfaceTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="systemOverviewMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="systemOverviewMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="systemOverviewMenuWindowHeaderText">SYSTEM OVERVIEW</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="systemOverviewMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="systemOverviewMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			
+			<div class="interfaceWindowContent" id="systemOverviewMenuContent">
+				<div class="systemOverviewElementsContainer" id="systemOverviewLeftSide">
+					<div class="systemOverviewElementsContainer" id="systemOverviewButtonsContainer">
+						<button class="systemOverviewButton" id="systemOverviewShowMapButton">
+							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewShowMapButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="systemOverviewButtonText" id="systemOverviewShowMapButtonText">Show on map</span>
+						</button>
+						<button class="systemOverviewButton" id="systemOverviewStationButton">
+							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewStationButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="systemOverviewButtonText" id="systemOverviewStationButtonText">HUB Station</span>
+						</button>
+						<button class="systemOverviewButton" id="systemOverviewGatesButton">
+							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewGatesButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="systemOverviewButtonText" id="systemOverviewGatesButtonText">Manage gates</span>
+						</button>
+					</div>
+					<div class="systemOverviewElementsContainer" id="systemOverviewAsteroidsContainer">
+						<div class="systemOverviewElementsContainer" id="systemOverviewAsteroidsContainerHeader">
+							<span class="interfaceText" id="systemOverviewAsteroidsContainerHeaderText">Detected asteroids:</span>
+						</div>
+						<div class="systemOverviewElementsContainer" id="systemOverviewAsteroidsContainerContent">
+						
+						</div>
+					</div>
+				</div>
+				<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanel">
+					
+					<div class="systemOverviewElementsContainer" id="systemOverviewPlayerPreviousSystemContainer">
+						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerPreviousSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>		
+					<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelHeader">						
+						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkPreviousSystem">
+							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkPreviousSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						</div>
+						
+						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderCurrentSystem">
+							<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelHeaderSystemNameContainer">
+								<span class="interfaceText interfaceDynamicText" id="systemOverviewInfoPanelHeaderSystemNameText">Sonra-4</span>
+							</div>
+							<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelHeaderNetworkNameContainer">
+								<span class="interfaceText" id="systemOverviewInfoPanelHeaderNetworkNameText">Core Worlds</span>&nbsp;<span class="interfaceText" id="systemOverviewInfoPanelHeaderNetworkNamePrefix">network</span>
+							</div>
+						</div>
+						
+						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkNextSystem">
+							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkNextSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						</div>					
+					</div>						
+					<div class="systemOverviewElementsContainer" id="systemOverviewPlayerNextSystemContainer">
+						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerNextSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+					
+					<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelContent">
+						<table class="interfaceTable" id="systemOverviewInfoPanelTable">
+							<tbody class="interfaceTableBody" id="systemOverviewInfoPanelTableBody">
+							
+								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow1">
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelOwnerCell" colspan=2>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoOwnerName">Owner: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoOwnerValue">???</span>
+									</td>
+								</tr>
+
+								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow2">
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelDescriptionCell" colspan=2>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoDescriptionName">Description: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoDescriptionValue">???</span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow3">
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelTypeCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoTypeName">Star type: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoTypeValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelMassCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoMassName">Mass: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoMassValue">???</span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow4">
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelPlanetsNumberCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoPlanetsNumberName">Planets in system: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoPlanetsNumberValue">???</span>
+									</td>
+									
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelGatesNumberCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoGatesNumberName">Gates in system: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoGatesNumberValue">???</span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow5">
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelPositionCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoPositionName">Position: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoPositionValue">???</span>
+									</td>
+									<td class="interfaceTableCell" id="systemOverviewInfoPanelDistanceCell" colspan=1>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoDistanceName">Distance: </span>
+										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoDistanceValue">???</span>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="systemOverviewElementsContainer" id="systemOverviewCanvasContainer">
+					<canvas class="interfaceCanvas" id="systemOverviewCanvas">Starmap should be here</canvas>
+				</div> 
+			</div>
+			
+			
+			<div class="interfaceBar interfaceBottomBar systemOverviewMenuBar" id="systemOverviewMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="systemOverviewMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="systemOverviewMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="systemOverviewMenuBottomBarRight"></div>
+			</div>
+		</div>
+		
+		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="creditsMenuWindow">
+			<div class="interfaceBar interfaceTopBar creditsMenuBar" id="creditsMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="creditsMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="creditsMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="creditsMenuWindowHeaderText">CREDITS</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="creditsMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="creditsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			<div class="interfaceWindowContent" id="creditsMenuContent">
+				<h2>Main inspiration:</h2>
+				<span class="interfaceText interfaceTextBig">Heart of Galaxy: Horizons&nbsp;</span><span class="interfaceText interfaceDynamicText interfaceTextBig">by Cheslava</span>
+				<br>
+				<i><a href="https://www.kongregate.com/games/cheslava/heart-of-galaxy-horizons">Check it out at Kongregate!</a></i>
+				<br><br>
+				<h3>Also inspired by games such as:</h3>
+				Avorion&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">by Boxelware</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Gate networks, weapon types)</span>
+				<br>
+				<br>
+				Galactic Civilizations&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">series by Stardock Entertainment</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Space politics, hyperlanes)</span>
+				<br>
+				<br>
+				IXION&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">by Bulwark Studios</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Jump going terribly wrong, temporal anomalies)</span>
+				<br>
+				<br>
+				Kerbal Space Program&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">by Squad</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Understanding some math and physics)</span>
+				<br>
+				<br>
+				Space Engineers&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">by Keen Software House</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Resources, components)</span>
+				<br>
+				<br>
+				Starsector&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">by Fractal Softworks</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Planets, AI cores)</span>
+				<br>
+				<br>
+				X Universe&nbsp;<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">series by Egosoft</span><br>
+				<span class="interfaceText interfaceCommentText interfaceTextSmaller">(Collapsing gate network, unfocused jumpdrive)</span>
+				<br>
+				<br>
+				<br>
+				Special thanks to everyone who has been<br>(and perhaps still are) with me on this coding journey.
+				<br>
+				For those who provided feedback about the game, checked it out or provided ideas, suggestion.
+				<br>
+				<br>
+				<br>
+				Text font: Kdam Thmor Pro<br><span class="interfaceText interfaceDynamicText interfaceTextSmall">Designed by Tep Sovichet, Hak Longdey</span><br>
+				<i><a href="https://github.com/anagata-design/kdam-thmor-pro">Github page</a></i>
+				<br>
+				<i><a href="https://fonts.google.com/specimen/Kdam+Thmor+Pro">Google Fonts page</a></i>
+				<br>
+				<br>
+				<br>
+				<br>
+				Also special thanks to <b class="interfaceDynamicText">you</b> for having this game open right now, perhaps actually playing it!
+				<br>
+				<br>
+				<br>
+				<div class="interfaceDynamicText" style="position:relative; right:10%; float:right"><i>Rakden</i></div>
+				<br>
+				<br>
+			</div>
+			<div class="interfaceBar interfaceBottomBar creditsMenuBar" id="creditsMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="creditsMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="creditsMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="creditsMenuBottomBarRight"></div>
+			</div>
+		</div>
+		
 		
 		<div class="interfaceBar interfaceBottomBar mainInterfaceBar" id="mainInterfaceBottomBar">
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="mainInterfaceBottomBarLeft">
@@ -452,37 +683,15 @@
 				</div>
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="mainInterfaceBottomBarRight">
-				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowSettingsShortcutImage">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseGameTimeImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseBonusTimeImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowSettingsShortcutImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 			</div>
 		</div>
 		
 		
 		<div class="interfaceBackgroundCover overInterfaceBackgroundCover" id="mainOverInterfaceBackgroundCover"> </div>
 		<div class="messagesLayer" id="mainMessagesLayer">
-			<!--
-			<div class="animationMessages" id="introMessages">
-				<div class="messagesGroup" id="introFloatingTextGroup">
-					<div class="floatingText" id="introFloatingText_1"> </div>
-				</div>
-				
-				<div class="messagesGroup" id="introWarningMessages">
-					<div class="backgroundWindow warningWindow" id="introWarningWindow_1">
-						<div class="messageWindowBackground warningWindowBackground" id="introWarningWindowBackground_1"></div>
-						<div class="messageWindowContent warningWindowContent" id="introWarningWindowContent_1">
-							<div class="messageWindowHeader warningWindowHeader" id="introWarningWindowHeader_1">HEADER 1</div>
-							<div class="messageWindowText warningWindowText" id="introWarningWindowText_1">WARNING 1</div>
-							<div class="messageWindowFooter warningWindowFooter" id="introWarningWindowFooter_1"> </div>
-						</div>
-						<div class="messageWindowForeground warningWindowForeground" id="introWarningWindowForeground_1"></div>
-					</div>
-				</div>
-				<div class="messagesGroup" id="introOverInterfaceCovers">
-					<div class="interfaceBackgroundCover" id="introOverInterfaceAlertCover"> </div>
-					<div class="interfaceBackgroundCover" id="introOverInterfaceCrashCover"> </div>
-					<div class="interfaceBackgroundCover" id="introOverInterfaceAICover"> </div>
-				</div>
-			</div>
-			-->
 		</div>
 		
 	</body>

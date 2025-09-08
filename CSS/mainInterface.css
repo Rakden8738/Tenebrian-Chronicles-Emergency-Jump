@@ -235,6 +235,10 @@
 	width:100%;
 	margin-bottom: -3px;
 }
+.interfaceCommentText{
+	color: hsla(0,0%,75%,1);
+	text-decoration: italic;
+}
 .interfaceDynamicText{
 	color: hsla(0,0%,100%,1);
 }
@@ -250,6 +254,18 @@
 }
 .interfaceWarningText{
 	color: hsla(60,100%,65%,1);
+}
+.interfaceTextSmall{
+	font-size: 85%;
+}
+.interfaceTextSmaller{
+	font-size: 75%;
+}
+.interfaceTextBig{
+	font-size: 120%;
+}
+.interfaceTextBigger{
+	font-size: 135%;
 }
 
 
@@ -275,6 +291,12 @@
 	
 	transition-duration: 0.25s;
 }
+.interfaceBottomBarButton{
+	width: 50px;
+    position: relative;
+	top: 10px;
+}
+
 .interfaceReturnButton{
 	opacity: 0.75;
 	
@@ -357,7 +379,7 @@
 	left: 0;
     right: 0;
 	
-	height: min(calc(100% - 200px),1200px);
+	height: min(calc(100% - 200px),900px);
 	
 	margin: auto;
 	margin-bottom: 0px;
@@ -398,6 +420,8 @@
 	
 	scrollbar-color: hsla(180,100%,50%,0.1) transparent;
 }
+
+
 /*.interfaceWindowContent::-webkit-scrollbar {
     scrollbar-color: hsla(180, 100%, 50%, 1) transparent;
     scrollbar-width: thin;
@@ -451,9 +475,15 @@
 }
 #mainInterfaceDateTable{
 	float: right;
+	width: 80%;
 }
 #planetOverviewInfoPanelTable{
 	width: 100%;
+	table-layout: fixed;
+}
+#systemOverviewInfoPanelTable{
+	width: 100%;
+	table-layout: fixed;
 }
 .interfaceTableBody{
 	border: solid hsla(90,100%,50%,1) 0px;
@@ -464,8 +494,8 @@
 	background: hsla(180,50%,25%,0);
 }
 .interfaceTableCell{
-	border: solid hsla(270,100%,50%,1) 0px;
-	background: hsla(270,50%,25%,0);
+	border: solid hsla(270,100%,50%,1.0) 0px;
+	background: hsla(270,50%,25%,0.0);
 	
 	/*max-width: 5em;*/
 	min-width: 3em;
@@ -483,4 +513,24 @@
 #planetOverviewInfoPanelTable td{
 	text-align: left;
 	vertical-align: top;
+}
+#systemOverviewInfoPanelTable td{
+	text-align: left;
+	vertical-align: top;
+}
+
+.interfaceCanvas{
+	border: hsla(180,100%,50%,1.0) solid 2px;
+	box-sizing: border-box;
+	background: hsla(180,100%,0%,0.5);
+	
+	position: relative;
+	
+}
+button{
+	font: inherit;
+	color: inherit;
+}
+button:disabled{
+	opacity: 0.5;
 }

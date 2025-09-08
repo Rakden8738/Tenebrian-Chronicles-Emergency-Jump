@@ -1,0 +1,93 @@
+#creditsMenuWindow{
+	background: hsla(240,100%,00%,0.35);
+	
+	top: 125px;
+	bottom: 125px;
+	max-height: calc(100% - 250px);
+	
+	width: 40%;
+	max-width: 600px;
+	min-width:400px;
+	
+	padding: 0px;
+	padding-bottom: 0%;
+
+	text-align: center;
+	align-content: center;
+	
+	overflow:hidden;
+	
+	/*background: linear-gradient(90deg, hsla(0,0%,0%,0.0) 0px, hsla(0,0%,0%,0.35) 25px, hsla(0,0%,0%,0.35) calc(100% - 25px), hsla(0,0%,0%,0.0) 100%);*/
+	/*mask-image: linear-gradient(90deg, hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px), hsla(0,100%,100%,0.0) 100%);*/
+}
+
+#creditsMenuContent{
+	height: calc(100% - 160px);
+	padding-top: calc(1% + 30px);
+	padding-bottom: calc(1% + 30px);
+	padding-right: 10%;
+	padding-left: 10%;
+	/*margin-top: 5%;*/
+}
+
+.creditsMenuBar{
+	position: relative;
+	height: 80px;
+}
+#creditsMenuTopBar{
+	/*background: rgba(0,0,100,0.3);*/
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	
+	height: 80px;
+	
+	padding: 0px;
+}
+#creditsMenuTopBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#creditsMenuTopBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	display: flex;
+    justify-content: center;
+	
+	padding-top: 10px;
+}
+#creditsMenuTopBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#creditsMenuBottomBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#creditsMenuBottomBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	padding-bottom: 10px;
+}
+#creditsMenuBottomBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}

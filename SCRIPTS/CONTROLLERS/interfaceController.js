@@ -10,7 +10,9 @@ function connectionTest_interface(outputDocument){
 
 var InterfaceMainMenuID = "mainMenuWindow";
 var PlanetOverviewMenuID = "planetOverviewMenuWindow";
+var SystemOverviewMenuID = "systemOverviewMenuWindow";
 var SettingsMenuID = "settingsMenuWindow";
+var CreditsMenuID = "creditsMenuWindow";
 
 var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png", 
@@ -28,13 +30,13 @@ var InterfaceMainMenuIconPaths = [
 	
 	"RESOURCES/MAIN_INTERFACE/ICONS/Diplomacy.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Book.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Home.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings.png",		//14
+	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",		//14
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Return_Arrow.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Return_Arrow2.png",
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Square ON.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Square OFF.png",	//18
 	
@@ -50,6 +52,15 @@ var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Up.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png",
 	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png",	//28
+	
+	"RESOURCES/MAIN_INTERFACE/ICONS/Pause OFF_Small.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Pause ON_Small.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Play OFF_Small.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/Play ON_Small.png",	
+	"RESOURCES/MAIN_INTERFACE/ICONS/FastForward OFF_Small.png",
+	"RESOURCES/MAIN_INTERFACE/ICONS/FastForward ON_Small.png",	//34
+	
+	"RESOURCES/MAIN_INTERFACE/ICONS/Star.png",	//35
 ];
 var InterfaceMainMenuButtonImagesID = [
 	"questionmark placeholder",
@@ -66,7 +77,7 @@ var InterfaceMainMenuButtonImagesID = [
 	"mainMenuWindowGovernmentImage",
 	
 	"mainMenuWindowDiplomacyImage",	//10
-	"mainMenuWindowArchivesImage",
+	"mainMenuWindowArchivesImage",	
 	"mainMenuWindowSettingsImage",
 	
 	"mainInterfaceWindowHomeImage",
@@ -79,9 +90,21 @@ var InterfaceMainMenuButtonImagesID = [
 	
 	"planetOverviewMenuWindowHeaderImage",
 	"planetOverviewInfoPanelHeaderSystemPreviousPlanetImage",
-	"planetOverviewInfoPanelHeaderSystemNextPlanetImage", //20
+	"planetOverviewInfoPanelHeaderSystemNextPlanetImage",
 	"planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage",
 	"planetOverviewInfoPanelHeaderPlayerNextPlanetImage", //22
+	
+	"mainInterfaceWindowPauseGameTimeImage",
+	"mainInterfaceWindowPauseBonusTimeImage", //24
+	
+	"systemOverviewMenuWindowHeaderImage",
+	"systemOverviewInfoPanelHeaderNetworkPreviousSystemImage",
+	"systemOverviewInfoPanelHeaderNetworkNextSystemImage",
+	"systemOverviewInfoPanelHeaderPlayerPreviousSystemImage",
+	"systemOverviewInfoPanelHeaderPlayerNextSystemImage", //29
+	
+	"creditsMenuWindowHeaderImage",	//30
+	
 ];
 
 
@@ -103,7 +126,7 @@ function interfaceRefreshMenuButtons(outputDocument){
 		//planets
 		interfaceInitPlanetOverviewMenu(outputDocument);
 		//systems
-		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[3]).src = InterfaceMainMenuIconPaths[3];
+		interfaceInitSystemOverviewMenu(outputDocument);
 		//galaxy
 		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[4]).src = InterfaceMainMenuIconPaths[4];
 		//networks
@@ -127,7 +150,7 @@ function interfaceRefreshMenuButtons(outputDocument){
 		//planets
 		if(SaveUnlockedMainMenuTabs[0]) interfaceInitPlanetOverviewMenu(outputDocument);
 		//systems
-		if(SaveUnlockedMainMenuTabs[1]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[3]).src = InterfaceMainMenuIconPaths[3];
+		if(SaveUnlockedMainMenuTabs[1]) interfaceInitSystemOverviewMenu(outputDocument);
 		//galaxy
 		if(SaveUnlockedMainMenuTabs[2]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[4]).src = InterfaceMainMenuIconPaths[4];
 		//networks
@@ -164,6 +187,25 @@ function interfaceInitMainInterface(outputDocument){
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).src = InterfaceMainMenuIconPaths[14];
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
 	
+	//pause game
+	if(TimerGamePaused) {
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[30];
+	}
+	else {
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[29];
+	}
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).onclick = function() { timerSwitchGamePause(); };
+	
+	//pause accelerated time
+	if(TimerAFKBonusActive) {
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[34];
+	}
+	else {
+		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[33];
+	}
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).onclick = function() { timerSwitchAFKTimeBonus(); };
+	
+	
 	//all returns
 	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[15]);
 	for(var i = 0; i < tmpArray.length; i++){
@@ -180,6 +222,7 @@ function interfaceInitMainInterface(outputDocument){
 function interfaceInitPlanetOverviewMenu(outputDocument){
 	//planets in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[2]).src = InterfaceMainMenuIconPaths[2];
+	outputDocument.getElementById("mainMenuWindowPlanetsButton").disabled = false;
 	outputDocument.getElementById("mainMenuWindowPlanetsButton").onclick = function() { interfaceEnterElement(outputDocument,PlanetOverviewMenuID); };
 	
 	//topbar image in settings menu
@@ -247,9 +290,34 @@ function interfaceInitPlanetOverviewMenu(outputDocument){
 	interfaceRefreshPlanetOverview(outputDocument);
 	
 }
+function interfaceInitSystemOverviewMenu(outputDocument){
+	//system in main menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[3]).src = InterfaceMainMenuIconPaths[3];
+	outputDocument.getElementById("mainMenuWindowSystemsButton").disabled = false;
+	outputDocument.getElementById("mainMenuWindowSystemsButton").onclick = function() { interfaceEnterElement(outputDocument,SystemOverviewMenuID); };
+	
+	//topbar image in system menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[25]).src = InterfaceMainMenuIconPaths[3];
+	
+	//system navigation buttons
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[26]).src = InterfaceMainMenuIconPaths[23];
+	outputDocument.getElementById("systemOverviewInfoPanelHeaderNetworkPreviousSystem").onclick = function() { interfaceSystemOverviewNetworkPreviousSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[27]).src = InterfaceMainMenuIconPaths[24];
+	outputDocument.getElementById("systemOverviewInfoPanelHeaderNetworkNextSystem").onclick = function() { interfaceSystemOverviewNetworkNextSystem(outputDocument); };
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[28]).src = InterfaceMainMenuIconPaths[27];
+	outputDocument.getElementById("systemOverviewPlayerPreviousSystemContainer").onclick = function() { interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[29]).src = InterfaceMainMenuIconPaths[28];
+	outputDocument.getElementById("systemOverviewPlayerNextSystemContainer").onclick = function() { interfaceSystemOverviewDiscoveredNextSystem(outputDocument); };
+	
+	
+	interfaceRefreshSystemOverview(outputDocument);
+	
+}
 function interfaceInitSettingsMenu(outputDocument){
 	//settings in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
+	outputDocument.getElementById("mainMenuWindowSettingsButton").disabled = false;
 	outputDocument.getElementById("mainMenuWindowSettingsButton").onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
 	
 	//topbar image in settings menu
@@ -285,6 +353,9 @@ function interfaceInitSettingsMenu(outputDocument){
 	outputDocument.getElementById("settingsMenuOptionWipeSaveButton").onclick = function() { 
 		saveLoadWipeSave(outputDocument);
 	};
+	outputDocument.getElementById("settingsMenuOptionShowCreditsButton").onclick = function() { 
+		interfaceEnterElement(outputDocument,CreditsMenuID);
+	};
 	
 	//button on/off
 	if(InterfaceChangeMenuTabInstant){
@@ -310,7 +381,9 @@ function interfaceInitSettingsMenu(outputDocument){
 		outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").src = InterfaceMainMenuIconPaths[18];
 	}
 			
+	//other
 	
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[30]).src = InterfaceMainMenuIconPaths[35];
 }
 
 function interfaceSettingsSwitchFastMenuChange(outputDocument){
@@ -342,8 +415,6 @@ function interfaceRefreshPlanetOverview(outputDocument){
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderPlanetNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].name;
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].system;
 		
-		outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
-		
 		if(DiplomacyFactionNames[PlanetsArray[PlanetsCurrentPlanet].owner] === undefined){
 			outputDocument.getElementById("planetOverviewInfoOwnerValue").innerHTML = DiplomacyFactionFallbackName;
 		}
@@ -351,7 +422,7 @@ function interfaceRefreshPlanetOverview(outputDocument){
 			outputDocument.getElementById("planetOverviewInfoOwnerValue").innerHTML = DiplomacyFactionNames[PlanetsArray[PlanetsCurrentPlanet].owner];
 		}
 		
-		outputDocument.getElementById("planetOverviewInfoTypeValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].type;
+		outputDocument.getElementById("planetOverviewInfoTypeValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].type[0];
 		outputDocument.getElementById("planetOverviewInfoSubtypeValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].subtype;
 		
 		outputDocument.getElementById("planetOverviewInfoDescriptionValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].description;
@@ -366,18 +437,122 @@ function interfaceRefreshPlanetOverview(outputDocument){
 		outputDocument.getElementById("planetOverviewInfoRadiusValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].radius+" km";
 		outputDocument.getElementById("planetOverviewInfoGravityValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].gravity+" m/s²";
 		
-		outputDocument.getElementById("planetOverviewInfoEnergyValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceString();
-		if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() >= 1) {
-			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(120,100%,65%,1)";
+		if(PlanetsArray[PlanetsCurrentPlanet].owner == 1) {
+			interfacePlanetOverviewEnableButtons(outputDocument);
+			
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").innerHTML = PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceString();
+			if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() >= 1) {
+				outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(120,100%,65%,1)";
+			}
+			else if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() > 0.5) {
+				outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(60,100%,65%,1)";
+			}
+			else{
+				outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(0,100%,65%,1)";
+			}
 		}
-		else if(PlanetsArray[PlanetsCurrentPlanet].getEnergyBalanceValue() > 0.5) {
-			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(60,100%,65%,1)";
-		}
-		else{
-			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(0,100%,65%,1)";
+		else {
+			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID, true); 
+			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
+			
+			interfacePlanetOverviewDisableButtons(outputDocument);
+			
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").innerHTML = "Unknown";
+			outputDocument.getElementById("planetOverviewInfoEnergyValue").style.color = "hsla(0,0%,50%,1)";
 		}
 
 		interfaceRefreshPlanetResources(outputDocument);		
+	}
+}
+
+var InterfacePlanetOverviewTabHeaderIDs = [
+	"planetOverviewResourcesPanelResourcesButton",
+	"planetOverviewResourcesPanelStorageButton",
+	"planetOverviewResourcesPanelProductionButton",
+	"planetOverviewResourcesPanelConsumptionButton",
+	"planetOverviewResourcesPanelBalanceButton",
+	
+	"planetOverviewPlanetBuildingsButton",
+	"planetOverviewPlanetShipyardButton",
+	"planetOverviewPlanetRoutesButton",
+];
+
+function interfacePlanetOverviewEnableButtons(outputDocument){
+	//resource tabs
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[1]).disabled = false;
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[2]).disabled = false;
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[3]).disabled = false;
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[4]).disabled = false;
+	
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[5]).disabled = false;
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[6]).disabled = false;
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[7]).disabled = false;
+}
+function interfacePlanetOverviewDisableButtons(outputDocument){
+	//resource tabs
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[1]).disabled = "disabled";
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[2]).disabled = "disabled";
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[3]).disabled = "disabled";
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[4]).disabled = "disabled";
+	
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[5]).disabled = "disabled";
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[6]).disabled = "disabled";
+	outputDocument.getElementById(InterfacePlanetOverviewTabHeaderIDs[7]).disabled = "disabled";
+}
+
+
+function interfaceRefreshSystemOverview(outputDocument){
+	//system data
+	if(SystemsCurrentSystem != -1){
+		outputDocument.getElementById("systemOverviewInfoPanelHeaderSystemNameText").innerHTML = SystemsArray[SystemsCurrentSystem].name;
+		outputDocument.getElementById("systemOverviewInfoPanelHeaderNetworkNameText").innerHTML = SystemsArray[SystemsCurrentSystem].network;
+		
+		if(DiplomacyFactionNames[SystemsArray[SystemsCurrentSystem].owner] === undefined){
+			outputDocument.getElementById("systemOverviewInfoOwnerValue").innerHTML = DiplomacyFactionFallbackName;
+		}
+		else{
+			outputDocument.getElementById("systemOverviewInfoOwnerValue").innerHTML = DiplomacyFactionNames[SystemsArray[SystemsCurrentSystem].owner];
+		}
+		
+		if(SystemsArray[SystemsCurrentSystem].HUB_owner == 1) {
+			outputDocument.getElementById("systemOverviewStationButton").disabled = false;
+			
+			if(SystemsArray[SystemsCurrentSystem].owner == 1) {
+				outputDocument.getElementById("systemOverviewGatesButton").disabled = false;
+			}
+			else {
+				outputDocument.getElementById("systemOverviewGatesButton").disabled = "disabled";
+			}
+		}
+		else {
+			outputDocument.getElementById("systemOverviewStationButton").disabled = "disabled";
+			outputDocument.getElementById("systemOverviewGatesButton").disabled = "disabled";
+		}
+		
+		
+		outputDocument.getElementById("systemOverviewInfoDescriptionValue").innerHTML = SystemsArray[SystemsCurrentSystem].description;
+		
+		//outputDocument.getElementById("systemOverviewInfoTypeValue").innerHTML = SystemsArray[SystemsCurrentSystem].starType[0];
+		//outputDocument.getElementById("systemOverviewInfoSizeValue").innerHTML = SystemsArray[SystemsCurrentSystem].starSize;
+		if(SystemsArray[SystemsCurrentSystem].starSize != "Other") {
+			
+			outputDocument.getElementById("systemOverviewInfoTypeValue").innerHTML = SystemsArray[SystemsCurrentSystem].starType[0] + "&nbsp;" + SystemsArray[SystemsCurrentSystem].starSize;
+		}
+		else {
+			
+			outputDocument.getElementById("systemOverviewInfoTypeValue").innerHTML = SystemsArray[SystemsCurrentSystem].starType[0];
+		}
+		outputDocument.getElementById("systemOverviewInfoMassValue").innerHTML = SystemsArray[SystemsCurrentSystem].starMass + " M☉";
+		
+		outputDocument.getElementById("systemOverviewInfoPlanetsNumberValue").innerHTML = SystemsArray[SystemsCurrentSystem].planetsIDArray.length;
+		outputDocument.getElementById("systemOverviewInfoGatesNumberValue").innerHTML = SystemsArray[SystemsCurrentSystem].gatesIDs.length;
+		
+		outputDocument.getElementById("systemOverviewInfoPositionValue").innerHTML = SystemsArray[SystemsCurrentSystem].position;
+		outputDocument.getElementById("systemOverviewInfoDistanceValue").innerHTML = SystemsArray[SystemsCurrentSystem].distanceFromZero.toFixed(2);
+		
+		//console.log("Forced refresh");	
+		systemRefreshSystemCanvas(outputDocument, true);
+		interfaceRefreshSystemResources(outputDocument);		
 	}
 }
 
@@ -388,6 +563,9 @@ function interfaceRefreshInterface(outputDocument){
 function interfaceRefreshPlanetResources(outputDocument){
 	interfaceRefreshPlanetStorage(outputDocument);
 	interfaceRefreshPlanetNaturalResources(outputDocument);
+}
+function interfaceRefreshSystemResources(outputDocument){
+	interfaceRefreshAsteroids(outputDocument);
 }
 
 var ResourcePanelStorageTabID = "planetOverviewResourcesPanelStorage";
@@ -412,7 +590,7 @@ var ResourcePanelNaturalResourcesTableRowID = "planetOverviewResourcesPanelNatur
 
 var ResourcePanelTableCellClass = "interfaceTableCell";
 var ResourcePanelTableCellClassName = "planetOverviewResourcesTabResourceName";
-var ResourcePanelTableCellClassSpacing = "planetOverviewResourcesTabResourceSpacing";
+var ResourcePanelTableCellClassSpacing = "planetOverviewTableColumnSpacing";
 var ResourcePanelTableCellClassValue = "planetOverviewResourcesTabResourceValue";
 var ResourcePanelStorageTableCellID = "planetOverviewResourcesPanelStorageTableCell";
 var ResourcePanelProductionTableCellID = "planetOverviewResourcesPanelProductionTableCell";
@@ -434,6 +612,26 @@ var ResourcePanelConsumptionSingleResourceValueID = "planetOverviewConsumptionRe
 var ResourcePanelBalanceSingleResourceValueID = "planetOverviewBalanceResourceValue_";
 var ResourcePanelNaturalResourcesSingleResourceValueID = "planetOverviewNaturalResourcesResourceValue_";
 
+var AsteroidsPanelID = "systemOverviewAsteroidsContainerContent";
+var AsteroidsPanelTableClass = "interfaceTable";
+var AsteroidsPanelTableID = "systemOverviewAsteroidsTable";
+var AsteroidsPanelTableRowClass = "interfaceTableRow";
+var AsteroidsPanelTableRowID = "systemOverviewAsteroidsTableRow_";
+
+var AsteroidsPanelTableCellClass = "interfaceTableCell";
+var AsteroidsPanelTableCellClassName = "systemOverviewAsteroidsResourceName";
+var AsteroidsPanelTableCellClassValue = "systemOverviewAsteroidsResourceValue";
+var AsteroidsPanelTableCellClassSpacing = "systemOverviewTableColumnSpacing";
+var AsteroidsPanelTableCellID = "systemOverviewAsteroidsTableCell";
+
+var AsteroidsPanelSingleResourceNameClass = "interfaceText systemOverviewAsteroidsName"; 
+var AsteroidsPanelSingleResourceNameID = "systemOverviewAsteroidsName_";
+
+var AsteroidsPanelSingleResourceValueClass = "interfaceText interfaceDynamicText systemOverviewAsteroidsValue"; 
+var AsteroidsPanelSingleResourceValueID = "systemOverviewAsteroidsValue_";
+
+var AsteroidsPanelNoResourcesClass = "interfaceText interfaceDynamicText interfaceDimmedText";
+var AsteroidsPanelNoResourcesID = "systemOverviewAsteroidsNotFoundText";
 
 function interfaceRefreshPlanetStorage(outputDocument){
 	if(PlanetsCurrentPlanet != -1) {
@@ -461,7 +659,7 @@ function interfaceRefreshPlanetStorage(outputDocument){
 					tmpTableRowsCounter++;
 					
 					tmpTableRow = outputDocument.createElement("tr");
-					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.className = ResourcePanelTableRowClass;
 					tmpTableRow.id = ResourcePanelStorageTableRowID+tmpTableRowsCounter;
 				}
 				
@@ -522,6 +720,7 @@ function interfaceRefreshPlanetStorage(outputDocument){
 }
 
 
+
 function interfaceRefreshPlanetNaturalResources(outputDocument){
 	if(PlanetsCurrentPlanet != -1) {
 		var tmpElement = outputDocument.getElementById(ResourcePanelNaturalResourcesTabID);
@@ -552,7 +751,7 @@ function interfaceRefreshPlanetNaturalResources(outputDocument){
 					tmpTableRowsCounter++;
 					
 					tmpTableRow = outputDocument.createElement("tr");
-					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.className = ResourcePanelTableRowClass;
 					tmpTableRow.id = ResourcePanelNaturalResourcesTableRowID + tmpTableRowsCounter;
 				}
 				
@@ -647,7 +846,7 @@ function interfaceRefreshPlanetNaturalResources(outputDocument){
 					tmpTableRowsCounter++;
 					
 					tmpTableRow = outputDocument.createElement("tr");
-					tmpTableRow.className = ResourcePanelTableClass;
+					tmpTableRow.className = ResourcePanelTableRowClass;
 					tmpTableRow.id = ResourcePanelNaturalResourcesTableRowID + tmpTableRowsCounter;
 				}
 				
@@ -709,6 +908,96 @@ function interfaceRefreshPlanetNaturalResources(outputDocument){
 		tmpElement.append(tmpTableElement);
 	}
 }
+function interfaceRefreshAsteroids(outputDocument){
+	if(SystemsCurrentSystem != -1) {
+		var tmpSystem = SystemsArray[SystemsCurrentSystem];
+		
+		var tmpElement = outputDocument.getElementById(AsteroidsPanelID);
+		tmpElement.innerHTML = "";
+		
+		var tmpTableElement = outputDocument.createElement("table");
+		tmpTableElement.className = AsteroidsPanelTableClass;
+		tmpTableElement.id = AsteroidsPanelTableID;
+		
+		var tmpResourceCounter = 0;
+		var tmpTableRow;
+		var tmpTableRowsCounter = 0;
+		
+		for(var i = 0; i < resourcesNames.length; i++) {
+			if(resourcesDiscovered[i] && resourcesNaturalResources[i]) {
+				var tmpResourceName = resourcesNames[i];
+				var tmpResourceAmount = SystemsArray[SystemsCurrentSystem].asteroids[tmpResourceName];
+				
+				//skip if it is still at 0
+				if(!tmpResourceAmount) continue;
+				
+				tmpResourceCounter++;
+				
+				tmpTableRowsCounter++;
+					
+				tmpTableRow = outputDocument.createElement("tr");
+				tmpTableRow.className = AsteroidsPanelTableRowClass;
+				tmpTableRow.id = AsteroidsPanelTableRowID + tmpTableRowsCounter;
+				
+				var tmpResourceNameCell = outputDocument.createElement("td");
+				tmpResourceNameCell.className = AsteroidsPanelTableCellClass + " " + AsteroidsPanelTableCellClassName;
+				tmpResourceNameCell.id = AsteroidsPanelTableCellID + "Name_" + tmpResourceCounter;
+				
+				var tmpSpanResourceName = outputDocument.createElement("span");
+				tmpSpanResourceName.className = AsteroidsPanelSingleResourceNameClass;
+				tmpSpanResourceName.id = AsteroidsPanelSingleResourceNameID + tmpResourceCounter;
+				
+				tmpSpanResourceName.innerHTML = tmpResourceName+":";
+				
+				var tmpResourceSpacingCell = outputDocument.createElement("td");
+				tmpResourceSpacingCell.className = AsteroidsPanelTableCellClass + " " + AsteroidsPanelTableCellClassSpacing;
+				tmpResourceSpacingCell.id = AsteroidsPanelSingleResourceNameID + "Space_" + i;	
+				
+				
+				
+				
+				var tmpResourceValueCell = outputDocument.createElement("td");
+				tmpResourceValueCell.className = AsteroidsPanelTableCellClass + " " + AsteroidsPanelTableCellClassValue;
+				tmpResourceValueCell.id = AsteroidsPanelTableCellID + "Value_" + tmpResourceCounter;
+				
+				var tmpSpanResourceValue = outputDocument.createElement("span");
+				tmpSpanResourceValue.className = AsteroidsPanelSingleResourceValueClass;
+				tmpSpanResourceValue.id = AsteroidsPanelSingleResourceValueID + tmpResourceCounter;
+				tmpSpanResourceValue.innerHTML = "x" + Number(tmpResourceAmount).toFixed(2);
+				
+				tmpResourceNameCell.append(tmpSpanResourceName);
+				tmpResourceValueCell.append(tmpSpanResourceValue);
+				
+				tmpTableRow.append(tmpResourceNameCell);
+				tmpTableRow.append(tmpResourceSpacingCell);
+				tmpTableRow.append(tmpResourceValueCell);
+				
+				tmpTableElement.append(tmpTableRow);
+				
+			}
+		}
+		if(SystemsArray[SystemsCurrentSystem].HUB_owner != 1) {
+			var tmpSpan = outputDocument.createElement("span");
+			tmpSpan.className = AsteroidsPanelNoResourcesClass;
+			tmpSpan.id = AsteroidsPanelNoResourcesID;
+			tmpSpan.innerHTML = "Control over HUB station required to conduct scan.";
+			
+			tmpElement.append(tmpSpan);
+		}
+		else if(tmpResourceCounter > 0) {
+			tmpElement.append(tmpTableElement);
+		}
+		else {
+			var tmpSpan = outputDocument.createElement("span");
+			tmpSpan.className = AsteroidsPanelNoResourcesClass;
+			tmpSpan.id = AsteroidsPanelNoResourcesID;
+			tmpSpan.innerHTML = "No asteroids fields found.";
+			
+			tmpElement.append(tmpSpan);
+		}
+	}
+}
+
 
 //interface menu navigation
 
@@ -718,17 +1007,24 @@ var InterfaceChangeMenuTabFadeOutTime = 0.25;
 var InterfaceChangeMenuTabFadeInDelay = 0.1;
 var InterfaceChangeMenuTabFadeInTime = 0.25;
 var InterfaceChangeMenuTabPathStack = [];
+var InterfaceChangeMenuTabInProgress = false;
 
 function interfaceEnterElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
-	InterfaceChangeMenuTabPathStack.push(InterfaceChangeMenuTabCurrentID);
-	interfaceChangeMenuTab(outputDocument, destinationTabID);
+	if(!InterfaceChangeMenuTabInProgress) {
+		InterfaceChangeMenuTabPathStack.push(InterfaceChangeMenuTabCurrentID);
+		interfaceChangeMenuTab(outputDocument, destinationTabID);
+	}
 }
 function interfaceReturnFromElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
-	interfaceChangeMenuTab(outputDocument, InterfaceChangeMenuTabPathStack.pop());
+	if(!InterfaceChangeMenuTabInProgress) {
+		interfaceChangeMenuTab(outputDocument, InterfaceChangeMenuTabPathStack.pop());
+	}
 }
 function interfaceEnterMainMenu(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
-	InterfaceChangeMenuTabPathStack = [];
-	interfaceChangeMenuTab(outputDocument, InterfaceMainMenuID);
+	if(!InterfaceChangeMenuTabInProgress) {
+		InterfaceChangeMenuTabPathStack = [];
+		interfaceChangeMenuTab(outputDocument, InterfaceMainMenuID);
+	}
 }
 function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
 	
@@ -795,10 +1091,21 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 		}
 	else {
 		var tmpOpacity = parseFloat(window.getComputedStyle(tmpOriginTab).opacity);
+		InterfaceChangeMenuTabInProgress = true;
 		newAnimatedElementOpacity(outputDocument, InterfaceChangeMenuTabCurrentID, InterfaceChangeMenuTabFadeOutTime, 0, tmpOpacity);
 		setTimeout(()=>{
 				newAnimatedElementOpacity(outputDocument, destinationTabID, InterfaceChangeMenuTabFadeInTime, 1, 0);
+				setTimeout(()=>{
+					InterfaceChangeMenuTabInProgress = false;
+				},1000*(InterfaceChangeMenuTabFadeInTime + 0.05));
 			},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
+	}
+	
+	switch(InterfaceChangeMenuTabCurrentID){
+		case SystemOverviewMenuID:
+			SystemStarmapRefreshActive = false;
+			break;
+		
 	}
 	
 	InterfaceChangeMenuTabCurrentID = destinationTabID;
@@ -807,7 +1114,12 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 	switch(InterfaceChangeMenuTabCurrentID){
 		case PlanetOverviewMenuID:
 			interfaceRefreshPlanetOverview(outputDocument);
-		break;
+			break;
+		case SystemOverviewMenuID:
+			SystemStarmapRefreshActive = true;
+			interfaceRefreshSystemOverview(outputDocument);
+			break;
+		
 	}
 	
 	interfaceRefreshInterface(outputDocument);
@@ -863,6 +1175,7 @@ function interfaceRefreshBottomMessages(outputDocument){
 }
 
 
+//planet overview menu navigation
 //planet overview buttonsvar PlanetOverviewMenuID = "planetOverviewMenuWindow";
 
 var InterfacePlanetOverviewCurrentTab = "";
@@ -870,7 +1183,6 @@ var InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStora
 var InterfacePlanetOverviewTabChanging = false;
 
 function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant){
-
 	if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
 	
 	if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
@@ -878,7 +1190,7 @@ function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, inst
 	var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTab);
 	var tmpDestinationTab = outputDocument.getElementById(destinationTabID);	
 	
-	if(InterfaceChangeMenuTabInstant) {
+	if(instantChange) {
 		tmpOriginTab.style.visibility = "hidden";
 		tmpOriginTab.style.opacity = 0.0;
 		
@@ -922,7 +1234,12 @@ function interfacePlanetOverviewPlanetBuildings(outputDocument){
 	console.log("Buildings on planet, yay. Wow.");
 }
 function interfacePlanetOverviewGoToSystem(outputDocument){
-	console.log("System overview, yay. Wow.");
+	//console.log("System overview, yay. Wow.");
+	if(!InterfacePlanetOverviewPlanetChanging) {
+		SystemsCurrentSystem = systemsGetSystemIndexById(PlanetsArray[PlanetsCurrentPlanet].system_id);
+
+		interfaceEnterElement(outputDocument,SystemOverviewMenuID);
+	}
 }
 function interfacePlanetOverviewGoToHub(outputDocument){
 	console.log("System hub station, yay. Wow.");
@@ -932,22 +1249,170 @@ function interfacePlanetOverviewPlanetRoutes(outputDocument){
 }
 
 function interfacePlanetOverviewPlayerPreviousPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetPreviousFactionPlanetIndex(1);
-	
-	interfaceRefreshPlanetOverview(outputDocument);
+	if(!InterfacePlanetOverviewPlanetChanging){
+		PlanetsCurrentPlanet = planetsGetPreviousFactionPlanetIndex(1);
+		if(InterfaceChangeMenuTabInstant){
+			interfaceRefreshPlanetOverview(outputDocument);
+		}
+		else {
+			interfacePlanetOverviewFadePlanetDetails(outputDocument);
+		}
+	}	
 }
 function interfacePlanetOverviewSystemPreviousPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetPreviousSystemPlanetIndex();
-	
-	interfaceRefreshPlanetOverview(outputDocument);
+	if(!InterfacePlanetOverviewPlanetChanging){
+		PlanetsCurrentPlanet = planetsGetPreviousSystemPlanetIndex();
+		if(InterfaceChangeMenuTabInstant){
+			interfaceRefreshPlanetOverview(outputDocument);
+		}
+		else {
+			interfacePlanetOverviewFadePlanetDetails(outputDocument);
+		}
+	}	
 }
 function interfacePlanetOverviewPlayerNextPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetNextFactionPlanetIndex(1);
-	
-	interfaceRefreshPlanetOverview(outputDocument);
+	if(!InterfacePlanetOverviewPlanetChanging){
+		PlanetsCurrentPlanet = planetsGetNextFactionPlanetIndex(1);
+		if(InterfaceChangeMenuTabInstant){		
+			interfaceRefreshPlanetOverview(outputDocument);
+		}
+		else {
+			interfacePlanetOverviewFadePlanetDetails(outputDocument);
+		}
+	}	
 }
 function interfacePlanetOverviewSystemNextPlanet(outputDocument){
-	PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();
-	
-	interfaceRefreshPlanetOverview(outputDocument);
+	if(!InterfacePlanetOverviewPlanetChanging){
+		PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();
+		if(InterfaceChangeMenuTabInstant){
+			
+			interfaceRefreshPlanetOverview(outputDocument);
+		}
+		else {
+			interfacePlanetOverviewFadePlanetDetails(outputDocument);
+		}
+	}
 }
+
+var InterfacePlanetOverviewPlanetChanging = false;
+var InterfacePlanetOverviewPlanetFadeOutTime = 0.20;
+var InterfacePlanetOverviewPlanetFadeInDelay = 0.10;
+var InterfacePlanetOverviewPlanetFadeInTime = 0.20;
+var InterfacePlanetOverviewNameContainerID = "planetOverviewInfoPanelHeader";
+var InterfacePlanetOverviewPlanetContainerID = "planetOverviewMenuPlanetImage";
+var InterfacePlanetOverviewInfoContainerID = "planetOverviewInfoPanelContent";
+var InterfacePlanetOverviewResourcesContainerID = "planetOverviewResourcesPanelContent";
+
+function interfacePlanetOverviewFadePlanetDetails(outputDocument){
+	InterfacePlanetOverviewPlanetChanging = true;
+	
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewNameContainerID, InterfacePlanetOverviewPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewPlanetContainerID, InterfacePlanetOverviewPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewInfoContainerID, InterfacePlanetOverviewPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewResourcesContainerID, InterfacePlanetOverviewPlanetFadeOutTime, 0, 1);
+	
+	setTimeout(()=>{
+			interfaceRefreshPlanetOverview(outputDocument);
+			//PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();		
+			setTimeout(()=>{
+				interfacePlanetOverviewShowPlanetDetails(outputDocument);
+			},1000*(InterfacePlanetOverviewPlanetFadeInDelay/2));
+		},1000*(InterfacePlanetOverviewPlanetFadeInDelay/2 + InterfacePlanetOverviewPlanetFadeOutTime));
+}
+function interfacePlanetOverviewShowPlanetDetails(outputDocument){
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewNameContainerID, InterfacePlanetOverviewPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewPlanetContainerID, InterfacePlanetOverviewPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewInfoContainerID, InterfacePlanetOverviewPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewResourcesContainerID, InterfacePlanetOverviewPlanetFadeInTime, 1, 0);
+	setTimeout(()=>{
+		InterfacePlanetOverviewPlanetChanging = false;
+	},1000*(InterfacePlanetOverviewPlanetFadeInTime+0.025));
+}
+
+
+//system overview menu navigation
+
+function interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument){
+	if(!InterfaceSystemOverviewSystemChanging){
+		SystemsCurrentSystem = systemsGetPreviousDiscoveredSystemIndex();
+		if(InterfaceChangeMenuTabInstant){
+			interfaceRefreshSystemOverview(outputDocument);
+		}
+		else {
+			interfaceSystemOverviewFadeSystemDetails(outputDocument);
+		}
+	}	
+}
+function interfaceSystemOverviewNetworkPreviousSystem(outputDocument){
+	if(!InterfaceSystemOverviewSystemChanging){
+		SystemsCurrentSystem = systemsGetPreviousNetworkSystemIndex();
+		if(InterfaceChangeMenuTabInstant){
+			interfaceRefreshSystemOverview(outputDocument);
+		}
+		else {
+			interfaceSystemOverviewFadeSystemDetails(outputDocument);
+		}
+	}	
+}
+function interfaceSystemOverviewDiscoveredNextSystem(outputDocument){
+	if(!InterfaceSystemOverviewSystemChanging){
+		SystemsCurrentSystem = systemsGetNextDiscoveredSystemIndex();
+		if(InterfaceChangeMenuTabInstant){		
+			interfaceRefreshSystemOverview(outputDocument);
+		}
+		else {
+			interfaceSystemOverviewFadeSystemDetails(outputDocument);
+		}
+	}	
+}
+function interfaceSystemOverviewNetworkNextSystem(outputDocument){
+	if(!InterfaceSystemOverviewSystemChanging){
+		SystemsCurrentSystem = systemGetNextNetworkPlanetIndex();
+		if(InterfaceChangeMenuTabInstant){
+			interfaceRefreshSystemOverview(outputDocument);
+		}
+		else {
+			interfaceSystemOverviewFadeSystemDetails(outputDocument);
+		}
+	}
+}
+
+var InterfaceSystemOverviewSystemChanging = false;
+var InterfaceSystemOverviewSystemFadeOutTime = 0.15;
+var InterfaceSystemOverviewSystemFadeInDelay = 0.20;
+var InterfaceSystemOverviewSystemFadeInTime = 0.15;
+var InterfaceSystemOverviewNameContainerID = "systemOverviewInfoPanelHeader";
+var InterfaceSystemOverviewInfoContainerID = "systemOverviewInfoPanelContent";
+var InterfaceSystemOverviewResourcesContainerID = "systemOverviewAsteroidsContainer";
+var InterfaceSystemOverviewCanvasContainerID = "systemOverviewCanvasContainer";
+
+function interfaceSystemOverviewFadeSystemDetails(outputDocument){
+	InterfaceSystemOverviewSystemChanging = true;
+	StarmapSystemChanging = true;
+	
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewNameContainerID, InterfaceSystemOverviewSystemFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewInfoContainerID, InterfaceSystemOverviewSystemFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewResourcesContainerID, InterfaceSystemOverviewSystemFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewCanvasContainerID, InterfaceSystemOverviewSystemFadeOutTime, 0, 1);
+	
+	setTimeout(()=>{
+		StarmapSystemChanging = false;
+		SystemStarmapRefreshInProgress = false;
+		interfaceRefreshSystemOverview(outputDocument, true);
+		//PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();		
+		setTimeout(()=>{
+			interfaceSystemOverviewShowSystemDetails(outputDocument);
+		},1000*(InterfaceSystemOverviewSystemFadeInDelay/2));
+	},1000*(InterfaceSystemOverviewSystemFadeInDelay/2 + InterfaceSystemOverviewSystemFadeOutTime));
+}
+function interfaceSystemOverviewShowSystemDetails(outputDocument){
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewNameContainerID, InterfaceSystemOverviewSystemFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewInfoContainerID, InterfaceSystemOverviewSystemFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewResourcesContainerID, InterfaceSystemOverviewSystemFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceSystemOverviewCanvasContainerID, InterfaceSystemOverviewSystemFadeInTime, 1, 0);
+	setTimeout(()=>{
+		InterfaceSystemOverviewSystemChanging = false;
+	},1000*(InterfaceSystemOverviewSystemFadeInTime+0.025));
+}
+
+

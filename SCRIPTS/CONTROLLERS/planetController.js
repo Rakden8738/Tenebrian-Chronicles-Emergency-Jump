@@ -16,16 +16,19 @@ var PlanetPeroidBaseDays = 365.25;
 var PlanetImageDefaultPath = "RESOURCES/PLANETS/";
 
 var PlanetTypes = [
-	"Unknown",
-	"Terrestrial",
-	"Desert",
-	"Metallic",
+	["Unknown","hsl(300,100%,50%)","hsl(300,100%,25%)"],
+	["Terrestrial","hsl(120,100%,50%)","hsl(90,100%,25%)"],
+	["Desert","hsl(60,50%,50%)","hsl(60,50%,25%)"],
+	["Metallic","hsl(0,25%,50%)","hsl(0,25%,25%)"],
+	["Barren","hsl(30,25%,50%)","hsl(30,25%,25%)"],
+	["Frozen","hsl(180,50%,75%)","hsl(180,50%,50%)"],
 ];
 var PlanetSubtypes = [
 	"Unknown",
 	"Paradise world",
 	"Wasteland",
 	"Barren",
+	"Unstable",
 ];
 var PlanetAtmospheres = [
 	["Unknown","Unknown"],
@@ -86,6 +89,9 @@ class PlanetObject{
 	energyRequired = 0;
 	energyProduced = 0;
 	
+	//display
+	startingPosition = 0.0;
+	
 	registerSystem(systemID, loopback = true) {
 		this.removeSystem();
 		
@@ -108,12 +114,6 @@ class PlanetObject{
 	
 	recalculatePeroid(){
 		if(this.system_id != -1){
-			//T² = (4π²/GM) * a³
-			//for a == 1 and M == 1:
-			//Assuming T = 400 => T² = 16000, then:
-			//(4π²/G) = 160000,
-			//T² = (160000 / 1) * 1³
-
 			this.orbitalPeroid = Math.pow(((PlanetPeroidBaseDays*PlanetPeroidBaseDays) / systemsGetSystemById(this.system_id).starMass) * Math.pow(this.orbitalDistance,3), (1/2));
 		}
 	}
@@ -133,6 +133,16 @@ class PlanetObject{
 		else tmpReply += Number(this.energyAvailable / this.energyRequired).toFixed(2) + "% )";
 		
 		return tmpReply;
+	}
+
+	getPosition(currentDate){
+		var tmpPosition = [0,0];
+		var tmpRotation =  (((currentDate % this.orbitalPeroid) / this.orbitalPeroid)  + this.startingPosition)%1;
+		
+		tmpPosition[0] = Math.sin(Math.PI*tmpRotation*2);
+		tmpPosition[1] = Math.cos(Math.PI*tmpRotation*2);
+		
+		return tmpPosition;
 	}
 }
 
@@ -199,7 +209,7 @@ function planetsGetPreviousFactionPlanetIndex(factionID = -1){
 		else tmpCurrent--;
 	}
 	
-	console.log("Next planet belonging to faction " + tmpFaction + " not found");
+	console.log("Previous planet belonging to faction " + tmpFaction + " not found");
 	return tmpCurrent;
 }
 function planetsGetPreviousSystemPlanetIndex(){
@@ -212,6 +222,6 @@ function planetsGetPreviousSystemPlanetIndex(){
 		else tmpCurrent--;
 	}
 	
-	console.log("Next planet in system " + tmpSystem + " not found");
+	console.log("Previous planet in system " + tmpSystem + " not found");
 	return tmpCurrent;
 }

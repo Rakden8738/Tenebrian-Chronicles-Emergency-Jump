@@ -3,7 +3,8 @@
 @import "mainMenu.css";
 @import "settingsMenu.css";
 @import "planetOverview.css";
-@import "combinedFix.css";
+@import "systemOverview.css";
+@import "creditsMenu.css";
 
 
 /* kdam-thmor-pro-regular - latin_latin-ext */
@@ -35,5 +36,20 @@ body {
 
 	margin: 0px;
 	padding: 0px;
+	
+}
+a{
+	color: hsla(210, 100%, 70%, 1.0);
+}
+a:active{
+	color: hsla(210, 100%, 40%, 0.75);
+}
+a:active{
+	color: hsla(210, 100%, 40%, 0.75);
 }
 
+@media (prefers-reduced-motion: reduce) {
+   *{
+		cursor: auto; /* Reverts to the default cursor */
+   }
+}
