@@ -1,0 +1,429 @@
+#galaxyMapMenuWindow{
+	background: hsla(240,100%,0%,0.35);
+	
+	bottom: 100px;
+
+	
+	width: 90%;
+	max-width: 1200px;
+	/*min-width: 600px;*/
+	
+	padding: 0px;
+
+	padding-bottom: 0%;
+
+	text-align: center;
+	align-content: center;
+	
+	overflow:hidden;
+	
+	/*background: linear-gradient(90deg, hsla(0,0%,0%,0.0) 0px, hsla(0,0%,0%,0.35) 25px, hsla(0,0%,0%,0.35) calc(100% - 25px), hsla(0,0%,0%,0.0) 100%);*/
+	/*mask-image: linear-gradient(90deg, hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px), hsla(0,100%,100%,0.0) 100%);*/
+}
+
+.galaxyMapMenuBar{
+	position: relative;
+	height: 80px;
+}
+#galaxyMapMenuTopBar{
+	background-color: hsla(0,100%,50%,0.0);
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	
+	height: 80px;
+	
+	padding: 0px;
+}
+#galaxyMapMenuBottomBar{
+	background-color: hsla(0,100%,50%,0.0);
+}
+#galaxyMapMenuTopBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+
+#galaxyMapMenuTopBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	display: flex;
+    justify-content: center;
+	
+	padding-top: 10px;
+}
+#galaxyMapMenuTopBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#galaxyMapMenuBottomBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
+	/*background: hsla(60,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+#galaxyMapMenuBottomBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
+	/*background: hsla(180,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+		
+	width: max(calc(100% - 400px), 0px);
+	
+	padding-bottom: 10px;
+}
+#galaxyMapMenuBottomBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
+	/*background: hsla(300,100%,50%,0.3);*/
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	
+	width: 200px;
+}
+
+#galaxyMapMenuContent{
+	background: hsla(120,100%,50%,0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	box-sizing: border-box;
+	
+	height: calc(100% - 80px);
+	
+	padding: 25px;
+	padding-bottom: 0%;
+	padding-top: 0%;
+	
+	position: relative;
+	overflow: hidden;
+	
+	mask-image: none;
+}
+
+.galaxyMapElementsContainer{
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+}
+
+#galaxyMapMenuContainer{
+	float: left;
+	width: 25%;
+	left: 0;
+	height: 100%;
+	padding: 0px;
+	padding-bottom: 20px;
+}
+
+#galaxyMapMenuButtonsContainer{
+	background: hsla(0,0%,0%,0.3);
+	
+	max-height: 65%;
+	width:100%;
+	margin-bottom: 4%;
+}
+
+.galaxyMapButton{
+	position:relative;
+	
+	max-width: 90%;
+	height: auto;
+	min-height: 50px;
+	/*max-height: 15%;*/
+	
+	left:0;
+	right:0;
+	bottom: 0;
+	
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+	outline: solid hsla(180,75%,75%,0.0) 1px;
+	
+	padding:0px;
+	
+	box-sizing: border-box;
+	
+	
+	justify-content: right;
+	align-items: center;
+	
+	display: flex;
+	
+	pointer-events: auto;
+	cursor: pointer;
+
+	background: hsla(60,100%,75%,0.0);
+	
+	opacity: 0.70;
+}
+.galaxyMapButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.galaxyMapButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.galaxyMapButton:disabled{
+	opacity:0.2;
+}
+.galaxyMapButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.galaxyMapButton:hover .galaxyMapButtonImage{
+	outline: solid hsla(180,75%,75%,1) 1px;
+}
+.galaxyMapButton:active .galaxyMapButtonImage{
+	outline: solid hsla(180,100%,75%,1) 1px;
+}
+.galaxyMapButtonImage{
+	width:100%;
+	height:auto;
+	
+	left:0px;
+	object-fit: contain;
+	
+	outline: solid hsla(180,75%,75%,0.5) 1px;
+	
+	position: relative;
+}
+.galaxyMapButtonText{
+	width:80%;
+	margin:auto;
+	left:10%;
+	
+	position:absolute;
+	
+	text-transform:uppercase;
+}
+
+.galaxyMapHorizontalLine{
+	border-color: hsla(180,100%,75%,0.5); 
+}
+.galaxyMapInfoName{
+	text-align: left;
+}
+.galaxyMapTableColumnSpacing{
+	min-width: 0.75em;
+	width: 20px;
+}
+
+.galaxyMapInfoValue{
+	text-align: right;
+}
+.galaxyMapInfoTable{
+	width: 90%;
+	left: 5%;
+}
+.galaxyMapInfoTable .interfaceTableCell{
+	text-align: left;
+	padding: 0.05em;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	
+	min-height: initial;
+}
+.galaxyMapInfoTable span{
+	display: block;
+}
+.galaxyMapInfoTable .interfaceText{
+	font-size: 66%;
+}
+
+
+#galaxyMapCanvasInfoContainer .interfaceText{
+	color: hsla(180,0%,75%,0.66);
+}
+
+#galaxyMapSelectedElementTable{
+	
+}
+#galaxyMapHoveredElementTable span{
+	opacity: 0.60;
+}
+#galaxyMapCanvasInfoTable span{
+	opacity: 0.50;
+}
+
+#galaxyMapHoveredElementSpacingRow, #galaxyMapSelectedHoveredElementSpacingRow{
+	height: 0.66em;
+}
+
+#galaxyMapSelectedSystemInfoContainer{
+	background: hsla(0,0%,0%,0.5);
+	
+	width:100%;
+	margin-bottom: 0%;
+	/*padding: 0;*/
+}
+
+#galaxyMapHoverInfoContainer{
+	background: hsla(0,0%,0%,0.5);
+	
+	width:100%;
+	margin-bottom: 0%;
+	/*padding: 0;*/
+}
+#galaxyMapCanvasInfoContainer{
+	background: hsla(0,0%,0%,0.5);
+	
+	position: absolute;
+	bottom: 0px;
+	width: calc(100% - 20px);
+	margin-bottom: 10%;
+	/*padding: 0;*/
+}
+
+#galaxyMapMapContainer{
+	float: right;
+	width: 75%;
+	right: 0;
+	
+	height: calc(100% - 0px);
+	padding: 0px;
+}
+#galaxyMapCanvasContainer{
+	padding: 0px;
+	top: 20px;
+	left: 20px;
+	height: calc(100% - 40px);
+	width: calc(100% - 40px);
+	
+	background-color: hsla(0,0%,0%,0.5);
+	
+	/*
+	border: solid;
+	border-width: 10px;
+	border-image: linear-gradient(
+		hsla(180,0%,0%,0.0) 0%,
+		hsla(180,100%,50%,1.0) 5px,
+		hsla(180,100%,100%,1.0) 8px,
+		hsla(180,100%,100%,1.0) calc(100% - 8px),
+		hsla(180,100%,50%,1.0) calc(100% - 5px),
+		hsla(180,0%,0%,0.0) 100%);
+	*/
+	border: solid hsla(210,100%,40%,0.30) 0px;
+}
+#galaxyMapCanvas{
+	width:100%;
+	height: calc(100% - 0px);
+	
+	border: none;
+	mask-image: linear-gradient(0deg, hsla(0, 100%, 100%, 0.0) 0px, hsla(0, 100%, 100%, 1) 125px, hsla(0, 100%, 100%, 1) calc(100% - 125px), hsla(0, 100%, 100%, 0.0) 100%), linear-gradient(90deg, hsla(0, 100%, 100%, 0.0) 0px, hsla(0, 100%, 100%, 1) 125px, hsla(0, 100%, 100%, 1) calc(100% - 125px), hsla(0, 100%, 100%, 0.0) 100%);
+	mask-composite: intersect;
+	
+	/*
+	min-width: 400px;
+	min-height: 300px;*/
+}
+
+.galaxyMapArrowButtonContainer{
+	position: absolute;
+	z-index: 5;
+	padding: 0;
+	background: transparent;
+	border: 0px;
+}
+.galaxyMapVerticalArrowContainer{
+	left: calc(50% - 75px);
+	width: calc(150px + 0%);
+	
+	height: calc(30px + 0%);
+}
+.galaxyMapHorizontalArrowContainer{
+	top: calc(50% - 75px);
+	height: calc(150px + 0%);
+	
+	width: calc(30px + 0%);
+}
+.galaxyMapArrowButtonImage{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0.6;
+}
+.galaxyMapArrowButtonImage:hover{
+	opacity: 0.75;
+}
+.galaxyMapArrowButtonImage:active{
+	opacity: 1.0;
+}
+.galaxyMapArrowButtonImage:disabled{
+	opacity: 0.3;
+}
+
+.galaxyMapSideButtonContainer{
+	z-index: 5;
+	padding: 0;
+	background: transparent;
+	border: 0px;
+	
+	right: 0px;
+	width: 40px;
+	height: 40px;
+	
+	position:absolute;
+}
+.galaxyMapSideButtonImage{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0.6;
+}
+.galaxyMapSideButtonImage:hover{
+	opacity: 0.75;
+}
+.galaxyMapSideButtonImage:active{
+	opacity: 1.0;
+}
+.galaxyMapSideButtonImage:disabled{
+	opacity: 0.3;
+}
+
+#galaxyMapTopArrowContainer{
+	top: 0px;
+}
+#galaxyMapTopArrowButtonImage{
+	
+}
+#galaxyMapLeftArrowContainer{
+	left: 0px;
+}
+#galaxyMapLeftArrowButtonImage{
+	
+}
+#galaxyMapRightArrowContainer{
+	right: 0px;
+}
+#galaxyMapRightArrowButtonImage{
+	
+}
+#galaxyMapBottomArrowContainer{
+	bottom: 0px;
+}
+#galaxyMapBottomArrowButtonImage{
+	
+}
+
+#galaxyMapZoomInContainer{
+	bottom: 80px;
+}
+#galaxyMapZoomOutContainer{
+	bottom: 40px;
+}
+
+#galaxyMapReturnHomeContainer{
+	top: 40px;
+}
+#galaxyMapFocusTargetContainer{
+	top: 80px;
+}

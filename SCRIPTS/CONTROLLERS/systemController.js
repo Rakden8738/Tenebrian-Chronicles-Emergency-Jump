@@ -10,24 +10,26 @@ function connectionTest_systems(outputDocument){
 
 var SystemsArray = [];
 var SystemsCurrentSystem = -1;
+var SystemsHomeSystemDefault = 0;
+var SystemsHomeSystem = SystemsHomeSystemDefault;
 
-var StarSizes = [
-	"Dwarf",
-	"Star",
-	"Subgiant",
-	"Giant",
-	"Supergiant",
-	"Hypergiant",
-	"Other",
-];
-var StarTypes = [
-	["Brown","hsl(30,100%,35%)","hsl(30,100%,25%)"],
-	["Red","hsl(0,100%,40%)","hsl(0,100%,30%)"],
-	["Orange","hsl(35,100%,60%)","hsl(35,100%,50%)"],
-	["Yellow","hsl(60,100%,65%)","hsl(60,100%,55%)"],
-	["White","hsl(0,0%,100%)","hsl(0,0%,90%)"],
-	["Blue","hsl(210,100%,85%)","hsl(210,100%,75%)"],
-];
+var StarSizes = {
+	"Dwarf":["Dwarf",0],
+	"Star":["Star",1],
+	"Subgiant":["Subgiant",2],
+	"Giant":["Giant",3],
+	"Supergiant":["Supergiant",4],
+	"Hypergiant":["Hypergiant",5],
+	"Other":["Other",0],
+};
+var StarTypes = {
+	"Brown":["Brown","hsl(25,80%,25%)","hsl(25,80%,20%)"],
+	"Red":["Red","hsl(0,100%,40%)","hsl(0,100%,30%)"],
+	"Orange":["Orange","hsl(35,100%,60%)","hsl(35,100%,50%)"],
+	"Yellow":["Yellow","hsl(60,100%,85%)","hsl(60,100%,50%)"],
+	"White":["White","hsl(180,0%,100%)","hsl(180,25%,90%)"],
+	"Blue":["Blue","hsl(210,100%,85%)","hsl(210,100%,75%)"],
+};
 
 class SystemObject{
 	constructor(){
@@ -50,6 +52,7 @@ class SystemObject{
 	starSize = StarSizes[1];
 	
 	starMass = 1.0;
+	planetsCounterClockwise = false;
 	
 	planetsIDArray = [];
 	planetsByDistanceArray = [];
@@ -135,6 +138,9 @@ class SystemObject{
 		//to-do
 		this.discovered = true;
 		
+		//temp. exception for The Depths and Circus
+		//if(this.name == "The Depths") this.discovered = false;
+		//if(this.name == "Circus") this.discovered = false;
 		
 		return true;
 	}
@@ -156,11 +162,23 @@ function systemsGetSystemById(systemID){
 	return tmpSystem;
 }
 function systemsGetSystemIndexById(systemID){
-	var tmpSystem = -1;
+	var tmpSystemIndex = -1;
 	
 	for(var i = 0; i < SystemsArray.length; i++) {
 		if(SystemsArray[i].id == systemID) {
-			tmpSystem = i;
+			tmpSystemIndex = i;
+			break;
+		}
+	}
+	
+	return tmpSystemIndex;
+}
+function systemsGetSystemByName(systemName){
+	var tmpSystem;
+	
+	for(var i = 0; i < SystemsArray.length; i++) {
+		if(SystemsArray[i].name == systemName) {
+			tmpSystem = SystemsArray[i];
 			break;
 		}
 	}
@@ -242,6 +260,7 @@ var SystemStarmapCanvasID = "systemOverviewCanvas";
 var SystemStarmapContext;
 var SystemStarmapPlanetCoordinates = [];
 var SystemStarmapGateCoordinates = [];
+var SystemStarmapPlanetDistances = [];
 var SystemStarmapHeight = 300;
 var SystemStarmapWidth = 300;
 var SystemStarmapLine = 2;
@@ -250,14 +269,20 @@ var SystemStarmapFont = "Kdam Thmor Pro";
 var SystemStarmapStarArms = 16;
 var SystemStarmapStarOuter = 15;
 var SystemStarmapStarInner = 10;
+var SystemStarmapStarSizeBonusScale = 2;
 
-var SystemStarmapPlanetMinimumDistance = 20;
-var SystemStarmapPlanetMaximumDistance = 140;
-var SystemStarmapPlanetBodyRadius = 8;
-var SystemStarmapPlanetOutlineRadius = 12;
+var SystemStarmapPlanetOrbitMinimumDistance = 40;
+var SystemStarmapPlanetOrbitMaximumDistance = 120;
+var SystemStarmapPlanetOrbitDistanceRange = SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance;
+var SystemStarmapPlanetOrbitOffsetAU = 0.25;
+
+var SystemStarmapPlanetBodyRadius = 9;
+//var SystemStarmapPlanetOutlineRadius = 12;
+var SystemStarmapPlanetOutlineExtraRadius = 5;
+var SystemStarmapPlanetSizeBonusScale = 2;
 
 var SystemStarmapGateRadius = 5;
-var SystemStarmapGateOffset = 5;
+var SystemStarmapGateOffset = 30;
 
 var SystemStarmapRefreshSpeed = 0.2;
 var SystemStarmapRefreshInProgress = false;
@@ -266,15 +291,28 @@ var SystemStarmapCursorPositionX = -1000;
 var SystemStarmapCursorPositionY = -1000;
 
 var SystemStarmapMouseDetectionDistance = 30;
-var SystemStarmapPlanetBodyRadiusHighlighted = 10;
-var SystemStarmapGateRadiusHighlighted = 7;
+var SystemStarmapPlanetBodyRadiusHighlighted = 2;
+var SystemStarmapGateRadiusHighlighted = 1;
+
+var SystemStarmapFlicker = 0;
+var SystemStarmapFlickerMultiplier = 0.1;
 
 var StarmapSystemChanging = false;
+
+var StarmapLastRefreshTime = 0;
 
 function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 	if(!SystemStarmapRefreshInProgress) {
 		SystemStarmapRefreshInProgress = true;
+		
 		//console.log("Refresh iteration");
+		if((Date.now() - StarmapLastRefreshTime) < (SystemStarmapRefreshSpeed*1000*0.4) && !debugMode){
+			//Killing unnecessary interval.
+			//console.log("Killing unnecessary interval.");
+			return;
+		}
+		StarmapLastRefreshTime = Date.now();
+		
 		if(!StarmapSystemChanging) {
 			//console.log("Redrawing");
 			if(!SystemStarmapInitialized) {	
@@ -296,11 +334,21 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 			var tmpSector = SystemsArray[SystemsCurrentSystem];
 			var tmpSectorPosition = tmpSector.position;
 			var tmpStarType = tmpSector.starType;
+			var tmpStarSize = tmpSector.starSize;
 			var tmpPlanetCount = tmpSector.planetsIDArray.length;
 			var tmpGatesCount = tmpSector.gatesIDs.length;
 			
+			var tmpSingleOrbit = false;
+			if(tmpPlanetCount > 0){
+				var tmpClosestPlanetDistance = tmpSector.planetsByDistanceArray[0][1] - SystemStarmapPlanetOrbitOffsetAU;
+				var tmpFarthestPlanetDistance = tmpSector.planetsByDistanceArray[tmpSector.planetsByDistanceArray.length-1][1] + SystemStarmapPlanetOrbitOffsetAU;
+				var tmpMaxDistanceBetweenPlanets = tmpFarthestPlanetDistance - tmpClosestPlanetDistance;
+				//if(tmpClosestPlanetDistance == tmpFarthestPlanetDistance) tmpSingleOrbit = true;
+			}
+			
 			//calculate positions
 			SystemStarmapPlanetCoordinates = [];
+			SystemStarmapPlanetDistances = [];
 			SystemStarmapGateCoordinates = [];
 			
 			for(var i = 0; i < tmpPlanetCount; i++){
@@ -308,14 +356,29 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				var tmpPlanet = planetsGetPlanetById(tmpSector.planetsByDistanceArray[i][0]);
 				var tmpCycle = (TimerTotalElapsedDays % Math.round(tmpPlanet.orbitalPeroid))/tmpPlanet.orbitalPeroid + tmpPlanet.startingPosition;
 				
-				var tmpDistance = SystemStarmapPlanetMinimumDistance + ((SystemStarmapPlanetMaximumDistance - SystemStarmapPlanetMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
+				//var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + ((SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
+				if(tmpSingleOrbit) {
+					var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + SystemStarmapPlanetOrbitDistanceRange * (1/2);
+				}
+				else var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + SystemStarmapPlanetOrbitDistanceRange * ((tmpSector.planetsByDistanceArray[i][1] - tmpClosestPlanetDistance))/tmpMaxDistanceBetweenPlanets;
+				
+				//console.log(tmpPlanet.name + ": " + tmpDistance + "/" + (((tmpSector.planetsByDistanceArray[i][1] - tmpClosestPlanetDistance))/tmpMaxDistanceBetweenPlanets));
+				
+				
 				var tmpSinAngle = Math.sin(tmpCycle*Math.PI*2);
 				var tmpCosAngle = Math.cos(tmpCycle*Math.PI*2);
 				
-				var tmpPlanetX = SystemStarmapWidth/2 + tmpSinAngle*(tmpDistance);
+				if(tmpSector.planetsCounterClockwise) {
+					var tmpPlanetX = SystemStarmapWidth/2 - tmpSinAngle*(tmpDistance);
+				}
+				else {
+					var tmpPlanetX = SystemStarmapWidth/2 + tmpSinAngle*(tmpDistance);
+				}
+				
 				var tmpPlanetY = SystemStarmapHeight/2 - tmpCosAngle*(tmpDistance);
 				
 				SystemStarmapPlanetCoordinates.push([tmpPlanetX,tmpPlanetY]);
+				SystemStarmapPlanetDistances.push(tmpDistance);
 			}
 			
 			for (var i = 0; i < tmpGatesCount; i++){
@@ -326,8 +389,8 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				var tmpSin = tmpGateVector[0]/tmpVectorLength;
 				var tmpCos = tmpGateVector[1]/tmpVectorLength;
 				
-				var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetMaximumDistance+SystemStarmapGateOffset) * tmpSin;
-				var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetMaximumDistance+SystemStarmapGateOffset) * tmpCos;
+				var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetOrbitMaximumDistance+SystemStarmapGateOffset) * tmpSin;
+				var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetOrbitMaximumDistance+SystemStarmapGateOffset) * tmpCos;
 				
 				SystemStarmapGateCoordinates.push([tmpGateX,tmpGateY]);
 			}
@@ -368,48 +431,58 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 			
 			SystemStarmapContext.strokeStyle = tmpStarType[2];
 			SystemStarmapContext.fillStyle = tmpStarType[1];
-			SystemStarmapContext.lineWidth = SystemStarmapLine;
+			SystemStarmapContext.lineWidth = SystemStarmapLine + (tmpStarSize[1]);
 			
 			//star
 			SystemStarmapContext.beginPath();
 
 			for(var i = 0; i < SystemStarmapStarArms; i++) {
-				SystemStarmapContext.lineTo(SystemStarmapWidth/2 + SystemStarmapStarOuter*Math.cos(i/SystemStarmapStarArms*2*Math.PI),
-											SystemStarmapHeight/2 - SystemStarmapStarOuter*Math.sin(i/SystemStarmapStarArms*2*Math.PI));
-				SystemStarmapContext.lineTo(SystemStarmapWidth/2 + SystemStarmapStarInner*Math.cos((i+1/2)/SystemStarmapStarArms*2*Math.PI),
-											SystemStarmapHeight/2 - SystemStarmapStarInner*Math.sin((i+1/2)/SystemStarmapStarArms*2*Math.PI));
+				SystemStarmapContext.lineTo(SystemStarmapWidth/2 + (SystemStarmapStarOuter + (SystemStarmapStarSizeBonusScale * tmpStarSize[1])) * Math.cos(i/SystemStarmapStarArms*2*Math.PI + SystemStarmapFlicker*SystemStarmapFlickerMultiplier),
+											SystemStarmapHeight/2 - (SystemStarmapStarOuter + (SystemStarmapStarSizeBonusScale * tmpStarSize[1])) * Math.sin(i/SystemStarmapStarArms*2*Math.PI + SystemStarmapFlicker*SystemStarmapFlickerMultiplier));
+				SystemStarmapContext.lineTo(SystemStarmapWidth/2 + (SystemStarmapStarInner + (SystemStarmapStarSizeBonusScale * tmpStarSize[1])  + (SystemStarmapFlicker - 0.5)) * Math.cos((i+1/2)/SystemStarmapStarArms*2*Math.PI + SystemStarmapFlicker*SystemStarmapFlickerMultiplier),
+											SystemStarmapHeight/2 - (SystemStarmapStarInner + (SystemStarmapStarSizeBonusScale * tmpStarSize[1]) + (SystemStarmapFlicker - 0.5)) * Math.sin((i+1/2)/SystemStarmapStarArms*2*Math.PI + SystemStarmapFlicker*SystemStarmapFlickerMultiplier));
 			}
 			
 			SystemStarmapContext.closePath();
-			SystemStarmapContext.stroke();
 			SystemStarmapContext.fill();
+			SystemStarmapContext.stroke();
 			
-			SystemStarmapContext.strokeStyle = "hsl(0,0%,0%)";
-			SystemStarmapContext.strokeText(tmpSector.name, SystemStarmapWidth/2, SystemStarmapHeight/2 + 30);
-			SystemStarmapContext.strokeStyle = tmpStarType[2];
-			SystemStarmapContext.fillText(tmpSector.name, SystemStarmapWidth/2, SystemStarmapHeight/2 + 30);
+			//star name background
+			//SystemStarmapContext.beginPath();
+			//SystemStarmapContext.strokeStyle = "hsl(0,0%,0%)";
+			//SystemStarmapContext.strokeText(tmpSector.name, SystemStarmapWidth/2, SystemStarmapHeight/2 + 30 + (tmpStarSize[1] * SystemStarmapStarSizeBonusScale));
+			
+			//star name
+			SystemStarmapContext.beginPath();
+			//SystemStarmapContext.strokeStyle = tmpStarType[2];
+			SystemStarmapContext.fillStyle = tmpStarType[1];
+			SystemStarmapContext.fillText(tmpSector.name, SystemStarmapWidth/2, SystemStarmapHeight/2 + 30 + (tmpStarSize[1] * SystemStarmapStarSizeBonusScale));
 			
 			SystemStarmapContext.lineWidth = SystemStarmapLine;
 			
-
+			//orbits
 			for(var i = 0; i < tmpPlanetCount; i++){
 				
 				var tmpPlanet = planetsGetPlanetById(tmpSector.planetsByDistanceArray[i][0]);
 				var tmpCycle = (TimerTotalElapsedDays % Math.round(tmpPlanet.orbitalPeroid))/tmpPlanet.orbitalPeroid + tmpPlanet.startingPosition;
 				
-				var tmpDistance = SystemStarmapPlanetMinimumDistance + ((SystemStarmapPlanetMaximumDistance - SystemStarmapPlanetMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
-				//var tmpSinAngle = Math.sin(tmpCycle*Math.PI*2);
-				//var tmpCosAngle = Math.cos(tmpCycle*Math.PI*2);
-				
-				//var tmpPlanetX = SystemStarmapWidth/2 + tmpSinAngle*(tmpDistance);
-				//var tmpPlanetY = SystemStarmapHeight/2 - tmpCosAngle*(tmpDistance);
+				//var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + ((SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
+				var tmpDistance = SystemStarmapPlanetDistances[i];
+				var tmpRadius = SystemStarmapPlanetBodyRadius + (SystemStarmapPlanetSizeBonusScale * tmpPlanet.relativeSize);
 				
 				var tmpPlanetX = SystemStarmapPlanetCoordinates[i][0];
 				var tmpPlanetY = SystemStarmapPlanetCoordinates[i][1];
 				
+				
 				//ring
 				SystemStarmapContext.lineWidth = SystemStarmapLine;
-				SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.3)";
+				
+				if(tmpIsClosestPlanet && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.4)";
+				}
+				else {
+					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.3)";
+				}
 				SystemStarmapContext.beginPath();
 
 				SystemStarmapContext.arc(SystemStarmapWidth/2, SystemStarmapHeight/2, tmpDistance, 0, 2*Math.PI);
@@ -417,13 +490,14 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				SystemStarmapContext.closePath();
 				SystemStarmapContext.stroke();
 				
+				/*
 				//planet space
 				SystemStarmapContext.beginPath();
 
 				SystemStarmapContext.arc(
 					tmpPlanetX,
 					tmpPlanetY,
-					SystemStarmapPlanetOutlineRadius, 0, 2*Math.PI
+					tmpRadius + SystemStarmapPlanetOutlineExtraRadius, 0, 2*Math.PI
 				);
 				
 				SystemStarmapContext.closePath();
@@ -431,10 +505,10 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				SystemStarmapContext.clip();
 				
 				SystemStarmapContext.clearRect(
-					tmpPlanetX - SystemStarmapPlanetOutlineRadius - SystemStarmapLine, 
-					tmpPlanetY - SystemStarmapPlanetOutlineRadius - SystemStarmapLine,
-					tmpPlanetX + SystemStarmapPlanetOutlineRadius + SystemStarmapLine, 
-					tmpPlanetY + SystemStarmapPlanetOutlineRadius + SystemStarmapLine);
+					tmpPlanetX - (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) - SystemStarmapLine, 
+					tmpPlanetY - (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) - SystemStarmapLine,
+					tmpPlanetX + (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) + SystemStarmapLine, 
+					tmpPlanetY + (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) + SystemStarmapLine);
 				SystemStarmapContext.restore();
 				
 				
@@ -448,7 +522,7 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 					SystemStarmapContext.arc(
 						tmpPlanetX,
 						tmpPlanetY,
-						SystemStarmapPlanetBodyRadiusHighlighted, 0, 2*Math.PI
+						tmpRadius + SystemStarmapPlanetBodyRadiusHighlighted, 0, 2*Math.PI
 					);
 
 				}
@@ -456,7 +530,88 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 					SystemStarmapContext.arc(
 						tmpPlanetX,
 						tmpPlanetY,
-						SystemStarmapPlanetBodyRadius, 0, 2*Math.PI
+						tmpRadius, 0, 2*Math.PI
+					);
+				}
+				
+				SystemStarmapContext.closePath();
+				SystemStarmapContext.fill();
+				SystemStarmapContext.stroke();
+				*/
+			}
+			
+			
+			//planets
+			for(var i = 0; i < tmpPlanetCount; i++){
+				
+				var tmpPlanet = planetsGetPlanetById(tmpSector.planetsByDistanceArray[i][0]);
+				var tmpCycle = (TimerTotalElapsedDays % Math.round(tmpPlanet.orbitalPeroid))/tmpPlanet.orbitalPeroid + tmpPlanet.startingPosition;
+				
+				//var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + ((SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
+				var tmpDistance = SystemStarmapPlanetDistances[i];
+				var tmpRadius = SystemStarmapPlanetBodyRadius + (SystemStarmapPlanetSizeBonusScale * tmpPlanet.relativeSize);
+				
+				var tmpPlanetX = SystemStarmapPlanetCoordinates[i][0];
+				var tmpPlanetY = SystemStarmapPlanetCoordinates[i][1];
+				
+				/*
+				//ring
+				SystemStarmapContext.lineWidth = SystemStarmapLine;
+				
+				if(tmpIsClosestPlanet && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.4)";
+				}
+				else {
+					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.3)";
+				}
+				SystemStarmapContext.beginPath();
+
+				SystemStarmapContext.arc(SystemStarmapWidth/2, SystemStarmapHeight/2, tmpDistance, 0, 2*Math.PI);
+
+				SystemStarmapContext.closePath();
+				SystemStarmapContext.stroke();
+				*/
+				
+				//planet space
+				SystemStarmapContext.beginPath();
+
+				SystemStarmapContext.arc(
+					tmpPlanetX,
+					tmpPlanetY,
+					tmpRadius + SystemStarmapPlanetOutlineExtraRadius, 0, 2*Math.PI
+				);
+				
+				SystemStarmapContext.closePath();
+				SystemStarmapContext.save();
+				SystemStarmapContext.clip();
+				
+				SystemStarmapContext.clearRect(
+					tmpPlanetX - (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) - SystemStarmapLine, 
+					tmpPlanetY - (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) - SystemStarmapLine,
+					tmpPlanetX + (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) + SystemStarmapLine, 
+					tmpPlanetY + (tmpRadius + SystemStarmapPlanetOutlineExtraRadius) + SystemStarmapLine);
+				SystemStarmapContext.restore();
+				
+				
+				//planet
+				SystemStarmapContext.lineWidth = SystemStarmapLine;
+				SystemStarmapContext.fillStyle = tmpPlanet.type[1];
+				SystemStarmapContext.strokeStyle = tmpPlanet.type[2];
+				SystemStarmapContext.beginPath();	
+
+				if(tmpIsClosestPlanet && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+					SystemStarmapContext.arc(
+						tmpPlanetX,
+						tmpPlanetY,
+						tmpRadius + SystemStarmapPlanetBodyRadiusHighlighted, 0, 2*Math.PI
+					);
+
+				}
+				else {
+					SystemStarmapContext.arc(
+						tmpPlanetX,
+						tmpPlanetY,
+						tmpRadius, 0, 2*Math.PI
 					);
 				}
 				
@@ -466,30 +621,39 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				
 			}
 			
+			//gates
 			for (var i = 0; i < tmpGatesCount; i++){
-				//var tmpRemoteSystem = systemsGetSystemById(tmpSector.gatesIDs[i]);
+				var tmpRemoteSystem = systemsGetSystemById(tmpSector.gatesIDs[i]);
+				
 				//var tmpGateVector = [tmpRemoteSystem.position[0]-tmpSector.position[0],tmpRemoteSystem.position[1]-tmpSector.position[1]];
 				
 				//var tmpVectorLength = Math.pow(((tmpGateVector[0]*tmpGateVector[0])+(tmpGateVector[1]*tmpGateVector[1])),(1/2));
 				//var tmpSin = tmpGateVector[0]/tmpVectorLength;
 				//var tmpCos = tmpGateVector[1]/tmpVectorLength;
 				
-				//var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetMaximumDistance+SystemStarmapGateOffset) * tmpSin;
-				//var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetMaximumDistance+SystemStarmapGateOffset) * tmpCos;
+				//var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetOrbitMaximumDistance+SystemStarmapGateOffset) * tmpSin;
+				//var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetOrbitMaximumDistance+SystemStarmapGateOffset) * tmpCos;
 				var tmpGateX = SystemStarmapGateCoordinates[i][0];
 				var tmpGateY = SystemStarmapGateCoordinates[i][1];
 				
 				//gates
 				SystemStarmapContext.lineWidth = SystemStarmapLine;
-				SystemStarmapContext.strokeStyle = "hsl(180,100%,50%)";
+				
+				if(tmpRemoteSystem.discovered){
+					SystemStarmapContext.strokeStyle = "hsl(180,100%,50%)";
+				}
+				else{
+					SystemStarmapContext.strokeStyle = "hsl(180,0%,50%)";
+				}
+				
 				SystemStarmapContext.beginPath();	
-
-				if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+				
+				if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance && tmpRemoteSystem.discovered) {
 					SystemStarmapContext.lineWidth = SystemStarmapLine + 1;
 					SystemStarmapContext.arc(
 						tmpGateX,
 						tmpGateY,
-						SystemStarmapGateRadiusHighlighted, 0, 2*Math.PI
+						SystemStarmapGateRadius + SystemStarmapGateRadiusHighlighted, 0, 2*Math.PI
 					);
 					
 				}
@@ -507,12 +671,13 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				SystemStarmapContext.lineWidth = SystemStarmapLine;
 			}
 			
+			//planet names
 			for(var i = 0; i < tmpPlanetCount; i++){
 				
 				var tmpPlanet = planetsGetPlanetById(tmpSector.planetsByDistanceArray[i][0]);
 				//var tmpCycle = (TimerTotalElapsedDays % Math.round(tmpPlanet.orbitalPeroid))/tmpPlanet.orbitalPeroid + tmpPlanet.startingPosition;
 				
-				//var tmpDistance = SystemStarmapPlanetMinimumDistance + ((SystemStarmapPlanetMaximumDistance - SystemStarmapPlanetMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
+				//var tmpDistance = SystemStarmapPlanetOrbitMinimumDistance + ((SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance) * (i + 1) / (tmpPlanetCount + 1));
 				//var tmpSinAngle = Math.sin(tmpCycle*Math.PI*2);
 				//var tmpCosAngle = Math.cos(tmpCycle*Math.PI*2);
 				
@@ -533,25 +698,26 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 					SystemStarmapContext.strokeStyle = "hsla(0,0%,0%,0.5)";
 					SystemStarmapContext.fillStyle = "hsl(0,0%,0%,1)";
 				}
-				SystemStarmapContext.strokeText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20);
-				SystemStarmapContext.fillText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20);
+				SystemStarmapContext.strokeText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20 + (SystemStarmapPlanetSizeBonusScale * tmpPlanet.relativeSize/2));
+				SystemStarmapContext.fillText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20 + (SystemStarmapPlanetSizeBonusScale * tmpPlanet.relativeSize/2));
 				SystemStarmapContext.strokeStyle = tmpStarType[2];
 				
 				if(tmpIsClosestPlanet && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
-					if(tmpPlanet.owner == 1) SystemStarmapContext.fillStyle = "hsl(120,100%,50%)";
+					if(tmpPlanet.owner == DiplomacyPlayerFaction) SystemStarmapContext.fillStyle = "hsl(120,100%,50%)";
 					else if (tmpPlanet.owner == 0 || tmpPlanet.owner == -1) SystemStarmapContext.fillStyle = "hsl(0,0%,75%)";
 					else SystemStarmapContext.fillStyle = "hsl(0,100%,50%)";
 				}
 				else {
-					if(tmpPlanet.owner == 1) SystemStarmapContext.fillStyle = "hsla(120,100%,50%,0.5)";
+					if(tmpPlanet.owner == DiplomacyPlayerFaction) SystemStarmapContext.fillStyle = "hsla(120,100%,50%,0.5)";
 					else if (tmpPlanet.owner == 0 || tmpPlanet.owner == -1) SystemStarmapContext.fillStyle = "hsla(0,0%,75%,0.5)";
 					else SystemStarmapContext.fillStyle = "hsla(0,100%,50%,0.5)";
 				}
 				
 				SystemStarmapContext.lineWidth = 1;
-				SystemStarmapContext.fillText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20);
+				SystemStarmapContext.fillText(tmpPlanet.name, tmpPlanetX, tmpPlanetY + 20 + (SystemStarmapPlanetSizeBonusScale * tmpPlanet.relativeSize/2));
 			}
 			
+			//gate names
 			for (var i = 0; i < tmpGatesCount; i++){
 				var tmpRemoteSystem = systemsGetSystemById(tmpSector.gatesIDs[i]);
 				var tmpGateVector = [tmpRemoteSystem.position[0] - tmpSector.position[0], tmpRemoteSystem.position[1] - tmpSector.position[1]];
@@ -560,8 +726,8 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				var tmpSin = tmpGateVector[0]/tmpVectorLength;
 				var tmpCos = tmpGateVector[1]/tmpVectorLength;
 				
-				var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetMaximumDistance + SystemStarmapGateOffset) * tmpSin;
-				var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetMaximumDistance + SystemStarmapGateOffset) * tmpCos;
+				var tmpGateX = SystemStarmapWidth/2 + (SystemStarmapPlanetOrbitMaximumDistance + SystemStarmapGateOffset) * tmpSin;
+				var tmpGateY = SystemStarmapHeight/2 + (SystemStarmapPlanetOrbitMaximumDistance + SystemStarmapGateOffset) * tmpCos;
 				
 				var tmpTextPositionOffsetX = 0;
 				var tmpTextPositionOffsetY = 0;
@@ -582,34 +748,46 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				if(tmpCos >= 0.5) {
 					tmpTextPositionOffsetY = -10;
 				}
-				if(tmpCos <= -0.5) {
+				else if(tmpCos <= -0.5) {
 					tmpTextPositionOffsetY = 20;
 				}
 				else {
 					tmpTextPositionOffsetY = 5;
 				}
 				
-				
 				//names
 				SystemStarmapContext.font = "9px " + SystemStarmapFont;
-				if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
-					SystemStarmapContext.strokeStyle = "hsl(0,0%,0%)";
-					SystemStarmapContext.fillStyle = "hsl(0,0%,0%)";
+				
+				if(tmpRemoteSystem.discovered) {
+					if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+						SystemStarmapContext.strokeStyle = "hsl(0,0%,0%)";
+						SystemStarmapContext.fillStyle = "hsl(0,0%,0%)";
+					}
+					else {
+						SystemStarmapContext.strokeStyle = "hsla(0,0%,0%,0.5)";
+						SystemStarmapContext.fillStyle = "hsl(0,0%,0%,1)";
+					}
+					SystemStarmapContext.fillText(tmpRemoteSystem.name, tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
+					SystemStarmapContext.strokeText(tmpRemoteSystem.name, tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
+					SystemStarmapContext.strokeStyle = tmpStarType[2];
+					if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
+						SystemStarmapContext.fillStyle = "hsl(180,100%,50%)";
+					}
+					else {
+						SystemStarmapContext.fillStyle = "hsla(180,100%,50%,0.5)";
+					}
+					SystemStarmapContext.lineWidth = 1;
+					SystemStarmapContext.fillText(tmpRemoteSystem.name, tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
 				}
-				else {
+				else{
 					SystemStarmapContext.strokeStyle = "hsla(0,0%,0%,0.5)";
 					SystemStarmapContext.fillStyle = "hsl(0,0%,0%,1)";
+					SystemStarmapContext.fillText("???", tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
+					SystemStarmapContext.strokeText("???", tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
+					SystemStarmapContext.fillStyle = "hsla(180,0%,50%,0.5)";
+					SystemStarmapContext.lineWidth = 1;
+					SystemStarmapContext.fillText("???", tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
 				}
-				SystemStarmapContext.strokeText(tmpRemoteSystem.name, tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
-				SystemStarmapContext.strokeStyle = tmpStarType[2];
-				if(tmpIsClosestGate && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
-					SystemStarmapContext.fillStyle = "hsl(180,100%,50%)";
-				}
-				else {
-					SystemStarmapContext.fillStyle = "hsla(180,100%,50%,0.5)";
-				}
-				SystemStarmapContext.lineWidth = 1;
-				SystemStarmapContext.fillText(tmpRemoteSystem.name, tmpGateX + tmpTextPositionOffsetX, tmpGateY + tmpTextPositionOffsetY);
 				
 				//console.log(tmpSin, tmpCos);
 				//console.log(tmpTextPositionOffsetX, tmpTextPositionOffsetY);
@@ -623,17 +801,20 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 			//console.log("System NOT redrawn - system changing." + debugMode);
 		}
 		
-		setTimeout(() => { 
-			SystemStarmapRefreshInProgress = false;
-			if(SystemStarmapRefreshActive) systemRefreshSystemCanvas(outputDocument);
-			else {
-				//console.log("Aborting timeout." + debugMode);
-			}
-		}, 1000 * SystemStarmapRefreshSpeed);
-		
+		if(SystemStarmapRefreshInProgress){
+			setTimeout(() => {
+				if(SystemStarmapRefreshInProgress) {
+					SystemStarmapRefreshInProgress = false;
+					if(SystemStarmapRefreshActive) systemRefreshSystemCanvas(outputDocument);
+					else {
+						//console.log("Aborting timeout." + debugMode);
+					}
+				}
+			}, 1000 * SystemStarmapRefreshSpeed);
+		}
 	}
 	else {
-		//console.log("System NOT redrawn - refresh in progress." + debugMode);
+		console.log("System NOT redrawn - refresh in progress." + debugMode);
 	}
 	
 }
@@ -708,13 +889,20 @@ function systemStarmapMouseClick(e, outputDocument, canvasObject) {
 				interfaceEnterElement(outputDocument, PlanetOverviewMenuID);
 			}
 			else if(tmpIsClosestGate) {
-				var tmpRemoteSystem = systemsGetSystemIndexById(tmpSystem.gatesIDs[tmpClosestObject]);
-				SystemsCurrentSystem = tmpRemoteSystem;
-				if(InterfaceChangeMenuTabInstant){
-					interfaceRefreshSystemOverview(outputDocument);
+				var tmpRemoteSystemIndex = systemsGetSystemIndexById(tmpSystem.gatesIDs[tmpClosestObject]);
+				var tmpRemoteSystem = systemsGetSystemById(tmpSystem.gatesIDs[tmpClosestObject]);
+				
+				if(tmpRemoteSystem.discovered){
+					SystemsCurrentSystem = tmpRemoteSystemIndex;
+					if(InterfaceChangeMenuTabInstant){
+						interfaceRefreshSystemOverview(outputDocument);
+					}
+					else {
+						interfaceSystemOverviewFadeSystemDetails(outputDocument);
+					}
 				}
-				else {
-					interfaceSystemOverviewFadeSystemDetails(outputDocument);
+				else{
+					console.log("System undiscovered.");
 				}
 			}
 		}

@@ -4,6 +4,7 @@
 @import "settingsMenu.css";
 @import "planetOverview.css";
 @import "systemOverview.css";
+@import "galaxyMap.css";
 @import "creditsMenu.css";
 
 
@@ -52,4 +53,16 @@ a:active{
    *{
 		cursor: auto; /* Reverts to the default cursor */
    }
+}
+.debugSpan{
+	font: 150%;
+	color: black;
+}
+.debugContainer{
+	background-color: white;
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	
+	position: relative;
 }

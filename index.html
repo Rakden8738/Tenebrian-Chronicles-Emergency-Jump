@@ -14,7 +14,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<script src="SCRIPTS\main.js"></script>
-		<script src="SCRIPTS\CONTROLLERS\timeController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\timerController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\saveLoadController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\animationController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\introController.js"></script>
@@ -24,8 +24,11 @@
 		<script src="SCRIPTS\CONTROLLERS\resourceController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\buildingController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\diplomacyController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\networkController.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\galaxyController.js"></script>
 		
 		<script src="SCRIPTS\SCENARIOS\earlyAlpha.js"></script>
+		<script src="SCRIPTS\SCENARIOS\earlyAlpha2.js"></script>
 	</head>
 
 	<body id="mainBody" onLoad="mainLoadGame(document);" >
@@ -104,8 +107,6 @@
 			</div>
 			
 		</div>
-		
-		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
 			<div class="interfaceWindowContent" id="mainMenuContent">
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton" disabled>
@@ -157,84 +158,6 @@
 				</button>
 			</div>
 		</div>		
-		
-		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
-			<div class="interfaceBar interfaceTopBar settingsMenuBar" id="settingsMenuTopBar">
-				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					</div>
-				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="settingsMenuTopBarMiddle">
-					<span class="interfaceWindowHeaderText" id="settingsMenuWindowHeaderText">SETTINGS MENU</span>
-				</div>
-				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="settingsMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
-				</div>
-			</div>
-			<div class="interfaceWindowContent" id="settingsMenuContent">
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
-					</div>
-				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
-				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionExportImportSave">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionExportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
-					</div>
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionImportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
-					</div>
-				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionExportImportTextareaRow">
-					<div class="settingsMenuOptionTextarea" id="settingsMenuOptionExportImportTextareaContainer">
-						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
-					</div>
-				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
-				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
-				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
-					</div>
-				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace4"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
-					</div>
-				</div>
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
-					</div>
-				</div>
-			</div>
-			<div class="interfaceBar interfaceBottomBar settingsMenuBar" id="settingsMenuBottomBar">
-				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="settingsMenuBottomBarLeft"></div>
-				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="settingsMenuBottomBarMiddle"></div>
-				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="settingsMenuBottomBarRight"></div>
-			</div>
-		</div>
-		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
@@ -330,23 +253,31 @@
 									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_0">
 									
 									</td>
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell">
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
+									</td>
+									
+									<!--
 									<td class="interfaceTableCell" id="planetOverviewInfoPanelSubtypeCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoSubtypeName">Subtype: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoSubtypeValue">???</span>
 									</td>
+									-->
 								</tr>
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow3">
+									<td class="interfaceTableCell" id="planetOverviewInfoPanelConditionsCell" colspan = 3>
+										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoConditionsName">Conditions: </span>
+										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoConditionsValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
 									<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=3>
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDescriptionName">Description: </span>
 										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDescriptionValue">???</span>
 									</td>
 								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell" colspan=3>
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
-									</td>
-								</tr>
+								
 								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow5">
 									<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell">
 										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoAtmosphereName">Atmosphere: </span>
@@ -438,8 +369,6 @@
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="planetOverviewMenuBottomBarRight"></div>
 			</div>
 		</div>
-		
-		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="systemOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="systemOverviewMenuTopBarLeft">
@@ -511,7 +440,7 @@
 							
 								<tr class="interfaceTableRow" id="systemOverviewInfoPanelTableRow1">
 									<td class="interfaceTableCell" id="systemOverviewInfoPanelOwnerCell" colspan=2>
-										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoOwnerName">Owner: </span>
+										<span class="interfaceText systemOverviewInfoName" id="systemOverviewInfoOwnerName">Controlled by: </span>
 										<span class="interfaceText interfaceDynamicText systemOverviewInfoValue" id="systemOverviewInfoOwnerValue">???</span>
 									</td>
 								</tr>
@@ -574,7 +503,328 @@
 			</div>
 		</div>
 		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="galaxyMapMenuWindow">
+			<div class="interfaceBar interfaceTopBar galaxyMapMenuBar" id="galaxyMapMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="galaxyMapMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="galaxyMapMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="galaxyMapMenuWindowHeaderText">GALAXY MAP</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="galaxyMapMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="galaxyMapMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			
+			<div class="interfaceWindowContent" id="galaxyMapMenuContent">
+				<div class="galaxyMapElementsContainer" id="galaxyMapMenuContainer">
+					<div class="galaxyMapElementsContainer" id="galaxyMapMenuButtonsContainer">
+						<button class="galaxyMapButton" id="galaxyMapNetworksButton">
+							<img class="galaxyMapButtonImage gridButton300px" id="galaxyMapNetworksButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="galaxyMapButtonText" id="galaxyMapNetworksButtonText">Manage networks</span>
+						</button>
+						<button class="galaxyMapButton" id="galaxyMapNetworksButton">
+							<img class="galaxyMapButtonImage gridButton300px" id="galaxyMapNetworksButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<span class="galaxyMapButtonText" id="galaxyMapNetworksButtonText">Placeholder</span>
+						</button>
+					</div>
+					
+					
+					<div class="galaxyMapElementsContainer" id="galaxyMapSelectedSystemInfoContainer">
+						<table class="interfaceTable galaxyMapInfoTable" id="galaxyMapSelectedElementTable">
+							<tbody class="interfaceTableBody" id="galaxyMapSelectedElementTableBody">
+							
+								<tr class="interfaceTableRow" id="galaxyMapSelectedElementTableRowSystemName">
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemNameNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapSelectedElementTableRowSystemNameName">System name:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapSelectedElementTableRowSystemNameSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemNameValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapSelectedElementTableRowSystemNameValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="galaxyMapSelectedElementTableRowSystemControlledBy">
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemControlledByNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapSelectedElementTableRowSystemControlledByName">Controlled by:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapSelectedElementTableRowSystemControlledBySpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemControlledByValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapSelectedElementTableRowSystemControlledByValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="galaxyMapSelectedElementTableRowSystemPosition">
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemPositionNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapSelectedElementTableRowSystemPositionName">Position:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapSelectedElementTableRowSystemPositionSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemPositionValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapSelectedElementTableRowSystemPositionValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="galaxyMapSelectedElementTableRowSystemDistance">
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemDistanceNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapSelectedElementTableRowSystemDistanceName">Distance from home:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapSelectedElementTableRowSystemDistanceSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapSelectedElementTableRowSystemDistanceValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapSelectedElementTableRowSystemDistanceValue">???</span>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					<div class="galaxyMapElementsContainer" id="galaxyMapHoverInfoContainer">
+						<table class="interfaceTable galaxyMapInfoTable" id="galaxyMapHoveredElementTable">
+							<tbody class="interfaceTableBody" id="galaxyMapHoveredElementTableBody">
+							
+								<tr class="interfaceTableRow galaxyMapHoveredSystemTableRow" id="galaxyMapHoveredElementTableRowSystemName">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemNameNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowSystemNameName">System name:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowSystemNameSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemNameValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowSystemNameValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow galaxyMapHoveredSystemTableRow" id="galaxyMapHoveredElementTableRowSystemControlledBy">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemControlledByNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowSystemControlledByName">Controlled by:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowSystemControlledBySpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemControlledByValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowSystemControlledByValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow galaxyMapHoveredSystemTableRow" id="galaxyMapHoveredElementTableRowSystemPosition">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemPositionNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowSystemPositionName">Position:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowSystemPositionSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowSystemPositionValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowSystemPositionValue">???</span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow galaxyMapSelectedHoveredSystemTableRow" id="galaxyMapSelectedHoveredElementSpacingRow">
+									<td class="interfaceTableCell">
+										<span class="interfaceText galaxyMapInfoName"></span>
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue"></span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing">
+									</td>
+									<td class="interfaceTableCell">
+										<span class="interfaceText galaxyMapInfoName"></span>
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue"></span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow galaxyMapSelectedHoveredSystemTableRow" id="galaxyMapSelectedHoveredElementTableRowSelectedToHovered">
+									<td class="interfaceTableCell" id="galaxyMapSelectedHoveredElementTableDistanceToHoveredNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapSelectedHoveredElementTableDistanceToHoveredName">Dist. from selected:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapSelectedHoveredElementTableDistanceToHoveredSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapSelectedHoveredElementTableDistanceToHoveredValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapSelectedHoveredElementTableDistanceToHoveredValue">???</span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow galaxyMapHoveredSystemTableRow" id="galaxyMapHoveredElementSpacingRow">
+									<td class="interfaceTableCell">
+										<span class="interfaceText galaxyMapInfoName"></span>
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue"></span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing">
+									</td>
+									<td class="interfaceTableCell">
+										<span class="interfaceText galaxyMapInfoName"></span>
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue"></span>
+									</td>
+								</tr>
+								
+								<tr class="interfaceTableRow galaxyMapHoveredLinkTableRow" id="galaxyMapHoveredElementTableRowLinkLinkName">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkLinkNameNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowLinkLinkNameName">Link name:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowLinkLinkNameSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkLinkNameValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowLinkLinkNameValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow galaxyMapHoveredLinkTableRow" id="galaxyMapHoveredElementTableRowLinkNetwork">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkNetworkNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowLinkNetworkName">Network:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowLinkNetworkSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkNetworkValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowLinkNetworkValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow galaxyMapHoveredLinkTableRow" id="galaxyMapHoveredElementTableRowLinkLength">
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkLengthNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapHoveredElementTableRowLinkLengthName">Length:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapHoveredElementTableRowLinkLengthSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapHoveredElementTableRowLinkLengthValueCell">
+										<span class="interfaceText interfaceDynamicText galaxyMapInfoValue" id="galaxyMapHoveredElementTableRowLinkLengthValue">???</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="galaxyMapElementsContainer" id="galaxyMapCanvasInfoContainer">
+						<table class="interfaceTable galaxyMapInfoTable" id="galaxyMapCanvasInfoTable">
+							<tbody class="interfaceTableBody" id="galaxyMapCanvasInfoTableBody">
+								<tr class="interfaceTableRow" id="galaxyMapCanvasInfoTableRowMiddleCoordinates">
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowMiddleCoordinatesNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapCanvasInfoTableRowMiddleCoordinatesName">Middle coordinates:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapCanvasInfoTableRowMiddleCoordinatesSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowMiddleCoordinatesValueCell">
+										<span class="interfaceText galaxyMapInfoValue" id="galaxyMapCanvasInfoTableRowMiddleCoordinatesValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="galaxyMapCanvasInfoTableRowCursorCoordinates">
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowCursorCoordinatesNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapCanvasInfoTableRowCursorCoordinatesName">Cursor coordinates:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapCanvasInfoTableRowCursorCoordinatesSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowCursorCoordinatesValueCell">
+										<span class="interfaceText galaxyMapInfoValue" id="galaxyMapCanvasInfoTableRowCursorCoordinatesValue">???</span>
+									</td>
+								</tr>
+								<tr class="interfaceTableRow" id="galaxyMapCanvasInfoTableRowMapScale">
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowMapScaleNameCell">
+										<span class="interfaceText galaxyMapInfoName" id="galaxyMapCanvasInfoTableRowMapScaleName">Map scale:</span>
+									</td>
+									<td class="galaxyMapTableColumnSpacing" id="galaxyMapCanvasInfoTableRowMapScaleSpacing"></td>
+									<td class="interfaceTableCell" id="galaxyMapCanvasInfoTableRowMapScaleValueCell">
+										<span class="interfaceText galaxyMapInfoValue" id="galaxyMapCanvasInfoTableRowMapScaleValue">???</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="galaxyMapElementsContainer" id="galaxyMapMapContainer">
+					<div class="galaxyMapElementsContainer" id="galaxyMapCanvasContainer">
+						<canvas class="interfaceCanvas" id="galaxyMapCanvas">Galaxy map should be here</canvas>
+					</div>
+					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapTopArrowContainer">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapTopArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapLeftArrowContainer">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapLeftArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapRightArrowContainer">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapRightArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapBottomArrowContainer">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapBottomArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					
+					<button class="galaxyMapSideButtonContainer" id="galaxyMapFocusTargetContainer">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapFocusTargetButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					<button class="galaxyMapSideButtonContainer" id="galaxyMapReturnHomeContainer">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapReturnHomeButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					
+					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomInContainer">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomInButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomOutContainer">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomOutButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
+				
+			</div>
+			
+			<!--
+			<div class="interfaceBar interfaceBottomBar galaxyMapMenuBar" id="galaxyMapMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="galaxyMapMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="galaxyMapMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="galaxyMapMenuBottomBarRight"></div>
+			</div>
+			-->
+		</div>
 		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
+			<div class="interfaceBar interfaceTopBar settingsMenuBar" id="settingsMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="settingsMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="settingsMenuWindowHeaderText">SETTINGS MENU</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="settingsMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			<div class="interfaceWindowContent" id="settingsMenuContent">
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
+					</div>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionExportImportSave">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionExportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
+					</div>
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionImportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
+					</div>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionExportImportTextareaRow">
+					<div class="settingsMenuOptionTextarea" id="settingsMenuOptionExportImportTextareaContainer">
+						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
+				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace4"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
+					</div>
+				</div>
+				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
+				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
+					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
+						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
+					</div>
+				</div>
+			</div>
+			<div class="interfaceBar interfaceBottomBar settingsMenuBar" id="settingsMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="settingsMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="settingsMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="settingsMenuBottomBarRight"></div>
+			</div>
+		</div>
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="creditsMenuWindow">
 			<div class="interfaceBar interfaceTopBar creditsMenuBar" id="creditsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="creditsMenuTopBarLeft">

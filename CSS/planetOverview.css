@@ -4,8 +4,8 @@
 	bottom: 100px;
 
 	
-	width: 60%;
-	max-width: 800px;
+	width: 50%;
+	max-width: 900px;
 	min-width: 600px;
 	
 	padding: 0px;
@@ -108,7 +108,7 @@
 	background: hsla(180,100%,50%,0.0);
 	border: solid hsla(120,100%,50%,0.5) 0px;	
 	
-	width: 30%;
+	width: 33%;
 	height: 100%;
 	
 	align-content: middle;
@@ -252,7 +252,7 @@
 	float:right;
 	
 	height: calc(45% - 5px);
-	width: calc(70% - 10px);
+	width: calc(66% - 10px);
 	
 	padding: 0px;
 }
@@ -403,6 +403,8 @@
 				justify-content: center;
 				
 				padding: 0px;
+				
+				white-space: nowrap;
 			}
 			#planetOverviewInfoPanelHeaderPlanetNameText{
 				font-size: 120%;
@@ -510,7 +512,7 @@
 	
 	margin-top: 10px;
 	height: calc(55% - 5px);
-	width: calc(70% - 10px);
+	width: calc(66% - 10px);
 	
 	padding: 0px;
 	
@@ -543,7 +545,7 @@
 			
 			margin: 2px;
 			
-			font-size: 80%;
+			font-size: 75%;
 			
 			opacity: 0.5;
 			

@@ -2,10 +2,6 @@ function scenario_earlyAlpha(){
 	SystemsArray = [];
 	PlanetsArray = [];
 	
-	//earlyAlpha_Systems();
-	//earlyAlpha_Planets();
-	//earlyAlpha_RegisterPlanets();
-	
 	SystemsArray.push(earlyAlpha_Debug7());
 	SystemsArray[SystemsArray.length - 1].arrayID = SystemsArray.length - 1;
 	SystemsArray.push(earlyAlpha_Liberty());
@@ -52,34 +48,6 @@ function scenario_earlyAlpha(){
 	TimerDaysInYear = Math.round(PlanetsArray[0].orbitalPeroid);
 }
 
-function earlyAlpha_Systems(){
-	var tmpSystem = new SystemObject();
-	tmpSystem.name = "Debug-7";
-	tmpSystem.id = "1";
-	tmpSystem.description = "Player home system.";
-	
-	tmpSystem.network = "Tester";
-	tmpSystem.network_id = 1;
-	
-	tmpSystem.gatesNumber = 1;
-	tmpSystem.gatesIDs = ["2"];
-	
-	tmpSystem.starType = StarTypes[3];
-	tmpSystem.starSize = StarSizes[1];
-	tmpSystem.starMass = 1.0;
-	
-	return tmpSystem;
-}
-function earlyAlpha_Planets(){
-	
-}
-function earlyAlpha_RegisterPlanets(){
-	
-}
-function earlyAlpha_CreateNetworks(){
-	
-}
-
 
 function earlyAlpha_Debug7(){
 	var tmpSystem = new SystemObject();
@@ -96,6 +64,8 @@ function earlyAlpha_Debug7(){
 	tmpSystem.starType = StarTypes[3];
 	tmpSystem.starSize = StarSizes[1];
 	tmpSystem.starMass = 1.0;
+	tmpSystem.planetsCounterClockwise = true;
+	
 	
 	//tmpSystem.asteroids["Iron"] = 5.0;
 	//tmpSystem.asteroids["Copper"] = 3.0;
@@ -156,10 +126,15 @@ function earlyAlpha_Debugia(){
 	tmpPlanet.name = "Daboogiea";
 	tmpPlanet.id = "1";
 	tmpPlanet.description = "This is debug planet for early alpha testing.";
-	tmpPlanet.imagePath = "Terrestrial_1";
-	tmpPlanet.type = PlanetTypes[1];
-	tmpPlanet.subtype = PlanetSubtypes[1];
-	tmpPlanet.atmosphere = PlanetAtmospheres[2];
+	tmpPlanet.imagePath = "Terrestrial_1s";
+	tmpPlanet.type = PlanetTypes["Terrestrial"];
+	//tmpPlanet.subtype = PlanetSubtypes[1];
+	tmpPlanet.conditions = [
+		PlanetConditions["Mild climate"],
+		PlanetConditions["Incompletely terraformed"],
+		PlanetConditions["Habitable"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Oxygen"];
 	tmpPlanet.owner = 1;
 	
 	//tmpPlanet.orbitalDistance = 1.0;
@@ -191,17 +166,20 @@ function earlyAlpha_TestZone(){
 	tmpPlanet.name = "Test Zone 17";
 	tmpPlanet.id = "2";
 	tmpPlanet.description = "This is second debug planet for early alpha testing.";
-	tmpPlanet.imagePath = "Desert_1";
-	tmpPlanet.type = PlanetTypes[2];
-	tmpPlanet.subtype = PlanetSubtypes[2];
-	tmpPlanet.atmosphere = PlanetAtmospheres[3];
+	tmpPlanet.imagePath = "Desert_1s";
+	tmpPlanet.type = PlanetTypes["Desert"];
+	//tmpPlanet.subtype = PlanetSubtypes[2];
+	tmpPlanet.conditions = [
+		PlanetConditions["Incompletely terraformed"],
+		PlanetConditions["Wasteland"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Carbon dioxide"];
 	tmpPlanet.owner = 1;
 	
 	tmpPlanet.orbitalDistance = 1.52368055;
 	tmpPlanet.radius = 5674.0;
 	tmpPlanet.averageTemperature = 5.0;
 	tmpPlanet.gravity = 7.67;
-	
 	tmpPlanet.startingPosition = 0.5;
 	
 	tmpPlanet.naturalResources["Gravel"] = 2.0;
@@ -226,17 +204,20 @@ function earlyAlpha_Mineralia(){
 	tmpPlanet.name = "Minerallia";
 	tmpPlanet.id = "3";
 	tmpPlanet.description = "This is third debug planet for early alpha testing. Rich with minerals and unclaimed.";
-	tmpPlanet.imagePath = "Desert_4";
-	tmpPlanet.type = PlanetTypes[3];
-	tmpPlanet.subtype = PlanetSubtypes[3];
-	tmpPlanet.atmosphere = PlanetAtmospheres[1];
+	tmpPlanet.imagePath = "Barren_4s";
+	tmpPlanet.type = PlanetTypes["Barren"];
+	//tmpPlanet.subtype = PlanetSubtypes[3];
+	tmpPlanet.conditions = [
+		PlanetConditions["No atmosphere"],
+		PlanetConditions["Tectonic activity"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["None"];
 	tmpPlanet.owner = 0;
 	
 	tmpPlanet.orbitalDistance = 2.4;
 	tmpPlanet.radius = 4674.0;
 	tmpPlanet.averageTemperature = -57.0;
 	tmpPlanet.gravity = 6.11;
-	
 	tmpPlanet.startingPosition = 0.23;
 	
 	tmpPlanet.naturalResources["Gravel"] = 2.0;
@@ -257,17 +238,22 @@ function earlyAlpha_Volcania(){
 	tmpPlanet.name = "Volcania";
 	tmpPlanet.id = "6";
 	tmpPlanet.description = "This is sixth debug planet for early alpha testing. Hot and close to star.";
-	tmpPlanet.imagePath = "Barren_1";
-	tmpPlanet.type = PlanetTypes[4];
-	tmpPlanet.subtype = PlanetSubtypes[4];
-	tmpPlanet.atmosphere = PlanetAtmospheres[1];
+	tmpPlanet.imagePath = "Lava_1s";
+	tmpPlanet.type = PlanetTypes["Volcanic"];
+	//tmpPlanet.subtype = PlanetSubtypes[4];
+	tmpPlanet.conditions = [
+		PlanetConditions["High tectonic activity"],
+		PlanetConditions["Extremely hot"],
+		PlanetConditions["Low gravity"],
+		PlanetConditions["Thin atmosphere"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Ash"];
 	tmpPlanet.owner = 0;
 	
 	tmpPlanet.orbitalDistance = 0.73;
 	tmpPlanet.radius = 3674.0;
 	tmpPlanet.averageTemperature = 73.2;
 	tmpPlanet.gravity = 4.21;
-	
 	tmpPlanet.startingPosition = 0.75;
 	
 	tmpPlanet.naturalResources["Gravel"] = 2.0;
@@ -288,17 +274,21 @@ function earlyAlpha_Conquista(){
 	tmpPlanet.name = "Conquista";
 	tmpPlanet.id = "4";
 	tmpPlanet.description = "This is fourth debug planet for early alpha testing. Used for invasion.";
-	tmpPlanet.imagePath = "Desert_5";
-	tmpPlanet.type = PlanetTypes[2];
-	tmpPlanet.subtype = PlanetSubtypes[2];
-	tmpPlanet.atmosphere = PlanetAtmospheres[2];
+	tmpPlanet.imagePath = "Metallic_5s";
+	tmpPlanet.type = PlanetTypes["Metallic"];
+	//tmpPlanet.subtype = PlanetSubtypes[2];
+	tmpPlanet.conditions = [
+		PlanetConditions["Wasteland"],
+		PlanetConditions["Hot"],
+		PlanetConditions["Dense atmosphere"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Carbon dioxide"];
 	tmpPlanet.owner = 1;
 	
 	tmpPlanet.orbitalDistance = 0.856;
 	tmpPlanet.radius = 7231.0;
 	tmpPlanet.averageTemperature = 37.0;
 	tmpPlanet.gravity = 9.67;
-	
 	tmpPlanet.startingPosition = 0.4;
 	
 	tmpPlanet.naturalResources["Gravel"] = 5.0;
@@ -321,17 +311,21 @@ function earlyAlpha_Libertia(){
 	tmpPlanet.name = "Libertia";
 	tmpPlanet.id = "5";
 	tmpPlanet.description = "This is fifth debug planet for early alpha testing. Controlled by different faction.";
-	tmpPlanet.imagePath = "Terrestrial_4";
-	tmpPlanet.type = PlanetTypes[1];
-	tmpPlanet.subtype = PlanetSubtypes[2];
-	tmpPlanet.atmosphere = PlanetAtmospheres[3];
+	tmpPlanet.imagePath = "Terrestrial_8s";
+	tmpPlanet.type = PlanetTypes["Terrestrial"];
+	//tmpPlanet.subtype = PlanetSubtypes[2];
+	tmpPlanet.conditions = [
+		PlanetConditions["Mild climate"],
+		PlanetConditions["Habitable"],
+		PlanetConditions["Cold"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Oxygen"];
 	tmpPlanet.owner = 3;
 	
 	tmpPlanet.orbitalDistance = 1.22;
 	tmpPlanet.radius = 6674.0;
 	tmpPlanet.averageTemperature = 20.0;
 	tmpPlanet.gravity = 9.97;
-	
 	tmpPlanet.startingPosition = 0.9;
 	
 	tmpPlanet.naturalResources["Gravel"] = 2.0;
@@ -356,17 +350,20 @@ function earlyAlpha_T0346(){
 	tmpPlanet.name = "T-03-46";
 	tmpPlanet.id = "7";
 	tmpPlanet.description = "This is seventh debug planet for early alpha testing. Located in remote system.";
-	tmpPlanet.imagePath = "Frozen_1";
-	tmpPlanet.type = PlanetTypes[5];
-	tmpPlanet.subtype = PlanetSubtypes[2];
-	tmpPlanet.atmosphere = PlanetAtmospheres[4];
+	tmpPlanet.imagePath = "Metallic_6s";
+	tmpPlanet.type = PlanetTypes["Metallic"];
+	//tmpPlanet.subtype = PlanetSubtypes[2];
+	tmpPlanet.conditions = [
+		PlanetConditions["Cold"],
+		PlanetConditions["Extreme weather"],
+	];
+	tmpPlanet.atmosphere = PlanetAtmospheres["Nitrogen"];
 	tmpPlanet.owner = 0;
 	
 	tmpPlanet.orbitalDistance = 3.27;
 	tmpPlanet.radius = 5763.3;
 	tmpPlanet.averageTemperature = -74.3;
 	tmpPlanet.gravity = 7.97;
-	
 	tmpPlanet.startingPosition = 0.6;
 	
 	tmpPlanet.naturalResources["Gravel"] = 0.50;

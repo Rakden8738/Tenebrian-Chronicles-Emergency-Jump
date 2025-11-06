@@ -26,7 +26,7 @@ function animationDisplayIntro(outputDocument) {
 	
 	setTimeout(()=> {
 		introPlayIntro(outputDocument);
-	},1000 * minorTickLength * IntroAnimationStartDelay,outputDocument);
+	},1000 * MinorTickLength * IntroAnimationStartDelay,outputDocument);
 	//introInit(outputDocument);
 }
 
@@ -101,7 +101,7 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 		}
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
 	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
@@ -120,7 +120,7 @@ function newDisplayAnimatedMessage(outputDocument, elementID, positionX, positio
 	}
 	
 	if(elapsedTime<=animationLength){
-		setTimeout(() => {newDisplayAnimatedMessage(outputDocument, elementID, positionX, positionY, messageStruct, animationLength, textBlurr, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {newDisplayAnimatedMessage(outputDocument, elementID, positionX, positionY, messageStruct, animationLength, textBlurr, elapsedTime);},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;
@@ -142,7 +142,7 @@ function animatedMoveElement(outputDocument, elementID, startX, startY, endX, en
 		}
 	}
 
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	if(elapsedTime>=startTime){
 		if(endTime!=0){
@@ -155,7 +155,7 @@ function animatedMoveElement(outputDocument, elementID, startX, startY, endX, en
 	}	
 	
 	if(elapsedTime <= endTime){
-		setTimeout(() => {animatedMoveElement(outputDocument, elementID, startX, startY, endX, endY, startTime, endTime, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {animatedMoveElement(outputDocument, elementID, startX, startY, endX, endY, startTime, endTime, elapsedTime);},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;
@@ -183,8 +183,8 @@ function newAnimatedElementScale(outputDocument, elementID, animationLength, end
 	
 	if(elapsedTime<animationLength)
 	{
-		elapsedTime += minorTickLength;
-		setTimeout(() => {newAnimatedElementScale(outputDocument, elementID, animationLength, endScale, startingScale, elapsedTime);},minorTickLength*1000);
+		elapsedTime += MinorTickLength;
+		setTimeout(() => {newAnimatedElementScale(outputDocument, elementID, animationLength, endScale, startingScale, elapsedTime);},MinorTickLength*1000);
 	}
 	else{
 		scaleElement.style.scale = endScale;
@@ -217,8 +217,8 @@ function newAnimatedElementOpacity(outputDocument, elementID, animationLength, e
 	
 	if(elapsedTime<animationLength)
 	{
-		elapsedTime+=minorTickLength;
-		setTimeout(() => {newAnimatedElementOpacity(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},minorTickLength*1000);
+		elapsedTime+=MinorTickLength;
+		setTimeout(() => {newAnimatedElementOpacity(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},MinorTickLength*1000);
 	}
 	else{
 		opacityElement.style.opacity=endOpacity;
@@ -253,8 +253,8 @@ function newAnimatedElementOpacity_Inherit(outputDocument, elementID, animationL
 	
 	if(elapsedTime<animationLength)
 	{
-		elapsedTime+=minorTickLength;
-		setTimeout(() => {newAnimatedElementOpacity_Inherit(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},minorTickLength*1000);
+		elapsedTime+=MinorTickLength;
+		setTimeout(() => {newAnimatedElementOpacity_Inherit(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);},MinorTickLength*1000);
 	}
 	else{
 		opacityElement.style.opacity=endOpacity;
@@ -278,7 +278,7 @@ function animatedHideElement(outputDocument, elementID, startTime, endTime, elap
 		}
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	if(elapsedTime>=startTime){
 		hiddenElement.style.visibility = true;
@@ -290,7 +290,7 @@ function animatedHideElement(outputDocument, elementID, startTime, endTime, elap
 	}	
 	
 	if(elapsedTime <= endTime){
-		setTimeout(() => {animatedHideElement(outputDocument, elementID, startTime, endTime, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {animatedHideElement(outputDocument, elementID, startTime, endTime, elapsedTime);},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;
@@ -314,7 +314,7 @@ function animatedUnhideElement(outputDocument, elementID, startTime, endTime, el
 		}
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	if(elapsedTime>=startTime){
 		unhiddenElement.style.visibility="visible";
@@ -326,7 +326,7 @@ function animatedUnhideElement(outputDocument, elementID, startTime, endTime, el
 	}	
 	
 	if(elapsedTime <= endTime){
-		setTimeout(() => {animatedUnhideElement(outputDocument, elementID, startTime, endTime, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {animatedUnhideElement(outputDocument, elementID, startTime, endTime, elapsedTime);},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;
@@ -479,7 +479,7 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 		else if(!animatedBlurr) targetTextbox.style.textShadow = "initial";
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	var msgLength = Math.floor(messageStruct[0].length*(elapsedTime/animationLength));
 	if(msgLength>messageStruct[0].length) msgLength=messageStruct[0].length;
@@ -497,7 +497,7 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 	}
 	
 	if(elapsedTime<=animationLength){
-		setTimeout(() => {newAppendAnimatedMessage(outputDocument, elementID, messageStruct, animationLength, textBlurr, animatedBlurr, elapsedTime, initMessage);},minorTickLength*1000);
+		setTimeout(() => {newAppendAnimatedMessage(outputDocument, elementID, messageStruct, animationLength, textBlurr, animatedBlurr, elapsedTime, initMessage);},MinorTickLength*1000);
 	}
 	
 	targetTextbox.scrollTop = targetTextbox.scrollHeight;
@@ -576,9 +576,9 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 		targetTextbox.style.opacity = 1.0 - ((elapsedTime-messageStruct[6]) / (messageStruct[7]-messageStruct[6]));
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	if(elapsedTime<=messageStruct[7]){
-		setTimeout(() => {animatedDisplayMessage(outputDocument, elementID, messageStruct, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {animatedDisplayMessage(outputDocument, elementID, messageStruct, elapsedTime);},MinorTickLength*1000);
 	}
 }
 */
@@ -604,10 +604,10 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 	}
 
 	else{
-		setTimeout(() => {animatedDisplayMessage(outputDocument, elementID, positionX, positionY, messageStruct, startTime, visibleInstantly, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {animatedDisplayMessage(outputDocument, elementID, positionX, positionY, messageStruct, startTime, visibleInstantly, elapsedTime);},MinorTickLength*1000);
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 }
 */
 /*function newSmoothIncreaseWidth(outputDocument, elementID, growthRate, absVal, effectSpeed, targetWidth, startWidth=-1){
@@ -691,11 +691,11 @@ function animationShakeElement(outputDocument, elementID, stepTime, totalTime, x
 		}
 	}
 	
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	IntroTickCounter++;
 	
 	if(elapsedTime<=animationLength){
-		setTimeout(() => {newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, IntroTickCounter, elapsedTime);},minorTickLength*1000);
+		setTimeout(() => {newLoadingRotation(outputDocument, elementID, animationLength, rotationSpeed, IntroTickCounter, elapsedTime);},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;

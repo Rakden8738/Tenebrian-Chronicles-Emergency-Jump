@@ -1,6 +1,6 @@
 //var InterfaceDocument;
 
-var MainGameVersion = [0,0,14];
+var MainGameVersion = [0,1,0];
 
 var messagesMainLayerClass = "messagesLayer";
 var messagesLayerClass = "animationMessages";
@@ -30,12 +30,16 @@ function mainLoadGame(outputDocument){
 		connectionTest_animations(outputDocument);
 		TestedModule = "resources";
 		connectionTest_resources(outputDocument);
-		TestedModule = "resources";
+		TestedModule = "galaxy";
+		connectionTest_galaxy(outputDocument);
+		TestedModule = "systems";
 		connectionTest_systems(outputDocument);
 		TestedModule = "diplomacy";
 		connectionTest_diplomacy(outputDocument);
 		TestedModule = "planets";
 		connectionTest_planets(outputDocument);
+		TestedModule = "networks";
+		connectionTest_networks(outputDocument);
 		TestedModule = "buildings";
 		connectionTest_buildings(outputDocument);
 		
@@ -63,7 +67,7 @@ function mainLoadGame(outputDocument){
 	interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
 	interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
 	
-	scenario_earlyAlpha();
+	scenario_earlyAlpha2();
 	
 	animationMoveBackground(outputDocument);
 	
@@ -78,6 +82,44 @@ function mainLoadGame(outputDocument){
 	else {
 		animationDisplayIntro(outputDocument);
 	}
+}
+
+function logBase(tmpValue, tmpBase) {
+	return Math.log(tmpValue) / Math.log(tmpBase);
+}
+
+function distanceToSegment(x, y, x1, y1, x2, y2){
+	var A = x - x1;
+	var B = y - y1;
+	var C = x2 - x1;
+	var D = y2 - y1;
+	
+	var dot = A * C + B * D;
+	var len_sq = C * C + D * D;
+	var param = -1;
+	if (len_sq != 0) param = dot / len_sq;
+	else{
+		return(Math.sqrt(A * A + B * B));
+	}
+
+	var xx, yy;
+
+	if (param < 0) {
+		xx = x1;
+		yy = y1;
+	}
+	else if (param > 1) {
+		xx = x2;
+		yy = y2;
+	}
+	else {
+		xx = x1 + param * C;
+		yy = y1 + param * D;
+	}
+
+	var dx = x - xx;
+	var dy = y - yy;
+	return Math.sqrt(dx * dx + dy * dy);
 }
 
 

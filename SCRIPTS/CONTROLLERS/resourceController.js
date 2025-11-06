@@ -18,6 +18,7 @@ var resourcesNames = [
 	"Gravel",
 	"Stone",
 	"Sand",
+	"Silicon",
 	"Glass",
 	"Crystals",
 	
@@ -80,6 +81,7 @@ var resourcesResourceProperties = {
 	"Gravel":[true,[0,1],0.0],
 	"Stone":[true,[0,1],0.0],
 	"Sand":[false,[0],0.0],
+	"Silicon":[false,[0],0.0],
 	"Glass":[false,[2],1.0],
 	"Crystals":[false,[7,9],1.0],
 	

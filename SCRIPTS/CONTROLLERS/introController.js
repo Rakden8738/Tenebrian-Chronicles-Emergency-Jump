@@ -4282,7 +4282,7 @@ function introFastForward(outputDocument){
 				setTimeout(() => {
 					IntroInterruptDelayedFade = false;
 					IntroDebugTimeoutCounter--;
-					},2*minorTickLength*1000);
+					},2*MinorTickLength*1000);
 				
 				introResetLogMessages(outputDocument);
 				introResetAlerts(outputDocument);
@@ -4372,7 +4372,7 @@ function introSkip(outputDocument){
 		setTimeout(() => {
 			IntroInterruptDelayedFade = false;
 			IntroDebugTimeoutCounter--;
-		},2*minorTickLength*1000);
+		},2*MinorTickLength*1000);
 				
 		console.log("Skipping to intro end.");
 		IntroWasSkipped = true;
@@ -4454,7 +4454,7 @@ function introMoveElement(outputDocument, movedElement, startX, startY, endX, en
 		}
 	}
 
-	elapsedTime+=minorTickLength;
+	elapsedTime+=MinorTickLength;
 	
 	if(elapsedTime>=startTime){
 		if(endTime!=0){
@@ -4471,7 +4471,7 @@ function introMoveElement(outputDocument, movedElement, startX, startY, endX, en
 		setTimeout(() => {
 			introMoveElement(outputDocument, movedElement, startX, startY, endX, endY, startTime, endTime, elapsedTime);
 			IntroDebugTimeoutCounter--;
-			},minorTickLength*1000);
+			},MinorTickLength*1000);
 	}
 	else if(IntroFastForwardStage != -1){ 
 		IntroActiveAnimationCounter--;
@@ -4599,14 +4599,14 @@ function introDelayedElementOpacity(outputDocument, fadingElement, fadeDelay, fa
 	
 	if(elapsedTime<fadeDelay)
 	{
-		//console.log("Delayed Opacity Continue, "+elapsedTime+" "+minorTickLength);
-		elapsedTime+=minorTickLength;
+		//console.log("Delayed Opacity Continue, "+elapsedTime+" "+MinorTickLength);
+		elapsedTime+=MinorTickLength;
 		
 		IntroDebugTimeoutCounter++;
 		setTimeout(() => {
 			introDelayedElementOpacity(outputDocument, currentFadingElement, fadeDelay, fadeTime, endOpacity, startOpacity, elapsedTime);
 			IntroDebugTimeoutCounter--;
-		},minorTickLength*1000);
+		},MinorTickLength*1000);
 	}
 	else
 	{
@@ -4648,13 +4648,13 @@ function introAnimatedElementOpacity(outputDocument, elementID, animationLength,
 	
 	if(elapsedTime<animationLength)
 	{
-		elapsedTime+=minorTickLength;
+		elapsedTime+=MinorTickLength;
 		
 		IntroDebugTimeoutCounter++;
 		setTimeout(() => {
 			introAnimatedElementOpacity(outputDocument, elementID, animationLength, endOpacity, startingOpacity, elapsedTime);
 			IntroDebugTimeoutCounter--;
-		},minorTickLength*1000);
+		},MinorTickLength*1000);
 	}
 	else{
 		opacityElement.style.opacity=endOpacity;
