@@ -400,6 +400,7 @@ function interfaceInitSettingsMenu(outputDocument) {
 	outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").onclick = function() { interfaceSettingsSwitchFastMenuChange(outputDocument); };
 	outputDocument.getElementById("settingsMenuOptionSkipIntroCheckbox").onclick = function() { interfaceSettingsSwitchIntroSkip(outputDocument); };
 	outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").onclick = function() { interfaceSettingsSwitchAutosave(outputDocument); };
+	outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").onclick = function() { interfaceSettingsSwitchGalaxyMapParralax(outputDocument); };
 	
 	outputDocument.getElementById("settingsMenuOptionReplayIntroButton").onclick = function() { 
 		/*outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[20];
@@ -453,6 +454,14 @@ function interfaceInitSettingsMenu(outputDocument) {
 	else{
 		outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").src = InterfaceMainMenuIconPaths[18];
 	}
+	
+	//button on/off
+	if(GalaxyMapPerspectiveEnabled) {
+		outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").src = InterfaceMainMenuIconPaths[17];
+	}
+	else{
+		outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").src = InterfaceMainMenuIconPaths[18];
+	}
 			
 	//other
 	
@@ -475,6 +484,11 @@ function interfaceSettingsSwitchAutosave(outputDocument) {
 	if(SaveAutosave) SaveAutosave = false;
 	else SaveAutosave = true;
 	
+	interfaceInitSettingsMenu(outputDocument);
+}
+function interfaceSettingsSwitchGalaxyMapParralax(outputDocument){
+	if(GalaxyMapPerspectiveEnabled) GalaxyMapPerspectiveEnabled = false;
+	else GalaxyMapPerspectiveEnabled = true;
 	interfaceInitSettingsMenu(outputDocument);
 }
 
