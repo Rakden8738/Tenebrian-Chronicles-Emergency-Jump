@@ -420,7 +420,7 @@ function galaxyRefreshGalaxyMapCanvas(outputDocument, quickRefresh = false, debu
 					}
 					
 					//if player's capital add crown
-					if(i == SystemsHomeSystem) { 
+					if(tmpSystem.id == SystemsHomeSystem) { 
 						GalaxyMapContext.strokeStyle = "hsla(180,100%,75%,1.0)";
 						GalaxyMapContext.beginPath();
 						
@@ -827,29 +827,6 @@ function galaxyRefreshGalaxyMapCanvas(outputDocument, quickRefresh = false, debu
 					
 					GalaxyMapContext.stroke();
 				}
-
-				/*
-				//if both systems are discovered
-				if(tmpGate[0][2] && tmpGate[1][2]){
-					if(i == tmpClosestGateIndex && tmpMinDistanceGate <= GalaxyMapMouseDetectionCoordinatesDistance/tmpScale && tmpMinDistanceGate < (tmpMinDistanceSystem - 0.2)){
-						GalaxyMapContext.font = "9px " + GalaxyMapFont;
-						
-						GalaxyMapContext.strokeStyle = "hsla(0,0%,0%,1)";
-						GalaxyMapContext.fillStyle = "hsl(0,0%,0%,1)";
-						GalaxyMapContext.lineWidth = GalaxyMapLine+1;
-						GalaxyMapContext.fillText(tmpGate[0][0] + "-" + tmpGate[1][0],linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY);
-						GalaxyMapContext.strokeText(tmpGate[0][0] + "-" + tmpGate[1][0],linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY);
-						GalaxyMapContext.fillText("Dist.: " + tmpGate[3].toFixed(2),linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY + GalaxyMapTextLineHeight);
-						GalaxyMapContext.strokeText("Dist.: " + tmpGate[3].toFixed(2),linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY + GalaxyMapTextLineHeight);
-						GalaxyMapContext.lineWidth = GalaxyMapLine;
-						GalaxyMapContext.fillStyle = GalaxyMapGateFocusedLineColor;
-						GalaxyMapContext.fillText(tmpGate[0][0] + "-" + tmpGate[1][0],linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY);
-						GalaxyMapContext.fillText("Dist.: " + tmpGate[3].toFixed(2),linkPoint2[0] + GalaxyMapGateTextOffsetX,linkPoint2[1] + GalaxyMapGateTextOffsetY + GalaxyMapTextLineHeight);
-						
-						GalaxyMapContext.font = "12px " + GalaxyMapFont;
-					}
-				}
-*/				
 			}
 			
 			GalaxyMapContext.lineWidth = GalaxyMapLine;
@@ -896,7 +873,7 @@ function galaxyRefreshGalaxyMapCanvas(outputDocument, quickRefresh = false, debu
 				}
 				
 				//if player's capital add crown
-				if(i == SystemsHomeSystem) { 
+				if(tmpSystem.id == SystemsHomeSystem) { 
 					GalaxyMapContext.strokeStyle = "hsla(180,100%,75%,1.0)";
 					GalaxyMapContext.beginPath();
 					

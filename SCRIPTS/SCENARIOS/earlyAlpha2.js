@@ -3,6 +3,7 @@ function scenario_earlyAlpha2(){
 	PlanetsArray = [];
 	
 	earlyAlpha_Systems();
+	systemsSortByDepth();
 	earlyAlpha_Planets();
 	earlyAlpha_RegisterPlanets();
 	earlyAlpha_CreateNetworks();
@@ -13,6 +14,7 @@ function scenario_earlyAlpha2(){
 	PlanetsCurrentPlanet = 0;
 	DiplomacyPlayerFaction = 1;
 	PlanetsHomePlanetIndex = 0;
+	
 	SystemsHomeSystem = PlanetsArray[PlanetsHomePlanetIndex].system_id;
 	
 	//TimerDaysInYear = Math.round(PlanetsArray[0].orbitalPeroid);

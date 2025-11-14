@@ -149,6 +149,10 @@ class SystemObject{
 	}
 }
 
+function systemsSortByDepth(sortedSystemArray = SystemsArray){
+	sortedSystemArray = sortedSystemArray.sort((a,b) => (a.position[2] > b.position[2]) ? 1 : ((b.position[2] > a.position[2]) ? -1 : 0));
+}
+
 function systemsGetSystemById(systemID){
 	var tmpSystem;
 	
