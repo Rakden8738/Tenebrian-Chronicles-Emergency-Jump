@@ -1128,7 +1128,9 @@ var InterfaceChangeMenuTabInProgress = false;
 
 function interfaceEnterElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
 	if(!InterfaceChangeMenuTabInProgress) {
+		if(InterfaceChangeMenuTabCurrentID == destinationTabID) return;
 		InterfaceChangeMenuTabPathStack.push(InterfaceChangeMenuTabCurrentID);
+		
 		interfaceChangeMenuTab(outputDocument, destinationTabID);
 	}
 }
