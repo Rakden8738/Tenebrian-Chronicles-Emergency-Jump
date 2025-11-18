@@ -1,9 +1,8 @@
 #systemOverviewMenuWindow{
 	background: hsla(240,100%,00%,0.35);
 	
-	bottom: 100px;
+	/*bottom: 100px;*/
 
-	
 	width: 50%;
 	max-width: 960px;
 	min-width: 640px;
@@ -22,15 +21,17 @@
 }
 
 .systemOverviewMenuBar{
-	position: relative;
-	height: 80px;
+	/*position: relative;
+	height: 80px;*/
 }
 #systemOverviewMenuTopBar{
 	/*background: rgba(0,0,100,0.3);*/
 	border: solid hsla(0,100%,75%,0.5) 0px;
-	
-	height: 80px;
-	
+	padding: 0px;
+}
+#systemOverviewMenuBottomBar{
+	/*background: rgba(0,0,100,0.3);*/
+	border: solid hsla(0,100%,75%,0.5) 0px;
 	padding: 0px;
 }
 #systemOverviewMenuTopBarLeft{
@@ -88,11 +89,11 @@
 	border: solid hsla(120,100%,50%,0.5) 0px;
 	box-sizing: border-box;
 	
-	height: calc(100% - 160px);
+	height: calc(100% - 130px);
 	padding: 2.5%;
 	padding-bottom: 0;
 	
-	position: relative;
+	/*position: relative;*/
 	overflow: auto;
 	
 	mask-image: none;

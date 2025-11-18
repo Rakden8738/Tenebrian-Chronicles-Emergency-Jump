@@ -1256,7 +1256,7 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 //bottom messages, pseudo-console output
 
 var InterfaceBottomMessagesContainerID = "mainInterfaceBottomBarTextContainer";
-var InterfaceBottomMessagesSingleMessageClass = "interfaceText interfaceDynamicText interfaceDimmedText interfaceBlockText";
+var InterfaceBottomMessagesSingleMessageClass = "interfaceConsoleText";
 var InterfaceBottomMessagesSingleMessageID = "mainInterfaceBottomTextMessage_";
 var InterfaceBottomMessagesArray = [];
 var InterfaceBottomMessagesClearOld = true;

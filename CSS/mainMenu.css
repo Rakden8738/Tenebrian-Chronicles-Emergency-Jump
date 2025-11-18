@@ -1,7 +1,7 @@
 #mainMenuWindow{
 	background: hsla(120,100%,00%,0.35);	
 
-	bottom: MAX(10%, 100px);
+	bottom: MAX(10%, 80px);
 	
 	width: 80%;
 	max-width: 1200px;
@@ -29,6 +29,8 @@
 	align-content: space-around;
 	
 	scrollbar-gutter: stable both-edges;
+	
+	top: 2.5%;
 	
 	height: calc(95%);
 }

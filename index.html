@@ -37,9 +37,8 @@
 		
 		
 		<div class="interfaceBar interfaceTopBar mainInterfaceBar" id="mainInterfaceTopBar">
-		
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="mainInterfaceTopBarLeft">
-				<span class="interfaceText" id="mainInterfaceLeftSideText1">
+				<span class="interfaceText interfaceMainBarText" id="mainInterfaceLeftSideText1">
 					Operators: 
 					<span class="interfaceText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
 						4
@@ -50,17 +49,18 @@
 					</span>
 					)
 				</span>
-				<br>
-				<span class="interfaceText" id="mainInterfaceLeftSideText2">
+				<span class="interfaceText interfaceMainBarText" id="mainInterfaceLeftSideText2">
 					Influence: 
 					<span class="interfaceText interfaceDynamicText" id="mainInterfaceInfluenceText">
 						21 37
 					</span> 
 				</span>
 			</div>
+			
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="mainInterfaceTopBarMiddle">
 				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowHomeImage">
 			</div>
+			
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="mainInterfaceTopBarRight">
 				<div class="interfaceElementContainer" id="mainInterfaceDateContainer">
 					<table class="interfaceTable" id="mainInterfaceDateTable">
@@ -104,9 +104,10 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
-			
+			</div>	
 		</div>
+		
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
 			<div class="interfaceWindowContent" id="mainMenuContent">
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton" disabled>
@@ -158,8 +159,9 @@
 				</button>
 			</div>
 		</div>		
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
-			<div class="interfaceBar interfaceTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 				</div>
@@ -170,6 +172,8 @@
 					<img class="interfaceMenuIconImage" id="planetOverviewMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
+			
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="planetOverviewMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="planetOverviewMenuContent">
 				<div class="planetOverviewElementsContainer" id="planetOverviewLeftSide">
 					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
@@ -363,14 +367,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="interfaceBar interfaceBottomBar planetOverviewMenuBar" id="planetOverviewMenuBottomBar">
+			
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar planetOverviewMenuBar" id="planetOverviewMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="planetOverviewMenuBottomBarLeft"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="planetOverviewMenuBottomBarMiddle"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="planetOverviewMenuBottomBarRight"></div>
 			</div>
 		</div>
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="systemOverviewMenuWindow">
-			<div class="interfaceBar interfaceTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="systemOverviewMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
@@ -382,6 +388,7 @@
 				</div>
 			</div>
 			
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="systemOverviewMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="systemOverviewMenuContent">
 				<div class="systemOverviewElementsContainer" id="systemOverviewLeftSide">
 					<div class="systemOverviewElementsContainer" id="systemOverviewButtonsContainer">
@@ -495,8 +502,7 @@
 				</div> 
 			</div>
 			
-			
-			<div class="interfaceBar interfaceBottomBar systemOverviewMenuBar" id="systemOverviewMenuBottomBar">
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar systemOverviewMenuBar" id="systemOverviewMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="systemOverviewMenuBottomBarLeft"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="systemOverviewMenuBottomBarMiddle"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="systemOverviewMenuBottomBarRight"></div>
@@ -504,7 +510,7 @@
 		</div>
 		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="galaxyMapMenuWindow">
-			<div class="interfaceBar interfaceTopBar galaxyMapMenuBar" id="galaxyMapMenuTopBar">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar galaxyMapMenuBar" id="galaxyMapMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="galaxyMapMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
@@ -516,6 +522,7 @@
 				</div>
 			</div>
 			
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="galaxyMapMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="galaxyMapMenuContent">
 				<div class="galaxyMapElementsContainer" id="galaxyMapMenuContainer">
 					<div class="galaxyMapElementsContainer" id="galaxyMapMenuButtonsContainer">
@@ -528,8 +535,6 @@
 							<span class="galaxyMapButtonText" id="galaxyMapNetworksButtonText">Placeholder</span>
 						</button>
 					</div>
-					
-					
 					<div class="galaxyMapElementsContainer" id="galaxyMapSelectedSystemInfoContainer">
 						<table class="interfaceTable galaxyMapInfoTable" id="galaxyMapSelectedElementTable">
 							<tbody class="interfaceTableBody" id="galaxyMapSelectedElementTableBody">
@@ -740,17 +745,15 @@
 				
 			</div>
 			
-			<!--
-			<div class="interfaceBar interfaceBottomBar galaxyMapMenuBar" id="galaxyMapMenuBottomBar">
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar galaxyMapMenuBar" id="galaxyMapMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="galaxyMapMenuBottomBarLeft"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="galaxyMapMenuBottomBarMiddle"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="galaxyMapMenuBottomBarRight"></div>
-			</div>
-			-->
+			</div>	
 		</div>
 		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
-			<div class="interfaceBar interfaceTopBar settingsMenuBar" id="settingsMenuTopBar">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar settingsMenuBar" id="settingsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
@@ -761,6 +764,8 @@
 					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
+			
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="settingsMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="settingsMenuContent">
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
@@ -824,14 +829,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="interfaceBar interfaceBottomBar settingsMenuBar" id="settingsMenuBottomBar">
+			
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar settingsMenuBar" id="settingsMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="settingsMenuBottomBarLeft"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="settingsMenuBottomBarMiddle"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="settingsMenuBottomBarRight"></div>
 			</div>
 		</div>
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="creditsMenuWindow">
-			<div class="interfaceBar interfaceTopBar creditsMenuBar" id="creditsMenuTopBar">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar creditsMenuBar" id="creditsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="creditsMenuTopBarLeft">
 					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
 					</div>
@@ -842,6 +849,8 @@
 					<img class="interfaceMenuIconImage" id="creditsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
+			
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="creditsMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="creditsMenuContent">
 				<h2>Main inspiration:</h2>
 				<span class="interfaceText interfaceTextBig">Heart of Galaxy: Horizons&nbsp;</span><span class="interfaceText interfaceDynamicText interfaceTextBig">by Cheslava</span>
@@ -904,7 +913,8 @@
 				<br>
 				<br>
 			</div>
-			<div class="interfaceBar interfaceBottomBar creditsMenuBar" id="creditsMenuBottomBar">
+			
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar creditsMenuBar" id="creditsMenuBottomBar">
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="creditsMenuBottomBarLeft"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="creditsMenuBottomBarMiddle"></div>
 				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="creditsMenuBottomBarRight"></div>
@@ -914,11 +924,13 @@
 		
 		<div class="interfaceBar interfaceBottomBar mainInterfaceBar" id="mainInterfaceBottomBar">
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="mainInterfaceBottomBarLeft">
-				<span class="interfaceBarText" id="mainInterfaceLeftSideText">
+				<span class="interfaceBarText interfaceMainBarText" id="mainInterfaceLeftSideTextCurrently">
 					Researching: 
 					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
 						Interstellar Travel II
 					</span> 
+				</span>
+				<span class="interfaceBarText interfaceMainBarText" id="mainInterfaceLeftSideTextProgress">
 					Progress: 
 					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceResearchAvailableText">
 						253
