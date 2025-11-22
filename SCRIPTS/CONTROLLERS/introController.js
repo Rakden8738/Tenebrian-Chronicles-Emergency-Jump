@@ -813,7 +813,7 @@ var IntroCleanupInitiated = false;
 
 function introInit(outputDocument){
 	
-	newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, IntroGameStartIntroCoverFade, 1, 0.95);				
+	newAnimatedElementOpacity(outputDocument, IntroMainInterfaceCoverID, 0.05, 1, 0.95);				
 	
 	IntroAnimationPaused = false;
 	IntroImageButtonPauseON = false;
