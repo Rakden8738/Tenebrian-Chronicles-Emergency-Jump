@@ -60,7 +60,7 @@ class SystemObject{
 	position = [0.0,0.0,0.0];
 	distanceFromZero = 0;
 	visible = false;
-	discovered = false;
+	discovered = true;	//temporarily by default
 	
 	gatesNumber = 0;
 	gatesIDs = [];
@@ -136,7 +136,7 @@ class SystemObject{
 	}
 	checkIfDiscovered(){
 		//to-do
-		this.discovered = true;
+		//this.discovered = true;
 		
 		//temp. exception for The Depths and Circus
 		//if(this.name == "The Depths") this.discovered = false;
@@ -482,7 +482,7 @@ function systemRefreshSystemCanvas(outputDocument, debugMode = false){
 				SystemStarmapContext.lineWidth = SystemStarmapLine;
 				
 				if(tmpIsClosestPlanet && tmpClosestObject == i && tmpMinDistance < SystemStarmapMouseDetectionDistance) {
-					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.4)";
+					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.5)";
 				}
 				else {
 					SystemStarmapContext.strokeStyle = "hsla(180,100%,50%,0.3)";

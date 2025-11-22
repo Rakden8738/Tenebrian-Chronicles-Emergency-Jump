@@ -16,7 +16,7 @@ function scenario_earlyAlpha2(){
 	PlanetsHomePlanetIndex = 0;
 	
 	SystemsHomeSystem = PlanetsArray[PlanetsHomePlanetIndex].system_id;
-	
+	SystemsCurrentSystem = systemsGetSystemIndexById(PlanetsArray[PlanetsHomePlanetIndex].system_id);
 	//TimerDaysInYear = Math.round(PlanetsArray[0].orbitalPeroid);
 }
 
@@ -55,7 +55,7 @@ function earlyAlpha_Systems(){
 	tmpSystem.starType = StarTypes["Red"];
 	tmpSystem.starSize = StarSizes["Subgiant"];
 	tmpSystem.starMass = 1.2;
-	tmpSystem.position = [-10.6,-10.1,0.0];
+	tmpSystem.position = [-3.6,-8.1,0.0];
 	
 	tmpSystem.asteroids["Silicon"] = 0.5;
 	tmpSystem.asteroids["Carbon"] = 0.0;
@@ -98,8 +98,6 @@ function earlyAlpha_Systems(){
 	tmpSystem.starSize = StarSizes["Star"];
 	tmpSystem.starMass = 0.9;
 	tmpSystem.position = [7.0,0.0,1.0];
-	
-	tmpSystem.discovered = false;
 	
 	tmpSystem.asteroids["Silicon"] = 0.0;
 	tmpSystem.asteroids["Carbon"] = 0.0;
@@ -255,6 +253,7 @@ function earlyAlpha_Systems(){
 	tmpSystem.asteroids["Iron"] = 2.0;
 	tmpSystem.asteroids["Copper"] = 0.0;
 	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	tmpSystem.planetsCounterClockwise = true;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -262,7 +261,7 @@ function earlyAlpha_Systems(){
 	tmpSystem = new SystemObject();
 	tmpSystem.name = "Ginnungagap";
 	tmpSystem.id = "11";
-	tmpSystem.description = "Sector for testing different network travel.";
+	tmpSystem.description = "Sector for testing different network travel. Extra hostile.";
 	tmpSystem.arrayID = SystemsArray.length;
 	tmpSystem.starType = StarTypes["Blue"];
 	tmpSystem.starSize = StarSizes["Supergiant"];
@@ -283,7 +282,7 @@ function earlyAlpha_Systems(){
 	tmpSystem = new SystemObject();
 	tmpSystem.name = "The Depths";
 	tmpSystem.id = "12";
-	tmpSystem.description = "Sector for testing different network travel.";
+	tmpSystem.description = "Sector for testing paralax and galaxy map depth.";
 	tmpSystem.arrayID = SystemsArray.length;
 	tmpSystem.starType = StarTypes["Blue"];
 	tmpSystem.starSize = StarSizes["Dwarf"];
@@ -304,7 +303,8 @@ function earlyAlpha_Systems(){
 	tmpSystem = new SystemObject();
 	tmpSystem.name = "Circus";
 	tmpSystem.id = "13";
-	tmpSystem.description = "Second undiscovered sector for testing purposes. ";
+	tmpSystem.description = "Sector for testing paralax and galaxy map depth.";
+	//tmpSystem.description = "Second undiscovered sector for testing purposes. ";
 	tmpSystem.arrayID = SystemsArray.length;
 	tmpSystem.starType = StarTypes["Brown"];
 	tmpSystem.starSize = StarSizes["Hypergiant"];
@@ -318,6 +318,35 @@ function earlyAlpha_Systems(){
 	tmpSystem.asteroids["Iron"] = 20.0;
 	tmpSystem.asteroids["Copper"] = 2.0;
 	tmpSystem.asteroids["Transplutonics"] = 10.0;
+	tmpSystem.planetsCounterClockwise = true;
+	
+	SystemsArray.push(tmpSystem);
+	
+	tmpSystem = new SystemObject();
+	tmpSystem.name = "The Edge";
+	tmpSystem.id = "14";
+	tmpSystem.description = "Undiscovered sector, connected to The Abyss.";
+	tmpSystem.arrayID = SystemsArray.length;
+	tmpSystem.starType = StarTypes["Yellow"];
+	tmpSystem.starSize = StarSizes["Hypergiant"];
+	tmpSystem.starMass = 37.12;
+	tmpSystem.position = [-5.0,-15.21,-6.66];
+	tmpSystem.planetsCounterClockwise = true;
+	tmpSystem.discovered = false;
+	
+	SystemsArray.push(tmpSystem);
+	
+	tmpSystem = new SystemObject();
+	tmpSystem.name = "The Northern Abyss";
+	tmpSystem.id = "15";
+	tmpSystem.description = "Undiscovered sector, should be unreachable without discovery-system working.";
+	tmpSystem.arrayID = SystemsArray.length;
+	tmpSystem.starType = StarTypes["Brown"];
+	tmpSystem.starSize = StarSizes["Dwarf"];
+	tmpSystem.starMass = 0.21;
+	tmpSystem.position = [-7.0,-21.37,-30.0];
+	tmpSystem.planetsCounterClockwise = true;
+	tmpSystem.discovered = false;
 	
 	SystemsArray.push(tmpSystem);
 }
@@ -1363,6 +1392,54 @@ function earlyAlpha_Planets(){
 	PlanetsArray.push(tmpPlanet);
 	PlanetsArray[PlanetsArray.length - 1].arrayID = PlanetsArray.length - 1;
 	
+	//Circus
+	//Barren	Echo
+	tmpPlanet = new PlanetObject();
+	
+	tmpPlanet.name = "Echo";
+	tmpPlanet.id = "26";
+	tmpPlanet.description = "There is only echo coming from below.";
+	tmpPlanet.imagePath = "Frozen_3s";
+	tmpPlanet.type = PlanetTypes["Frozen"];
+
+	tmpPlanet.atmosphere = PlanetAtmospheres["Nitrogen"];
+	tmpPlanet.owner = 0;
+	tmpPlanet.system_id = "14";
+	
+	tmpPlanet.orbitalDistance = 13.37;
+	tmpPlanet.radius = 7593.0;
+	tmpPlanet.averageTemperature = -37.2;
+	tmpPlanet.gravity = 0.937;
+	tmpPlanet.startingPosition = 0.169;
+	
+	tmpPlanet.refreshPlanet();
+	PlanetsArray.push(tmpPlanet);
+	PlanetsArray[PlanetsArray.length - 1].arrayID = PlanetsArray.length - 1;
+	
+	//The Northern Abyss
+	//Water	R'lyeh
+	tmpPlanet = new PlanetObject();
+	
+	tmpPlanet.name = "R'lyeh";
+	tmpPlanet.id = "27";
+	tmpPlanet.description = "Do not wake the Elders up.";
+	tmpPlanet.imagePath = "Water_4s";
+	tmpPlanet.type = PlanetTypes["Ocean"];
+
+	tmpPlanet.atmosphere = PlanetAtmospheres["Oxygen"];
+	tmpPlanet.owner = 0;
+	tmpPlanet.system_id = "15";
+	
+	tmpPlanet.orbitalDistance = 4.31;
+	tmpPlanet.radius = 10641.7;
+	tmpPlanet.averageTemperature = 4.1;
+	tmpPlanet.gravity = 1.83;
+	tmpPlanet.startingPosition = 0.426;
+	
+	tmpPlanet.refreshPlanet();
+	PlanetsArray.push(tmpPlanet);
+	PlanetsArray[PlanetsArray.length - 1].arrayID = PlanetsArray.length - 1;
+	
 	
 }
 function earlyAlpha_RegisterPlanets(){
@@ -1391,5 +1468,8 @@ function earlyAlpha_CreateNetworks(){
 	
 	networksLinkSystemsByName("The Depths","Urist");
 	networksLinkSystemsByName("The Depths","Circus");
+	
+	networksLinkSystemsByName("The Edge","Red Frontier");
+	networksLinkSystemsByName("The Edge","The Northern Abyss");
 }
 
