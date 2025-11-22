@@ -1,6 +1,6 @@
 //var InterfaceDocument;
 
-var MainGameVersion = [0,1,0];
+var MainGameVersion = [0,1,2];
 
 var messagesMainLayerClass = "messagesLayer";
 var messagesLayerClass = "animationMessages";
@@ -26,6 +26,8 @@ function mainLoadGame(outputDocument){
 		connectionTest_timer(outputDocument);
 		TestedModule = "saveLoad";
 		connectionTest_saveLoad(outputDocument);
+		TestedModule = "settings";
+		connectionTest_settings(outputDocument);
 		TestedModule = "animations";
 		connectionTest_animations(outputDocument);
 		TestedModule = "resources";

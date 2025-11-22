@@ -1,3 +1,13 @@
+function connectionTest_saveLoad(outputDocument){
+	if(outputDocument.getElementById("mainBody") !== null) {
+		return true;
+	}
+	else {
+		throw new Error("Module \"saveLoad\" reporting issues.");
+		return false;
+	}
+}
+
 var SaveObject;
 var SaveProperties = [
 	"gameVersion",
@@ -12,7 +22,7 @@ var SaveProperties = [
 	"AFKExtraSeconds"
 ];
 
-var SaveAutosave = true;
+//var SaveAutosave = true;
 var SaveDisableAutosaveOnLoadError = true;
 
 var SaveIntroDisplayedOrSkipped = false;
@@ -20,15 +30,8 @@ var SaveIntroSkipCounter = 0;
 
 var SaveUnlockedMainMenuTabs = [true,true,true,false,false,false,false,false,false,false,true];
 
-function connectionTest_saveLoad(outputDocument){
-	if(outputDocument.getElementById("mainBody") !== null) {
-		return true;
-	}
-	else {
-		throw new Error("Module \"saveLoad\" reporting issues.");
-		return false;
-	}
-}
+var SaveExportImportTextareaID = "settingsMenuOptionExportImportTextarea";
+
 
 function loadLoadGame(outputDocument){
 	var tmpSaveObject = JSON.parse(localStorage.getItem("currentSave"));
@@ -36,66 +39,21 @@ function loadLoadGame(outputDocument){
 	loadLoadGameObject(outputDocument, tmpSaveObject);
 	
 }
-function loadVerifySave(unverifiedSave) {
-	var tmpTime = Date.now();
-	var tmpTime2 = (tmpTime - (tmpTime%1000))/1000;
-	
-	//check version
-	if(Array.isArray(unverifiedSave.gameVersion)){
-		if(MainGameVersion[0] != unverifiedSave.gameVersion[0]){
-			console.log("Fatal error: Incompatible save detected.");
-			interfaceAddBottomMessage(mainOutputDocument, "Fatal error: Incompatible save detected.");
-			return false;
-		}
-		if(MainGameVersion[1] != unverifiedSave.gameVersion[1]){
-			console.log("Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
-			interfaceAddBottomMessage(mainOutputDocument, "Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
-			SaveAutosave = false;
-		}
-		if(MainGameVersion[2] != unverifiedSave.gameVersion[2]){
-			console.log("Warning: Minor version discrepancy detected.");
-			interfaceAddBottomMessage(mainOutputDocument, "Warning: Minor version discrepancy detected.");
-		}
-	}
-	else{
-		console.log("Warning: Unrecognised or missing version variable.");
-		interfaceAddBottomMessage(mainOutputDocument, "Warning: Unrecognised or missing version variable.");
-	}
-	if(unverifiedSave.gameVersion != MainGameVersion) {
-		
-	}
-	
-	var timeDifference = (tmpTime2 - unverifiedSave.saveTime);
-	if(tmpTime2 < 1700000000) {
-		console.log("Error: Save time is unreasonably old or corrupted.");
-		interfaceAddBottomMessage(mainOutputDocument, "Error: Save time is unreasonably old or corrupted.");
-		return false;
-	}
-	if(timeDifference < 0) {
-		console.log("Warning: Time discrepancy detected.");
-		interfaceAddBottomMessage(mainOutputDocument, "Warning: Time discrepancy detected.");
-		if(timeDifference < (-3700)) {
-			console.log("Warning: Time discrepancy exceeding daylight time saving margin.");
-			interfaceAddBottomMessage(mainOutputDocument, "Warning: Time discrepancy exceeding daylight time saving margin.");
-			return false;
-		}
-	}
-	
-	return true;
-}
+
 
 function saveCreateSaveObject(){
 	var newSaveObject = {};
+	
 	newSaveObject["gameVersion"] = MainGameVersion;
-	newSaveObject["saveTime"] = Math.round(Date.now()/1000);
+	
+	newSaveObject["config"] = settingsGetConfigObject();
+	console.log("Creating new timer...");
+	newSaveObject["timer"] = timerGetTimingsObject();
+	
+	
 	newSaveObject["introDisplayed"] = SaveIntroDisplayedOrSkipped;
 	newSaveObject["introSkipCounter"] = SaveIntroSkipCounter;
-	newSaveObject["settingsInstantMenuSwitch"] = InterfaceChangeMenuTabInstant;
-	newSaveObject["settingsAutosaveEnabled"] = SaveAutosave;
 	newSaveObject["mainMenuUnlockedTabs"] = SaveUnlockedMainMenuTabs;
-	newSaveObject["totalElapsedDays"] = TimerTotalElapsedDays;
-	newSaveObject["accumulatedAFKTime"] = TimerAccumulatedFasterTime;
-	newSaveObject["AFKExtraSeconds"] = TimerAFKExtraSeconds;
 	
 	return newSaveObject;
 }
@@ -112,12 +70,47 @@ function saveSaveGame(quietSave = false){
 		interfaceAddBottomMessage(mainOutputDocument, "Game successfully saved.");
 	}
 }
-
-var SaveExportImportTextareaID = "settingsMenuOptionExportImportTextarea";
-
 function saveExportSave(outputDocument){
-	var tmpSave = JSON.stringify(saveCreateSaveObject());
-	var tmpExport = window.btoa(tmpSave);
+	var tmpSaveObject = saveCreateSaveObject();
+	var tmpSave = JSON.stringify(tmpSaveObject);
+	var tmpExport;
+	try{
+		tmpExport = window.btoa(tmpSave);
+	}
+	catch ({name,message}) {
+		//console.groupCollapsed();
+		if(name == "InvalidCharacterError") {
+			interfaceAddBottomMessage(mainOutputDocument, "Warning: Encoding issue detected while exporting data. Check console for details.");
+			console.groupCollapsed("Warning: Encoding issue detected while exporting data.");
+			
+			try{
+				var btoaErrorTest;
+				
+				var btoaErrorTestedElementName = "timer";
+				var btoaErrorTestedElement = JSON.stringify(tmpSaveObject.timer);
+				btoaErrorTest = window.btoa(btoaErrorTestedElement);
+				
+				btoaErrorTestedElementName = "config";
+				btoaErrorTestedElement = JSON.stringify(tmpSaveObject.config);
+				btoaErrorTest = window.btoa(btoaErrorTestedElement);
+				
+				btoaErrorTestedElementName = "general";
+				console.warn("General save issue.");
+				console.log(tmpSave);
+			}
+			catch ({name,message}) {
+				if(name == "InvalidCharacterError") {
+					console.warn("Warning: Issue detected while exporting data for module '" + btoaErrorTestedElementName + "'");
+					console.log(btoaErrorTestedElement);
+				}
+				else console.error("Error: " + name + " for: '" + btoaErrorTestedElementName + "' element.");
+			}
+			console.groupEnd();
+			tmpExport = window.btoa(tmpSave.replace(/[^\x20-\x7E]/g, "?"));
+		}
+		else console.error("Encoding error: " + name);
+	}
+	 
 	var tmpOutput = outputDocument.getElementById(SaveExportImportTextareaID);
 	
 	tmpOutput.value = tmpExport;
@@ -131,9 +124,9 @@ function loadImportSave(outputDocument){
 	var tmpSave = JSON.parse(tmpImport);
 	
 	loadLoadGameObject(outputDocument, tmpSave, false);
+	interfaceInitSettingsMenu(outputDocument);
 }
 function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
-	
 	var saveOK = false;
 	
 	if(tmpSaveObject === null) {
@@ -150,26 +143,9 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 	
 		SaveIntroDisplayedOrSkipped = SaveObject.introDisplayed;
 		SaveIntroSkipCounter = SaveObject.introSkipCounter;
-		SaveAutosave = SaveObject.settingsAutosaveEnabled;
 		
-		InterfaceChangeMenuTabInstant = SaveObject.settingsInstantMenuSwitch;
-		
-		//TimerDayOfYear = SaveObject.totalElapsedDays;
-		
-		var timeNow = Math.round(Date.now()/1000);
-		var elapsedTime = timeNow - SaveObject.saveTime;
-		
-		TimerAFKExtraSeconds += elapsedTime + SaveObject.AFKExtraSeconds;
-		
-		if(TimerAFKExtraSeconds > TimerAFKMarginSeconds){
-			//console.log("Welcome back, you have been away for about " + timerSecondsToTimeString(elapsedTime));
-			//interfaceAddBottomMessage(outputDocument, "Welcome back, you have been away for about " + timerSecondsToTimeString(elapsedTime));
-			TimerAFKDetected = true;
-		}
-		
-		TimerAccumulatedFasterTime = SaveObject.accumulatedAFKTime;
-		TimerTotalElapsedDays = SaveObject.totalElapsedDays;
-		TimerDayOfYear = SaveObject.totalElapsedDays;
+		settingsSetConfigObject(SaveObject.config);
+		timerSetTimingsObject(SaveObject.timer);
 		
 		console.log("Game loaded successfully.");
 		interfaceAddBottomMessage(mainOutputDocument, "Game loaded successfully.");
@@ -180,8 +156,10 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 	if(forceLoad){
 		//console.log("Force Load");
 		if(tmpSaveObject === null){
+			console.log("Creating new save...");
 			SaveObject = saveCreateSaveObject();
-			SaveAutosave = true;
+
+			SettingSaveAutosave = true;
 		}
 		else {
 			console.log("Save failed to load. Check log for details.");
@@ -189,18 +167,70 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 			if(SaveDisableAutosaveOnLoadError) {
 				console.log("Disabling auto-save to prevent data from being overwritten.");
 				interfaceAddBottomMessage(mainOutputDocument, "Disabling auto-save to prevent data from being overwritten.");
-				SaveAutosave = false;
+				SettingSaveAutosave = false;
 			}
 			SaveObject = saveCreateSaveObject();
 		}
 	}
 }
 
+function loadVerifySave(unverifiedSave) {
+	var tmpTime = Date.now();
+	var tmpTime2 = (tmpTime - (tmpTime%1000))/1000;
+	
+	try{
+	
+	//check version
+	if(Array.isArray(unverifiedSave.gameVersion)){
+		if(MainGameVersion[0] != unverifiedSave.gameVersion[0]){
+			console.log("Fatal error: Incompatible save detected.");
+			interfaceAddBottomMessage(mainOutputDocument, "Fatal error: Incompatible save detected.");
+			return false;
+		}
+		if(MainGameVersion[1] != unverifiedSave.gameVersion[1]){
+			console.log("Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
+			interfaceAddBottomMessage(mainOutputDocument, "Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
+			SettingSaveAutosave = false;
+		}
+		if(MainGameVersion[2] != unverifiedSave.gameVersion[2]){
+			console.log("Warning: Minor version discrepancy detected.");
+			interfaceAddBottomMessage(mainOutputDocument, "Warning: Minor version discrepancy detected.");
+		}
+	}
+	else{
+		console.log("Warning: Unrecognised or missing version variable.");
+		interfaceAddBottomMessage(mainOutputDocument, "Warning: Unrecognised or missing version variable.");
+	}
+	
+	var timeDifference = (tmpTime2 - unverifiedSave.timer.saveTime);
+	
+	if(tmpTime2 < 1700000000) {
+		console.log("Error: Save time is unreasonably old or corrupted.");
+		interfaceAddBottomMessage(mainOutputDocument, "Error: Save time is unreasonably old or corrupted.");
+		return false;
+	}
+	if(timeDifference < 0) {
+		console.log("Warning: Time discrepancy detected.");
+		interfaceAddBottomMessage(mainOutputDocument, "Warning: Time discrepancy detected.");
+		if(timeDifference < (-3700)) {
+			console.log("Warning: Time discrepancy exceeding daylight time saving margin.");
+			interfaceAddBottomMessage(mainOutputDocument, "Warning: Time discrepancy exceeding daylight time saving margin.");
+			return false;
+		}
+	}
+	}
+	catch{
+		return false;
+	}
+	
+	return true;
+}
+
 function saveLoadWipeSave(outputDocument){
 	if(confirm("Are you sure you want to wipe current save?")){
 		if(confirm("Are you REALLY sure?\nThis will also reload the page.")){
 			localStorage.removeItem("currentSave");
-			localStorage.removeItem("currentSave");
+			//localStorage.removeItem("currentSave");
 			window.location.reload();
 		}
 	}
@@ -208,7 +238,7 @@ function saveLoadWipeSave(outputDocument){
 
 function saveAutosaveLoop(){
 	setTimeout(() => {
-		if(SaveAutosave){
+		if(SettingSaveAutosave){
 			saveSaveGame(true);
 			console.log("Game autosaved.");
 			interfaceAddBottomMessage(mainOutputDocument, "Game autosaved.");

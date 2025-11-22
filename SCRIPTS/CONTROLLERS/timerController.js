@@ -45,9 +45,43 @@ var TimerElapsedYears = 0;
 var TimerDaysInYear = 400;
 var TimerDayOfYear = 0;
 
+var TimerPlaythroughStartTime = -1;
+
+function timerGetTimingsObject(){
+	var newTimingsObject = {};
+	
+	if(TimerPlaythroughStartTime == -1 || TimerPlaythroughStartTime == NaN || TimerPlaythroughStartTime == null) TimerPlaythroughStartTime = Date();
+	newTimingsObject["playthroughStartTime"] = TimerPlaythroughStartTime;
+	
+	newTimingsObject["saveTime"] = Math.round(Date.now()/1000);
+	newTimingsObject["totalElapsedDays"] = TimerTotalElapsedDays;
+	newTimingsObject["accumulatedAFKTime"] = TimerAccumulatedFasterTime;
+	newTimingsObject["AFKExtraSeconds"] = TimerAFKExtraSeconds;
+	
+	return newTimingsObject;
+}
+function timerSetTimingsObject(newTimingsObject){
+	
+	TimerPlaythroughStartTime = newTimingsObject["playthroughStart"];
+	if(TimerPlaythroughStartTime == -1 || TimerPlaythroughStartTime == NaN || TimerPlaythroughStartTime == null) TimerPlaythroughStartTime = Date();
+	
+	var timeNow = Math.round(Date.now()/1000);
+	var elapsedTime = timeNow - newTimingsObject.saveTime;
+	TimerAFKExtraSeconds += elapsedTime + newTimingsObject.AFKExtraSeconds;
+	
+	if(TimerAFKExtraSeconds > TimerAFKMarginSeconds){
+		TimerAFKDetected = true;
+	}
+	
+	TimerAccumulatedFasterTime = newTimingsObject.accumulatedAFKTime;
+	TimerTotalElapsedDays = newTimingsObject.totalElapsedDays;
+	TimerDayOfYear = newTimingsObject.totalElapsedDays;
+	
+}
 
 function timerStart(outputDocument){
 	TimerStartTime = Math.round(Date.now()/1000);
+	
 	TimerLastTime = TimerStartTime;
 	TimerStandardFasterDifference = TimerRegularSpeedSeconds - TimerFasterSpeedSeconds;
 	setTimeout(() => {

@@ -898,7 +898,7 @@ function systemStarmapMouseClick(e, outputDocument, canvasObject) {
 				
 				if(tmpRemoteSystem.discovered){
 					SystemsCurrentSystem = tmpRemoteSystemIndex;
-					if(InterfaceChangeMenuTabInstant){
+					if(SettingsInstantMenuNavigation){
 						interfaceRefreshSystemOverview(outputDocument);
 					}
 					else {

@@ -432,7 +432,7 @@ function interfaceInitSettingsMenu(outputDocument) {
 	};
 	
 	//button on/off
-	if(InterfaceChangeMenuTabInstant) {
+	if(SettingsInstantMenuNavigation) {
 		outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").src = InterfaceMainMenuIconPaths[17];
 	}
 	else{
@@ -448,7 +448,7 @@ function interfaceInitSettingsMenu(outputDocument) {
 	}
 	
 	//button on/off
-	if(SaveAutosave) {
+	if(SettingSaveAutosave) {
 		outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").src = InterfaceMainMenuIconPaths[17];
 	}
 	else{
@@ -469,8 +469,8 @@ function interfaceInitSettingsMenu(outputDocument) {
 }
 
 function interfaceSettingsSwitchFastMenuChange(outputDocument) {
-	if(InterfaceChangeMenuTabInstant) InterfaceChangeMenuTabInstant = false;
-	else InterfaceChangeMenuTabInstant = true;
+	if(SettingsInstantMenuNavigation) SettingsInstantMenuNavigation = false;
+	else SettingsInstantMenuNavigation = true;
 	
 	interfaceInitSettingsMenu(outputDocument);
 }
@@ -481,14 +481,17 @@ function interfaceSettingsSwitchIntroSkip(outputDocument) {
 	interfaceInitSettingsMenu(outputDocument);
 }
 function interfaceSettingsSwitchAutosave(outputDocument) {
-	if(SaveAutosave) SaveAutosave = false;
-	else SaveAutosave = true;
+	
+	settingsToggleAutosave();
+	//if(SaveAutosave) SaveAutosave = false;
+	//else SaveAutosave = true;
 	
 	interfaceInitSettingsMenu(outputDocument);
 }
 function interfaceSettingsSwitchGalaxyMapParralax(outputDocument){
-	if(GalaxyMapPerspectiveEnabled) GalaxyMapPerspectiveEnabled = false;
-	else GalaxyMapPerspectiveEnabled = true;
+	settingsToggleGalaxyMapParallax();
+	//if(GalaxyMapPerspectiveEnabled) GalaxyMapPerspectiveEnabled = false;
+	//else GalaxyMapPerspectiveEnabled = true;
 	interfaceInitSettingsMenu(outputDocument);
 }
 
@@ -1119,14 +1122,14 @@ function interfaceRefreshAsteroids(outputDocument) {
 //interface menu navigation
 
 var InterfaceChangeMenuTabCurrentID = InterfaceMainMenuID;
-var InterfaceChangeMenuTabInstant = false;
+//var SettingsInstantMenuNavigation = false;
 var InterfaceChangeMenuTabFadeOutTime = 0.25;
 var InterfaceChangeMenuTabFadeInDelay = 0.1;
 var InterfaceChangeMenuTabFadeInTime = 0.25;
 var InterfaceChangeMenuTabPathStack = [];
 var InterfaceChangeMenuTabInProgress = false;
 
-function interfaceEnterElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
+function interfaceEnterElement(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
 	if(!InterfaceChangeMenuTabInProgress) {
 		if(InterfaceChangeMenuTabCurrentID == destinationTabID) return;
 		InterfaceChangeMenuTabPathStack.push(InterfaceChangeMenuTabCurrentID);
@@ -1134,25 +1137,25 @@ function interfaceEnterElement(outputDocument, destinationTabID, instantChange =
 		interfaceChangeMenuTab(outputDocument, destinationTabID);
 	}
 }
-function interfaceReturnFromElement(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
+function interfaceReturnFromElement(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
 	if(!InterfaceChangeMenuTabInProgress) {
 		interfaceChangeMenuTab(outputDocument, InterfaceChangeMenuTabPathStack.pop());
 	}
 }
-function interfaceEnterMainMenu(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
+function interfaceEnterMainMenu(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
 	if(!InterfaceChangeMenuTabInProgress) {
 		InterfaceChangeMenuTabPathStack = [];
 		interfaceChangeMenuTab(outputDocument, InterfaceMainMenuID);
 	}
 }
-function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
+function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
 	
 	if(InterfaceChangeMenuTabCurrentID == "") {
 		InterfaceChangeMenuTabCurrentID = InterfaceMainMenuID;
 		
 		var tmpElementsArray = outputDocument.getElementsByClassName("interfaceToggleableMenuElement");
 		
-		if(InterfaceChangeMenuTabInstant) {
+		if(SettingsInstantMenuNavigation) {
 			for(var i = 0; i<tmpElementsArray.length; i++) {
 				if(tmpElementsArray[i].id == InterfaceChangeMenuTabCurrentID) {
 					tmpElementsArray[i].style.visibility = "visible";
@@ -1199,7 +1202,7 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 	var tmpOriginTab = outputDocument.getElementById(InterfaceChangeMenuTabCurrentID);
 	var tmpDestinationTab = outputDocument.getElementById(destinationTabID);	
 	
-	if(InterfaceChangeMenuTabInstant) {
+	if(SettingsInstantMenuNavigation) {
 		
 		tmpDestinationTab.style.visibility = "visible";
 		tmpDestinationTab.style.opacity = 1.0;
@@ -1307,7 +1310,7 @@ var InterfacePlanetOverviewCurrentTab = "";
 var InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
 var InterfacePlanetOverviewTabChanging = false;
 
-function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = InterfaceChangeMenuTabInstant) {
+function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
 	if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
 	
 	if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
@@ -1376,7 +1379,7 @@ function interfacePlanetOverviewPlanetRoutes(outputDocument) {
 function interfacePlanetOverviewPlayerPreviousPlanet(outputDocument) {
 	if(!InterfacePlanetOverviewPlanetChanging) {
 		PlanetsCurrentPlanet = planetsGetPreviousFactionPlanetIndex(DiplomacyPlayerFaction);
-		if(InterfaceChangeMenuTabInstant) {
+		if(SettingsInstantMenuNavigation) {
 			interfaceRefreshPlanetOverview(outputDocument);
 		}
 		else {
@@ -1387,7 +1390,7 @@ function interfacePlanetOverviewPlayerPreviousPlanet(outputDocument) {
 function interfacePlanetOverviewSystemPreviousPlanet(outputDocument) {
 	if(!InterfacePlanetOverviewPlanetChanging) {
 		PlanetsCurrentPlanet = planetsGetPreviousSystemPlanetIndex();
-		if(InterfaceChangeMenuTabInstant) {
+		if(SettingsInstantMenuNavigation) {
 			interfaceRefreshPlanetOverview(outputDocument);
 		}
 		else {
@@ -1398,7 +1401,7 @@ function interfacePlanetOverviewSystemPreviousPlanet(outputDocument) {
 function interfacePlanetOverviewPlayerNextPlanet(outputDocument) {
 	if(!InterfacePlanetOverviewPlanetChanging) {
 		PlanetsCurrentPlanet = planetsGetNextFactionPlanetIndex(DiplomacyPlayerFaction);
-		if(InterfaceChangeMenuTabInstant) {		
+		if(SettingsInstantMenuNavigation) {		
 			interfaceRefreshPlanetOverview(outputDocument);
 		}
 		else {
@@ -1409,7 +1412,7 @@ function interfacePlanetOverviewPlayerNextPlanet(outputDocument) {
 function interfacePlanetOverviewSystemNextPlanet(outputDocument) {
 	if(!InterfacePlanetOverviewPlanetChanging) {
 		PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();
-		if(InterfaceChangeMenuTabInstant) {
+		if(SettingsInstantMenuNavigation) {
 			
 			interfaceRefreshPlanetOverview(outputDocument);
 		}
@@ -1469,7 +1472,7 @@ function interfaceSystemOverviewShowOnMap(outputDocument){
 function interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument) {
 	if(!InterfaceSystemOverviewSystemChanging) {
 		SystemsCurrentSystem = systemsGetPreviousDiscoveredSystemIndex();
-		if(InterfaceChangeMenuTabInstant) {
+		if(SettingsInstantMenuNavigation) {
 			interfaceRefreshSystemOverview(outputDocument);
 		}
 		else {
@@ -1481,7 +1484,7 @@ function interfaceSystemOverviewNetworkPreviousSystem(outputDocument) {
 	if(systemsGetSystemById(SystemsCurrentSystem).network_id != (-1)) {
 		if(!InterfaceSystemOverviewSystemChanging) {
 			SystemsCurrentSystem = systemsGetPreviousNetworkSystemIndex();
-			if(InterfaceChangeMenuTabInstant) {
+			if(SettingsInstantMenuNavigation) {
 				interfaceRefreshSystemOverview(outputDocument);
 			}
 			else {
@@ -1493,7 +1496,7 @@ function interfaceSystemOverviewNetworkPreviousSystem(outputDocument) {
 function interfaceSystemOverviewDiscoveredNextSystem(outputDocument) {
 	if(!InterfaceSystemOverviewSystemChanging) {
 		SystemsCurrentSystem = systemsGetNextDiscoveredSystemIndex();
-		if(InterfaceChangeMenuTabInstant) {		
+		if(SettingsInstantMenuNavigation) {		
 			interfaceRefreshSystemOverview(outputDocument);
 		}
 		else {
@@ -1505,7 +1508,7 @@ function interfaceSystemOverviewNetworkNextSystem(outputDocument) {
 	if(systemsGetSystemById(SystemsCurrentSystem).network_id != (-1)) {
 		if(!InterfaceSystemOverviewSystemChanging) {
 			SystemsCurrentSystem = systemGetNextNetworkPlanetIndex();
-			if(InterfaceChangeMenuTabInstant) {
+			if(SettingsInstantMenuNavigation) {
 				interfaceRefreshSystemOverview(outputDocument);
 			}
 			else {
