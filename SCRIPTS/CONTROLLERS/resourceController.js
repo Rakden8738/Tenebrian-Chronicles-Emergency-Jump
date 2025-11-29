@@ -9,12 +9,12 @@ function connectionTest_resources(outputDocument){
 }
 
 function resourcesInitResources(outputDocument){
-	resourcesNames = resourcesRecreateResourceNames();
-	resourcesDiscovered = resourcesRecreateDiscoveredResources();
-	resourcesNaturalResources = resourcesRecreateNaturalResources();
+	ResourcesNames = resourcesRecreateResourceNames();
+	ResourcesDiscovered = resourcesRecreateDiscoveredResources();
+	ResourcesNaturalResources = resourcesRecreateNaturalResources();
 }
 
-var resourcesNames = [
+var ResourcesNames = [
 	"Gravel",
 	"Stone",
 	"Sand",
@@ -74,9 +74,9 @@ var resourcesResourceCategories = [
 	"Reagents",				//8
 	"Military",				//9
 ];
-var resourcesDiscovered = [];
-var resourcesNaturalResources = [];
-var resourcesResourceProperties = {
+var ResourcesDiscovered = [];
+var ResourcesNaturalResources = [];
+var ResourcesResourceProperties = {
 	//name: pre-discovered, categories, base efficiency (1.0 for produced, 0.0 for mined)
 	"Gravel":[true,[0,1],0.0],
 	"Stone":[true,[0,1],0.0],
@@ -127,7 +127,7 @@ var resourcesResourceProperties = {
 };
 
 function resourcesRecreateResourceNames(){
-	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpKeys = Object.keys(ResourcesResourceProperties);
 	var tmpArray = [];
 	for(var i = 0; i<tmpKeys.length; i++){
 		tmpArray.push(tmpKeys[i]);
@@ -135,18 +135,18 @@ function resourcesRecreateResourceNames(){
 	return tmpArray;
 }
 function resourcesRecreateDiscoveredResources(){
-	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpKeys = Object.keys(ResourcesResourceProperties);
 	var tmpArray = [];
 	for(var i = 0; i<tmpKeys.length; i++){
-		tmpArray.push(resourcesResourceProperties[tmpKeys[i]][0]);
+		tmpArray.push(ResourcesResourceProperties[tmpKeys[i]][0]);
 	}
 	return tmpArray;
 }
 function resourcesRecreateNaturalResources(){
-	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpKeys = Object.keys(ResourcesResourceProperties);
 	var tmpArray = [];
 	for(var i = 0; i<tmpKeys.length; i++){
-		if(resourcesResourceProperties[tmpKeys[i]][2] == 0.0) tmpArray.push(true);
+		if(ResourcesResourceProperties[tmpKeys[i]][2] == 0.0) tmpArray.push(true);
 		else tmpArray.push(false);
 	}
 	return tmpArray;
@@ -154,10 +154,55 @@ function resourcesRecreateNaturalResources(){
 
 function resourcesGetNewResourcesObject(resourceAmount = "default"){
 	var tmpObject = {};
-	var tmpKeys = Object.keys(resourcesResourceProperties);
+	var tmpKeys = Object.keys(ResourcesResourceProperties);
 	for(var i = 0; i < tmpKeys.length; i++){
-		if(resourceAmount == "default") tmpObject[tmpKeys[i]] = resourcesResourceProperties[tmpKeys[i]][2];
+		if(resourceAmount == "default") tmpObject[tmpKeys[i]] = ResourcesResourceProperties[tmpKeys[i]][2];
 		else tmpObject[tmpKeys[i]] = resourceAmount;
 	}
 	return tmpObject;
+}
+
+function resourcesCheckIfEnough(resourcesRequired, resourcesAvailable, multipler = 1){
+	for(var i = 0; i< ResourcesNames.length; i++){
+		if(resourcesRequired[ResourcesNames[i]]*multipler > resourcesAvailable[ResourcesNames[i]]) return false;
+	}
+	return true;
+}
+
+function resourcesGetHowManyTimesFitsAndBottleneck(resourcesRequired, resourcesAvailable){
+	var tmpTimesFits = -1;
+	var tmpBottleneck = "";
+	
+	for(var i = 0; i< ResourcesNames.length; i++){
+		if(resourcesRequired[ResourcesNames[i]] <= 0) {
+			//console.log(ResourcesNames[i] + " == " + resourcesRequired[ResourcesNames[i]] + ", skip");
+			continue;
+		}
+		
+		if(tmpTimesFits == -1 || (resourcesAvailable[ResourcesNames[i]] / resourcesRequired[ResourcesNames[i]]) < tmpTimesFits){
+			tmpTimesFits = Math.floor(resourcesAvailable[ResourcesNames[i]] / resourcesRequired[ResourcesNames[i]]);
+			tmpBottleneck = ResourcesNames[i];
+		}
+	}
+	
+	return [tmpTimesFits,tmpBottleneck];
+}
+
+function resourcesSumResources(resourcesAdded, resourcesAvailable, multiplier = 1){
+	var tmpResources = resourcesGetNewResourcesObject(0);
+	
+	for(var i = 0; i< ResourcesNames.length; i++){
+		tmpResources[ResourcesNames[i]] = resourcesAvailable[ResourcesNames[i]] + (resourcesAdded[ResourcesNames[i]] * multiplier);
+	}
+	
+	return tmpResources;
+}
+function resourcesSubstractResources(resourcesSubstracted, resourcesAvailable, multiplier = 1){
+	var tmpResources = resourcesGetNewResourcesObject(0);
+	
+	for(var i = 0; i< ResourcesNames.length; i++){
+		tmpResources[ResourcesNames[i]] = resourcesAvailable[ResourcesNames[i]] - (resourcesSubstracted[ResourcesNames[i]] * multiplier);
+	}
+	
+	return tmpResources;
 }

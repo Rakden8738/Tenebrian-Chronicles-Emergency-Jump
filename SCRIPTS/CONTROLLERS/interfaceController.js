@@ -767,10 +767,10 @@ function interfaceRefreshPlanetStorage(outputDocument) {
 		var tmpTableRow;
 		var tmpTableRowsCounter = 0;
 		
-		for(var i = 0; i < resourcesNames.length; i++) {
+		for(var i = 0; i < ResourcesNames.length; i++) {
 			//if resource got discovered
-			if(resourcesDiscovered[i]) {
-				var tmpResourceName = resourcesNames[i];
+			if(ResourcesDiscovered[i]) {
+				var tmpResourceName = ResourcesNames[i];
 				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].resourceStorage[tmpResourceName];
 				
 				tmpResourceCounter++;
@@ -857,9 +857,9 @@ function interfaceRefreshPlanetNaturalResources(outputDocument) {
 		var tmpTableRowsCounter = 0;
 		
 		//natural resources if default efficiency at 0.0
-		for(var i = 0; i < resourcesNames.length; i++) {
-			if(resourcesDiscovered[i] && resourcesNaturalResources[i]) {
-				var tmpResourceName = resourcesNames[i];
+		for(var i = 0; i < ResourcesNames.length; i++) {
+			if(ResourcesDiscovered[i] && ResourcesNaturalResources[i]) {
+				var tmpResourceName = ResourcesNames[i];
 				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].naturalResources[tmpResourceName];
 				
 				//skip if it is still at 0
@@ -951,9 +951,9 @@ function interfaceRefreshPlanetNaturalResources(outputDocument) {
 		
 		
 		//production bonuses and penalties if efficiency other than default efficiency of 1.0
-		for(var i = 0; i < resourcesNames.length; i++) {
-			if(resourcesDiscovered[i] && !resourcesNaturalResources[i]) {
-				var tmpResourceName = resourcesNames[i];
+		for(var i = 0; i < ResourcesNames.length; i++) {
+			if(ResourcesDiscovered[i] && !ResourcesNaturalResources[i]) {
+				var tmpResourceName = ResourcesNames[i];
 				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].naturalResources[tmpResourceName];
 				
 				//skip if it is still at default 1.0
@@ -1043,9 +1043,9 @@ function interfaceRefreshAsteroids(outputDocument) {
 		var tmpTableRow;
 		var tmpTableRowsCounter = 0;
 		
-		for(var i = 0; i < resourcesNames.length; i++) {
-			if(resourcesDiscovered[i] && resourcesNaturalResources[i]) {
-				var tmpResourceName = resourcesNames[i];
+		for(var i = 0; i < ResourcesNames.length; i++) {
+			if(ResourcesDiscovered[i] && ResourcesNaturalResources[i]) {
+				var tmpResourceName = ResourcesNames[i];
 				var tmpResourceAmount = SystemsArray[SystemsCurrentSystem].asteroids[tmpResourceName];
 				
 				//skip if it is still at 0
