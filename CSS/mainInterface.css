@@ -84,7 +84,7 @@
 }
 .mainInterfaceBar .interfaceBarLeftElement{
 	width: 300px;
-	background-size: 100%, 100%;
+	background-size: 300px 100%;
 }
 .mainInterfaceBar .interfaceBarMiddleElement{	
 	width: max(calc(100% - 600px), 200px);
@@ -92,7 +92,7 @@
 }
 .mainInterfaceBar .interfaceBarRightElement{
 	width: 300px;
-	background-size: 100%, 100%;
+	background-size:  300px 100%;
 }
 
 .interfaceTopBar{
