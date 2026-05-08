@@ -461,6 +461,11 @@ function interfaceInitBuildMenu(outputDocument){
 	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").onchange = function(){ interfaceBuildMenuDemolishLock(outputDocument); };
 	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").checked = BuildingsDemolishLockEnabled;
 	
+	//TMP DEBUG BUTTON
+	outputDocument.getElementById("planetBuildingSingleBuildingUnfoldBuildingButton_0").onclick = function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
+	outputDocument.getElementById("planetBuildingSingleBuildingFoldBuildingButton_0").onclick =  function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
+		
+	
 	interfaceRefreshBuildMenu(outputDocument);
 }
 
@@ -794,6 +799,8 @@ function interfaceRefreshBuildMenu(outputDocument){
 			
 			interfaceRefreshBuildingsList(outputDocument);
 		}
+		
+		
 	}
 }
 function interfaceRefreshBuildMenuEnergy(outputDocument){
@@ -842,6 +849,8 @@ function interfaceRefreshBuildMenuEnergy(outputDocument){
 function interfaceRefreshBuildingsList(outputDocument){
 	
 }
+
+
 function interfaceRefreshInterface(outputDocument) {
 	//console.log("Test");
 }
@@ -1712,6 +1721,20 @@ function interfaceGalaxyMapEnterSystem(outputDocument){
 function interfacePlanetBuildingGoToPlanet(outputDocument) {
 	if(!InterfacePlanetBuildingsPlanetChanging) {
 		interfaceEnterElement(outputDocument,PlanetOverviewMenuID);
+	}
+}
+
+var InterfaceBuildingMenuSingleBuildingContainerPrefix = "planetBuildingSingleBuilding_";
+var InterfaceBuildingMenuSingleBuildingFoldedClass = "planetBuildingFoldedBuilding";
+var InterfaceBuildingMenuSingleBuildingUnfoldedClass = "planetBuildingUnfoldedBuilding";
+
+function interfaceFoldUnfoldBuilding(outputDocument, buildingListIndex){
+	var tmpBuilding = outputDocument.getElementById(InterfaceBuildingMenuSingleBuildingContainerPrefix + buildingListIndex);
+	if(tmpBuilding.className == InterfaceBuildingMenuSingleBuildingFoldedClass){
+		tmpBuilding.className = InterfaceBuildingMenuSingleBuildingUnfoldedClass;
+	}
+	else{
+		tmpBuilding.className = InterfaceBuildingMenuSingleBuildingFoldedClass;
 	}
 }
 

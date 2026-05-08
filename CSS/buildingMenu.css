@@ -476,6 +476,28 @@
 	mask-composite: add, add, intersect;
 	mask-clip: no-clip;
 }
+.planetBuildingUnfoldedBuilding{
+	padding: 0px;
+	min-width: calc(100% - 2px);
+}
+.planetBuildingFoldedBuilding{
+	padding: 0px;
+	min-width: calc(100% - 2px);
+}
+.planetBuildingUnfoldedBuilding .planetBuildingUnfoldedOnlyBuilding{
+	display: flex;
+}
+.planetBuildingUnfoldedBuilding .planetBuildingFoldedOnlyBuilding{
+	display: none;
+}
+.planetBuildingFoldedBuilding .planetBuildingUnfoldedOnlyBuilding{
+	display: none;
+}
+.planetBuildingFoldedBuilding .planetBuildingFoldedOnlyBuilding{
+	display: flex;
+}
+
+
 .planetBuildingSingleBuildingContainer{
 	display: inline-flex;
     justify-content: space-between;
@@ -655,7 +677,7 @@
 	padding: 0;
 	text-align: right;
 	position: absolute;
-	right: 0;
+	right: 25px;
 }
 .planetBuildingAlertIcon{
 	width: auto;
