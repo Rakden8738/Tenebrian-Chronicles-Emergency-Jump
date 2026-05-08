@@ -176,6 +176,7 @@ class PlanetObject{
 	averageTemperature = 15.0;
 	gravity = 9.81;
 	
+	//id, amount, level, active
 	buildings = {};
 	operators = 0;
 	

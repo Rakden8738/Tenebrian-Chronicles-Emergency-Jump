@@ -27,15 +27,24 @@ class BuldingObject{
 	producesResources = false;
 	consumesResources = false;
 	producesPower = false;
-	consimesPower = false;
+	consumesPower = false;
 	
+	//[name,amount,upgradeFactor]
 	resourcesProduced = [];
 	resourcesConsumed = [];
 	totalResourcesProduced = [];
 	totalResourcesConsumed = [];
 	
+	upgradeIncreaseResourceConsumption = true;
+	
 	powerConsumption = 0;
 	powerProduction = 0;
+	
+	
+	powerAbsolutelyRequired = false;	//power efficiency has to be 100% to work
+	
+	upgradeIncreasePowerConsumption = false;
+	upgradePowerConsumptionFactor = 1;
 	
 	unlocked = false;
 	canBeBuilt = false;
