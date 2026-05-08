@@ -232,6 +232,10 @@
 
 .interfaceText{
 	pointer-events: none;
+	/* removes flicker on text when scale gets used on unrelated elements */
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility:    hidden;
+	-ms-backface-visibility:     hidden;
 }
 .interfaceBlockText{
 	width:100%;
@@ -464,6 +468,119 @@
 .interfaceWindowContent:hover::-webkit-scrollbar-thumb { background: hsla(180,100%,50%,0.15);}
 
 */
+
+.interfaceInputNumber{
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	
+	max-width: 100%;
+	
+	padding: 0.25em;
+	
+	background-color: hsla(180, 50%, 5%, 0.75);
+	border: solid hsla(180,100%,75%,1) 2px;
+	outline: solid hsla(180,75%,75%,1) 0px;
+	color: hsl(180,100%,80%);
+	
+	opacity: 0.7;
+}
+.interfaceInputNumber:hover{
+	transition-duration: 0.2s;
+	outline: solid hsla(180,75%,75%,1) 1px;
+	opacity: 1;
+}
+.interfaceInputNumber:disabled{
+	opacity: 0.35;
+}
+
+
+
+/* Chrome, Safari, Edge, Opera */
+.interfaceInputNumber::-webkit-outer-spin-button,
+.interfaceInputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.interfaceInputNumber[type=number] {
+  -moz-appearance: textfield;
+}
+
+.interfaceInputNumberFixed{
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	
+	max-width: 100%;
+	
+	padding: 0.25em;
+	
+	background-color: hsla(180, 50%, 5%, 0.75);
+	border: solid hsla(180,100%,75%,1) 2px;
+	outline: solid hsla(180,75%,75%,1) 0px;
+	color: hsl(180,100%,80%);
+	
+	opacity: 0.7;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.interfaceInputNumberFixed::-webkit-outer-spin-button,
+.interfaceInputNumberFixed::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.interfaceInputNumberFixed[type=number] {
+  -moz-appearance: textfield;
+}
+
+.interfaceInputCheckbox{
+	background-image: none;
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	
+	max-width: 100%;
+	
+	padding: 0.25em;
+	margin: 0;
+	
+	background-color: hsla(180, 50%, 5%, 0.75);
+	background-image: url("../RESOURCES/ICONS/Square OFF.png");
+	background-size: cover;
+	
+	border: solid hsla(180,75%,75%,1) 0px;
+	outline: solid hsla(180,75%,75%,0.5) 1px;
+	color: hsl(180,100%,80%);
+	
+	opacity: 1;
+	
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+
+.interfaceInputCheckbox:hover{
+	transition-duration: 0.2s;
+	outline: solid hsla(180,75%,75%,1) 1px;
+	
+	max-width: 100%;
+}
+.interfaceInputCheckbox:disabled{
+	opacity: 0.35;
+}
+.interfaceInputCheckbox:checked{
+	background-image: url("../RESOURCES/ICONS/Square ON.png")
+	/*background-color: hsl(180, 100%, 75%);*/
+}
+.interfaceInputCheckbox:checked:after{
+    display: none;
+}
+
+
 .interfaceTextarea{
 	position: relative;
 	display: block;
@@ -474,8 +591,8 @@
 	padding: 0.5em;
 	
 	background-color: hsla(180, 50%, 5%, 0.75);
-	border: solid hsla(180,100%,75%,1) 2px;
-	outline: solid hsla(180,75%,75%,1) 0px;
+	border: solid hsla(180,75%,75%,1) 0px;
+	outline: solid hsla(180,75%,75%,0.5) 1px;
 	color: hsl(180,100%,80%);
 	
 	opacity: 0.7;
@@ -562,6 +679,7 @@
 button{
 	font: inherit;
 	color: inherit;
+	border:none;
 }
 button:disabled{
 	opacity: 0.5;

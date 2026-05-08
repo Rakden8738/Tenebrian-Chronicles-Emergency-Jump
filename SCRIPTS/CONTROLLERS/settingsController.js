@@ -45,7 +45,18 @@ function settingsGetConfigObject(){
 	return newConfigObject;
 }
 function settingsSetConfigObject(newConfigObject){
-	SettingSaveAutosave = newConfigObject.settingsAutosaveEnabled;
-	SettingsInstantMenuNavigation = newConfigObject.settingsInstantMenuSwitch;
-	GalaxyMapPerspectiveEnabled = newConfigObject.settingsGalaxyMapParallax;
+	
+	try{
+		SettingSaveAutosave = newConfigObject.settingsAutosaveEnabled;
+	} catch{ console.warn("Save is missing flag for autosave setting.")};
+	try{
+		SettingsInstantMenuNavigation = newConfigObject.settingsInstantMenuSwitch;
+	} catch{ console.warn("Save is missing flag for instant menu switch.")};
+	try{
+		GalaxyMapPerspectiveEnabled = newConfigObject.settingsGalaxyMapParallax;
+	} catch{ console.warn("Save is missing flag for galaxy map parallax setting.")};
+	
+	
+	
+	
 }

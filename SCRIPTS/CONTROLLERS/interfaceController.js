@@ -14,54 +14,55 @@ var SystemOverviewMenuID = "systemOverviewMenuWindow";
 var GalaxyMapMenuID = "galaxyMapMenuWindow";
 var SettingsMenuID = "settingsMenuWindow";
 var CreditsMenuID = "creditsMenuWindow";
+var BuildMenuID = "planetBuildingMenuWindow";	
 
 var InterfaceMainMenuIconPaths = [
-	"RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png", 
-	"RESOURCES/MAIN_INTERFACE/ICONS/Padlock.png",
+	"RESOURCES/ICONS/Symbol_questionmark.png", 
+	"RESOURCES/ICONS/Padlock.png",
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/PlanetsV2.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/System.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Galaxy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Networks.png",
+	"RESOURCES/ICONS/PlanetsV2.png",
+	"RESOURCES/ICONS/System.png",
+	"RESOURCES/ICONS/Galaxy.png",
+	"RESOURCES/ICONS/Networks.png",
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Fleets.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Research.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Objectives.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Government.png",	//9
+	"RESOURCES/ICONS/Fleets.png",
+	"RESOURCES/ICONS/Research.png",
+	"RESOURCES/ICONS/Objectives.png",
+	"RESOURCES/ICONS/Government.png",	//9
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Diplomacy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Book.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Home.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",		//14
+	"RESOURCES/ICONS/Diplomacy.png",
+	"RESOURCES/ICONS/Book.png",
+	"RESOURCES/ICONS/Settings2.png",
+	"RESOURCES/ICONS/Home.png",
+	"RESOURCES/ICONS/Settings2.png",		//14
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Return_Arrow2.png",
+	"RESOURCES/ICONS/Return_Arrow2.png",
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Settings2.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Square ON.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Square OFF.png",	//18
+	"RESOURCES/ICONS/Settings2.png",
+	"RESOURCES/ICONS/Square ON.png",
+	"RESOURCES/ICONS/Square OFF.png",	//18
 	
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_OFF.png",
 	"RESOURCES/MAIN_INTERFACE/Button_300px_v2_ON.png",	//20
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Down.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Up.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Left.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow2_Right.png",	//24
+	"RESOURCES/ICONS/Arrow2_Down.png",
+	"RESOURCES/ICONS/Arrow2_Up.png",
+	"RESOURCES/ICONS/Arrow2_Left.png",
+	"RESOURCES/ICONS/Arrow2_Right.png",	//24
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Down.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Up.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Left.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Arrow_Right.png",	//28
+	"RESOURCES/ICONS/Arrow_Down.png",
+	"RESOURCES/ICONS/Arrow_Up.png",
+	"RESOURCES/ICONS/Arrow_Left.png",
+	"RESOURCES/ICONS/Arrow_Right.png",	//28
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Pause OFF_Small.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Pause ON_Small.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Play OFF_Small.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Play ON_Small.png",	
-	"RESOURCES/MAIN_INTERFACE/ICONS/FastForward OFF_Small.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/FastForward ON_Small.png",	//34
+	"RESOURCES/ICONS/Pause OFF_Small.png",
+	"RESOURCES/ICONS/Pause ON_Small.png",
+	"RESOURCES/ICONS/Play OFF_Small.png",
+	"RESOURCES/ICONS/Play ON_Small.png",	
+	"RESOURCES/ICONS/FastForward OFF_Small.png",
+	"RESOURCES/ICONS/FastForward ON_Small.png",	//34
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Star.png",	//35
+	"RESOURCES/ICONS/Star.png",	//35
 	"RESOURCES/MAIN_INTERFACE/Interface_Arrow_Up.png", //36
 	
 	"RESOURCES/MAIN_INTERFACE/Interface_Arrow3_Up.png", 
@@ -69,15 +70,24 @@ var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/Interface_Arrow3_Down.png", 
 	"RESOURCES/MAIN_INTERFACE/Interface_Arrow3_Left.png", //40
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Plus_Fancy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Plus_Simple.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Minus_Fancy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Minus_Simple.png", //44
+	"RESOURCES/ICONS/Plus_Fancy.png",
+	"RESOURCES/ICONS/Plus_Simple.png",
+	"RESOURCES/ICONS/Minus_Fancy.png",
+	"RESOURCES/ICONS/Minus_Simple.png", //44
 	
-	"RESOURCES/MAIN_INTERFACE/ICONS/Target_Fancy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Target_Simple.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Crown_Fancy.png",
-	"RESOURCES/MAIN_INTERFACE/ICONS/Crown_Simple.png", //48
+	"RESOURCES/ICONS/Target_Fancy.png",
+	"RESOURCES/ICONS/Target_Simple.png",
+	"RESOURCES/ICONS/Crown_Fancy.png",
+	"RESOURCES/ICONS/Crown_Simple.png", //48
+	
+	"RESOURCES/ICONS/Build.png",
+	"RESOURCES/ICONS/Power.png", //50
+	
+	"RESOURCES/MAIN_INTERFACE/Button_100x100.png",
+	"RESOURCES/MAIN_INTERFACE/Button_200x100.png",
+	"RESOURCES/MAIN_INTERFACE/Button_300x100.png",
+	"RESOURCES/MAIN_INTERFACE/Button_400x100.png",
+	"RESOURCES/MAIN_INTERFACE/Button_500x100.png",	//55
 ];
 var InterfaceMainMenuButtonImagesID = [
 	"questionmark placeholder",
@@ -133,6 +143,17 @@ var InterfaceMainMenuButtonImagesID = [
 	"galaxyMapReturnHomeButtonImage",
 	"galaxyMapFocusTargetButtonImage",	//39
 	
+	"mainMenuWindowBuildingsImage",	//40
+	"planetBuildingMenuWindowHeaderImage",
+	"planetBuildingInfoPanelHeaderPreviousPlanetImage",
+	"planetBuildingInfoPanelHeaderNextPlanetImage",
+	"planetBuildingInfoPanelHeaderPlanetEnergyIconImage", //44
+	
+	"interfaceButton1x1",	//45
+	"interfaceButton2x1",
+	"interfaceButton3x1",
+	"interfaceButton4x1",
+	"interfaceButton5x1",	//49
 ];
 
 
@@ -159,6 +180,9 @@ function interfaceRefreshMenuButtons(outputDocument) {
 		interfaceInitGalaxyMapMenu(outputDocument);
 		//networks
 		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[5]).src = InterfaceMainMenuIconPaths[5];
+		//buildings
+		//outputDocument.getElementById(InterfaceMainMenuButtonImagesID[40]).src = InterfaceMainMenuIconPaths[49];
+		interfaceInitBuildMenu(outputDocument);
 		//fleets
 		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[6]).src = InterfaceMainMenuIconPaths[6];
 		//research
@@ -176,27 +200,29 @@ function interfaceRefreshMenuButtons(outputDocument) {
 	}
 	else{
 		//planets
-		if(SaveUnlockedMainMenuTabs[0]) interfaceInitPlanetOverviewMenu(outputDocument);
+		if(ProgressUnlockedMainMenuTabs["Planet"]) interfaceInitPlanetOverviewMenu(outputDocument);
 		//systems
-		if(SaveUnlockedMainMenuTabs[1]) interfaceInitSystemOverviewMenu(outputDocument);
+		if(ProgressUnlockedMainMenuTabs["System"]) interfaceInitSystemOverviewMenu(outputDocument);
 		//galaxy
-		if(SaveUnlockedMainMenuTabs[2]) interfaceInitGalaxyMapMenu(outputDocument);
+		if(ProgressUnlockedMainMenuTabs["Galaxy"]) interfaceInitGalaxyMapMenu(outputDocument);
 		//networks
-		if(SaveUnlockedMainMenuTabs[3]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[5]).src = InterfaceMainMenuIconPaths[5];
+		if(ProgressUnlockedMainMenuTabs["Network"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[5]).src = InterfaceMainMenuIconPaths[5];
+		//buildings
+		if(ProgressUnlockedMainMenuTabs["Build"]) interfaceInitBuildMenu(outputDocument);
 		//fleets
-		if(SaveUnlockedMainMenuTabs[4]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[6]).src = InterfaceMainMenuIconPaths[6];
+		if(ProgressUnlockedMainMenuTabs["Fleet"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[6]).src = InterfaceMainMenuIconPaths[6];
 		//research
-		if(SaveUnlockedMainMenuTabs[5]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[7]).src = InterfaceMainMenuIconPaths[7];
+		if(ProgressUnlockedMainMenuTabs["Research"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[7]).src = InterfaceMainMenuIconPaths[7];
 		//missions
-		if(SaveUnlockedMainMenuTabs[6]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[8]).src = InterfaceMainMenuIconPaths[8];
+		if(ProgressUnlockedMainMenuTabs["Missions"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[8]).src = InterfaceMainMenuIconPaths[8];
 		//government
-		if(SaveUnlockedMainMenuTabs[7]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[9]).src = InterfaceMainMenuIconPaths[9];
+		if(ProgressUnlockedMainMenuTabs["Government"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[9]).src = InterfaceMainMenuIconPaths[9];
 		//diplomacy
-		if(SaveUnlockedMainMenuTabs[8]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[10]).src = InterfaceMainMenuIconPaths[10];
+		if(ProgressUnlockedMainMenuTabs["Diplomacy"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[10]).src = InterfaceMainMenuIconPaths[10];
 		//archive
-		if(SaveUnlockedMainMenuTabs[9]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[11]).src = InterfaceMainMenuIconPaths[11];
+		if(ProgressUnlockedMainMenuTabs["Archive"]) outputDocument.getElementById(InterfaceMainMenuButtonImagesID[11]).src = InterfaceMainMenuIconPaths[11];
 		//settings
-		if(SaveUnlockedMainMenuTabs[10]) interfaceInitSettingsMenu(outputDocument);
+		if(ProgressUnlockedMainMenuTabs["Settings"]) interfaceInitSettingsMenu(outputDocument);
 	}
 
 	if(InterfaceAutoRefreshMainMenu) {
@@ -241,10 +267,31 @@ function interfaceInitMainInterface(outputDocument) {
 		tmpArray[i].onclick = function() { interfaceReturnFromElement(outputDocument,InterfaceMainMenuID); };
 	}
 	
-	//300px buttons if present
-	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[17]);
+	
+	//100px buttons if present
+	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[45]);
 	for(var i = 0; i < tmpArray.length; i++) {
-		tmpArray[i].src = InterfaceMainMenuIconPaths[20];
+		tmpArray[i].src = InterfaceMainMenuIconPaths[51];
+	}
+	//200px buttons if present
+	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[46]);
+	for(var i = 0; i < tmpArray.length; i++) {
+		tmpArray[i].src = InterfaceMainMenuIconPaths[52];
+	}
+	//300px buttons if present
+	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[47]);
+	for(var i = 0; i < tmpArray.length; i++) {
+		tmpArray[i].src = InterfaceMainMenuIconPaths[53];
+	}
+	//400px buttons if present
+	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[48]);
+	for(var i = 0; i < tmpArray.length; i++) {
+		tmpArray[i].src = InterfaceMainMenuIconPaths[54];
+	}
+	//500px buttons if present
+	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[49]);
+	for(var i = 0; i < tmpArray.length; i++) {
+		tmpArray[i].src = InterfaceMainMenuIconPaths[55];
 	}
 }
 function interfaceInitPlanetOverviewMenu(outputDocument) {
@@ -381,11 +428,59 @@ function interfaceInitGalaxyMapMenu(outputDocument){
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).src = InterfaceMainMenuIconPaths[45];//23
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).onclick = function() { galaxyMapFocusOnSystemByIndex(outputDocument, GalaxyMapSelectedSystem);  };
 	
-	
-	
-		
-	
 	interfaceRefreshGalaxyMap(outputDocument);
+}
+function interfaceInitBuildMenu(outputDocument){
+	//build in main menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[40]).src = InterfaceMainMenuIconPaths[49];
+	outputDocument.getElementById("mainMenuWindowBuildingsButton").disabled = false;
+	outputDocument.getElementById("mainMenuWindowBuildingsButton").onclick = function() { interfaceEnterElement(outputDocument,BuildMenuID); };
+	
+	
+	//topbar image in build menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[41]).src = InterfaceMainMenuIconPaths[49];
+	
+	//next and previous planet
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[42]).src = InterfaceMainMenuIconPaths[23];
+	//outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemPreviousPlanet").onclick = function() { interfacePlanetOverviewSystemPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[43]).src = InterfaceMainMenuIconPaths[24];
+	//outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNextPlanet").onclick = function() { interfacePlanetOverviewSystemNextPlanet(outputDocument); };
+	
+	//icons
+	//outputDocument.getElementById(InterfaceMainMenuButtonImagesID[44]).src = InterfaceMainMenuIconPaths[50];
+	
+	/*
+	//galaxy map navigation buttons
+		//top
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).src = InterfaceMainMenuIconPaths[37];//22
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).onclick = function() { galaxyMoveGalaxyMapUp(outputDocument); };
+		//right
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).src = InterfaceMainMenuIconPaths[38];//24
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).onclick = function() { galaxyMoveGalaxyMapRight(outputDocument); };
+		//bottom
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).src = InterfaceMainMenuIconPaths[39];//21
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).onclick = function() { galaxyMoveGalaxyMapDown(outputDocument); };
+		//left
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).src = InterfaceMainMenuIconPaths[40];//23
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).onclick = function() { galaxyMoveGalaxyMapLeft(outputDocument); };
+	
+		//zoom in
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).src = InterfaceMainMenuIconPaths[41];//23
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).onclick = function() { galaxyZoomMap(outputDocument, (+ 1), true); };
+		//zoom out
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).src = InterfaceMainMenuIconPaths[43];//23
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).onclick = function() { galaxyZoomMap(outputDocument, (- 1), true); };
+	
+		//return home
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).src = InterfaceMainMenuIconPaths[47];//23
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).onclick = function() { galaxyResetCameraPosition(outputDocument); };
+		//focus target
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).src = InterfaceMainMenuIconPaths[45];//23
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).onclick = function() { galaxyMapFocusOnSystemByIndex(outputDocument, GalaxyMapSelectedSystem);  };
+	
+	*/
+	
+	interfaceRefreshBuildMenu(outputDocument);
 }
 function interfaceInitSettingsMenu(outputDocument) {
 	//settings in main menu
@@ -440,7 +535,7 @@ function interfaceInitSettingsMenu(outputDocument) {
 	}
 	
 	//button on/off
-	if(SaveIntroDisplayedOrSkipped) {
+	if(ProgressIntroDisplayedOrSkipped) {
 		outputDocument.getElementById("settingsMenuOptionSkipIntroCheckbox").src = InterfaceMainMenuIconPaths[17];
 	}
 	else {
@@ -475,8 +570,8 @@ function interfaceSettingsSwitchFastMenuChange(outputDocument) {
 	interfaceInitSettingsMenu(outputDocument);
 }
 function interfaceSettingsSwitchIntroSkip(outputDocument) {
-	if(SaveIntroDisplayedOrSkipped) SaveIntroDisplayedOrSkipped = false;
-	else SaveIntroDisplayedOrSkipped = true;
+	if(ProgressIntroDisplayedOrSkipped) ProgressIntroDisplayedOrSkipped = false;
+	else ProgressIntroDisplayedOrSkipped = true;
 	
 	interfaceInitSettingsMenu(outputDocument);
 }
@@ -675,6 +770,9 @@ function interfaceRefreshSystemOverview(outputDocument) {
 }
 function interfaceRefreshGalaxyMap(outputDocument){
 	galaxyRefreshGalaxyMapCanvas(outputDocument);
+}
+function interfaceRefreshBuildMenu(outputDocument){
+	
 }
 function interfaceRefreshInterface(outputDocument) {
 	//interfaceRefreshPlanetResources(outputDocument);

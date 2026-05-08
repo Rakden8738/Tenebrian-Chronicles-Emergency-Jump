@@ -66,16 +66,20 @@ function timerSetTimingsObject(newTimingsObject){
 	if(TimerPlaythroughStartTime == -1 || TimerPlaythroughStartTime == NaN || TimerPlaythroughStartTime == null) TimerPlaythroughStartTime = Date();
 	
 	var timeNow = Math.round(Date.now()/1000);
-	var elapsedTime = timeNow - newTimingsObject.saveTime;
+	var elapsedTime = timeNow - newTimingsObject["saveTime"];
 	TimerAFKExtraSeconds += elapsedTime + newTimingsObject.AFKExtraSeconds;
 	
 	if(TimerAFKExtraSeconds > TimerAFKMarginSeconds){
 		TimerAFKDetected = true;
 	}
 	
-	TimerAccumulatedFasterTime = newTimingsObject.accumulatedAFKTime;
-	TimerTotalElapsedDays = newTimingsObject.totalElapsedDays;
-	TimerDayOfYear = newTimingsObject.totalElapsedDays;
+	try{
+		TimerAccumulatedFasterTime = newTimingsObject.accumulatedAFKTime;
+	} catch{ console.warn("Save is missing accumulated AFK time value.")};
+	try{
+		TimerTotalElapsedDays = newTimingsObject.totalElapsedDays;
+		TimerDayOfYear = newTimingsObject.totalElapsedDays;
+	} catch{ console.warn("Save is missing total elapsed days value.")};
 	
 }
 

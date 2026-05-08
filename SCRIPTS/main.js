@@ -1,6 +1,6 @@
 //var InterfaceDocument;
 
-var MainGameVersion = [0,2,0];
+var MainGameVersion = [0,3,0];
 
 var messagesMainLayerClass = "messagesLayer";
 var messagesLayerClass = "animationMessages";
@@ -22,6 +22,8 @@ function mainLoadGame(outputDocument){
 	try{
 		TestedModule = "interface";
 		connectionTest_interface(outputDocument);
+		TestedModule = "progress";
+		connectionTest_progress(outputDocument);
 		TestedModule = "timer";
 		connectionTest_timer(outputDocument);
 		TestedModule = "saveLoad";
@@ -60,7 +62,9 @@ function mainLoadGame(outputDocument){
 	}
 	
 	loadLoadGame(outputDocument);
+	if(SaveLoadErrorDetected) SettingSaveAutosave = false;
 	saveAutosaveLoop(outputDocument);
+	
 	timerStart(outputDocument);
 	
 	resourcesInitResources(outputDocument);
@@ -78,7 +82,7 @@ function mainLoadGame(outputDocument){
 		//interfaceChangeMenuTab(outputDocument,InterfaceMainMenuID);
 	}
 	
-	if(SaveIntroDisplayedOrSkipped){
+	if(ProgressIntroDisplayedOrSkipped){
 		newAnimatedElementOpacity(outputDocument, mainIntroInterfaceCoverID, mainLoadFadeSpeed, 0, 1);
 	}
 	else {

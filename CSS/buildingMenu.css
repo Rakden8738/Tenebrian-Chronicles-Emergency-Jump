@@ -1,0 +1,930 @@
+#planetBuildingMenuWindow{
+	background: hsla(240,100%,0%,0.35);
+	width: 90%;
+	max-width: 1200px;
+	padding: 0px;
+	padding-bottom: 0%;
+	text-align: center;
+	align-content: center;
+	overflow:hidden;
+}
+
+.planetBuildingMenuBar{}
+#planetBuildingMenuTopBar{
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	padding: 0px;
+}
+#planetBuildingMenuBottomBar{
+	border: solid hsla(0,100%,75%,0.5) 0px;
+	padding: 0px;
+}
+#planetBuildingMenuTopBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	width: 200px;
+}
+#planetBuildingMenuTopBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;	
+	width: max(calc(100% - 400px), 0px);	
+	display: flex;
+    justify-content: center;	
+	padding-top: 10px;
+}
+#planetBuildingMenuTopBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;	
+	width: 200px;
+}
+#planetBuildingMenuBottomBarLeft{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;	
+	width: 200px;
+}
+#planetBuildingMenuBottomBarMiddle{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	width: max(calc(100% - 400px), 0px);
+	padding-bottom: 10px;
+}
+#planetBuildingMenuBottomBarRight{
+	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
+	border: solid hsla(90,100%,75%,0.5) 0px;
+	width: 200px;
+}
+
+#planetBuildingMenuContent{
+	background: hsla(120,100%,50%,0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	box-sizing: border-box;
+	height: calc(100% - 130px);
+	padding: 25px;
+	padding-bottom: 0%;
+	padding-top: 0%;
+	overflow: hidden;
+	mask-image: none;
+}
+
+.planetBuildingElementsContainer{
+	box-sizing: border-box;
+	padding: 10px;
+	position: relative;
+	border: solid hsla(120,100%,50%) 0px;
+}
+
+#planetBuildingMenuLeftSide{
+	width: max(25%, 200px);
+	height: 100%;
+	float: left;
+	padding: 0;
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+#planetBuildingMenuLeftSide::-webkit-scrollbar, #planetBuildingMenuLeftSide::-webkit-scrollbar-button{
+	display: none;
+}
+
+#planetBuildingButtonsContainer{
+	padding: 10px;
+}
+
+.planetBuildingButton{
+	position:relative;
+	max-width: min(90%,160px);
+	height: auto;
+	min-height: 50px;
+	left:0;
+	right:0;
+	bottom: 0;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	outline: solid hsla(180,75%,75%,0.0) 0px;
+	border: none;
+	padding:0px;
+	box-sizing: border-box;
+	justify-content: right;
+	align-items: center;
+	display: flex;
+	pointer-events: auto;
+	cursor: pointer;
+	background: hsla(60,100%,75%,0.0);
+	opacity: 0.70;
+	border: none;
+	backface-visibility: hidden;
+	will-change: transform;
+}
+.planetBuildingButton:enabled:hover{
+	opacity:0.85;
+	transform: scale(1.1);
+	transition-duration: 0.15s;
+}
+.planetBuildingButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.05s;
+	scale:1;
+}
+.planetBuildingButton:disabled{
+	opacity:0.2;
+}
+.planetBuildingButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+#planetBuildingGoToPlanetButton{
+	max-height: 15%;
+	box-sizing: border-box;
+	margin-bottom: 5px;
+}
+
+.planetBuildingButtonImage{
+	width:100%;
+	height:auto;
+	left:0px;
+	object-fit: contain;
+	outline: solid hsla(180,75%,75%,0.5) 0px;
+	position: relative;
+}
+.planetBuildingButton:hover .planetBuildingButtonImage{
+	outline: solid hsla(180,75%,75%,1) 0px;
+}
+.planetBuildingButton:active .planetBuildingButtonImage{
+	outline: solid hsla(180,100%,75%,1) 0px;
+}
+
+.planetBuildingButtonText{
+	width:80%;
+	margin:auto;
+	left:10%;
+	position:absolute;
+	text-transform:uppercase;
+}
+
+#planetBuildingPlanetContainer{
+	padding: 10px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	width: 100%;
+	height: 20%;
+	max-height: 25%;
+	min-height: 115px;
+	overflow: clip;
+}
+#planetBuildingPlanetHeader{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+	margin-bottom: 10px;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanet, #planetBuildingInfoPanelHeaderNextPlanet{
+	max-width: 12.5%;
+	height: auto;
+	padding: 0;
+	background: none;
+	border: none;
+	opacity: 0.7;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanet:enabled:hover, #planetBuildingInfoPanelHeaderNextPlanet:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanet:enabled:active, #planetBuildingInfoPanelHeaderNextPlanet:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+	scale:1;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanet:disabled, #planetBuildingInfoPanelHeaderNextPlanet:disabled{
+	opacity:0.2;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanet:disabled:hover, #planetBuildingInfoPanelHeaderNextPlanet:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetBuildingInfoPanelHeaderPlanetSmallArrow{
+	width: 100%;
+	height: auto;
+}
+#planetBuildingInfoPanelHeaderPreviousPlanetImage, #planetBuildingInfoPanelHeaderNextPlanetImage{
+	margin: auto;
+	top: 0;
+	bottom: 0;
+}
+
+#planetBuildingInfoPanelHeaderCurrentPlanet{
+	padding: 0;
+}
+.planetBuildingHeaderTextContainer{
+	border: none;
+	padding: 0;
+	border: solid hsla(240,100%,50%) 0px;
+	margin: 0px;
+}
+#planetBuildingInfoPanelHeaderSystemNameContainer{
+	font-size: 60%;
+}
+#planetBuildingInfoPanelHeaderSystemNamePrefix, #planetBuildingInfoPanelHeaderSystemNameText{
+	display: inline-block;
+}
+#planetBuildingInfoPanelHeaderPlanetNameContainer{
+	font-size: 85%;
+}
+#planetBuildingInfoPanelHeaderPlanetNameText{
+	display: inline-block;
+}
+#planetBuildingInfoPanelHeaderPlanetTypeContainer{
+	font-size: 75%;
+}
+#planetBuildingInfoPanelHeaderPlanetTypePrefix, #planetBuildingInfoPanelHeaderPlanetTypeText{
+	display: inline-block;
+}
+
+#planetBuildingPlanetEnergyContainer{
+	width: 100%;
+	font-size: 80%;
+	text-align: center;
+	padding: 0;
+}
+.planetBuildingEnergyTextContainer{
+	border: none;
+	padding: 0;
+	border: solid hsla(240,100%,50%) 0px;
+	font-size: 90%;	
+	line-height: 100%;
+	margin-bottom: 5px;
+}
+#planetBuildingInfoPanelPlanetEnergyHeaderContainer{}
+.planetBuildingEnergyTextSpan{
+	display: inline-block;
+	border: solid hsla(0,100%,50%) 0px;
+	box-sizing: border-box;
+}
+#planetBuildingInfoPanelPlanetEnergyValuesContainer{
+	font-size: 75%;		
+}
+#planetBuildingInfoPanelPlanetEnergyAvailableContainer{}
+#planetBuildingInfoPanelPlanetEnergyDeficitContainer{}
+
+#planetBuildingInfoPanelResourcesContainer{
+	padding: 0px;
+	max-height: 45%;
+	height: 45%;
+	box-sizing: border-box;
+	overflow: auto;
+	max-width: 240px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+#planetBuildingInfoPanelRequiredResourcesContainer{
+	box-sizing: border-box;
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 0;
+}
+#planetBuildingInfoPanelRequiredResourcesHeader, #planetBuildingInfoPanelAvailableResourcesHeader{
+	box-sizing: border-box;
+	text-align: left;
+	padding: 0;
+	margin-bottom: 5px;
+    font-size: 90%;
+}
+#planetBuildingInfoPanelRequiredResourcesHeaderText, #planetBuildingInfoPanelAvailableResourcesText{
+	box-sizing: border-box;
+}
+
+.planetBuildingResourceListTable{}
+#planetBuildingRequiredResourcesTable{
+	width: 100%;
+	left: 0%;
+}
+#planetBuildingRequiredResourcesTable span{
+	display:inline-block;
+}
+#planetBuildingRequiredResourcesTable tr{
+	font-size: 65%;
+	line-height: 90%;
+}
+.planetBuildingResourceHeader{
+	color: hsla(180,50%,80%,0.4);
+	margin-left: 0px;
+	margin-bottom: 4px;
+	display: inline-block;
+}
+.planetBuildingResourceHeaderCell{
+	text-align: left;
+}
+.planetBuildingResourceNameCell{
+	text-align: left;
+}
+.planetBuildingResourceName{
+	margin-left: 3px;
+}
+.planetBuildingTableColumnSpacing{
+	max-width: 1em;
+	width: 0.75em;
+}
+.planetBuildingResourceValue{
+	color: hsla(0,0%,100%,1);
+}
+.planetBuildingResourceChange{
+	color: hsla(180,0%,75%,0.66);
+}
+#planetBuildingRequiredResourcesTableRowSpacingRowTop td, #planetBuildingRequiredResourcesTableRowSpacingRowBottom td{
+	text-align: left;
+}
+
+#planetBuildingInfoPanelAvailableResourcesContainer{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0;
+}
+#planetBuildingAvailableResourcesTable{
+	width: 100%;
+	left: 0%;
+}
+#planetBuildingAvailableResourcesTable span{
+	display:inline-block;
+}
+#planetBuildingAvailableResourcesTable tr{
+	font-size: 65%;
+	line-height: 90%;
+}
+#planetBuildingRequiredResourcesTableProducedHeader, #planetBuildingRequiredResourcesTableConsumedHeader{
+	color: hsla(180,50%,80%,0.4);
+	margin-left: 0px;
+	margin-top: 4px;
+}
+#planetBuildingInfoPanelSettingsContainer{
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    margin: auto;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+}
+.planetBuildingSingleSettingContainer{
+	width: calc(100% - 5px);
+	box-sizing: border-box;
+	font-size: 75%;
+	line-height: 150%;
+	padding: 0;
+	bottom: 0;	
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+	margin: 2.5px;
+}
+.planetBuildingSingleSettingContainer span{
+	font-size: 110%;	
+}
+.planetBuildingSettingsNumericInput{
+	max-width: 4em;
+	float: right;
+	position: relative;
+	text-align: center;
+	padding: 1px;
+}
+.planetBuildingSettingsCheckbox{
+	height: 1em;
+	width: 1em;
+}
+
+#planetBuildingMenuRightSide{
+	width: 75%;
+	max-width: calc(100% - 200px);
+	float: right;
+	right: 0;
+	height: 100%;
+	display: flex;
+    flex-direction: column;
+	padding: 0;
+}
+#planetBuildingMenuBuildingCategoriesContainer{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0px;
+}
+.planetBuildingCategoryElement{
+	padding: 2px;
+	height: calc(1lh + 4px);
+    display: inline-flex;
+    align-items: center;
+	margin: 5px;
+}
+.planetBuildingCategoryCheckbox{
+	height: 1lh;
+	width: 1lh;
+	margin: 2px;
+	display: inline-block;
+}
+.planetBuildingCategoryName{
+	margin: 2px;
+	display: inline-block;
+	font-size: 80%;
+}
+
+#planetBuildingMenuBuildingListContainer{
+	width: 100%;
+    max-height: 90%;
+    padding: 15px 10px 15px 10px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+	scrollbar-gutter: stable;
+	mask-image: 
+	linear-gradient(90deg, transparent calc(100% - 15px), black calc(100% - 15px), black 100%),
+    linear-gradient(180deg, transparent calc(100% - 15px), black calc(100% - 15px), black 100%),
+    linear-gradient(180deg, transparent 0px, black 10px, black calc(100% - 25px), transparent calc(100% - 15px), transparent 100%),
+	linear-gradient(90deg, transparent 0px, black 10px, black calc(100% - 25px), transparent calc(100% - 15px), transparent 100%);
+	mask-composite: add, add, intersect;
+	mask-clip: no-clip;
+}
+.planetBuildingSingleBuildingContainer{
+	display: inline-flex;
+    justify-content: space-between;
+	min-width: calc(100% - 2px);
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 0px;
+	padding:0px;
+	padding-top: 4px;
+	text-align: left;
+	background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);
+}
+.planetBuldingFoldedBuildingContainer{}
+.planetBuildingSingleBuildingInfoContainer{
+	padding: 0;
+	left: 0;
+	float: left;
+	min-width: 240px;
+	
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.planetBuildingSingleBuildingHeaderContainer{
+	padding: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+.planetBuildingSingleBuildingNameContainer{
+	padding: 0px;
+	font-size: 100%;
+}
+.planetBuildingSingleBuildingHeaderText{}
+
+.planetBuildingSingleBuildingAmountLevelContainer{
+	padding: 0;
+	width: 35%;
+	display: inline-flex;
+    justify-content: space-between;
+}
+.planetBuildingSingleBuildingLevelContainer{
+	padding: 0px;
+	font-size: 85%;
+}
+.planetBuildingSingleBuildingAmountContainer{
+	padding: 0px;
+	font-size: 85%;
+}
+
+.planetBuildingSingleBuildingBuildDemolishContainer{
+	padding: 0;
+	float: left;
+	max-width: 20%;
+	min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.planetBuildingSingleBuildingButtonsContainer{
+	padding: 2px;
+	margin: 0px;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	font-size: 95%;
+}
+.planetBuildingSingleBuildingBuildDemolishButtonsContainer{}
+.planetBuildingsSingleBuildingSingleButton{
+	background: none;
+	width: 1.6em;
+	height: 1.6em;
+	border: none;
+	padding: 0;
+	position: relative;
+	opacity: 0.8;
+}
+.planetBuildingsSingleBuildingSingleButton:enabled:hover{
+	opacity:0.9;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingSingleButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+	scale:1;
+}
+.planetBuildingsSingleBuildingSingleButton:disabled{
+	opacity:0.1;
+}
+.planetBuildingsSingleBuildingSingleButton:disabled:hover{
+	opacity:0.25;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetBuildingSingleBuildingSingleButtonImage{
+	width: auto;
+	display: inline-block;
+	height: 100%;
+}
+.planetBuildingsSingleBuildingSingleInputNumber{
+	width: 2.5em;
+    margin: 0 0.2em 0 0.2em;
+	text-align:center;
+	padding: 1px;
+}
+
+.planetBuildingSingleBuildingUpgradeDowngradeContainer{
+	padding: 0;
+	float: left;
+	max-width: 20%;
+	min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer{}
+.planetBuildingSingleBuildingControlContainer{
+	padding: 0px;
+	display: flex;
+	justify-content: space-between;
+}
+.planetBuildingSingleBuildingOperatorsContainer{
+	padding: 0;
+	width: 185px;
+    display: flex;
+    flex-direction: column;
+	justify-content: space-between;
+}
+.planetBuildingSingleBuildingOperatorsFoldedContainer{
+	padding: 0px;
+    margin: 0px;
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButton{
+	background: none;
+	width: 1.6em;
+	height: 1.6em;
+	border: none;
+	padding: 0;
+	position: relative;
+	opacity: 0.8;
+	margin-right: 3px;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButton:enabled:hover{
+	opacity:0.9;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+	scale:1;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButton:disabled{
+	opacity:0.1;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButton:disabled:hover{
+	opacity:0.25;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorButtonImage{
+	width: auto;
+	display: inline-block;
+	height: 100%;
+}
+
+/*.planetBuildingsSingleBuildingAddRemoveOperatorSingleInputNumber{
+	width: 2.5em;
+    margin: 0 0.2em 0 0.2em;
+	text-align:center;
+	padding: 1px;	
+}*/
+.planetBuildingSingleBuildingOperatorsAssigned{
+	margin-left: 6px;
+}
+.planetBuildingSingleBuildingOperatorsSlash{}
+.planetBuildingSingleBuildingOperatorsRequired{}
+
+.planetBuildingSingleBuildingAlertsContainer{
+	padding: 0;
+	text-align: right;
+	position: absolute;
+	right: 0;
+}
+.planetBuildingAlertIcon{
+	width: auto;
+	height: 1.25em;
+	margin: 0px;
+	display: inline-block;
+	float: right;
+}
+
+.planetBuildingSingleBuildingSideButtonsContainer{
+	padding: 0px;
+    margin: 0px;
+	margin-left: 3px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.planetBuildingSingleBuildingSideButtonsFoldedContainer{
+	width: 22px;
+	float: right;
+}
+.planetBuildingsSingleBuildingSideButton{ 
+	background: none;
+	width: 20px;
+	height: 20px;
+	border: none;
+	padding: 0;
+	position: relative;
+	opacity: 0.8;
+	
+	box-sizing: border-box;
+}
+.planetBuildingsSingleBuildingSideButton:enabled:hover{
+	opacity:0.9;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingSideButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+	scale:1;
+}
+.planetBuildingsSingleBuildingSideButton:disabled{
+	opacity:0.1;
+}
+.planetBuildingsSingleBuildingSideButton:disabled:hover{
+	opacity:0.25;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetBuildingSingleBuildingSideButtonImage{
+	width: auto;
+	display: inline-block;
+	height: 100%;
+}
+
+.planetBuldingUnfoldedBuildingContainer{
+	min-height: 100px;
+}
+.planetBuildingSingleBuildingResourcesContainer{
+	padding: 5px;
+	max-height: 120px;
+    overflow: auto;
+	
+	font-size: 65%;
+    line-height: 90%;
+}
+
+.planetBuildingSingleBuildingSingleButtonText{
+	margin: 0px;
+	position: absolute;
+	display: inline-block;
+	font-size: 60%;
+	right: -2px;
+	bottom: -4px;
+    text-shadow: -1px -1px 2px black;
+	will-change: transform;
+}
+
+.planetBuildingSingleBuildingBuildButtonsContainer{}
+.planetBuildingSingleBuildingDemolishButtonsContainer{}
+.planetBuildingSingleBuildingUpgradeButtonsContainer{}
+.planetBuildingSingleBuildingDowngradeButtonsContainer{}
+.planetBuildingSingleBuildingOperatorsUnfoldedContainer{
+	padding: 2px;
+    margin: 0px;
+}
+.planetBuildingSingleBuildingOperatorHeaderContainer{
+	padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.planetBuildingSingleBuildingOperatorHeaderTextContainer{
+	padding: 0px;
+	margin: 4px;
+}
+.planetBuildingSingleBuildingOperatorHeaderText{
+	font-size: 85%;
+}
+.planetBuildingsSingleBuildingControlMenuContainer{
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+	padding: 0px;
+}
+.planetBuildingsSingleBuildingControlMenuLeftContainer{
+	float:left;
+	max-width: 65%;
+	position: relative;
+	padding: 0px;
+	min-height: 100px;
+    /*display: inline-flex;*/
+    flex-direction: column;
+    justify-content: space-around;
+}
+.planetBuildingSingleBuildingOperatorButtonsContainer{
+	padding: 0;
+	display: flex;
+    align-items: center;
+	font-size: 75%;
+	justify-content: center;
+}
+.planetBuildingsSingleBuildingAddRemoveOperatorInputNumber{
+	width: 2.5em;
+    margin: 0 0.2em 0 0.2em;
+	text-align:center;
+	padding: 1px;
+}
+.planetBuildingSingleBuildingOperatorNumbersContainer{
+	padding: 0;
+	display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+	font-size: 75%;
+	margin: 5px;
+}
+.planetBuildingSingleBuildingOperatorEfficiencyValue{}
+.planetBuildingSingleBuildingEfficiencyContainer{
+	font-size: 70%;
+	padding: 3px;
+}
+.planetBuildingSingleBuildingEfficiencyPrefix{}
+.planetBuildingSingleBuildingEfficiencyValue{
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+}
+.planetBuildingSingleBuildingInfoIconContainer{
+	width: 1.5em;
+	height: 1.5em;
+	margin: 0px;
+	display: inline-block;
+	float: right;
+	position: absolute;
+	opacity: 0.75;
+	padding: 0;
+}
+.planetBuildingSingleBuildingInfoIcon{
+	width:100%;
+	height:100%;
+}
+
+
+.planetBuildingSingleBuildingInfoIconContainer:hover + .planetBuildingSingleBuildingInfoContent{
+	animation-name: eff-tooltip-display-delay;
+	animation-duration: 0.5s;
+	animation-delay: 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	display:flex;
+}
+@keyframes eff-tooltip-display-delay {
+  0% {opacity: 0.0;}
+  100% {opacity: 1.0;}
+}
+
+.planetBuildingSingleBuildingInfoContent{
+	display: none;
+	border: solid cyan 1px;
+	flex-direction: column;
+	padding: 1px;
+	opacity: 0.0;
+	font-size: 88%;
+	position: absolute;
+    background: black;
+    z-index: 10;
+    margin-top: 3px;
+    right: -80px;
+    top: -60px;
+    padding-left: 3px;
+    padding-right: 6px;
+}
+
+.planetBuildingSingleBuildingSingleEfficiencyContainer{
+	height: 2em;
+	padding: 0px;
+	margin-bottom: 0px;
+	display: inline-flex;
+	align-items: center;
+}
+.planetBuildingSingleBuildingSingleEfficiencyIcon{
+	height: 100%;
+	width: auto;
+}
+.planetBuildingSIngleBuildingSingleEfficiencyText{
+	color: hsl(120,100%,50%);
+}
+
+.planetBuildingsSingleBuildingControlMenuRightContainer{
+	float:right;
+	max-width: calc(30% - 2px);
+	margin-left: 2px;
+	position: relative;
+	padding: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.planetBuildingsSingleBuildingOperatorControlButton{
+	position:relative;
+	max-width: min(80%,120px);
+	height: auto;
+	min-height: 20px;
+	left:0;
+	right:0;
+	bottom: 0;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	outline: solid hsla(180,75%,75%,0.0) 0px;
+	border: none;
+	padding:0px;
+	box-sizing: border-box;
+	justify-content: right;
+	align-items: center;
+	display: flex;
+	pointer-events: auto;
+	cursor: pointer;
+	background: hsla(60,100%,75%,0.0);
+	opacity: 0.70;
+	border: none;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+	scale:1;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:disabled{
+	opacity:0.2;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:hover .planetBuildingsSingleBuildingOperatorControlButtonImage{
+	outline: solid hsla(180,75%,75%,1) 0px;
+}
+.planetBuildingsSingleBuildingOperatorControlButton:active .planetBuildingsSingleBuildingOperatorControlButtonImage{
+	outline: solid hsla(180,100%,75%,1) 0px;
+}
+.planetBuildingsSingleBuildingOperatorControlButtonImage{
+	width:100%;
+	height:auto;
+	left:0px;
+	object-fit: contain;
+	outline: solid hsla(180,75%,75%,0.5) 0px;
+	position: relative;
+}
+.planetBuildingsSingleBuildingOperatorControlButtonText{
+	width:80%;
+	margin:auto;
+	left:10%;
+	position:absolute;
+	text-transform:uppercase;
+	font-size: 75%;
+	will-change: transform;
+}
+.planetBuildingSingleBuildingSideButtonsUnfoldedContainer{
+	width: 22px;
+	float: right;
+}
+
+
+
+
+

@@ -9,7 +9,7 @@ function connectionTest_buildings(outputDocument){
 }
 
 var BuildingsArray = [];
-var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Generators", "Research", "Influence", "Special"];
+var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special"];
 var BuildingDemolitionLock = false;
 
 function buildingInitBuildings(outputDocument){

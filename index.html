@@ -5,6 +5,8 @@
 	<head>
 		<title>TC: Emergency Jump</title>
 		<link rel="stylesheet" type="text/css" href="CSS\base.css">
+		<link rel="icon" type="image/x-icon" href="TCEJ.ico">
+		<link rel="shortcut icon" type="image/ico" href="TCEJ.ico">
 		<!--
 			Font downloaded in form of file in case if font itself cannot be loaded through googleapis
 		<link href='https://fonts.googleapis.com/css?family=Kdam Thmor Pro' rel='stylesheet'>
@@ -14,6 +16,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<script src="SCRIPTS\main.js"></script>
+		<script src="SCRIPTS\CONTROLLERS\progressController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\timerController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\saveLoadController.js"></script>
 		<script src="SCRIPTS\CONTROLLERS\animationController.js"></script>
@@ -40,7 +43,7 @@
 		<div class="interfaceBar interfaceTopBar mainInterfaceBar" id="mainInterfaceTopBar">
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="mainInterfaceTopBarLeft">
 				<span class="interfaceText interfaceMainBarText" id="mainInterfaceLeftSideText1">
-					Operators: 
+					Administrators: 
 					<span class="interfaceText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
 						4
 					</span> 
@@ -112,47 +115,47 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
 			<div class="interfaceWindowContent" id="mainMenuContent">
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowPlanetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowPlanetsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowPlanetsText">PLANETS</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSystemsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowSystemsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowSystemsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowSystemsText">STAR SYSTEMS</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGalaxyButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowGalaxyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowGalaxyImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowGalaxyText">GALAXY MAP</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowNetworksButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowNetworksImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowNetworksImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowNetworksText">GATE NETWORKS</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowBuildingsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowBuildingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowBuildingsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowBuildingsText">BUILDINGS</span>	
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowFleetsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowFleetsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowFleetsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowFleetsText">MANAGE FLEETS</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowResearchButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowResearchImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowResearchImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowResearchText">RESEARCH PANEL</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowMissionsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowMissionsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowMissionsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowMissionsText">PROJECTS AND MISSIONS</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGovernmentButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowGovernmentImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowGovernmentImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowGovernmentText">GOVERNMENT OVERVIEW</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowDiplomacyButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowDiplomacyImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowDiplomacyImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowDiplomacyText">DIPLOMACY MENU</span>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowArchivesButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowArchivesImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowArchivesImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowArchivesText">ARCHIVES</span>
 				</button>
 				<!--
@@ -161,7 +164,7 @@
 				</div>
 				-->
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSettingsButton" disabled>
-					<img class="mainMenuButtonImage" id="mainMenuWindowSettingsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="mainMenuButtonImage" id="mainMenuWindowSettingsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="mainMenuButtonText" id="mainMenuWindowSettingsText">GAME SETTINGS</span>
 				</button>
 			</div>
@@ -170,13 +173,13 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetOverviewMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="planetOverviewMenuWindowHeaderText">PLANET OVERVIEW</span>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="planetOverviewMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="planetOverviewMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+					<img class="interfaceMenuIconImage" id="planetOverviewMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
 			
@@ -186,23 +189,23 @@
 					<img class="" id="planetOverviewMenuPlanetImage" src="RESOURCES/PLANETS/Default_1.png">
 					<div class="planetOverviewElementsContainer" id="planetOverviewButtonsContainer">
 						<button class="planetOverviewButton" id="planetOverviewGoToSystemButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToSystemButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewButtonImage interfaceButton3x1" id="planetOverviewGoToSystemButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewGoToSystemButtonText">Go to system</span>
 						</button>
 						<button class="planetOverviewButton" id="planetOverviewPlanetBuildingsButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetBuildingsButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewButtonImage interfaceButton3x1" id="planetOverviewPlanetBuildingsButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewPlanetBuildingsButtonText">Planet buildings</span>
 						</button>
 						<button class="planetOverviewButton" id="planetOverviewPlanetShipyardButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetShipyardButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewButtonImage interfaceButton3x1" id="planetOverviewPlanetShipyardButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewPlanetShipyardButtonText">Planet shipyard</span>
 						</button>
 						<button class="planetOverviewButton" id="planetOverviewGoToHubButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewGoToHubButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewButtonImage interfaceButton3x1" id="planetOverviewGoToHubButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewGoToHubButtonText">Hub station</span>
 						</button>
 						<button class="planetOverviewButton" id="planetOverviewPlanetRoutesButton">
-							<img class="planetOverviewButtonImage gridButton300px" id="planetOverviewPlanetRoutesButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewButtonImage interfaceButton3x1" id="planetOverviewPlanetRoutesButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="planetOverviewButtonText" id="planetOverviewPlanetRoutesButtonText">Delivery routes</span>
 						</button>
 					</div>
@@ -211,12 +214,12 @@
 				<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanel">
 					
 					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerPreviousPlanetContainer">
-						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 					
 					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeader">
 						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderSystemPreviousPlanet">
-							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						</div>
 						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderCurrentPlanet">
 							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderPlanetNameContainer">
@@ -227,12 +230,12 @@
 							</div>
 						</div>
 						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderSystemNextPlanet">
-							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemNextPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						</div>
 					</div>
 					
 					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerNextPlanetContainer">
-						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerNextPlanetImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 					
 					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
@@ -385,13 +388,13 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="systemOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="systemOverviewMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="systemOverviewMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="systemOverviewMenuWindowHeaderText">SYSTEM OVERVIEW</span>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="systemOverviewMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="systemOverviewMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+					<img class="interfaceMenuIconImage" id="systemOverviewMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
 			
@@ -400,15 +403,15 @@
 				<div class="systemOverviewElementsContainer" id="systemOverviewLeftSide">
 					<div class="systemOverviewElementsContainer" id="systemOverviewButtonsContainer">
 						<button class="systemOverviewButton" id="systemOverviewShowMapButton">
-							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewShowMapButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="systemOverviewButtonImage interfaceButton3x1" id="systemOverviewShowMapButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="systemOverviewButtonText" id="systemOverviewShowMapButtonText">Show on map</span>
 						</button>
 						<button class="systemOverviewButton" id="systemOverviewStationButton">
-							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewStationButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="systemOverviewButtonImage interfaceButton3x1" id="systemOverviewStationButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="systemOverviewButtonText" id="systemOverviewStationButtonText">HUB Station</span>
 						</button>
 						<button class="systemOverviewButton" id="systemOverviewGatesButton">
-							<img class="systemOverviewButtonImage gridButton300px" id="systemOverviewGatesButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="systemOverviewButtonImage interfaceButton3x1" id="systemOverviewGatesButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="systemOverviewButtonText" id="systemOverviewGatesButtonText">Manage gates</span>
 						</button>
 					</div>
@@ -424,11 +427,11 @@
 				<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanel">
 					
 					<div class="systemOverviewElementsContainer" id="systemOverviewPlayerPreviousSystemContainer">
-						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerPreviousSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerPreviousSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>		
 					<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelHeader">						
 						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkPreviousSystem">
-							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkPreviousSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkPreviousSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						</div>
 						
 						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderCurrentSystem">
@@ -441,11 +444,11 @@
 						</div>
 						
 						<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkNextSystem">
-							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkNextSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkNextSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						</div>					
 					</div>						
 					<div class="systemOverviewElementsContainer" id="systemOverviewPlayerNextSystemContainer">
-						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerNextSystemImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerNextSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 					
 					<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelContent">
@@ -519,13 +522,13 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="galaxyMapMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar galaxyMapMenuBar" id="galaxyMapMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="galaxyMapMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="galaxyMapMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="galaxyMapMenuWindowHeaderText">GALAXY MAP</span>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="galaxyMapMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="galaxyMapMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+					<img class="interfaceMenuIconImage" id="galaxyMapMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
 			
@@ -534,11 +537,11 @@
 				<div class="galaxyMapElementsContainer" id="galaxyMapMenuContainer">
 					<div class="galaxyMapElementsContainer" id="galaxyMapMenuButtonsContainer">
 						<button class="galaxyMapButton" id="galaxyMapNetworksButton">
-							<img class="galaxyMapButtonImage gridButton300px" id="galaxyMapNetworksButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="galaxyMapButtonImage interfaceButton3x1" id="galaxyMapNetworksButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="galaxyMapButtonText" id="galaxyMapNetworksButtonText">Manage networks</span>
 						</button>
 						<button class="galaxyMapButton" id="galaxyMapNetworksButton">
-							<img class="galaxyMapButtonImage gridButton300px" id="galaxyMapNetworksButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+							<img class="galaxyMapButtonImage interfaceButton3x1" id="galaxyMapNetworksButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="galaxyMapButtonText" id="galaxyMapNetworksButtonText">Placeholder</span>
 						</button>
 					</div>
@@ -723,30 +726,30 @@
 						<canvas class="interfaceCanvas" id="galaxyMapCanvas">Galaxy map should be here</canvas>
 					</div>
 					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapTopArrowContainer">
-						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapTopArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapTopArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapLeftArrowContainer">
-						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapLeftArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapLeftArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapRightArrowContainer">
-						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapRightArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapRightArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapBottomArrowContainer">
-						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapBottomArrowButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapBottomArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					
 					<button class="galaxyMapSideButtonContainer" id="galaxyMapFocusTargetContainer">
-						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapFocusTargetButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapFocusTargetButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					<button class="galaxyMapSideButtonContainer" id="galaxyMapReturnHomeContainer">
-						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapReturnHomeButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapReturnHomeButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					
 					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomInContainer">
-						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomInButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomInButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomOutContainer">
-						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomOutButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomOutButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 				</div>
 				
@@ -759,16 +762,634 @@
 			</div>	
 		</div>
 		
+		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetBuildingMenuWindow">
+			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar planetBuildingMenuBar" id="planetBuildingMenuTopBar">
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetBuildingMenuTopBarLeft">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetBuildingMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetBuildingMenuTopBarMiddle">
+					<span class="interfaceWindowHeaderText" id="planetBuildingMenuWindowHeaderText">PLANET BUILDINGS</span>
+				</div>
+				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="planetBuildingMenuTopBarRight">
+					<img class="interfaceMenuIconImage" id="planetBuildingMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
+				</div>
+			</div>
+			<div class="interfaceWindowContent interfaceWindowContentBackground" id="planetBuildingMenuContentBackground"></div>
+			<div class="interfaceWindowContent" id="planetBuildingMenuContent">
+				<div class="planetBuildingElementsContainer" id="planetBuildingMenuLeftSide">
+					<div class="planetBuildingElementsContainer" id="planetBuildingButtonsContainer">
+						<button class="planetBuildingButton" id="planetBuildingGoToPlanetButton">
+							<img class="planetBuildingButtonImage interfaceButton3x1" id="planetBuildingGoToPlanetButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							<span class="planetBuildingButtonText" id="planetBuildingGoToPlanetButtonText">Go to planet</span>
+						</button>
+					</div>
+					<div class="planetBuildingElementsContainer" id="planetBuildingPlanetContainer">
+						<div class="planetBuildingElementsContainer" id="planetBuildingPlanetHeader">
+							<button class="planetBuildingElementsContainer" id="planetBuildingInfoPanelHeaderPreviousPlanet">
+								<img class="planetBuildingInfoPanelHeaderPlanetSmallArrow" id="planetBuildingInfoPanelHeaderPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
+							<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelHeaderCurrentPlanet">
+								<div class="planetBuildingElementsContainer planetBuildingHeaderTextContainer" id="planetBuildingInfoPanelHeaderSystemNameContainer">
+									<span class="interfaceText" id="planetBuildingInfoPanelHeaderSystemNamePrefix">System:</span>&nbsp;<span class="interfaceText" id="planetBuildingInfoPanelHeaderSystemNameText" style="color: hsl(60,100%,50%)">Sonra-4</span>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingHeaderTextContainer" id="planetBuildingInfoPanelHeaderPlanetNameContainer">
+									<span class="interfaceText interfaceDynamicText" id="planetBuildingInfoPanelHeaderPlanetNameText">Argon Prime</span>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingHeaderTextContainer" id="planetBuildingInfoPanelHeaderPlanetTypeContainer">
+									<span class="interfaceText" id="planetBuildingInfoPanelHeaderPlanetTypePrefix">Type:</span>&nbsp;<span class="interfaceText" id="planetBuildingInfoPanelHeaderPlanetTypeText" style="color: hsl(105,100%,50%)">Terrestrial</span>
+								</div>
+							</div>
+							<button class="planetBuildingElementsContainer" id="planetBuildingInfoPanelHeaderNextPlanet">
+								<img class="planetBuildingInfoPanelHeaderPlanetSmallArrow" id="planetBuildingInfoPanelHeaderNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
+						</div>
+						<div class="planetBuildingElementsContainer" id="planetBuildingPlanetEnergyContainer">
+							<div class="planetBuildingElementsContainer planetBuildingEnergyTextContainer" id="planetBuildingInfoPanelPlanetEnergyHeaderContainer">
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelPlanetEnergyHeaderEnergyPrefix">Energy:</span>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingEnergyTextContainer" id="planetBuildingInfoPanelPlanetEnergyValuesContainer">
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyUsedText" style="color: hsl(120,100%,50%)">750</span>
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergySlashText">/</span>
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyMaxText" style="color: hsl(120,100%,50%)">1000</span>
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetBracketLeft">(</span><span class="interfaceText" id="planetBuildingInfoPanelHeaderPlanetEnergyEfficiencyText" style="color: hsl(120,100%,50%)">100%</span><span class="interfaceText" id="planetBuildingInfoPanelHeaderPlanetBracketLeft">)</span>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingEnergyTextContainer" id="planetBuildingInfoPanelPlanetEnergyAvailableContainer">
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyAvailablePrefix">Available:</span>
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyAvailableTextText" style="color: hsl(120,100%,50%)">250</span>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingEnergyTextContainer" id="planetBuildingInfoPanelPlanetEnergyDeficitContainer">
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyDeficitPrefix">Deficit:</span>
+								<span class="interfaceText planetBuildingEnergyTextSpan" id="planetBuildingInfoPanelHeaderPlanetEnergyDeficitTextText" style="color: hsl(30,100%,50%)">250</span>
+							</div>
+						</div>	
+					</div>
+					<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelResourcesContainer">
+						<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelRequiredResourcesContainer">
+							<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelRequiredResourcesHeader">
+								<span class="interfaceText" id="planetBuildingInfoPanelRequiredResourcesHeaderText">Required resources</span>
+							</div>
+							<table class="interfaceTable planetBuildingResourceListTable" id="planetBuildingRequiredResourcesTable">
+								<tbody class="interfaceTableBody" id="planetBuildingRequiredResourcesTableBody">
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTablplanetBuildingsSingleBuildingSingleButtonContainerRowStorageResourceRow_1">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowStorageResourceNameCell_1">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowStorageResourceName_1">Iron:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowStorageResourceSpacingLeft_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowStorageResourceValueCell_1">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowStorageResourceValue_1">2137</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowStorageResourceSpacingRight_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowStorageResourceChangeCell_1">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowStorageResourceChange_1">-100</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowStorageResourceRow_2">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowStorageResourceNameCell_2">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowStorageResourceName_2">Steel:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowStorageResourceSpacingLeft_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowStorageResourceValueCell_2">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowStorageResourceValue_2">420</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowStorageResourceSpacingRight_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowStorageResourceChangeCell_2">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowStorageResourceChange_2">-50</span>
+										</td>
+									</tr>
+									
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowSpacingRowTop">
+										<td class="interfaceTableCell" colspan=5>
+											<span class="interfaceText" id="planetBuildingRequiredResourcesTableProducedHeader">Produced per day:</span>
+										</td>
+									</tr>
+									
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowProducedResourceRow_1">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowProducedResourceNameCell_1">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowProducedResourceName_1">Steel:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowProducedResourceSpacingLeft_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowProducedResourceValueCell_1">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowProducedResourceValue_1">+20</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowProducedResourceSpacingRight_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowProducedResourceChangeCell_1">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowProducedResourceChange_1">+5</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowProducedResourceRow_2">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowProducedResourceNameCell_2">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowProducedResourceName_2">Ship Components:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowProducedResourceSpacingLeft_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowProducedResourceValueCell_2">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowProducedResourceValue_2">+4</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowProducedResourceSpacingRight_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowProducedResourceChangeCell_2">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowProducedResourceChange_2">+1</span>
+										</td>
+									</tr>
+									
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowSpacingRowBottom">
+										<td class="interfaceTableCell" colspan=5>
+											<span class="interfaceText" id="planetBuildingRequiredResourcesTableConsumedHeader">Consumed per day:</span>
+										</td>
+									</tr>
+									
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowConsumedResourceRow_1">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceNameCell_1">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowConsumedResourceName_1">Iron:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowConsumedResourceSpacingLeft_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceValueCell_1">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowConsumedResourceValue_1">-10</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowConsumedResourceSpacingRight_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceChangeCell_1">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowConsumedResourceChange_1">-2.5</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingRequiredResourcesTableRowConsumedResourceRow_2">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceNameCell_2">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingRequiredResourcesTableRowConsumedResourceName_2">Carbon:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowConsumedResourceSpacingLeft_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceValueCell_2">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingRequiredResourcesTableRowConsumedResourceValue_2">-4</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingRequiredResourcesTableRowConsumedResourceSpacingRight_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingRequiredResourcesTableRowConsumedResourceChangeCell_2">
+											<span class="interfaceText planetBuildingResourceChange" id="planetBuildingRequiredResourcesTableRowConsumedResourceChange_2">-1</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelAvailableResourcesContainer">
+							<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelAvailableResourcesHeader">
+								<span class="interfaceText" id="planetBuildingInfoPanelAvailableResourcesText">Available resources</span>
+							</div>
+							<table class="interfaceTable planetBuildingResourceListTable" id="planetBuildingAvailableResourcesTable">
+								<tbody class="interfaceTableBody" id="planetBuildingAvailableResourcesTableBody">
+									<tr class="interfaceTableRow" id="planetBuildingAvailableResourcesTableRowStorageResourceRow_1">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingAvailableResourcesTableRowStorageResourceNameCell_1">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingAvailableResourcesTableRowStorageResourceName_1">Iron:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingLeft_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceValueCell_1">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingAvailableResourcesTableRowStorageResourceValue_1">2137</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingRight_1"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceChangeCell_1">
+											<span class="interfaceText interfaceNegativeText" id="planetBuildingAvailableResourcesTableRowStorageResourceChange_1">-10/d</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingAvailableResourcesTableRowStorageResourceRow_2">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingAvailableResourcesTableRowStorageResourceNameCell_2">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingAvailableResourcesTableRowStorageResourceName_2">Steel:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingLeft_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceValueCell_2">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingAvailableResourcesTableRowStorageResourceValue_2">420</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingRight_2"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceChangeCell_2">
+											<span class="interfaceText interfacePositiveText" id="planetBuildingAvailableResourcesTableRowStorageResourceChange_2">+20/d</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingAvailableResourcesTableRowStorageResourceRow_3">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingAvailableResourcesTableRowStorageResourceNameCell_3">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingAvailableResourcesTableRowStorageResourceName_3">Carbon:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingLeft_3"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceValueCell_3">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingAvailableResourcesTableRowStorageResourceValue_3">4.64 k</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingRight_3"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceChangeCell_3">
+											<span class="interfaceText interfaceNegativeText" id="planetBuildingAvailableResourcesTableRowStorageResourceChange_3">-4/d</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetBuildingAvailableResourcesTableRowStorageResourceRow_4">
+										<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingAvailableResourcesTableRowStorageResourceNameCell_4">
+											<span class="interfaceText planetBuildingResourceName" id="planetBuildingAvailableResourcesTableRowStorageResourceName_4">Ship Components:</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingLeft_4"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceValueCell_4">
+											<span class="interfaceText planetBuildingResourceValue" id="planetBuildingAvailableResourcesTableRowStorageResourceValue_4">463</span>
+										</td>
+										<td class="planetBuildingTableColumnSpacing" id="planetBuildingAvailableResourcesTableRowStorageResourceSpacingRight_4"></td>
+										<td class="interfaceTableCell" id="planetBuildingAvailableResourcesTableRowStorageResourceChangeCell_4">
+											<span class="interfaceText interfacePositiveText" id="planetBuildingAvailableResourcesTableRowStorageResourceChange_4">+4/d</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="planetBuildingElementsContainer" id="planetBuildingInfoPanelSettingsContainer">
+						<div class="planetBuildingElementsContainer planetBuildingSingleSettingContainer" id = "planetBuildingInfoPanelBulkBuildSettingContainer" title="Overwrites values in all custom-amount fields.">
+							<span class="interfaceText" id="planetBuildingInfoPanelBulkBuildSettingInputPrefix">Bulk build</span>
+							<input type="number" step=1 min=1 value=10 class="interfaceInputNumber planetBuildingSettingsNumericInput" id="planetBuildingInfoPanelBulkBuildSettingInput">
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingSingleSettingContainer" id = "planetBuildingInfoPanelAutoAssignSettingContainer">
+							<span class="interfaceText" id="planetBuildingInfoPanelAutoAssignSettingInputPrefix">Auto reassign staff</span>
+							<input type="checkbox" class="interfaceInputCheckbox planetBuildingSettingsCheckbox" id="planetBuildingInfoPanelAutoAssignSettingInput">
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingSingleSettingContainer" id = "planetBuildingInfoPanelBuyMaxSettingContainer" title="If resources are insufficient, will try to build/upgrade building as many times as possible.">
+							<span class="interfaceText" id="planetBuildingInfoPanelBuyMaxSettingInputPrefix">Try buy max</span>
+							<input type="checkbox" class="interfaceInputCheckbox planetBuildingSettingsCheckbox" id="planetBuildingInfoPanelBuyMaxSettingInput">
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingSingleSettingContainer" id = "planetBuildingInfoPanelDemolishLockSettingContainer" title="Prevents demolishing and downgrading buildings by accident.">
+							<span class="interfaceText" id="planetBuildingInfoPanelDemolishLockSettingInputPrefix">Demolish Lock</span>
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingSettingsCheckbox" id="planetBuildingInfoPanelDemolishLockSettingInput">
+						</div>
+					</div>
+				</div>
+				<div class="planetBuildingElementsContainer" id="planetBuildingMenuRightSide">
+					<div class="planetBuildingElementsContainer" id="planetBuildingMenuBuildingCategoriesContainer">
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_1">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_1">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_1">Basic Extraction</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_2">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_2">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_2">Adv. Extraction</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_3">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_3">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_3">Production</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_4">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_4">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_4">Energy</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_5">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_5">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_5">Research</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_6">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_6">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_6">Influence</span>
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingCategoryElement" id="planetBuildingCategoryElement_7">
+							<input type="checkbox" checked class="interfaceInputCheckbox planetBuildingCategoryCheckbox" id="planetBuildingCategoryCheckbox_7">
+							<span class="interfaceText planetBuildingCategoryName" id="planetBuildingCategoryName_7">Special</span>
+						</div>
+					</div>
+					<div class="planetBuildingElementsContainer" id="planetBuildingMenuBuildingListContainer">
+						<div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer planetBuldingFoldedBuildingContainer" id="planetBuildingSingleBuildingFolded_1">
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingHeaderContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingNameContainer">
+										<span class="planetBuildingSingleBuildingHeaderText" id="planetBuildingSingleBuildingFoldedName_1">Iron mine</span>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountLevelContainer">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingLevelContainer">
+											<span class="planetBuildingSingleBuildingHeaderText">Lv.</span>
+											<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText"id="planetBuildingSingleBuildingFoldedLevel_1">1</span>
+										</div>
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountContainer">
+											<span class="planetBuildingSingleBuildingHeaderText">×</span>
+											<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText" id="planetBuildingSingleBuildingFoldedAmount_1">2</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingBuildDemolishContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildDemolishButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+									</button>
+									<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+									</button>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingUpgradeDowngradeContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+									</button>
+									<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+									</button>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingControlContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsFoldedContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingOperatorButtonsContainer">
+										<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+											<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Plus_Simple.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+											<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Minus_Simple.png">
+										</button>
+										<span class="planetBuildingSingleBuildingOperatorsAssigned interfaceDynamicText">1</span>&nbsp;
+										<span class="planetBuildingSingleBuildingOperatorsSlash">/</span>&nbsp;
+										<span class="planetBuildingSingleBuildingOperatorsRequired interfaceDynamicText">4</span>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer">
+										<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PortraitAlert.png" title="Mandatory staff present.">
+										<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PowerAlert2.png" title="Sensitive to power shortages.">
+										<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/TurnedOff_Yellow.png" title="Building disabled.">
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsFoldedContainer">
+									<button class="planetBuildingsSingleBuildingSideButton">
+										<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/Folded.png">
+									</button>
+								</div>
+							</div>		
+						</div>
+						<div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer planetBuldingUnfoldedBuildingContainer">
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingHeaderContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingNameContainer">
+										<span class="planetBuildingSingleBuildingHeaderText">Steel Foundry</span>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountLevelContainer">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingLevelContainer">
+											<span class="planetBuildingSingleBuildingHeaderText">Lv.</span>
+											<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText">1</span>
+										</div>
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountContainer">
+											<span class="planetBuildingSingleBuildingHeaderText">×</span>
+											<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText">2</span>
+										</div>	
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer">
+									<table class="interfaceTable planetBuildingResourceListTable">
+										<tbody class="interfaceTableBody">
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableHeaderRow">
+												<td class="interfaceTableCell planetBuildingResourceHeaderCell" colspan=5>
+													<span class="interfaceText planetBuildingResourceHeader" id="planetBuildingSingleBuildingResourcesTableHeader_1">Production and consumption per day:</span>
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceRow_1">
+												<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceNameCell_1">
+													<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceName_1">Steel:</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingLeft_1"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValueCell_1">
+													<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValue_1">+ 20.0</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingRight_1"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChangeCell_1">
+													<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChange_1">+ 5.0</span>
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceRow_2">
+												<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceNameCell_2">
+													<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceName_2">Ship Components:</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingLeft_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValueCell_2">
+													<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValue_2">+ 4.0</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingRight_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChangeCell_2">
+													<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChange_2">+ 1.0</span>
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowSpacingRowTop">
+												<td class="interfaceTableCell" colspan=5>
+												
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_1">
+												<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_1">
+													<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_1">Iron:</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_1"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_1">
+													<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_1">- 10.0</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_1"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_1">
+													<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_1">- 2.5</span>
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
+												<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_2">
+													<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_2">Carbon:</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_2">
+													<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_2">- 4.0</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_2">
+													<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_2">- 1.0</span>
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowSpacingRowBottom">
+												<td class="interfaceTableCell" colspan=5>
+												
+												</td>
+											</tr>
+											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
+												<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_2">
+													<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_2">Energy:</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_2">
+													<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_2">- 4</span>
+												</td>
+												<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_2"></td>
+												<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_2">
+													<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_2">- 1</span>
+												</td>
+											</tr>										
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingBuildDemolishContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+									</button>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDemolishButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+									</button>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildDemolishButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+									</button>
+									<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+									</button>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingUpgradeDowngradeContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+									</button>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDowngradeButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+									</button>
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+										<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+									</button>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+									</button>
+									<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+									<button class="planetBuildingsSingleBuildingSingleButton">
+										<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+									</button>
+								</div>
+							</div>
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingControlContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsUnfoldedContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer">
+										<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PortraitAlert.png" title="Mandatory staff present.">
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderContainer">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderTextContainer">
+											<span class="planetBuildingSingleBuildingOperatorHeaderText">Administrators:</span>
+										</div>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuContainer" > 
+										<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuLeftContainer">									
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingOperatorButtonsContainer">
+												<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+													<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Plus_Simple.png">
+												</button>
+												<input type="number" min=0 step=1 value=10 class="interfaceInputNumberFixed planetBuildingsSingleBuildingAddRemoveOperatorInputNumber">
+												<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+													<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Minus_Simple.png">
+												</button>
+											</div>
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorNumbersContainer">
+												<span class="planetBuildingSingleBuildingOperatorsAssigned interfaceDynamicText">16</span>&nbsp;
+												<span class="planetBuildingSingleBuildingOperatorsSlash">/</span>&nbsp;
+												<span class="planetBuildingSingleBuildingOperatorsRequired interfaceDynamicText">4</span>&ensp;
+												<span class="planetBuildingSingleBuildingOperatorEfficiencyValue" style="color:hsl(180,100%,50%)">(200%)</span>
+											</div>
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingEfficiencyContainer">
+												<span class="planetBuildingSingleBuildingEfficiencyPrefix">Efficiency: </span>
+												<span class="planetBuildingSingleBuildingEfficiencyValue" style="color:hsl(120,100%,50%)">100%</span>
+												<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoIconContainer">
+													<img class="planetBuildingSingleBuildingInfoIcon" src="RESOURCES/ICONS/Info.png">	
+												</div>
+												<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContent">
+													
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+														<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Power3.png">&nbsp;
+														<span class="planetBuildingSIngleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+													</div>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+														<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Portrait.png">&nbsp;
+														<span class="planetBuildingSIngleBuildingSingleEfficiencyText" style="color:hsl(180,100%,50%)">200%</span>
+													</div>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+														<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Hazard.png">&nbsp;
+														<span class="planetBuildingSIngleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+													</div>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+														<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Discontent.png">&nbsp;
+														<span class="planetBuildingSIngleBuildingSingleEfficiencyText" style="color:hsl(60,100%,50%)">50%</span>
+													</div>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+														<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Minerals.png">&nbsp;
+														<span class="planetBuildingSIngleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuRightContainer">
+											<button class="planetBuildingsSingleBuildingOperatorControlButton">
+												<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+												<span class="planetBuildingsSingleBuildingOperatorControlButtonText">FILL</span>
+											</button>
+											<button class="planetBuildingsSingleBuildingOperatorControlButton">
+												<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+												<span class="planetBuildingsSingleBuildingOperatorControlButtonText">SET</span>
+											</button>
+											<button class="planetBuildingsSingleBuildingOperatorControlButton">
+												<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+												<span class="planetBuildingsSingleBuildingOperatorControlButtonText">NONE</span>
+											</button>
+											<button class="planetBuildingsSingleBuildingOperatorControlButton">
+												<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+												<span class="planetBuildingsSingleBuildingOperatorControlButtonText">ALL</span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsUnfoldedContainer">
+									<button class="planetBuildingsSingleBuildingSideButton">
+										<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/PowerOn.png">
+									</button>
+									<button class="planetBuildingsSingleBuildingSideButton">
+										<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/Unfolded.png">
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="interfaceBar interfaceBottomBar interfaceWindowContentBottomBar planetBuildingMenuBar" id="planetBuildingMenuBottomBar">
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="planetBuildingMenuBottomBarLeft"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarMiddleElement" id="planetBuildingMenuBottomBarMiddle"></div>
+				<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="planetBuildingMenuBottomBarRight"></div>
+			</div>
+		</div>
+		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar settingsMenuBar" id="settingsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="settingsMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="settingsMenuWindowHeaderText">SETTINGS MENU</span>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="settingsMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+					<img class="interfaceMenuIconImage" id="settingsMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
 			
@@ -777,21 +1398,21 @@
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionSaveGameImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionSaveGameImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
 					</div>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionExportImportSave">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionExportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionExportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
 					</div>
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionImportSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionImportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
 					</div>
 				</div>
@@ -802,36 +1423,36 @@
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
 					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace4"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionGalaxyMapParallax">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionGalaxyMapParallaxCheckbox" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionGalaxyMapParallaxCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionGalaxyMapParallaxText">Parallax effect at galaxy map</span>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
 					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace6"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
-						<img class="settingsMenuOptionButtonImage gridButton300px" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
 					</div>
 				</div>
@@ -847,13 +1468,13 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="creditsMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar creditsMenuBar" id="creditsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="creditsMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="creditsMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="creditsMenuWindowHeaderText">CREDITS</span>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="creditsMenuTopBarRight">
-					<img class="interfaceMenuIconImage" id="creditsMenuWindowHeaderImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png"> 
+					<img class="interfaceMenuIconImage" id="creditsMenuWindowHeaderImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> 
 				</div>
 			</div>
 			
@@ -933,7 +1554,7 @@
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarLeftElement" id="mainInterfaceBottomBarLeft">
 				<span class="interfaceBarText interfaceMainBarText" id="mainInterfaceLeftSideTextCurrently">
 					Researching: 
-					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceOperatorsAvailableText">
+					<span class="interfaceBarText interfaceDynamicText" id="mainInterfaceResearchNameText">
 						Interstellar Travel II
 					</span> 
 				</span>
@@ -961,9 +1582,9 @@
 				</div>
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="mainInterfaceBottomBarRight">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseGameTimeImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseBonusTimeImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowSettingsShortcutImage" src="RESOURCES/MAIN_INTERFACE/ICONS/Symbol_questionmark.png">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseGameTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseBonusTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowSettingsShortcutImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 			</div>
 		</div>
 		

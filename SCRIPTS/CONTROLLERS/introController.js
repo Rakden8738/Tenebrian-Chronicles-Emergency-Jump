@@ -3895,7 +3895,10 @@ function introPlayIntro(outputDocument){
 								outputDocument.getElementById(IntroMainInterfaceCoverID).style.visibility = "hidden";
 								
 								IntroCleanupInitiated = false;
-								saveSaveGame();
+								
+								if(SettingSaveAutosave){
+									saveSaveGame();
+								}
 							}
 							
 						},IntroCleanupTimer);
@@ -3903,9 +3906,9 @@ function introPlayIntro(outputDocument){
 					
 					if(IntroAnimationStep <= IntroCalculatedMessagesTiming.length) {
 						//console.log("START!");
-						if(IntroWasSkipped) SaveIntroSkipCounter++;
-						else SaveIntroDisplayedOrSkipped = true;
-						if(SaveIntroSkipCounter >= IntroAllowedDisplayAttempts) SaveIntroDisplayedOrSkipped = true
+						if(IntroWasSkipped) ProgressIntroSkipCounter++;
+						else ProgressIntroDisplayedOrSkipped = true;
+						if(ProgressIntroSkipCounter >= IntroAllowedDisplayAttempts) ProgressIntroDisplayedOrSkipped = true
 						
 					}
 				} break;				

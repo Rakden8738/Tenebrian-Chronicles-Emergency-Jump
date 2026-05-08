@@ -24,12 +24,7 @@ var SaveProperties = [
 
 //var SaveAutosave = true;
 var SaveDisableAutosaveOnLoadError = true;
-
-var SaveIntroDisplayedOrSkipped = false;
-var SaveIntroSkipCounter = 0;
-
-var SaveUnlockedMainMenuTabs = [true,true,true,false,false,false,false,false,false,false,true];
-
+var SaveLoadErrorDetected = false;
 var SaveExportImportTextareaID = "settingsMenuOptionExportImportTextarea";
 
 
@@ -37,9 +32,7 @@ function loadLoadGame(outputDocument){
 	var tmpSaveObject = JSON.parse(localStorage.getItem("currentSave"));
 	
 	loadLoadGameObject(outputDocument, tmpSaveObject);
-	
 }
-
 
 function saveCreateSaveObject(){
 	var newSaveObject = {};
@@ -47,13 +40,9 @@ function saveCreateSaveObject(){
 	newSaveObject["gameVersion"] = MainGameVersion;
 	
 	newSaveObject["config"] = settingsGetConfigObject();
-	console.log("Creating new timer...");
+	//console.log("Creating new timer...");
 	newSaveObject["timer"] = timerGetTimingsObject();
-	
-	
-	newSaveObject["introDisplayed"] = SaveIntroDisplayedOrSkipped;
-	newSaveObject["introSkipCounter"] = SaveIntroSkipCounter;
-	newSaveObject["mainMenuUnlockedTabs"] = SaveUnlockedMainMenuTabs;
+	newSaveObject["progress"] = progressGetProgressObject();
 	
 	return newSaveObject;
 }
@@ -141,11 +130,12 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 		//console.log("Save ok");
 		SaveObject = tmpSaveObject;
 	
-		SaveIntroDisplayedOrSkipped = SaveObject.introDisplayed;
-		SaveIntroSkipCounter = SaveObject.introSkipCounter;
+		//ProgressIntroDisplayedOrSkipped = SaveObject.introDisplayed;
+		//ProgressIntroSkipCounter = SaveObject.introSkipCounter;
 		
 		settingsSetConfigObject(SaveObject.config);
 		timerSetTimingsObject(SaveObject.timer);
+		progressSetProgressObject(SaveObject.progress);
 		
 		console.log("Game loaded successfully.");
 		interfaceAddBottomMessage(mainOutputDocument, "Game loaded successfully.");
@@ -168,6 +158,7 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 				console.log("Disabling auto-save to prevent data from being overwritten.");
 				interfaceAddBottomMessage(mainOutputDocument, "Disabling auto-save to prevent data from being overwritten.");
 				SettingSaveAutosave = false;
+				SaveLoadErrorDetected = true;
 			}
 			SaveObject = saveCreateSaveObject();
 		}
@@ -191,6 +182,7 @@ function loadVerifySave(unverifiedSave) {
 			console.log("Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
 			interfaceAddBottomMessage(mainOutputDocument, "Error: Major version discrepancy detected. Disabling autosave to prevent accidental save corruption.");
 			SettingSaveAutosave = false;
+			SaveLoadErrorDetected = true;
 		}
 		if(MainGameVersion[2] != unverifiedSave.gameVersion[2]){
 			console.log("Warning: Minor version discrepancy detected.");
