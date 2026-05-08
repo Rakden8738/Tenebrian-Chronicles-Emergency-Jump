@@ -151,6 +151,10 @@ class SystemObject{
 
 function systemsSortByDepth(sortedSystemArray = SystemsArray){
 	sortedSystemArray = sortedSystemArray.sort((a,b) => (a.position[2] > b.position[2]) ? 1 : ((b.position[2] > a.position[2]) ? -1 : 0));
+	
+	for(var i = 0; i < sortedSystemArray.length; i++){
+		sortedSystemArray[i].arrayID = i;
+	}
 }
 
 function systemsGetSystemById(systemID){
@@ -206,7 +210,7 @@ function systemsGetNextDiscoveredSystemIndex(){
 	console.log("No other discovered systems found.");
 	return tmpCurrent;
 }
-function systemGetNextNetworkPlanetIndex(){
+function systemsGetNextNetworkSystemIndex(){
 	var tmpNetwork = SystemsArray[SystemsCurrentSystem].network_id;
 	if (tmpNetwork == -1) {
 		console.log("System is not part of a network.");
@@ -280,9 +284,9 @@ var SystemStarmapPlanetOrbitMaximumDistance = 120;
 var SystemStarmapPlanetOrbitDistanceRange = SystemStarmapPlanetOrbitMaximumDistance - SystemStarmapPlanetOrbitMinimumDistance;
 var SystemStarmapPlanetOrbitOffsetAU = 0.25;
 
-var SystemStarmapPlanetBodyRadius = 9;
+var SystemStarmapPlanetBodyRadius = 7;
 //var SystemStarmapPlanetOutlineRadius = 12;
-var SystemStarmapPlanetOutlineExtraRadius = 5;
+var SystemStarmapPlanetOutlineExtraRadius = 4;
 var SystemStarmapPlanetSizeBonusScale = 2;
 
 var SystemStarmapGateRadius = 5;

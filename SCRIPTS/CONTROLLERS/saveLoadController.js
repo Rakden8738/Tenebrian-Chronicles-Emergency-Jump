@@ -43,6 +43,7 @@ function saveCreateSaveObject(){
 	//console.log("Creating new timer...");
 	newSaveObject["timer"] = timerGetTimingsObject();
 	newSaveObject["progress"] = progressGetProgressObject();
+	newSaveObject["buildings"] = buildingsGetBuildingsObject();
 	
 	return newSaveObject;
 }
@@ -136,6 +137,7 @@ function loadLoadGameObject(outputDocument, tmpSaveObject, forceLoad = true){
 		settingsSetConfigObject(SaveObject.config);
 		timerSetTimingsObject(SaveObject.timer);
 		progressSetProgressObject(SaveObject.progress);
+		buildingsSetBuildingsObject(SaveObject.buildings);
 		
 		console.log("Game loaded successfully.");
 		interfaceAddBottomMessage(mainOutputDocument, "Game loaded successfully.");

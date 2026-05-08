@@ -34,6 +34,17 @@ function settingsDisableGalaxyMapParallax(){
 	GalaxyMapPerspectiveEnabled = false;
 }
 
+function settingsToggleInstantMenuNavigation(){
+	if(SettingsInstantMenuNavigation) settingsDisableInstantMenuNavigation();
+	else settingsEnableInstantMenuNavigation();
+}
+function settingsEnableInstantMenuNavigation(){
+	SettingsInstantMenuNavigation = true;
+}
+function settingsDisableInstantMenuNavigation(){
+	SettingsInstantMenuNavigation = false;
+}
+
 
 function settingsGetConfigObject(){
 	var newConfigObject = {};
@@ -55,8 +66,5 @@ function settingsSetConfigObject(newConfigObject){
 	try{
 		GalaxyMapPerspectiveEnabled = newConfigObject.settingsGalaxyMapParallax;
 	} catch{ console.warn("Save is missing flag for galaxy map parallax setting.")};
-	
-	
-	
-	
+
 }

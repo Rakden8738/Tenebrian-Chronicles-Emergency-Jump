@@ -323,7 +323,7 @@ function interfaceInitPlanetOverviewMenu(outputDocument) {
 	outputDocument.getElementById("planetOverviewGoToHubButton").onclick = 
 		function() { interfacePlanetOverviewGoToHub(outputDocument); };
 	outputDocument.getElementById("planetOverviewPlanetRoutesButton").onclick = 
-		function() { interfacePlanetOverviewPlanetBuildings(outputDocument); };
+		function() { interfacePlanetOverviewPlanetRoutes(outputDocument); };
 		
 	//planet resource tabs
 	outputDocument.getElementById("planetOverviewResourcesPanelStorageButton").onclick = function() { 
@@ -440,48 +440,51 @@ function interfaceInitBuildMenu(outputDocument){
 	//topbar image in build menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[41]).src = InterfaceMainMenuIconPaths[49];
 	
-	//next and previous planet
+	//planet navigation buttons
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[42]).src = InterfaceMainMenuIconPaths[23];
-	//outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemPreviousPlanet").onclick = function() { interfacePlanetOverviewSystemPreviousPlanet(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderPreviousPlanet").onclick = function() { interfacePlanetBuildingsPreviousPlanet(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[43]).src = InterfaceMainMenuIconPaths[24];
-	//outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNextPlanet").onclick = function() { interfacePlanetOverviewSystemNextPlanet(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderNextPlanet").onclick = function() { interfacePlanetBuildingsNextPlanet(outputDocument); };
 	
-	//icons
-	//outputDocument.getElementById(InterfaceMainMenuButtonImagesID[44]).src = InterfaceMainMenuIconPaths[50];
+	//main buttons
 	
-	/*
-	//galaxy map navigation buttons
-		//top
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).src = InterfaceMainMenuIconPaths[37];//22
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).onclick = function() { galaxyMoveGalaxyMapUp(outputDocument); };
-		//right
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).src = InterfaceMainMenuIconPaths[38];//24
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).onclick = function() { galaxyMoveGalaxyMapRight(outputDocument); };
-		//bottom
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).src = InterfaceMainMenuIconPaths[39];//21
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).onclick = function() { galaxyMoveGalaxyMapDown(outputDocument); };
-		//left
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).src = InterfaceMainMenuIconPaths[40];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).onclick = function() { galaxyMoveGalaxyMapLeft(outputDocument); };
+	outputDocument.getElementById("planetBuildingGoToPlanetButton").onclick = 
+		function() { interfacePlanetBuildingGoToPlanet(outputDocument); };
 	
-		//zoom in
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).src = InterfaceMainMenuIconPaths[41];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).onclick = function() { galaxyZoomMap(outputDocument, (+ 1), true); };
-		//zoom out
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).src = InterfaceMainMenuIconPaths[43];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).onclick = function() { galaxyZoomMap(outputDocument, (- 1), true); };
+	//left menu options
 	
-		//return home
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).src = InterfaceMainMenuIconPaths[47];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).onclick = function() { galaxyResetCameraPosition(outputDocument); };
-		//focus target
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).src = InterfaceMainMenuIconPaths[45];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).onclick = function() { galaxyMapFocusOnSystemByIndex(outputDocument, GalaxyMapSelectedSystem);  };
-	
-	*/
+	outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").onchange = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").onchange = function(){ interfaceBuildMenuAutoReassignStaff(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").checked = BuildingsAutoAssignStaffEnabled;
+	outputDocument.getElementById("planetBuildingInfoPanelBuyMaxSettingInput").onchange = function(){ interfaceBuildMenuTryBuyMax(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelBuyMaxSettingInput").checked = BuildingsTryBuyMaxEnabled;
+	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").onchange = function(){ interfaceBuildMenuDemolishLock(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").checked = BuildingsDemolishLockEnabled;
 	
 	interfaceRefreshBuildMenu(outputDocument);
 }
+
+function interfaceBuildMenuBulkBuyChanged(outputDocument){
+	var tmpInputValue = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value;
+	if(!buildingsTrySetBulkBuyInputs(outputDocument, tmpInputValue)){
+		//if failed to set, reset value to 1
+		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
+	}
+	else{
+		//otherwise round value down if it isn't integral.
+		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = Math.floor(tmpInputValue);
+	}
+}
+function interfaceBuildMenuAutoReassignStaff(outputDocument){
+	buildingsToggleAutoAssignStaff();
+}
+function interfaceBuildMenuTryBuyMax(outputDocument){
+	buildingsToggleTryBuyMax();
+}
+function interfaceBuildMenuDemolishLock(outputDocument){
+	buildingsToggleDemolishLock();
+}
+
 function interfaceInitSettingsMenu(outputDocument) {
 	//settings in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
@@ -564,8 +567,7 @@ function interfaceInitSettingsMenu(outputDocument) {
 }
 
 function interfaceSettingsSwitchFastMenuChange(outputDocument) {
-	if(SettingsInstantMenuNavigation) SettingsInstantMenuNavigation = false;
-	else SettingsInstantMenuNavigation = true;
+	settingsToggleInstantMenuNavigation();
 	
 	interfaceInitSettingsMenu(outputDocument);
 }
@@ -576,17 +578,13 @@ function interfaceSettingsSwitchIntroSkip(outputDocument) {
 	interfaceInitSettingsMenu(outputDocument);
 }
 function interfaceSettingsSwitchAutosave(outputDocument) {
-	
 	settingsToggleAutosave();
-	//if(SaveAutosave) SaveAutosave = false;
-	//else SaveAutosave = true;
 	
 	interfaceInitSettingsMenu(outputDocument);
 }
 function interfaceSettingsSwitchGalaxyMapParralax(outputDocument){
 	settingsToggleGalaxyMapParallax();
-	//if(GalaxyMapPerspectiveEnabled) GalaxyMapPerspectiveEnabled = false;
-	//else GalaxyMapPerspectiveEnabled = true;
+	
 	interfaceInitSettingsMenu(outputDocument);
 }
 
@@ -772,10 +770,80 @@ function interfaceRefreshGalaxyMap(outputDocument){
 	galaxyRefreshGalaxyMapCanvas(outputDocument);
 }
 function interfaceRefreshBuildMenu(outputDocument){
+	//planet data
+	if(PlanetsCurrentPlanet != -1) {
+		//header
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderSystemNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].system;
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderSystemNameText").style.color = systemsGetSystemById(PlanetsArray[PlanetsCurrentPlanet].system_id).starType[1];
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].name;
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetTypeText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].type[0];
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetTypeText").style.color = PlanetsArray[PlanetsCurrentPlanet].type[1];
+		
+		//energy
+		
+		interfaceRefreshBuildMenuEnergy(outputDocument);
+		
+		//building list
+		if(!PlanetsArray[PlanetsCurrentPlanet].owner == DiplomacyPlayerFaction){
+			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "block";
+			outputDocument.getElementById("planetBuildingMenuBuildingListContainer").style.display = "none";
+		}
+		else{
+			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "none";
+			outputDocument.getElementById("planetBuildingMenuBuildingListContainer").style.display = "block";
+			
+			interfaceRefreshBuildingsList(outputDocument);
+		}
+	}
+}
+function interfaceRefreshBuildMenuEnergy(outputDocument){
+	var tmpEnergyToday = PlanetsArray[PlanetsCurrentPlanet].energyAvailable;
+	var tmpEnergyNeeded = PlanetsArray[PlanetsCurrentPlanet].energyRequired;
+	var tmpEnergyTomorrow = PlanetsArray[PlanetsCurrentPlanet].energyProduced;
+	
+	var tmpEnergyBalance = tmpEnergyToday - tmpEnergyNeeded;
+	var tmpEnergyColor;
+	var tmpEnergyEfficiency;
+	
+	if(tmpEnergyBalance >= 0){
+		tmpEnergyEfficiency = "100%";
+		tmpEnergyColor = "hsl(120,100%,50%)";
+	}
+	else if(tmpEnergyToday == 0 && tmpEnergyNeeded > 0){
+		tmpEnergyEfficiency = "0%";
+		tmpEnergyColor = "hsl(0,100%,50%)";
+	}
+	else if(tmpEnergyToday/tmpEnergyNeeded >= 0.5){
+		var tmpEnergyHue = Math.round((tmpEnergyToday/tmpEnergyNeeded - 0.5) * 200);
+		tmpEnergyEfficiency = (100*(tmpEnergyToday/tmpEnergyNeeded)).toFixed(1) + '%';
+		tmpEnergyColor = "hsl(" + tmpEnergyHue + ",100%,50%)";
+	}
+	else{
+		tmpEnergyEfficiency = (100*(tmpEnergyToday/tmpEnergyNeeded)).toFixed(1) + '%';
+		tmpEnergyColor = "hsl(0,100%,50%)";
+	}
+	
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyUsedText").innerHTML = tmpEnergyNeeded;
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyMaxText").innerHTML = tmpEnergyToday;
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyEfficiencyText").innerHTML = tmpEnergyEfficiency;
+	outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyEfficiencyText").style.color = tmpEnergyColor;
+	
+	if(tmpEnergyBalance >= 0){
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyAvailableTextText").innerHTML = tmpEnergyBalance;
+		outputDocument.getElementById("planetBuildingInfoPanelPlanetEnergyAvailableContainer").style.display = "block";
+		outputDocument.getElementById("planetBuildingInfoPanelPlanetEnergyDeficitContainer").style.display = "none";
+	}
+	else{
+		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetEnergyDeficitTextText").innerHTML = (-1)*tmpEnergyBalance;
+		outputDocument.getElementById("planetBuildingInfoPanelPlanetEnergyAvailableContainer").style.display = "none";
+		outputDocument.getElementById("planetBuildingInfoPanelPlanetEnergyDeficitContainer").style.display = "block";
+	}
+}
+function interfaceRefreshBuildingsList(outputDocument){
 	
 }
 function interfaceRefreshInterface(outputDocument) {
-	//interfaceRefreshPlanetResources(outputDocument);
+	//console.log("Test");
 }
 
 function interfaceRefreshPlanetResources(outputDocument) {
@@ -1217,7 +1285,7 @@ function interfaceRefreshAsteroids(outputDocument) {
 }
 
 
-//interface menu navigation
+//interface menu main navigation
 
 var InterfaceChangeMenuTabCurrentID = InterfaceMainMenuID;
 //var SettingsInstantMenuNavigation = false;
@@ -1328,7 +1396,7 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 		case GalaxyMapMenuID:
 			GalaxyMapRefreshActive = false;
 			setTimeout(() => {testMouseDragInterrupt = true;},200);
-			break;	
+			break;
 	}
 	
 	InterfaceChangeMenuTabCurrentID = destinationTabID;
@@ -1346,6 +1414,9 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 			GalaxyMapRefreshActive = true;
 			interfaceRefreshGalaxyMap(outputDocument);
 			break;
+		case BuildMenuID:
+			interfaceRefreshBuildMenu(outputDocument);
+			break;
 	}
 	
 	interfaceRefreshInterface(outputDocument);
@@ -1353,52 +1424,6 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 	return;
 }
 
-
-//bottom messages, pseudo-console output
-
-var InterfaceBottomMessagesContainerID = "mainInterfaceBottomBarTextContainer";
-var InterfaceBottomMessagesSingleMessageClass = "interfaceConsoleText";
-var InterfaceBottomMessagesSingleMessageID = "mainInterfaceBottomTextMessage_";
-var InterfaceBottomMessagesArray = [];
-var InterfaceBottomMessagesClearOld = true;
-var InterfaceBottomMessagesLifeTime = 10;
-var InterfaceBottomMessagesKeepLast = true;
-var InterfaceBottomMessagesDisplayTime = true;
-
-function interfaceAddBottomMessage(outputDocument, messageText) {
-	var tmpMessageTime = new Date().toLocaleTimeString();
-	var tmpMessageExpire = Math.round(Date.now()/1000) + InterfaceBottomMessagesLifeTime;
-	
-	InterfaceBottomMessagesArray.push([messageText,tmpMessageTime,tmpMessageExpire]);
-	interfaceRefreshBottomMessages(outputDocument);
-}
-function interfaceRefreshBottomMessages(outputDocument) {
-	var tmpElement = outputDocument.getElementById(InterfaceBottomMessagesContainerID);
-	var tmpTime = Math.round(Date.now()/1000);
-	
-	for(var i = 0; i < InterfaceBottomMessagesArray.length; )
-	{
-		if(InterfaceBottomMessagesKeepLast && InterfaceBottomMessagesArray.length <= 1) break;
-		
-		if(InterfaceBottomMessagesArray[i][2] <= tmpTime) {
-			InterfaceBottomMessagesArray.shift();
-		}
-		else i++;
-	}
-	
-	tmpElement.innerHTML = "";
-	
-	for(var i = 0; i < InterfaceBottomMessagesArray.length; i++) {
-		var tmpNewLine = outputDocument.createElement("div");
-		tmpNewLine.className = InterfaceBottomMessagesSingleMessageClass;
-		tmpNewLine.id = (InterfaceBottomMessagesSingleMessageID + i);
-		if(InterfaceBottomMessagesDisplayTime) tmpNewLine.innerHTML = "[" + InterfaceBottomMessagesArray[i][1]+"]: "+InterfaceBottomMessagesArray[i][0];
-		else tmpNewLine.innerHTML = InterfaceBottomMessagesArray[i][0];
-		tmpElement.append(tmpNewLine);
-	}
-	
-	tmpElement.scrollTop = tmpElement.scrollHeight;
-}
 
 
 //planet overview menu navigation
@@ -1457,7 +1482,10 @@ function interfacePlanetOverviewActivateTabHeader(outputDocument, headerTabID) {
 }
 
 function interfacePlanetOverviewPlanetBuildings(outputDocument) {
-	console.log("Buildings on planet, yay. Wow.");
+	//console.log("Buildings on planet, yay. Wow.");
+	if(!InterfacePlanetOverviewPlanetChanging) {
+		interfaceEnterElement(outputDocument,BuildMenuID);
+	}	
 }
 function interfacePlanetOverviewGoToSystem(outputDocument) {
 	//console.log("System overview, yay. Wow.");
@@ -1567,30 +1595,6 @@ function interfaceSystemOverviewShowOnMap(outputDocument){
 	}
 }
 
-function interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument) {
-	if(!InterfaceSystemOverviewSystemChanging) {
-		SystemsCurrentSystem = systemsGetPreviousDiscoveredSystemIndex();
-		if(SettingsInstantMenuNavigation) {
-			interfaceRefreshSystemOverview(outputDocument);
-		}
-		else {
-			interfaceSystemOverviewFadeSystemDetails(outputDocument);
-		}
-	}	
-}
-function interfaceSystemOverviewNetworkPreviousSystem(outputDocument) {
-	if(systemsGetSystemById(SystemsCurrentSystem).network_id != (-1)) {
-		if(!InterfaceSystemOverviewSystemChanging) {
-			SystemsCurrentSystem = systemsGetPreviousNetworkSystemIndex();
-			if(SettingsInstantMenuNavigation) {
-				interfaceRefreshSystemOverview(outputDocument);
-			}
-			else {
-				interfaceSystemOverviewFadeSystemDetails(outputDocument);
-			}
-		}
-	}
-}
 function interfaceSystemOverviewDiscoveredNextSystem(outputDocument) {
 	if(!InterfaceSystemOverviewSystemChanging) {
 		SystemsCurrentSystem = systemsGetNextDiscoveredSystemIndex();
@@ -1602,10 +1606,22 @@ function interfaceSystemOverviewDiscoveredNextSystem(outputDocument) {
 		}
 	}	
 }
+function interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument) {
+	if(!InterfaceSystemOverviewSystemChanging) {
+		SystemsCurrentSystem = systemsGetPreviousDiscoveredSystemIndex();
+		if(SettingsInstantMenuNavigation) {
+			interfaceRefreshSystemOverview(outputDocument);
+		}
+		else {
+			interfaceSystemOverviewFadeSystemDetails(outputDocument);
+		}
+	}	
+}
+
 function interfaceSystemOverviewNetworkNextSystem(outputDocument) {
-	if(systemsGetSystemById(SystemsCurrentSystem).network_id != (-1)) {
+	if(SystemsArray[SystemsCurrentSystem].network_id != (-1)) {
 		if(!InterfaceSystemOverviewSystemChanging) {
-			SystemsCurrentSystem = systemGetNextNetworkPlanetIndex();
+			SystemsCurrentSystem = systemsGetNextNetworkSystemIndex();
 			if(SettingsInstantMenuNavigation) {
 				interfaceRefreshSystemOverview(outputDocument);
 			}
@@ -1613,8 +1629,35 @@ function interfaceSystemOverviewNetworkNextSystem(outputDocument) {
 				interfaceSystemOverviewFadeSystemDetails(outputDocument);
 			}
 		}
+		else{
+			//console.log("DEBUG: System change in progress.");
+		}
+	}
+	else{
+		//console.log("DEBUG: Not part of network. (" + systemsGetSystemById(SystemsCurrentSystem).network_id + ")");
 	}
 }
+function interfaceSystemOverviewNetworkPreviousSystem(outputDocument) {
+	if(SystemsArray[SystemsCurrentSystem].network_id != (-1)) {
+		if(!InterfaceSystemOverviewSystemChanging) {
+			SystemsCurrentSystem = systemsGetPreviousNetworkSystemIndex();
+			if(SettingsInstantMenuNavigation) {
+				interfaceRefreshSystemOverview(outputDocument);
+			}
+			else {
+				interfaceSystemOverviewFadeSystemDetails(outputDocument);
+			}
+		}
+		else{
+			//console.log("DEBUG: System change in progress.");
+		}
+	}
+	else{
+		//console.log("DEBUG: Not part of network. (" + systemsGetSystemById(SystemsCurrentSystem).network_id + ")");
+	}
+}
+
+
 
 var InterfaceSystemOverviewSystemChanging = false;
 var InterfaceSystemOverviewSystemFadeOutTime = 0.15;
@@ -1654,8 +1697,131 @@ function interfaceSystemOverviewShowSystemDetails(outputDocument) {
 	},1000*(InterfaceSystemOverviewSystemFadeInTime+0.025));
 }
 
+
+//galaxy map menu navigation
+
 function interfaceGalaxyMapEnterSystem(outputDocument){
 	SystemsCurrentSystem = GalaxyMapSelectedSystem;
 	
 	interfaceEnterElement(outputDocument,SystemOverviewMenuID);
+}
+
+
+//building menu navigation
+
+function interfacePlanetBuildingGoToPlanet(outputDocument) {
+	if(!InterfacePlanetBuildingsPlanetChanging) {
+		interfaceEnterElement(outputDocument,PlanetOverviewMenuID);
+	}
+}
+
+function interfacePlanetBuildingsPreviousPlanet(outputDocument) {
+	if(!InterfacePlanetBuildingsPlanetChanging) {
+		PlanetsCurrentPlanet = planetsGetPreviousFactionPlanetIndex(DiplomacyPlayerFaction);
+		if(SettingsInstantMenuNavigation) {
+			interfaceRefreshBuildMenu(outputDocument);
+		}
+		else {
+			interfacePlanetBuildingsFadePlanetDetails(outputDocument);
+		}
+	}	
+}
+function interfacePlanetBuildingsNextPlanet(outputDocument) {
+	if(!InterfacePlanetBuildingsPlanetChanging) {
+		PlanetsCurrentPlanet = planetsGetNextFactionPlanetIndex(DiplomacyPlayerFaction);
+		if(SettingsInstantMenuNavigation) {		
+			interfaceRefreshBuildMenu(outputDocument);
+		}
+		else {
+			interfacePlanetBuildingsFadePlanetDetails(outputDocument);
+		}
+	}	
+}
+
+var InterfacePlanetBuildingsPlanetChanging = false;
+var InterfacePlanetBuildingsPlanetFadeOutTime = 0.15;
+var InterfacePlanetBuildingsPlanetFadeInDelay = 0.20;
+var InterfacePlanetBuildingsPlanetFadeInTime = 0.15;
+
+var InterfaceBuildingMenuPlanetContainerID = "planetBuildingPlanetContainer";
+var InterfaceBuildingMenuPlanetHeaderContainerID = "planetBuildingInfoPanelHeaderCurrentPlanet";
+var InterfaceBuildingMenuPlanetEnergyContainerID = "planetBuildingPlanetEnergyContainer";
+var InterfaceBuildingMenuResourcesContainerID = "planetBuildingInfoPanelResourcesContainer";
+var InterfaceBuildingMenuPlanetListContainerID = "planetBuildingMenuBuildingListContainer";
+
+function interfacePlanetBuildingsFadePlanetDetails(outputDocument) {
+	InterfacePlanetBuildingsPlanetChanging = true;
+	
+	//newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetContainerID, InterfacePlanetBuildingsPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuResourcesContainerID, InterfacePlanetBuildingsPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetListContainerID, InterfacePlanetBuildingsPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetHeaderContainerID, InterfacePlanetBuildingsPlanetFadeOutTime, 0, 1);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetEnergyContainerID, InterfacePlanetBuildingsPlanetFadeOutTime, 0, 1);
+	
+	setTimeout(()=>{
+			interfaceRefreshBuildMenu(outputDocument);
+			//PlanetsCurrentPlanet = planetsGetNextSystemPlanetIndex();		
+			setTimeout(()=>{
+				interfacePlanetBuildingsShowPlanetDetails(outputDocument);
+			},1000*(InterfacePlanetBuildingsPlanetFadeInDelay/2));
+		},1000*(InterfacePlanetBuildingsPlanetFadeInDelay/2 + InterfacePlanetBuildingsPlanetFadeOutTime));
+}
+function interfacePlanetBuildingsShowPlanetDetails(outputDocument) {
+	//newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetContainerID, InterfacePlanetBuildingsPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuResourcesContainerID, InterfacePlanetBuildingsPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetListContainerID, InterfacePlanetBuildingsPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetHeaderContainerID, InterfacePlanetBuildingsPlanetFadeInTime, 1, 0);
+	newAnimatedElementOpacity_Inherit(outputDocument, InterfaceBuildingMenuPlanetEnergyContainerID, InterfacePlanetBuildingsPlanetFadeInTime, 1, 0);
+	
+	setTimeout(()=>{
+		InterfacePlanetBuildingsPlanetChanging = false;
+	},1000*(InterfacePlanetBuildingsPlanetFadeInTime+0.025));
+}
+
+
+
+//bottom messages, pseudo-console output
+
+var InterfaceBottomMessagesContainerID = "mainInterfaceBottomBarTextContainer";
+var InterfaceBottomMessagesSingleMessageClass = "interfaceConsoleText";
+var InterfaceBottomMessagesSingleMessageID = "mainInterfaceBottomTextMessage_";
+var InterfaceBottomMessagesArray = [];
+var InterfaceBottomMessagesClearOld = true;
+var InterfaceBottomMessagesLifeTime = 10;
+var InterfaceBottomMessagesKeepLast = true;
+var InterfaceBottomMessagesDisplayTime = true;
+
+function interfaceAddBottomMessage(outputDocument, messageText) {
+	var tmpMessageTime = new Date().toLocaleTimeString();
+	var tmpMessageExpire = Math.round(Date.now()/1000) + InterfaceBottomMessagesLifeTime;
+	
+	InterfaceBottomMessagesArray.push([messageText,tmpMessageTime,tmpMessageExpire]);
+	interfaceRefreshBottomMessages(outputDocument);
+}
+function interfaceRefreshBottomMessages(outputDocument) {
+	var tmpElement = outputDocument.getElementById(InterfaceBottomMessagesContainerID);
+	var tmpTime = Math.round(Date.now()/1000);
+	
+	for(var i = 0; i < InterfaceBottomMessagesArray.length; )
+	{
+		if(InterfaceBottomMessagesKeepLast && InterfaceBottomMessagesArray.length <= 1) break;
+		
+		if(InterfaceBottomMessagesArray[i][2] <= tmpTime) {
+			InterfaceBottomMessagesArray.shift();
+		}
+		else i++;
+	}
+	
+	tmpElement.innerHTML = "";
+	
+	for(var i = 0; i < InterfaceBottomMessagesArray.length; i++) {
+		var tmpNewLine = outputDocument.createElement("div");
+		tmpNewLine.className = InterfaceBottomMessagesSingleMessageClass;
+		tmpNewLine.id = (InterfaceBottomMessagesSingleMessageID + i);
+		if(InterfaceBottomMessagesDisplayTime) tmpNewLine.innerHTML = "[" + InterfaceBottomMessagesArray[i][1]+"]: "+InterfaceBottomMessagesArray[i][0];
+		else tmpNewLine.innerHTML = InterfaceBottomMessagesArray[i][0];
+		tmpElement.append(tmpNewLine);
+	}
+	
+	tmpElement.scrollTop = tmpElement.scrollHeight;
 }

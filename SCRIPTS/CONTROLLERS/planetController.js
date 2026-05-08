@@ -31,7 +31,7 @@ var PlanetTypes = {
 	"Jungle":["Jungle","hsl(120,100%,50%)","hsl(120,100%,25%)",0],
 	"Volcanic":["Volcanic","hsl(10,100%,45%)","hsl(10,100%,25%)",0],
 	"Metallic":["Metallic","hsl(0,15%,50%)","hsl(0,15%,25%)",0],	//9
-	"Terrestrial":["Terrestrial","hsl(105,100%,50%)","hsl(105,100%,25%)",0],
+	"Terrestrial":["Terrestrial","hsl(105,100%,50%)","hsl(105,100%,35%)",0],
 	"Tundra":["Tundra","hsl(150,75%,65%)","hsl(150,75%,45%)",0],
 	"Ocean":["Ocean","hsl(255,100%,50%)","hsl(255,100%,25%)",0],	//12
 };
@@ -259,7 +259,7 @@ class PlanetObject{
 		tmpReply += this.energyAvailable + " / " + this.energyRequired + " ( ";
 		if(this.energyRequired == 0) tmpReply+= "100% )";
 		else if(this.energyAvailable/this.energyRequired >= 1) tmpReply+= "100% )";
-		else tmpReply += Number(this.energyAvailable / this.energyRequired).toFixed(2) + "% )";
+		else tmpReply += Number(100 * this.energyAvailable / this.energyRequired).toFixed(2) + "% )";
 		
 		return tmpReply;
 	}

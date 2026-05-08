@@ -11,6 +11,17 @@ function connectionTest_progress(outputDocument) {
 var ProgressIntroDisplayedOrSkipped = false;
 var ProgressIntroSkipCounter = 0;
 
+function progressToggleIntroSkip(){
+	if(ProgressIntroDisplayedOrSkipped) progressDisableIntroSkip();
+	else progressEnableIntroSkip();
+}
+function progressEnableIntroSkip(){
+	ProgressIntroDisplayedOrSkipped = true;
+}
+function progressDisableIntroSkip(){
+	ProgressIntroDisplayedOrSkipped = false;
+}
+
 var OLDProgressUnlockedMainMenuTabs = [true,true,true,false,false,false,false,false,false,false,true];
 var ProgressDefaultUnlockedMainMenuTabs = {
 	"Planet":true,

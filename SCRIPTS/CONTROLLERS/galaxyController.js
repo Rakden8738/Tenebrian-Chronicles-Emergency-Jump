@@ -1669,7 +1669,7 @@ function galaxyMapMouseExit(e, outputDocument, canvasObject) {
 	else{
 		GalaxyMapMouseDragInterrupt = true;
 	}
-	console.log("Mouse exit.")
+	//console.log("Mouse exit.")
 }
 function galaxyMapMouseDown(e, outputDocument, canvasObject){
 	//console.log("Mouse down event: " + Date.now());

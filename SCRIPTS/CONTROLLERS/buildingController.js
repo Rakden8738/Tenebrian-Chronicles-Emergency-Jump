@@ -329,3 +329,87 @@ function buildingsDowngradeBuilding(buildingObject, planetObject, upgradesAmount
 	
 	planetObject.resourceStorage = resourcesSumResources(tmpRefund, planetObject.resourceStorage, upgradesAmount);
 }
+
+var BuildingsBulkBuyAmount = 10;
+var BuildingsAutoAssignStaffEnabled = true;
+var BuildingsTryBuyMaxEnabled = true;
+var BuildingsDemolishLockEnabled = true;
+var BuildingsBulkBuyNumericInputClass = "planetBuildingsSingleBuildingSingleInputNumber";
+var BuildingsBulkOperatorsNumericInputClass = "planetBuildingsSingleBuildingAddRemoveOperatorInputNumber";
+
+function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
+	var tmpInputsArray = [];
+	var tmpNewValue = 10;
+	if(isNotNaN(inputValue)){
+		tmpNewValue = Math.floor(Number(inputValue.trim()));
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
+		for(var i = 0; i<tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpNewValue;
+		}
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkOperatorsNumericInputClass);
+		for(var i = 0; i<tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpNewValue;
+		}
+		return true;
+	}
+	console.log("Got NaN");
+	return false;
+}
+
+function buildingsToggleAutoAssignStaff(){
+	if(BuildingsAutoAssignStaffEnabled) buildingsDisableAutoAssignStaff();
+	else buildingsEnableAutoAssignStaff();
+}
+function buildingsEnableAutoAssignStaff(){
+	BuildingsAutoAssignStaffEnabled = true;
+}
+function buildingsDisableAutoAssignStaff(){
+	BuildingsAutoAssignStaffEnabled = false;
+}
+
+function buildingsToggleTryBuyMax(){
+	if(BuildingsTryBuyMaxEnabled) buildingsDisableTryBuyMax();
+	else buildingsEnableTryBuyMax();
+}
+function buildingsEnableTryBuyMax(){
+	BuildingsTryBuyMaxEnabled = true;
+}
+function buildingsDisableTryBuyMax(){
+	BuildingsTryBuyMaxEnabled = false;
+}
+
+function buildingsToggleDemolishLock(){
+	if(BuildingsDemolishLockEnabled) buildingsDisableDemolishLock();
+	else buildingsEnableDemolishLock();
+}
+function buildingsEnableDemolishLock(){
+	BuildingsDemolishLockEnabled = true;
+}
+function buildingsDisableDemolishLock(){
+	BuildingsDemolishLockEnabled = false;
+}
+
+
+
+function buildingsGetBuildingsObject(){
+	var newConfigObject = {};
+	
+	newConfigObject["buildingsAutoAssignStaff"] = BuildingsAutoAssignStaffEnabled;
+	newConfigObject["buildingsTryBuyMax"] = BuildingsTryBuyMaxEnabled;
+	newConfigObject["buildingsDemolishLock"]= BuildingsDemolishLockEnabled;
+	
+	return newConfigObject;
+}
+function buildingsSetBuildingsObject(newConfigObject){
+	
+	try{
+		BuildingsAutoAssignStaffEnabled = newConfigObject.buildingsAutoAssignStaff;
+	} catch{ console.warn("Save is missing flag for auto assign staff setting.")};
+	try{
+		BuildingsTryBuyMaxEnabled = newConfigObject.buildingsTryBuyMax;
+	} catch{ console.warn("Save is missing flag for buildings try buy max setting.")};
+	try{
+		BuildingsDemolishLockEnabled = newConfigObject.buildingsDemolishLock;
+	} catch{ console.warn("Save is missing flag for buildings demolish lock setting.")};
+
+}
