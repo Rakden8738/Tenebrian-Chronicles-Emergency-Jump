@@ -34,7 +34,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Construction-ready blocks of stone.";
 	tmpResource.categories = [0,1];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -42,7 +42,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Damaged and no longer usable fragments of technology produced by us or other civilizations.";
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -50,7 +50,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Unsorted collection of metal-bearing rocks.";
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -58,7 +58,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Granular material composed of silicon-rich particles.";
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -66,7 +66,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Refined sheets and ingots of cast iron.";
 	tmpResource.categories = [1,2];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -74,7 +74,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Sheets of durable glass.";
 	tmpResource.categories = [1,2];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -82,7 +82,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Refined sheets and ingots of copper.";
 	tmpResource.categories = [2,3];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -90,7 +90,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Simple electronic circuts.";
 	tmpResource.categories = [1,3];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -98,7 +98,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Chunks of raw, mined coal.";
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -106,7 +106,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Solid blocks of high purity carbon.";
 	tmpResource.categories = [4,5,8];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -114,7 +114,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Unrefined fossil fuels.";
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 
 	tmpResource = new ResourceTypeObject();
@@ -122,7 +122,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Relatively volatile high energy fuel in liquid form.";
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -130,7 +130,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Plain water. Commonly used in industrial farming, powerplants and chemistry.";
 	tmpResource.categories = [0,8];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = true;
+	tmpResource.naturalResource = true;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -138,7 +138,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Refined sheets of plates, bolts, rods and ingots made out of steel.";
 	tmpResource.categories = [1,2];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -146,7 +146,7 @@ function earlyAlpha_Resources(){
 	tmpResource.description = "Prefabricated and standarized construction components for easy construction, repairs, maintenance and disassembly.";
 	tmpResource.categories = [1,7];
 	tmpResource.discovered = true;
-	tmpResource.naturalResources = false;
+	tmpResource.naturalResource = false;
 	ResourcesArray.push(tmpResource);
 	
 	resourcesRefreshResources();
@@ -506,6 +506,8 @@ function earlyAlpha_Planets(){
 	tmpPlanet.averageTemperature = 15.0;
 	tmpPlanet.gravity = 9.81;
 	tmpPlanet.startingPosition = 0.272;
+	
+	
 	
 	// tmpPlanet.naturalResources["Gravel"] = 1.0;
 	// tmpPlanet.naturalResources["Stone"] = 1.5;

@@ -17,7 +17,7 @@ var ResourcesInitDebug = false;
 class ResourceTypeObject {
 	index = -1;
 	name = "Unobtanium";
-	descrpition = "Default material.";
+	description = "Default material.";
 	
 	categories = [10];
 	
@@ -26,6 +26,11 @@ class ResourceTypeObject {
 }
 
 class ResourceObject {
+	constructor(resourceIndex){
+		this.typeIndex = resourceIndex;
+		this.typeName = ResourcesNamesArray[resourceIndex];
+	}
+	
 	index = -1;
 	typeIndex = -1;
 	typeName = "";
@@ -34,6 +39,11 @@ class ResourceObject {
 }
 
 class NaturalResourceObject {
+	constructor(resourceIndex){
+		this.typeIndex = resourceIndex;
+		this.typeName = ResourcesNamesArray[resourceIndex];
+	}
+	
 	index = -1;
 	typeIndex = -1;
 	typeName = "";
@@ -43,6 +53,11 @@ class NaturalResourceObject {
 }
 
 class ResourceBonusObject {
+	constructor(resourceIndex){
+		this.typeIndex = resourceIndex;
+		this.typeName = ResourcesNamesArray[resourceIndex];
+	}
+	
 	index = -1;
 	typeIndex = -1;
 	typeName = "";
@@ -57,41 +72,120 @@ function resourcesRefreshResources(){
 	}
 }
 
-function createEmptyNaturalResourcesArray(){
+function resourcesCreateEmptyNaturalResourcesArray(){
 	var tmpNaturalResourcesArray = [];
 	
 	for(let i = 0; i < ResourcesArray.length; i++){
 		if(ResourcesArray[i].naturalResource){
-			var tmpNaturalResource = createNaturalResourceObject(i);
+			var tmpNaturalResource = resourcesCreateNaturalResourceObject(i);
 			tmpNaturalResource.index = tmpNaturalResourcesArray.length;
-			tmpNaturalResource.typeName = ResourcesArray[i].name;
+			//tmpNaturalResource.typeName = ResourcesArray[i].name;
 			tmpNaturalResourcesArray.push(tmpNaturalResource);
 		}
 	}
 	
 	return tmpNaturalResourcesArray;
 }
+function resourcesCreateEmptyResourceBonusArray(){
+	var tmpBonusResourcesArray = [];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		if(!ResourcesArray[i].naturalResource){
+			var tmpBonusResource = resourcesCreateBonusResourceObject(i);
+			tmpBonusResource.index = tmpBonusResourcesArray.length;
+			//tmpBonusResource.typeName = ResourcesArray[i].name;
+			tmpBonusResourcesArray.push(tmpBonusResource);
+		}
+	}
+	
+	return tmpBonusResourcesArray;
+}
+function resourcesCreateEmptyStorageResourcesArray(){
+	var tmpEmptyStorageArray = [];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		var tmpStorageResource = resourcesCreateEmptyStorageResourceObject(i);
+		tmpStorageResource.index = tmpEmptyStorageArray.length;
+		//tmpStorageResource.typeName = ResourcesArray[i].name;
+		tmpEmptyStorageArray.push(tmpStorageResource);
+	}
+	
+	return tmpEmptyStorageArray;
+}
 
-function createNaturalResourceByName(resourceName, tmpAmount = 0, tmpQuality = 0){
-	if(ResourcesArray.includes(resourceName)){
-		var tmpIndex = ResourcesArray.indexOf(resourceName);
+function resourcesCreateNaturalResourceByName(resourceName, tmpAmount = 0, tmpQuality = 0){
+	if(ResourcesNamesArray.includes(resourceName)){
+		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
 		
-		return createNaturalResourceObject(resourceIndex, tmpAmount, tmpQuality);
+		return resourcesCreateNaturalResourceObject(resourceIndex, tmpAmount, tmpQuality);
 	}
 	else {
 		console.warn("Failed to add natural resource: " + resourceName + " Resource type unknown.");
 		return false;
-	}
-		
+	}	
 }
-
-function createNaturalResourceObject(resourceIndex, tmpAmount = 0, tmpQuality = 0){
-	var tmpResource = new NaturalResourceObject();
-	tmpResource.typeIndex = resourceIndex;
+function resourcesCreateNaturalResourceObject(resourceIndex, tmpAmount = 0, tmpQuality = 0){
+	var tmpResource = new NaturalResourceObject(resourceIndex);
+	//tmpResource.typeIndex = resourceIndex;
 	tmpResource.quality = tmpQuality;
 	tmpResource.quantity = tmpAmount;
 	return tmpResource;
 }
+function resourcesCreateBonusResourceByName(resourceName, tmpBonus = 1.0){
+	if(ResourcesNamesArray.includes(resourceName)){
+		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		
+		return resourcesCreateBonusResourceObject(resourceIndex, tmpBonus);
+	}
+	else {
+		console.warn("Failed to add bonus resource: " + resourceName + " Resource type unknown.");
+		return false;
+	}	
+}
+function resourcesCreateBonusResourceObject(resourceIndex, tmpBonus = 1.0){
+	var tmpResource = new ResourceBonusObject(resourceIndex);
+	//tmpResource.typeIndex = resourceIndex;
+	tmpResource.bonus = tmpBonus;
+	return tmpResource;
+}
+function resourcesCreateEmptyStorageResourceByName(resourceName, tmpAmount = 0.0){
+	if(ResourcesNamesArray.includes(resourceName)){
+		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		
+		return resourcesCreateEmptyStorageResourceObject(resourceIndex, tmpAmount);
+	}
+	else {
+		console.warn("Failed to add storage resource: " + resourceName + " Resource type unknown.");
+		return false;
+	}	
+}
+function resourcesCreateEmptyStorageResourceObject(resourceIndex, tmpAmount = 0.0){
+	var tmpResource = new ResourceObject(resourceIndex);
+	//tmpResource.typeIndex = resourceIndex;
+	tmpResource.amount = tmpAmount;
+	return tmpResource;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function resourcesInitResources(outputDocument){
@@ -99,11 +193,6 @@ function resourcesInitResources(outputDocument){
 	ResourcesDiscovered = resourcesRecreateDiscoveredResources();
 	ResourcesNaturalResources = resourcesRecreateNaturalResources();
 }
-
-
-
-
-
 
 
 var ResourcesNames = [

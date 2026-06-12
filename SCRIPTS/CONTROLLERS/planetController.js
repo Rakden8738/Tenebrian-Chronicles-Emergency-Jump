@@ -147,11 +147,12 @@ var PlanetAtmospheres = {
 
 class PlanetObject{
 	constructor(){
-		this.naturalResources = resourcesGetNewResourcesObject();
+		this.naturalResources = resourcesCreateEmptyNaturalResourcesArray();
+		this.bonusResources = resourcesCreateEmptyResourceBonusArray();
 		
-		this.resourceStorage = resourcesGetNewResourcesObject(0.0);
-		this.resourceProduction = resourcesGetNewResourcesObject(0.0);
-		this.resourceConsumption = resourcesGetNewResourcesObject(0.0);
+		this.resourceStorage = resourcesCreateEmptyStorageResourcesArray();
+		this.resourceProduction = resourcesCreateEmptyStorageResourcesArray();
+		this.resourceConsumption = resourcesCreateEmptyStorageResourcesArray();
 	}
 	
 	name = "Unknown planet";
@@ -185,12 +186,13 @@ class PlanetObject{
 	
 	relativeSize = 0;
 	
-	naturalResources = {};
+	naturalResources = [];
+	bonusResources = [];
 	
 	//resources
-	resourceStorage = {};
-	resourceProduction = {};
-	resourceConsumption = {};
+	resourceStorage = [];
+	resourceProduction = [];
+	resourceConsumption = [];
 	
 	//energy
 	energyAvailable = 0;
@@ -279,6 +281,16 @@ class PlanetObject{
 	getNaturalResource(resourceName){
 		if(typeof(this.naturalResources[resourceName]) != "undefined") return this.naturalResources[resourceName];
 		else return 0;
+	}
+	
+	setNaturalResource(resourceName, resourceQuality, resourceQuantity){
+		
+	}
+	setBonusResource(resourceName, resourceBonus){
+		
+	}
+	setStorageResource(resourceName, resourceAmount){
+		
 	}
 }
 
