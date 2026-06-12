@@ -9,14 +9,141 @@ function connectionTest_buildings(outputDocument){
 }
 
 var BuildingsArray = [];
-var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special", "Debug"];
-var BuildingCategoriesEnabled = [true,true,true,true,true,true,true,false];
+var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special", "Other" , "Debug"];
+var BuildingCategoriesEnabled = [true,true,true,true,true,true,true,false, false];
 //var BuildingCategories = ["Extraction", "Production", "Energy", "Research"];
 //var BuildingCategoriesEnabled = [true,true,true,true];
 
-function buildingInitBuildings(outputDocument){
+
+var BuildingInitDebug = false;
+function buildingInitBuildings(){
+	for(let i = 0; i < PlanetsArray.length; i++){
+		
+		if(BuildingInitDebug) console.log("Planet: " + PlanetsArray[i].name);
+		PlanetsArray[i].buildings = [];
+		
+		for(let j = 0; j < BuildingsArray.length; j++){
+			if(BuildingInitDebug) console.log("  Planet: " + PlanetsArray[i].name + " Building: " + BuildingsArray[j].name);
+			
+			
+			//if planet type is required but it doesn't match, skip
+			/*
+			if(BuildingsArray[j].allowedPlanetTypes.length > 0 && PlanetsArray[i].type[0] != BuildingsArray[j].allowedPlanetTypes) {
+				console.log("Planet " + PlanetsArray[i].name + " of type " + PlanetsArray[i].type[0] + " doesn't match requirement of " + BuildingsArray[j].name + " for type " + BuildingsArray[j].allowedPlanetTypes);
+				continue;
+			}*/
+			if(BuildingsArray[j].allowedPlanetTypes.length > 0 && !BuildingsArray[j].allowedPlanetTypes.includes(PlanetsArray[i].type[0])){
+				if(BuildingInitDebug) console.log("    Planet " + PlanetsArray[i].name + " of type " + PlanetsArray[i].type[0] + " doesn't match type requirement of " + BuildingsArray[j].name);
+				continue;
+			}
+			
+			//if planet type is forbidden for this building, skip
+			if(BuildingsArray[j].forbiddenPlanetTypes.includes(PlanetsArray[i].type[0])) {
+				if(BuildingInitDebug) console.log("    Planet " + PlanetsArray[i].name + " of type " + PlanetsArray[i].type[0] + " is incompatible type-wise with " + BuildingsArray[j].name);
+				continue;
+			}
+			
+			//if planet has incompatible condition, skip
+			let tmpConditionsAcceptable = true;
+			for(let k = 0; k < PlanetsArray[i].conditions.length; k++){
+				if(BuildingsArray[j].forbiddenPlanetConditions.includes(PlanetsArray[i].conditions[k][0])){
+					tmpConditionsAcceptable = false;
+					if(BuildingInitDebug) console.log("    Planet " + PlanetsArray[i].name + " has forbidden condition of " + PlanetsArray[i].conditions[k][0] + " for " + BuildingsArray[j].name);
+					break;
+				}
+			}
+			if(!tmpConditionsAcceptable){
+				continue;
+			}
+			
+			//if planet does not have required conditions, skip
+			let tmpConditionsRequirementMet = true;
+			let tmpConditionsArray = [];
+			for(let k = 0; k < PlanetsArray[i].conditions.length; k++){
+				tmpConditionsArray.push(PlanetsArray[i].conditions[k][0]);
+			}
+			for(let k = 0; k < BuildingsArray[j].requiredPlanetConditions.length; k++){		
+				if(!tmpConditionsArray.includes(BuildingsArray[j].requiredPlanetConditions[k])){
+					tmpConditionsRequirementMet = false;
+					if(BuildingInitDebug) console.log("    Planet " + PlanetsArray[i].name + " does not have required condition of " + BuildingsArray[j].requiredPlanetConditions[k] + " for " + BuildingsArray[j].name);
+					break;
+				}				
+			}
+			if(!tmpConditionsRequirementMet){
+				continue;
+			}
+			
+			//if all above are fine, building blueprint can be registered inside of array in planet's object
+			
+			let tmpBuilding = new BuldingObject();
+			tmpBuilding.index = PlanetsArray[i].buildings.length;
+			tmpBuilding.blueprintIndex = j;
 	
+			PlanetsArray[i].buildings.push(tmpBuilding);
+			
+			if(BuildingInitDebug) console.log("    Building " + BuildingsArray[j].name + " added to planet " + PlanetsArray[i].name);
+		}
+	}
 }
+
+class BuildingBlueprintObject{
+	index = -1;
+	name = "not set";
+	description = "example description";
+	
+	categories = [7];
+	
+	allowedPlanetTypes = [];
+	requiredPlanetConditions = [];
+	
+	forbiddenPlanetTypes = [];
+	forbiddenPlanetConditions = [];
+	
+	powerProduced = 0;
+	powerConsumed = 0;
+	powerMinimum = 0.1;				//ratio of power under which the building shuts down
+	powerSensitive = false;			//even the smallest power shortage prevents building from working
+	
+	staffNeededBase = 0;			//staff members needed at single lvl 1 building
+	staffNoneNeeded = false;		//no staff needed for building
+	staffMandatory = false;			//shuts down if understaffed
+	staffPenalty = 0.5;				//exp. value for understaffed penalty. Defalut 0.5 is (availStaff/reqStaff)^(0.5) - 70% efficiency when half of staff is present
+	staffBonus = 0.5;				//exp. value for overstaffed bonus.Defalut 0.5 is (availStaff/reqStaff)^(0.5) - 141% efficiency when double staff is present
+	staffOvertimeForbidden = false;	//no bonus from extra staff
+	
+	hazardSensitive = false;//wont work if there is even slightest hazard present
+	hazardTolerance = 10;	//after what hazard level efficiency begins to drop
+	hazardLimit = 5;		//after what hazard levels past tolerance building shuts down
+	hazardResistant = false;//hazard has no influence on building's activity
+	
+	unrestSensitive = false;//wont work if there is even slightest unrest present
+	unrestTolerance = 0.0;	//TODO value/ratio of unrest above which efficiency begins to drop
+	unrestLimit = 0.75;		//TODO value/ratio of unrest when building cannot work anymore
+	unrestResistant = false;//unrest has no influence on building's activity
+	
+	mineralsDependant = false;
+	mineralsRatio = 1;		//ratio of building/resources above which the efficiency drops
+	mineralsRequired = "Stone";	//what natural resource affects output
+	mineralsRequiredDifferent = false; //is required natural resource vastly different from intended output 
+	
+	unlocked = false;
+}
+class BuldingObject{
+	index = -1;
+	blueprintIndex = -1;
+	
+	powerProduced = 0;
+	powerConsumed = 0;
+	
+	count = 0;
+	level = 1;
+	staffAssigned = 0;
+	staffRequired = 0;
+	
+	enabled = true;
+	folded = true;
+}
+
 
 var BuildingsBulkBuyAmount = 10;
 var BuildingsAutoAssignStaffEnabled = true;
@@ -29,6 +156,8 @@ function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
 	var tmpInputsArray = [];
 	var tmpNewValue = 10;
 	if(isNotNaN(inputValue)){
+		if(inputValue < 0) inputValue = 1;
+		
 		tmpNewValue = Math.floor(Number(inputValue.trim()));
 		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
 		for(var i = 0; i<tmpInputsArray.length; i++){
@@ -38,6 +167,7 @@ function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
 		for(var i = 0; i<tmpInputsArray.length; i++){
 			tmpInputsArray[i].value = tmpNewValue;
 		}
+		BuildingsBulkBuyAmount = tmpNewValue;
 		return true;
 	}
 	console.log("Got NaN");

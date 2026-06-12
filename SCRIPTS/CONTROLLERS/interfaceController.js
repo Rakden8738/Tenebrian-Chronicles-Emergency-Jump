@@ -466,10 +466,10 @@ function interfaceInitBuildMenu(outputDocument){
 	interfaceBuildMenuInitCategories(outputDocument);
 	
 	//TMP DEBUG BUTTON
-	outputDocument.getElementById("planetBuildingSingleBuildingUnfoldBuildingButton_0").onclick = function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
-	outputDocument.getElementById("planetBuildingSingleBuildingFoldBuildingButton_0").onclick =  function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
+	//outputDocument.getElementById("planetBuildingSingleBuildingUnfoldBuildingButton_0").onclick = function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
+	//outputDocument.getElementById("planetBuildingSingleBuildingFoldBuildingButton_0").onclick =  function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
 		
-	
+	interfaceInitBuildingsList(outputDocument);
 	interfaceRefreshBuildMenu(outputDocument);
 }
 
@@ -505,14 +505,1218 @@ function interfaceBuildMenuInitCategories(outputDocument){
 		tmpElement.append(tmpCategory);
 	}
 }
+
+var BuildingMenuSingleBuildingClassUnfolded = "planetBuildingUnfoldedBuilding";
+var BuildingMenuSingleBuildingClassFolded = "planetBuildingFoldedBuilding";
+var BuildingMenuSingleBuildingIdPrefix = "planetBuildingSingleBuilding_";
+var BuildingMenuSingleBuildingContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingContainer";
+
+var BuildingMenuSingleBuildingInfoContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer";
+
+var BuildingMenuSingleBuildingInfoHeaderContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingHeaderContainer";
+
+var BuildingMenuSingleBuildingInfoHeaderNameContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingNameContainer";
+var BuildingMenuSingleBuildingInfoHeaderNameValueClass = "planetBuildingSingleBuildingHeaderText";
+var BuildingMenuSingleBuildingInfoHeaderNameValueClassIdPrefix = "planetBuildingSingleBuildingName_";
+
+var BuildingMenuSingleBuildingInfoHeaderAmountLevelContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingAmountLevelContainer";
+
+var BuildingMenuSingleBuildingInfoHeaderLevelContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingLevelContainer";
+var BuildingMenuSingleBuildingInfoHeaderLevelPrefixClass = "planetBuildingSingleBuildingHeaderText";
+var BuildingMenuSingleBuildingInfoHeaderLevelValueClass = "planetBuildingSingleBuildingHeaderText interfaceDynamicText";
+var BuildingMenuSingleBuildingInfoHeaderLevelValueClassIdPrefix = "planetBuildingSingleBuildingLevel_";
+
+var BuildingMenuSingleBuildingInfoHeaderAmountContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingAmountContainer";
+var BuildingMenuSingleBuildingInfoHeaderAmountPrefixClass = "planetBuildingSingleBuildingHeaderText";
+var BuildingMenuSingleBuildingInfoHeaderAmountValueClass = "planetBuildingSingleBuildingHeaderText interfaceDynamicText";
+var BuildingMenuSingleBuildingInfoHeaderAmountValueClassIdPrefix = "planetBuildingSingleBuildingAmount_";
+
+var BuildingMenuSingleBuildingInfoResourceTableContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingInfoResourceTableClass = "interfaceTable planetBuildingResourceListTable";
+var BuildingMenuSingleBuildingInfoResourceTableBodyClass = "interfaceTableBody";
+
+var BuildingMenuSingleBuildingInfoResourceTableHeaderRowClass = "interfaceTableRow";
+var BuildingMenuSingleBuildingInfoResourceTableHeaderCellClass = "interfaceTableCell planetBuildingResourceHeaderCell";
+var BuildingMenuSingleBuildingInfoResourceTableHeaderCellTextClass = "interfaceText planetBuildingResourceHeader";
+
+//TODO - variables for resources in table 
+
+//TODO - variables for energy in table 
+
+var BuildingMenuSingleBuildingBuildDemolishContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingBuildDemolishContainer";
+var BuildingMenuSingleBuildingBuildButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildButtonsContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingDemolishButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDemolishButtonsContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingBuildDemolishButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildDemolishButtonsContainer";
+
+var BuildingMenuSingleBuildingUpgradeDowngradeContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingUpgradeDowngradeContainer";
+var BuildingMenuSingleBuildingUpgradeButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeButtonsContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingDowngradeButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDowngradeButtonsContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingUpgradeDowngradeButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer";
+
+var BuildingMenuSingleBuildingSingleButtonClass = "planetBuildingsSingleBuildingSingleButton";
+var BuildingMenuSingleBuildingSingleButtonImageClass = "planetBuildingSingleBuildingSingleButtonImage";
+var BuildingMenuSingleBuildingSingleButtonSubtextClass = "planetBuildingSingleBuildingSingleButtonText";
+var BuildingMenuSingleBuildingSingleInputNumberClass = "interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber";
+
+var BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix = "planetBuildingsSingleBuildingSingleBuildDemolishInput_";
+var BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix = "planetBuildingsSingleBuildingSingleUpgradeDowngradeInput_";
+
+var BuildingMenuSingleBuildingBuildImagePath = "RESOURCES/ICONS/Plus_Fancy.png";
+var BuildingMenuSingleBuildingDemolishImagePath = "RESOURCES/ICONS/Ex_Fancy.png";
+var BuildingMenuSingleBuildingUpgradeImagePath = "RESOURCES/ICONS/Upgrade_Fancy.png";
+var BuildingMenuSingleBuildingDowngradeImagePath = "RESOURCES/ICONS/Downgrade_Fancy.png";
+
+var BuildingMenuSingleBuildingControlContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingControlContainer";
+var BuildingMenuSingleBuildingFoldedOperatorContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsFoldedContainer planetBuildingFoldedOnlyBuilding";
+var BuildingMenuSingleBuildingFoldedSideButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsFoldedContainer planetBuildingFoldedOnlyBuilding";
+var BuildingMenuSingleBuildingUnfoldedOperatorContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsUnfoldedContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingUnfoldedSideButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsUnfoldedContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingControlAlertsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer";
+
+var BuildingMenuSingleBuildingOperatorHeaderContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderContainer";
+var BuildingMenuSingleBuildingOperatorHeaderTextContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderTextContainer";
+var BuildingMenuSingleBuildingOperatorHeaderTextClass = "planetBuildingSingleBuildingOperatorHeaderText";
+
+var BuildingMenuSingleBuildingOperatorControlMenuContainerClass = "planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuContainer";
+var BuildingMenuSingleBuildingOperatorControlMenuLeftSideContainerClass = "planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuLeftContainer";
+
+var BuildingMenuSingleBuildingOperatorButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingOperatorButtonsContainer";
+var BuildingMenuSingleBuildingAddRemoveOperatorButtonClass = "planetBuildingsSingleBuildingAddRemoveOperatorButton";
+var BuildingMenuSingleBuildingAddRemoveOperatorButtonImageClass = "planetBuildingsSingleBuildingAddRemoveOperatorButtonImage";
+var BuildingMenuSingleBuildingAddOperatorButtonImagePath = "RESOURCES/ICONS/Plus_Simple.png";
+var BuildingMenuSingleBuildingRemoveOperatorButtonImagePath = "RESOURCES/ICONS/Minus_Simple.png";
+
+var BuildingMenuSingleBuildingOperatorCustomInputClass = "interfaceInputNumberFixed planetBuildingsSingleBuildingAddRemoveOperatorInputNumber";
+var BuildingMenuSingleBuildingOperatorCustomInputIdPrefix = "planetBuildingSingleBuildingOperatorsInput_";
+
+var BuildingMenuSingleBuildingOperatorsNumbersContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingOperatorNumbersContainer";
+var BuildingMenuSingleBuildingAssignedOperatorsSpanClass = "planetBuildingSingleBuildingOperatorsAssigned interfaceDynamicText";
+var BuildingMenuSingleBuildingSlashOperatorsSpanClass = "planetBuildingSingleBuildingOperatorsSlash";
+var BuildingMenuSingleBuildingRequiredOperatorsSpanClass = "planetBuildingSingleBuildingOperatorsRequired interfaceDynamicText";
+var BuildingMenuSingleBuildingOperatorsEfficiencyValueClass = "planetBuildingSingleBuildingOperatorEfficiencyValue";
+
+var BuildingMenuSingleBuildingFoldedAssignedOperatorsSpanIdPrefix = "planetBuildingSingleBuildingFoldedOperatorsAssignedText_";
+var BuildingMenuSingleBuildingFoldedRequiredOperatorsSpanIdPrefix = "planetBuildingSingleBuildingFoldedOperatorsRequiredText_";
+var BuildingMenuSingleBuildingUnfoldedAssignedOperatorsSpanIdPrefix = "planetBuildingSingleBuildingUnfoldedOperatorsAssignedText_";
+var BuildingMenuSingleBuildingUnfoldedRequiredOperatorsSpanIdPrefix = "planetBuildingSingleBuildingUnfoldedOperatorsRequiredText_";
+var BuildingMenuSingleBuildingUnfoldedOperatorsEfficiencyValueIdPrefix = "planetBuildingSingleBuildingOperatorEfficiencyValue_";
+
+var BuildingMenuSingleBuildingEfficiencyContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingEfficiencyContainer";
+var BuildingMenuSingleBuildingEfficiencyPrefixClass = "planetBuildingSingleBuildingEfficiencyPrefix";
+var BuildingMenuSingleBuildingEfficiencyValueClass = "planetBuildingSingleBuildingEfficiencyValue";
+var BuildingMenuSingleBuildingEfficiencyValueIdPrefix = "planetBuildingSingleBuildingEfficiencyValue_";
+
+var BuildingMenuSingleBUildingEfficiencyInfoIconContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingInfoIconContainer";
+var BuildingMenuSingleBUildingEfficiencyInfoIconClass = "planetBuildingSingleBuildingInfoIcon";
+var BuildingMenuSingleBUildingEfficiencyInfoIconPath = "RESOURCES/ICONS/Info.png";
+
+var BuildingMenuSingleBuildingEfficiencyInfoContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingInfoContent";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerPowerIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyPowerContainer_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerStaffIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyStaffContainer_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerHazardIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyHazardContainer_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerDiscontentIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyDiscontentContainer_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerMineralsIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyMineralsContainer_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass = "planetBuildingSingleBuildingSingleEfficiencyIcon";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass = "planetBuildingSingleBuildingSingleEfficiencyText";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyPowerValueIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyPowerValue_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyStaffValueIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyStaffValue_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyHazardValueIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyHazardValue_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyDiscontentValueIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyDiscontentValue_";
+var BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyMineralsValueIdPrefix = "planetBuildingSingleBuildingSingleEfficiencyMineralsValue_";
+
+var BuildingMenuSingleBuildingOperatorControlMenuRightSideContainerClass = "planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuRightContainer";
+
+var BuildingMenuSingleBuildingOperatorControlButtonSingleButtonClass = "planetBuildingsSingleBuildingOperatorControlButton";
+var BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImageClass = "planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1";
+var BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImagePath = "RESOURCES/MAIN_INTERFACE/Button_200x100.png";
+var BuildingMenuSingleBuildingOperatorControlButtonSingleButtonTextClass = "planetBuildingsSingleBuildingOperatorControlButtonText";
+
+var BuildingMenuSingleBuildingSideButtonClass = "planetBuildingsSingleBuildingSideButton";
+var BuildingMenuSingleBuildingSideButtonImageClass = "planetBuildingSingleBuildingSideButtonImage";
+var BuildingMenuSingleBuildingSideButtonFoldedImagePath = "RESOURCES/ICONS/Folded.png";
+var BuildingMenuSingleBuildingSideButtonUnoldedImagePath = "RESOURCES/ICONS/Unfolded.png";
+var BuildingMenuSingleBuildingSideButtonPowerButtonIdPrefix = "planetBuildingsSingleBuildingPowerButton_";
+var BuildingMenuSingleBuildingSideButtonPoweredOnImagePath = "RESOURCES/ICONS/PowerOn.png";
+var BuildingMenuSingleBuildingSideButtonPoweredOffImagePath = "RESOURCES/ICONS/PowerOff.png";
+
+var BuildingMenuSingleBuildingSingleAlertClass = "planetBuildingAlertIcon";
+var BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix = "planetBuildingSingleBuildingAlertUnpowered_";
+var BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix = "planetBuildingSingleBuildingAlertPowerCritical_";
+var BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix = "planetBuildingSingleBuildingAlertPowerInsufficient_";
+var BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix = "planetBuildingSingleBuildingAlertPowerConsumedAndGenerated_";
+var BuildingMenuSingleBuildingSingleAlertPowerSensitiveIdPrefix = "planetBuildingSingleBuildingAlertPowerSensitive_";
+var BuildingMenuSingleBuildingSingleAlertPowerSensitiveIssueIdPrefix = "planetBuildingSingleBuildingAlertSensitiveIssue_";
+var BuildingMenuSingleBuildingSingleAlertOverstaffedIdPrefix = "planetBuildingSingleBuildingAlertOverstaffed_";
+var BuildingMenuSingleBuildingSingleAlertUnderstaffedIdPrefix = "planetBuildingSingleBuildingAlertUnderstaffed_";
+var BuildingMenuSingleBuildingSingleAlertNoStaffIdPrefix = "planetBuildingSingleBuildingAlertNoStaff_";
+var BuildingMenuSingleBuildingSingleAlertNoStaffBonusIdPrefix = "planetBuildingSingleBuildingAlertNoStaffBonus_";
+var BuildingMenuSingleBuildingSingleAlertStaffMandatoryIdPrefix = "planetBuildingSingleBuildingAlertStaffMandatory_";
+var BuildingMenuSingleBuildingSingleAlertStaffMandatoryIssueIdPrefix = "planetBuildingSingleBuildingAlertStaffMandatoryIssue_";
+var BuildingMenuSingleBuildingSingleAlertStaffNotNeededIssueIdPrefix = "planetBuildingSingleBuildingAlertStaffNotNeededIssue_";
+var BuildingMenuSingleBuildingSingleAlertHazardIdPrefix = "planetBuildingSingleBuildingAlertHazard_";
+var BuildingMenuSingleBuildingSingleAlertHazardIssueIdPrefix = "planetBuildingSingleBuildingAlertHazardIssue_";
+var BuildingMenuSingleBuildingSingleAlertHazardCriticalIdPrefix = "planetBuildingSingleBuildingAlertHazardCritical_";
+var BuildingMenuSingleBuildingSingleAlertHazardUnaffectedIdPrefix = "planetBuildingSingleBuildingAlertHazardUnaffected_";
+
+var BuildingMenuSingleBuildingSingleAlertMineralsRequiredIdPrefix = "planetBuildingSingleBuildingAlertMineralsRequired_";
+var BuildingMenuSingleBuildingSingleAlertMineralsRequiredDifferentIdPrefix = "planetBuildingSingleBuildingAlertMineralsRequiredDifferent_";
+var BuildingMenuSingleBuildingSingleAlertMineralsOutputLimitedIdPrefix = "planetBuildingSingleBuildingAlertMineralsOutputLimited_";
+var BuildingMenuSingleBuildingSingleAlertMineralsOutputMissingIdPrefix = "planetBuildingSingleBuildingAlertMineralsOutputMissing_";
+var BuildingMenuSingleBuildingSingleAlertMineralsInputInsufficientIdPrefix = "planetBuildingSingleBuildingAlertMineralsInputInsufficient_";
+var BuildingMenuSingleBuildingSingleAlertMineralsInputMissingIdPrefix = "planetBuildingSingleBuildingAlertMineralsInputMissing_";
+
+var BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix = "planetBuildingSingleBuildingAlertUnrestUnaffected_";
+var BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix = "planetBuildingSingleBuildingAlertUnrestIssue_";
+var BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix = "planetBuildingSingleBuildingAlertUnrestCritical_";
+var BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix = "planetBuildingSingleBuildingAlertUnrestSensitive_";
+var BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix = "planetBuildingSingleBuildingAlertUnrestSensitiveIssue_";
+
+var BuildingMenuSingleBuildingSingleAlertIconStaffCyan = "RESOURCES/ICONS/Portrait.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffGreen = "RESOURCES/ICONS/Portrait_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffYellow = "RESOURCES/ICONS/Portrait_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffRed = "RESOURCES/ICONS/Portrait_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryCyan = "RESOURCES/ICONS/PortraitAlert.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryGreen = "RESOURCES/ICONS/PortraitAlert_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryYellow = "RESOURCES/ICONS/PortraitAlert_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryRed = "RESOURCES/ICONS/PortraitAlert_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconTurnedOffCyan = "RESOURCES/ICONS/TurnedOff.png";
+var BuildingMenuSingleBuildingSingleAlertIconTurnedOffGreen = "RESOURCES/ICONS/TurnedOff_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconTurnedOffYellow = "RESOURCES/ICONS/TurnedOff_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconTurnedOffRed = "RESOURCES/ICONS/TurnedOff_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergyCyan = "RESOURCES/ICONS/Power3.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergyGreen = "RESOURCES/ICONS/Power3_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergyYellow = "RESOURCES/ICONS/Power3_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergyRed = "RESOURCES/ICONS/Power3_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveCyan = "RESOURCES/ICONS/PowerAlert2.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveGreen = "RESOURCES/ICONS/PowerAlert2_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveYellow = "RESOURCES/ICONS/PowerAlert2_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveRed = "RESOURCES/ICONS/PowerAlert2_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestCyan = "RESOURCES/ICONS/Discontent.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestGreen = "RESOURCES/ICONS/Discontent_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestYellow = "RESOURCES/ICONS/Discontent_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestRed = "RESOURCES/ICONS/Discontent_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveCyan = "RESOURCES/ICONS/DiscontentAlert.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveGreen = "RESOURCES/ICONS/DiscontentAlert_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveYellow = "RESOURCES/ICONS/DiscontentAlert_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveRed = "RESOURCES/ICONS/DiscontentAlert_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsCyan = "RESOURCES/ICONS/Minerals.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsGreen = "RESOURCES/ICONS/Minerals_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsYellow = "RESOURCES/ICONS/Minerals_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsRed = "RESOURCES/ICONS/Minerals_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueCyan = "RESOURCES/ICONS/MineralsAlert.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueGreen = "RESOURCES/ICONS/MineralsAlert_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueYellow = "RESOURCES/ICONS/MineralsAlert_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueRed = "RESOURCES/ICONS/MineralsAlert_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconHazardCyan = "RESOURCES/ICONS/Hazard.png";
+var BuildingMenuSingleBuildingSingleAlertIconHazardGreen = "RESOURCES/ICONS/Hazard_Green.png";
+var BuildingMenuSingleBuildingSingleAlertIconHazardYellow = "RESOURCES/ICONS/Hazard_Yellow.png";
+var BuildingMenuSingleBuildingSingleAlertIconHazardRed = "RESOURCES/ICONS/Hazard_Red.png";
+
+var InterfaceBuildingMenuBuildingsOnList = 0;
+
+function interfaceInitBuildingsList(outputDocument){
+	var buildingListContainer = outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID);
+	buildingListContainer.innerHTML = "";
+	
+	InterfaceBuildingMenuBuildingsOnList = 0;
+
+	//console.log(PlanetsArray[PlanetsCurrentPlanet].name);
+	for(let i = 0; i < PlanetsArray[PlanetsCurrentPlanet].buildings.length; i++) {
+		let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[i];
+		let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+		
+		//check categories, if any matches enabled one, flag it
+		let tmpCategoryOk = false;
+		for(let j = 0; j < tmpBuildingBlueprint.categories.length; j++){
+			if(BuildingCategoriesEnabled[tmpBuildingBlueprint.categories[j]]) {
+				tmpCategoryOk = true;
+				break;
+			}
+		}
+		//if doesn't match any enabled category, skip
+		//if(!tmpCategoryOk) continue;
+		
+		var tmpBuildingElement = outputDocument.createElement("div");
+		if(tmpBuilding.folded) tmpBuildingElement.className = BuildingMenuSingleBuildingClassFolded;
+		else tmpBuildingElement.className = BuildingMenuSingleBuildingClassUnfolded;
+		tmpBuildingElement.id = BuildingMenuSingleBuildingIdPrefix + tmpBuilding.index;
+		
+		if(!tmpCategoryOk || !tmpBuildingBlueprint.unlocked) tmpBuildingElement.style.display = "none";
+		else tmpBuildingElement.style.display = "block";
+		
+			var tmpBuildingContainer = outputDocument.createElement("div");
+			tmpBuildingContainer.className = BuildingMenuSingleBuildingContainerClass;
+				var tmpBuildingInfoContainer = outputDocument.createElement("div");
+				tmpBuildingInfoContainer.className = BuildingMenuSingleBuildingInfoContainerClass;
+					var tmpBuildingInfoHeaderContainer = outputDocument.createElement("div");
+					tmpBuildingInfoHeaderContainer.className = BuildingMenuSingleBuildingInfoHeaderContainerClass;
+						var tmpBuildingNameContainer = outputDocument.createElement("div");
+						tmpBuildingNameContainer.className = BuildingMenuSingleBuildingInfoHeaderNameContainerClass;
+							var tmpBuildingNameValue = outputDocument.createElement("span");
+							tmpBuildingNameValue.className = BuildingMenuSingleBuildingInfoHeaderNameValueClass;
+							tmpBuildingNameValue.id = BuildingMenuSingleBuildingInfoHeaderNameValueClassIdPrefix + tmpBuilding.index;
+							tmpBuildingNameContainer.append(tmpBuildingNameValue);
+							tmpBuildingNameContainer.innerHTML = tmpBuildingBlueprint.name;
+							
+						var tmpBuildingAmountLevelContainer = outputDocument.createElement("div");
+						tmpBuildingAmountLevelContainer.className = BuildingMenuSingleBuildingInfoHeaderAmountLevelContainerClass;
+							var tmpBuildingLevelContainer = outputDocument.createElement("div");
+							tmpBuildingLevelContainer.className = BuildingMenuSingleBuildingInfoHeaderLevelContainerClass;
+								var tmpBuildingLevelPrefix = outputDocument.createElement("span");
+								tmpBuildingLevelPrefix.className = BuildingMenuSingleBuildingInfoHeaderLevelPrefixClass;
+								tmpBuildingLevelPrefix.innerHTML = "Lv.";
+								var tmpBuildingLevelValue = outputDocument.createElement("span");
+								tmpBuildingLevelValue.className = BuildingMenuSingleBuildingInfoHeaderLevelValueClass ;
+								tmpBuildingLevelValue.id = BuildingMenuSingleBuildingInfoHeaderLevelValueClassIdPrefix + tmpBuilding.index;
+								tmpBuildingLevelValue.innerHTML = tmpBuilding.level;
+								
+								tmpBuildingLevelContainer.append(tmpBuildingLevelPrefix);
+								tmpBuildingLevelContainer.innerHTML += "&nbsp;";
+								tmpBuildingLevelContainer.append(tmpBuildingLevelValue);
+							
+							var tmpBuildingAmountContainer = outputDocument.createElement("div");
+							tmpBuildingAmountContainer.className = BuildingMenuSingleBuildingInfoHeaderAmountContainerClass;
+							
+								var tmpBuildingAmountPrefix = outputDocument.createElement("span");
+								tmpBuildingAmountPrefix.className = BuildingMenuSingleBuildingInfoHeaderAmountPrefixClass;
+								tmpBuildingAmountPrefix.innerHTML = "×";
+								var tmpBuildingAmountValue = outputDocument.createElement("span");
+								tmpBuildingAmountValue.className = BuildingMenuSingleBuildingInfoHeaderAmountValueClass ;
+								tmpBuildingAmountValue.id = BuildingMenuSingleBuildingInfoHeaderAmountValueClassIdPrefix + tmpBuilding.index;
+								tmpBuildingAmountValue.innerHTML = tmpBuilding.count;
+								
+								tmpBuildingAmountContainer.append(tmpBuildingAmountPrefix);
+								tmpBuildingAmountContainer.innerHTML += "&nbsp;";
+								tmpBuildingAmountContainer.append(tmpBuildingAmountValue);
+							tmpBuildingAmountLevelContainer.append(tmpBuildingLevelContainer);
+							tmpBuildingAmountLevelContainer.append(tmpBuildingAmountContainer);
+						tmpBuildingInfoHeaderContainer.append(tmpBuildingNameContainer);
+						tmpBuildingInfoHeaderContainer.append(tmpBuildingAmountLevelContainer);
+					
+					var tmpBuildingInfoResourceTableContainer = outputDocument.createElement("div");
+					tmpBuildingInfoResourceTableContainer.className = BuildingMenuSingleBuildingInfoResourceTableContainerClass;
+						var tmpBuildingInfoResourceTable =  outputDocument.createElement("table");
+						tmpBuildingInfoResourceTable.className = BuildingMenuSingleBuildingInfoResourceTableClass;
+							var tmpBuildingInfoResourceTableBody = outputDocument.createElement("tbody");
+							tmpBuildingInfoResourceTableBody.className = BuildingMenuSingleBuildingInfoResourceTableBodyClass;
+								var tmpBuildingInfoResourceTableHeaderRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableHeaderRow.className = BuildingMenuSingleBuildingInfoResourceTableHeaderRowClass;
+									var tmpBuildingInfoResourceTableHeaderCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableHeaderCell.className = BuildingMenuSingleBuildingInfoResourceTableHeaderCellClass;
+									tmpBuildingInfoResourceTableHeaderCell.colSpan = 5;
+										var tmpBuildingInfoResourceTableHeaderCellText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableHeaderCellText.className = BuildingMenuSingleBuildingInfoResourceTableHeaderCellTextClass;
+										tmpBuildingInfoResourceTableHeaderCellText.innerHTML = "Production and consumption per day:";
+								
+										//RESOURCE ROWS FOR LOOP GOES HERE, TODO
+										
+										//ENERGY ROWS GO HERE, TODO
+								
+										tmpBuildingInfoResourceTableHeaderCell.append(tmpBuildingInfoResourceTableHeaderCellText);
+									tmpBuildingInfoResourceTableHeaderRow.append(tmpBuildingInfoResourceTableHeaderCell);
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableHeaderRow);
+							tmpBuildingInfoResourceTable.append(tmpBuildingInfoResourceTableBody);
+						tmpBuildingInfoResourceTableContainer.append(tmpBuildingInfoResourceTable);
+					tmpBuildingInfoContainer.append(tmpBuildingInfoHeaderContainer);
+					tmpBuildingInfoContainer.append(tmpBuildingInfoResourceTableContainer);
+					
+				var tmpBuildingBuildDemolishContainer = outputDocument.createElement("div");
+				tmpBuildingBuildDemolishContainer.className = BuildingMenuSingleBuildingBuildDemolishContainerClass;
+					var tmpBuildingBuildButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingBuildButtonsContainer.className = BuildingMenuSingleBuildingBuildButtonsContainerClass;
+						var tmpBuildingBuildButton1 = outputDocument.createElement("button");
+						tmpBuildingBuildButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButton1.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingBuildButton1Image = outputDocument.createElement("img");
+							tmpBuildingBuildButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButton1Image.src = BuildingMenuSingleBuildingBuildImagePath;
+						
+							tmpBuildingBuildButton1.append(tmpBuildingBuildButton1Image);
+						var tmpBuildingBuildButton5 = outputDocument.createElement("button");
+						tmpBuildingBuildButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButton5.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
+							var tmpBuildingBuildButton5Image = outputDocument.createElement("img");
+							tmpBuildingBuildButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButton5Image.src = BuildingMenuSingleBuildingBuildImagePath;
+							var tmpBuildingBuildButton5Subtext = outputDocument.createElement("span");
+							tmpBuildingBuildButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingBuildButton5Subtext.innerHTML = "5";
+						
+							tmpBuildingBuildButton5.append(tmpBuildingBuildButton5Image);
+							tmpBuildingBuildButton5.append(tmpBuildingBuildButton5Subtext);
+						var tmpBuildingBuildButton25 = outputDocument.createElement("button");
+						tmpBuildingBuildButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButton25.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
+							var tmpBuildingBuildButton25Image = outputDocument.createElement("img");
+							tmpBuildingBuildButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButton25Image.src = BuildingMenuSingleBuildingBuildImagePath;
+							var tmpBuildingBuildButton25Subtext = outputDocument.createElement("span");
+							tmpBuildingBuildButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingBuildButton25Subtext.innerHTML = "25";
+						
+							tmpBuildingBuildButton25.append(tmpBuildingBuildButton25Image);
+							tmpBuildingBuildButton25.append(tmpBuildingBuildButton25Subtext);
+						
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton1);
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton5);
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton25);
+					
+					var tmpBuildingDemolishButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingDemolishButtonsContainer.className = BuildingMenuSingleBuildingDemolishButtonsContainerClass;
+						var tmpBuildingDemolishButton1 = outputDocument.createElement("button");
+						tmpBuildingDemolishButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButton1.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingDemolishButton1Image = outputDocument.createElement("img");
+							tmpBuildingDemolishButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButton1Image.src = BuildingMenuSingleBuildingDemolishImagePath;
+						
+							tmpBuildingDemolishButton1.append(tmpBuildingDemolishButton1Image);
+						var tmpBuildingDemolishButton5 = outputDocument.createElement("button");
+						tmpBuildingDemolishButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButton5.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
+							var tmpBuildingDemolishButton5Image = outputDocument.createElement("img");
+							tmpBuildingDemolishButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButton5Image.src = BuildingMenuSingleBuildingDemolishImagePath;
+							var tmpBuildingDemolishButton5Subtext = outputDocument.createElement("span");
+							tmpBuildingDemolishButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDemolishButton5Subtext.innerHTML = "5";
+						
+							tmpBuildingDemolishButton5.append(tmpBuildingDemolishButton5Image);
+							tmpBuildingDemolishButton5.append(tmpBuildingDemolishButton5Subtext);
+						var tmpBuildingDemolishButton25 = outputDocument.createElement("button");
+						tmpBuildingDemolishButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButton25.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
+							var tmpBuildingDemolishButton25Image = outputDocument.createElement("img");
+							tmpBuildingDemolishButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButton25Image.src = BuildingMenuSingleBuildingDemolishImagePath;
+							var tmpBuildingDemolishButton25Subtext = outputDocument.createElement("span");
+							tmpBuildingDemolishButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDemolishButton25Subtext.innerHTML = "25";
+						
+							tmpBuildingDemolishButton25.append(tmpBuildingDemolishButton25Image);
+							tmpBuildingDemolishButton25.append(tmpBuildingDemolishButton25Subtext);
+						
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton1);
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton5);
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton25);
+					
+					var tmpBuildingBuildDemolishButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingBuildDemolishButtonsContainer.className = BuildingMenuSingleBuildingBuildDemolishButtonsContainerClass;
+						var tmpBuildingBuildCustomAmountButton = outputDocument.createElement("button");
+						tmpBuildingBuildCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildCustomAmountButton.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+							var tmpBuildingBuildCustomAmountButtonImage = outputDocument.createElement("img");
+							tmpBuildingBuildCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildCustomAmountButtonImage.src = BuildingMenuSingleBuildingBuildImagePath;
+							
+							tmpBuildingBuildCustomAmountButton.append(tmpBuildingBuildCustomAmountButtonImage);
+							
+						var tmpBuildingBuildDemolishCustomAmountInput = outputDocument.createElement("input");
+						tmpBuildingBuildDemolishCustomAmountInput.className = BuildingMenuSingleBuildingSingleInputNumberClass;
+						tmpBuildingBuildDemolishCustomAmountInput.min = 1;
+						tmpBuildingBuildDemolishCustomAmountInput.step = 1;
+						tmpBuildingBuildDemolishCustomAmountInput.value = BuildingsBulkBuyAmount;
+						tmpBuildingBuildDemolishCustomAmountInput.id = BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + tmpBuilding.index;
+						var tmpBuildingDemolishCustomAmountButton = outputDocument.createElement("button");
+						tmpBuildingDemolishCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishCustomAmountButton.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+							var tmpBuildingDemolishCustomAmountButtonImage = outputDocument.createElement("img");
+							tmpBuildingDemolishCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishCustomAmountButtonImage.src = BuildingMenuSingleBuildingDemolishImagePath;
+							
+							tmpBuildingDemolishCustomAmountButton.append(tmpBuildingDemolishCustomAmountButtonImage);
+							
+						tmpBuildingBuildDemolishButtonsContainer.append(tmpBuildingBuildCustomAmountButton);
+						tmpBuildingBuildDemolishButtonsContainer.append(tmpBuildingBuildDemolishCustomAmountInput);
+						tmpBuildingBuildDemolishButtonsContainer.append(tmpBuildingDemolishCustomAmountButton);
+					tmpBuildingBuildDemolishContainer.append(tmpBuildingBuildDemolishButtonsContainer);
+					tmpBuildingBuildDemolishContainer.append(tmpBuildingBuildButtonsContainer);
+					tmpBuildingBuildDemolishContainer.append(tmpBuildingDemolishButtonsContainer);
+					
+				var tmpBuildingUpgradeDowngradeContainer = outputDocument.createElement("div");
+				tmpBuildingUpgradeDowngradeContainer.className = BuildingMenuSingleBuildingUpgradeDowngradeContainerClass;
+					var tmpBuildingUpgradeButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingUpgradeButtonsContainer.className = BuildingMenuSingleBuildingUpgradeButtonsContainerClass;
+						var tmpBuildingUpgradeButton1 = outputDocument.createElement("button");
+						tmpBuildingUpgradeButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButton1.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingUpgradeButton1Image = outputDocument.createElement("img");
+							tmpBuildingUpgradeButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButton1Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
+						
+							tmpBuildingUpgradeButton1.append(tmpBuildingUpgradeButton1Image);
+						var tmpBuildingUpgradeButton5 = outputDocument.createElement("button");
+						tmpBuildingUpgradeButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButton5.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
+							var tmpBuildingUpgradeButton5Image = outputDocument.createElement("img");
+							tmpBuildingUpgradeButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButton5Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
+							var tmpBuildingUpgradeButton5Subtext = outputDocument.createElement("span");
+							tmpBuildingUpgradeButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingUpgradeButton5Subtext.innerHTML = "5";
+						
+							tmpBuildingUpgradeButton5.append(tmpBuildingUpgradeButton5Image);
+							tmpBuildingUpgradeButton5.append(tmpBuildingUpgradeButton5Subtext);
+						var tmpBuildingUpgradeButton25 = outputDocument.createElement("button");
+						tmpBuildingUpgradeButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButton25.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
+							var tmpBuildingUpgradeButton25Image = outputDocument.createElement("img");
+							tmpBuildingUpgradeButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButton25Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
+							var tmpBuildingUpgradeButton25Subtext = outputDocument.createElement("span");
+							tmpBuildingUpgradeButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingUpgradeButton25Subtext.innerHTML = "25";
+						
+							tmpBuildingUpgradeButton25.append(tmpBuildingUpgradeButton25Image);
+							tmpBuildingUpgradeButton25.append(tmpBuildingUpgradeButton25Subtext);
+						
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton1);
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton5);
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton25);
+					var tmpBuildingDowngradeButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingDowngradeButtonsContainer.className = BuildingMenuSingleBuildingDowngradeButtonsContainerClass;
+						var tmpBuildingDowngradeButton1 = outputDocument.createElement("button");
+						tmpBuildingDowngradeButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButton1.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingDowngradeButton1Image = outputDocument.createElement("img");
+							tmpBuildingDowngradeButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButton1Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
+						
+							tmpBuildingDowngradeButton1.append(tmpBuildingDowngradeButton1Image);
+						var tmpBuildingDowngradeButton5 = outputDocument.createElement("button");
+						tmpBuildingDowngradeButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButton5.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
+							var tmpBuildingDowngradeButton5Image = outputDocument.createElement("img");
+							tmpBuildingDowngradeButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButton5Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
+							var tmpBuildingDowngradeButton5Subtext = outputDocument.createElement("span");
+							tmpBuildingDowngradeButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDowngradeButton5Subtext.innerHTML = "5";
+						
+							tmpBuildingDowngradeButton5.append(tmpBuildingDowngradeButton5Image);
+							tmpBuildingDowngradeButton5.append(tmpBuildingDowngradeButton5Subtext);
+						var tmpBuildingDowngradeButton25 = outputDocument.createElement("button");
+						tmpBuildingDowngradeButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButton25.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
+							var tmpBuildingDowngradeButton25Image = outputDocument.createElement("img");
+							tmpBuildingDowngradeButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButton25Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
+							var tmpBuildingDowngradeButton25Subtext = outputDocument.createElement("span");
+							tmpBuildingDowngradeButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDowngradeButton25Subtext.innerHTML = "25";
+						
+							tmpBuildingDowngradeButton25.append(tmpBuildingDowngradeButton25Image);
+							tmpBuildingDowngradeButton25.append(tmpBuildingDowngradeButton25Subtext);
+						
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton1);
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton5);
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton25);
+						
+					var tmpBuildingUpgradeDowngradeButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingUpgradeDowngradeButtonsContainer.className = BuildingMenuSingleBuildingUpgradeDowngradeButtonsContainerClass;
+					
+						var tmpBuildingUpgradeCustomAmountButton = outputDocument.createElement("button");
+						tmpBuildingUpgradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeCustomAmountButton.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+							var tmpBuildingUpgradeCustomAmountButtonImage = outputDocument.createElement("img");
+							tmpBuildingUpgradeCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeCustomAmountButtonImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
+							
+							tmpBuildingUpgradeCustomAmountButton.append(tmpBuildingUpgradeCustomAmountButtonImage);
+							
+						var tmpBuildingUpgradeDowngradeCustomAmountInput = outputDocument.createElement("input");
+						tmpBuildingUpgradeDowngradeCustomAmountInput.className = BuildingMenuSingleBuildingSingleInputNumberClass;
+						tmpBuildingUpgradeDowngradeCustomAmountInput.min = 1;
+						tmpBuildingUpgradeDowngradeCustomAmountInput.step = 1;
+						tmpBuildingUpgradeDowngradeCustomAmountInput.value = BuildingsBulkBuyAmount;
+						tmpBuildingUpgradeDowngradeCustomAmountInput.id = BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + tmpBuilding.index;
+						var tmpBuildingDowngradeCustomAmountButton = outputDocument.createElement("button");
+						tmpBuildingDowngradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeCustomAmountButton.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+							var tmpBuildingDowngradeCustomAmountButtonImage = outputDocument.createElement("img");
+							tmpBuildingDowngradeCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeCustomAmountButtonImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
+							
+							tmpBuildingDowngradeCustomAmountButton.append(tmpBuildingDowngradeCustomAmountButtonImage);
+							
+						tmpBuildingUpgradeDowngradeButtonsContainer.append(tmpBuildingUpgradeCustomAmountButton);
+						tmpBuildingUpgradeDowngradeButtonsContainer.append(tmpBuildingUpgradeDowngradeCustomAmountInput);
+						tmpBuildingUpgradeDowngradeButtonsContainer.append(tmpBuildingDowngradeCustomAmountButton);
+					tmpBuildingUpgradeDowngradeContainer.append(tmpBuildingUpgradeDowngradeButtonsContainer);
+					tmpBuildingUpgradeDowngradeContainer.append(tmpBuildingUpgradeButtonsContainer);
+					tmpBuildingUpgradeDowngradeContainer.append(tmpBuildingDowngradeButtonsContainer);
+				
+				var tmpBuildingControlContainer = outputDocument.createElement("div");
+				tmpBuildingControlContainer.className = BuildingMenuSingleBuildingControlContainerClass;
+					var tmpBuildingFoldedOperatorsContainer = outputDocument.createElement("div");
+					tmpBuildingFoldedOperatorsContainer.className = BuildingMenuSingleBuildingFoldedOperatorContainerClass;
+					
+						var tmpBuildingFoldedOperatorsButtonsContainer = outputDocument.createElement("div");
+						tmpBuildingFoldedOperatorsButtonsContainer.className = BuildingMenuSingleBuildingOperatorButtonsContainerClass;
+					
+							var tmpBuildingFoldedOperatorsAddOperatorButton = outputDocument.createElement("button");
+							tmpBuildingFoldedOperatorsAddOperatorButton.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonClass;
+							tmpBuildingFoldedOperatorsAddOperatorButton.onclick = function () {interfaceAddStaffToBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+								var tmpBuildingFoldedOperatorsAddOperatorButtonImage = outputDocument.createElement("img");
+								tmpBuildingFoldedOperatorsAddOperatorButtonImage.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonImageClass;
+								tmpBuildingFoldedOperatorsAddOperatorButtonImage.src = BuildingMenuSingleBuildingAddOperatorButtonImagePath;
+								
+								tmpBuildingFoldedOperatorsAddOperatorButton.append(tmpBuildingFoldedOperatorsAddOperatorButtonImage);
+							
+							var tmpBuildingFoldedOperatorsRemoveOperatorButton = outputDocument.createElement("button");
+							tmpBuildingFoldedOperatorsRemoveOperatorButton.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonClass;
+							tmpBuildingFoldedOperatorsRemoveOperatorButton.onclick = function () {interfaceRemoveStaffFromBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+								var tmpBuildingFoldedOperatorsRemoveOperatorButtonImage = outputDocument.createElement("img");
+								tmpBuildingFoldedOperatorsRemoveOperatorButtonImage.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonImageClass;
+								tmpBuildingFoldedOperatorsRemoveOperatorButtonImage.src = BuildingMenuSingleBuildingRemoveOperatorButtonImagePath;
+								
+								tmpBuildingFoldedOperatorsRemoveOperatorButton.append(tmpBuildingFoldedOperatorsRemoveOperatorButtonImage);
+								
+							var tmpBuildingFoldedOperatorAssignedOperatorsSpan = outputDocument.createElement("span");
+							tmpBuildingFoldedOperatorAssignedOperatorsSpan.className = BuildingMenuSingleBuildingAssignedOperatorsSpanClass;
+							tmpBuildingFoldedOperatorAssignedOperatorsSpan.id = BuildingMenuSingleBuildingFoldedAssignedOperatorsSpanIdPrefix + tmpBuilding.index;
+							tmpBuildingFoldedOperatorAssignedOperatorsSpan.innerHTML = tmpBuilding.staffAssigned;
+							var tmpBuildingFoldedOperatorSlashOperatorsSpan = outputDocument.createElement("span");
+							tmpBuildingFoldedOperatorSlashOperatorsSpan.className = BuildingMenuSingleBuildingSlashOperatorsSpanClass;
+							tmpBuildingFoldedOperatorSlashOperatorsSpan.innerHTML = "/";
+							var tmpBuildingFoldedOperatorRequiredOperatorsSpan = outputDocument.createElement("span");
+							tmpBuildingFoldedOperatorRequiredOperatorsSpan.className = BuildingMenuSingleBuildingRequiredOperatorsSpanClass;
+							tmpBuildingFoldedOperatorRequiredOperatorsSpan.id = BuildingMenuSingleBuildingFoldedRequiredOperatorsSpanIdPrefix + tmpBuilding.index;
+							tmpBuildingFoldedOperatorRequiredOperatorsSpan.innerHTML = tmpBuilding.staffRequired;
+							
+							tmpBuildingFoldedOperatorsButtonsContainer.append(tmpBuildingFoldedOperatorsAddOperatorButton);
+							tmpBuildingFoldedOperatorsButtonsContainer.append(tmpBuildingFoldedOperatorsRemoveOperatorButton);
+							tmpBuildingFoldedOperatorsButtonsContainer.append(tmpBuildingFoldedOperatorAssignedOperatorsSpan);
+							tmpBuildingFoldedOperatorsButtonsContainer.innerHTML += "&nbsp;";
+							tmpBuildingFoldedOperatorsButtonsContainer.append(tmpBuildingFoldedOperatorSlashOperatorsSpan);
+							tmpBuildingFoldedOperatorsButtonsContainer.innerHTML += "&nbsp;";
+							tmpBuildingFoldedOperatorsButtonsContainer.append(tmpBuildingFoldedOperatorRequiredOperatorsSpan);
+							
+						tmpBuildingFoldedOperatorsContainer.append(tmpBuildingFoldedOperatorsButtonsContainer);
+						
+					var tmpBuildingFoldedSideButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingFoldedSideButtonsContainer.className = BuildingMenuSingleBuildingFoldedSideButtonsContainerClass;
+					
+						var tmpBuildingFoldedSideUnfoldButton = outputDocument.createElement("button");
+						tmpBuildingFoldedSideUnfoldButton.className = BuildingMenuSingleBuildingSideButtonClass;
+						tmpBuildingFoldedSideUnfoldButton.onclick = function(){interfaceFoldUnfoldBuilding(outputDocument,tmpBuilding.index);};
+						
+							var tmpBuildingFoldedSideUnfoldButtonImage = outputDocument.createElement("img");
+							tmpBuildingFoldedSideUnfoldButtonImage.className = BuildingMenuSingleBuildingSideButtonImageClass;
+							tmpBuildingFoldedSideUnfoldButtonImage.src = BuildingMenuSingleBuildingSideButtonFoldedImagePath;
+						
+							tmpBuildingFoldedSideUnfoldButton.append(tmpBuildingFoldedSideUnfoldButtonImage);
+						tmpBuildingFoldedSideButtonsContainer.append(tmpBuildingFoldedSideUnfoldButton);
+					
+					var tmpBuildingUnfoldedOperatorsContainer = outputDocument.createElement("div");
+					tmpBuildingUnfoldedOperatorsContainer.className = BuildingMenuSingleBuildingUnfoldedOperatorContainerClass;
+					
+						var tmpBuildingUnfoldedOperatorsHeaderContainer = outputDocument.createElement("div");
+						tmpBuildingUnfoldedOperatorsHeaderContainer.className = BuildingMenuSingleBuildingOperatorHeaderContainerClass;
+							var tmpBuildingUnfoldedOperatorsHeaderTextContainer = outputDocument.createElement("div");
+							tmpBuildingUnfoldedOperatorsHeaderTextContainer.className = BuildingMenuSingleBuildingOperatorHeaderTextContainerClass;
+								var tmpBuildingUnfoldedOperatorsHeaderText = outputDocument.createElement("span");
+								tmpBuildingUnfoldedOperatorsHeaderText.className = BuildingMenuSingleBuildingOperatorHeaderTextClass;
+								tmpBuildingUnfoldedOperatorsHeaderText.innerHTML = "Administrators:";
+							
+								tmpBuildingUnfoldedOperatorsHeaderTextContainer.append(tmpBuildingUnfoldedOperatorsHeaderText);
+							tmpBuildingUnfoldedOperatorsHeaderContainer.append(tmpBuildingUnfoldedOperatorsHeaderTextContainer);
+						
+						var tmpBuildingUnfoldedOperatorsMenuContainer = outputDocument.createElement("div");
+						tmpBuildingUnfoldedOperatorsMenuContainer.className = BuildingMenuSingleBuildingOperatorControlMenuContainerClass;
+							var tmpBuildingUnfoldedOperatorsMenuLeftContainer = outputDocument.createElement("div");
+							tmpBuildingUnfoldedOperatorsMenuLeftContainer.className = BuildingMenuSingleBuildingOperatorControlMenuLeftSideContainerClass;
+								var tmpBuildingUnfoldedOperatorsButtonsContainer = outputDocument.createElement("div");
+								tmpBuildingUnfoldedOperatorsButtonsContainer.className = BuildingMenuSingleBuildingOperatorButtonsContainerClass;
+									var tmpBuildingUnfoldedOperatorsAddOperatorButton = outputDocument.createElement("button");
+									tmpBuildingUnfoldedOperatorsAddOperatorButton.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonClass;
+									tmpBuildingUnfoldedOperatorsAddOperatorButton.onclick = function () {interfaceAddStaffToBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+										var tmpBuildingUnfoldedOperatorsAddOperatorButtonImage = outputDocument.createElement("img");
+										tmpBuildingUnfoldedOperatorsAddOperatorButtonImage.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonImageClass;
+										tmpBuildingUnfoldedOperatorsAddOperatorButtonImage.src = BuildingMenuSingleBuildingAddOperatorButtonImagePath;
+										
+										tmpBuildingUnfoldedOperatorsAddOperatorButton.append(tmpBuildingUnfoldedOperatorsAddOperatorButtonImage);
+									
+									var tmpBuildingUnfoldedOperatorsCustomAmountInput = outputDocument.createElement("input");
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.className = BuildingMenuSingleBuildingOperatorCustomInputClass;
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.min = 1;
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.step = 1;
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.value = BuildingsBulkBuyAmount;
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.id = BuildingMenuSingleBuildingOperatorCustomInputIdPrefix + tmpBuilding.index;
+									var tmpBuildingUnfoldedOperatorsRemoveOperatorButton = outputDocument.createElement("button");
+									tmpBuildingUnfoldedOperatorsRemoveOperatorButton.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonClass;
+									tmpBuildingUnfoldedOperatorsRemoveOperatorButton.onclick = function () {interfaceRemoveStaffFromBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
+										var tmpBuildingUnfoldedOperatorsRemoveOperatorButtonImage = outputDocument.createElement("img");
+										tmpBuildingUnfoldedOperatorsRemoveOperatorButtonImage.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonImageClass;
+										tmpBuildingUnfoldedOperatorsRemoveOperatorButtonImage.src = BuildingMenuSingleBuildingRemoveOperatorButtonImagePath;
+										
+										tmpBuildingUnfoldedOperatorsRemoveOperatorButton.append(tmpBuildingUnfoldedOperatorsRemoveOperatorButtonImage);
+										
+									tmpBuildingUnfoldedOperatorsButtonsContainer.append(tmpBuildingUnfoldedOperatorsAddOperatorButton);
+									tmpBuildingUnfoldedOperatorsButtonsContainer.append(tmpBuildingUnfoldedOperatorsCustomAmountInput);
+									tmpBuildingUnfoldedOperatorsButtonsContainer.append(tmpBuildingUnfoldedOperatorsRemoveOperatorButton);
+								
+								var tmpBuildingUnfoldedOperatorsNumbersContainer = outputDocument.createElement("div");
+								tmpBuildingUnfoldedOperatorsNumbersContainer.className = BuildingMenuSingleBuildingOperatorsNumbersContainerClass;
+									var tmpBuildingUnfoldedOperatorAssignedOperatorsSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorAssignedOperatorsSpan.className = BuildingMenuSingleBuildingAssignedOperatorsSpanClass;
+									tmpBuildingUnfoldedOperatorAssignedOperatorsSpan.id = BuildingMenuSingleBuildingUnfoldedAssignedOperatorsSpanIdPrefix + tmpBuilding.index;
+									tmpBuildingUnfoldedOperatorAssignedOperatorsSpan.innerHTML = tmpBuilding.staffAssigned;
+									var tmpBuildingUnfoldedOperatorSlashOperatorsSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorSlashOperatorsSpan.className = BuildingMenuSingleBuildingSlashOperatorsSpanClass;
+									tmpBuildingUnfoldedOperatorSlashOperatorsSpan.innerHTML = "/";
+									var tmpBuildingUnfoldedOperatorRequiredOperatorsSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorRequiredOperatorsSpan.className = BuildingMenuSingleBuildingRequiredOperatorsSpanClass;
+									tmpBuildingUnfoldedOperatorRequiredOperatorsSpan.id = BuildingMenuSingleBuildingUnfoldedRequiredOperatorsSpanIdPrefix + tmpBuilding.index;
+									tmpBuildingUnfoldedOperatorRequiredOperatorsSpan.innerHTML = tmpBuilding.staffRequired;
+									var tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan.className = BuildingMenuSingleBuildingOperatorsEfficiencyValueClass;
+									tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan.id = BuildingMenuSingleBuildingUnfoldedOperatorsEfficiencyValueIdPrefix + tmpBuilding.index;
+									tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan.innerHTML = "(100%)";
+									tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan.style.color = "hsl(120,100%,50%)";
+									
+									tmpBuildingUnfoldedOperatorsNumbersContainer.append(tmpBuildingUnfoldedOperatorAssignedOperatorsSpan);
+									tmpBuildingUnfoldedOperatorsNumbersContainer.innerHTML += "&nbsp;";
+									tmpBuildingUnfoldedOperatorsNumbersContainer.append(tmpBuildingUnfoldedOperatorSlashOperatorsSpan);
+									tmpBuildingUnfoldedOperatorsNumbersContainer.innerHTML += "&nbsp;";
+									tmpBuildingUnfoldedOperatorsNumbersContainer.append(tmpBuildingUnfoldedOperatorRequiredOperatorsSpan);
+									tmpBuildingUnfoldedOperatorsNumbersContainer.innerHTML += "&ensp;";
+									tmpBuildingUnfoldedOperatorsNumbersContainer.append(tmpBuildingUnfoldedOperatorEfficiencyOperatorsSpan);
+								
+								var tmpBuildingUnfoldedOperatorsEfficiencyContainer = outputDocument.createElement("div");
+								tmpBuildingUnfoldedOperatorsEfficiencyContainer.className = BuildingMenuSingleBuildingEfficiencyContainerClass;
+									var tmpBuildingUnfoldedOperatorsEfficiencyPrefixSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorsEfficiencyPrefixSpan.className = BuildingMenuSingleBuildingEfficiencyPrefixClass;
+									tmpBuildingUnfoldedOperatorsEfficiencyPrefixSpan.innerHTML = "Efficiency:";
+									var tmpBuildingUnfoldedOperatorsEfficiencyValueSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldedOperatorsEfficiencyValueSpan.className = BuildingMenuSingleBuildingEfficiencyValueClass;
+									tmpBuildingUnfoldedOperatorsEfficiencyValueSpan.id = BuildingMenuSingleBuildingEfficiencyValueIdPrefix + tmpBuilding.index;
+									tmpBuildingUnfoldedOperatorsEfficiencyValueSpan.innerHTML = "100%";
+									tmpBuildingUnfoldedOperatorsEfficiencyValueSpan.style.color = "hsl(120,100%,50%)";
+									var tmpBuildingUnfoldedOperatorsEfficiencyInfoIconContainer = outputDocument.createElement("div");
+									tmpBuildingUnfoldedOperatorsEfficiencyInfoIconContainer.className = BuildingMenuSingleBUildingEfficiencyInfoIconContainerClass;
+										var tmpBuildingUnfoldedOperatorsEfficiencyInfoIcon = outputDocument.createElement("img");
+										tmpBuildingUnfoldedOperatorsEfficiencyInfoIcon.className = BuildingMenuSingleBUildingEfficiencyInfoIconClass;
+										tmpBuildingUnfoldedOperatorsEfficiencyInfoIcon.src = BuildingMenuSingleBUildingEfficiencyInfoIconPath;
+										
+										tmpBuildingUnfoldedOperatorsEfficiencyInfoIconContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyInfoIcon);
+									var tmpBuildingUnfoldedOperatorsEfficiencyListContainer = outputDocument.createElement("div");
+									tmpBuildingUnfoldedOperatorsEfficiencyListContainer.className = BuildingMenuSingleBuildingEfficiencyInfoContainerClass;
+										var tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer = outputDocument.createElement("div");
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass;
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerPowerIdPrefix + tmpBuilding.index;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage = outputDocument.createElement("img");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconEnergyCyan;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText = outputDocument.createElement("span");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyPowerValueIdPrefix + tmpBuilding.index;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.innerHTML = "100%";
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.style.color = "hsl(120,100%,50%)";
+										
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage);
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText);
+										var tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer = outputDocument.createElement("div");
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass;
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerStaffIdPrefix + tmpBuilding.index;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage = outputDocument.createElement("img");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconStaffCyan;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText = outputDocument.createElement("span");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyStaffValueIdPrefix + tmpBuilding.index;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.innerHTML = "100%";
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.style.color = "hsl(120,100%,50%)";
+										
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage);
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText);
+										var tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer = outputDocument.createElement("div");
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass;
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerHazardIdPrefix + tmpBuilding.index;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage = outputDocument.createElement("img");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconHazardCyan;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText = outputDocument.createElement("span");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyHazardValueIdPrefix + tmpBuilding.index;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.innerHTML = "100%";
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.style.color = "hsl(120,100%,50%)";
+										
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage);
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText);
+										var tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer = outputDocument.createElement("div");
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass;
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerDiscontentIdPrefix + tmpBuilding.index;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage = outputDocument.createElement("img");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconUnrestCyan;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText = outputDocument.createElement("span");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyDiscontentValueIdPrefix + tmpBuilding.index;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.innerHTML = "100%";
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.style.color = "hsl(120,100%,50%)";
+										
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage);
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText);
+										var tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer = outputDocument.createElement("div");
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerClass;
+										tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerMineralsIdPrefix + tmpBuilding.index;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage = outputDocument.createElement("img");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconMineralsCyan;
+											var tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText = outputDocument.createElement("span");
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyMineralsValueIdPrefix + tmpBuilding.index;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.innerHTML = "100%";
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.style.color = "hsl(120,100%,50%)";
+										
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage);
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText);
+										tmpBuildingUnfoldedOperatorsEfficiencyListContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer);
+										tmpBuildingUnfoldedOperatorsEfficiencyListContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer);
+										tmpBuildingUnfoldedOperatorsEfficiencyListContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer);
+										tmpBuildingUnfoldedOperatorsEfficiencyListContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer);
+										tmpBuildingUnfoldedOperatorsEfficiencyListContainer.append(tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer);
+									tmpBuildingUnfoldedOperatorsEfficiencyContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyPrefixSpan);
+									tmpBuildingUnfoldedOperatorsEfficiencyContainer.innerHTML += "&ensp;";
+									tmpBuildingUnfoldedOperatorsEfficiencyContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyValueSpan);
+									tmpBuildingUnfoldedOperatorsEfficiencyContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyInfoIconContainer);
+									tmpBuildingUnfoldedOperatorsEfficiencyContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyListContainer);
+								tmpBuildingUnfoldedOperatorsMenuLeftContainer.append(tmpBuildingUnfoldedOperatorsButtonsContainer);
+								tmpBuildingUnfoldedOperatorsMenuLeftContainer.append(tmpBuildingUnfoldedOperatorsNumbersContainer);
+								tmpBuildingUnfoldedOperatorsMenuLeftContainer.append(tmpBuildingUnfoldedOperatorsEfficiencyContainer);
+							
+							var tmpBuildingUnfoldedOperatorsMenuRightContainer = outputDocument.createElement("div");
+							tmpBuildingUnfoldedOperatorsMenuRightContainer.className = BuildingMenuSingleBuildingOperatorControlMenuRightSideContainerClass;
+								var tmpBuildingUnfoldedOperatorsButtonFILL = outputDocument.createElement("button");
+								tmpBuildingUnfoldedOperatorsButtonFILL.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonClass;
+									var tmpBuildingUnfoldOperatorsButtonFILLImage = outputDocument.createElement("img");
+									tmpBuildingUnfoldOperatorsButtonFILLImage.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImageClass;
+									tmpBuildingUnfoldOperatorsButtonFILLImage.src = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImagePath;
+									var tmpBuildingUnfoldOperatorsButtonFILLSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldOperatorsButtonFILLSpan.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonTextClass;
+									tmpBuildingUnfoldOperatorsButtonFILLSpan.innerHTML = "FILL";
+									
+									tmpBuildingUnfoldedOperatorsButtonFILL.append(tmpBuildingUnfoldOperatorsButtonFILLImage);
+									tmpBuildingUnfoldedOperatorsButtonFILL.append(tmpBuildingUnfoldOperatorsButtonFILLSpan);
+								
+								var tmpBuildingUnfoldedOperatorsButtonSET = outputDocument.createElement("button");
+								tmpBuildingUnfoldedOperatorsButtonSET.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonClass;
+									var tmpBuildingUnfoldOperatorsButtonSETImage = outputDocument.createElement("img");
+									tmpBuildingUnfoldOperatorsButtonSETImage.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImageClass;
+									tmpBuildingUnfoldOperatorsButtonSETImage.src = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImagePath;
+									var tmpBuildingUnfoldOperatorsButtonSETSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldOperatorsButtonSETSpan.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonTextClass;
+									tmpBuildingUnfoldOperatorsButtonSETSpan.innerHTML = "SET";
+									
+									tmpBuildingUnfoldedOperatorsButtonSET.append(tmpBuildingUnfoldOperatorsButtonSETImage);
+									tmpBuildingUnfoldedOperatorsButtonSET.append(tmpBuildingUnfoldOperatorsButtonSETSpan);
+								
+								var tmpBuildingUnfoldedOperatorsButtonNONE = outputDocument.createElement("button");
+								tmpBuildingUnfoldedOperatorsButtonNONE.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonClass;
+									var tmpBuildingUnfoldOperatorsButtonNONEImage = outputDocument.createElement("img");
+									tmpBuildingUnfoldOperatorsButtonNONEImage.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImageClass;
+									tmpBuildingUnfoldOperatorsButtonNONEImage.src = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImagePath;
+									var tmpBuildingUnfoldOperatorsButtonNONESpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldOperatorsButtonNONESpan.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonTextClass;
+									tmpBuildingUnfoldOperatorsButtonNONESpan.innerHTML = "NONE";
+									
+									tmpBuildingUnfoldedOperatorsButtonNONE.append(tmpBuildingUnfoldOperatorsButtonNONEImage);
+									tmpBuildingUnfoldedOperatorsButtonNONE.append(tmpBuildingUnfoldOperatorsButtonNONESpan);
+								
+								var tmpBuildingUnfoldedOperatorsButtonALL = outputDocument.createElement("button");
+								tmpBuildingUnfoldedOperatorsButtonALL.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonClass;
+									var tmpBuildingUnfoldOperatorsButtonALLImage = outputDocument.createElement("img");
+									tmpBuildingUnfoldOperatorsButtonALLImage.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImageClass;
+									tmpBuildingUnfoldOperatorsButtonALLImage.src = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonImagePath;
+									var tmpBuildingUnfoldOperatorsButtonALLSpan = outputDocument.createElement("span");
+									tmpBuildingUnfoldOperatorsButtonALLSpan.className = BuildingMenuSingleBuildingOperatorControlButtonSingleButtonTextClass;
+									tmpBuildingUnfoldOperatorsButtonALLSpan.innerHTML = "ALL";
+									
+									tmpBuildingUnfoldedOperatorsButtonALL.append(tmpBuildingUnfoldOperatorsButtonALLImage);
+									tmpBuildingUnfoldedOperatorsButtonALL.append(tmpBuildingUnfoldOperatorsButtonALLSpan);
+								tmpBuildingUnfoldedOperatorsMenuRightContainer.append(tmpBuildingUnfoldedOperatorsButtonFILL);
+								tmpBuildingUnfoldedOperatorsMenuRightContainer.append(tmpBuildingUnfoldedOperatorsButtonSET);
+								tmpBuildingUnfoldedOperatorsMenuRightContainer.append(tmpBuildingUnfoldedOperatorsButtonNONE);
+								tmpBuildingUnfoldedOperatorsMenuRightContainer.append(tmpBuildingUnfoldedOperatorsButtonALL);
+							tmpBuildingUnfoldedOperatorsMenuContainer.append(tmpBuildingUnfoldedOperatorsMenuLeftContainer);
+							tmpBuildingUnfoldedOperatorsMenuContainer.append(tmpBuildingUnfoldedOperatorsMenuRightContainer);
+						tmpBuildingUnfoldedOperatorsContainer.append(tmpBuildingUnfoldedOperatorsHeaderContainer);
+						tmpBuildingUnfoldedOperatorsContainer.append(tmpBuildingUnfoldedOperatorsMenuContainer);
+					
+					var tmpBuildingUnfoldedSideButtonsContainer = outputDocument.createElement("div");
+					tmpBuildingUnfoldedSideButtonsContainer.className = BuildingMenuSingleBuildingUnfoldedSideButtonsContainerClass;
+					
+						var tmpBuildingUnfoldedSideFoldButton = outputDocument.createElement("button");
+						tmpBuildingUnfoldedSideFoldButton.className = BuildingMenuSingleBuildingSideButtonClass;
+						tmpBuildingUnfoldedSideFoldButton.onclick = function(){interfaceFoldUnfoldBuilding(outputDocument,tmpBuilding.index);};
+							var tmpBuildingUnfoldedSideFoldButtonImage = outputDocument.createElement("img");
+							tmpBuildingUnfoldedSideFoldButtonImage.className = BuildingMenuSingleBuildingSideButtonImageClass;
+							tmpBuildingUnfoldedSideFoldButtonImage.src = BuildingMenuSingleBuildingSideButtonUnoldedImagePath;
+							
+							tmpBuildingUnfoldedSideFoldButton.append(tmpBuildingUnfoldedSideFoldButtonImage);
+					
+						var tmpBuildingUnfoldedPowerButton = outputDocument.createElement("button");
+						tmpBuildingUnfoldedPowerButton.className = BuildingMenuSingleBuildingSideButtonClass;
+							var tmpBuildingUnfoldedPowerButtonImage = outputDocument.createElement("img");
+							tmpBuildingUnfoldedPowerButtonImage.className = BuildingMenuSingleBuildingSideButtonImageClass;
+							tmpBuildingUnfoldedPowerButtonImage.id = BuildingMenuSingleBuildingSideButtonPowerButtonIdPrefix + tmpBuilding.index;
+							tmpBuildingUnfoldedPowerButtonImage.onclick = function(){interfaceEnableDisableBuilding(outputDocument, tmpBuilding.index);};
+							if(tmpBuilding.enabled) tmpBuildingUnfoldedPowerButtonImage.src = BuildingMenuSingleBuildingSideButtonPoweredOnImagePath;
+							else tmpBuildingUnfoldedPowerButtonImage.src = BuildingMenuSingleBuildingSideButtonPoweredOffImagePath;
+							
+							tmpBuildingUnfoldedPowerButton.append(tmpBuildingUnfoldedPowerButtonImage);
+						tmpBuildingUnfoldedSideButtonsContainer.append(tmpBuildingUnfoldedSideFoldButton);
+						tmpBuildingUnfoldedSideButtonsContainer.append(tmpBuildingUnfoldedPowerButton);
+					
+					var tmpBuildingControlAlertsContainer = outputDocument.createElement("div");
+					tmpBuildingControlAlertsContainer.className = BuildingMenuSingleBuildingControlAlertsContainerClass;
+					
+						var tmpBuildingControlAlertsUnpowered = outputDocument.createElement("img");
+						tmpBuildingControlAlertsUnpowered.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnpowered.id = BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnpowered.src = BuildingMenuSingleBuildingSingleAlertIconTurnedOffYellow;
+						tmpBuildingControlAlertsUnpowered.title = "This building is currently turned off and not functioning.";
+						
+						var tmpBuildingControlAlertsPowerCritical = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsPowerInsufficient = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsPowerConsumedAndGenerated = outputDocument.createElement("img");
+						tmpBuildingControlAlertsPowerCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsPowerCritical.id = BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsPowerCritical.src = BuildingMenuSingleBuildingSingleAlertIconEnergyRed;
+						tmpBuildingControlAlertsPowerCritical.title = "Not enough power for this building to start working even on low efficiency.";
+						tmpBuildingControlAlertsPowerInsufficient.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsPowerInsufficient.id = BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsPowerInsufficient.src = BuildingMenuSingleBuildingSingleAlertIconEnergyYellow;
+						tmpBuildingControlAlertsPowerInsufficient.title = "Insufficient power is reducing this building's efficiency.";
+						tmpBuildingControlAlertsPowerConsumedAndGenerated.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsPowerConsumedAndGenerated.id = BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsPowerConsumedAndGenerated.src = BuildingMenuSingleBuildingSingleAlertIconEnergyGreen;
+						tmpBuildingControlAlertsPowerConsumedAndGenerated.title = "This building requires power to start generating (more) power.";
+						
+						var tmpBuildingControlAlertsPowerSensitive = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsPowerSensitiveIssue = outputDocument.createElement("img");
+						tmpBuildingControlAlertsPowerSensitive.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsPowerSensitive.id = BuildingMenuSingleBuildingSingleAlertPowerSensitiveIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsPowerSensitive.src = BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveCyan;
+						tmpBuildingControlAlertsPowerSensitive.title = "This building requires uninterrupted power supply to function.";
+						
+						tmpBuildingControlAlertsPowerSensitiveIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsPowerSensitiveIssue.id = BuildingMenuSingleBuildingSingleAlertPowerSensitiveIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsPowerSensitiveIssue.src = BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveRed;
+						tmpBuildingControlAlertsPowerSensitiveIssue.title = "Unstable power supply prevents this building from working.";
+																				
+						var tmpBuildingControlAlertsOverstaffed = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsUnderstaffed = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsNoStaff = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsNoStaffBonus = outputDocument.createElement("img");
+						tmpBuildingControlAlertsOverstaffed.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsOverstaffed.id = BuildingMenuSingleBuildingSingleAlertOverstaffedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsOverstaffed.src = BuildingMenuSingleBuildingSingleAlertIconStaffGreen;
+						tmpBuildingControlAlertsOverstaffed.title = "This building is running with extra efficiency due to extra staff being present.";
+						tmpBuildingControlAlertsUnderstaffed.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnderstaffed.id = BuildingMenuSingleBuildingSingleAlertUnderstaffedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnderstaffed.src = BuildingMenuSingleBuildingSingleAlertIconStaffYellow;
+						tmpBuildingControlAlertsUnderstaffed.title = "Insufficient staff is reducing this building's efficiency.";
+						tmpBuildingControlAlertsNoStaff.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsNoStaff.id = BuildingMenuSingleBuildingSingleAlertNoStaffIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsNoStaff.src = BuildingMenuSingleBuildingSingleAlertIconStaffRed;
+						tmpBuildingControlAlertsNoStaff.title = "This building is disabled due to lack of staff.";
+						tmpBuildingControlAlertsNoStaffBonus.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsNoStaffBonus.id = BuildingMenuSingleBuildingSingleAlertNoStaffBonusIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsNoStaffBonus.src = BuildingMenuSingleBuildingSingleAlertIconStaffCyan;
+						tmpBuildingControlAlertsNoStaffBonus.title = "This building is receiving no additional efficiency from extra staff.";
+						
+						var tmpBuildingControlAlertsStaffMandatory = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsStaffMandatoryIssue = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsStaffNotNeededIssue = outputDocument.createElement("img");
+						tmpBuildingControlAlertsStaffMandatory.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsStaffMandatory.id = BuildingMenuSingleBuildingSingleAlertStaffMandatoryIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsStaffMandatory.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryCyan;
+						tmpBuildingControlAlertsStaffMandatory.title = "This building only functions if fully staffed.";
+						tmpBuildingControlAlertsStaffMandatoryIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsStaffMandatoryIssue.id = BuildingMenuSingleBuildingSingleAlertStaffMandatoryIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsStaffMandatoryIssue.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryRed;
+						tmpBuildingControlAlertsStaffMandatoryIssue.title = "Insufficient staff prevents this building from working.";
+						tmpBuildingControlAlertsStaffNotNeededIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsStaffNotNeededIssue.id = BuildingMenuSingleBuildingSingleAlertStaffNotNeededIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsStaffNotNeededIssue.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryGreen;
+						tmpBuildingControlAlertsStaffNotNeededIssue.title = "Staff is not needed for this building.";
+						
+						var tmpBuildingControlAlertsHazardUnaffected = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsHazard = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsHazardIssue = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsHazardCritical = outputDocument.createElement("img");
+						tmpBuildingControlAlertsHazardUnaffected.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsHazardUnaffected.id = BuildingMenuSingleBuildingSingleAlertHazardUnaffectedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsHazardUnaffected.src = BuildingMenuSingleBuildingSingleAlertIconHazardGreen;
+						tmpBuildingControlAlertsHazardUnaffected.title = "This building is not affected by hazardous conditions.";
+						tmpBuildingControlAlertsHazard.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsHazard.id = BuildingMenuSingleBuildingSingleAlertHazardIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsHazard.src = BuildingMenuSingleBuildingSingleAlertIconHazardCyan;
+						tmpBuildingControlAlertsHazard.title = "This building is sensitive to hazardous conditions.";
+						tmpBuildingControlAlertsHazardIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsHazardIssue.id = BuildingMenuSingleBuildingSingleAlertHazardIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsHazardIssue.src = BuildingMenuSingleBuildingSingleAlertIconHazardYellow;
+						tmpBuildingControlAlertsHazardIssue.title = "Hazardous environment reduces this building's efficiency.";
+						tmpBuildingControlAlertsHazardCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsHazardCritical.id = BuildingMenuSingleBuildingSingleAlertHazardCriticalIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsHazardCritical.src = BuildingMenuSingleBuildingSingleAlertIconHazardRed;
+						tmpBuildingControlAlertsHazardCritical.title = "Environment is too hazardous for this building to function.";
+					
+						var tmpBuildingControlAlertsMineralsRequired = outputDocument.createElement("img");				//cyan
+						var tmpBuildingControlAlertsMineralsRequiredDifferent = outputDocument.createElement("img");	//green
+						var tmpBuildingControlAlertsMineralsOutputLimited = outputDocument.createElement("img");	//yellow
+						var tmpBuildingControlAlertsMineralsOutputMissing = outputDocument.createElement("img");	//red
+						var tmpBuildingControlAlertsMineralsRequiredOvermined = outputDocument.createElement("img");	//critical yellow
+						var tmpBuildingControlAlertsMineralsRequiredMissing = outputDocument.createElement("img");	//critical red
+						tmpBuildingControlAlertsMineralsRequired.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsRequired.id = BuildingMenuSingleBuildingSingleAlertMineralsRequiredIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsRequired.src = BuildingMenuSingleBuildingSingleAlertIconMineralsCyan;
+						tmpBuildingControlAlertsMineralsRequired.title = "This building requires resource deposits to be present on planet.";
+						tmpBuildingControlAlertsMineralsRequiredDifferent.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsRequiredDifferent.id = BuildingMenuSingleBuildingSingleAlertMineralsRequiredDifferentIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsRequiredDifferent.src = BuildingMenuSingleBuildingSingleAlertIconMineralsGreen;
+						tmpBuildingControlAlertsMineralsRequiredDifferent.title = "Required resource deposits are different from expected output.";
+						tmpBuildingControlAlertsMineralsOutputLimited.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsOutputLimited.id = BuildingMenuSingleBuildingSingleAlertMineralsOutputLimitedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsOutputLimited.src = BuildingMenuSingleBuildingSingleAlertIconMineralsYellow;
+						tmpBuildingControlAlertsMineralsOutputLimited.title = "Some of this building's output resources are completely missing and cannot be extracted here.";
+						tmpBuildingControlAlertsMineralsOutputMissing.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsOutputMissing.id = BuildingMenuSingleBuildingSingleAlertMineralsOutputMissingIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsOutputMissing.src = BuildingMenuSingleBuildingSingleAlertIconMineralsRed;
+						tmpBuildingControlAlertsMineralsOutputMissing.title = "There are no resources present that this building is expected to extract.";
+						tmpBuildingControlAlertsMineralsRequiredOvermined.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsRequiredOvermined.id = BuildingMenuSingleBuildingSingleAlertMineralsInputInsufficientIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsRequiredOvermined.src = BuildingMenuSingleBuildingSingleAlertIconMineralsIssueYellow;
+						tmpBuildingControlAlertsMineralsRequiredOvermined.title = "Resource deposits are insufficient for amount of buildings of this type. Efficiency reduced.";
+						tmpBuildingControlAlertsMineralsRequiredMissing.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsMineralsRequiredMissing.id = BuildingMenuSingleBuildingSingleAlertMineralsInputMissingIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsMineralsRequiredMissing.src = BuildingMenuSingleBuildingSingleAlertIconMineralsIssueRed;
+						tmpBuildingControlAlertsMineralsRequiredMissing.title = "Required resource deposits for this building are missing ";
+						
+						var tmpBuildingControlAlertsUnrestUnaffected = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsUnrestIssue = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsUnrestCritical = outputDocument.createElement("img");
+						tmpBuildingControlAlertsUnrestUnaffected.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnrestUnaffected.id = BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnrestUnaffected.src = BuildingMenuSingleBuildingSingleAlertIconUnrestGreen;
+						tmpBuildingControlAlertsUnrestUnaffected.title = "This building is not affected by unrest and discontent."; 
+						tmpBuildingControlAlertsUnrestIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnrestIssue.id = BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnrestIssue.src = BuildingMenuSingleBuildingSingleAlertIconUnrestYellow;
+						tmpBuildingControlAlertsUnrestIssue.title = "Unrest and discontent are reducing this building's efficiency.";
+						tmpBuildingControlAlertsUnrestCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnrestCritical.id = BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnrestCritical.src = BuildingMenuSingleBuildingSingleAlertIconUnrestRed;
+						tmpBuildingControlAlertsUnrestCritical.title = "Unrest and discontent are making it too dangerous for this building to function.";
+						
+						var tmpBuildingControlAlertsUnrestSensitive = outputDocument.createElement("img");
+						var tmpBuildingControlAlertsUnrestSensitiveIssue = outputDocument.createElement("img");
+						tmpBuildingControlAlertsUnrestSensitive.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnrestSensitive.id = BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnrestSensitive.src = BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveCyan;
+						tmpBuildingControlAlertsUnrestSensitive.title = "This building can only work at secure and safe places.";
+						tmpBuildingControlAlertsUnrestSensitiveIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
+						tmpBuildingControlAlertsUnrestSensitiveIssue.id = BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix + tmpBuilding.index;
+						tmpBuildingControlAlertsUnrestSensitiveIssue.src = BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveRed;
+						tmpBuildingControlAlertsUnrestSensitiveIssue.title = "Unrest and discontent presence prevents this building from working.";
+						
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnpowered);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerCritical);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerInsufficient);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerConsumedAndGenerated);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerSensitive);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerSensitiveIssue);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsOverstaffed);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnderstaffed);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsNoStaff);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsNoStaffBonus);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffMandatory);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffMandatoryIssue);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffNotNeededIssue);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazard);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardIssue);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardCritical);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardUnaffected);
+						
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequired);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredDifferent);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsOutputLimited);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsOutputMissing);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredOvermined);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredMissing);
+						
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestUnaffected);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestIssue);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestCritical);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestSensitive);
+						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestSensitiveIssue);
+					
+					tmpBuildingControlContainer.append(tmpBuildingFoldedOperatorsContainer);
+					tmpBuildingControlContainer.append(tmpBuildingFoldedSideButtonsContainer);
+					tmpBuildingControlContainer.append(tmpBuildingUnfoldedOperatorsContainer);
+					tmpBuildingControlContainer.append(tmpBuildingUnfoldedSideButtonsContainer);
+					tmpBuildingControlContainer.append(tmpBuildingControlAlertsContainer);
+				
+				tmpBuildingContainer.append(tmpBuildingInfoContainer);
+				tmpBuildingContainer.append(tmpBuildingBuildDemolishContainer);
+				tmpBuildingContainer.append(tmpBuildingUpgradeDowngradeContainer);
+				tmpBuildingContainer.append(tmpBuildingControlContainer);
+			tmpBuildingElement.append(tmpBuildingContainer);
+		buildingListContainer.append(tmpBuildingElement);
+		
+		//count enabled buildings
+		InterfaceBuildingMenuBuildingsOnList++;
+		
+		interfaceInitSingleBuildingAlerts(outputDocument, tmpBuilding.index);
+		interfaceRefreshBuildingAlerts(outputDocument, tmpBuilding.index);
+	}
+	//console.log(InterfaceBuildingMenuBuildingsOnList);
+
+	if(InterfaceBuildingMenuBuildingsOnList == 0) outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "block";
+	else outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "none";
+}
+
+function interfaceInitSingleBuildingAlerts(outputDocument, buildingIndex){
+	let tmpPlanet = PlanetsArray[PlanetsCurrentPlanet];
+	let tmpBuilding = tmpPlanet.buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+	
+	let tmpBuildingControlAlertsUnpowered = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsPowerSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerSensitiveIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsPowerSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerSensitiveIssueIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsPowerCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsPowerInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsPowerConsumedAndGenerated = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsStaffMandatory = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffMandatoryIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsStaffMandatoryIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffMandatoryIssueIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsStaffNotNeededIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffNotNeededIssueIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsOverstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertOverstaffedIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsUnderstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnderstaffedIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsNoStaffBonus = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertNoStaffBonusIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsNoStaff = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertNoStaffIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsHazardSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsHazardIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardIssueIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsHazardCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardCriticalIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsHazardUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardUnaffectedIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsMineralsRequired = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsRequiredIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsRequiredDifferent = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsRequiredDifferentIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsOutputLimited = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsOutputLimitedIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsOutputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsOutputMissingIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsInputInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsInputInsufficientIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsInputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsInputMissingIdPrefix + buildingIndex);
+	
+	let tmpBuildingControlAlertsUnrestSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsUnrestSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix + buildingIndex);	
+	
+	let tmpBuildingControlAlertsUnrestUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsUnrestIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsUnrestCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix + buildingIndex);
+	
+	
+	//disabled symbol
+	if(!tmpBuilding.enabled) tmpBuildingControlAlertsUnpowered.style.display = "inline-block";
+	
+	//planet power related
+	if(tmpBuildingBlueprint.powerSensitive){
+		if(tmpPlanet.energyRequired <= tmpPlanet.energyAvailable) tmpBuildingControlAlertsPowerSensitive.style.display = "inline-block";
+		else tmpBuildingControlAlertsPowerSensitiveIssue.style.display = "inline-block";
+	}
+	else{
+		if(tmpPlanet.energyRequired > 0){
+			if(tmpPlanet.energyAvailable/tmpPlanet.energyRequired < tmpBuildingBlueprint.powerMinimum) tmpBuildingControlAlertsPowerCritical.style.display = "inline-block";
+			else if(tmpPlanet.energyAvailable/tmpPlanet.energyRequired < 1) tmpBuildingControlAlertsPowerInsufficient.style.display = "inline-block";
+		}
+	}
+	
+	//power consumed and generated
+	if(tmpBuildingBlueprint.powerProduced > 0 && tmpBuildingBlueprint.powerConsumed > 0) tmpBuildingControlAlertsPowerConsumedAndGenerated.style.display = "inline-block";
+
+	//staff not needed
+	if(tmpBuildingBlueprint.staffNoneNeeded) tmpBuildingControlAlertsStaffNotNeededIssue.style.display = "inline-block";
+	else{
+		//if staff is mandatory
+		if(tmpBuildingBlueprint.staffMandatory){
+			if(tmpBuilding.staffRequired > tmpBuilding.staffAssigned) tmpBuildingControlAlertsStaffMandatoryIssue.style.display = "inline-block";
+			else tmpBuildingControlAlertsStaffMandatory.style.display = "inline-block";
+		} //if not
+		else{
+			if(tmpBuilding.staffRequired > tmpBuilding.staffAssigned && tmpBuilding.staffAssigned > 0) tmpBuildingControlAlertsUnderstaffed.style.display = "inline-block";
+		}
+		
+		//if there is exactly zero staff
+		if(tmpBuilding.staffAssigned == 0) tmpBuildingControlAlertsNoStaff.style.display = "inline-block";
+		
+		//if there is too much staff
+		if(tmpBuilding.staffAssigned > tmpBuilding.staffRequired){
+			if(tmpBuildingBlueprint.staffOvertimeForbidden) tmpBuildingControlAlertsOverstaffed.style.display = "inline-block";
+			else tmpBuildingControlAlertsNoStaffBonus.style.display = "inline-block";
+		}
+		else{
+			
+		}
+	}
+	
+	//hazard related
+	if(tmpBuildingBlueprint.hazardResistant) tmpBuildingControlAlertsHazardUnaffected.style.display = "inline-block";
+	else{
+		if(tmpBuildingBlueprint.hazardSensitive) tmpBuildingControlAlertsHazardSensitive.style.display = "inline-block";
+		if(tmpPlanet.hazard > (tmpBuildingBlueprint.hazardTolerance + tmpBuildingBlueprint.hazardLimit)) tmpBuildingControlAlertsHazardCritical.style.display = "inline-block";
+		else if (tmpPlanet.hazard > tmpBuildingBlueprint.hazardTolerance) tmpBuildingControlAlertsHazardIssue.style.display = "inline-block";
+	}
+	
+	//unrest related
+	if(tmpBuildingBlueprint.unrestResistant) tmpBuildingControlAlertsUnrestUnaffected.style.display = "inline-block";
+	else{
+		if(tmpBuildingBlueprint.unrestSensitive){
+			if(tmpPlanet.unrest >= 0.0001) tmpBuildingControlAlertsUnrestSensitiveIssue.style.display = "inline-block";
+			else tmpBuildingControlAlertsUnrestSensitive.style.display = "inline-block";
+		}
+		else{
+			if(tmpPlanet.unrest > tmpBuilding.unrestLimit) tmpBuildingControlAlertsUnrestCritical.style.display = "inline-block";
+			else if(tmpPlanet.unrest > tmpBuilding.unrestTolerance) tmpBuildingControlAlertsUnrestIssue.style.display = "inline-block";
+		}
+	}
+	
+	//minerals related
+	if(tmpBuildingBlueprint.mineralsDependant){
+		let tmpOutputResourceMissing = false;
+		let tmpInputResourceMissing = false;
+		
+		if(tmpBuildingBlueprint.mineralsRequiredDifferent){
+			
+		}
+		else{
+			
+		}
+	}
+}
+
 function interfaceBuildMenuToggleCategory(outputDocument, categoryId){
 	buildingsToggleBuildingCategoryDisplay(categoryId);
+	//interfaceRefreshBuildMenu(outputDocument);
+	interfaceRefreshBuildingsList(outputDocument);
 } 
 
 function interfaceBuildMenuBulkBuyChanged(outputDocument){
 	var tmpInputValue = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value;
 	if(!buildingsTrySetBulkBuyInputs(outputDocument, tmpInputValue)){
 		//if failed to set, reset value to 1
+		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
+	}
+	else if(tmpInputValue < 1){
+		//if set to negative, set expected minimum (1)
 		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
 	}
 	else{
@@ -825,22 +2029,19 @@ function interfaceRefreshBuildMenu(outputDocument){
 		outputDocument.getElementById("planetBuildingInfoPanelHeaderPlanetTypeText").style.color = PlanetsArray[PlanetsCurrentPlanet].type[1];
 		
 		//energy
-		
 		interfaceRefreshBuildMenuEnergy(outputDocument);
 		
 		//building list
-		if(!PlanetsArray[PlanetsCurrentPlanet].owner == DiplomacyPlayerFaction){
-			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "block";
-			outputDocument.getElementById("planetBuildingMenuBuildingListContainer").style.display = "none";
+		if(PlanetsArray[PlanetsCurrentPlanet].owner == DiplomacyPlayerFaction){
+			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "none";
+			outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID).style.display = "block";
+			interfaceInitBuildingsList(outputDocument);
 		}
 		else{
-			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "none";
-			outputDocument.getElementById("planetBuildingMenuBuildingListContainer").style.display = "block";
-			
-			interfaceRefreshBuildingsList(outputDocument);
+			outputDocument.getElementById("planetBuildingMenuObjectNotOwned").style.display = "block";
+			outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "none";
+			outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID).style.display = "none";
 		}
-		
-		
 	}
 }
 function interfaceRefreshBuildMenuEnergy(outputDocument){
@@ -888,8 +2089,130 @@ function interfaceRefreshBuildMenuEnergy(outputDocument){
 }
 
 function interfaceRefreshBuildingsList(outputDocument){
+	InterfaceBuildingMenuBuildingsOnList = 0;
 	
+	for(let i = 0; i < PlanetsArray[PlanetsCurrentPlanet].buildings.length; i++) {
+		let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[i];
+		let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+		
+		//check categories, if any matches enabled one, flag it
+		let tmpCategoryOk = false;
+		for(let j = 0; j < tmpBuildingBlueprint.categories.length; j++){
+			if(BuildingCategoriesEnabled[tmpBuildingBlueprint.categories[j]]) {
+				tmpCategoryOk = true;
+				break;
+			}
+		}
+		
+		let tmpBuildingElement = outputDocument.getElementById(BuildingMenuSingleBuildingIdPrefix + tmpBuilding.index);
+		if(!tmpCategoryOk || !tmpBuildingBlueprint.unlocked) tmpBuildingElement.style.display = "none";
+		else {
+			tmpBuildingElement.style.display = "block";
+			
+			//refresh element's energy if building is visible, no point otherwise
+			
+			//refresh element's alerts if building is visible, no point otherwise
+			interfaceRefreshBuildingAlerts(outputDocument, i);
+			
+			InterfaceBuildingMenuBuildingsOnList++;
+		}
+			
+		
+		//
+	}
+	//display message if no buildings got listed with current category or at player's progress
+	if(InterfaceBuildingMenuBuildingsOnList == 0) outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "block";
+	else outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "none";
 }
+
+function interfaceRefreshBuildingAlerts(outputDocument, buildingIndex){
+	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+	
+	//
+}
+
+function interfaceFoldUnfoldBuilding(outputDocument, buildingListIndex){
+	var tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingListIndex];
+	var tmpBuildingElement = outputDocument.getElementById(BuildingMenuSingleBuildingIdPrefix + buildingListIndex);
+	if(tmpBuilding.folded) {
+		tmpBuildingElement.className = BuildingMenuSingleBuildingClassUnfolded;
+		tmpBuilding.folded = false;
+	}
+	else {
+		tmpBuildingElement.className = BuildingMenuSingleBuildingClassFolded;
+		tmpBuilding.folded = true;
+	}
+}
+function interfaceEnableDisableBuilding(outputDocument, buildingListIndex){
+	var tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingListIndex];
+	var tmpPowerIcon = outputDocument.getElementById(BuildingMenuSingleBuildingSideButtonPowerButtonIdPrefix + buildingListIndex);
+	if(tmpBuilding.enabled) {
+		tmpBuilding.enabled = false;
+		tmpPowerIcon.src = BuildingMenuSingleBuildingSideButtonPoweredOffImagePath;
+	}
+	else {
+		tmpBuilding.enabled = true;
+		tmpPowerIcon.src = BuildingMenuSingleBuildingSideButtonPoweredOnImagePath;
+	}
+}
+
+function interfaceBuildBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToBuild = "input"){
+	let tmpBuildAmount;
+	if(amountToBuild == "input"){
+		tmpBuildAmount = outputDocument.getElementById(BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpBuildAmount = amountToBuild;
+	
+	console.log("BUILD: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpBuildAmount);
+}
+function interfaceDemolishBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToDemolish = "input"){
+	let tmpDemolishAmount;
+	if(amountToDemolish == "input"){
+		tmpDemolishAmount = outputDocument.getElementById(BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpDemolishAmount = amountToDemolish;
+	
+	console.log("DEMOLISH: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpDemolishAmount);
+}
+function interfaceUpgradeBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToUpgrade = "input"){
+	let tmpUpgradeAmount;
+	if(amountToUpgrade == "input"){
+		tmpUpgradeAmount = outputDocument.getElementById(BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpUpgradeAmount = amountToUpgrade;
+	
+	console.log("UPGRADE: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpUpgradeAmount);
+}
+function interfaceDowngradeBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToDowngrade = "input"){
+	let tmpDowngradeAmount;
+	if(amountToDowngrade == "input"){
+		tmpDowngradeAmount = outputDocument.getElementById(BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpDowngradeAmount = amountToDowngrade;
+	
+	console.log("DOWNGRADE: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpDowngradeAmount);
+}
+
+function interfaceAddStaffToBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToAssign = "input"){
+	let tmpAddedStaff;
+	if(amountToAssign == "input"){
+		tmpAddedStaff = outputDocument.getElementById(BuildingMenuSingleBuildingOperatorCustomInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpAddedStaff = amountToAssign;
+	
+	console.log("ASSIGN: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpAddedStaff);
+}
+function interfaceRemoveStaffFromBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToUnassign = "input"){
+	let tmpRemovedStaff;
+	if(amountToUnassign == "input"){
+		tmpRemovedStaff = outputDocument.getElementById(BuildingMenuSingleBuildingOperatorCustomInputIdPrefix + buildingListIndex).value;
+	}
+	else tmpRemovedStaff = amountToUnassign;
+	
+	console.log("UNASSIGN: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpRemovedStaff);
+}
+
 
 
 function interfaceRefreshInterface(outputDocument) {
@@ -1765,19 +3088,6 @@ function interfacePlanetBuildingGoToPlanet(outputDocument) {
 	}
 }
 
-var InterfaceBuildingMenuSingleBuildingContainerPrefix = "planetBuildingSingleBuilding_";
-var InterfaceBuildingMenuSingleBuildingFoldedClass = "planetBuildingFoldedBuilding";
-var InterfaceBuildingMenuSingleBuildingUnfoldedClass = "planetBuildingUnfoldedBuilding";
-
-function interfaceFoldUnfoldBuilding(outputDocument, buildingListIndex){
-	var tmpBuilding = outputDocument.getElementById(InterfaceBuildingMenuSingleBuildingContainerPrefix + buildingListIndex);
-	if(tmpBuilding.className == InterfaceBuildingMenuSingleBuildingFoldedClass){
-		tmpBuilding.className = InterfaceBuildingMenuSingleBuildingUnfoldedClass;
-	}
-	else{
-		tmpBuilding.className = InterfaceBuildingMenuSingleBuildingFoldedClass;
-	}
-}
 
 function interfacePlanetBuildingsPreviousPlanet(outputDocument) {
 	if(!InterfacePlanetBuildingsPlanetChanging) {

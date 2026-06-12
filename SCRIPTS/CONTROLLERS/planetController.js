@@ -177,10 +177,12 @@ class PlanetObject{
 	gravity = 9.81;
 	
 	//id, amount, level, active
-	buildings = {};
+	buildings = [];
 	operators = 0;
 	
 	hazard = PlanetBaseHazardLevel;
+	unrest = 0.0;
+	
 	relativeSize = 0;
 	
 	naturalResources = {};
@@ -272,6 +274,11 @@ class PlanetObject{
 		tmpPosition[1] = Math.cos(Math.PI*tmpRotation*2);
 		
 		return tmpPosition;
+	}
+	
+	getNaturalResource(resourceName){
+		if(typeof(this.naturalResources[resourceName]) != "undefined") return this.naturalResources[resourceName];
+		else return 0;
 	}
 }
 

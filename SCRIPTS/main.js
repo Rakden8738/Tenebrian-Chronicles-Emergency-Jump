@@ -61,6 +61,7 @@ function mainLoadGame(outputDocument){
 		return false;
 	}
 	
+	scenario_earlyAlpha2();
 	loadLoadGame(outputDocument);
 	if(SaveLoadErrorDetected) SettingSaveAutosave = false;
 	saveAutosaveLoop(outputDocument);
@@ -72,8 +73,6 @@ function mainLoadGame(outputDocument){
 	interfaceRefreshMenuButtons(outputDocument);
 	interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
 	interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
-	
-	scenario_earlyAlpha2();
 	
 	animationMoveBackground(outputDocument);
 	

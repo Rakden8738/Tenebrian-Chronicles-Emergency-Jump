@@ -422,6 +422,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	padding-left: 0px;
+	padding-bottom: 0px;
 }
 .planetBuildingCategoryElement{
 	padding: 2px;
@@ -442,20 +443,20 @@
 	font-size: 80%;
 }
 
-#planetBuildingMenuObjectNotOwned{
+#planetBuildingMenuObjectNotOwned, #planetBuildingMenuNoBuildingsAvailable{
 	width: 100%;
     max-height: 90%;
-    padding: 15px 10px 15px 10px;
+    padding: 10px 25px 15px 10px;
 	display: none;
 }
-#planetBuildingMenuObjectNotOwnedTextContainer{
+#planetBuildingMenuObjectNotOwnedTextContainer, #planetBuildingMenuNoBuildingsAvailableTextContainer{
 	background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);
 	text-align: left;
 }
-#planetBuildingMenuObjectNotOwnedText{
+#planetBuildingMenuObjectNotOwnedText, #planetBuildingMenuNoBuildingsAvailableText{
 	font-size: 120%;
 }
-#planetBuildingMenuObjectNotOwnedSubext{
+#planetBuildingMenuObjectNotOwnedSubext, #planetBuildingMenuNoBuildingsAvailableSubext{
 	font-size: 75%;
 	font-style: italic;
 	color: hsla(0,0%,60%,0.8);
@@ -464,7 +465,7 @@
 #planetBuildingMenuBuildingListContainer{
 	width: 100%;
     max-height: 90%;
-    padding: 15px 10px 15px 10px;
+    padding: 10px 10px 15px 10px;
     overflow-y: scroll;
     overflow-x: scroll;
 	scrollbar-gutter: stable;
@@ -476,13 +477,23 @@
 	mask-composite: add, add, intersect;
 	mask-clip: no-clip;
 }
-.planetBuildingUnfoldedBuilding{
+.planetBuildingUnfoldedBuilding, .planetBuildingFoldedBuilding{
 	padding: 0px;
 	min-width: calc(100% - 2px);
+	margin-top: 0px;
+	margin-bottom: 10px;
+	padding-top: 0px;
+	/*background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);*/
+	background-color: hsla(0,0%,0%,0.7);
+}
+.planetBuildingUnfoldedBuilding{
+	
 }
 .planetBuildingFoldedBuilding{
-	padding: 0px;
-	min-width: calc(100% - 2px);
+	min-height: 50px;
+}
+.planetBuildingFoldedBuilding .planetBuildingSingleBuildingAlertsContainer{
+	max-height: 50px;
 }
 .planetBuildingUnfoldedBuilding .planetBuildingUnfoldedOnlyBuilding{
 	display: flex;
@@ -502,13 +513,14 @@
 	display: inline-flex;
     justify-content: space-between;
 	min-width: calc(100% - 2px);
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	margin-right: 0px;
 	padding:0px;
 	padding-top: 4px;
 	text-align: left;
 	background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);
+	/*background-color: hsla(0,0%,0%,0.7);*/
 }
 .planetBuldingFoldedBuildingContainer{}
 .planetBuildingSingleBuildingInfoContainer{
@@ -621,7 +633,7 @@
 }
 .planetBuildingSingleBuildingOperatorsContainer{
 	padding: 0;
-	width: 185px;
+	width: 200px;
     display: flex;
     flex-direction: column;
 	justify-content: space-between;
@@ -677,13 +689,21 @@
 	padding: 0;
 	text-align: right;
 	position: absolute;
-	right: 25px;
+	right: 20px;
+	max-width: 100px;
+    max-height: 60px;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+	padding-bottom: 10px;
+	mask-image: linear-gradient(180deg, black 0px, black calc(100% - 10px), transparent 100%);
 }
 .planetBuildingAlertIcon{
 	width: auto;
 	height: 1.25em;
 	margin: 0px;
-	display: inline-block;
+	/*display: inline-block;*/
+	display: none;
 	float: right;
 }
 
@@ -763,7 +783,7 @@
 .planetBuildingSingleBuildingUpgradeButtonsContainer{}
 .planetBuildingSingleBuildingDowngradeButtonsContainer{}
 .planetBuildingSingleBuildingOperatorsUnfoldedContainer{
-	padding: 2px;
+	padding: 0px;
     margin: 0px;
 }
 .planetBuildingSingleBuildingOperatorHeaderContainer{
@@ -784,13 +804,15 @@
 	flex-direction: row;
     justify-content: space-between;
 	padding: 0px;
+	align-items: flex-end;
 }
 .planetBuildingsSingleBuildingControlMenuLeftContainer{
 	float:left;
-	max-width: 65%;
+	max-width: 55%;
+	min-width: 100px;
 	position: relative;
 	padding: 0px;
-	min-height: 100px;
+	min-height: 75px;
     /*display: inline-flex;*/
     flex-direction: column;
     justify-content: space-around;
@@ -827,13 +849,13 @@
 	margin-right: 0.1em;
 }
 .planetBuildingSingleBuildingInfoIconContainer{
-	width: 1.5em;
-	height: 1.5em;
+	width: 1.25em;
+	height: 1.25em;
 	margin: 0px;
 	display: inline-block;
 	float: right;
 	position: absolute;
-	opacity: 0.75;
+	opacity: 0.66;
 	padding: 0;
 }
 .planetBuildingSingleBuildingInfoIcon{
@@ -883,33 +905,35 @@
 	height: 100%;
 	width: auto;
 }
-.planetBuildingSIngleBuildingSingleEfficiencyText{
+.planetBuildingSingleBuildingSingleEfficiencyText{
 	color: hsl(120,100%,50%);
 }
 
 .planetBuildingsSingleBuildingControlMenuRightContainer{
 	float:right;
-	max-width: calc(30% - 2px);
-	margin-left: 2px;
+	max-width: 40%;
+	margin-left: 0px;
 	position: relative;
 	padding: 0px;
 	padding-left: 0px;
 	padding-right: 0px;
 	display: inline-flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
 }
 .planetBuildingsSingleBuildingOperatorControlButton{
 	position:relative;
-	max-width: min(80%,120px);
+	max-width: 45%;
 	height: auto;
-	min-height: 20px;
+	
 	left:0;
 	right:0;
 	bottom: 0;
 	margin: auto;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 	outline: solid hsla(180,75%,75%,0.0) 0px;
 	border: none;
 	padding:0px;
@@ -961,7 +985,7 @@
 	left:10%;
 	position:absolute;
 	text-transform:uppercase;
-	font-size: 75%;
+	font-size: 60%;
 	will-change: transform;
 }
 .planetBuildingSingleBuildingSideButtonsUnfoldedContainer{

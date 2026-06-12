@@ -8,6 +8,8 @@ function scenario_earlyAlpha2(){
 	earlyAlpha_RegisterPlanets();
 	earlyAlpha_CreateNetworks();
 	
+	earlyAlpha_AddBuildings();
+	
 	DiplomacyFactionNames = diplomacyDefaultFactions();
 	
 	SystemsCurrentSystem = 0;
@@ -36,13 +38,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 1.0;
 	tmpSystem.position = [0.0,0.0,0.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.1;
-	tmpSystem.asteroids["Ore"] = 0.0;
-	tmpSystem.asteroids["Iron"] = 1.0;
-	tmpSystem.asteroids["Copper"] = 0.5;
-	tmpSystem.asteroids["Transplutonics"] = 1.0;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.1;
+	// tmpSystem.asteroids["Ore"] = 0.0;
+	// tmpSystem.asteroids["Iron"] = 1.0;
+	// tmpSystem.asteroids["Copper"] = 0.5;
+	// tmpSystem.asteroids["Transplutonics"] = 1.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -57,13 +59,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 1.2;
 	tmpSystem.position = [-3.6,-8.1,0.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.5;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 5.0;
-	tmpSystem.asteroids["Iron"] = 3.0;
-	tmpSystem.asteroids["Copper"] = 2.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	// tmpSystem.asteroids["Silicon"] = 0.5;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 5.0;
+	// tmpSystem.asteroids["Iron"] = 3.0;
+	// tmpSystem.asteroids["Copper"] = 2.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -78,13 +80,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 2.3;
 	tmpSystem.position = [3.0,1.0,-0.25];
 	
-	tmpSystem.asteroids["Silicon"] = 1.5;
-	tmpSystem.asteroids["Carbon"] = 1.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 5.0;
-	tmpSystem.asteroids["Iron"] = 1.0;
-	tmpSystem.asteroids["Copper"] = 4.0;
-	tmpSystem.asteroids["Transplutonics"] = 2.5;
+	// tmpSystem.asteroids["Silicon"] = 1.5;
+	// tmpSystem.asteroids["Carbon"] = 1.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 5.0;
+	// tmpSystem.asteroids["Iron"] = 1.0;
+	// tmpSystem.asteroids["Copper"] = 4.0;
+	// tmpSystem.asteroids["Transplutonics"] = 2.5;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -99,13 +101,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.9;
 	tmpSystem.position = [7.0,0.0,1.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 0.0;
-	tmpSystem.asteroids["Iron"] = 0.0;
-	tmpSystem.asteroids["Copper"] = 0.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 0.0;
+	// tmpSystem.asteroids["Iron"] = 0.0;
+	// tmpSystem.asteroids["Copper"] = 0.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -120,13 +122,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.77;
 	tmpSystem.position = [5.0,-2.0,3.0];
 	
-	tmpSystem.asteroids["Silicon"] = 1.0;
-	tmpSystem.asteroids["Carbon"] = 1.5;
-	tmpSystem.asteroids["Ice"] = 3.0;
-	tmpSystem.asteroids["Ore"] = 0.0;
-	tmpSystem.asteroids["Iron"] = 2.0;
-	tmpSystem.asteroids["Copper"] = 0.5;
-	tmpSystem.asteroids["Transplutonics"] = 0.25;
+	// tmpSystem.asteroids["Silicon"] = 1.0;
+	// tmpSystem.asteroids["Carbon"] = 1.5;
+	// tmpSystem.asteroids["Ice"] = 3.0;
+	// tmpSystem.asteroids["Ore"] = 0.0;
+	// tmpSystem.asteroids["Iron"] = 2.0;
+	// tmpSystem.asteroids["Copper"] = 0.5;
+	// tmpSystem.asteroids["Transplutonics"] = 0.25;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -141,13 +143,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.9;
 	tmpSystem.position = [9.0,-5.0,5.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 3.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 3.0;
-	tmpSystem.asteroids["Iron"] = 0.0;
-	tmpSystem.asteroids["Copper"] = 0.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.5;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 3.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 3.0;
+	// tmpSystem.asteroids["Iron"] = 0.0;
+	// tmpSystem.asteroids["Copper"] = 0.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.5;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -162,13 +164,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.41;
 	tmpSystem.position = [4.0,-4.0,3.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.5;
-	tmpSystem.asteroids["Ore"] = 1.0;
-	tmpSystem.asteroids["Iron"] = 4.0;
-	tmpSystem.asteroids["Copper"] = 2.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.5;
+	// tmpSystem.asteroids["Ore"] = 1.0;
+	// tmpSystem.asteroids["Iron"] = 4.0;
+	// tmpSystem.asteroids["Copper"] = 2.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -183,13 +185,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.72;
 	tmpSystem.position = [-2.0,-1.5,-2.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 1.0;
-	tmpSystem.asteroids["Iron"] = 0.0;
-	tmpSystem.asteroids["Copper"] = 6.0;
-	tmpSystem.asteroids["Transplutonics"] = 2.0;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 1.0;
+	// tmpSystem.asteroids["Iron"] = 0.0;
+	// tmpSystem.asteroids["Copper"] = 6.0;
+	// tmpSystem.asteroids["Transplutonics"] = 2.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -204,13 +206,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 1.18;
 	tmpSystem.position = [-4.0,-1.0,-1.0];
 	
-	tmpSystem.asteroids["Silicon"] = 0.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 0.0;
-	tmpSystem.asteroids["Ore"] = 15.0;
-	tmpSystem.asteroids["Iron"] = 10.0;
-	tmpSystem.asteroids["Copper"] = 1.0;
-	tmpSystem.asteroids["Transplutonics"] = 2.0;
+	// tmpSystem.asteroids["Silicon"] = 0.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 0.0;
+	// tmpSystem.asteroids["Ore"] = 15.0;
+	// tmpSystem.asteroids["Iron"] = 10.0;
+	// tmpSystem.asteroids["Copper"] = 1.0;
+	// tmpSystem.asteroids["Transplutonics"] = 2.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -225,13 +227,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.93;
 	tmpSystem.position = [10.3,-1.0,0.5];
 	
-	tmpSystem.asteroids["Silicon"] = 2.0;
-	tmpSystem.asteroids["Carbon"] = 3.0;
-	tmpSystem.asteroids["Ice"] = 0.25;
-	tmpSystem.asteroids["Ore"] = 0.0;
-	tmpSystem.asteroids["Iron"] = 0.0;
-	tmpSystem.asteroids["Copper"] = 5.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	// tmpSystem.asteroids["Silicon"] = 2.0;
+	// tmpSystem.asteroids["Carbon"] = 3.0;
+	// tmpSystem.asteroids["Ice"] = 0.25;
+	// tmpSystem.asteroids["Ore"] = 0.0;
+	// tmpSystem.asteroids["Iron"] = 0.0;
+	// tmpSystem.asteroids["Copper"] = 5.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -246,13 +248,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 1.27;
 	tmpSystem.position = [0.0,2.0,0.0];
 	
-	tmpSystem.asteroids["Silicon"] = 5.0;
-	tmpSystem.asteroids["Carbon"] = 0.0;
-	tmpSystem.asteroids["Ice"] = 7.0;
-	tmpSystem.asteroids["Ore"] = 3.0;
-	tmpSystem.asteroids["Iron"] = 2.0;
-	tmpSystem.asteroids["Copper"] = 0.0;
-	tmpSystem.asteroids["Transplutonics"] = 0.0;
+	// tmpSystem.asteroids["Silicon"] = 5.0;
+	// tmpSystem.asteroids["Carbon"] = 0.0;
+	// tmpSystem.asteroids["Ice"] = 7.0;
+	// tmpSystem.asteroids["Ore"] = 3.0;
+	// tmpSystem.asteroids["Iron"] = 2.0;
+	// tmpSystem.asteroids["Copper"] = 0.0;
+	// tmpSystem.asteroids["Transplutonics"] = 0.0;
 	tmpSystem.planetsCounterClockwise = true;
 	
 	SystemsArray.push(tmpSystem);
@@ -268,13 +270,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 11.24;
 	tmpSystem.position = [8.0,3.1,1.0];
 	
-	tmpSystem.asteroids["Silicon"] = 5.0;
-	tmpSystem.asteroids["Carbon"] = 10.0;
-	tmpSystem.asteroids["Ice"] = 30.0;
-	tmpSystem.asteroids["Ore"] = 10.0;
-	tmpSystem.asteroids["Iron"] = 20.0;
-	tmpSystem.asteroids["Copper"] = 2.0;
-	tmpSystem.asteroids["Transplutonics"] = 10.0;
+	// tmpSystem.asteroids["Silicon"] = 5.0;
+	// tmpSystem.asteroids["Carbon"] = 10.0;
+	// tmpSystem.asteroids["Ice"] = 30.0;
+	// tmpSystem.asteroids["Ore"] = 10.0;
+	// tmpSystem.asteroids["Iron"] = 20.0;
+	// tmpSystem.asteroids["Copper"] = 2.0;
+	// tmpSystem.asteroids["Transplutonics"] = 10.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -289,13 +291,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 2.11;
 	tmpSystem.position = [3.5,6.5,-4.5];
 	
-	tmpSystem.asteroids["Silicon"] = 5.0;
-	tmpSystem.asteroids["Carbon"] = 10.0;
-	tmpSystem.asteroids["Ice"] = 30.0;
-	tmpSystem.asteroids["Ore"] = 10.0;
-	tmpSystem.asteroids["Iron"] = 20.0;
-	tmpSystem.asteroids["Copper"] = 2.0;
-	tmpSystem.asteroids["Transplutonics"] = 10.0;
+	// tmpSystem.asteroids["Silicon"] = 5.0;
+	// tmpSystem.asteroids["Carbon"] = 10.0;
+	// tmpSystem.asteroids["Ice"] = 30.0;
+	// tmpSystem.asteroids["Ore"] = 10.0;
+	// tmpSystem.asteroids["Iron"] = 20.0;
+	// tmpSystem.asteroids["Copper"] = 2.0;
+	// tmpSystem.asteroids["Transplutonics"] = 10.0;
 	
 	SystemsArray.push(tmpSystem);
 	
@@ -311,13 +313,13 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 20.00;
 	tmpSystem.position = [2.0,9.00,-13.0];
 	
-	tmpSystem.asteroids["Silicon"] = 5.0;
-	tmpSystem.asteroids["Carbon"] = 10.0;
-	tmpSystem.asteroids["Ice"] = 30.0;
-	tmpSystem.asteroids["Ore"] = 10.0;
-	tmpSystem.asteroids["Iron"] = 20.0;
-	tmpSystem.asteroids["Copper"] = 2.0;
-	tmpSystem.asteroids["Transplutonics"] = 10.0;
+	// tmpSystem.asteroids["Silicon"] = 5.0;
+	// tmpSystem.asteroids["Carbon"] = 10.0;
+	// tmpSystem.asteroids["Ice"] = 30.0;
+	// tmpSystem.asteroids["Ore"] = 10.0;
+	// tmpSystem.asteroids["Iron"] = 20.0;
+	// tmpSystem.asteroids["Copper"] = 2.0;
+	// tmpSystem.asteroids["Transplutonics"] = 10.0;
 	tmpSystem.planetsCounterClockwise = true;
 	
 	SystemsArray.push(tmpSystem);
@@ -379,20 +381,20 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 9.81;
 	tmpPlanet.startingPosition = 0.272;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
-	tmpPlanet.resourceStorage["Building materials"] = 50.0;
-	tmpPlanet.resourceStorage["Ship parts"] = 20.0;
-	tmpPlanet.resourceStorage["Fuel"] = 50.0;
+	// tmpPlanet.resourceStorage["Building materials"] = 50.0;
+	// tmpPlanet.resourceStorage["Ship parts"] = 20.0;
+	// tmpPlanet.resourceStorage["Fuel"] = 50.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -420,16 +422,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.67;
 	tmpPlanet.startingPosition = 0.361;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.5;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -460,10 +462,10 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 6.11;
 	tmpPlanet.startingPosition = 0.471;
 	
-	tmpPlanet.naturalResources["Gravel"] = 2.0;
-	tmpPlanet.naturalResources["Stone"] = 3.5;
-	tmpPlanet.naturalResources["Iron"] = 5.0;
-	tmpPlanet.naturalResources["Copper"] = 4.0;
+	// tmpPlanet.naturalResources["Gravel"] = 2.0;
+	// tmpPlanet.naturalResources["Stone"] = 3.5;
+	// tmpPlanet.naturalResources["Iron"] = 5.0;
+	// tmpPlanet.naturalResources["Copper"] = 4.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -495,10 +497,10 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 3.21;
 	tmpPlanet.startingPosition = 0.221;
 	
-	tmpPlanet.naturalResources["Gravel"] = 2.0;
-	tmpPlanet.naturalResources["Stone"] = 3.5;
-	tmpPlanet.naturalResources["Iron"] = 5.0;
-	tmpPlanet.naturalResources["Copper"] = 4.0;
+	// tmpPlanet.naturalResources["Gravel"] = 2.0;
+	// tmpPlanet.naturalResources["Stone"] = 3.5;
+	// tmpPlanet.naturalResources["Iron"] = 5.0;
+	// tmpPlanet.naturalResources["Copper"] = 4.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -527,16 +529,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 17.67;
 	tmpPlanet.startingPosition = 0.681;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -567,16 +569,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 3.91;
 	tmpPlanet.startingPosition = 0.431;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -608,16 +610,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 11.67;
 	tmpPlanet.startingPosition = 0.097;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -647,16 +649,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 10.11;
 	tmpPlanet.startingPosition = 0.028;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -686,16 +688,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 9.56;
 	tmpPlanet.startingPosition = 0.71;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -726,16 +728,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 21.37;
 	tmpPlanet.startingPosition = 0.797;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -766,16 +768,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 6.91;
 	tmpPlanet.startingPosition = 0.239;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -805,16 +807,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.43;
 	tmpPlanet.startingPosition = 0.561;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -847,12 +849,12 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.61;
 	tmpPlanet.startingPosition = 0.142;
 	
-	tmpPlanet.naturalResources["Gravel"] = 5.0;
-	tmpPlanet.naturalResources["Stone"] = 2.5;
-	tmpPlanet.naturalResources["Sand"] = 2.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Copper"] = 2.0;
-	tmpPlanet.naturalResources["Water"] = 0.1;
+	// tmpPlanet.naturalResources["Gravel"] = 5.0;
+	// tmpPlanet.naturalResources["Stone"] = 2.5;
+	// tmpPlanet.naturalResources["Sand"] = 2.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Copper"] = 2.0;
+	// tmpPlanet.naturalResources["Water"] = 0.1;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -882,14 +884,14 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 9.54;
 	tmpPlanet.startingPosition = 0.645;
 	
-	tmpPlanet.naturalResources["Gravel"] = 2.0;
-	tmpPlanet.naturalResources["Stone"] = 2.5;
-	tmpPlanet.naturalResources["Iron"] = 0.5;
-	tmpPlanet.naturalResources["Copper"] = 1.5;
-	tmpPlanet.naturalResources["Water"] = 0.25;
+	// tmpPlanet.naturalResources["Gravel"] = 2.0;
+	// tmpPlanet.naturalResources["Stone"] = 2.5;
+	// tmpPlanet.naturalResources["Iron"] = 0.5;
+	// tmpPlanet.naturalResources["Copper"] = 1.5;
+	// tmpPlanet.naturalResources["Water"] = 0.25;
 	
-	tmpPlanet.naturalResources["Ship parts"] = 2.0;
-	tmpPlanet.naturalResources["Steel"] = 1.5;
+	// tmpPlanet.naturalResources["Ship parts"] = 2.0;
+	// tmpPlanet.naturalResources["Steel"] = 1.5;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -921,15 +923,15 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 4.97;
 	tmpPlanet.startingPosition = 0.276;
 	
-	tmpPlanet.naturalResources["Gravel"] = 0.50;
-	tmpPlanet.naturalResources["Stone"] = 0.75;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Copper"] = 0.25;
-	tmpPlanet.naturalResources["Water"] = 0.10;
-	tmpPlanet.naturalResources["Ice"] = 5.00;
+	// tmpPlanet.naturalResources["Gravel"] = 0.50;
+	// tmpPlanet.naturalResources["Stone"] = 0.75;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Copper"] = 0.25;
+	// tmpPlanet.naturalResources["Water"] = 0.10;
+	// tmpPlanet.naturalResources["Ice"] = 5.00;
 	
-	tmpPlanet.naturalResources["Ship parts"] = 2.0;
-	tmpPlanet.naturalResources["Steel"] = 1.5;
+	// tmpPlanet.naturalResources["Ship parts"] = 2.0;
+	// tmpPlanet.naturalResources["Steel"] = 1.5;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -959,16 +961,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.26;
 	tmpPlanet.startingPosition = 0.776;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -998,16 +1000,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 4.27;
 	tmpPlanet.startingPosition = 0.303;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1044,16 +1046,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.51;
 	tmpPlanet.startingPosition = 0.892;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1086,16 +1088,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 16.27;
 	tmpPlanet.startingPosition = 0.658;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1124,16 +1126,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 12.67;
 	tmpPlanet.startingPosition = 0.17;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1163,16 +1165,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 8.74;
 	tmpPlanet.startingPosition = 0.806;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1204,16 +1206,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 8.76;
 	tmpPlanet.startingPosition = 0.866;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1248,16 +1250,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 12.11;
 	tmpPlanet.startingPosition = 0.379;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1290,16 +1292,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 7.67;
 	tmpPlanet.startingPosition = 0.241;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1329,16 +1331,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 2.31;
 	tmpPlanet.startingPosition = 0.165;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1377,16 +1379,16 @@ function earlyAlpha_Planets(){
 	tmpPlanet.gravity = 27.31;
 	tmpPlanet.startingPosition = 0.666;
 	
-	tmpPlanet.naturalResources["Gravel"] = 1.0;
-	tmpPlanet.naturalResources["Stone"] = 1.5;
-	tmpPlanet.naturalResources["Iron"] = 1.0;
-	tmpPlanet.naturalResources["Biomass"] = 1.5;
-	tmpPlanet.naturalResources["Copper"] = 0.8;
-	tmpPlanet.naturalResources["Water"] = 1.0;
+	// tmpPlanet.naturalResources["Gravel"] = 1.0;
+	// tmpPlanet.naturalResources["Stone"] = 1.5;
+	// tmpPlanet.naturalResources["Iron"] = 1.0;
+	// tmpPlanet.naturalResources["Biomass"] = 1.5;
+	// tmpPlanet.naturalResources["Copper"] = 0.8;
+	// tmpPlanet.naturalResources["Water"] = 1.0;
 	
-	tmpPlanet.naturalResources["Building materials"] = 2.0;
-	tmpPlanet.naturalResources["Ship parts"] = 0.1;
-	tmpPlanet.naturalResources["Steel"] = 0.0;
+	// tmpPlanet.naturalResources["Building materials"] = 2.0;
+	// tmpPlanet.naturalResources["Ship parts"] = 0.1;
+	// tmpPlanet.naturalResources["Steel"] = 0.0;
 	
 	tmpPlanet.refreshPlanet();
 	PlanetsArray.push(tmpPlanet);
@@ -1472,4 +1474,73 @@ function earlyAlpha_CreateNetworks(){
 	networksLinkSystemsByName("The Edge","Red Frontier");
 	networksLinkSystemsByName("The Edge","The Northern Abyss");
 }
+function earlyAlpha_AddBuildings(){
+	var tmpBuilding; 
+	
+	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Standard Farm";
+	tmpBuilding.description = "Basic farm that requires fertile soil and planet to be habitable.";
+	tmpBuilding.categories = [0];
+	
+	//tmpBuilding.allowedPlanetTypes = [];
+	tmpBuilding.requiredPlanetConditions = ["Habitable"];
+	//tmpBuilding.forbiddenPlanetTypes = [];
+	tmpBuilding.forbiddenPlanetConditions = ["Dangerous biosphere", "Radioactive", "Death world"];
+	tmpBuilding.unlocked = true;
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	
+	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Sand Quarry";
+	tmpBuilding.description = "Wide area quarry that can only built on planets with abundance of sand.";
+	tmpBuilding.categories = [0];
+	
+	tmpBuilding.allowedPlanetTypes = ["Desert","Arid","Barren"];
+	//tmpBuilding.requiredPlanetConditions = [];
+	//tmpBuilding.forbiddenPlanetTypes = [];
+	//tmpBuilding.forbiddenPlanetConditions = [];
+	tmpBuilding.unlocked = true;
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	
+	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Nuwuclear Reactor";
+	tmpBuilding.description = "Standard nuclear reactor that uses uranium as fuel.";
+	tmpBuilding.categories = [3];
+	
+	//tmpBuilding.allowedPlanetTypes = [];
+	//tmpBuilding.requiredPlanetConditions = [];
+	tmpBuilding.forbiddenPlanetTypes = ["Volcanic", "Cryovolcanic"];
+	tmpBuilding.forbiddenPlanetConditions = ["Extremely hot", "High tectonic activity", "Radioactive"];
+	tmpBuilding.unlocked = true;
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	
+	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Fuwusion Reactor";
+	tmpBuilding.description = "Reactor that uses hydrogen as fuel.";
+	tmpBuilding.categories = [3];
+	
+	//tmpBuilding.allowedPlanetTypes = [];
+	//tmpBuilding.requiredPlanetConditions = [];
+	tmpBuilding.forbiddenPlanetTypes = ["Volcanic", "Cryovolcanic"];
+	tmpBuilding.forbiddenPlanetConditions = ["Extremely hot", "High tectonic activity", "Radioactive"];
+	tmpBuilding.unlocked = false;
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	
+	
+	
+	buildingInitBuildings();
+}
+
+
 
