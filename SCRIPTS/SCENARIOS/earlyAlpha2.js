@@ -2,6 +2,7 @@ function scenario_earlyAlpha2(){
 	SystemsArray = [];
 	PlanetsArray = [];
 	
+	earlyAlpha_Resources();
 	earlyAlpha_Systems();
 	systemsSortByDepth();
 	earlyAlpha_Planets();
@@ -25,6 +26,131 @@ function scenario_earlyAlpha2(){
 //αβγδϵζηθικλμνξοπρστυϕχψω
 //ΑΒΓΔϵΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥϕΧΨΩ
 
+function earlyAlpha_Resources(){
+	var tmpResource;
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Stone";
+	tmpResource.description = "Construction-ready blocks of stone.";
+	tmpResource.categories = [0,1];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Scrap";
+	tmpResource.description = "Damaged and no longer usable fragments of technology produced by us or other civilizations.";
+	tmpResource.categories = [0];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Ore";
+	tmpResource.description = "Unsorted collection of metal-bearing rocks.";
+	tmpResource.categories = [0];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Sand";
+	tmpResource.description = "Granular material composed of silicon-rich particles.";
+	tmpResource.categories = [0];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Iron";
+	tmpResource.description = "Refined sheets and ingots of cast iron.";
+	tmpResource.categories = [1,2];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Glass";
+	tmpResource.description = "Sheets of durable glass.";
+	tmpResource.categories = [1,2];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Copper";
+	tmpResource.description = "Refined sheets and ingots of copper.";
+	tmpResource.categories = [2,3];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Circuits";
+	tmpResource.description = "Simple electronic circuts.";
+	tmpResource.categories = [1,3];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Coal";
+	tmpResource.description = "Chunks of raw, mined coal.";
+	tmpResource.categories = [4,5];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Carbon";
+	tmpResource.description = "Solid blocks of high purity carbon.";
+	tmpResource.categories = [4,5,8];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Crude Oil";
+	tmpResource.description = "Unrefined fossil fuels.";
+	tmpResource.categories = [4,5];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Fuel";
+	tmpResource.description = "Relatively volatile high energy fuel in liquid form.";
+	tmpResource.categories = [4,5];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Water";
+	tmpResource.description = "Plain water. Commonly used in industrial farming, powerplants and chemistry.";
+	tmpResource.categories = [0,8];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = true;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Steel";
+	tmpResource.description = "Refined sheets of plates, bolts, rods and ingots made out of steel.";
+	tmpResource.categories = [1,2];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	tmpResource = new ResourceTypeObject();
+	tmpResource.name = "Prefabricates";
+	tmpResource.description = "Prefabricated and standarized construction components for easy construction, repairs, maintenance and disassembly.";
+	tmpResource.categories = [1,7];
+	tmpResource.discovered = true;
+	tmpResource.naturalResources = false;
+	ResourcesArray.push(tmpResource);
+	
+	resourcesRefreshResources();
+}
 function earlyAlpha_Systems(){
 	var tmpSystem;
 	

@@ -8,11 +8,103 @@ function connectionTest_resources(outputDocument){
 	}
 }
 
+var ResourcesArray = [];
+var ResourcesNamesArray = [];
+var ResourceCategories = ["Raw resources", "Construction", "Refined Resources", "Electronics", "Carbons", "Fuels", "Nuclear", "Advanced Resources", "Reagents", "Military", "Other"];
+
+var ResourcesInitDebug = false;
+
+class ResourceTypeObject {
+	index = -1;
+	name = "Unobtanium";
+	descrpition = "Default material.";
+	
+	categories = [10];
+	
+	discovered = false;
+	naturalResource = false;
+}
+
+class ResourceObject {
+	index = -1;
+	typeIndex = -1;
+	typeName = "";
+	
+	amount = 0.0;
+}
+
+class NaturalResourceObject {
+	index = -1;
+	typeIndex = -1;
+	typeName = "";
+	
+	quality = 1.0;
+	quantity = 0.0;
+}
+
+class ResourceBonusObject {
+	index = -1;
+	typeIndex = -1;
+	typeName = "";
+	
+	bonus = 1.0;
+}
+
+function resourcesRefreshResources(){
+	ResourcesNamesArray = [];
+	for(let i = 0; i < ResourcesArray.length; i++){
+		ResourcesNamesArray.push(ResourcesArray[i].name);
+	}
+}
+
+function createEmptyNaturalResourcesArray(){
+	var tmpNaturalResourcesArray = [];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		if(ResourcesArray[i].naturalResource){
+			var tmpNaturalResource = createNaturalResourceObject(i);
+			tmpNaturalResource.index = tmpNaturalResourcesArray.length;
+			tmpNaturalResource.typeName = ResourcesArray[i].name;
+			tmpNaturalResourcesArray.push(tmpNaturalResource);
+		}
+	}
+	
+	return tmpNaturalResourcesArray;
+}
+
+function createNaturalResourceByName(resourceName, tmpAmount = 0, tmpQuality = 0){
+	if(ResourcesArray.includes(resourceName)){
+		var tmpIndex = ResourcesArray.indexOf(resourceName);
+		
+		return createNaturalResourceObject(resourceIndex, tmpAmount, tmpQuality);
+	}
+	else {
+		console.warn("Failed to add natural resource: " + resourceName + " Resource type unknown.");
+		return false;
+	}
+		
+}
+
+function createNaturalResourceObject(resourceIndex, tmpAmount = 0, tmpQuality = 0){
+	var tmpResource = new NaturalResourceObject();
+	tmpResource.typeIndex = resourceIndex;
+	tmpResource.quality = tmpQuality;
+	tmpResource.quantity = tmpAmount;
+	return tmpResource;
+}
+
+
 function resourcesInitResources(outputDocument){
 	ResourcesNames = resourcesRecreateResourceNames();
 	ResourcesDiscovered = resourcesRecreateDiscoveredResources();
 	ResourcesNaturalResources = resourcesRecreateNaturalResources();
 }
+
+
+
+
+
+
 
 var ResourcesNames = [
 	"Gravel",
@@ -162,6 +254,7 @@ function resourcesGetNewResourcesObject(resourceAmount = "default"){
 	return tmpObject;
 }
 
+/*
 function resourcesCheckIfEnough(resourcesRequired, resourcesAvailable, multipler = 1){
 	for(var i = 0; i< ResourcesNames.length; i++){
 		if(resourcesRequired[ResourcesNames[i]]*multipler > resourcesAvailable[ResourcesNames[i]]) return false;
@@ -205,4 +298,4 @@ function resourcesSubstractResources(resourcesSubstracted, resourcesAvailable, m
 	}
 	
 	return tmpResources;
-}
+}*/
