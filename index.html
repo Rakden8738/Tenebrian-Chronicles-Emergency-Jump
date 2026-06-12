@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -1686,64 +1685,65 @@
 			
 			<div class="interfaceWindowContent interfaceWindowContentBackground" id="settingsMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="settingsMenuContent">
-				<div class="settingsMenuSpace" id="settingsMenuEmptySpace1"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionSaveGameImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionSaveGameImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
 					</div>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAutosaveCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					<input type="checkbox" checked class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionAutosaveCheckbox">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAutosaveText">Enable autosave</span>
 				</div>
-				<div class="settingsMenuOption" id="settingsMenuOptionExportImportSave">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionExportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
-					</div>
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionImportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
-					</div>
-				</div>
+				
 				<div class="settingsMenuOption" id="settingsMenuOptionExportImportTextareaRow">
 					<div class="settingsMenuOptionTextarea" id="settingsMenuOptionExportImportTextareaContainer">
 						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
 					</div>
+					<div class="settingsMenuOption" id="settingsMenuOptionExportImportSaveContainer">
+						<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
+							<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionExportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
+						</div>
+						<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
+							<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionImportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
+						</div>
+					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAnimatedMenuTabsChange">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					<input type="checkbox" checked class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionAnimatedMenuTabsChangeCheckbox">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionAnimatedMenuTabsChangeText">Move between menus instantly</span>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
-				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionSkipIntroCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
-				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
 					</div>
 				</div>
+				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
+					<input type="checkbox" class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionSkipIntroCheckbox">
+					<span class="settingsMenuOptionText" id="settingsMenuOptionSkipIntroText">Skip intro on start</span>
+				</div>
+				
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace4"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionGalaxyMapParallax">
-					<img class="settingsMenuOptionCheckbox" id="settingsMenuOptionGalaxyMapParallaxCheckbox" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					<input type="checkbox" class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionGalaxyMapParallaxCheckbox">
 					<span class="settingsMenuOptionText" id="settingsMenuOptionGalaxyMapParallaxText">Parallax effect at galaxy map</span>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
 					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace6"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
 					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
-						<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
 					</div>
 				</div>

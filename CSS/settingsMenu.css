@@ -5,9 +5,9 @@
 	bottom: 100px;
 	max-height: calc(100% - 200px);
 	
-	width: 40%;
+	width: 80%;
 	max-width: 600px;
-	min-width:400px;
+	min-width: 500px;
 	
 	padding: 0px;
 	padding-bottom: 0%;
@@ -28,6 +28,15 @@
 #settingsMenuContent{
 	height: calc(100% - 130px);
 	/*margin-top: 5%;*/
+	padding: 20px 0px 20px 15px;
+	
+	scrollbar-gutter: stable;
+	
+	mask-image: linear-gradient(180deg, 
+	transparent 0px, 
+	black 20px, 
+	black calc(100% - 20px), 
+	transparent 100%);
 }
 
 #settingsMenuTopBar{
@@ -93,13 +102,13 @@
 
 .settingsMenuOption{
 	position:relative;
-	padding: 5px;
+	padding: 3px;
 
 	width: 90%;
 	
 	margin: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	
 	border: solid hsla(60,75%,75%,1) 0px;
 	box-sizing: border-box;
@@ -111,16 +120,44 @@
 	
 	background: hsla(0,100%,75%,0.0);
 }
+
+#settingsMenuOptionExportImportTextareaRow{
+	
+}
+#settingsMenuOptionExportImportTextareaContainer{
+	max-width: 70%;
+}
+#settingsMenuOptionExportImportTextarea{
+	width: 100%;
+	max-width: 100%;
+	min-height: 100px;
+	height: 8em;
+	left: 0%;
+}
+#settingsMenuOptionExportImportSaveContainer{
+	margin: 0px;
+    max-width: 30%;
+
+	font-size: 90%;
+	
+	display: flex;
+	flex-direction: column;
+    justify-content: space-around;
+}
+
+#settingsMenuOptionExportImportSaveContainer .settingsMenuOptionButton{
+	margin-right: 0%;
+}
+
 .settingsMenuSpace{
 	position:relative;
-	padding: 10px;
-	margin: 20px;
+	padding: 8px;
 	
 	width: 100%;
 	margin: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	height:5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	height:0px;
 	
 	border: solid hsla(60,75%,75%,1) 0px;
 	box-sizing: border-box;
@@ -160,11 +197,19 @@
 	
 	transition-duration: 0.2s;
 }
+
+.settingsMenuSettingCheckbox{
+	height: 1.6em;
+    width: 1.6em;
+    margin: 2px;
+    display: inline-block;
+}
+
 .settingsMenuOptionButton{
 	background: hsla(60,100%,75%,0.0);
 	outline: solid hsla(180,75%,75%,0.0) 1px;
 	
-	height: 50px;
+	height: 40px;
 	width: 150px;
 	
 	padding:0px;
@@ -175,7 +220,7 @@
 	position:relative;
 	
 	display: flex;
-	justify-content: right;
+	justify-content: center;
     align-items: center;
 	
 	pointer-events: auto;
@@ -211,16 +256,16 @@
 	height:100%;
 	width:auto;
 	
-	left:0px;
+	/*left:0px;*/
 	
 	outline: solid hsla(180,75%,75%,0.5) 1px;
 	
 	position:absolute;
 }
 .settingsMenuOptionButtonText{
-	width:80%;
+	/*width:80%;*/
 	margin:auto;
-	left:10%;
+	/*left:10%;*/
 	
 	position:absolute;
 	
@@ -229,9 +274,7 @@
 .settingsMenuOptionText{
 	position:relative;
 	
-	width: 75%;
-	right: max(5%,15px);
-	margin-left: auto;
+	margin-left: 20px; 
 	
 	text-align: left;
 	
@@ -250,9 +293,3 @@
 	position: relative;
 }
 
-
-#settingsMenuOptionExportImportTextarea{
-	width: 80%;
-	height: 8em;
-	left: 0%;
-}

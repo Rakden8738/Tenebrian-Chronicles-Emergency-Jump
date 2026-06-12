@@ -1778,6 +1778,13 @@ function interfaceInitSettingsMenu(outputDocument) {
 		interfaceEnterElement(outputDocument,CreditsMenuID);
 	};
 	
+	//buttons on/off
+	outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").checked = SettingSaveAutosave;
+	outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").checked = SettingsInstantMenuNavigation;
+	outputDocument.getElementById("settingsMenuOptionSkipIntroCheckbox").checked = ProgressIntroDisplayedOrSkipped;
+	outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").checked = GalaxyMapPerspectiveEnabled;
+	
+	/*
 	//button on/off
 	if(SettingsInstantMenuNavigation) {
 		outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").src = InterfaceMainMenuIconPaths[17];
@@ -1808,7 +1815,8 @@ function interfaceInitSettingsMenu(outputDocument) {
 	}
 	else{
 		outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").src = InterfaceMainMenuIconPaths[18];
-	}
+	}*/
+	
 			
 	//other
 	
