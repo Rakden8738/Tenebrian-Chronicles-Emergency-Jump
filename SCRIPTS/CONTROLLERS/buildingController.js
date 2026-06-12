@@ -9,11 +9,175 @@ function connectionTest_buildings(outputDocument){
 }
 
 var BuildingsArray = [];
-var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special"];
-var BuildingDemolitionLock = false;
+var BuildingCategories = ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special", "Debug"];
+var BuildingCategoriesEnabled = [true,true,true,true,true,true,true,false];
+//var BuildingCategories = ["Extraction", "Production", "Energy", "Research"];
+//var BuildingCategoriesEnabled = [true,true,true,true];
 
 function buildingInitBuildings(outputDocument){
 	
+}
+
+var BuildingsBulkBuyAmount = 10;
+var BuildingsAutoAssignStaffEnabled = true;
+var BuildingsTryBuyMaxEnabled = true;
+var BuildingsDemolishLockEnabled = true;
+var BuildingsBulkBuyNumericInputClass = "planetBuildingsSingleBuildingSingleInputNumber";
+var BuildingsBulkOperatorsNumericInputClass = "planetBuildingsSingleBuildingAddRemoveOperatorInputNumber";
+
+function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
+	var tmpInputsArray = [];
+	var tmpNewValue = 10;
+	if(isNotNaN(inputValue)){
+		tmpNewValue = Math.floor(Number(inputValue.trim()));
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
+		for(var i = 0; i<tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpNewValue;
+		}
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkOperatorsNumericInputClass);
+		for(var i = 0; i<tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpNewValue;
+		}
+		return true;
+	}
+	console.log("Got NaN");
+	return false;
+}
+
+function buildingsToggleBuildingCategoryDisplay(categoryID){
+	if(BuildingCategoriesEnabled[categoryID]) buildingsDisableBuildingCategoryDisplay(categoryID);
+	else buildingsEnableBuildingCategoryDisplay(categoryID);
+}
+function buildingsEnableBuildingCategoryDisplay(categoryID){
+	BuildingCategoriesEnabled[categoryID] = true;
+}
+function buildingsDisableBuildingCategoryDisplay(categoryID){
+	BuildingCategoriesEnabled[categoryID] = false;
+}
+
+function buildingsToggleAutoAssignStaff(){
+	if(BuildingsAutoAssignStaffEnabled) buildingsDisableAutoAssignStaff();
+	else buildingsEnableAutoAssignStaff();
+}
+function buildingsEnableAutoAssignStaff(){
+	BuildingsAutoAssignStaffEnabled = true;
+}
+function buildingsDisableAutoAssignStaff(){
+	BuildingsAutoAssignStaffEnabled = false;
+}
+
+function buildingsToggleTryBuyMax(){
+	if(BuildingsTryBuyMaxEnabled) buildingsDisableTryBuyMax();
+	else buildingsEnableTryBuyMax();
+}
+function buildingsEnableTryBuyMax(){
+	BuildingsTryBuyMaxEnabled = true;
+}
+function buildingsDisableTryBuyMax(){
+	BuildingsTryBuyMaxEnabled = false;
+}
+
+function buildingsToggleDemolishLock(){
+	if(BuildingsDemolishLockEnabled) buildingsDisableDemolishLock();
+	else buildingsEnableDemolishLock();
+}
+function buildingsEnableDemolishLock(){
+	BuildingsDemolishLockEnabled = true;
+}
+function buildingsDisableDemolishLock(){
+	BuildingsDemolishLockEnabled = false;
+}
+
+function buildingsGetBuildingsObject(){
+	var newConfigObject = {};
+	
+	newConfigObject["buildingsAutoAssignStaff"] = BuildingsAutoAssignStaffEnabled;
+	newConfigObject["buildingsTryBuyMax"] = BuildingsTryBuyMaxEnabled;
+	newConfigObject["buildingsDemolishLock"]= BuildingsDemolishLockEnabled;
+	newConfigObject["buildingCategoriesEnabled"]= BuildingCategoriesEnabled;
+	
+	return newConfigObject;
+}
+function buildingsSetBuildingsObject(newConfigObject){
+	
+	try{
+		BuildingsAutoAssignStaffEnabled = newConfigObject.buildingsAutoAssignStaff;
+	} catch{ console.warn("Save is missing flag for auto assign staff setting.")};
+	try{
+		BuildingsTryBuyMaxEnabled = newConfigObject.buildingsTryBuyMax2;
+	} catch{ console.warn("Save is missing flag for buildings try buy max setting.")};
+	try{
+		BuildingsDemolishLockEnabled = newConfigObject.buildingsDemolishLock;
+	} catch{ console.warn("Save is missing flag for buildings demolish lock setting.")};
+	try{
+		if(typeof(newConfigObject.buildingCategoriesEnabled) !== "undefined") BuildingCategoriesEnabled = newConfigObject.buildingCategoriesEnabled;
+		else throw "error"
+		buildingsValidateCategoriesOnLoad();
+	} catch{ console.warn("Save is missing array of enabled building categories.")};
+	
+}
+
+function buildingsValidateCategoriesOnLoad(){
+	if(BuildingCategories.length == BuildingCategoriesEnabled.length) return true;
+	if(BuildingCategoriesEnabled.length > BuildingCategories.length){
+		console.warn("Save had more building categories available than existing. Discarding flags for non-existing categories.");
+		while(BuildingCategoriesEnabled.length > BuildingCategories.length) BuildingCategoriesEnabled.pop();
+		return false;
+	}
+	if(BuildingCategoriesEnabled.length < BuildingCategories.length){
+		console.warn("Save had less building categories available than existing. Enabling lost or new categories.");
+		while(BuildingCategoriesEnabled.length < BuildingCategories.length) BuildingCategoriesEnabled.push(true);
+		return false;
+	}
+}
+
+
+/*
+class BuildingBlueprintObject{
+	name = "Building template.";
+	description = "This is example of building template.";
+	
+	//numerical identificator, must be unique
+	id = -1;
+	
+	//position at building blueprint array
+	arrayIndex = -1;
+	
+	//building categories for listing purposes
+	category = [];
+	
+	//flags
+	producesResources = false;
+	consumesResources = false;
+	producesPower = false;
+	consumesPower = false;
+	
+	powerAbsolutelyRequired = false;
+	staffAbsolutelyRequired = false;
+	staffOvertimeAllowed = true;
+	
+	blueprintUnlocked = false;
+	canBeBuilt = false;
+	canBeUpgraded = false;
+	canBeDestroyed = false;
+	canBeDowngraded = false;
+	
+	limitedPerPlanet = false;
+	limitedPerGalaxy = false;
+	limitedUpgrade = false;	
+	
+	//resource related arrays at level 1
+	//[["resource", cost, multiplier],["resource", cost, multiplier]]
+	resourcesProducedArray = [];
+	resourcesConsumedArray = [];
+	buildCostArray = [];
+	upgradeCostArray = [];
+	resourceDemolishReturn = [];
+	resourceDowngradeReturn = [];
+	
+	//power related
+	powerConsumption = 0;
+	powerProduction = 0;
 }
 
 class BuldingObject{
@@ -123,7 +287,7 @@ function buildingsTryDemolishBuilding(buildingID, planetID, buildingsAmount = 1)
 	
 	if(tmpBuilding.unlocked){
 		if(tmpBuilding.canBeDestroyed){
-			if(BuildingDemolitionLock){
+			if(BuildingsDemolishLockEnabled){
 				interfaceAddBottomMessage(mainOutputDocument, "Cannot demolish - lock is currently active.");
 				return false;
 			}
@@ -186,7 +350,7 @@ function buildingsTryDowngradeBuilding(buildingID, planetID, downgradesAmount){
 	
 	if(tmpBuilding.unlocked){
 		if(tmpBuilding.canBeDowngraded){
-			if(BuildingDemolitionLock){
+			if(BuildingsDemolishLockEnabled){
 				interfaceAddBottomMessage(mainOutputDocument, "Cannot downgrade - lock is currently active.");
 				return false;
 			}
@@ -329,87 +493,4 @@ function buildingsDowngradeBuilding(buildingObject, planetObject, upgradesAmount
 	
 	planetObject.resourceStorage = resourcesSumResources(tmpRefund, planetObject.resourceStorage, upgradesAmount);
 }
-
-var BuildingsBulkBuyAmount = 10;
-var BuildingsAutoAssignStaffEnabled = true;
-var BuildingsTryBuyMaxEnabled = true;
-var BuildingsDemolishLockEnabled = true;
-var BuildingsBulkBuyNumericInputClass = "planetBuildingsSingleBuildingSingleInputNumber";
-var BuildingsBulkOperatorsNumericInputClass = "planetBuildingsSingleBuildingAddRemoveOperatorInputNumber";
-
-function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
-	var tmpInputsArray = [];
-	var tmpNewValue = 10;
-	if(isNotNaN(inputValue)){
-		tmpNewValue = Math.floor(Number(inputValue.trim()));
-		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
-		for(var i = 0; i<tmpInputsArray.length; i++){
-			tmpInputsArray[i].value = tmpNewValue;
-		}
-		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkOperatorsNumericInputClass);
-		for(var i = 0; i<tmpInputsArray.length; i++){
-			tmpInputsArray[i].value = tmpNewValue;
-		}
-		return true;
-	}
-	console.log("Got NaN");
-	return false;
-}
-
-function buildingsToggleAutoAssignStaff(){
-	if(BuildingsAutoAssignStaffEnabled) buildingsDisableAutoAssignStaff();
-	else buildingsEnableAutoAssignStaff();
-}
-function buildingsEnableAutoAssignStaff(){
-	BuildingsAutoAssignStaffEnabled = true;
-}
-function buildingsDisableAutoAssignStaff(){
-	BuildingsAutoAssignStaffEnabled = false;
-}
-
-function buildingsToggleTryBuyMax(){
-	if(BuildingsTryBuyMaxEnabled) buildingsDisableTryBuyMax();
-	else buildingsEnableTryBuyMax();
-}
-function buildingsEnableTryBuyMax(){
-	BuildingsTryBuyMaxEnabled = true;
-}
-function buildingsDisableTryBuyMax(){
-	BuildingsTryBuyMaxEnabled = false;
-}
-
-function buildingsToggleDemolishLock(){
-	if(BuildingsDemolishLockEnabled) buildingsDisableDemolishLock();
-	else buildingsEnableDemolishLock();
-}
-function buildingsEnableDemolishLock(){
-	BuildingsDemolishLockEnabled = true;
-}
-function buildingsDisableDemolishLock(){
-	BuildingsDemolishLockEnabled = false;
-}
-
-
-
-function buildingsGetBuildingsObject(){
-	var newConfigObject = {};
-	
-	newConfigObject["buildingsAutoAssignStaff"] = BuildingsAutoAssignStaffEnabled;
-	newConfigObject["buildingsTryBuyMax"] = BuildingsTryBuyMaxEnabled;
-	newConfigObject["buildingsDemolishLock"]= BuildingsDemolishLockEnabled;
-	
-	return newConfigObject;
-}
-function buildingsSetBuildingsObject(newConfigObject){
-	
-	try{
-		BuildingsAutoAssignStaffEnabled = newConfigObject.buildingsAutoAssignStaff;
-	} catch{ console.warn("Save is missing flag for auto assign staff setting.")};
-	try{
-		BuildingsTryBuyMaxEnabled = newConfigObject.buildingsTryBuyMax;
-	} catch{ console.warn("Save is missing flag for buildings try buy max setting.")};
-	try{
-		BuildingsDemolishLockEnabled = newConfigObject.buildingsDemolishLock;
-	} catch{ console.warn("Save is missing flag for buildings demolish lock setting.")};
-
-}
+*/

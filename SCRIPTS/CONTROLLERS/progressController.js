@@ -58,7 +58,8 @@ function progressSetProgressObject(newProgressObject){
 	try{
 		ProgressIntroSkipCounter = newProgressObject.introSkipCounter;
 	} catch{ console.warn("Save is missing count of intro skips.")};
-	try{
-		ProgressUnlockedMainMenuTabs = newProgressObject.mainMenuUnlockedTabs;
+	try{		
+		if(typeof(newProgressObject.mainMenuUnlockedTabs) !== "undefined") ProgressUnlockedMainMenuTabs = newProgressObject.mainMenuUnlockedTabs;
+		else throw "error"
 	} catch{ console.warn("Save is missing array of unlocked main menu tabs. Will be set to default.")};
 }

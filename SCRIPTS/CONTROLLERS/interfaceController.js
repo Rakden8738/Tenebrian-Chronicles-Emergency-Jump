@@ -461,6 +461,10 @@ function interfaceInitBuildMenu(outputDocument){
 	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").onchange = function(){ interfaceBuildMenuDemolishLock(outputDocument); };
 	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").checked = BuildingsDemolishLockEnabled;
 	
+	//categories
+	
+	interfaceBuildMenuInitCategories(outputDocument);
+	
 	//TMP DEBUG BUTTON
 	outputDocument.getElementById("planetBuildingSingleBuildingUnfoldBuildingButton_0").onclick = function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
 	outputDocument.getElementById("planetBuildingSingleBuildingFoldBuildingButton_0").onclick =  function(){ interfaceFoldUnfoldBuilding(outputDocument, 0); };
@@ -468,6 +472,42 @@ function interfaceInitBuildMenu(outputDocument){
 	
 	interfaceRefreshBuildMenu(outputDocument);
 }
+
+var BuildingMenuCategoriesContainerId = "planetBuildingMenuBuildingCategoriesContainer";
+var BuildingMenuSingleCategoryContainerClass = "planetBuildingElementsContainer planetBuildingCategoryElement";
+var BuildingMenuSingleCategoryInputClass = "interfaceInputCheckbox planetBuildingCategoryCheckbox";
+var BuildingMenuSingleCategoryInputIdPrefix = "planetBuildingCategoryCheckbox_";
+var BuildingMenuSingleCategoryNameClass = "interfaceText planetBuildingCategoryName";
+
+function interfaceBuildMenuInitCategories(outputDocument){
+	var tmpElement = outputDocument.getElementById(BuildingMenuCategoriesContainerId);
+	tmpElement.innerHTML = "";
+	
+	for(let i = 0; i < BuildingCategories.length; i++){
+		//let tmpI = i;
+		var tmpCategory = outputDocument.createElement("div");
+		tmpCategory.className = BuildingMenuSingleCategoryContainerClass;
+		
+		var tmpInput = outputDocument.createElement("input");
+		tmpInput.type = "checkbox";
+		tmpInput.className = BuildingMenuSingleCategoryInputClass;
+		tmpInput.id = BuildingMenuSingleCategoryInputIdPrefix + i;
+		tmpInput.onchange = function(){interfaceBuildMenuToggleCategory(outputDocument, i);};
+		if(BuildingCategoriesEnabled[i]) tmpInput.checked = true;
+		
+		var tmpName = outputDocument.createElement("span");
+		tmpName.className = BuildingMenuSingleCategoryNameClass;
+		tmpName.innerHTML = BuildingCategories[i];
+		
+		tmpCategory.append(tmpInput);
+		tmpCategory.append(tmpName);
+		
+		tmpElement.append(tmpCategory);
+	}
+}
+function interfaceBuildMenuToggleCategory(outputDocument, categoryId){
+	buildingsToggleBuildingCategoryDisplay(categoryId);
+} 
 
 function interfaceBuildMenuBulkBuyChanged(outputDocument){
 	var tmpInputValue = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value;
@@ -846,6 +886,7 @@ function interfaceRefreshBuildMenuEnergy(outputDocument){
 		outputDocument.getElementById("planetBuildingInfoPanelPlanetEnergyDeficitContainer").style.display = "block";
 	}
 }
+
 function interfaceRefreshBuildingsList(outputDocument){
 	
 }
