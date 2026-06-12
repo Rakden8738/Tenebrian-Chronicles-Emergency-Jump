@@ -2234,42 +2234,71 @@ var ResourcePanelBalanceTabID = "planetOverviewResourcesPanelBalance";
 var ResourcePanelNaturalResourcesTabID = "planetOverviewResourcesPanelResources";
 
 var ResourcePanelTableClass = "interfaceTable planetOverviewResourcesTabTable";
-var ResourcePanelStorageTableID = "planetOverviewResourcesPanelStorageTable";
-var ResourcePanelProductionTableID = "planetOverviewResourcesPanelProductionTable";
-var ResourcePanelConsumptionTableID = "planetOverviewResourcesPanelConsumptionTable";
-var ResourcePanelBalanceTableID = "planetOverviewResourcesPanelBalanceTable";
-var ResourcePanelNaturalResourcesTableID = "planetOverviewResourcesPanelNaturalResourcesTable";
-
 var ResourcePanelTableRowClass = "interfaceTableRow";
-var ResourcePanelStorageTableRowID = "planetOverviewResourcesPanelStorageTableRow_";
-var ResourcePanelProductionTableRowID = "planetOverviewResourcesPanelProductionTableRow_";
-var ResourcePanelConsumptionTableRowID = "planetOverviewResourcesPanelConsumptionTableRow_";
-var ResourcePanelBalanceTableRowID = "planetOverviewResourcesPanelBalanceTableRow_";
-var ResourcePanelNaturalResourcesTableRowID = "planetOverviewResourcesPanelNaturalResourcesTableRow_";
-
 var ResourcePanelTableCellClass = "interfaceTableCell";
 var ResourcePanelTableCellClassName = "planetOverviewResourcesTabResourceName";
 var ResourcePanelTableCellClassSpacing = "planetOverviewTableColumnSpacing";
 var ResourcePanelTableCellClassValue = "planetOverviewResourcesTabResourceValue";
-var ResourcePanelStorageTableCellID = "planetOverviewResourcesPanelStorageTableCell";
-var ResourcePanelProductionTableCellID = "planetOverviewResourcesPanelProductionTableCell";
-var ResourcePanelConsumptionTableCellID = "planetOverviewResourcesPanelConsumptionTableCell";
-var ResourcePanelBalanceTableCellID = "planetOverviewResourcesPanelBalanceTableCell";
-var ResourcePanelNaturalResourcesTableCellID = "planetOverviewResourcesPanelNaturalResourcesTableCell";
 
 var ResourcePanelSingleResourceNameClass = "interfaceText planetOverviewResourceName"; 
-var ResourcePanelStorageSingleResourceNameID = "planetOverviewStorageResourceName_";
-var ResourcePanelProductionSingleResourceNameID = "planetOverviewProductionResourceName_";
-var ResourcePanelConsumptionSingleResourceNameID = "planetOverviewConsumptionResourceName_";
-var ResourcePanelBalanceSingleResourceNameID = "planetOverviewBalanceResourceName_";
-var ResourcePanelNaturalResourcesSingleResourceNameID = "planetOverviewNaturalResourcesResourceName_";
-
 var ResourcePanelSingleResourceValueClass = "interfaceText interfaceDynamicText planetOverviewResourceValue"; 
+
+var ResourcePanelStorageTableID = "planetOverviewResourcesPanelStorageTable";
+var ResourcePanelStorageTableRowID = "planetOverviewResourcesPanelStorageTableRow_";
+var ResourcePanelStorageTableCellID = "planetOverviewResourcesPanelStorageTableCell";
+var ResourcePanelStorageSingleResourceNameID = "planetOverviewStorageResourceName_";
 var ResourcePanelStorageSingleResourceValueID = "planetOverviewStorageResourceValue_";
+
+var ResourcePanelProductionTableID = "planetOverviewResourcesPanelProductionTable";
+var ResourcePanelProductionTableRowID = "planetOverviewResourcesPanelProductionTableRow_";
+var ResourcePanelProductionTableCellID = "planetOverviewResourcesPanelProductionTableCell";
+var ResourcePanelProductionSingleResourceNameID = "planetOverviewProductionResourceName_";
 var ResourcePanelProductionSingleResourceValueID = "planetOverviewProductionResourceValue_";
+
+var ResourcePanelConsumptionTableID = "planetOverviewResourcesPanelConsumptionTable";
+var ResourcePanelConsumptionTableRowID = "planetOverviewResourcesPanelConsumptionTableRow_";
+var ResourcePanelConsumptionTableCellID = "planetOverviewResourcesPanelConsumptionTableCell";
+var ResourcePanelConsumptionSingleResourceNameID = "planetOverviewConsumptionResourceName_";
 var ResourcePanelConsumptionSingleResourceValueID = "planetOverviewConsumptionResourceValue_";
+
+var ResourcePanelBalanceTableID = "planetOverviewResourcesPanelBalanceTable";
+var ResourcePanelBalanceTableRowID = "planetOverviewResourcesPanelBalanceTableRow_";
+var ResourcePanelBalanceTableCellID = "planetOverviewResourcesPanelBalanceTableCell";
+var ResourcePanelBalanceSingleResourceNameID = "planetOverviewBalanceResourceName_";
 var ResourcePanelBalanceSingleResourceValueID = "planetOverviewBalanceResourceValue_";
+
+var ResourcePanelPseudoHeaderRowClass = "interfaceTableRow";
+var ResourcePanelPseudoHeaderCellClass = "interfaceTableCell";
+
+var ResourcePanelBonusResourcesTableID = "planetOverviewResourcesPanelBonusResourcesTable";
+var ResourcePanelBonusResourcesTableRowClass = "planetOverviewResourcesPanelBonusResourcesTableRow";
+var ResourcePanelBonusResourcesPseudoHeaderRowID = "planetOverviewResourcesPanelBonusResourcesTablePseudoHeader";
+var ResourcePanelBonusResourcesHeaderContainerClass = "planetOverviewResourcesPanelBonusResourcesTableHeaderContainer";
+var ResourcePanelBonusResourcesHeaderTextClass = "planetOverviewResourcesPanelBonusResourcesTableHeaderText";
+var ResourcePanelBonusResourcesSingleResourceNameID = "planetOverviewBonusResourcesResourceName_";
+var ResourcePanelBonusResourcesSingleResourceValueID = "planetOverviewBonusResourcesResourceValue_";
+var ResourcePanelBonusResourcesBonusValueClass = " interfacePositiveText";
+var ResourcePanelBonusResourcesPenaltyValueClass = " interfaceNegativeText";
+var ResourcePanelBonusResourcesFooterClass = "planetOverviewResourcesPanelBonusResourcesTableFooter";
+
+var ResourcePanelNaturalResourcesTableID = "planetOverviewResourcesPanelNaturalResourcesTable";
+var ResourcePanelNaturalResourcesTableRowClass = "planetOverviewResourcesPanelNaturalResourcesTableRow";
+var ResourcePanelNaturalResourcesPseudoHeaderRowID = "planetOverviewResourcesPanelNaturalResourcesTablePseudoHeader";
+var ResourcePanelNaturalResourcesTableRowID = "planetOverviewResourcesPanelNaturalResourcesTableRow_";
+var ResourcePanelNaturalResourcesTableCellID = "planetOverviewResourcesPanelNaturalResourcesTableCell";
+var ResourcePanelNaturalResourcesHeaderContainerClass = "planetOverviewResourcesPanelNaturalResourcesTableHeaderContainer";
+var ResourcePanelNaturalResourcesHeaderTextClass = "planetOverviewResourcesPanelNaturalResourcesTableHeaderText";
+var ResourcePanelNaturalResourcesSingleResourceNameID = "planetOverviewNaturalResourcesResourceName_";
 var ResourcePanelNaturalResourcesSingleResourceValueID = "planetOverviewNaturalResourcesResourceValue_";
+var ResourcePanelNaturalResourcesSingleResourceQuantityIdPrefix = "planetOverviewNaturalResourcesResourceQuantity_";
+var ResourcePanelNaturalResourcesSingleResourceQualityIdPrefix = "planetOverviewNaturalResourcesResourceQuality_";
+var ResourcePanelNaturalResourcesBonusValueClass = " interfacePositiveText";
+var ResourcePanelNaturalResourcesPenaltyValueClass = " interfaceNegativeText";
+var ResourcePanelNaturalResourcesFooterContainerClass = "planetOverviewResourcesPanelNaturalResourcesTableFooterContainer";
+var ResourcePanelNaturalResourcesFooterTextClass = "planetOverviewResourcesPanelNaturalResourcesTableFooterText";
+
+var ResourcePanelNoNaturalResourcesContainerClass = "";
+var ResourcePanelNoNaturalResourcesTextClass = "";
 
 var AsteroidsPanelID = "systemOverviewAsteroidsContainerContent";
 var AsteroidsPanelTableClass = "interfaceTable";
@@ -2295,6 +2324,8 @@ var AsteroidsPanelNoResourcesID = "systemOverviewAsteroidsNotFoundText";
 function interfaceRefreshPlanetStorage(outputDocument) {
 	if(PlanetsCurrentPlanet != -1) {
 		var tmpElement = outputDocument.getElementById(ResourcePanelStorageTabID);
+		var tmpPlanet = PlanetsArray[PlanetsCurrentPlanet];
+		var tmpResourceStorage = tmpPlanet.resourceStorage;
 		tmpElement.innerHTML = "";
 		
 		var tmpResourceCounter = 0;
@@ -2306,21 +2337,29 @@ function interfaceRefreshPlanetStorage(outputDocument) {
 		var tmpTableRow;
 		var tmpTableRowsCounter = 0;
 		
-		for(var i = 0; i < ResourcesNames.length; i++) {
+		for(var i = 0; i < tmpResourceStorage.length; i++) {
 			//if resource got discovered
-			if(ResourcesDiscovered[i]) {
-				var tmpResourceName = ResourcesNames[i];
-				var tmpResourceAmount = PlanetsArray[PlanetsCurrentPlanet].resourceStorage[tmpResourceName];
+			if(ResourcesArray[tmpResourceStorage[i].typeIndex].discovered) {
 				
-				tmpResourceCounter++;
+				var tmpResourceName = tmpResourceStorage[i].typeName;
+				var tmpResourceAmount = tmpResourceStorage[i].amount;
 				
-				if(tmpResourceCounter%2 == 1) {
+				if(tmpResourceCounter%3 == 0) {
 					tmpTableRowsCounter++;
 					
 					tmpTableRow = outputDocument.createElement("tr");
 					tmpTableRow.className = ResourcePanelTableRowClass;
 					tmpTableRow.id = ResourcePanelStorageTableRowID+tmpTableRowsCounter;
 				}
+				else{
+					var tmpResourceSpacingCell = outputDocument.createElement("td");
+					tmpResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+					tmpResourceSpacingCell.id = ResourcePanelStorageTableCellID + "Space_" + i;	
+					
+					tmpTableRow.append(tmpResourceSpacingCell);
+				}
+				
+				tmpResourceCounter++;
 				
 				var tmpResourceNameCell = outputDocument.createElement("td");
 				tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
@@ -2348,20 +2387,13 @@ function interfaceRefreshPlanetStorage(outputDocument) {
 				tmpTableRow.append(tmpResourceNameCell);
 				tmpTableRow.append(tmpResourceValueCell);
 				
-				if(tmpResourceCounter%2 == 0) {
+				if(tmpResourceCounter%3 == 2) {
 					tmpTableElement.append(tmpTableRow);
-				}
-				else{
-					var tmpResourceSpacingCell = outputDocument.createElement("td");
-					tmpResourceSpacingCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
-					tmpResourceSpacingCell.id = ResourcePanelStorageTableCellID + "Space_" + i;	
-					
-					tmpTableRow.append(tmpResourceSpacingCell);
 				}
 			}
 		}
-		if(tmpResourceCounter%2 == 1) {
-			var tmpResourceNameCell = outputDocument.createElement("td");
+		if(tmpResourceCounter%3 != 2) {
+			/*var tmpResourceNameCell = outputDocument.createElement("td");
 			tmpResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
 			tmpResourceNameCell.id = ResourcePanelStorageTableCellID + "Name_Empty";
 			
@@ -2370,7 +2402,7 @@ function interfaceRefreshPlanetStorage(outputDocument) {
 			tmpResourceValueCell.id = ResourcePanelStorageTableCellID + "Value_Empty";
 			
 			tmpTableRow.append(tmpResourceNameCell);
-			tmpTableRow.append(tmpResourceValueCell);
+			tmpTableRow.append(tmpResourceValueCell);*/
 			
 			tmpTableElement.append(tmpTableRow);
 		}
@@ -2385,9 +2417,259 @@ function interfaceRefreshPlanetNaturalResources(outputDocument) {
 		var tmpElement = outputDocument.getElementById(ResourcePanelNaturalResourcesTabID);
 		tmpElement.innerHTML = "";
 		
-		var tmpResourceCounter = 0;
-		var tmpBonusCounter = 0;
+		var tmpPlanet = PlanetsArray[PlanetsCurrentPlanet];
+		var tmpBonusResources = tmpPlanet.bonusResources;
+		var tmpNatResources = tmpPlanet.naturalResources;
 		
+		var tmpHasBonusResources = false;
+		for(let i = 0; i < tmpBonusResources.length; i++){
+			if(tmpBonusResources[i].bonus != 1 && ResourcesArray[tmpBonusResources[i].typeIndex].discovered){
+				tmpHasBonusResources = true;
+				break;
+			}
+		}
+		
+		var tmpHasNaturalResources = false;
+		for(let i = 0; i < tmpNatResources.length; i++){
+			if(tmpNatResources[i].quantity > 0 && ResourcesArray[tmpNatResources[i].typeIndex].discovered){
+				tmpHasNaturalResources = true;
+				break;
+			}
+		}
+		
+		if(tmpHasBonusResources){
+			var tmpBonusResourcesTable = outputDocument.createElement("table");
+			tmpBonusResourcesTable.className = ResourcePanelTableClass;
+			tmpBonusResourcesTable.id = ResourcePanelBonusResourcesTableID;
+			var tmpBonusResourcesTableBody = outputDocument.createElement("tbody");
+			
+			var tmpBonusResourcesTableWidth = 5;
+			
+			//pseudo-header needed - colspan on first row messes up columns width
+			var tmpBonusResourcesTablePseudoHeaderRow = outputDocument.createElement("tr");
+			tmpBonusResourcesTablePseudoHeaderRow.className = ResourcePanelPseudoHeaderRowClass;
+			tmpBonusResourcesTablePseudoHeaderRow.id = ResourcePanelBonusResourcesPseudoHeaderRowID;
+			for(let j = 0; j < tmpBonusResourcesTableWidth; j++){
+				let tmpBonusResourceTablePseudoHeaderCell = outputDocument.createElement("td");
+				tmpBonusResourceTablePseudoHeaderCell.className = ResourcePanelPseudoHeaderCellClass;
+				if(j == 2) tmpBonusResourceTablePseudoHeaderCell.className = ResourcePanelPseudoHeaderCellClass + " " + ResourcePanelTableCellClassSpacing;
+				tmpBonusResourcesTablePseudoHeaderRow.append(tmpBonusResourceTablePseudoHeaderCell);
+			}
+			tmpBonusResourcesTableBody.append(tmpBonusResourcesTablePseudoHeaderRow);
+			
+			var tmpBonusResourcesTableHeaderRow = outputDocument.createElement("tr");
+			tmpBonusResourcesTableHeaderRow.className = ResourcePanelTableRowClass;
+			
+			var tmpBonusResourcesTableHeaderCell = outputDocument.createElement("td");
+			tmpBonusResourcesTableHeaderCell.className = ResourcePanelTableCellClass + " " + ResourcePanelBonusResourcesHeaderContainerClass;
+			tmpBonusResourcesTableHeaderCell.colSpan = tmpBonusResourcesTableWidth;
+			
+			var tmpBonusResourcesTableHeaderSpan = outputDocument.createElement("span");
+			tmpBonusResourcesTableHeaderSpan.className = ResourcePanelBonusResourcesHeaderTextClass;
+			tmpBonusResourcesTableHeaderSpan.innerHTML = "Production bonuses and penalties:";
+			
+			tmpBonusResourcesTableHeaderCell.append(tmpBonusResourcesTableHeaderSpan);
+			tmpBonusResourcesTableHeaderRow.append(tmpBonusResourcesTableHeaderCell);
+			tmpBonusResourcesTableBody.append(tmpBonusResourcesTableHeaderRow);
+			
+			var tmpBonusResourcesTableRow;
+			var tmpBonusCounter = 0;
+			
+			for(let i = 0; i < tmpBonusResources.length; i++){
+				if(tmpBonusResources[i].bonus != 1 && ResourcesArray[tmpBonusResources[i].typeIndex].discovered){
+					if(tmpBonusCounter%2 == 0){
+						tmpBonusResourcesTableRow = outputDocument.createElement("tr");
+						tmpBonusResourcesTableRow.className = ResourcePanelTableRowClass + " " + ResourcePanelBonusResourcesTableRowClass;
+					}
+					
+					tmpBonusCounter++;
+					
+					var tmpBonusResourceNameCell = outputDocument.createElement("td");
+					tmpBonusResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+					var tmpBonusResourceNameText = outputDocument.createElement("span");
+					tmpBonusResourceNameText.className = ResourcePanelSingleResourceNameClass;
+					tmpBonusResourceNameText.innerHTML = tmpBonusResources[i].typeName;
+					
+					tmpBonusResourceNameCell.append(tmpBonusResourceNameText);
+					tmpBonusResourcesTableRow.append(tmpBonusResourceNameCell);
+					
+					var tmpBonusResourceMultiplierCell = outputDocument.createElement("td");
+					tmpBonusResourceMultiplierCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+					var tmpBonusResourceMultiplierText = outputDocument.createElement("span");
+					tmpBonusResourceMultiplierText.className = ResourcePanelSingleResourceValueClass;
+					tmpBonusResourceMultiplierText.innerHTML = "×" + tmpBonusResources[i].bonus.toFixed(2);
+					
+					if(tmpBonusResources[i].bonus > 1.0) tmpBonusResourceMultiplierText.className += ResourcePanelBonusResourcesBonusValueClass;
+					else tmpBonusResourceMultiplierText.className += ResourcePanelBonusResourcesPenaltyValueClass;
+					
+					tmpBonusResourceMultiplierCell.append(tmpBonusResourceMultiplierText);
+					tmpBonusResourcesTableRow.append(tmpBonusResourceMultiplierCell);
+					
+					//if even elements, append the row
+					if(tmpBonusCounter%2 == 0){
+						tmpBonusResourcesTableBody.append(tmpBonusResourcesTableRow);
+					}//else append spacing cell
+					else{
+						var tmpBonusResourceEmptyCell = outputDocument.createElement("td");
+						tmpBonusResourceEmptyCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+						
+						tmpBonusResourcesTableRow.append(tmpBonusResourceEmptyCell);
+					}
+				}
+				else continue;
+			}
+			//if uneven elements after ending, apply
+			if(tmpBonusCounter%2 == 1){
+				tmpBonusResourcesTableBody.append(tmpBonusResourcesTableRow);
+			}
+			
+			var tmpBonusResourceTableFooterRow = outputDocument.createElement("tr");
+			tmpBonusResourceTableFooterRow.className = ResourcePanelTableRowClass;
+			
+			var tmpBonusResourcesTableFooterCell = outputDocument.createElement("td");
+			tmpBonusResourcesTableFooterCell.className = ResourcePanelTableCellClass + " " + ResourcePanelNaturalResourcesFooterContainerClass;
+			tmpBonusResourcesTableFooterCell.colSpan = tmpBonusResourcesTableWidth;
+			
+			var tmpBonusResourcesTableFooterSpan = outputDocument.createElement("span");
+			tmpBonusResourcesTableFooterSpan.className = ResourcePanelNaturalResourcesFooterTextClass;
+			tmpBonusResourcesTableFooterSpan.innerHTML = "&nbsp;";
+			
+			tmpBonusResourcesTableFooterCell.append(tmpBonusResourcesTableFooterSpan);
+			tmpBonusResourceTableFooterRow.append(tmpBonusResourcesTableFooterCell);
+			tmpBonusResourcesTableBody.append(tmpBonusResourceTableFooterRow);
+			
+			tmpBonusResourcesTable.append(tmpBonusResourcesTableBody);
+			
+			tmpElement.append(tmpBonusResourcesTable);	
+		}
+		
+		if(tmpHasNaturalResources){
+			var tmpNaturalResourcesTable = outputDocument.createElement("table");
+			tmpNaturalResourcesTable.className = ResourcePanelTableClass;
+			tmpNaturalResourcesTable.id = ResourcePanelBonusResourcesTableID;
+			
+			var tmpNaturalResourcesTableBody = outputDocument.createElement("tbody");
+			
+			var tmpNaturalResourcesTableWidth = 7;
+			
+			//pseudo-header needed - colspan on first row messes up columns width
+			var tmpNaturalResourcesTablePseudoHeaderRow = outputDocument.createElement("tr");
+			tmpNaturalResourcesTablePseudoHeaderRow.className = ResourcePanelPseudoHeaderRowClass;
+			tmpNaturalResourcesTablePseudoHeaderRow.id = ResourcePanelNaturalResourcesPseudoHeaderRowID;
+			for(let j = 0; j < tmpNaturalResourcesTableWidth; j++){
+				let tmpNaturalResourceTablePseudoHeaderCell = outputDocument.createElement("td");
+				tmpNaturalResourceTablePseudoHeaderCell.className = ResourcePanelPseudoHeaderCellClass;
+				if(j == 3) tmpNaturalResourceTablePseudoHeaderCell.className = ResourcePanelPseudoHeaderCellClass + " " + ResourcePanelTableCellClassSpacing;
+				tmpNaturalResourcesTablePseudoHeaderRow.append(tmpNaturalResourceTablePseudoHeaderCell);
+			}
+			tmpNaturalResourcesTableBody.append(tmpNaturalResourcesTablePseudoHeaderRow);
+			
+			var tmpNaturalResourcesTableHeaderRow = outputDocument.createElement("tr");
+			tmpNaturalResourcesTableHeaderRow.className = ResourcePanelTableRowClass;
+			
+			var tmpNaturalResourcesTableHeaderCell = outputDocument.createElement("td");
+			tmpNaturalResourcesTableHeaderCell.className = ResourcePanelTableCellClass + " " + ResourcePanelNaturalResourcesHeaderContainerClass;
+			tmpNaturalResourcesTableHeaderCell.colSpan = tmpNaturalResourcesTableWidth;
+			
+			var tmpNaturalResourcesTableHeaderSpan = outputDocument.createElement("span");
+			tmpNaturalResourcesTableHeaderSpan.className = ResourcePanelNaturalResourcesHeaderTextClass;
+			tmpNaturalResourcesTableHeaderSpan.innerHTML = "Natural resources quantity and quality:";
+			
+			tmpNaturalResourcesTableHeaderCell.append(tmpNaturalResourcesTableHeaderSpan);
+			tmpNaturalResourcesTableHeaderRow.append(tmpNaturalResourcesTableHeaderCell);
+			tmpNaturalResourcesTableBody.append(tmpNaturalResourcesTableHeaderRow);
+			
+			var tmpNaturalResourcesTableRow;
+			var tmpNatResourceCounter = 0;
+			
+			for(let i = 0; i < tmpNatResources.length; i++){
+				if(tmpNatResources[i].quantity > 0 && ResourcesArray[tmpNatResources[i].typeIndex].discovered){
+					if(tmpNatResourceCounter%2 == 0){ 
+						tmpNaturalResourcesTableRow = outputDocument.createElement("tr");
+						tmpNaturalResourcesTableRow.className = ResourcePanelTableRowClass + " " + ResourcePanelNaturalResourcesTableRowClass;
+					}
+					
+					tmpNatResourceCounter++;
+					
+					var tmpNaturalResourceNameCell = outputDocument.createElement("td");
+					tmpNaturalResourceNameCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassName;
+					var tmpNaturalResourceNameText = outputDocument.createElement("span");
+					tmpNaturalResourceNameText.className = ResourcePanelSingleResourceNameClass;
+					tmpNaturalResourceNameText.innerHTML = tmpNatResources[i].typeName;
+					
+					tmpNaturalResourceNameCell.append(tmpNaturalResourceNameText);
+					tmpNaturalResourcesTableRow.append(tmpNaturalResourceNameCell);
+					
+					var tmpNaturalResourceQuantityCell = outputDocument.createElement("td");
+					tmpNaturalResourceQuantityCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+					var tmpNaturalResourceQuantityText = outputDocument.createElement("span");
+					tmpNaturalResourceQuantityText.className = ResourcePanelSingleResourceValueClass;
+					tmpNaturalResourceQuantityText.innerHTML = "×" + tmpNatResources[i].quantity.toFixed(2);
+					
+					tmpNaturalResourceQuantityCell.append(tmpNaturalResourceQuantityText);
+					tmpNaturalResourcesTableRow.append(tmpNaturalResourceQuantityCell);
+					
+					var tmpNaturalResourceQualityCell = outputDocument.createElement("td");
+					tmpNaturalResourceQualityCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassValue;
+					var tmpNaturalResourceQualityText = outputDocument.createElement("span");
+					tmpNaturalResourceQualityText.className = ResourcePanelSingleResourceValueClass;
+					
+					if(tmpNatResources[i].quality > 1.0) {
+						tmpNaturalResourceQualityText.className += ResourcePanelNaturalResourcesBonusValueClass;
+						tmpNaturalResourceQualityText.innerHTML = "★"
+					}
+					else {
+						tmpNaturalResourceQualityText.className += ResourcePanelNaturalResourcesPenaltyValueClass;
+						tmpNaturalResourceQualityText.innerHTML = "☆"
+					}
+					tmpNaturalResourceQualityText.innerHTML += tmpNatResources[i].quality.toFixed(2);
+					
+					tmpNaturalResourceQualityCell.append(tmpNaturalResourceQualityText);
+					tmpNaturalResourcesTableRow.append(tmpNaturalResourceQualityCell);
+					
+					
+					//if even elements, append the row
+					if(tmpNatResourceCounter%2 == 0){
+						tmpNaturalResourcesTableBody.append(tmpNaturalResourcesTableRow);
+					}//else append spacing cell
+					else{
+						var tmpNaturalResourceEmptyCell = outputDocument.createElement("td");
+						tmpNaturalResourceEmptyCell.className = ResourcePanelTableCellClass + " " + ResourcePanelTableCellClassSpacing;
+						
+						tmpNaturalResourcesTableRow.append(tmpNaturalResourceEmptyCell);
+					}
+				}
+				else continue;
+			}
+			//if uneven elements after ending, apply
+			if(tmpNatResourceCounter%2 == 1){
+				tmpNaturalResourcesTableBody.append(tmpNaturalResourcesTableRow);
+			}
+			tmpNaturalResourcesTable.append(tmpNaturalResourcesTableBody);
+			
+			tmpElement.append(tmpNaturalResourcesTable);
+		}
+		else{
+			var tmpNoNaturalResourcesContainer = outputDocument.createElement("div");
+			tmpNoNaturalResourcesContainer.className = ResourcePanelNoNaturalResourcesContainerClass;
+			var tmpNoNaturalResourcesMessage = outputDocument.createElement("span");
+			tmpNoNaturalResourcesMessage.className = ResourcePanelNoNaturalResourcesTextClass;
+			tmpNoNaturalResourcesMessage.innerHTML = "This planet has no known natural resources."
+			tmpNoNaturalResourcesMessage.style.color = "hsla(180,100%,75%,1)";
+			
+			tmpNoNaturalResourcesContainer.append(tmpNoNaturalResourcesMessage);
+			tmpElement.append(tmpNoNaturalResourcesContainer);
+		}
+		
+	}
+}
+function OLDinterfaceRefreshPlanetNaturalResources(outputDocument) {
+	if(PlanetsCurrentPlanet != -1) {
+		var tmpElement = outputDocument.getElementById(ResourcePanelNaturalResourcesTabID);
+		tmpElement.innerHTML = "";
+		
+		var tmpResourceCounter = 0;
+	
 		var tmpTableElement = outputDocument.createElement("table");
 		tmpTableElement.className = ResourcePanelTableClass;
 		tmpTableElement.id = ResourcePanelNaturalResourcesTableID;
@@ -2567,6 +2849,7 @@ function interfaceRefreshPlanetNaturalResources(outputDocument) {
 		tmpElement.append(tmpTableElement);
 	}
 }
+
 function interfaceRefreshAsteroids(outputDocument) {
 	if(SystemsCurrentSystem != -1) {
 		var tmpSystem = SystemsArray[SystemsCurrentSystem];

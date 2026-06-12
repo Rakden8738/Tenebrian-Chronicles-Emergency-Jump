@@ -623,10 +623,6 @@
 	float: right;
 	width: 80%;
 }
-#planetOverviewInfoPanelTable{
-	width: 100%;
-	table-layout: fixed;
-}
 #systemOverviewInfoPanelTable{
 	width: 100%;
 	table-layout: fixed;
@@ -643,7 +639,7 @@
 	border: solid hsla(270,100%,50%,1.0) 0px;
 	background: hsla(270,50%,25%,0.0);
 	
-	/*max-width: 5em;*/
+	max-width: 5em;
 	min-width: 3em;
     text-align: center;
 	
