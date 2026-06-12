@@ -19,6 +19,10 @@ var PlanetDefaultRadius = 6000;
 var PlanetDefaultRelSizeLogarithmBase = 2;
 
 var PlanetImageDefaultPath = "RESOURCES/PLANETS/";
+var PlanetImageFallbackImage = "Default_1";
+var PlanetImagesMediumSized = true;
+var PlanetImagesSmallSized = false;
+var PlanetImageDotExtension = ".png";
 
 var PlanetTypes = {
 	"Unknown":["Unknown","hsl(300,100%,50%)","hsl(300,100%,25%)",0],

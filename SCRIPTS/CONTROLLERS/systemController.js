@@ -269,8 +269,8 @@ var SystemStarmapContext;
 var SystemStarmapPlanetCoordinates = [];
 var SystemStarmapGateCoordinates = [];
 var SystemStarmapPlanetDistances = [];
-var SystemStarmapHeight = 300;
-var SystemStarmapWidth = 300;
+var SystemStarmapHeight = 320;
+var SystemStarmapWidth = 320;
 var SystemStarmapLine = 2;
 var SystemStarmapFont = "Kdam Thmor Pro";
 

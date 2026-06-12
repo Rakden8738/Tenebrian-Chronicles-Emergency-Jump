@@ -490,7 +490,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Daboogiea";
 	tmpPlanet.id = "0";
 	tmpPlanet.description = "Crash site of T.E.S. Erebus. Capital planet of Erebian Autonomy.";
-	tmpPlanet.imagePath = "Terrestrial_0s";
+	tmpPlanet.imagePath = "Terrestrial_0";
 	tmpPlanet.type = PlanetTypes["Terrestrial"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Mild climate"],
@@ -534,7 +534,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Test Zone 17";
 	tmpPlanet.id = "1";
 	tmpPlanet.description = "Desert planet in Debug-7 system. Designated weapon testing area. Cold for a desert.";
-	tmpPlanet.imagePath = "Desert_0s";
+	tmpPlanet.imagePath = "Desert_0";
 	tmpPlanet.type = PlanetTypes["Desert"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Incompletely terraformed"],
@@ -574,7 +574,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Minerallia";
 	tmpPlanet.id = "2";
 	tmpPlanet.description = "Mineral rich world that can become backbone of Erebian Autonomy's economy.";
-	tmpPlanet.imagePath = "Barren_0s";
+	tmpPlanet.imagePath = "Barren_0";
 	tmpPlanet.type = PlanetTypes["Barren"];
 	tmpPlanet.conditions = [
 		PlanetConditions["No atmosphere"],
@@ -607,7 +607,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Akur";
 	tmpPlanet.id = "3";
 	tmpPlanet.description = "Dwarf lava planet in Urist system. Very rich in minerals.";
-	tmpPlanet.imagePath = "Lava_0s";
+	tmpPlanet.imagePath = "Lava_0";
 	tmpPlanet.type = PlanetTypes["Volcanic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["High tectonic activity"],
@@ -641,7 +641,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Akir";
 	tmpPlanet.id = "4";
 	tmpPlanet.description = "Gas giant of the Urist system. Designated as reliable source of hydrogen.";
-	tmpPlanet.imagePath = "GasGiant_0s";
+	tmpPlanet.imagePath = "GasGiant_0";
 	tmpPlanet.type = PlanetTypes["Gas Giant"];
 	tmpPlanet.conditions = [
 		PlanetConditions["High gravity"],
@@ -679,7 +679,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Akam";
 	tmpPlanet.id = "5";
 	tmpPlanet.description = "Dwarf planet of Urist system, located far between asteroid belts.";
-	tmpPlanet.imagePath = "Cryovolcanic_0s";
+	tmpPlanet.imagePath = "Cryovolcanic_0";
 	tmpPlanet.type = PlanetTypes["Cryovolcanic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -722,7 +722,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Igner";
 	tmpPlanet.id = "6";
 	tmpPlanet.description = "Dry world of Paradisia system. Perfect for weapon manufacturing facilities.";
-	tmpPlanet.imagePath = "Arid_0s";
+	tmpPlanet.imagePath = "Arid_0";
 	tmpPlanet.type = PlanetTypes["Arid"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Hot"],
@@ -761,7 +761,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Aquilia";
 	tmpPlanet.id = "7";
 	tmpPlanet.description = "Oceans cover almost entire surface of this planet.";
-	tmpPlanet.imagePath = "Water_1s";
+	tmpPlanet.imagePath = "Water_1";
 	tmpPlanet.type = PlanetTypes["Ocean"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Extreme weather"],
@@ -799,7 +799,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Terria";
 	tmpPlanet.id = "8";
 	tmpPlanet.description = "Habitable world in Paradisia star system.";
-	tmpPlanet.imagePath = "Terrestrial_4s";
+	tmpPlanet.imagePath = "Terrestrial_4";
 	tmpPlanet.type = PlanetTypes["Terrestrial"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Mild climate"],
@@ -838,7 +838,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Ventius";
 	tmpPlanet.id = "9";
 	tmpPlanet.description = "Gas giant of the Paradisia system.";
-	tmpPlanet.imagePath = "GasGiant_5s";
+	tmpPlanet.imagePath = "GasGiant_5";
 	tmpPlanet.type = PlanetTypes["Gas Giant"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -881,7 +881,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Traveller";
 	tmpPlanet.id = "10";
 	tmpPlanet.description = "Planet under control of independent faction.";
-	tmpPlanet.imagePath = "Frozen_5s";
+	tmpPlanet.imagePath = "Frozen_5";
 	tmpPlanet.type = PlanetTypes["Frozen"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -919,7 +919,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Wanderer";
 	tmpPlanet.id = "11";
 	tmpPlanet.description = "Barren but rich in minerals sector. Can be used as source of materials for constructing or reparing gate to Paradise Lost system.";
-	tmpPlanet.imagePath = "Barren_5s";
+	tmpPlanet.imagePath = "Barren_5";
 	tmpPlanet.type = PlanetTypes["Barren"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Thin atmosphere"],
@@ -960,7 +960,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Conquista";
 	tmpPlanet.id = "12";
 	tmpPlanet.description = "Second planet under Liber'atio's control.";
-	tmpPlanet.imagePath = "Metallic_5s";
+	tmpPlanet.imagePath = "Metallic_5";
 	tmpPlanet.type = PlanetTypes["Metallic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Wasteland"],
@@ -995,7 +995,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Libertia";
 	tmpPlanet.id = "13";
 	tmpPlanet.description = "Capital planet of Liber'atio Army faction control who also control local HUB station.";
-	tmpPlanet.imagePath = "Tundra_0s";
+	tmpPlanet.imagePath = "Tundra_0";
 	tmpPlanet.type = PlanetTypes["Tundra"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Mild climate"],
@@ -1034,7 +1034,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "O-01-45";
 	tmpPlanet.id = "14";
 	tmpPlanet.description = "ERROR: Contradiction of data detected. Proceed with caution.";
-	tmpPlanet.imagePath = "Metallic_0s";
+	tmpPlanet.imagePath = "Metallic_0";
 	tmpPlanet.type = PlanetTypes["Metallic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Irradiated"],
@@ -1073,7 +1073,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "T-03-46";
 	tmpPlanet.id = "15";
 	tmpPlanet.description = "My story is nowhere, unknown to all.";
-	tmpPlanet.imagePath = "Frozen_9s";
+	tmpPlanet.imagePath = "Frozen_9";
 	tmpPlanet.type = PlanetTypes["Frozen"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -1112,7 +1112,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "UNK Alpha-1";
 	tmpPlanet.id = "16";
 	tmpPlanet.description = "No information is available about this planet in the database.";
-	tmpPlanet.imagePath = "Desert_7s";
+	tmpPlanet.imagePath = "Desert_7";
 	tmpPlanet.type = PlanetTypes["Desert"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Extremely hot"],
@@ -1157,7 +1157,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "UNK Gamma-1";
 	tmpPlanet.id = "17";
 	tmpPlanet.description = "No information is available about this planet in the database.";
-	tmpPlanet.imagePath = "Arid_5s";
+	tmpPlanet.imagePath = "Arid_5";
 	tmpPlanet.type = PlanetTypes["Arid"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Habitable"],
@@ -1198,7 +1198,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Fenrir";
 	tmpPlanet.id = "18";
 	tmpPlanet.description = "Hot gas giant of the Loki system.";
-	tmpPlanet.imagePath = "GasGiant_9s";
+	tmpPlanet.imagePath = "GasGiant_9";
 	tmpPlanet.type = PlanetTypes["Gas Giant"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Extreme weather"],
@@ -1237,7 +1237,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Jörmungandr";
 	tmpPlanet.id = "19";
 	tmpPlanet.description = "Large water world of Loki system. Partially frozen.";
-	tmpPlanet.imagePath = "Water_6s";
+	tmpPlanet.imagePath = "Water_6";
 	tmpPlanet.type = PlanetTypes["Ocean"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -1276,7 +1276,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Hel";
 	tmpPlanet.id = "20";
 	tmpPlanet.description = "Frozen world of Loki system. Claimed by hostile faction.";
-	tmpPlanet.imagePath = "Frozen_1s";
+	tmpPlanet.imagePath = "Frozen_1";
 	tmpPlanet.type = PlanetTypes["Frozen"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Extreme cold"],
@@ -1316,7 +1316,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Muspelheimr";
 	tmpPlanet.id = "21";
 	tmpPlanet.description = "Hot unstable world in Ginnungagap system under Jotun control.";
-	tmpPlanet.imagePath = "Lava_5s";
+	tmpPlanet.imagePath = "Lava_5";
 	tmpPlanet.type = PlanetTypes["Volcanic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Dense atmosphere"],
@@ -1356,7 +1356,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Miðgarðr ";
 	tmpPlanet.id = "22";
 	tmpPlanet.description = "Death World and capital of Jotun. Hostile fauna and flora detected and high concentration of microorganisms present in atmosphere. Extreme caution is advised.";
-	tmpPlanet.imagePath = "Jungle_0s";
+	tmpPlanet.imagePath = "Jungle_0";
 	tmpPlanet.type = PlanetTypes["Jungle"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Death world"],
@@ -1400,7 +1400,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Niflheimr";
 	tmpPlanet.id = "23";
 	tmpPlanet.description = "Cold unstable world in Ginnungagap system under Jotun control.";
-	tmpPlanet.imagePath = "Cryovolcanic_5s";
+	tmpPlanet.imagePath = "Cryovolcanic_5";
 	tmpPlanet.type = PlanetTypes["Cryovolcanic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Thin atmosphere"],
@@ -1443,7 +1443,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Adamantine";
 	tmpPlanet.id = "24";
 	tmpPlanet.description = "Raw adamantine! Praise the miners!";
-	tmpPlanet.imagePath = "Metallic_9s";
+	tmpPlanet.imagePath = "Metallic_9";
 	tmpPlanet.type = PlanetTypes["Metallic"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Cold"],
@@ -1481,7 +1481,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Slade";
 	tmpPlanet.id = "25";
 	tmpPlanet.description = "Horrifying screams come from the darkness below!";
-	tmpPlanet.imagePath = "Barren_2s";
+	tmpPlanet.imagePath = "Barren_2";
 	tmpPlanet.type = PlanetTypes["Barren"];
 	tmpPlanet.conditions = [
 		PlanetConditions["Dense atmosphere"],
@@ -1529,7 +1529,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "Echo";
 	tmpPlanet.id = "26";
 	tmpPlanet.description = "There is only echo coming from below.";
-	tmpPlanet.imagePath = "Frozen_3s";
+	tmpPlanet.imagePath = "Frozen_3";
 	tmpPlanet.type = PlanetTypes["Frozen"];
 
 	tmpPlanet.atmosphere = PlanetAtmospheres["Nitrogen"];
@@ -1553,7 +1553,7 @@ function earlyAlpha_Planets(){
 	tmpPlanet.name = "R'lyeh";
 	tmpPlanet.id = "27";
 	tmpPlanet.description = "Do not wake the Elders up.";
-	tmpPlanet.imagePath = "Water_4s";
+	tmpPlanet.imagePath = "Water_4";
 	tmpPlanet.type = PlanetTypes["Ocean"];
 
 	tmpPlanet.atmosphere = PlanetAtmospheres["Oxygen"];

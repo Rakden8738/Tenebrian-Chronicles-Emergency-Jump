@@ -1842,7 +1842,16 @@ function interfaceSettingsSwitchGalaxyMapParralax(outputDocument){
 function interfaceRefreshPlanetOverview(outputDocument) {
 	//planet data
 	if(PlanetsCurrentPlanet != -1) {
-		outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
+		if(PlanetImagesMediumSized){
+			outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + "medium/" + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
+		}
+		else if(PlanetImagesSmallSized){
+			outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + "small/" + PlanetsArray[PlanetsCurrentPlanet].imagePath + ".png";
+		}
+		else{
+			outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetImageFallbackImage + ".png";
+		}
+		
 		
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderPlanetNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].name;
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].system;
