@@ -273,6 +273,12 @@
 .interfaceTextBigger{
 	font-size: 135%;
 }
+.interfaceTextBold{
+	font-weight: bold;
+}
+.interfaceTextItalic{
+	font-style: italic;
+}
 .interfaceConsoleText{
 	font-size: 80%;
 	opacity: 0.5;
@@ -282,6 +288,7 @@
 	font-size: 80%;
 	display: block;
 }
+
 
 /* IMAGES AND BUTTONS */
 
@@ -654,10 +661,6 @@
 #mainInterfaceAFKTimeTableRow{
 	font-size: 60%;
 	text-wrap: wrap;
-}
-#planetOverviewInfoPanelTable td{
-	text-align: left;
-	vertical-align: top;
 }
 #systemOverviewInfoPanelTable td{
 	text-align: left;

@@ -20,88 +20,67 @@
 	/*mask-image: linear-gradient(90deg, hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px), hsla(0,100%,100%,0.0) 100%);*/
 }
 
-.planetOverviewMenuBar{
-	/*position: relative;
-	height: 80px;*/
-}
+.planetOverviewMenuBar{}
 #planetOverviewMenuTopBar{
-	/*background: rgba(0,0,100,0.3);*/
 	border: solid hsla(0,100%,75%,0.5) 0px;
 	padding: 0px;
 }
 #planetOverviewMenuBottomBar{
-	/*background: rgba(0,0,100,0.3);*/
 	border: solid hsla(0,100%,75%,0.5) 0px;
 	padding: 0px;
 }
 #planetOverviewMenuTopBarLeft{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Left.png");
-	/*background: hsla(60,100%,50%,0.3);*/
 	border: solid hsla(90,100%,75%,0.5) 0px;
-	
 	width: 200px;
 }
 #planetOverviewMenuTopBarMiddle{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Middle.png");
-	/*background: hsla(180,100%,50%,0.3);*/
-	border: solid hsla(90,100%,75%,0.5) 0px;
-		
+	border: solid hsla(90,100%,75%,0.5) 0px;	
 	width: max(calc(100% - 400px), 0px);
-	
 	display: flex;
     justify-content: center;
-	
 	padding-top: 10px;
 }
 #planetOverviewMenuTopBarRight{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Top_Right.png");
-	/*background: hsla(300,100%,50%,0.3);*/
 	border: solid hsla(90,100%,75%,0.5) 0px;
-	
 	width: 200px;
 }
 #planetOverviewMenuBottomBarLeft{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Left.png");
-	/*background: hsla(60,100%,50%,0.3);*/
 	border: solid hsla(90,100%,75%,0.5) 0px;
-	
 	width: 200px;
 }
 #planetOverviewMenuBottomBarMiddle{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Middle.png");
-	/*background: hsla(180,100%,50%,0.3);*/
 	border: solid hsla(90,100%,75%,0.5) 0px;
-		
 	width: max(calc(100% - 400px), 0px);
-	
 	padding-bottom: 10px;
 }
 #planetOverviewMenuBottomBarRight{
 	background-image: url("../RESOURCES/SUBMENU/SubmenuBars_Bottom_Right.png");
-	/*background: hsla(300,100%,50%,0.3);*/
 	border: solid hsla(90,100%,75%,0.5) 0px;
-	
 	width: 200px;
 }
 
 #planetOverviewMenuContent{
 	background: hsla(240,100%,50%,0.0);
 	border: solid hsla(120,100%,50%,0.5) 0px;
-	box-sizing: border-box;
 	
 	height: calc(100% - 130px);
+	
 	padding: 2.5%;
 	padding-bottom: 0;
 	
-	/*position: relative;*/
 	overflow: auto;
-	
+	box-sizing: border-box;
 	mask-image: none;
 }
-
 .planetOverviewElementsContainer{
-	box-sizing: border-box;
 	padding: 10px;
+	
+	box-sizing: border-box;
 	position: relative;
 }
 
@@ -109,11 +88,11 @@
 	background: hsla(180,100%,50%,0.0);
 	border: solid hsla(120,100%,50%,0.5) 0px;	
 	
-	width: 33%;
+	width: 30%;
 	height: 100%;
 	
-	align-content: middle;
-	align-items: middle;
+	padding-left: 0px;
+	padding-right: 0px;
 	
 	float: left;
 	
@@ -121,545 +100,355 @@
     flex-direction: column;
     justify-content: space-between;
 }
-	#planetOverviewMenuPlanetImage{
-		background: hsla(60,100%,50%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		width:auto;
-		max-width: calc(80% - 0px);
-		height:auto;
-		max-height: calc(40% - 0px);
-		
-		top: 10px;
-		left: 0;
-		right: 0;
-		margin: auto;
-		padding: 0px;
-		
-		opacity: 0.85;
-		
-		box-sizing:border-box;
-		position: absolute;
-		display: inline-block;
-	}
-	#planetOverviewButtonsContainer{
-		background: hsla(300,100%,50%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		width:auto;
-		max-width: 100%;
-		height: auto;
-		max-height: calc(60% - 10px);
-		
-		bottom: 00px;
-		left: 0;
-		right: 0;
-		margin: auto;
-		padding: 0px;
-		padding-top: 20px;
-		padding-bottom: 20px;
-		
-		position: absolute;
-		
-		overflow: auto;
-		
-		scrollbar-gutter: stable both-edges;
-		
-		mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
-		
-		display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-	}
+#planetOverviewMenuPlanetImage{
+	background: hsla(60,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
 	
-		.planetOverviewButton{
-			position:relative;
-			
-			max-width: 180px;
-			height: auto;
-			min-height: 40px;
-			/* max-height: 15%; */
-			
-			left: 0;
-			right:0;
-			bottom: 0;
-			
-			margin: auto;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			
-			outline: solid hsla(180,75%,75%,0.0) 1px;
-			
-			padding:0px;
-			
-			box-sizing: border-box;
-			
-			
-			justify-content: right;
-			align-items: center;
-			
-			display: flex;
-			
-			pointer-events: auto;
-			cursor: pointer;
+	width:auto;
+	max-width: calc(80% - 0px);
+	height:auto;
+	max-height: calc(40% - 0px);
+	
+	top: 10px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 0px;
+	
+	opacity: 0.85;
+	
+	box-sizing:border-box;
+	position: absolute;
+	display: inline-block;
+}
+#planetOverviewButtonsContainer{
+	background: hsla(300,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width:auto;
+	max-width: 100%;
+	height: auto;
+	max-height: calc(60% - 10px);
+	
+	bottom: 00px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
+	position: absolute;
+	overflow: auto;
+	scrollbar-gutter: stable both-edges;
+	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}	
+.planetOverviewButton{
+	outline: solid hsla(180,75%,75%,0.0) 0px;
+	background: hsla(60,100%,75%,0.0);
+	
+	max-width: 180px;
+	height: auto;
+	min-height: 40px;
+	
+	left: 0;
+	right:0;
+	bottom: 0;
+	
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding:0px;
+	
+	display: flex;
+	justify-content: right;
+	align-items: center;
 
-			background: hsla(60,100%,75%,0.0);
-			
-			opacity: 0.70;
-		}
-		.planetOverviewButton:enabled:hover{
-			opacity:0.85;
-			scale:1.1;
-			transition-duration: 0.15s;
-		}
-		.planetOverviewButton:enabled:active{
-			opacity:1.0;
-			transition-duration: 0.15s;
-		}
-		.planetOverviewButton:disabled{
-			opacity:0.2;
-		}
-		.planetOverviewButton:disabled:hover{
-			opacity:0.4;
-			scale:1.05;
-			transition-duration: 0.15s;
-		}
-		.planetOverviewButton:hover .planetOverviewButtonImage{
-			outline: solid hsla(180,75%,75%,1) 1px;
+	opacity: 0.70;
 
-		}
-		.planetOverviewButton:active .planetOverviewButtonImage{
-			outline: solid hsla(180,100%,75%,1) 1px;
-		}
-		
-		
-		.planetOverviewButtonImage{
-			width:100%;
-			height:auto;
-			
-			left:0px;
-			object-fit: contain;
-			
-			outline: solid hsla(180,75%,75%,0.5) 1px;
-			
-			position: relative;
-		}
-		.planetOverviewButtonText{
-			width:80%;
-			margin:auto;
-			left:10%;
-			
-			position:absolute;
-			
-			text-transform:uppercase;
-		}
+	position:relative;
+	pointer-events: auto;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.planetOverviewButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetOverviewButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.planetOverviewButton:disabled{
+	opacity:0.2;
+}
+.planetOverviewButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.planetOverviewButton:hover .planetOverviewButtonImage{
+	outline: solid hsla(180,75%,75%,1) 0px;
+}
+.planetOverviewButton:active .planetOverviewButtonImage{
+	outline: solid hsla(180,100%,75%,1) 0px;
+}
+.planetOverviewButtonImage{
+	outline: solid hsla(180,75%,75%,0.5) 0px;
+	
+	width:100%;
+	height:auto;
+	
+	left:0px;
+	
+	object-fit: contain;
+	position: relative;
+}
+.planetOverviewButtonText{
+	width:80%;
+	left:10%;
+	
+	margin:auto;
+	
+	position:absolute;
+	text-transform:uppercase;
+	will-change: transform;
+}
 
-
+#planetOverviewRightSide{
+	background: hsla(180,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width: calc(70% - 5px);
+	height: 100%;
+	
+	padding: 0px;
+	
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+}
 #planetOverviewInfoPanel{
 	background: hsla(120,100%,50%,0.0);
 	border: solid hsla(120,100%,50%,0.5) 0px;	
 	
-	float:right;
-	
 	height: calc(45% - 5px);
-	width: calc(66% - 10px);
+	width: 100%;
 	
 	padding: 0px;
-}
-	#planetOverviewPlayerPreviousPlanetContainer{
-		background: hsla(300,100%,25%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		padding: 0px;
-		left:0%;
-		float: left;
-		width: 10%;
-		height: 20%;
-		top: 5px;
-		
-		opacity: 0.8;
-		
-		z-index: 1;
-	}
-	#planetOverviewPlayerPreviousPlanetContainer:hover{
-		scale:1.1;
-		opacity: 1;
-		
-		transition-duration: 0.15s;
-	}
-	#planetOverviewInfoPanelHeader{
-		background: hsla(60,100%,25%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		top: 5px;
-		height: 20%;
-		width: 80%;
-		left: 10%;
-		
-		display: flex;
-		justify-content: center;
-		
-		padding: 0px;
-		
-		position: absolute;
-	}
-	#planetOverviewPlayerNextPlanetContainer{
-		background: hsla(180,100%,25%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		padding: 0px;
-		right:0%;
-		float: right;
-		width: 10%;
-		height: 20%;
-		top: 5px;
-		
-		opacity: 0.8;
-		
-		z-index: 1;
-	}
-	#planetOverviewPlayerNextPlanetContainer:hover{
-		scale:1.1;
-		opacity: 1;
-		
-		transition-duration: 0.15s;
-	}
-	.planetOverviewInfoPanelHeaderElement{
-		    display: flex;
-			align-items: center;
-			justify-content: center;
-			
-			height:100%;
-			
-			padding: 0px;
-			
-			
-			position:relative;
-	}
-		.planetOverviewInfoPanelHeaderPlanetSmallArrow{
-			height: 100%;
-			width: auto;
-			top: 0%;
-			
-			left:0;
-			right:0;
-			margin: auto;
-			
-			display: inline-block;
-		}
-		.planetOverviewInfoPanelHeaderPlanetLargeArrow{
-			width: 100%;
-			height: auto;
-			top: 0%;
-			
-			top:0;
-			bottom:0;
-			margin: auto;
-			
-			display: inline-block;
-		}
-		#planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage{
-			left: 0;
-			float: left;
-			position: relative;
-			right: auto;
-			
-		}
-		#planetOverviewInfoPanelHeaderPlayerNextPlanetImage{
-			right: 0;
-			float: right;
-			position: relative;
-			left: auto;
-		}
-		#planetOverviewInfoPanelHeaderSystemPreviousPlanet{
-			background: hsla(180,50%,25%,0.0);
-			border: solid hsla(120,100%,50%,0.5) 0px;
-		
-			height:62.5%;
-		
-			width: auto;
-			opacity: 0.8;
-			
-			z-index: 1;
-		}
-		#planetOverviewInfoPanelHeaderSystemPreviousPlanet:hover{
-			scale:1.1;
-			opacity: 1;
-			
-			transition-duration: 0.15s;
-		}
-		#planetOverviewInfoPanelHeaderCurrentPlanet{
-			background: hsla(180,50%,50%,0.0);
-			border: solid hsla(120,100%,50%,0.5) 0px;
-			
-			min-width:20%;
-			
-			padding-left: calc(10px + 0.0%);
-			padding-right: calc(10px + 0.0%);
-			
-			display: block;
-			
-			z-index: 0;
-		}
-			#planetOverviewInfoPanelHeaderPlanetNameContainer{
-				background: hsla(0,100%,50%,0.0);
-				border: solid hsla(120,100%,50%,0.5) 0px;
-				
-				width:100%;
-				height: 62.5%;
-				
-				
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				
-				padding: 0px;
-				
-				white-space: nowrap;
-			}
-			#planetOverviewInfoPanelHeaderPlanetNameText{
-				font-size: 120%;
-				opacity: 1;
-				font-style: bold;
-				
-				padding: 0px;
-			}
-			#planetOverviewInfoPanelHeaderSystemNameContainer{
-				background: hsla(120,100%,50%,0.0);
-				border: solid hsla(120,100%,50%,0.5) 0px;
-				
-				width:100%;
-				height: 35%;
-				bottom: 0;
-				
-				
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				
-				padding: 0px;
-			}
-			#planetOverviewInfoPanelHeaderSystemNameText, #planetOverviewInfoPanelHeaderSystemNamePrefix{
-				font-size: 75%;
-				opacity: 0.8;
-				font-style: italic;
-				
-				padding: 0px;
-			}
-		#planetOverviewInfoPanelHeaderSystemNextPlanet{
-			background: hsla(180,50%,75%,0.0);
-			border: solid hsla(120,100%,50%,0.5) 0px;
-			
-			height:62.5%;
-			
-			opacity: 0.8;
-			
-			width: auto;
-			z-index: 1;
-		}
-		#planetOverviewInfoPanelHeaderSystemNextPlanet:hover{
-			scale:1.1;
-			opacity: 1;
-			
-			transition-duration: 0.15s;
-		}
-	#planetOverviewInfoPanelContent{
-		background: hsla(30,100%,50%,0.0);
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		top: calc(20% + 10px);
-		max-height: calc(80% - 10px);
-		width: 100%;
-		
-		float: left;
-		
-		
-		padding-left: 2.5%;
-		padding-right: 2.5%;
-		
-		padding-top: 15px;
-		padding-bottom: 15px;
-		mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 20px, hsla(0,100%,100%,1) calc(100% - 20px),hsla(0,100%,100%,0.0) 100%);
-		
-		overflow: auto;
-		position: absolute;
-		
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row;
-	}
-		.planetOverviewInfoPanelSingleInfo{
-			background: hsla(90,100%,25%,0.0);
-			border: solid hsla(120,100%,50%,0.5) 0px;
-			margin: 0px;
-			
-			width: auto;
-			min-width:30%;
-			margin: 2px;
-			
-			padding: 0px;
-			
-			flex-grow: 1;
-			
-			text-align: left;
-		}
-		.planetOverviewInfoName{
-			font-size: 90%;
-			
-			text-align: left;
-		}
-		.planetOverviewInfoValue{
-			font-size: 85%;
-			
-			text-align: left;
-		}
-	#planetOverviewInfoPanelTable{
-		width: 100%;
-		table-layout: fixed;
-	}
-	#planetOverviewInfoPanelTable tr{
-		/*line-height: 110%;*/
-	}	
-
-#planetOverviewResourcesPanel{
-	background: hsla(300,100%,50%,0.0);
-	border: solid hsla(120,100%,50%,0.5) 0px;	
 	
 	float:right;
-	
-	margin-top: 10px;
-	height: calc(55% - 5px);
-	width: calc(66% - 10px);
-	
-	padding: 0px;
-	
-	bottom: 0px;
 }
-	#planetOverviewResourcesPanelHeader{
-		border: solid hsla(120,100%,50%,0.5) 0px;
-		
-		height: 15%;
-		width: 100%;
-		
-		display: flex;
-		justify-content: space-around;
-		
-		padding: 0px;
-		
-		position: absolute;
-	}
-		.planetOverviewResourcesPanelHeaderElement{
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex:1;
-			box-sizing: border-box;
-			
-			height:100%;
-			max-width: 25%;
-			
-			padding: 5px;
-			
-			margin: 2px;
-			
-			font-size: 75%;
-			
-			opacity: 0.5;
-			
-			position:relative;
-			
-			border: solid hsla(180,100%,75%,1) 3px;
-			background: hsla(0,0%,0%,0.5);
-			border-radius: 2px;
-			
-			/*font: inherit;
-			font-size: 85%;
-			color: inherit;*/
-		}
-		.planetOverviewResourcesPanelHeaderElement:active{
-			opacity:1.0;
-			transition-duration: 0.15s;
-		}
-		.planetOverviewResourcesPanelHeaderElement:enabled:hover{
-			opacity:0.85;
-			scale:1.1;
-			transition-duration: 0.15s;
-		}
-		.planetOverviewResourcesPanelHeaderElement:disabled{
-			opacity:0.2;
-		}
-		.planetOverviewResourcesPanelHeaderElement:disabled:hover{
-			opacity:0.35;
-			transition-duration: 0.15s;
-		}
 
-#planetOverviewResourcesPanelContent{
-	padding: 0px;
-	top: calc(15% + 10px);
-	height: calc(85% - 10px);
+#planetOverviewInfoPanelHeader{
 	width: 100%;
-			
-}
+	height: 20%;
 	
-.planetOverviewToggleableResourcesPanel{
-	visibility: hidden;
-	
-	max-height: 100%;
-	width: 100%;
-	box-sizing: border-box;
-	position: absolute;
-	padding: 25px;
-	
+	padding: 0;
 	
 	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+	align-items: center;
+}
+
+.planetOverviewChangePlanetButtonContainer{
+	background: hsla(180,100%,25%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
 	
-	background: hsla(120,25%,25%,0.0);
-	border: solid hsla(120,25%,25%,0.5) 0px;
+	padding: 0px;
+	
+	opacity: 0.8;
+}
+.planetOverviewChangePlanetButtonContainer:hover{
+	scale:1.1;
+	opacity: 1;
+	transition-duration: 0.15s;
+}
+
+#planetOverviewPlayerPreviousPlanetButton{
+	width: 10%;
+	height: 80%;
+	
+	z-index: 1;
+}
+#planetOverviewPlayerPreviousPlanetButton:hover{}
+#planetOverviewPlayerNextPlanetButton{
+	width: 10%;
+	height: 80%;
+	
+	z-index: 1;
+}
+#planetOverviewPlayerNextPlanetButton:hover{}
+#planetOverviewInfoPanelHeaderSystemPreviousPlanetButton{
+	height:65%;
+	width: auto;
+	
+	z-index: 1;
+}
+#planetOverviewInfoPanelHeaderSystemPreviousPlanetButton:hover{}
+#planetOverviewInfoPanelHeaderSystemNextPlanetButton{
+	height:65%;
+	width: auto;
+	
+	z-index: 1;
+}
+#planetOverviewInfoPanelHeaderSystemNextPlanetButton:hover{}
+.planetOverviewInfoPanelHeaderPlanetSmallArrow{
+	height: 100%;
+	width: auto;
+	top: 0%;
+	left:0;
+	right:0;
+	
+	margin: auto;
+	
+	display: inline-block;
+}
+/*.planetOverviewInfoPanelHeaderPlanetLargeArrow{
+	width: 100%;
+	height: auto;
+	top: 0%;
+	
+	top:0;
+	bottom:0;
+	margin: auto;
+	
+	display: inline-block;
+}*/
+#planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage{
+	left: 0;
+	right: auto;
+	
+	float: left;
+	position: relative;
+	
+}
+#planetOverviewInfoPanelHeaderPlayerNextPlanetImage{
+	left: auto;
+	right: 0;
+	
+	float: right;
+	position: relative;
+}
+
+#planetOverviewInfoPanelHeaderMiddle{
+	background: hsla(60,100%,25%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	top: 5px;
+	height: 100%;
+	min-width: 40%;
+	
+	padding: 0px;
+	
+	display: inline-flex;
+	justify-content: space-between;
+}
+.planetOverviewInfoPanelHeaderElement{
+	height:100%;
+	
+	padding: 0px;
+	
+	position:relative;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#planetOverviewInfoPanelHeaderCurrentPlanet{
+	background: hsla(180,50%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	min-width:20%;
+	
+	padding-left: calc(10px + 0.0%);
+	padding-right: calc(10px + 0.0%);
+	
+	display: block;
+	z-index: 0;
+}
+#planetOverviewInfoPanelHeaderPlanetNameContainer{
+	background: hsla(0,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width:100%;
+	height: 62.5%;
+	
+	padding: 0px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	white-space: nowrap;
+}
+#planetOverviewInfoPanelHeaderPlanetNameText{
+	font-size: 120%;
+	font-style: bold;
+	
+	padding: 0px;
+	
+	opacity: 1;
+}
+#planetOverviewInfoPanelHeaderSystemNameContainer{
+	background: hsla(120,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width:100%;
+	height: 35%;
+	bottom: 0;
+	
+	padding: 0px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#planetOverviewInfoPanelHeaderSystemNameText, #planetOverviewInfoPanelHeaderSystemNamePrefix{
+	font-size: 75%;
+	font-style: italic;
+	
+	padding: 0px;
+	
+	opacity: 0.8;
+}
+
+#planetOverviewInfoPanelContent{
+	background: hsla(30,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	top: calc(20% + 10px);
+	max-height: calc(80% - 10px);
+	width: 100%;
 	
 	padding-left: 5px;
 	padding-right: 5px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	
-	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 25px, hsla(0,100%,100%,1) calc(100% - 25px),hsla(0,100%,100%,0.0) 100%);
-	
-	overflow: auto;
-	
+	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
+	
+	overflow: auto;
+	position: absolute;
+	float: left;
+	mask-image: linear-gradient(180deg,hsla(0,100%,100%,0.0) 0px, hsla(0,100%,100%,1) 20px, hsla(0,100%,100%,1) calc(100% - 20px),hsla(0,100%,100%,0.0) 100%);
 }
-
-.planetOverviewResourcePanelSingleResource{
-			background: hsla(90,100%,25%,0);
-			border: solid hsla(120,100%,50%,0.5) 0px;
-			margin: 0px;
-			
-			width: auto;
-			min-width:30%;
-			margin: 2px;
-			
-			padding: 0px;
-			
-			flex-grow: 1;
-			
-			text-align: left;
-		}
-		.planetOverviewResourceName{
-			font-size: 80%;
-			margin-left: 4px;
-			text-align: left;
-		}
-		.planetOverviewResourceValue{
-			font-size: 80%;
-			
-			text-align: left;
-		}
-
-.planetOverviewResourcesTabResourceName{
+#planetOverviewInfoPanelTable{
+	width: 100%;
+	table-layout: fixed;
+}
+#planetOverviewInfoPanelTable td{
 	text-align: left;
-	font-size: 110%;
-}
-.planetOverviewTableColumnSpacing{
-	min-width: 1em;
-	width: 20px;
+	vertical-align: top;
 }
 #planetOverviewInfoPanelTablePseudoHeaderRow{
 	padding: 0px;
@@ -667,44 +456,352 @@
 #planetOverviewInfoPanelTablePseudoHeaderRow td{
 	padding: 0px;
 }
-
-#planetOverviewResourcesPanelBonusResourcesTablePseudoHeader ,#planetOverviewResourcesPanelNaturalResourcesTablePseudoHeader {
-	padding: 0px;
+.planetOverviewTableColumnSpacing{
+	min-width: 1em;
+	width: 25px;
+	padding: 0;
 }
-#planetOverviewResourcesPanelBonusResourcesTablePseudoHeader td,#planetOverviewResourcesPanelNaturalResourcesTablePseudoHeader td{
-	padding: 0px;
-}
+#planetOverviewInfoPanelOwnerCell{}
+#planetOverviewInfoPanelHazardCell{}
+#planetOverviewInfoPanelConditionsCell{}
+#planetOverviewInfoPanelDescriptionCell{}
+#planetOverviewInfoPanelAtmosphereCell{}
+#planetOverviewInfoPanelTemperatureCell{}
+#planetOverviewInfoPanelPeroidCell{}
+#planetOverviewInfoPanelDistanceCell{}
+#planetOverviewInfoPanelRadiusCell{}
+#planetOverviewInfoPanelGravityCell{}
+#planetOverviewInfoPanelEnergyCell{}
 
-.planetOverviewResourcesPanelNaturalResourcesTableHeaderContainer, .planetOverviewResourcesPanelBonusResourcesTableHeaderContainer{
+/*.planetOverviewInfoPanelSingleInfo{
+	background: hsla(90,100%,25%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	width: auto;
+	min-width:30%;
+	
+	margin: 0px;
+	margin: 2px;
+	padding: 0px;
+	
+	flex-grow: 1;
 	text-align: left;
-	padding-bottom: 10px;
+}*/
+.planetOverviewInfoName{
+	font-size: 90%;
+	text-align: left;
 }
-.planetOverviewResourcesPanelNaturalResourcesTableHeaderText, .planetOverviewResourcesPanelBonusResourcesTableHeaderText{
+.planetOverviewInfoValue{
+	font-size: 85%;
+	text-align: left;
+}
+	
+#planetOverviewResourcesPanel{
+	background: hsla(300,100%,50%,0.0);
+	border: solid hsla(120,100%,50%,0.5) 0px;	
+	
+	bottom: 0px;
+	height: calc(55% - 5px);
+	width: 100%;
+	
+	margin-top: 10px;
+	padding: 0px;
+	
+	float:right;
+}
+#planetOverviewResourcesPanelHeader{
+	border: solid hsla(120,100%,50%,0.5) 0px;
+	
+	height: 15%;
+	width: 100%;
+	
+	padding: 0px;
+	
+	display: flex;
+	justify-content: space-around;
+	
+	position: absolute;
+}
+
+.planetOverviewResourcesPanelHeaderButton{
+	border: solid hsla(180,100%,75%,1) 3px;
+	background: hsla(0,0%,0%,0.5);
+	border-radius: 2px;
+	
+	height:100%;
+	max-width: 25%;
+	
+	padding: 5px;
+	margin: 2px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex:1;
+	
+	opacity: 0.5;
+	
+	box-sizing: border-box;
+	position:relative;
+	will-change: transform;
+}
+.planetOverviewResourcesPanelHeaderButton:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.planetOverviewResourcesPanelHeaderButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetOverviewResourcesPanelHeaderButton:disabled{
+	opacity:0.2;
+}
+.planetOverviewResourcesPanelHeaderButton:disabled:hover{
+	opacity:0.35;
+	transition-duration: 0.15s;
+}
+.planetOverviewResourcesPanelHeaderButtonText{
+	font-size: 75%;
+}
+
+#planetOverviewResourcesPanelContent{
+	top: calc(15% + 5px);
+	height: calc(85% - 5px);
+	width: 100%;
+	
+	padding: 0px;	
+}
+.planetOverviewToggleableResourcesPanel{
+	background: hsla(120,25%,25%,0.0);
+	border: solid hsla(120,25%,25%,0.5) 0px;
+	
+	max-height: 100%;
+	width: 100%;
+	
+	padding: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	
+	box-sizing: border-box;
+	position: absolute;
+	visibility: hidden;
+	overflow: auto;
+    overflow-y: scroll;
+	overflow-x: scroll;
+	scrollbar-gutter: stable;
+	
+	mask-image: linear-gradient(180deg, transparent calc(100% - 15px), black calc(100% - 15px), black 100%),
+	linear-gradient(180deg, 
+	hsla(0, 100%, 100%, 0.0) 0px, 
+	hsla(0, 100%, 100%, 1) 20px, 
+	hsla(0, 100%, 100%, 1) calc(100% - 35px), 
+	hsla(0, 100%, 100%, 0.0) calc(100% - 15px), 
+	hsla(0, 100%, 100%, 0.0) 100%);
+}
+
+.planetOverviewResourcesTabTable{
+	min-width: 100%;
+	table-layout: fixed;
+}
+#planetOverviewResourcesPanelNaturalBonusResourcesTable{
+	min-width: 70%;
+}
+#planetOverviewResourcesPanelNaturalBonusResourcesTable .planetOverviewTableColumnSpacing{
+	min-width: 0.2em;
+	width: 30px;
+}
+#planetOverviewResourcesPanelNaturalBonusResourcesTable .interfaceTableCell{
+	max-width: unset;
+}
+#planetOverviewResourcesPanelNaturalBonusResourcesTablePseudoHeader, #planetOverviewResourcesPanelBonusResourcesTablePseudoHeader, #planetOverviewResourcesPanelNaturalResourcesTablePseudoHeader{
+	padding: 0px;
+}
+#planetOverviewResourcesPanelNaturalBonusResourcesTablePseudoHeader td, #planetOverviewResourcesPanelBonusResourcesTablePseudoHeader td, #planetOverviewResourcesPanelNaturalResourcesTablePseudoHeader td{
+	padding: 0px;
+}
+
+.planetOverviewResourcesPanelNaturalBonusResourcesTableHeaderCell{
+	text-align: left;
+	padding-bottom: 8px;
+	font-size: 110%;
+}
+.planetOverviewResourcesPanelNaturalBonusResourcesTableHeaderText{
 	color: hsla(180,100%,75%,1);
 }
-
-.planetOverviewResourcesPanelNaturalResourcesTableRow, .planetOverviewResourcesPanelBonusResourcesTableRow{
-	line-height: 120%;
-	font-size: 90%;
+.planetOverviewResourcesPanelBonusResourcesTableRow, .planetOverviewResourcesPanelNaturalResourcesTableRow{
+	line-height: 130%;
+	font-size: 85%;
 }
-.planetOverviewResourcesPanelNaturalResourcesTableRow td, .planetOverviewResourcesPanelBonusResourcesTableRow td{
-	overflow-x: clip;
+.planetOverviewResourcesPanelBonusResourcesTableRow td, .planetOverviewResourcesPanelNaturalResourcesTableRow td{}
+.planetOverviewResourcesPanelNaturalBonusResourceNameCell{
+	max-width: unset;
+	text-align: left;
+	/* font-size: 80%; */
 }
-
-.planetOverviewResourcesPanelNaturalResourcesTableFooterContainer{
+.planetOverviewResourcesPanelNaturalBonusResourceNameText{
+	margin-left: 5px;
+}
+.planetOverviewResourcesPanelNaturalBonusResourceMultiplierCell{
+	max-width: unset;
+	text-align: right;
+	/* font-size: 80%; */
+}
+.planetOverviewResourcesPanelNaturalBonusResourceMutiplierText{}
+.planetOverviewResourcesPanelNaturalBonusResourceBonusText{
+	color: hsla(120,100%,65%,1);
+}
+.planetOverviewResourcesPanelNaturalBonusResourcePenaltyText{
+	color: hsla(0,100%,65%,1);
+}
+.planetOverviewResourcesPanelNaturalBonusResourcesQuantityCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelNaturalBonusResourceQuantityText{}
+.planetOverviewResourcesPanelNaturalBonusResourcesQualityCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelNaturalBonusResourceQualityText{}
+.planetOverviewResourcesPanelNaturalBonusResourceQualityHighText{
+	color: hsla(60, 75%, 65%, 1);
+}
+.planetOverviewResourcesPanelNaturalBonusResourceQualityLowText{
+	color: hsla(0, 0%, 65%, 1);
+}
+.planetOverviewResourcesPanelNaturalBonusResourcesTableFooterCell{
 	padding: 0px;
-	line-height: 90%;
+	line-height: 110%;
 }
-.planetOverviewResourcesPanelNaturalResourcesTableFooterText{
+.planetOverviewResourcesPanelNaturalBonusResourcesTableFooterText{}
+.planetOverviewResourcesPanelNoNaturalResourcesContainer{
+	
+}
+.planetOverviewResourcesPanelNoNaturalResourcesText{
+	color = "hsla(180,100%,75%,1)";
+}
+
+#planetOverviewResourcesPanelStorageTable{
+	min-width: 100%;
+}
+#planetOverviewResourcesPanelStorageTable .planetOverviewTableColumnSpacing{
+	min-width: 0.2em;
+	width: 30px;
+}
+#planetOverviewResourcesPanelStorageTable .interfaceTableCell{
+	max-width: unset;
+}
+.planetOverviewResourcesPanelStorageTableRow{
+	line-height: 140%;
+	font-size: 95%;
+}
+.planetOverviewResourcesPanelStorageResourceNameCell{
+	text-align: left;
+}
+.planetOverviewResourcesPanelStorageResourceNameText{
+	margin-left: 5px;
+}
+.planetOverviewResourcesPanelStorageResourceAmountCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelStorageResourceAmountText{
 	
 }
 
 
-.planetOverviewResourcesTabResourceValue{
-	text-align: right;
+
+#planetOverviewResourcesPanelProductionTable{
+	min-width: 100%;
+}
+#planetOverviewResourcesPanelProductionTable .planetOverviewTableColumnSpacing{
+	min-width: 0.2em;
+	width: 30px;
+}
+#planetOverviewResourcesPanelProductionTable .interfaceTableCell{
+	max-width: unset;
+}
+#planetOverviewResourcesPanelConsumptionTable{
+	min-width: 100%;
+}
+#planetOverviewResourcesPanelConsumptionTable .planetOverviewTableColumnSpacing{
+	min-width: 0.2em;
+	width: 30px;
+}
+#planetOverviewResourcesPanelConsumptionTable .interfaceTableCell{
+	max-width: unset;
+}
+
+.planetOverviewResourcesPanelProductionTableHeaderRow, .planetOverviewResourcesPanelConsumptionTableHeaderRow{
 	font-size: 110%;
 }
-.planetOverviewResourcesTabTable{
-	min-width: 100%;
-	table-layout: fixed;
+.planetOverviewResourcesPanelProductionTableHeaderCell, .planetOverviewResourcesPanelConsumptionTableHeaderCell{
+	padding-bottom: 6px;
+}
+.planetOverviewResourcesPanelProductionTableHeaderCellText, .planetOverviewResourcesPanelConsumptionTableHeaderCellText{
+	padding-bottom: 8px;
+}
+
+.planetOverviewResourcesPanelProductionTableRow, .planetOverviewResourcesPanelConsumptionTableRow{
+	line-height: 120%;
+	font-size: 75%;
+}
+.planetOverviewResourcesPanelProductionTableCell, .planetOverviewResourcesPanelConsumptionTableCell{}
+.planetOverviewResourcesPanelProductionTableCellText, .planetOverviewResourcesPanelConsumptionTableCellText{}
+
+.planetOverviewResourcesPanelProductionConsumptionResourceNameCell{
+	text-align: left;
+}
+.planetOverviewResourcesPanelProductionConsumptionResourceNameCellText{
+	margin-left: 4px;
+}
+.planetOverviewResourcesPanelProductionConsumptionResourceAmountCell{
+	text-align: center;
+}
+.planetOverviewResourcesPanelProductionConsumptionResourceAmountCellText{
+	color: hsla(0, 0%, 100%, 1);
+}
+
+.planetOverviewResourcesPanelProductionResourceGainCell, .planetOverviewResourcesPanelProductionResourceImportCell, .planetOverviewResourcesPanelProductionResourceTotalGainCell, .planetOverviewResourcesPanelProductionResourceAverageGainCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelProductionResourceGainCellText, .planetOverviewResourcesPanelProductionResourceImportCellText, .planetOverviewResourcesPanelProductionResourceTotalGainCellText, .planetOverviewResourcesPanelProductionResourceAverageGainCellText{
+	margin-right: 2px;
+}
+.planetOverviewResourcesPanelProductionResourceGainCellText{
+	color: hsla(120,75%,65%,1);
+}
+.planetOverviewResourcesPanelProductionResourceImportCellText{
+	color: hsla(150,75%,65%,1);
+}
+.planetOverviewResourcesPanelProductionResourceTotalGainCellText{
+	color: hsla(120,75%,65%,1);
+	font-style: bold;
+}
+.planetOverviewResourcesPanelProductionResourceAverageGainCellText{
+	color: hsla(120,75%,65%,1);
+	font-style: italic;
+}
+
+.planetOverviewResourcesPanelConsumptionResourceLossCell, .planetOverviewResourcesPanelConsumptionResourceExportCell, .planetOverviewResourcesPanelConsumptionResourceTotalLossCell, .planetOverviewResourcesPanelConsumptionResourceAverageLossCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelConsumptionResourceLossCellText, .planetOverviewResourcesPanelConsumptionResourceExportCellText, .planetOverviewResourcesPanelConsumptionResourceTotalLossCellText, .planetOverviewResourcesPanelConsumptionResourceAverageLossCellText{
+	margin-right: 2px;
+}
+.planetOverviewResourcesPanelConsumptionResourceLossCellText{
+	color: hsla(0,75%,65%,1);
+}
+.planetOverviewResourcesPanelConsumptionResourceExportCellText{
+	color: hsla(30,75%,65%,1);
+}
+.planetOverviewResourcesPanelConsumptionResourceTotalLossCellText{
+	color: hsla(0,75%,65%,1);
+	font-style: bold;
+}
+.planetOverviewResourcesPanelConsumptionResourceAverageLossCellText{
+	color: hsla(0,75%,65%,1);
+	font-style: italic;
 }

@@ -211,155 +211,358 @@
 					</div>
 				</div>
 				
-				<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanel">
-					
-					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerPreviousPlanetContainer">
-						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
-					
-					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeader">
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderSystemPreviousPlanet">
-							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderCurrentPlanet">
-							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderPlanetNameContainer">
-								<span class="interfaceText interfaceDynamicText" id="planetOverviewInfoPanelHeaderPlanetNameText">Argon Prime</span>
+				<div class="planetOverviewElementsContainer" id="planetOverviewRightSide">
+					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanel">
+						<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeader">
+							<button class="planetOverviewElementsContainer planetOverviewChangePlanetButtonContainer" id="planetOverviewPlayerPreviousPlanetButton">
+								<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
+							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderMiddle">
+								<button class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement planetOverviewChangePlanetButtonContainer" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetButton">
+									<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemPreviousPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+								</button>
+								<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderCurrentPlanet">
+									<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderPlanetNameContainer">
+										<span class="interfaceText interfaceDynamicText" id="planetOverviewInfoPanelHeaderPlanetNameText">Argon Prime</span>
+									</div>
+									<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderSystemNameContainer">
+										<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNameText">Sonra</span>&nbsp;<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNamePrefix">system</span>
+									</div>
+								</div>
+								<button class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement planetOverviewChangePlanetButtonContainer" id="planetOverviewInfoPanelHeaderSystemNextPlanetButton">
+									<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+								</button>
 							</div>
-							<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelHeaderSystemNameContainer">
-								<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNameText">Sonra</span>&nbsp;<span class="interfaceText" id="planetOverviewInfoPanelHeaderSystemNamePrefix">system</span>
+							<button class="planetOverviewElementsContainer planetOverviewChangePlanetButtonContainer" id="planetOverviewPlayerNextPlanetButton">
+								<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
+						</div>
+						<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
+							<table class="interfaceTable" id="planetOverviewInfoPanelTable">
+								<tbody>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTablePseudoHeaderRow">
+										<td class="interfaceTableCell"></td>
+										<td class="interfaceTableCell planetOverviewTableColumnSpacing">
+											<!-- collspan on first row makes table ignore column widths, needs "proper" row-->
+										</td>
+										<td class="interfaceTableCell"></td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow1">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelOwnerCell" colspan=3>
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoOwnerName">Owner: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoOwnerValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow2">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelTypeCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTypeName">Planet type: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTypeValue">???</span>
+										</td>
+										<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_0"></td>
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow3">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelConditionsCell" colspan = 3>
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoConditionsName">Conditions: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoConditionsValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=3>
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDescriptionName">Description: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDescriptionValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow5">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoAtmosphereName">Atmosphere: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoAtmosphereValue">???</span>
+										</td>
+										<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_1"></td>
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelTemperatureCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTemperatureName">Avg temperature: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTemperatureValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow6">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelPeroidCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoPeroidName">Orbital peroid: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoPeroidValue">???</span>
+										</td>
+										<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_2"></td>
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelDistanceCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDistanceName">Orbital distance: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDistanceValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow7">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelRadiusCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoRadiusName">Planet radius: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoRadiusValue">???</span>
+										</td>
+										<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_3"></td>
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelGravityCell">
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoGravityName">Surface gravity: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoGravityValue">???</span>
+										</td>
+									</tr>
+									<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow8">
+										<td class="interfaceTableCell" id="planetOverviewInfoPanelEnergyCell" colspan=3>
+											<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoEnergyName">Energy balance: </span>
+											<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoEnergyValue">???</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanel">
+						<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelHeader">
+							<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderButton" id="planetOverviewResourcesPanelResourcesButton">
+								<span class="interfaceText planetOverviewResourcesPanelHeaderButtonText">
+									Natural resources
+								</span>
+							</button>
+							<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderButton" id="planetOverviewResourcesPanelStorageButton">
+								<span class="interfaceText planetOverviewResourcesPanelHeaderButtonText">
+									Storage
+								</span>
+							</button>
+							<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderButton" id="planetOverviewResourcesPanelProductionButton" disabled>
+								<span class="interfaceText planetOverviewResourcesPanelHeaderButtonText">
+									Production
+								</span>
+							</button>
+							<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderButton" id="planetOverviewResourcesPanelConsumptionButton" disabled>
+								<span class="interfaceText planetOverviewResourcesPanelHeaderButtonText">
+									Consumption
+								</span>
+							</button>
+							<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderButton" id="planetOverviewResourcesPanelBalanceButton" disabled>
+								<span class="interfaceText planetOverviewResourcesPanelHeaderButtonText">
+									Balance
+								</span>
+							</button>
+						</div>
+						<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelContent">
+							<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelResources">
+								Natural resources
 							</div>
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewInfoPanelHeaderElement" id="planetOverviewInfoPanelHeaderSystemNextPlanet">
-							<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderSystemNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-						</div>
-					</div>
-					
-					<div class="planetOverviewElementsContainer" id="planetOverviewPlayerNextPlanetContainer">
-						<img class="planetOverviewInfoPanelHeaderPlanetSmallArrow" id="planetOverviewInfoPanelHeaderPlayerNextPlanetImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
-					
-					<div class="planetOverviewElementsContainer" id="planetOverviewInfoPanelContent">
-						<table class="interfaceTable" id="planetOverviewInfoPanelTable">
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTablePseudoHeaderRow">
-									<td class="interfaceTableCell"></td>
-									<td class="interfaceTableCell planetOverviewTableColumnSpacing">
-										<!-- collspan on first row makes table ignore column widths, needs "proper" row-->
-									</td>
-									<td class="interfaceTableCell"></td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow1">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelOwnerCell" colspan=3>
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoOwnerName">Owner: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoOwnerValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow2">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelTypeCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTypeName">Planet type: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTypeValue">???</span>
-									</td>
-									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_0">
-									
-									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelHazardCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoHazardName">Hazard level: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoHazardValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow3">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelConditionsCell" colspan = 3>
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoConditionsName">Conditions: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoConditionsValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow4">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelDescriptionCell" colspan=3>
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDescriptionName">Description: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDescriptionValue">???</span>
-									</td>
-								</tr>
-								
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow5">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelAtmosphereCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoAtmosphereName">Atmosphere: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoAtmosphereValue">???</span>
-									</td>
-									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_1">
-									
-									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelTemperatureCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoTemperatureName">Avg temperature: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoTemperatureValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow6">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelPeroidCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoPeroidName">Orbital peroid: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoPeroidValue">???</span>
-									</td>
-									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_2">
-									
-									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelDistanceCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoDistanceName">Orbital distance: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoDistanceValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow7">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelRadiusCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoRadiusName">Planet radius: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoRadiusValue">???</span>
-									</td>
-									<td class="interfaceTableCell planetOverviewTableColumnSpacing" id="planetOverviewInfoTableCellSpace_3">
-									
-									</td>
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelGravityCell">
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoGravityName">Surface gravity: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoGravityValue">???</span>
-									</td>
-								</tr>
-								<tr class="interfaceTableRow" id="planetOverviewInfoPanelTableRow8">
-									<td class="interfaceTableCell" id="planetOverviewInfoPanelEnergyCell" colspan=3>
-										<span class="interfaceText planetOverviewInfoName" id="planetOverviewInfoEnergyName">Energy balance: </span>
-										<span class="interfaceText interfaceDynamicText planetOverviewInfoValue" id="planetOverviewInfoEnergyValue">???</span>
-									</td>
-								</tr>
-						</table>
-					</div>
-				</div>
-				<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanel">
-					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelHeader">
-						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelResourcesButton">
-							Natural resources
-						</button>
-						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelStorageButton">
-							Storage
-						</button>
-						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelProductionButton" disabled>
-							Production
-						</button>
-						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelConsumptionButton" disabled>
-							Consumption
-						</button>
-						<button class="planetOverviewElementsContainer planetOverviewResourcesPanelHeaderElement" id="planetOverviewResourcesPanelBalanceButton" disabled>
-							Balance
-						</button>
-					</div>
-					<div class="planetOverviewElementsContainer" id="planetOverviewResourcesPanelContent">
-						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelResources">
-							Natural resources
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelStorage">
-							Storage
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelProduction">
-							Production
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelConsumption">
-							Consumption
-						</div>
-						<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelBalance">
-							Balance
+							<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelStorage">
+								Storage
+							</div>
+							<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelProduction">
+								<!--Production-->
+								<table class="interfaceTable planetOverviewResourcesTabTable" id="planetOverviewResourcesPanelProductionTable">
+									<tbody>
+										<tr class="interfaceTableRow" id="planetOverviewResourcesPanelProductionTableHeaderRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Resource
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Amount
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionResourceGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Produced
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionResourceImportCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Import
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionResourceTotalGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Total
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableHeaderCell planetOverviewResourcesPanelProductionResourceAverageGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableHeaderCellText">
+													Average
+												</span>
+											</td>
+										</tr>
+										<tr class="interfaceTableRow planetOverviewResourcesPanelProductionTableRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceNameCellText">
+													Iron
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceAmountCellText">
+													3000.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceGainCellText">
+													+ Dc3000.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceImportCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceImportCellText">
+													+ 5.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceTotalGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceTotalGainCellText">
+													+ 15.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceAverageGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceAverageGainCellText">
+													+ 15.0
+												</span>
+											</td>
+										</tr>
+										<tr class="interfaceTableRow planetOverviewResourcesPanelProductionTableRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceNameCellText">
+													Stone
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceAmountCellText">
+													2137
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceGainCellText">
+													+ 999.9e102
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceImportCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceImportCellText">
+													+ 20.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceTotalGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceTotalGainCellText">
+													+ 1.0e105
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelProductionTableCell planetOverviewResourcesPanelProductionResourceAverageGainCell">
+												<span class="interfaceText planetOverviewResourcesPanelProductionTableCellText planetOverviewResourcesPanelProductionResourceAverageGainCellText">
+													+ 1.0e105
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelConsumption">
+								<!--Consumption-->
+								<table class="interfaceTable planetOverviewResourcesTabTable" id="planetOverviewResourcesPanelConsumptionTable">
+									<tbody>
+										<tr class="interfaceTableRow" id="planetOverviewResourcesPanelConsumptionTableHeaderRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Resource
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Amount
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelConsumptionResourceLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Consumed
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelConsumptionResourceExportCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Exported
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelConsumptionResourceTotalLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Total
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableHeaderCell planetOverviewResourcesPanelConsumptionResourceAverageLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableHeaderCellText">
+													Average
+												</span>
+											</td>
+										</tr>
+										<tr class="interfaceTableRow planetOverviewResourcesPanelProductionTableRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceNameCellText">
+													Iron
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceAmountCellText">
+													3000.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceLossCellText">
+													- Dc3000.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceExportCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceExportCellText">
+													- 5.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceTotalLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceTotalLossCellText">
+													- 15.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceAverageLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceAverageLossCellText">
+													- 15.0
+												</span>
+											</td>
+										</tr>
+										<tr class="interfaceTableRow planetOverviewResourcesPanelProductionTableRow">
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelProductionConsumptionResourceNameCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceNameCellText">
+													Stone
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelProductionConsumptionResourceAmountCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelProductionConsumptionResourceAmountCellText">
+													2137
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceLossCellText">
+													- 999.9e102
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceExportCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceExportCellText">
+													- 20.0
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceTotalLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceTotalLossCellText">
+													- 1.0e105
+												</span>
+											</td>
+											<td class="interfaceTableCell planetOverviewResourcesPanelConsumptionTableCell planetOverviewResourcesPanelConsumptionResourceAverageLossCell">
+												<span class="interfaceText planetOverviewResourcesPanelConsumptionTableCellText planetOverviewResourcesPanelConsumptionResourceAverageLossCellText">
+													- 1.0e105
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="planetOverviewElementsContainer planetOverviewToggleableResourcesPanel" id="planetOverviewResourcesPanelBalance">
+								Balance
+							</div>
 						</div>
 					</div>
 				</div>

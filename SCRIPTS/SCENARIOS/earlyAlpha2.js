@@ -159,10 +159,15 @@ function earlyAlpha_NaturalResources(){
 	tmpPlanetId = 0; //Daboogiea
 	tmpPlanet = PlanetsArray[tmpPlanetId];
 	
+	tmpPlanet.setNaturalResource("Scrap",1.0,2.5);
 	tmpPlanet.setNaturalResource("Stone",2.0,3.5);
+	tmpPlanet.setNaturalResource("Iron",0.5,0.5);
 	
 	tmpPlanet.setBonusResource("Steel",1.5);
-	tmpPlanet.setBonusResource("Glass",0.8);
+	tmpPlanet.setBonusResource("Plastic",1.25);
+	tmpPlanet.setBonusResource("Fuel",2.5);
+	tmpPlanet.setBonusResource("Glass",0.75);
+	tmpPlanet.setBonusResource("Circuits",0.5);
 	
 	tmpPlanet.setStorageResource("Iron",50.0);
 	
