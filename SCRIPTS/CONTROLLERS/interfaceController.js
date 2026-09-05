@@ -1817,7 +1817,6 @@ function interfaceInitSettingsMenu(outputDocument) {
 		outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").src = InterfaceMainMenuIconPaths[18];
 	}*/
 	
-			
 	//other
 	
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[30]).src = InterfaceMainMenuIconPaths[35];

@@ -6,6 +6,7 @@ function scenario_earlyAlpha2(){
 	earlyAlpha_Systems();
 	systemsSortByDepth();
 	earlyAlpha_Planets();
+	earlyAlpha_NaturalResources();
 	earlyAlpha_RegisterPlanets();
 	earlyAlpha_CreateNetworks();
 	
@@ -150,6 +151,21 @@ function earlyAlpha_Resources(){
 	ResourcesArray.push(tmpResource);
 	
 	resourcesRefreshResources();
+}
+function earlyAlpha_NaturalResources(){
+	let tmpPlanetId = -1;
+	let tmpPlanet;
+	
+	tmpPlanetId = 0; //Daboogiea
+	tmpPlanet = PlanetsArray[tmpPlanetId];
+	
+	tmpPlanet.setNaturalResource("Stone",2.0,3.5);
+	
+	tmpPlanet.setBonusResource("Steel",1.5);
+	tmpPlanet.setBonusResource("Glass",0.8);
+	
+	tmpPlanet.setStorageResource("Iron",50.0);
+	
 }
 function earlyAlpha_Systems(){
 	var tmpSystem;

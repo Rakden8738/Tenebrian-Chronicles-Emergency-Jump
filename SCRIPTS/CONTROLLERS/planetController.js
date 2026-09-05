@@ -154,6 +154,17 @@ class PlanetObject{
 		this.naturalResources = resourcesCreateEmptyNaturalResourcesArray();
 		this.bonusResources = resourcesCreateEmptyResourceBonusArray();
 		
+		this.naturalResourcesNames = [];
+		
+		for(let i = 0; i < this.naturalResources.length; i++){
+			this.naturalResourcesNames.push(this.naturalResources[i].typeName);
+		}
+		
+		this.bonusResourcesNames = [];
+		for(let i = 0; i < this.bonusResources.length; i++){
+			this.bonusResourcesNames.push(this.bonusResources[i].typeName);
+		}
+		
 		this.resourceStorage = resourcesCreateEmptyStorageResourcesArray();
 		this.resourceProduction = resourcesCreateEmptyStorageResourcesArray();
 		this.resourceConsumption = resourcesCreateEmptyStorageResourcesArray();
@@ -190,7 +201,9 @@ class PlanetObject{
 	
 	relativeSize = 0;
 	
+	naturalResourcesNames = [];
 	naturalResources = [];
+	bonusResourcesNames = [];
 	bonusResources = [];
 	
 	//resources
@@ -208,42 +221,32 @@ class PlanetObject{
 	
 	registerSystem(systemID, loopback = true) {
 		if(this.system_id != systemID) this.removeSystem();
-		
 		this.system_id = systemID;
 		this.system = systemsGetSystemById(systemID).name;
-		
 		if(loopback) systemsGetSystemById(systemID).registerPlanet(this.id, false);
-		
 		this.recalculatePeroid();
-		
 	}
 	removeSystem(){
 		if(this.system_id != -1){
 			systemsGetSystemById(this.system).removePlanet(this.id);
-			
 			this.system = "Unknown sector";
 			this.system_id = -1;
 		}
 	}
 	
 	recalculatePeroid(){
-
 		if(this.system_id != -1){
 			var tmpPeroid = Math.pow(((PlanetPeroidBaseDays*PlanetPeroidBaseDays) / systemsGetSystemById(this.system_id).starMass) * Math.pow(this.orbitalDistance,3), (1/2));
 			this.orbitalPeroid = tmpPeroid;
 			return tmpPeroid;
 		}
 		else return false;
-		
 	}
 	recalculateHazard(){
 		var tmpHazard = PlanetBaseHazardLevel;
 		tmpHazard += this.type[3];
-		for(var i = 0; i < this.conditions.length; i++){
-			tmpHazard += this.conditions[i][1];
-		}
+		for(var i = 0; i < this.conditions.length; i++) tmpHazard += this.conditions[i][1];
 		tmpHazard += this.atmosphere[2];
-		
 		this.hazard = tmpHazard;
 		return tmpHazard;
 	}
@@ -252,49 +255,93 @@ class PlanetObject{
 		this.relativeSize = tmpRelSize;
 		return tmpRelSize;
 	}
+	
 	refreshPlanet(){
 		this.recalculateRelSize();
 		this.recalculateHazard();
 		this.recalculatePeroid();
 	}
+	
 	getEnergyBalanceValue(){
 		if(this.energyRequired == 0) return 1;
 		else return this.energyAvailable/this.energyRequired;
 	}
 	getEnergyBalanceString(){
 		var tmpReply = "";
-		
 		tmpReply += this.energyAvailable + " / " + this.energyRequired + " ( ";
 		if(this.energyRequired == 0) tmpReply+= "100% )";
 		else if(this.energyAvailable/this.energyRequired >= 1) tmpReply+= "100% )";
 		else tmpReply += Number(100 * this.energyAvailable / this.energyRequired).toFixed(2) + "% )";
-		
 		return tmpReply;
 	}
 
 	getPosition(currentDate){
 		var tmpPosition = [0,0];
 		var tmpRotation =  (((currentDate % this.orbitalPeroid) / this.orbitalPeroid)  + this.startingPosition)%1;
-		
 		tmpPosition[0] = Math.sin(Math.PI*tmpRotation*2);
 		tmpPosition[1] = Math.cos(Math.PI*tmpRotation*2);
-		
 		return tmpPosition;
 	}
 	
 	getNaturalResource(resourceName){
-		if(typeof(this.naturalResources[resourceName]) != "undefined") return this.naturalResources[resourceName];
-		else return 0;
+		var tmpArrayIndex = this.naturalResourcesNames.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			return this.naturalResources[tmpArrayIndex];
+		}
+		else {
+			console.warn("Unrecognised natural resource: " + resourceName);
+			return false;
+		}
+	}
+	setNaturalResource(resourceName, resourceQuality, resourceQuantity){
+		var tmpArrayIndex = this.naturalResourcesNames.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			var tmpResource = this.naturalResources[tmpArrayIndex];
+			tmpResource.quality = resourceQuality;
+			tmpResource.quantity = resourceQuantity;
+			return true;
+		}
+		else return false;
 	}
 	
-	setNaturalResource(resourceName, resourceQuality, resourceQuantity){
-		
+	getBonusResource(resourceName){
+		var tmpArrayIndex = this.bonusResourcesNames.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			return this.bonusResources[tmpArrayIndex];
+		}
+		else {
+			console.warn("Unrecognised production resource: " + resourceName);
+			return false;
+		}
 	}
 	setBonusResource(resourceName, resourceBonus){
-		
+		var tmpArrayIndex = this.bonusResourcesNames.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			var tmpResource = this.bonusResources[tmpArrayIndex];
+			tmpResource.bonus = resourceBonus;
+			return true;
+		}
+		else return false;
+	}
+	
+	getStorageResource(resourceName){
+		var tmpArrayIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			return this.resourceStorage[tmpArrayIndex];
+		}
+		else {
+			console.warn("Unrecognised storage resource: " + resourceName);
+			return false;
+		}
 	}
 	setStorageResource(resourceName, resourceAmount){
-		
+		var tmpArrayIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpArrayIndex > -1 ){
+			var tmpResource = this.resourceStorage[tmpArrayIndex];
+			tmpResource.amount = resourceAmount;
+			return true;
+		}
+		else return false;
 	}
 }
 
