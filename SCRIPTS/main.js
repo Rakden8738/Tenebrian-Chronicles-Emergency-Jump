@@ -61,6 +61,7 @@ function mainLoadGame(outputDocument){
 		return false;
 	}
 	
+
 	scenario_earlyAlpha2();
 	loadLoadGame(outputDocument);
 	if(SaveLoadErrorDetected) SettingSaveAutosave = false;
@@ -68,7 +69,7 @@ function mainLoadGame(outputDocument){
 	
 	timerStart(outputDocument);
 	
-	resourcesInitResources(outputDocument);
+	//resourcesInitResources(outputDocument);
 	
 	interfaceRefreshMenuButtons(outputDocument);
 	interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
@@ -90,6 +91,16 @@ function mainLoadGame(outputDocument){
 }
 
 function logBase(tmpValue, tmpBase) {
+	let tmpLog = Math.log(tmpValue) / Math.log(tmpBase);
+	let tmpRoundLog = Math.round(Math.log(tmpValue) / Math.log(tmpBase));
+	
+	// console.log(Math.log(tmpValue) + " " + Math.log(tmpBase));
+	// console.log(tmpLog);
+	// console.log(tmpRoundLog);
+	// console.log(tmpLog - tmpRoundLog);
+	
+	if(Math.abs(tmpLog - tmpRoundLog) < 0.000000001) return tmpRoundLog;
+	
 	return Math.log(tmpValue) / Math.log(tmpBase);
 }
 
@@ -130,6 +141,58 @@ function distanceToSegment(x, y, x1, y1, x2, y2){
 function isNotNaN(inputString){
 	if(isNaN(inputString.trim())) return false;
 	else return true;
+}
+
+var mainOrdersOfMagnitudeArray = ["","k","M","T","Qa","Qi","Sx","Sp","Oc","No","Dc"];
+var mainOrdersOfMagnitudeArrayLength = mainOrdersOfMagnitudeArray.length;
+
+function bigNumberToString(inputNumber){
+	if(isNaN(inputNumber)) {
+		console.warn(inputNumber + " cannot be converted.");
+		return "0.0";
+	}
+	else if(inputNumber == 0){
+		return "0.0";
+	}
+	else{
+		let tmpInputNumber;
+		if(inputNumber < 0) tmpInputNumber = (-1) * inputNumber;
+		else tmpInputNumber = inputNumber;
+		
+		// let tmpOoM = Math.floor(logBase(tmpInputNumber, 10));
+		let tmpOoM = 0;
+		let tmpPreDivisionNumber = tmpInputNumber;
+		while(tmpInputNumber > 10){
+			tmpOoM++;
+			tmpInputNumber /= 10;
+		}
+		
+		// console.log(logBase(tmpInputNumber, 10));
+		let tmpMainOoM = Math.floor(tmpOoM/3);
+		// console.log(tmpMainOoM);
+		
+		if(tmpMainOoM <= 0 ){
+			return Number(inputNumber).toFixed(1);
+		}
+		else if (tmpMainOoM >= mainOrdersOfMagnitudeArrayLength){
+			let tmpReturnNumber = inputNumber;
+			for(let i = 0; i < tmpMainOoM; i++) tmpReturnNumber /= 1000;
+			if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*100)/100;
+			else tmpReturnNumber = Math.ceil(tmpReturnNumber*100)/100;
+			return tmpReturnNumber + 'e' + (tmpMainOoM*3);
+		}
+		else{
+			let tmpReturnNumber = inputNumber;
+			for(let i = 0; i < tmpMainOoM; i++) tmpReturnNumber /= 1000;
+			if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*10)/10;
+			else tmpReturnNumber = Math.ceil(tmpReturnNumber*10)/10;
+			
+			// return Number(tmpReturnNumber).toFixed(1) + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
+			// return Number(tmpReturnNumber).toFixed(1) + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
+			return tmpReturnNumber + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
+			// return tmpReturnNumber + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
+		}
+	}
 }
 
 

@@ -37,7 +37,6 @@ class ResourceObject {
 	
 	amount = 0.0;
 }
-
 class NaturalResourceObject {
 	constructor(resourceIndex){
 		this.typeIndex = resourceIndex;
@@ -51,7 +50,6 @@ class NaturalResourceObject {
 	quality = 1.0;
 	quantity = 0.0;
 }
-
 class ResourceBonusObject {
 	constructor(resourceIndex){
 		this.typeIndex = resourceIndex;
@@ -63,6 +61,39 @@ class ResourceBonusObject {
 	typeName = "";
 	
 	bonus = 1.0;
+}
+class ResourceCostObject{
+	constructor(resourceIndex){
+		this.typeIndex = resourceIndex;
+		this.typeName = ResourcesNamesArray[resourceIndex];
+	}
+	
+	index = -1;
+	typeIndex = -1;
+	typeName = "";
+	
+	cost = 0.0;
+	
+	costIncrease = 1.0;	//multiplicative
+	linearCostIncrease = true; //for skipping the math pow if it is pointless
+}
+class ResourceProductionConsumptionObject{
+	constructor(resourceIndex){
+		this.typeIndex = resourceIndex;
+		this.typeName = ResourcesNamesArray[resourceIndex];
+	}
+	
+	index = -1;
+	typeIndex = -1;
+	typeName = "";
+	
+	amount = 0.0;
+	
+	buildAmountIncrease = 1.0;	//multiplicative
+	buildLinearAmountIncrease = true; //for skipping the math pow if it is pointless
+	
+	upgradeAmountIncrease = 1.0;	//multiplicative
+	upgradeLinearAmountIncrease = true; //for skipping the math pow if it is pointless
 }
 
 function resourcesRefreshResources(){
@@ -112,6 +143,30 @@ function resourcesCreateEmptyStorageResourcesArray(){
 	
 	return tmpEmptyStorageArray;
 }
+function resourcesCreateEmptyCostResourcesArray(){
+	var tmpEmptyCostArray = [];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		var tmpCostResource = resourcesCreateEmptyCostResourceObject(i);
+		tmpCostResource.index = tmpEmptyCostArray.length;
+
+		tmpEmptyCostArray.push(tmpCostResource);
+	}
+	
+	return tmpEmptyCostArray;
+}
+function resourcesCreateEmptyProductionConsumptionResourcesArray(){
+	var tmpEmptyProductionConsumptionArray = [];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		var tmpProductionConsumptionResource = resourcesCreateEmptyProductionConsumptionResourceObject(i);
+		tmpProductionConsumptionResource.index = tmpEmptyProductionConsumptionArray.length;
+
+		tmpEmptyProductionConsumptionArray.push(tmpProductionConsumptionResource);
+	}
+	
+	return tmpEmptyProductionConsumptionArray;
+}
 
 function resourcesCreateNaturalResourceByName(resourceName, tmpAmount = 0, tmpQuality = 0){
 	if(ResourcesNamesArray.includes(resourceName)){
@@ -124,13 +179,6 @@ function resourcesCreateNaturalResourceByName(resourceName, tmpAmount = 0, tmpQu
 		return false;
 	}	
 }
-function resourcesCreateNaturalResourceObject(resourceIndex, tmpAmount = 0, tmpQuality = 0){
-	var tmpResource = new NaturalResourceObject(resourceIndex);
-	//tmpResource.typeIndex = resourceIndex;
-	tmpResource.quality = tmpQuality;
-	tmpResource.quantity = tmpAmount;
-	return tmpResource;
-}
 function resourcesCreateBonusResourceByName(resourceName, tmpBonus = 1.0){
 	if(ResourcesNamesArray.includes(resourceName)){
 		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
@@ -141,12 +189,6 @@ function resourcesCreateBonusResourceByName(resourceName, tmpBonus = 1.0){
 		console.warn("Failed to add bonus resource: " + resourceName + " Resource type unknown.");
 		return false;
 	}	
-}
-function resourcesCreateBonusResourceObject(resourceIndex, tmpBonus = 1.0){
-	var tmpResource = new ResourceBonusObject(resourceIndex);
-	//tmpResource.typeIndex = resourceIndex;
-	tmpResource.bonus = tmpBonus;
-	return tmpResource;
 }
 function resourcesCreateEmptyStorageResourceByName(resourceName, tmpAmount = 0.0){
 	if(ResourcesNamesArray.includes(resourceName)){
@@ -159,11 +201,159 @@ function resourcesCreateEmptyStorageResourceByName(resourceName, tmpAmount = 0.0
 		return false;
 	}	
 }
+function resourcesCreateEmptyCostResourceByName(resourceName, tmpCost = 0.0, tmpCostIncrease = 1.0){
+	if(ResourcesNamesArray.includes(resourceName)){
+		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		
+		return resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost, tmpCostIncrease);
+	}
+	else {
+		console.warn("Failed to add cost resource: " + resourceName + " Resource type unknown.");
+		return false;
+	}	
+}
+function resourcesCreateEmptyProductionConsumptionResourceByName(resourceName, tmpAmount = 0.0, tmpBuildAmountIncrease = 1.0, tmpUpgradeAmountIncrease = 1.0){
+	if(ResourcesNamesArray.includes(resourceName)){
+		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		
+		return resourcesCreateEmptyProductionConsumptionResourceObject(resourceIndex, tmpAmount, tmpBuildAmountIncrease, tmpUpgradeAmountIncrease);
+	}
+	else {
+		console.warn("Failed to add production/consumption resource: " + resourceName + " Resource type unknown.");
+		return false;
+	}	
+}
+
+function resourcesCreateNaturalResourceObject(resourceIndex, tmpAmount = 0, tmpQuality = 0){
+	var tmpResource = new NaturalResourceObject(resourceIndex);
+	//tmpResource.typeIndex = resourceIndex;
+	tmpResource.quality = tmpQuality;
+	tmpResource.quantity = tmpAmount;
+	return tmpResource;
+}
+function resourcesCreateBonusResourceObject(resourceIndex, tmpBonus = 1.0){
+	var tmpResource = new ResourceBonusObject(resourceIndex);
+	//tmpResource.typeIndex = resourceIndex;
+	tmpResource.bonus = tmpBonus;
+	return tmpResource;
+}
 function resourcesCreateEmptyStorageResourceObject(resourceIndex, tmpAmount = 0.0){
 	var tmpResource = new ResourceObject(resourceIndex);
 	//tmpResource.typeIndex = resourceIndex;
 	tmpResource.amount = tmpAmount;
 	return tmpResource;
+}
+function resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost = 0.0, tmpCostIncrease = 1.0){
+	var tmpResource = new ResourceCostObject(resourceIndex);
+	tmpResource.cost = tmpCost;
+	tmpResource.costIncrease = tmpCostIncrease;
+	if(tmpCostIncrease == 1.0) tmpResource.linearCostIncrease = true;
+	else tmpResource.linearCostIncrease = false;
+	return tmpResource;
+}
+function resourcesCreateEmptyProductionConsumptionResourceObject(resourceIndex, tmpAmount = 0.0, tmpBuildAmountIncrease = 1.0, tmpUpgradeAmountIncrease = 1.0){
+	var tmpResource = new ResourceProductionConsumptionObject(resourceIndex);
+	tmpResource.amount = tmpAmount;
+	tmpResource.buildAmountIncrease = tmpBuildAmountIncrease;
+	tmpResource.upgradeAmountIncrease = tmpUpgradeAmountIncrease;
+	
+	if(tmpBuildAmountIncrease == 1.0) tmpResource.buildLinearAmountIncrease = true;
+	else tmpResource.buildLinearAmountIncrease = false;
+	
+	if(tmpUpgradeAmountIncrease == 1.0) tmpResource.upgradeLinearAmountIncrease = true;
+	else tmpResource.upgradeLinearAmountIncrease = false;
+	
+	return tmpResource;
+}
+
+var resourcesMathFunctionsDebug = true;
+
+function resourcesFindResourceInArrayByIndex(tmpResourcesArray, tmpResourceName){
+	for(let i = 0; i < tmpResourcesArray.length; i++){
+		if(tmpResourceArray[i].typeName == tmpResourceName) return i;
+	}
+	return -1;
+}
+function resourcesFindResourceInArrayByName(tmpResourcesArray, tmpResourceIndex){
+	for(let i = 0; i < tmpResourcesArray.length; i++){
+		if(tmpResourceArray[i].typeIndex == tmpResourceIndex) return i;
+	}
+	return -1;
+}
+function resourcesIsEnough(resourceArrayStorage, resourceArrayCost){
+	if(resourceArrayCost.length == resourceArrayStorage.length){
+		for(let i = 0; i < resourceArrayStorage.length; i++){
+			if(resourceArrayCost[i].cost <= 0) continue;
+			
+			if(resourceArrayStorage[i].amount < resourceArrayCost[i].cost){
+				if((resourceArrayStorage[i].amount / resourceArrayCost[i].cost) > 0.999) continue; 	//0.1% difference tolerated in case of floating point imprecision
+				
+				return false;
+			}
+		}
+		return true;
+	}
+	else{
+		for(let i = 0; i < resourceArrayCost.length; i++){
+			if(resourceArrayCost[i].cost <= 0) continue;
+			
+			let tmpSingleResourceIndex = resourcesFindResourceInArrayByIndex(resourceArrayStorage, resourceArrayCost[i].typeIndex);
+			if(tmpSingleResourceIndex = -1) return false;
+			
+			let tmpSingleResource = resourceArrayStorage[tmpSingleResourceIndex];
+			
+			if(tmpSingleResource.amount < resourceArrayCost[i].cost){
+				if((tmpSingleResource.amount / resourceArrayCost[i].cost) > 0.999) continue; 	//0.1% difference tolerated in case of floating point imprecision
+				
+				return false;
+			}
+		}
+		return true;
+	}
+}
+function resourcesFitsHowManyTimes(resourceArrayStorage, resourceArrayCost){
+	let tmpFitCounter = -1;
+	
+	if(resourceArrayCost.length == resourceArrayStorage.length){
+		for(let i = 0; i < resourceArrayStorage.length; i++){
+			if(resourceArrayCost[i].cost <= 0) continue;
+			
+			let tmpSingleResourceFitCounter = (resourceArrayStorage[i].amount / resourceArrayCost[i].cost);
+			
+			if(tmpSingleResourceFitCounter < 1.000){
+				if(tmpSingleResourceFitCounter > 0.999) tmpSingleResourceFitCounter = 1;
+				else return 0;
+			}
+			
+			if(tmpFitCounter == -1) tmpFitCounter = tmpSingleResourceFitCounter;
+			
+			if(tmpSingleResourceFitCounter < tmpFitCounter) tmpFitCounter = tmpSingleResourceFitCounter;
+		}
+		if(tmpFitCounter == -1) return 0;
+		return Math.floor(tmpFitCounter);
+	}
+	else{
+		for(let i = 0; i < resourceArrayCost.length; i++){
+			if(resourceArrayCost[i].cost <= 0) continue;
+			
+			let tmpSingleResourceIndex = resourcesFindResourceInArrayByIndex(resourceArrayStorage, resourceArrayCost[i].typeIndex);
+			if(tmpSingleResourceIndex = -1) return 0;
+			
+			let tmpSingleResource = resourceArrayStorage[tmpSingleResourceIndex];
+			let tmpSingleResourceFitCounter = (tmpSingleResource.amount / resourceArrayCost[i].cost);
+			
+			if(tmpSingleResourceFitCounter < 1.000){
+				if(tmpSingleResourceFitCounter > 0.999) tmpSingleResourceFitCounter = 1;
+				else return 0;
+			}
+			
+			if(tmpFitCounter == -1) tmpFitCounter = tmpSingleResourceFitCounter;
+			if(tmpSingleResourceFitCounter < tmpFitCounter) tmpFitCounter = tmpSingleResourceFitCounter;
+		}
+		if(tmpFitCounter == -1) tmpFitCounter = 0;
+		return Math.floor(tmpFitCounter);
+	}
+	
 }
 
 
@@ -185,10 +375,9 @@ function resourcesCreateEmptyStorageResourceObject(resourceIndex, tmpAmount = 0.
 
 
 
-
-
-
+/*
 function resourcesInitResources(outputDocument){
+	console.warn("Kurwa mać");
 	ResourcesNames = resourcesRecreateResourceNames();
 	ResourcesDiscovered = resourcesRecreateDiscoveredResources();
 	ResourcesNaturalResources = resourcesRecreateNaturalResources();
@@ -343,7 +532,7 @@ function resourcesGetNewResourcesObject(resourceAmount = "default"){
 	return tmpObject;
 }
 
-/*
+
 function resourcesCheckIfEnough(resourcesRequired, resourcesAvailable, multipler = 1){
 	for(var i = 0; i< ResourcesNames.length; i++){
 		if(resourcesRequired[ResourcesNames[i]]*multipler > resourcesAvailable[ResourcesNames[i]]) return false;

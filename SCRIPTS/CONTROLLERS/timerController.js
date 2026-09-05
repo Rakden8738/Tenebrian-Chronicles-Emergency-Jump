@@ -316,6 +316,48 @@ function timerOutputDebug(outputDocument, elapsedSeconds){
 	console.log(tmpConsoleOutputArray);
 }
 
+function timerNumberOfDaysCountdownToString(inputNumber){
+	if(isNaN(inputNumber)) {
+		console.warn("Invalid number of days.");
+		return "0 days";
+	}
+	else if(inputNumber == 0){
+		return "0 days";
+	}
+	else if(inputNumber < 0){
+		console.log("Received negative amount of days.");
+		return "0 days";
+	}
+	else{
+		let tmpFullYears = 0;
+		let tmpFullDays = 0;
+		tmpFullYears = Math.floor(inputNumber / TimerDaysInYear);
+		tmpFullDays = inputNumber % TimerDaysInYear;
+		
+		let returnString = "";
+		
+		if(tmpFullYears > 1){
+			returnString += (tmpFullYears + " cycles");
+		}
+		else if(tmpFullYears == 1){
+			returnString += (tmpFullYears + " cycle");
+		}
+		
+		if(tmpFullYears > 0 && tmpFullDays > 0){
+			returnString += ' ';
+		}
+		
+		if(tmpFullDays > 1){
+			returnString += (tmpFullDays + " days");
+		}
+		else if(tmpFullDays == 1){
+			returnString += (tmpFullDays + " day");
+		}
+		
+		return returnString;
+	}
+}
+
 function timerTestFunction(outputDocument){
 	var debugTimeNow = Date.now();
 	

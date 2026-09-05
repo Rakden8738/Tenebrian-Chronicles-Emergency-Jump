@@ -306,7 +306,9 @@
 	box-sizing: border-box;
 }
 
-.planetBuildingResourceListTable{}
+.planetBuildingResourceListTable{
+	min-width: 100%;
+}
 #planetBuildingRequiredResourcesTable{
 	width: 100%;
 	left: 0%;

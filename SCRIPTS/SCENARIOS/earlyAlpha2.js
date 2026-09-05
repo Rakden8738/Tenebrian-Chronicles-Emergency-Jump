@@ -169,7 +169,8 @@ function earlyAlpha_NaturalResources(){
 	tmpPlanet.setBonusResource("Glass",0.75);
 	tmpPlanet.setBonusResource("Circuits",0.5);
 	
-	tmpPlanet.setStorageResource("Iron",50.0);
+	tmpPlanet.setStorageResource("Iron",1000.0);
+	tmpPlanet.setStorageResource("Steel",1000.0);
 	
 }
 function earlyAlpha_Systems(){
@@ -1624,9 +1625,38 @@ function earlyAlpha_CreateNetworks(){
 	networksLinkSystemsByName("The Edge","The Northern Abyss");
 }
 function earlyAlpha_AddBuildings(){
-	var tmpBuilding; 
+	var tmpBuilding;
+	//categories: ["Basic Extraction", "Adv. Extraction", "Production", "Energy", "Research", "Influence", "Special", "Other" , "Debug"];
 	
 	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Scrap Collector";
+	tmpBuilding.description = "Collector of scrap. Requires scrap to be present. Efficiency limited by amount of scrap on planet.";
+	tmpBuilding.categories = [0,8];
+	
+	//tmpBuilding.allowedPlanetTypes = [];
+	// tmpBuilding.requiredPlanetConditions = ["Habitable"];
+	//tmpBuilding.forbiddenPlanetTypes = [];
+	// tmpBuilding.forbiddenPlanetConditions = ["Dangerous biosphere", "Radioactive", "Death world"];
+	tmpBuilding.unlocked = true;
+	
+	tmpBuilding.setBuildCostByName("Iron", 100, 1.5);
+	tmpBuilding.setBuildCostByName("Steel", 30, 2);
+	
+	tmpBuilding.setUpgradeCostByName("Steel", 50, 2);
+	tmpBuilding.setUpgradeCostByName("Circuits", 5, 1.0);
+	
+	tmpBuilding.powerConsumed = 0;
+	
+	tmpBuilding.staffNeededBase = 4;
+	
+	tmpBuilding.mineralsDependant = true;
+	tmpBuilding.mineralsRatio = 1;
+	tmpBuilding.mineralsRequired = "Scrap";
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	/*tmpBuilding = new BuildingBlueprintObject();
 	tmpBuilding.index = BuildingsArray.length;
 	tmpBuilding.name = "Standard Farm";
 	tmpBuilding.description = "Basic farm that requires fertile soil and planet to be habitable.";
@@ -1684,7 +1714,7 @@ function earlyAlpha_AddBuildings(){
 	tmpBuilding.unlocked = false;
 	
 	BuildingsArray.push(tmpBuilding);
-	
+	*/
 	
 	
 	

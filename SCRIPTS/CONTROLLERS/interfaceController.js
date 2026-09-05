@@ -764,7 +764,7 @@ function interfaceInitBuildingsList(outputDocument){
 								var tmpBuildingLevelValue = outputDocument.createElement("span");
 								tmpBuildingLevelValue.className = BuildingMenuSingleBuildingInfoHeaderLevelValueClass ;
 								tmpBuildingLevelValue.id = BuildingMenuSingleBuildingInfoHeaderLevelValueClassIdPrefix + tmpBuilding.index;
-								tmpBuildingLevelValue.innerHTML = tmpBuilding.level;
+								tmpBuildingLevelValue.innerHTML = (tmpBuilding.level + 1);
 								
 								tmpBuildingLevelContainer.append(tmpBuildingLevelPrefix);
 								tmpBuildingLevelContainer.innerHTML += "&nbsp;";
@@ -2669,11 +2669,13 @@ function interfaceRefreshPlanetStorage(outputDocument) {
 
 function interfaceRefreshAsteroids(outputDocument) {
 	if(SystemsCurrentSystem != -1) {
+		//todo
 		var tmpSystem = SystemsArray[SystemsCurrentSystem];
 		
 		var tmpElement = outputDocument.getElementById(AsteroidsPanelID);
 		tmpElement.innerHTML = "";
 		
+		/* 
 		var tmpTableElement = outputDocument.createElement("table");
 		tmpTableElement.className = AsteroidsPanelTableClass;
 		tmpTableElement.id = AsteroidsPanelTableID;
@@ -2750,7 +2752,7 @@ function interfaceRefreshAsteroids(outputDocument) {
 			tmpSpan.innerHTML = "No asteroids fields found.";
 			
 			tmpElement.append(tmpSpan);
-		}
+		} */
 	}
 }
 

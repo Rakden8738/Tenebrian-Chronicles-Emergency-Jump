@@ -75,7 +75,7 @@ function buildingInitBuildings(){
 			
 			//if all above are fine, building blueprint can be registered inside of array in planet's object
 			
-			let tmpBuilding = new BuldingObject();
+			let tmpBuilding = new BuildingObject();
 			tmpBuilding.index = PlanetsArray[i].buildings.length;
 			tmpBuilding.blueprintIndex = j;
 	
@@ -87,6 +87,13 @@ function buildingInitBuildings(){
 }
 
 class BuildingBlueprintObject{
+	constructor(){
+		this.baseBuildCost = resourcesCreateEmptyCostResourcesArray();
+		this.baseUpgradeCost = resourcesCreateEmptyCostResourcesArray();
+		this.resourcesProduced = resourcesCreateEmptyProductionConsumptionResourcesArray();
+		this.resourcesConsumed = resourcesCreateEmptyProductionConsumptionResourcesArray();
+	}
+	
 	index = -1;
 	name = "not set";
 	description = "example description";
@@ -98,6 +105,12 @@ class BuildingBlueprintObject{
 	
 	forbiddenPlanetTypes = [];
 	forbiddenPlanetConditions = [];
+	
+	baseBuildCost = [];
+	baseUpgradeCost = [];
+	
+	resourcesProduced = [];
+	resourcesConsumed = [];
 	
 	powerProduced = 0;
 	powerConsumed = 0;
@@ -127,25 +140,255 @@ class BuildingBlueprintObject{
 	mineralsRequiredDifferent = false; //is required natural resource vastly different from intended output 
 	
 	unlocked = false;
+	
+	setBuildCostByName(resourceName, resourceCost, buildMultiplier = 1.0){
+		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpIndex > 0){
+			this.baseBuildCost[tmpIndex].cost = resourceCost;
+			this.baseBuildCost[tmpIndex].costIncrease = buildMultiplier
+			if(buildMultiplier != 1.0) this.baseBuildCost[tmpIndex].linearCostIncrease = false;
+			else this.baseBuildCost[tmpIndex].linearCostIncrease = true;
+			
+			return true;
+		}
+		console.warn("Unrecognized build resoruce cost: " + resourceName);
+		return false;
+	}
+	setUpgradeCostByName(resourceName, resourceCost, upgradeMultiplier = 1.0){
+		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpIndex > 0){
+			this.baseUpgradeCost[tmpIndex].cost = resourceCost;
+			this.baseUpgradeCost[tmpIndex].costIncrease = upgradeMultiplier
+			if(upgradeMultiplier != 1.0) this.baseUpgradeCost[tmpIndex].linearCostIncrease = false;
+			else this.baseUpgradeCost[tmpIndex].linearCostIncrease = true;
+			
+			return true;
+		}
+		console.warn("Unrecognized upgrade resoruce cost: " + resourceName);
+		return false;
+	}
+	setProductionByName(resourceName, resourceAmount, upgradeMultiplier = 1.0, buildMultiplier = 1.0){
+		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpIndex > 0){
+			this.resourcesProduced[tmpIndex].amount = resourceAmount;
+			this.resourcesProduced[tmpIndex].buildAmountIncrease = buildMultiplier;
+			if(buildMultiplier != 1.0) this.resourcesProduced[tmpIndex].buildLinearAmountIncrease = false;
+			else this.resourcesProduced[tmpIndex].buildLinearAmountIncrease = true;
+			this.resourcesProduced[tmpIndex].upgradeAmountIncrease = upgradeMultiplier;
+			if(upgradeMultiplier != 1.0) this.resourcesProduced[tmpIndex].upgradeLinearAmountIncrease = false;
+			else this.resourcesProduced[tmpIndex].upgradeLinearAmountIncrease = true;
+			
+			return true;
+		}
+		console.warn("Unrecognized production resoruce: " + resourceName);
+		return false;
+	}
+	setConsumptionByName(resourceName, resourceAmount, upgradeMultiplier = 1.0, buildMultiplier = 1.0){
+		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
+		if(tmpIndex > 0){
+			this.resourcesConsumed[tmpIndex].amount = resourceAmount;
+			this.resourcesConsumed[tmpIndex].buildAmountIncrease = buildMultiplier;
+			if(buildMultiplier != 1.0) this.resourcesConsumed[tmpIndex].buildLinearAmountIncrease = false;
+			else this.resourcesConsumed[tmpIndex].buildLinearAmountIncrease = true;
+			this.resourcesConsumed[tmpIndex].upgradeAmountIncrease = upgradeMultiplier;
+			if(upgradeMultiplier != 1.0) this.resourcesConsumed[tmpIndex].upgradeLinearAmountIncrease = false;
+			else this.resourcesConsumed[tmpIndex].upgradeLinearAmountIncrease = true;
+			
+			return true;
+		}
+		console.warn("Unrecognized consumption resoruce: " + resourceName);
+		return false;
+	}
+	
+	
+	calculateBuildCost(startAmount, targetAmount){
+		let tmpBuildCost = resourcesCreateEmptyCostResourcesArray();
+		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
+		
+		for(let i = 0; i < this.baseBuildCost.length; i++){
+			if(this.baseBuildCost[i].cost == 0.0) continue;
+			tmpBuildCost[i].cost = this.baseBuildCost[i].cost;
+			tmpBuildCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
+			tmpBuildCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
+			
+			tmpTotalCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
+			tmpTotalCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
+		}
+		
+		if(targetAmount > startAmount){
+			for(let j = 0; j < targetAmount; j++){
+				//add cost at current amount (starting with 0, finishing at target-1)
+				for(let i = 0; i < this.baseBuildCost.length; i++){
+					//if cost == 0, skip it
+					if(this.baseBuildCost[i].cost == 0.0) continue;
+					
+					tmpTotalCost[i].cost += tmpBuildCost[i].cost;
+				}
+				
+				//increase cost of next building
+				for(let i = 0; i < this.baseBuildCost.length; i++){
+					if(this.baseBuildCost[i].cost == 0.0) continue;
+					
+					//if linear for this resource, keep same
+					if(this.baseBuildCost[i].linearCostIncrease) continue;
+					
+					//otherwise multiply cost by the increase multiplier
+					tmpBuildCost[i].cost *= tmpBuildCost[i].costIncrease;
+				}
+			}
+			
+			//rounding, just in case
+			for(let i = 0; i < this.baseBuildCost.length; i++){
+				if(this.baseBuildCost[i].cost == 0.0) continue;
+				
+				//if linear for this resource, keep same - especially if it is very small but important cost
+				if(this.baseBuildCost[i].linearCostIncrease) continue;
+				
+				tmpTotalCost[i].cost = (Math.floor(tmpTotalCost[i].cost*100))/100;
+			}
+			
+			return tmpTotalCost;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	calculateUpgradeCost(startLevel, targetLevel){
+		let tmpUpgradeCost = resourcesCreateEmptyCostResourcesArray();
+		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
+		
+		for(let i = 0; i < this.baseUpgradeCost.length; i++){
+			if(this.baseUpgradeCost[i].cost == 0.0) continue;
+			tmpUpgradeCost[i].cost = this.baseUpgradeCost[i].cost;
+			tmpUpgradeCost[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
+			tmpUpgradeCost[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
+		}
+		
+		if(targetAmount > startAmount){
+			for(let j = 0; j < targetAmount; j++){
+				//add cost at current amount (starting with 0, finishing at target-1)
+				for(let i = 0; i < this.baseUpgradeCost.length; i++){
+					//if cost == 0, skip it
+					if(this.baseUpgradeCost[i].cost == 0.0) continue;
+					
+					tmpTotalCost[i].cost += tmpUpgradeCost[i].cost;
+				}
+				
+				//increase cost of next upgrade
+				for(let i = 0; i < this.baseUpgradeCost.length; i++){
+					//if cost == 0, skip it
+					if(this.baseUpgradeCost[i].cost == 0.0) continue;
+					//if linear for this resource, keep same
+					if(this.baseUpgradeCost[i].linearCostIncrease) continue;
+					
+					//otherwise multiply cost by the increase multiplier
+					tmpUpgradeCost[i].cost *= tmpUpgradeCost[i].costIncrease;
+				}
+			}
+			return tmpTotalCost;
+		}
+		else{
+			return false;
+		}
+	}
 }
-class BuldingObject{
+class BuildingObject{
 	index = -1;
 	blueprintIndex = -1;
 	
 	powerProduced = 0;
 	powerConsumed = 0;
 	
+	dailyProduction = [];
+	dailyConsumption = [];
+	
+	nextBuildCost = [];
+	nextBuildCost5 = [];
+	nextBuildCost25 = [];
+	nextBuildCostCustom = [];
+	
+	nextUpgradeCost = [];
+	nextUpgradeCost5 = [];
+	nextUpgradeCost25 = [];
+	nextUpgradeCostCustom = [];
+	
+	totalBuildCost = [];
+	totalUpgradeCost = [];
+	lastUpgradeCost = [];
+	
 	count = 0;
-	level = 1;
+	level = 0;
 	staffAssigned = 0;
 	staffRequired = 0;
 	
 	enabled = true;
-	folded = true;
+	folded = false;
+	
+	buildingInitBuildCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextBuildCost = tmpBlueprintObject.calculateBuildCost(0, 1);
+		this.nextBuildCost5 = tmpBlueprintObject.calculateBuildCost(0, 5);
+		this.nextBuildCost25 = tmpBlueprintObject.calculateBuildCost(0, 25);
+	}
+	buildingInitUpgradeCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, 1);
+		this.nextUpgradeCost5 = tmpBlueprintObject.calculateUpgradeCost(0, 5);
+		this.nextUpgradeCost25 = tmpBlueprintObject.calculateUpgradeCost(0, 25);
+		
+		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, 0);
+	}
+	
+	buildingRefreshBuildCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextBuildCost = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 1);
+		this.nextBuildCost5 = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 5);
+		this.nextBuildCost25 = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 25);
+	}
+	buildingRefreshUpgradeCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 1);
+		this.nextUpgradeCost5 = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 5);
+		this.nextUpgradeCost25 = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 25);
+		
+		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level - 1, this.level);
+	}
+	
+	buildingRefreshCustomBuildCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+	}
+	buildingRefreshCustomUpgradeCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+	}
+	
+	buildingRefreshTotalBuildCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.totalBuildCost = tmpBlueprintObject.calculateBuildCost(0, this.count);
+	}
+	buildingRefreshTotalUpgradeCost(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.totalUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, this.level);
+	}
 }
 
 
-var BuildingsBulkBuyAmount = 10;
+var BuildingsBuildMoreAmount = 10;
+var BuildingsBuildEvenMoreAmount = 50;
+var BuildingsUpgradeMoreAmount = 5;
+var BuildingsUpgradeEvenMoreAmount = 10;
+
+var BuildingsBulkBuyDefaultAmount = 10;
+
+var BuildingsBulkBuyAmount = BuildingsBulkBuyDefaultAmount;
 var BuildingsAutoAssignStaffEnabled = true;
 var BuildingsTryBuyMaxEnabled = true;
 var BuildingsDemolishLockEnabled = true;
@@ -310,7 +553,7 @@ class BuildingBlueprintObject{
 	powerProduction = 0;
 }
 
-class BuldingObject{
+class BuildingObject{
 	
 	name = "Unnamed Building";
 	description = "Unnamed Building";
