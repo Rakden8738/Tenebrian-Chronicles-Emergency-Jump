@@ -278,54 +278,156 @@
 #planetBuildingInfoPanelHeaderPlanetEnergyDeficitTextText{
 	color: hsl(30,100%,50%)
 }
-#planetBuildingInfoPanelResourcesContainer{
-	padding: 0px;
+#planetBuildingInfoPanelResourcesContainer{	
 	max-height: 45%;
 	height: 45%;
+	
 	box-sizing: border-box;
-	overflow: auto;
-	max-width: 240px;
+	overflow: hidden;
+	/* max-width: 240px; */
+
     left: 0;
     right: 0;
+	padding: 15px, 10px, 15px, 10px;
     margin: auto;
+	
+	mask-image: linear-gradient(180deg, transparent 0px, black 10px, black calc(100% - 10px), transparent 100%);
 }
-#planetBuildingInfoPanelRequiredResourcesContainer{
+#planetBuildingInfoPanelResourcesChangeContainer{
 	box-sizing: border-box;
 	width: 100%;
 	margin-bottom: 10px;
 	padding: 0;
 }
-#planetBuildingInfoPanelRequiredResourcesHeader, #planetBuildingInfoPanelAvailableResourcesHeader{
+.planetBuildingInfoPanelTableHeader{
 	box-sizing: border-box;
 	text-align: left;
 	padding: 0;
 	margin-bottom: 5px;
-    font-size: 90%;
+    font-size: 85%;
 }
-#planetBuildingInfoPanelRequiredResourcesHeaderText, #planetBuildingInfoPanelAvailableResourcesText{
+.planetBuildingInfoPanelTableHeaderText{
 	box-sizing: border-box;
 }
+#planetBuildingInfoPanelRequiredResourcesHeader, #planetBuildingInfoPanelProductionChangesHeader, #planetBuildingInfoPanelConsumptionChangesHeader, #planetBuildingInfoPanelAvailableResourcesHeader{}
+#planetBuildingInfoPanelRequiredResourcesHeaderText, #planetBuildingInfoPanelProductionChangesHeaderText, #planetBuildingInfoPanelConsumptionChangesHeaderText,  #planetBuildingInfoPanelAvailableResourcesText{}
 
-.planetBuildingResourceListTable{
-	min-width: 100%;
-}
-#planetBuildingRequiredResourcesTable{
+.planetBuildingInfoPanelResourceListTable{
 	width: 100%;
 	left: 0%;
+	margin-bottom: 8px;
 }
-#planetBuildingRequiredResourcesTable span{
-	display:inline-block;
-}
-#planetBuildingRequiredResourcesTable tr{
-	font-size: 65%;
+.planetBuildingInfoPanelResourceListTable tr{
+	font-size: 60%;
 	line-height: 90%;
 }
-.planetBuildingResourceHeader{
-	color: hsla(180,50%,80%,0.4);
-	margin-left: 0px;
-	margin-bottom: 4px;
-	display: inline-block;
+.planetBuildingInfoPanelResourceListTable td{}
+.planetBuildingInfoPanelResourceListTable span{
+	display:inline-block;
 }
+
+#planetBuildingInfoPanelRequiredResourcesTable{}
+#planetBuildingInfoPanelRequiredResourcesTable tr{}
+#planetBuildingInfoPanelRequiredResourcesTable td{}
+#planetBuildingInfoPanelRequiredResourcesTable span{}
+
+#planetBuildingInfoPanelRequiredResourcesTableBody{}
+
+.planetBuildingInfoPanelResourceNameCell{
+	text-align: left;
+	/* font-size: 110%; */
+    /* line-height: 100%; */
+}
+.planetBuildingInfoPanelResourceNameText{
+	margin-left: 3px;
+}
+
+.planetBuildingInfoPanelResourceAmountCell{
+	text-align: right;
+}
+.planetBuildingInfoPanelResourceAmountText{
+	color: hsla(0,0%,100%,1);
+}
+.planetBuildingInfoPanelResourceProductionConsumptionCell{
+	text-align: right;
+}
+.planetBuildingInfoPanelResourceProductionConsumptionText{
+	color: hsla(0,0%,100%,1);
+}
+
+.planetBuildingInfoPanelResourceChangeCell{
+	text-align: right;
+}
+.planetBuildingInfoPanelResourceChangeText{
+	color: hsla(180,0%,75%,0.8);
+}
+.planetBuildingInfoPanelResourceResultCell{
+	text-align: right;
+}
+.planetBuildingInfoPanelResourceResultText{
+	
+}
+
+.planetBuildingInfoPanelResourcePositiveCell{}
+.planetBuildingInfoPanelResourcePositiveText{
+	color: hsla(120,75%,65%,1);
+}
+.planetBuildingInfoPanelResourceNeutralCell{}
+.planetBuildingInfoPanelResourceNeutralText{
+	color: hsla(60, 75%, 65%, 1);
+}
+.planetBuildingInfoPanelResourceNegativeCell{}
+.planetBuildingInfoPanelResourceNegativeText{
+	color: hsla(0,75%,65%,1);
+}
+.planetBuildingInfoPanelResourceImportCell{}
+.planetBuildingInfoPanelResourceImportText{
+	color: hsla(150,75%,65%,1);
+}
+.planetBuildingInfoPanelResourceExportCell{}
+.planetBuildingInfoPanelResourceExportText{
+	color: hsla(330,75%,65%,1);
+}
+
+.planetBuildingInfoPanelResourceAfterNameSpacing{
+	max-width: 2em;
+    width: 1.25em;
+	min-width: unset;
+	padding: 0px;
+}
+.planetBuildingInfoPanelResourceBetweenValuesSpacing{
+	max-width: 1em;
+    width: 0.75em;
+	min-width: unset;
+	padding: 0px;
+}
+
+.planetBuildingInfoPanelResourceListTable tr:has(> td.planetBuildingInfoPanelResourceGoingPositiveCell) {
+	background: linear-gradient(270deg, hsla(120, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+.planetBuildingInfoPanelResourceListTable tr:has(> tc.planetBuildingInfoPanelResourceGoingPositiveText) {
+	background: linear-gradient(270deg, hsla(120, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+.planetBuildingInfoPanelResourceGoingPositiveCell{}
+.planetBuildingInfoPanelResourceGoingPositiveText{
+	/* font-weight: bold;
+	color: hsla(120,100%,50%,1); */
+}
+.planetBuildingInfoPanelResourceListTable tr:has(> td.planetBuildingInfoPanelResourceGoingNegativeCell) {
+	background: linear-gradient(270deg, hsla(0, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+.planetBuildingInfoPanelResourceListTable tr:has(> tc.planetBuildingInfoPanelResourceGoingNegativeText) {
+	background: linear-gradient(270deg, hsla(0, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+.planetBuildingInfoPanelResourceGoingNegativeCell{}
+.planetBuildingInfoPanelResourceGoingNegativeText{
+	/* font-weight: bold;
+	color: hsla(0,100%,50%,1); */
+}
+
+
+
+
 .planetBuildingResourceHeaderCell{
 	text-align: left;
 }
@@ -349,27 +451,43 @@
 	text-align: left;
 }
 
+#planetBuildingInfoPanelProductionChangesTable{
+	margin-top: 3px;
+}
+#planetBuildingInfoPanelProductionChangesTable tr{}
+#planetBuildingInfoPanelProductionChangesTable td{}
+#planetBuildingInfoPanelProductionChangesTable span{}
+#planetBuildingInfoPanelProductionChangesTableBody{}
+#planetBuildingInfoPanelConsumptionChangesTable{
+	margin-top: 3px;
+}
+#planetBuildingInfoPanelConsumptionChangesTable tr{}
+#planetBuildingInfoPanelConsumptionChangesTable td{}
+#planetBuildingInfoPanelConsumptionChangesTable span{}
+#planetBuildingInfoPanelConsumptionChangesTableBody{}
+
+
 #planetBuildingInfoPanelAvailableResourcesContainer{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0;
 }
-#planetBuildingAvailableResourcesTable{
-	width: 100%;
-	left: 0%;
+#planetBuildingInfoPanelAvailableResourcesTable{}
+#planetBuildingInfoPanelAvailableResourcesTable tr{
+	font-size: 80%;
 }
-#planetBuildingAvailableResourcesTable span{
-	display:inline-block;
-}
-#planetBuildingAvailableResourcesTable tr{
-	font-size: 65%;
-	line-height: 90%;
-}
-#planetBuildingRequiredResourcesTableProducedHeader, #planetBuildingRequiredResourcesTableConsumedHeader{
+#planetBuildingInfoPanelAvailableResourcesTable td{}
+#planetBuildingInfoPanelAvailableResourcesTable span{}
+#planetBuildingInfoPanelAvailableResourcesTableBody{}
+
+
+/* #planetBuildingRequiredResourcesTableProducedHeader, #planetBuildingRequiredResourcesTableConsumedHeader{
 	color: hsla(180,50%,80%,0.4);
 	margin-left: 0px;
 	margin-top: 4px;
-}
+} */
+
+
 #planetBuildingInfoPanelSettingsContainer{
 	width: 100%;
 	bottom: 0;
@@ -560,6 +678,23 @@
 	padding: 0px;
 	font-size: 85%;
 }
+
+
+
+.planetBuildingResourceHeader{
+	color: hsla(180,50%,80%,0.4);
+	margin-left: 0px;
+	margin-bottom: 4px;
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
 
 .planetBuildingSingleBuildingBuildDemolishContainer{
 	padding: 0;
@@ -767,6 +902,9 @@
 	
 	font-size: 65%;
     line-height: 90%;
+}
+.planetBuildingSingleBuildingResourceListTable{
+	min-width: 100%;
 }
 
 .planetBuildingSingleBuildingSingleButtonText{

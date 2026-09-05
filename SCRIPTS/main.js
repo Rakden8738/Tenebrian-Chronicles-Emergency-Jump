@@ -172,14 +172,14 @@ function bigNumberToString(inputNumber){
 		// console.log(tmpMainOoM);
 		
 		if(tmpMainOoM <= 0 ){
-			return Number(inputNumber).toFixed(1);
+			return Number(inputNumber).toFixed(2);
 		}
 		else if (tmpMainOoM >= mainOrdersOfMagnitudeArrayLength){
 			let tmpReturnNumber = inputNumber;
 			for(let i = 0; i < tmpMainOoM; i++) tmpReturnNumber /= 1000;
 			if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*100)/100;
 			else tmpReturnNumber = Math.ceil(tmpReturnNumber*100)/100;
-			return tmpReturnNumber + 'e' + (tmpMainOoM*3);
+			return (tmpReturnNumber).toFixed(2) + 'e' + (tmpMainOoM*3);
 		}
 		else{
 			let tmpReturnNumber = inputNumber;
@@ -189,7 +189,7 @@ function bigNumberToString(inputNumber){
 			
 			// return Number(tmpReturnNumber).toFixed(1) + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
 			// return Number(tmpReturnNumber).toFixed(1) + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
-			return tmpReturnNumber + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
+			return (tmpReturnNumber).toFixed(2) + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
 			// return tmpReturnNumber + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
 		}
 	}

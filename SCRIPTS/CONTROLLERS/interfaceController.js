@@ -156,14 +156,12 @@ var InterfaceMainMenuButtonImagesID = [
 	"interfaceButton5x1",	//49
 ];
 
-
 //interface refresh and init
 
 var InterfaceAutoRefreshMainMenu = false;
 var InterfaceAutoRefreshSeconds = 5.0;
 var InterfaceMainMenuDebugAccess = false;
 var InterfaceButtonsTurnOffClickEffectTimer = 0.20;
-
 
 function interfaceRefreshMenuButtons(outputDocument) {
 	
@@ -527,7 +525,7 @@ var BuildingMenuSingleBuildingInfoHeaderAmountValueClass = "planetBuildingSingle
 var BuildingMenuSingleBuildingInfoHeaderAmountValueClassIdPrefix = "planetBuildingSingleBuildingAmount_";
 
 var BuildingMenuSingleBuildingInfoResourceTableContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer planetBuildingUnfoldedOnlyBuilding";
-var BuildingMenuSingleBuildingInfoResourceTableClass = "interfaceTable planetBuildingResourceListTable";
+var BuildingMenuSingleBuildingInfoResourceTableClass = "interfaceTable planetBuildingSingleBuildingResourceListTable";
 var BuildingMenuSingleBuildingInfoResourceTableBodyClass = "interfaceTableBody";
 
 var BuildingMenuSingleBuildingInfoResourceTableHeaderRowClass = "interfaceTableRow";
@@ -712,7 +710,7 @@ var InterfaceBuildingMenuBuildingsOnList = 0;
 
 function interfaceInitBuildingsList(outputDocument){
 	var buildingListContainer = outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID);
-	return;
+	//return;
 	buildingListContainer.innerHTML = "";
 	
 	InterfaceBuildingMenuBuildingsOnList = 0;
@@ -824,6 +822,7 @@ function interfaceInitBuildingsList(outputDocument){
 						var tmpBuildingBuildButtonSingle = outputDocument.createElement("button");
 						tmpBuildingBuildButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingBuildButtonSingle.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+						tmpBuildingBuildButtonSingle.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument);};
 							var tmpBuildingBuildButtonSingleImage = outputDocument.createElement("img");
 							tmpBuildingBuildButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingBuildButtonSingleImage.src = BuildingMenuSingleBuildingBuildImagePath;
@@ -2205,7 +2204,101 @@ function interfaceRemoveStaffFromBuilding(outputDocument, buildingListIndex, blu
 	
 	console.log("UNASSIGN: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpRemovedStaff);
 }
+function interfaceSingleBuildingButtonsOnMouseEnter(outputDocument){
+	// console.log("Mouse over detected.");
+	BuildingMenuResourcesListAutoScrollInterrupt = true;
+	
+	setTimeout(() => {
+		BuildingMenuResourcesListAutoScrollInterrupt = false;
+		BuildingMenuResourcesListAutoScrollEnabled = false;
+		interfaceAutoScrollResourcesListElement(outputDocument);
+	},BuildingMenuResourcesListAutoScrollInterruptLength);
+}
 
+var BuildingMenuResourcesListAutoScrollEnabled = false;
+var BuildingMenuResourcesListAutoScrollTimeCounter = 0;
+var BuildingMenuResourcesListAutoScrollScrollPosition = 0;
+var BuildingMenuResourcesListAutoScrollBottomReached = false;
+var BuildingMenuResourcesListAutoScrollResetCountdown = 0;
+var BuildingMenuResourcesListAutoScrollInterrupt = false;
+var BuildingMenuResourcesListAutoScrollInterruptLength = 50;
+
+var BuildingMenuResourcesListAutoScrollDelayMs = 2000;
+var BuildingMenuResourcesListAutoScrollTickSpeedMs = 20;
+var BuildingMenuResourcesListAutoScrollTickSpeedPx = 0.4;
+var BuildingMenuResourcesListAutoScrollResetDelayMs = 2000;
+
+var BuildingMenuResourcesListAutoScrollInitialised = false;
+var BuildingMenuResourcesListAutoScrollElement;
+var BuildingMenuResourcesListAutoScrollElementID = "planetBuildingInfoPanelResourcesContainer";
+
+function interfaceAutoScrollResourcesListElement(outputDocument){
+	if(!BuildingMenuResourcesListAutoScrollInitialised){
+		// console.log("Initialising auto scroll.");
+		BuildingMenuResourcesListAutoScrollElement = outputDocument.getElementById(BuildingMenuResourcesListAutoScrollElementID);
+		BuildingMenuResourcesListAutoScrollInitialised = true;
+	}
+	
+	if(!BuildingMenuResourcesListAutoScrollInterrupt) {
+		if(BuildingMenuResourcesListAutoScrollElement.clientHeight >= BuildingMenuResourcesListAutoScrollElement.scrollHeight){
+			// console.log("Element not overflowing.");
+			BuildingMenuResourcesListAutoScrollEnabled = false;
+			BuildingMenuResourcesListAutoScrollTimeCounter = 0;
+			BuildingMenuResourcesListAutoScrollScrollPosition = 0;
+			BuildingMenuResourcesListAutoScrollBottomReached = false;
+			BuildingMenuResourcesListAutoScrollResetCountdown = 0;
+			
+			BuildingMenuResourcesListAutoScrollElement.scroll(0,0);
+			return;
+		}
+		
+		if(!BuildingMenuResourcesListAutoScrollEnabled){
+			// console.log("Starting auto scroll...");
+			BuildingMenuResourcesListAutoScrollEnabled = true;
+			BuildingMenuResourcesListAutoScrollTimeCounter = 0;
+			BuildingMenuResourcesListAutoScrollScrollPosition = 0;
+			BuildingMenuResourcesListAutoScrollBottomReached = false;
+			BuildingMenuResourcesListAutoScrollResetCountdown = 0;
+		}
+		
+		if(BuildingMenuResourcesListAutoScrollBottomReached){
+			// console.log("Auto-scroll waiting at bottom: " + BuildingMenuResourcesListAutoScrollResetCountdown + "/" + BuildingMenuResourcesListAutoScrollResetDelayMs);
+			BuildingMenuResourcesListAutoScrollResetCountdown += BuildingMenuResourcesListAutoScrollTickSpeedMs;
+			if(BuildingMenuResourcesListAutoScrollResetCountdown >= BuildingMenuResourcesListAutoScrollResetDelayMs){
+				// console.log("Returning to top.");
+				BuildingMenuResourcesListAutoScrollTimeCounter = 0;
+				BuildingMenuResourcesListAutoScrollScrollPosition = 0;
+				BuildingMenuResourcesListAutoScrollBottomReached = false;
+				BuildingMenuResourcesListAutoScrollResetCountdown = 0;
+				BuildingMenuResourcesListAutoScrollElement.scroll(0,0);
+			}
+		}
+		
+		if(BuildingMenuResourcesListAutoScrollTimeCounter >= BuildingMenuResourcesListAutoScrollDelayMs){
+			if((BuildingMenuResourcesListAutoScrollElement.clientHeight + BuildingMenuResourcesListAutoScrollScrollPosition) >= BuildingMenuResourcesListAutoScrollElement.scrollHeight){
+				// console.log("Auto-scroll reached the bottom.");
+				BuildingMenuResourcesListAutoScrollBottomReached = true;
+			}
+			else{
+				// console.log("Auto-scroll active.");
+				BuildingMenuResourcesListAutoScrollScrollPosition += BuildingMenuResourcesListAutoScrollTickSpeedPx;
+				BuildingMenuResourcesListAutoScrollElement.scroll(0,BuildingMenuResourcesListAutoScrollScrollPosition);
+			}
+		}
+		else{
+			// console.log("Auto-scroll waiting at top: " + BuildingMenuResourcesListAutoScrollTimeCounter + "/" + BuildingMenuResourcesListAutoScrollDelayMs);
+		}
+		
+		setTimeout(() => {
+			if(BuildingMenuResourcesListAutoScrollTimeCounter == 0) BuildingMenuResourcesListAutoScrollTimeCounter += BuildingMenuResourcesListAutoScrollInterruptLength;
+			BuildingMenuResourcesListAutoScrollTimeCounter += BuildingMenuResourcesListAutoScrollTickSpeedMs;
+			interfaceAutoScrollResourcesListElement(outputDocument);
+		}, BuildingMenuResourcesListAutoScrollTickSpeedMs);
+	}
+	else{
+		BuildingMenuResourcesListAutoScrollElement.scroll(0,0);
+	}
+}
 
 
 function interfaceRefreshInterface(outputDocument) {
@@ -3143,8 +3236,6 @@ function interfaceSystemOverviewNetworkPreviousSystem(outputDocument) {
 		//console.log("DEBUG: Not part of network. (" + systemsGetSystemById(SystemsCurrentSystem).network_id + ")");
 	}
 }
-
-
 
 var InterfaceSystemOverviewSystemChanging = false;
 var InterfaceSystemOverviewSystemFadeOutTime = 0.15;
