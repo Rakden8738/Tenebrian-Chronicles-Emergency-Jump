@@ -169,8 +169,8 @@ function earlyAlpha_NaturalResources(){
 	tmpPlanet.setBonusResource("Glass",0.75);
 	tmpPlanet.setBonusResource("Circuits",0.5);
 	
-	tmpPlanet.setStorageResource("Iron",1000.0);
-	tmpPlanet.setStorageResource("Steel",1000.0);
+	tmpPlanet.setStorageResource("Iron",1600.0);
+	tmpPlanet.setStorageResource("Steel",1600.0);
 	
 }
 function earlyAlpha_Systems(){
@@ -1640,11 +1640,11 @@ function earlyAlpha_AddBuildings(){
 	// tmpBuilding.forbiddenPlanetConditions = ["Dangerous biosphere", "Radioactive", "Death world"];
 	tmpBuilding.unlocked = true;
 	
-	tmpBuilding.setBuildCostByName("Iron", 100, 1.5);
-	tmpBuilding.setBuildCostByName("Steel", 30, 2);
+	tmpBuilding.setBuildCostByName("Iron", 100, 1);
+	//tmpBuilding.setBuildCostByName("Steel", 30, 2);
 	
-	tmpBuilding.setUpgradeCostByName("Steel", 50, 2);
-	tmpBuilding.setUpgradeCostByName("Circuits", 5, 1.0);
+	tmpBuilding.setUpgradeCostByName("Steel", 100, 2);
+	//tmpBuilding.setUpgradeCostByName("Circuits", 5, 1.0);
 	
 	tmpBuilding.powerConsumed = 0;
 	

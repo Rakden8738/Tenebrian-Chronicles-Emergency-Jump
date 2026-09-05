@@ -12,7 +12,10 @@ var ResourcesArray = [];
 var ResourcesNamesArray = [];
 var ResourceCategories = ["Raw resources", "Construction", "Refined Resources", "Electronics", "Carbons", "Fuels", "Nuclear", "Advanced Resources", "Reagents", "Military", "Other"];
 
+var ResourcesDefaultSellDowngradeRefundRatio = 0.75;
+
 var ResourcesInitDebug = false;
+
 
 class ResourceTypeObject {
 	index = -1;
@@ -76,6 +79,8 @@ class ResourceCostObject{
 	
 	costIncrease = 1.0;	//multiplicative
 	linearCostIncrease = true; //for skipping the math pow if it is pointless
+	
+	refund = ResourcesDefaultSellDowngradeRefundRatio;
 }
 class ResourceProductionConsumptionObject{
 	constructor(resourceIndex){
@@ -201,11 +206,11 @@ function resourcesCreateEmptyStorageResourceByName(resourceName, tmpAmount = 0.0
 		return false;
 	}	
 }
-function resourcesCreateEmptyCostResourceByName(resourceName, tmpCost = 0.0, tmpCostIncrease = 1.0){
+function resourcesCreateEmptyCostResourceByName(resourceName, tmpCost = 0.0, tmpCostIncrease = 1.0, tmpRefund = ResourcesDefaultSellDowngradeRefundRatio){
 	if(ResourcesNamesArray.includes(resourceName)){
 		var tmpIndex = ResourcesNamesArray.indexOf(resourceName);
 		
-		return resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost, tmpCostIncrease);
+		return resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost, tmpCostIncrease, tmpRefund);
 	}
 	else {
 		console.warn("Failed to add cost resource: " + resourceName + " Resource type unknown.");
@@ -243,10 +248,11 @@ function resourcesCreateEmptyStorageResourceObject(resourceIndex, tmpAmount = 0.
 	tmpResource.amount = tmpAmount;
 	return tmpResource;
 }
-function resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost = 0.0, tmpCostIncrease = 1.0){
+function resourcesCreateEmptyCostResourceObject(resourceIndex, tmpCost = 0.0, tmpCostIncrease = 1.0, tmpRefund = ResourcesDefaultSellDowngradeRefundRatio){
 	var tmpResource = new ResourceCostObject(resourceIndex);
 	tmpResource.cost = tmpCost;
 	tmpResource.costIncrease = tmpCostIncrease;
+	tmpResource.refund = tmpRefund;
 	if(tmpCostIncrease == 1.0) tmpResource.linearCostIncrease = true;
 	else tmpResource.linearCostIncrease = false;
 	return tmpResource;
@@ -280,6 +286,7 @@ function resourcesFindResourceInArrayByName(tmpResourcesArray, tmpResourceIndex)
 	}
 	return -1;
 }
+
 function resourcesIsEnough(resourceArrayStorage, resourceArrayCost){
 	if(resourceArrayCost.length == resourceArrayStorage.length){
 		for(let i = 0; i < resourceArrayStorage.length; i++){
@@ -288,34 +295,37 @@ function resourcesIsEnough(resourceArrayStorage, resourceArrayCost){
 			if(resourceArrayStorage[i].amount < resourceArrayCost[i].cost){
 				if((resourceArrayStorage[i].amount / resourceArrayCost[i].cost) > 0.999) continue; 	//0.1% difference tolerated in case of floating point imprecision
 				
-				return false;
+				return i;
 			}
 		}
-		return true;
+		return -1;
 	}
 	else{
 		for(let i = 0; i < resourceArrayCost.length; i++){
 			if(resourceArrayCost[i].cost <= 0) continue;
 			
 			let tmpSingleResourceIndex = resourcesFindResourceInArrayByIndex(resourceArrayStorage, resourceArrayCost[i].typeIndex);
-			if(tmpSingleResourceIndex = -1) return false;
+			if(tmpSingleResourceIndex = -1) {
+				console.warn("Unrecognised resource: " + resourceArrayCost[i].typeName);
+				return -2;
+			}
 			
 			let tmpSingleResource = resourceArrayStorage[tmpSingleResourceIndex];
 			
 			if(tmpSingleResource.amount < resourceArrayCost[i].cost){
 				if((tmpSingleResource.amount / resourceArrayCost[i].cost) > 0.999) continue; 	//0.1% difference tolerated in case of floating point imprecision
 				
-				return false;
+				return tmpSingleResourceIndex;
 			}
 		}
-		return true;
+		return -1;
 	}
 }
 function resourcesFitsHowManyTimes(resourceArrayStorage, resourceArrayCost){
 	let tmpFitCounter = -1;
 	
 	if(resourceArrayCost.length == resourceArrayStorage.length){
-		for(let i = 0; i < resourceArrayStorage.length; i++){
+		for(let i = 0; i < resourceArrayCost.length; i++){
 			if(resourceArrayCost[i].cost <= 0) continue;
 			
 			let tmpSingleResourceFitCounter = (resourceArrayStorage[i].amount / resourceArrayCost[i].cost);
@@ -354,6 +364,50 @@ function resourcesFitsHowManyTimes(resourceArrayStorage, resourceArrayCost){
 		return Math.floor(tmpFitCounter);
 	}
 	
+}
+
+function resourcesCopyCostArray(resourceArrayCost){
+	let newArray = resourcesCreateEmptyCostResourcesArray();
+	for(let i = 0; i < resourceArrayCost.length; i++){
+		newArray[i].cost = resourceArrayCost[i].cost ;
+		newArray[i].costIncrease = resourceArrayCost[i].costIncrease ;
+		newArray[i].refund = resourceArrayCost[i].refund ;
+		newArray[i].linearCostIncrease = resourceArrayCost[i].linearCostIncrease ;
+	}
+	return newArray;	
+}
+
+function resourcesGetSumCosts(resourceArrayCostsArray){
+	let newArray = resourcesCreateEmptyCostResourcesArray();
+	for(let i = 0; i < resourceArrayCostsArray.length; i++){
+		for(let j = 0; j < resourceArrayCostsArray[i].length; j++){
+			newArray[j].cost += resourceArrayCostsArray[i][j].cost;
+		}
+	}
+	return newArray;
+}
+function resourcesGetMultipliedCost(resourceArrayCostsArray, resourceMultiplier){
+	let newArray = resourcesCopyCostArray(resourceArrayCostsArray);
+	resourcesMultiplyCost(newArray, resourceMultiplier);
+	return newArray;
+}
+
+function resourcesLevelUpCost(resourceArrayCost, levelUpAmount = 1){
+	for(let i = 0; i < resourceArrayCost.length; i++){
+		if(resourceArrayCost[i].cost == 0.0) continue;
+		if(resourceArrayCost[i].linearCostIncrease) continue;
+		resourceArrayCost[i].cost *= Math.pow(resourceArrayCost[i].costIncrease,levelUpAmount);
+	}
+}
+function resourcesMultiplyCost(resourceArrayCost, multiplierValue){
+	for(let i = 0; i < resourceArrayCost.length; i++){
+		resourceArrayCost[i].cost *= multiplierValue;
+	}
+}
+function resourcesIncreaseCost(resourceArrayCost, resourceArrayCostIncrease){
+	for(let i = 0; i < resourceArrayCost.length; i++){
+		resourceArrayCost[i].cost += resourceArrayCostIncrease[i].cost;
+	}
 }
 
 

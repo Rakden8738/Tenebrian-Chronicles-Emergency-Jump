@@ -77,9 +77,14 @@ function buildingInitBuildings(){
 			
 			let tmpBuilding = new BuildingObject();
 			tmpBuilding.index = PlanetsArray[i].buildings.length;
+			tmpBuilding.planetIndex = i;
 			tmpBuilding.blueprintIndex = j;
 	
 			PlanetsArray[i].buildings.push(tmpBuilding);
+			
+			//after adding to planet, refresh cost, production and stuff
+			
+			tmpBuilding.initBuilding();
 			
 			if(BuildingInitDebug) console.log("    Building " + BuildingsArray[j].name + " added to planet " + PlanetsArray[i].name);
 		}
@@ -140,12 +145,23 @@ class BuildingBlueprintObject{
 	mineralsRequiredDifferent = false; //is required natural resource vastly different from intended output 
 	
 	unlocked = false;
+	canBeBuilt = false;
+	canBeUpgraded = false;
+	canBeDestroyed = false;
+	canBeDowngraded = false;
 	
-	setBuildCostByName(resourceName, resourceCost, buildMultiplier = 1.0){
+	maxPerGalaxy = -1;
+	totalInGalaxy = 0;
+	
+	maxPerPlanet = -1;
+	maxUpgrade = -1;
+	
+	setBuildCostByName(resourceName, resourceCost, buildMultiplier = 1.0, refundRatio = ResourcesDefaultSellDowngradeRefundRatio){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
 		if(tmpIndex > 0){
 			this.baseBuildCost[tmpIndex].cost = resourceCost;
 			this.baseBuildCost[tmpIndex].costIncrease = buildMultiplier
+			this.baseBuildCost[tmpIndex].refund = refundRatio;
 			if(buildMultiplier != 1.0) this.baseBuildCost[tmpIndex].linearCostIncrease = false;
 			else this.baseBuildCost[tmpIndex].linearCostIncrease = true;
 			
@@ -154,11 +170,12 @@ class BuildingBlueprintObject{
 		console.warn("Unrecognized build resoruce cost: " + resourceName);
 		return false;
 	}
-	setUpgradeCostByName(resourceName, resourceCost, upgradeMultiplier = 1.0){
+	setUpgradeCostByName(resourceName, resourceCost, upgradeMultiplier = 1.0, refundRatio = ResourcesDefaultSellDowngradeRefundRatio){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
 		if(tmpIndex > 0){
 			this.baseUpgradeCost[tmpIndex].cost = resourceCost;
 			this.baseUpgradeCost[tmpIndex].costIncrease = upgradeMultiplier
+			this.baseUpgradeCost[tmpIndex].refund = refundRatio
 			if(upgradeMultiplier != 1.0) this.baseUpgradeCost[tmpIndex].linearCostIncrease = false;
 			else this.baseUpgradeCost[tmpIndex].linearCostIncrease = true;
 			
@@ -200,33 +217,39 @@ class BuildingBlueprintObject{
 		return false;
 	}
 	
-	
 	calculateBuildCost(startAmount, targetAmount){
-		let tmpBuildCost = resourcesCreateEmptyCostResourcesArray();
+		if(startAmount >= targetAmount) return resourcesCreateEmptyCostResourcesArray();	//or return demolish cost?
+		
+		let tmpBuildCost = resourcesCopyCostArray(this.baseBuildCost); // resourcesCreateEmptyCostResourcesArray();
 		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
 		
 		for(let i = 0; i < this.baseBuildCost.length; i++){
 			if(this.baseBuildCost[i].cost == 0.0) continue;
-			tmpBuildCost[i].cost = this.baseBuildCost[i].cost;
+			/* tmpBuildCost[i].cost = this.baseBuildCost[i].cost;
 			tmpBuildCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
 			tmpBuildCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
+			tmpBuildCost[i].refund = this.baseBuildCost[i].refund; */
 			
 			tmpTotalCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
 			tmpTotalCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
+			tmpTotalCost[i].refund = this.baseBuildCost[i].refund;
 		}
 		
 		if(targetAmount > startAmount){
 			for(let j = 0; j < targetAmount; j++){
-				//add cost at current amount (starting with 0, finishing at target-1)
-				for(let i = 0; i < this.baseBuildCost.length; i++){
-					//if cost == 0, skip it
-					if(this.baseBuildCost[i].cost == 0.0) continue;
-					
-					tmpTotalCost[i].cost += tmpBuildCost[i].cost;
+				if(j >= startAmount){
+					//add cost at current amount (starting with 0, finishing at target-1)
+					for(let i = 0; i < this.baseBuildCost.length; i++){
+						//if cost == 0, skip it
+						if(this.baseBuildCost[i].cost == 0.0) continue;
+						
+						tmpTotalCost[i].cost += tmpBuildCost[i].cost;
+					}
 				}
 				
 				//increase cost of next building
-				for(let i = 0; i < this.baseBuildCost.length; i++){
+				resourcesLevelUpCost(tmpBuildCost);
+				/* for(let i = 0; i < this.baseBuildCost.length; i++){
 					if(this.baseBuildCost[i].cost == 0.0) continue;
 					
 					//if linear for this resource, keep same
@@ -234,7 +257,7 @@ class BuildingBlueprintObject{
 					
 					//otherwise multiply cost by the increase multiplier
 					tmpBuildCost[i].cost *= tmpBuildCost[i].costIncrease;
-				}
+				} */
 			}
 			
 			//rounding, just in case
@@ -253,30 +276,40 @@ class BuildingBlueprintObject{
 			return false;
 		}
 	}
-	
 	calculateUpgradeCost(startLevel, targetLevel){
-		let tmpUpgradeCost = resourcesCreateEmptyCostResourcesArray();
+		
+		if(startLevel >= targetLevel) return resourcesCreateEmptyCostResourcesArray();	//or return downgrade cost?
+		
+		let tmpUpgradeCost = resourcesCopyCostArray(this.baseUpgradeCost);// resourcesCreateEmptyCostResourcesArray();
 		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
 		
 		for(let i = 0; i < this.baseUpgradeCost.length; i++){
 			if(this.baseUpgradeCost[i].cost == 0.0) continue;
-			tmpUpgradeCost[i].cost = this.baseUpgradeCost[i].cost;
+			/* tmpUpgradeCost[i].cost = this.baseUpgradeCost[i].cost;
 			tmpUpgradeCost[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
 			tmpUpgradeCost[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
+			tmpUpgradeCost[i].refund = this.baseUpgradeCost[i].refund; */
+			
+			tmpTotalCost[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
+			tmpTotalCost[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
+			tmpTotalCost[i].refund = this.baseUpgradeCost[i].refund;
 		}
 		
-		if(targetAmount > startAmount){
-			for(let j = 0; j < targetAmount; j++){
-				//add cost at current amount (starting with 0, finishing at target-1)
-				for(let i = 0; i < this.baseUpgradeCost.length; i++){
-					//if cost == 0, skip it
-					if(this.baseUpgradeCost[i].cost == 0.0) continue;
-					
-					tmpTotalCost[i].cost += tmpUpgradeCost[i].cost;
+		if(targetLevel > startLevel){
+			for(let j = 0; j < targetLevel; j++){
+				if(j >= startLevel){
+					//add cost at current amount (starting with 0, finishing at target-1)
+					for(let i = 0; i < this.baseUpgradeCost.length; i++){
+						//if cost == 0, skip it
+						if(this.baseUpgradeCost[i].cost == 0.0) continue;
+						
+						tmpTotalCost[i].cost += tmpUpgradeCost[i].cost;
+					}
 				}
 				
 				//increase cost of next upgrade
-				for(let i = 0; i < this.baseUpgradeCost.length; i++){
+				resourcesLevelUpCost(tmpUpgradeCost);
+				/* for(let i = 0; i < this.baseUpgradeCost.length; i++){
 					//if cost == 0, skip it
 					if(this.baseUpgradeCost[i].cost == 0.0) continue;
 					//if linear for this resource, keep same
@@ -284,8 +317,19 @@ class BuildingBlueprintObject{
 					
 					//otherwise multiply cost by the increase multiplier
 					tmpUpgradeCost[i].cost *= tmpUpgradeCost[i].costIncrease;
-				}
+				} */
 			}
+			
+			//rounding, just in case
+			for(let i = 0; i < this.baseBuildCost.length; i++){
+				if(this.baseUpgradeCost[i].cost == 0.0) continue;
+				
+				//if linear for this resource, keep same - especially if it is very small but important cost
+				if(this.baseUpgradeCost[i].linearCostIncrease) continue;
+				
+				tmpTotalCost[i].cost = (Math.floor(tmpTotalCost[i].cost*100))/100;
+			}
+			
 			return tmpTotalCost;
 		}
 		else{
@@ -296,6 +340,7 @@ class BuildingBlueprintObject{
 class BuildingObject{
 	index = -1;
 	blueprintIndex = -1;
+	planetIndex = -1;
 	
 	powerProduced = 0;
 	powerConsumed = 0;
@@ -303,80 +348,217 @@ class BuildingObject{
 	dailyProduction = [];
 	dailyConsumption = [];
 	
+	customBuildDemolishAmount = BuildingsBulkBuyAmount;
+	customUpgradeDowngradeAmount = BuildingsBulkBuyAmount;
+	
 	nextBuildCost = [];
-	nextBuildCost5 = [];
-	nextBuildCost25 = [];
+	nextBuildCostMore = [];
+	nextBuildCostEvenMore = [];
 	nextBuildCostCustom = [];
 	
 	nextUpgradeCost = [];
-	nextUpgradeCost5 = [];
-	nextUpgradeCost25 = [];
+	nextUpgradeCostMore = [];
+	nextUpgradeCostEvenMore = [];
 	nextUpgradeCostCustom = [];
 	
 	totalBuildCost = [];
 	totalUpgradeCost = [];
 	lastUpgradeCost = [];
 	
+	nextDemolishRefund = [];
+	nextDemolishRefundMore = [];
+	nextDemolishRefundEvenMore = [];
+	nextDemolishRefundCustom = [];
+	
+	nextDowngradeRefund = [];
+	nextDowngradeRefundMore = [];
+	nextDowngradeRefundEvenMore = [];
+	nextDowngradeRefundCustom = [];
+	
 	count = 0;
 	level = 0;
+	
 	staffAssigned = 0;
 	staffRequired = 0;
 	
 	enabled = true;
 	folded = false;
 	
-	buildingInitBuildCost(){
+	initBuilding(){
+		this.initBuildCost();
+		this.initUpgradeCost();
+		
+		this.refreshTotalBuildCost();
+		this.refreshTotalUpgradeCost();
+	}
+	
+	initBuildCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextBuildCost = tmpBlueprintObject.calculateBuildCost(0, 1);
-		this.nextBuildCost5 = tmpBlueprintObject.calculateBuildCost(0, 5);
-		this.nextBuildCost25 = tmpBlueprintObject.calculateBuildCost(0, 25);
+		this.nextBuildCostMore = tmpBlueprintObject.calculateBuildCost(0, BuildingsBuildMoreAmount);
+		this.nextBuildCostEvenMore = tmpBlueprintObject.calculateBuildCost(0, BuildingsBuildEvenMoreAmount);
+		
+		this.nextBuildCostCustom = tmpBlueprintObject.calculateBuildCost(0, this.customBuildDemolishAmount);
+		
 	}
-	buildingInitUpgradeCost(){
+	initUpgradeCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, 1);
-		this.nextUpgradeCost5 = tmpBlueprintObject.calculateUpgradeCost(0, 5);
-		this.nextUpgradeCost25 = tmpBlueprintObject.calculateUpgradeCost(0, 25);
+		this.nextUpgradeCostMore = tmpBlueprintObject.calculateUpgradeCost(0, BuildingsUpgradeMoreAmount);
+		this.nextUpgradeCostEvenMore = tmpBlueprintObject.calculateUpgradeCost(0, BuildingsUpgradeEvenMoreAmount);
+		
+		this.nextUpgradeCostCustom = tmpBlueprintObject.calculateUpgradeCost(0, this.customUpgradeDowngradeAmount);
 		
 		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, 0);
+		
 	}
 	
-	buildingRefreshBuildCost(){
+	refreshBuildCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextBuildCost = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 1);
-		this.nextBuildCost5 = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 5);
-		this.nextBuildCost25 = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 25);
+		this.nextBuildCostMore = tmpBlueprintObject.calculateBuildCost(this.count, this.count + BuildingsBuildMoreAmount);
+		this.nextBuildCostEvenMore = tmpBlueprintObject.calculateBuildCost(this.count, this.count + BuildingsBuildEvenMoreAmount);
+		
+		this.nextBuildCostCustom = tmpBlueprintObject.calculateBuildCost(this.count, this.count + this.customBuildDemolishAmount);
 	}
-	buildingRefreshUpgradeCost(){
+	refreshUpgradeCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 1);
-		this.nextUpgradeCost5 = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 5);
-		this.nextUpgradeCost25 = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 25);
+		this.nextUpgradeCostMore = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + BuildingsUpgradeMoreAmount);
+		this.nextUpgradeCostEvenMore = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + BuildingsUpgradeEvenMoreAmount);
+		
+		this.nextUpgradeCostCustom = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + this.customUpgradeDowngradeAmount);
 		
 		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level - 1, this.level);
 	}
 	
-	buildingRefreshCustomBuildCost(){
+	refreshCustomBuildCost(tmpInputValue){
+		if(isNaN(tmpInputValue)) return false;
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
+		this.nextBuildCostCustom = tmpBlueprintObject.calculateBuildCost(this.count, this.count + tmpInputValue);
 	}
-	buildingRefreshCustomUpgradeCost(){
+	refreshCustomUpgradeCost(tmpInputValue){
+		if(isNaN(tmpInputValue)) return false;
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
+		this.nextUpgradeCostCustom = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + tmpInputValue);
 	}
 	
-	buildingRefreshTotalBuildCost(){
+	refreshTotalBuildCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.totalBuildCost = tmpBlueprintObject.calculateBuildCost(0, this.count);
 	}
-	buildingRefreshTotalUpgradeCost(){
+	refreshTotalUpgradeCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.totalUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, this.level);
+	}
+	
+	tryBuild(tryBuildAmount = 1){
+		if(tryBuildAmount == 0) {
+			console.log("Nothing was built.");
+			return false;
+		}
+		
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		let tmpPlanetStorage = PlanetsArray[this.planetIndex].resourceStorage;
+		
+		//for all buildings
+		let tmpBuildCost = tmpBlueprintObject.calculateBuildCost(this.count, this.count + tryBuildAmount);
+		//extra cost
+		let tmpUpgradesCost = resourcesGetMultipliedCost(this.totalUpgradeCost, tryBuildAmount);
+		
+		let tmpComparsionResult = resourcesIsEnough(tmpPlanetStorage,tmpBuildCost);
+		
+		if(tmpComparsionResult == -1) {
+			console.log("Its enough to build all " + tryBuildAmount);
+			return true;
+		}
+		else{
+			if(BuildingsTryBuyMaxEnabled) {
+				let tmpPreviousBuildCost = resourcesCreateEmptyCostResourcesArray();
+				let tmpPartialBuildCost = resourcesCreateEmptyCostResourcesArray();
+				let tmpNextBuildCost = tmpBlueprintObject.calculateBuildCost(this.count, this.count + 1);
+				
+				for(let i = 1; i <= tryBuildAmount; i++) {
+					//add cost of single building
+					resourcesIncreaseCost(tmpPartialBuildCost,tmpNextBuildCost);
+					//add cost of upgrades for that single building
+					resourcesIncreaseCost(tmpPartialBuildCost,this.totalUpgradeCost);
+					
+					let tmpPartialComparsionResult = resourcesIsEnough(tmpPlanetStorage,tmpPartialBuildCost);
+					
+					if(tmpPartialComparsionResult != -1) {
+						console.log("Can only build it " + (i - 1) + " times.");
+						console.log("Insufficient resource: " + ResourcesNamesArray[tmpPartialComparsionResult]);
+						console.log(tmpPartialBuildCost);
+						return true;
+					}
+					
+					tmpPreviousBuildCost = resourcesCopyCostArray(tmpNextBuildCost);
+					resourcesLevelUpCost(tmpNextBuildCost);
+				}
+				console.log("Insufficient resource: " + ResourcesNamesArray[tmpComparsionResult]);
+				return false;
+			}
+			else{
+				console.log("Insufficient resource: " + ResourcesNamesArray[tmpComparsionResult]);
+				return false;
+			}
+		}		
+	}
+	tryUpgrade(tryUpgradeAmount = 1){
+		if(tryUpgradeAmount == 0) {
+			console.log("Nothing was upgraded.");
+			return false;
+		}
+		
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		let tmpPlanetStorage = PlanetsArray[this.planetIndex].resourceStorage;
+		
+		//full upgrade cost - try upgrade * amount of buildings
+		let tmpUpgradeCost = resourcesGetMultipliedCost(tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + tryUpgradeAmount), this.count);
+		
+		let tmpComparsionResult = resourcesIsEnough(tmpPlanetStorage,tmpUpgradeCost);
+		
+		if(tmpComparsionResult == -1){
+			console.log("Its enough to upgrade all " + tryUpgradeAmount);
+			return true;
+		}
+		else{
+			if(BuildingsTryBuyMaxEnabled){
+				let tmpPreviousUpgradeCost = resourcesCreateEmptyCostResourcesArray();
+				let tmpPartialUpgradeCost = resourcesCreateEmptyCostResourcesArray();
+				let tmpNextUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + 1);
+				
+				for(let i = 1; i <= tryUpgradeAmount; i++){
+					resourcesIncreaseCost(tmpPartialUpgradeCost,resourcesGetMultipliedCost(tmpNextUpgradeCost,this.count));
+					let tmpPartialComparsionResult = resourcesIsEnough(tmpPlanetStorage,tmpPartialUpgradeCost);
+					
+					if(tmpPartialComparsionResult != -1){
+						console.log("Can only upgrade it " + (i-1) + " times.");
+						console.log("Insufficient resource: " + ResourcesNamesArray[tmpPartialComparsionResult]);
+						console.log(tmpPartialUpgradeCost)
+						return true;
+					}
+					
+					tmpPreviousUpgradeCost = resourcesCopyCostArray(tmpNextUpgradeCost);
+					resourcesLevelUpCost(tmpNextUpgradeCost);
+				}
+				console.log("Insufficient resource: " + ResourcesNamesArray[tmpComparsionResult]);
+				return false;
+			}
+			else{
+				console.log("Insufficient resource: " + ResourcesNamesArray[tmpComparsionResult]);
+				return false;
+			}
+		}		
 	}
 }
 
@@ -387,6 +569,8 @@ var BuildingsUpgradeMoreAmount = 5;
 var BuildingsUpgradeEvenMoreAmount = 10;
 
 var BuildingsBulkBuyDefaultAmount = 10;
+var BuildingsBulkBuyLimit = 100;
+var BuildingsBulkBuyLimitEnabled = true;
 
 var BuildingsBulkBuyAmount = BuildingsBulkBuyDefaultAmount;
 var BuildingsAutoAssignStaffEnabled = true;
@@ -477,7 +661,7 @@ function buildingsSetBuildingsObject(newConfigObject){
 		BuildingsAutoAssignStaffEnabled = newConfigObject.buildingsAutoAssignStaff;
 	} catch{ console.warn("Save is missing flag for auto assign staff setting.")};
 	try{
-		BuildingsTryBuyMaxEnabled = newConfigObject.buildingsTryBuyMax2;
+		BuildingsTryBuyMaxEnabled = newConfigObject.buildingsTryBuyMax;
 	} catch{ console.warn("Save is missing flag for buildings try buy max setting.")};
 	try{
 		BuildingsDemolishLockEnabled = newConfigObject.buildingsDemolishLock;
@@ -866,4 +1050,7 @@ function buildingsDowngradeBuilding(buildingObject, planetObject, upgradesAmount
 	
 	planetObject.resourceStorage = resourcesSumResources(tmpRefund, planetObject.resourceStorage, upgradesAmount);
 }
+
 */
+
+

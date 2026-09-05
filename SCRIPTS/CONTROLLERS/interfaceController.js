@@ -712,6 +712,7 @@ var InterfaceBuildingMenuBuildingsOnList = 0;
 
 function interfaceInitBuildingsList(outputDocument){
 	var buildingListContainer = outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID);
+	return;
 	buildingListContainer.innerHTML = "";
 	
 	InterfaceBuildingMenuBuildingsOnList = 0;
@@ -820,81 +821,81 @@ function interfaceInitBuildingsList(outputDocument){
 				tmpBuildingBuildDemolishContainer.className = BuildingMenuSingleBuildingBuildDemolishContainerClass;
 					var tmpBuildingBuildButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingBuildButtonsContainer.className = BuildingMenuSingleBuildingBuildButtonsContainerClass;
-						var tmpBuildingBuildButton1 = outputDocument.createElement("button");
-						tmpBuildingBuildButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingBuildButton1.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
-							var tmpBuildingBuildButton1Image = outputDocument.createElement("img");
-							tmpBuildingBuildButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingBuildButton1Image.src = BuildingMenuSingleBuildingBuildImagePath;
+						var tmpBuildingBuildButtonSingle = outputDocument.createElement("button");
+						tmpBuildingBuildButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButtonSingle.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingBuildButtonSingleImage = outputDocument.createElement("img");
+							tmpBuildingBuildButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButtonSingleImage.src = BuildingMenuSingleBuildingBuildImagePath;
 						
-							tmpBuildingBuildButton1.append(tmpBuildingBuildButton1Image);
-						var tmpBuildingBuildButton5 = outputDocument.createElement("button");
-						tmpBuildingBuildButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingBuildButton5.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
-							var tmpBuildingBuildButton5Image = outputDocument.createElement("img");
-							tmpBuildingBuildButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingBuildButton5Image.src = BuildingMenuSingleBuildingBuildImagePath;
-							var tmpBuildingBuildButton5Subtext = outputDocument.createElement("span");
-							tmpBuildingBuildButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingBuildButton5Subtext.innerHTML = "5";
+							tmpBuildingBuildButtonSingle.append(tmpBuildingBuildButtonSingleImage);
+						var tmpBuildingBuildButtonMore = outputDocument.createElement("button");
+						tmpBuildingBuildButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButtonMore.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildMoreAmount);};
+							var tmpBuildingBuildButtonMoreImage = outputDocument.createElement("img");
+							tmpBuildingBuildButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButtonMoreImage.src = BuildingMenuSingleBuildingBuildImagePath;
+							var tmpBuildingBuildButtonMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingBuildButtonMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingBuildButtonMoreSubtext.innerHTML = BuildingsBuildMoreAmount;
 						
-							tmpBuildingBuildButton5.append(tmpBuildingBuildButton5Image);
-							tmpBuildingBuildButton5.append(tmpBuildingBuildButton5Subtext);
-						var tmpBuildingBuildButton25 = outputDocument.createElement("button");
-						tmpBuildingBuildButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingBuildButton25.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
-							var tmpBuildingBuildButton25Image = outputDocument.createElement("img");
-							tmpBuildingBuildButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingBuildButton25Image.src = BuildingMenuSingleBuildingBuildImagePath;
-							var tmpBuildingBuildButton25Subtext = outputDocument.createElement("span");
-							tmpBuildingBuildButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingBuildButton25Subtext.innerHTML = "25";
+							tmpBuildingBuildButtonMore.append(tmpBuildingBuildButtonMoreImage);
+							tmpBuildingBuildButtonMore.append(tmpBuildingBuildButtonMoreSubtext);
+						var tmpBuildingBuildButtonEvenMore = outputDocument.createElement("button");
+						tmpBuildingBuildButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingBuildButtonEvenMore.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildEvenMoreAmount);};
+							var tmpBuildingBuildButtonEvenMoreImage = outputDocument.createElement("img");
+							tmpBuildingBuildButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingBuildButtonEvenMoreImage.src = BuildingMenuSingleBuildingBuildImagePath;
+							var tmpBuildingBuildButtonEvenMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingBuildButtonEvenMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingBuildButtonEvenMoreSubtext.innerHTML = BuildingsBuildEvenMoreAmount;
 						
-							tmpBuildingBuildButton25.append(tmpBuildingBuildButton25Image);
-							tmpBuildingBuildButton25.append(tmpBuildingBuildButton25Subtext);
+							tmpBuildingBuildButtonEvenMore.append(tmpBuildingBuildButtonEvenMoreImage);
+							tmpBuildingBuildButtonEvenMore.append(tmpBuildingBuildButtonEvenMoreSubtext);
 						
-						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton1);
-						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton5);
-						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButton25);
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButtonSingle);
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButtonMore);
+						tmpBuildingBuildButtonsContainer.append(tmpBuildingBuildButtonEvenMore);
 					
 					var tmpBuildingDemolishButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingDemolishButtonsContainer.className = BuildingMenuSingleBuildingDemolishButtonsContainerClass;
-						var tmpBuildingDemolishButton1 = outputDocument.createElement("button");
-						tmpBuildingDemolishButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDemolishButton1.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
-							var tmpBuildingDemolishButton1Image = outputDocument.createElement("img");
-							tmpBuildingDemolishButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDemolishButton1Image.src = BuildingMenuSingleBuildingDemolishImagePath;
+						var tmpBuildingDemolishButtonSingle = outputDocument.createElement("button");
+						tmpBuildingDemolishButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButtonSingle.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingDemolishButtonSingleImage = outputDocument.createElement("img");
+							tmpBuildingDemolishButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButtonSingleImage.src = BuildingMenuSingleBuildingDemolishImagePath;
 						
-							tmpBuildingDemolishButton1.append(tmpBuildingDemolishButton1Image);
-						var tmpBuildingDemolishButton5 = outputDocument.createElement("button");
-						tmpBuildingDemolishButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDemolishButton5.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
-							var tmpBuildingDemolishButton5Image = outputDocument.createElement("img");
-							tmpBuildingDemolishButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDemolishButton5Image.src = BuildingMenuSingleBuildingDemolishImagePath;
-							var tmpBuildingDemolishButton5Subtext = outputDocument.createElement("span");
-							tmpBuildingDemolishButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingDemolishButton5Subtext.innerHTML = "5";
+							tmpBuildingDemolishButtonSingle.append(tmpBuildingDemolishButtonSingleImage);
+						var tmpBuildingDemolishButtonMore = outputDocument.createElement("button");
+						tmpBuildingDemolishButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButtonMore.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildMoreAmount);};
+							var tmpBuildingDemolishButtonMoreImage = outputDocument.createElement("img");
+							tmpBuildingDemolishButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButtonMoreImage.src = BuildingMenuSingleBuildingDemolishImagePath;
+							var tmpBuildingDemolishButtonMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingDemolishButtonMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDemolishButtonMoreSubtext.innerHTML = BuildingsBuildMoreAmount;
 						
-							tmpBuildingDemolishButton5.append(tmpBuildingDemolishButton5Image);
-							tmpBuildingDemolishButton5.append(tmpBuildingDemolishButton5Subtext);
-						var tmpBuildingDemolishButton25 = outputDocument.createElement("button");
-						tmpBuildingDemolishButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDemolishButton25.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
-							var tmpBuildingDemolishButton25Image = outputDocument.createElement("img");
-							tmpBuildingDemolishButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDemolishButton25Image.src = BuildingMenuSingleBuildingDemolishImagePath;
-							var tmpBuildingDemolishButton25Subtext = outputDocument.createElement("span");
-							tmpBuildingDemolishButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingDemolishButton25Subtext.innerHTML = "25";
+							tmpBuildingDemolishButtonMore.append(tmpBuildingDemolishButtonMoreImage);
+							tmpBuildingDemolishButtonMore.append(tmpBuildingDemolishButtonMoreSubtext);
+						var tmpBuildingDemolishButtonEvenMore = outputDocument.createElement("button");
+						tmpBuildingDemolishButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDemolishButtonEvenMore.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildEvenMoreAmount);};
+							var tmpBuildingDemolishButtonEvenMoreImage = outputDocument.createElement("img");
+							tmpBuildingDemolishButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDemolishButtonEvenMoreImage.src = BuildingMenuSingleBuildingDemolishImagePath;
+							var tmpBuildingDemolishButtonEvenMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingDemolishButtonEvenMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDemolishButtonEvenMoreSubtext.innerHTML = BuildingsBuildEvenMoreAmount;
 						
-							tmpBuildingDemolishButton25.append(tmpBuildingDemolishButton25Image);
-							tmpBuildingDemolishButton25.append(tmpBuildingDemolishButton25Subtext);
+							tmpBuildingDemolishButtonEvenMore.append(tmpBuildingDemolishButtonEvenMoreImage);
+							tmpBuildingDemolishButtonEvenMore.append(tmpBuildingDemolishButtonEvenMoreSubtext);
 						
-						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton1);
-						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton5);
-						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButton25);
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButtonSingle);
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButtonMore);
+						tmpBuildingDemolishButtonsContainer.append(tmpBuildingDemolishButtonEvenMore);
 					
 					var tmpBuildingBuildDemolishButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingBuildDemolishButtonsContainer.className = BuildingMenuSingleBuildingBuildDemolishButtonsContainerClass;
@@ -913,6 +914,10 @@ function interfaceInitBuildingsList(outputDocument){
 						tmpBuildingBuildDemolishCustomAmountInput.step = 1;
 						tmpBuildingBuildDemolishCustomAmountInput.value = BuildingsBulkBuyAmount;
 						tmpBuildingBuildDemolishCustomAmountInput.id = BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + tmpBuilding.index;
+						
+						
+						
+						
 						var tmpBuildingDemolishCustomAmountButton = outputDocument.createElement("button");
 						tmpBuildingDemolishCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDemolishCustomAmountButton.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
@@ -933,80 +938,80 @@ function interfaceInitBuildingsList(outputDocument){
 				tmpBuildingUpgradeDowngradeContainer.className = BuildingMenuSingleBuildingUpgradeDowngradeContainerClass;
 					var tmpBuildingUpgradeButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingUpgradeButtonsContainer.className = BuildingMenuSingleBuildingUpgradeButtonsContainerClass;
-						var tmpBuildingUpgradeButton1 = outputDocument.createElement("button");
-						tmpBuildingUpgradeButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingUpgradeButton1.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
-							var tmpBuildingUpgradeButton1Image = outputDocument.createElement("img");
-							tmpBuildingUpgradeButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingUpgradeButton1Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
+						var tmpBuildingUpgradeButtonSingle = outputDocument.createElement("button");
+						tmpBuildingUpgradeButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButtonSingle.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingUpgradeButtonSingleImage = outputDocument.createElement("img");
+							tmpBuildingUpgradeButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButtonSingleImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
 						
-							tmpBuildingUpgradeButton1.append(tmpBuildingUpgradeButton1Image);
-						var tmpBuildingUpgradeButton5 = outputDocument.createElement("button");
-						tmpBuildingUpgradeButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingUpgradeButton5.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
-							var tmpBuildingUpgradeButton5Image = outputDocument.createElement("img");
-							tmpBuildingUpgradeButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingUpgradeButton5Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
-							var tmpBuildingUpgradeButton5Subtext = outputDocument.createElement("span");
-							tmpBuildingUpgradeButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingUpgradeButton5Subtext.innerHTML = "5";
+							tmpBuildingUpgradeButtonSingle.append(tmpBuildingUpgradeButtonSingleImage);
+						var tmpBuildingUpgradeButtonMore = outputDocument.createElement("button");
+						tmpBuildingUpgradeButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButtonMore.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeMoreAmount);};
+							var tmpBuildingUpgradeButtonMoreImage = outputDocument.createElement("img");
+							tmpBuildingUpgradeButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButtonMoreImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
+							var tmpBuildingUpgradeButtonMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingUpgradeButtonMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingUpgradeButtonMoreSubtext.innerHTML = BuildingsUpgradeMoreAmount;
 						
-							tmpBuildingUpgradeButton5.append(tmpBuildingUpgradeButton5Image);
-							tmpBuildingUpgradeButton5.append(tmpBuildingUpgradeButton5Subtext);
-						var tmpBuildingUpgradeButton25 = outputDocument.createElement("button");
-						tmpBuildingUpgradeButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingUpgradeButton25.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
-							var tmpBuildingUpgradeButton25Image = outputDocument.createElement("img");
-							tmpBuildingUpgradeButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingUpgradeButton25Image.src = BuildingMenuSingleBuildingUpgradeImagePath;
-							var tmpBuildingUpgradeButton25Subtext = outputDocument.createElement("span");
-							tmpBuildingUpgradeButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingUpgradeButton25Subtext.innerHTML = "25";
+							tmpBuildingUpgradeButtonMore.append(tmpBuildingUpgradeButtonMoreImage);
+							tmpBuildingUpgradeButtonMore.append(tmpBuildingUpgradeButtonMoreSubtext);
+						var tmpBuildingUpgradeButtonEvenMore = outputDocument.createElement("button");
+						tmpBuildingUpgradeButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingUpgradeButtonEvenMore.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeEvenMoreAmount);};
+							var tmpBuildingUpgradeButtonEvenMoreImage = outputDocument.createElement("img");
+							tmpBuildingUpgradeButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingUpgradeButtonEvenMoreImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
+							var tmpBuildingUpgradeButtonEvenMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingUpgradeButtonEvenMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingUpgradeButtonEvenMoreSubtext.innerHTML = BuildingsUpgradeEvenMoreAmount;
 						
-							tmpBuildingUpgradeButton25.append(tmpBuildingUpgradeButton25Image);
-							tmpBuildingUpgradeButton25.append(tmpBuildingUpgradeButton25Subtext);
+							tmpBuildingUpgradeButtonEvenMore.append(tmpBuildingUpgradeButtonEvenMoreImage);
+							tmpBuildingUpgradeButtonEvenMore.append(tmpBuildingUpgradeButtonEvenMoreSubtext);
 						
-						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton1);
-						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton5);
-						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButton25);
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButtonSingle);
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButtonMore);
+						tmpBuildingUpgradeButtonsContainer.append(tmpBuildingUpgradeButtonEvenMore);
 					var tmpBuildingDowngradeButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingDowngradeButtonsContainer.className = BuildingMenuSingleBuildingDowngradeButtonsContainerClass;
-						var tmpBuildingDowngradeButton1 = outputDocument.createElement("button");
-						tmpBuildingDowngradeButton1.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDowngradeButton1.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
-							var tmpBuildingDowngradeButton1Image = outputDocument.createElement("img");
-							tmpBuildingDowngradeButton1Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDowngradeButton1Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
+						var tmpBuildingDowngradeButtonSingle = outputDocument.createElement("button");
+						tmpBuildingDowngradeButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButtonSingle.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
+							var tmpBuildingDowngradeButtonSingleImage = outputDocument.createElement("img");
+							tmpBuildingDowngradeButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButtonSingleImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
 						
-							tmpBuildingDowngradeButton1.append(tmpBuildingDowngradeButton1Image);
-						var tmpBuildingDowngradeButton5 = outputDocument.createElement("button");
-						tmpBuildingDowngradeButton5.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDowngradeButton5.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 5);};
-							var tmpBuildingDowngradeButton5Image = outputDocument.createElement("img");
-							tmpBuildingDowngradeButton5Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDowngradeButton5Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
-							var tmpBuildingDowngradeButton5Subtext = outputDocument.createElement("span");
-							tmpBuildingDowngradeButton5Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingDowngradeButton5Subtext.innerHTML = "5";
+							tmpBuildingDowngradeButtonSingle.append(tmpBuildingDowngradeButtonSingleImage);
+						var tmpBuildingDowngradeButtonMore = outputDocument.createElement("button");
+						tmpBuildingDowngradeButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButtonMore.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeMoreAmount);};
+							var tmpBuildingDowngradeButtonMoreImage = outputDocument.createElement("img");
+							tmpBuildingDowngradeButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButtonMoreImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
+							var tmpBuildingDowngradeButtonMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingDowngradeButtonMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDowngradeButtonMoreSubtext.innerHTML = BuildingsUpgradeMoreAmount;
 						
-							tmpBuildingDowngradeButton5.append(tmpBuildingDowngradeButton5Image);
-							tmpBuildingDowngradeButton5.append(tmpBuildingDowngradeButton5Subtext);
-						var tmpBuildingDowngradeButton25 = outputDocument.createElement("button");
-						tmpBuildingDowngradeButton25.className = BuildingMenuSingleBuildingSingleButtonClass;
-						tmpBuildingDowngradeButton25.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 25);};
-							var tmpBuildingDowngradeButton25Image = outputDocument.createElement("img");
-							tmpBuildingDowngradeButton25Image.className = BuildingMenuSingleBuildingSingleButtonImageClass;
-							tmpBuildingDowngradeButton25Image.src = BuildingMenuSingleBuildingDowngradeImagePath;
-							var tmpBuildingDowngradeButton25Subtext = outputDocument.createElement("span");
-							tmpBuildingDowngradeButton25Subtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
-							tmpBuildingDowngradeButton25Subtext.innerHTML = "25";
+							tmpBuildingDowngradeButtonMore.append(tmpBuildingDowngradeButtonMoreImage);
+							tmpBuildingDowngradeButtonMore.append(tmpBuildingDowngradeButtonMoreSubtext);
+						var tmpBuildingDowngradeButtonEvenMore = outputDocument.createElement("button");
+						tmpBuildingDowngradeButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
+						tmpBuildingDowngradeButtonEvenMore.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeEvenMoreAmount);};
+							var tmpBuildingDowngradeButtonEvenMoreImage = outputDocument.createElement("img");
+							tmpBuildingDowngradeButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
+							tmpBuildingDowngradeButtonEvenMoreImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
+							var tmpBuildingDowngradeButtonEvenMoreSubtext = outputDocument.createElement("span");
+							tmpBuildingDowngradeButtonEvenMoreSubtext.className = BuildingMenuSingleBuildingSingleButtonSubtextClass;
+							tmpBuildingDowngradeButtonEvenMoreSubtext.innerHTML = BuildingsUpgradeEvenMoreAmount;
 						
-							tmpBuildingDowngradeButton25.append(tmpBuildingDowngradeButton25Image);
-							tmpBuildingDowngradeButton25.append(tmpBuildingDowngradeButton25Subtext);
+							tmpBuildingDowngradeButtonEvenMore.append(tmpBuildingDowngradeButtonEvenMoreImage);
+							tmpBuildingDowngradeButtonEvenMore.append(tmpBuildingDowngradeButtonEvenMoreSubtext);
 						
-						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton1);
-						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton5);
-						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButton25);
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButtonSingle);
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButtonMore);
+						tmpBuildingDowngradeButtonsContainer.append(tmpBuildingDowngradeButtonEvenMore);
 						
 					var tmpBuildingUpgradeDowngradeButtonsContainer = outputDocument.createElement("div");
 					tmpBuildingUpgradeDowngradeButtonsContainer.className = BuildingMenuSingleBuildingUpgradeDowngradeButtonsContainerClass;
@@ -1026,6 +1031,9 @@ function interfaceInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeDowngradeCustomAmountInput.step = 1;
 						tmpBuildingUpgradeDowngradeCustomAmountInput.value = BuildingsBulkBuyAmount;
 						tmpBuildingUpgradeDowngradeCustomAmountInput.id = BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + tmpBuilding.index;
+						
+						
+						
 						var tmpBuildingDowngradeCustomAmountButton = outputDocument.createElement("button");
 						tmpBuildingDowngradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDowngradeCustomAmountButton.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
@@ -1706,6 +1714,9 @@ function interfaceBuildMenuToggleCategory(outputDocument, categoryId){
 
 function interfaceBuildMenuBulkBuyChanged(outputDocument){
 	var tmpInputValue = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value;
+	//if nothing got changed, do not recalculate
+	if(BuildingsBulkBuyAmount == tmpInputValue) return;
+	
 	if(!buildingsTrySetBulkBuyInputs(outputDocument, tmpInputValue)){
 		//if failed to set, reset value to 1
 		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
@@ -1820,7 +1831,6 @@ function interfaceRefreshPlanetOverview(outputDocument) {
 		else{
 			outputDocument.getElementById("planetOverviewMenuPlanetImage").src = PlanetImageDefaultPath + PlanetImageFallbackImage + ".png";
 		}
-		
 		
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderPlanetNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].name;
 		outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNameText").innerHTML = PlanetsArray[PlanetsCurrentPlanet].system;
@@ -2143,6 +2153,8 @@ function interfaceBuildBuilding(outputDocument, buildingListIndex, blueprintInde
 	else tmpBuildAmount = amountToBuild;
 	
 	console.log("BUILD: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpBuildAmount);
+	PlanetsArray[PlanetsCurrentPlanet].buildings[buildingListIndex].tryBuild(tmpBuildAmount);
+	console.log("");
 }
 function interfaceDemolishBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToDemolish = "input"){
 	let tmpDemolishAmount;
@@ -2160,7 +2172,10 @@ function interfaceUpgradeBuilding(outputDocument, buildingListIndex, blueprintIn
 	}
 	else tmpUpgradeAmount = amountToUpgrade;
 	
+	
 	console.log("UPGRADE: " + BuildingsArray[blueprintIndex].name + " AMOUNT: " + tmpUpgradeAmount);
+	PlanetsArray[PlanetsCurrentPlanet].buildings[buildingListIndex].tryUpgrade(tmpUpgradeAmount);
+	console.log("");
 }
 function interfaceDowngradeBuilding(outputDocument, buildingListIndex, blueprintIndex, amountToDowngrade = "input"){
 	let tmpDowngradeAmount;
@@ -3264,11 +3279,14 @@ var InterfaceBottomMessagesLifeTime = 10;
 var InterfaceBottomMessagesKeepLast = true;
 var InterfaceBottomMessagesDisplayTime = true;
 
-function interfaceAddBottomMessage(outputDocument, messageText) {
+function interfaceAddBottomMessage(outputDocument, messageText, messageExpire = -1) {
 	var tmpMessageTime = new Date().toLocaleTimeString();
-	var tmpMessageExpire = Math.round(Date.now()/1000) + InterfaceBottomMessagesLifeTime;
+	var tmpMessageExpire;
+	if(messageExpire != -1 && isNotNaN(messageExpire)) tmpMessageExpire = messageExpire;
+	else tmpMessageExpire = Math.round(Date.now()/1000) + InterfaceBottomMessagesLifeTime;
 	
 	InterfaceBottomMessagesArray.push([messageText,tmpMessageTime,tmpMessageExpire]);
+	//console.warn(messageText);
 	interfaceRefreshBottomMessages(outputDocument);
 }
 function interfaceRefreshBottomMessages(outputDocument) {
