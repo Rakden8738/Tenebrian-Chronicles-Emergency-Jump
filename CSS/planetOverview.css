@@ -391,7 +391,7 @@
 }
 #planetOverviewInfoPanelHeaderPlanetNameText{
 	font-size: 120%;
-	font-style: bold;
+	/* font-weight: bold; */
 	
 	padding: 0px;
 	
@@ -711,8 +711,6 @@
 	
 }
 
-
-
 #planetOverviewResourcesPanelProductionTable{
 	min-width: 100%;
 }
@@ -774,11 +772,11 @@
 	color: hsla(120,75%,65%,1);
 }
 .planetOverviewResourcesPanelProductionResourceImportCellText{
-	color: hsla(150,75%,65%,1);
+	color: hsla(165,75%,65%,1);
 }
 .planetOverviewResourcesPanelProductionResourceTotalGainCellText{
 	color: hsla(120,75%,65%,1);
-	font-style: bold;
+	font-weight: bold;
 }
 .planetOverviewResourcesPanelProductionResourceAverageGainCellText{
 	color: hsla(120,75%,65%,1);
@@ -795,13 +793,85 @@
 	color: hsla(0,75%,65%,1);
 }
 .planetOverviewResourcesPanelConsumptionResourceExportCellText{
-	color: hsla(30,75%,65%,1);
+	color: hsla(315,75%,65%,1);
 }
 .planetOverviewResourcesPanelConsumptionResourceTotalLossCellText{
 	color: hsla(0,75%,65%,1);
-	font-style: bold;
+	font-weight: bold;
 }
 .planetOverviewResourcesPanelConsumptionResourceAverageLossCellText{
 	color: hsla(0,75%,65%,1);
 	font-style: italic;
+}
+
+#planetOverviewResourcesPanelBalanceTable{
+	min-width: 100%;
+}
+#planetOverviewResourcesPanelBalanceTable .planetOverviewTableColumnSpacing{
+	min-width: 0.2em;
+	width: 30px;
+}
+#planetOverviewResourcesPanelBalanceTable .interfaceTableCell{
+	max-width: unset;
+}
+.planetOverviewResourcesPanelBalanceTableHeaderRow{
+	font-size: 110%;
+}
+.planetOverviewResourcesPanelBalanceTableHeaderCell{
+	padding-bottom: 6px;
+}
+.planetOverviewResourcesPanelBalanceTableHeaderCellText{
+	padding-bottom: 8px;
+}
+.planetOverviewResourcesPanelBalanceTableRow{
+	line-height: 120%;
+	font-size: 75%;
+}
+.planetOverviewResourcesPanelBalanceTableCell{}
+.planetOverviewResourcesPanelBalanceTableCellText{}
+
+.planetOverviewResourcesPanelBalanceResourceNameCell{
+	text-align: left;
+}
+.planetOverviewResourcesPanelBalanceResourceNameCellText{
+	margin-left: 4px;
+}
+.planetOverviewResourcesPanelBalanceResourceAmountCell{
+	text-align: center;
+}
+.planetOverviewResourcesPanelBalanceResourceAmountCellText{
+	color: hsla(0, 0%, 100%, 1);
+}
+
+.planetOverviewResourcesPanelBalanceResourceLocalCell, .planetOverviewResourcesPanelBalanceResourceRoutesCell, .planetOverviewResourcesPanelBalanceResourceBalanceCell{
+	text-align: right;
+}
+.planetOverviewResourcesPanelBalanceResourceLocalCellText, .planetOverviewResourcesPanelBalanceResourceRoutesCellText, .planetOverviewResourcesPanelBalanceResourceBalanceCellText{
+	margin-right: 2px;
+}
+.planetOverviewResourcesPanelBalanceResourceLocalCellText, .planetOverviewResourcesPanelBalanceResourceRoutesCellText, .planetOverviewResourcesPanelBalanceResourceBalanceCellText, .planetOverviewResourcesPanelBalanceResourceTimerCellText{
+	color: hsla(0, 0%, 100%, 1);
+}
+.planetOverviewResourcesPanelBalanceResourceLocalPositive{
+	color: hsla(120,75%,65%,1);
+}
+.planetOverviewResourcesPanelBalanceResourceLocalNegative{
+	color: hsla(0,75%,65%,1);
+}
+.planetOverviewResourcesPanelBalanceResourceRoutesPositive{
+	color: hsla(150,75%,65%,1);
+}
+.planetOverviewResourcesPanelBalanceResourceRoutesNegative{
+	color: hsla(330,75%,65%,1);
+}
+.planetOverviewResourcesPanelBalanceResourceBalancePositive{
+	color: hsla(120,75%,65%,1);
+	font-weight: bold;
+}
+.planetOverviewResourcesPanelBalanceResourceBalanceNegative{
+	color: hsla(0,75%,65%,1);
+	font-weight: bold;
+}
+.planetOverviewResourcesPanelBalanceResourceTimerActive{
+	color: hsla(60, 75%, 65%, 1);
 }
