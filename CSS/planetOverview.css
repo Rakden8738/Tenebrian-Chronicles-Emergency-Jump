@@ -744,7 +744,7 @@
 
 .planetOverviewResourcesPanelProductionTableRow, .planetOverviewResourcesPanelConsumptionTableRow{
 	line-height: 120%;
-	font-size: 75%;
+	font-size: 80%;
 }
 .planetOverviewResourcesPanelProductionTableCell, .planetOverviewResourcesPanelConsumptionTableCell{}
 .planetOverviewResourcesPanelProductionTableCellText, .planetOverviewResourcesPanelConsumptionTableCellText{}
@@ -825,7 +825,7 @@
 }
 .planetOverviewResourcesPanelBalanceTableRow{
 	line-height: 120%;
-	font-size: 75%;
+	font-size: 80%;
 }
 .planetOverviewResourcesPanelBalanceTableCell{}
 .planetOverviewResourcesPanelBalanceTableCellText{}
@@ -849,7 +849,7 @@
 .planetOverviewResourcesPanelBalanceResourceLocalCellText, .planetOverviewResourcesPanelBalanceResourceRoutesCellText, .planetOverviewResourcesPanelBalanceResourceBalanceCellText{
 	margin-right: 2px;
 }
-.planetOverviewResourcesPanelBalanceResourceLocalCellText, .planetOverviewResourcesPanelBalanceResourceRoutesCellText, .planetOverviewResourcesPanelBalanceResourceBalanceCellText, .planetOverviewResourcesPanelBalanceResourceTimerCellText{
+.planetOverviewResourcesPanelBalanceResourceLocalCellText, .planetOverviewResourcesPanelBalanceResourceRoutesCellText, .planetOverviewResourcesPanelBalanceResourceBalanceCellText{
 	color: hsla(0, 0%, 100%, 1);
 }
 .planetOverviewResourcesPanelBalanceResourceLocalPositive{
@@ -872,6 +872,24 @@
 	color: hsla(0,75%,65%,1);
 	font-weight: bold;
 }
-.planetOverviewResourcesPanelBalanceResourceTimerActive{
-	color: hsla(60, 75%, 65%, 1);
+
+.planetOverviewResourcesPanelBalanceResourceTimerCell{
+	text-align: right;
 }
+.planetOverviewResourcesPanelBalanceResourceTimerInactive{
+	/* text-align: center; */
+}
+.planetOverviewResourcesPanelBalanceResourceTimerActive .planetOverviewResourcesPanelBalanceResourceTimerCellText{
+	color: hsla(60, 75%, 65%, 1);
+	margin-right: 2px;
+}
+.planetOverviewResourcesPanelBalanceResourceTimerInactive .planetOverviewResourcesPanelBalanceResourceTimerCellText{
+	color: hsla(0, 0%, 100%, 1);
+	margin-right: 6px;
+}
+/* .planetOverviewResourcesPanelBalanceResourceTimerActiveCell{ */
+	/* /* color: hsla(60, 75%, 65%, 1); */ */
+/* } */
+/* .planetOverviewResourcesPanelBalanceResourceTimerActiveCell{ */
+	/* color: hsla(60, 75%, 65%, 1); */
+/* } */
