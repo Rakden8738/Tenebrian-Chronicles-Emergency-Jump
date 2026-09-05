@@ -168,6 +168,10 @@ class PlanetObject{
 		this.resourceStorage = resourcesCreateEmptyStorageResourcesArray();
 		this.resourceProduction = resourcesCreateEmptyStorageResourcesArray();
 		this.resourceConsumption = resourcesCreateEmptyStorageResourcesArray();
+		
+		this.routesImport = resourcesCreateEmptyStorageResourcesArray();
+		this.routesExport = resourcesCreateEmptyStorageResourcesArray();
+		
 	}
 	
 	name = "Unknown planet";
@@ -210,6 +214,10 @@ class PlanetObject{
 	resourceStorage = [];
 	resourceProduction = [];
 	resourceConsumption = [];
+	
+	//routes
+	routesImport = [];
+	routesExport = [];
 	
 	//energy
 	energyAvailable = 0;

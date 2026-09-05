@@ -10,6 +10,11 @@ function connectionTest_resources(outputDocument){
 
 var ResourcesArray = [];
 var ResourcesNamesArray = [];
+var ResourcesNamesSortedArray = [];
+var ResourcesNamesSortedArrayIndexes = [];
+
+var ResourceNamesDisplayInAlphabeticalOrder = true;
+
 var ResourceCategories = ["Raw resources", "Construction", "Refined Resources", "Electronics", "Carbons", "Fuels", "Nuclear", "Advanced Resources", "Reagents", "Military", "Other"];
 
 var ResourcesDefaultSellDowngradeRefundRatio = 0.75;
@@ -103,9 +108,19 @@ class ResourceProductionConsumptionObject{
 
 function resourcesRefreshResources(){
 	ResourcesNamesArray = [];
+	ResourcesNamesSortedArray = [];
+	ResourcesNamesSortedArrayIndexes = [];
+	
 	for(let i = 0; i < ResourcesArray.length; i++){
 		ResourcesNamesArray.push(ResourcesArray[i].name);
+		ResourcesNamesSortedArray.push(ResourcesArray[i].name);
 	}
+	
+	ResourcesNamesSortedArray.sort();
+	for(let i = 0; i < ResourcesNamesSortedArray.length; i++){
+		ResourcesNamesSortedArrayIndexes.push(ResourcesNamesArray.indexOf(ResourcesNamesSortedArray[i]));
+	}
+	
 }
 
 function resourcesCreateEmptyNaturalResourcesArray(){
@@ -375,6 +390,17 @@ function resourcesCopyCostArray(resourceArrayCost){
 		newArray[i].linearCostIncrease = resourceArrayCost[i].linearCostIncrease ;
 	}
 	return newArray;	
+}
+function resourcesCopyProductionConsumptionArray(resourceArrayProductionConsumption){
+	let newArray = resourcesCreateEmptyProductionConsumptionResourcesArray();
+	for(let i = 0; i < resourceArrayProductionConsumption.length; i++){
+		newArray[i].amount = resourceArrayProductionConsumption[i].amount;
+		newArray[i].buildAmountIncrease = resourceArrayProductionConsumption[i].buildAmountIncrease;
+		newArray[i].buildLinearAmountIncrease = resourceArrayProductionConsumption[i].buildLinearAmountIncrease;
+		newArray[i].upgradeAmountIncrease = resourceArrayProductionConsumption[i].upgradeAmountIncrease;
+		newArray[i].upgradeLinearAmountIncrease = resourceArrayProductionConsumption[i].upgradeLinearAmountIncrease;
+	}
+	return newArray;
 }
 
 function resourcesGetSumCosts(resourceArrayCostsArray){

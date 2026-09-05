@@ -333,6 +333,30 @@
 
 #planetBuildingInfoPanelRequiredResourcesTableBody{}
 
+.planetBuildingInfoPanelResourceListTableHeaderRow{
+	
+}
+.planetBuildingInfoPanelResourceListTableHiddenRow{
+	display: none;
+}
+.planetBuildingInfoPanelResourceListTableRowGoingPositive{
+	background: linear-gradient(270deg, hsla(120, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+.planetBuildingInfoPanelResourceListTableRowGoingNegative{
+	background: linear-gradient(270deg, hsla(0, 100%, 50%, 0.2) 0px, transparent 80%);
+}
+
+
+.planetBuildingInfoPanelResourceListTableHeaderCell{
+	text-align: left;
+	font-size: 120%;
+	padding-left: 5px;
+}
+.planetBuildingInfoPanelResourceListTableHeaderText{
+	font-style: italic;
+	color: hsla(0,0%,60%,0.8);
+}
+
 .planetBuildingInfoPanelResourceNameCell{
 	text-align: left;
 	/* font-size: 110%; */
@@ -359,14 +383,16 @@
 	text-align: right;
 }
 .planetBuildingInfoPanelResourceChangeText{
-	color: hsla(180,0%,75%,0.8);
+	color: hsla(0,0%,100%,0.8);
 }
+.planetBuildingInfoPanelResourceImportExportCell{
+	text-align: right;
+}
+.planetBuildingInfoPanelResourceImportExportText{}
 .planetBuildingInfoPanelResourceResultCell{
 	text-align: right;
 }
-.planetBuildingInfoPanelResourceResultText{
-	
-}
+.planetBuildingInfoPanelResourceResultText{}
 
 .planetBuildingInfoPanelResourcePositiveCell{}
 .planetBuildingInfoPanelResourcePositiveText{
@@ -380,14 +406,23 @@
 .planetBuildingInfoPanelResourceNegativeText{
 	color: hsla(0,75%,65%,1);
 }
-.planetBuildingInfoPanelResourceImportCell{}
+.planetBuildingInfoPanelResourceImportExportText.planetBuildingInfoPanelResourcePositiveText{
+	color: hsla(150,75%,65%,1);
+}
+.planetBuildingInfoPanelResourceImportExportText.planetBuildingInfoPanelResourceNeutralText{
+	color: hsla(30,75%,65%,1);
+}
+.planetBuildingInfoPanelResourceImportExportText.planetBuildingInfoPanelResourceNegativeText{
+	color: hsla(330,75%,65%,1);
+}
+/* .planetBuildingInfoPanelResourceImportCell{}
 .planetBuildingInfoPanelResourceImportText{
 	color: hsla(150,75%,65%,1);
 }
 .planetBuildingInfoPanelResourceExportCell{}
 .planetBuildingInfoPanelResourceExportText{
 	color: hsla(330,75%,65%,1);
-}
+} */
 
 .planetBuildingInfoPanelResourceAfterNameSpacing{
 	max-width: 2em;
@@ -474,7 +509,7 @@
 }
 #planetBuildingInfoPanelAvailableResourcesTable{}
 #planetBuildingInfoPanelAvailableResourcesTable tr{
-	font-size: 80%;
+	/* font-size: 80%; */
 }
 #planetBuildingInfoPanelAvailableResourcesTable td{}
 #planetBuildingInfoPanelAvailableResourcesTable span{}

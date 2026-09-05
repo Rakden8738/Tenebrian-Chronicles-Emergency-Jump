@@ -217,49 +217,65 @@ class BuildingBlueprintObject{
 		return false;
 	}
 	
+	getBaseProduction(){
+		return resourcesCopyProductionConsumptionArray(this.resourcesProduced);
+	}
+	getBaseConsumption(){
+		return resourcesCopyProductionConsumptionArray(this.resourcesConsumed);
+	}
+	getBuildingProduction(buildingCount, buildingUpgrades){
+		let tmpArray = resourcesCopyProductionConsumptionArray(this.resourcesProduced);
+		for(let i = 0; i < tmpArray.length; i++){
+			if(!tmpArray[i].buildLinearAmountIncrease){
+				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,buildingCount);
+			}
+			if(!tmpArray[i].upgradeLinearAmountIncrease){
+				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,buildingUpgrades);
+			}
+		}
+		return tmpArray;
+	}
+	getBuildingConsumption(buildingCount, buildingUpgrades){
+		let tmpArray = resourcesCopyProductionConsumptionArray(this.resourcesConsumed);
+		for(let i = 0; i < tmpArray.length; i++){
+			if(!tmpArray[i].buildLinearAmountIncrease){
+				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,buildingCount);
+			}
+			if(!tmpArray[i].upgradeLinearAmountIncrease){
+				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,buildingUpgrades);
+			}
+		}
+		return tmpArray;
+	}
+	
+	
 	calculateBuildCost(startAmount, targetAmount){
-		if(startAmount >= targetAmount) return resourcesCreateEmptyCostResourcesArray();	//or return demolish cost?
+		if(startAmount > targetAmount) return this.calculateDemolishRefund(startAmount, targetAmount);	//or return demolish cost?
 		
 		let tmpBuildCost = resourcesCopyCostArray(this.baseBuildCost); // resourcesCreateEmptyCostResourcesArray();
 		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
 		
+		if(startAmount == targetAmount) return tmpTotalCost;
+		
 		for(let i = 0; i < this.baseBuildCost.length; i++){
 			if(this.baseBuildCost[i].cost == 0.0) continue;
-			/* tmpBuildCost[i].cost = this.baseBuildCost[i].cost;
-			tmpBuildCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
-			tmpBuildCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
-			tmpBuildCost[i].refund = this.baseBuildCost[i].refund; */
-			
 			tmpTotalCost[i].costIncrease = this.baseBuildCost[i].costIncrease;
 			tmpTotalCost[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
 			tmpTotalCost[i].refund = this.baseBuildCost[i].refund;
 		}
-		
 		if(targetAmount > startAmount){
 			for(let j = 0; j < targetAmount; j++){
 				if(j >= startAmount){
 					//add cost at current amount (starting with 0, finishing at target-1)
 					for(let i = 0; i < this.baseBuildCost.length; i++){
 						//if cost == 0, skip it
-						if(this.baseBuildCost[i].cost == 0.0) continue;
-						
+						if(this.baseBuildCost[i].cost == 0.0) continue;		
 						tmpTotalCost[i].cost += tmpBuildCost[i].cost;
 					}
 				}
-				
 				//increase cost of next building
 				resourcesLevelUpCost(tmpBuildCost);
-				/* for(let i = 0; i < this.baseBuildCost.length; i++){
-					if(this.baseBuildCost[i].cost == 0.0) continue;
-					
-					//if linear for this resource, keep same
-					if(this.baseBuildCost[i].linearCostIncrease) continue;
-					
-					//otherwise multiply cost by the increase multiplier
-					tmpBuildCost[i].cost *= tmpBuildCost[i].costIncrease;
-				} */
 			}
-			
 			//rounding, just in case
 			for(let i = 0; i < this.baseBuildCost.length; i++){
 				if(this.baseBuildCost[i].cost == 0.0) continue;
@@ -269,7 +285,6 @@ class BuildingBlueprintObject{
 				
 				tmpTotalCost[i].cost = (Math.floor(tmpTotalCost[i].cost*100))/100;
 			}
-			
 			return tmpTotalCost;
 		}
 		else{
@@ -278,23 +293,19 @@ class BuildingBlueprintObject{
 	}
 	calculateUpgradeCost(startLevel, targetLevel){
 		
-		if(startLevel >= targetLevel) return resourcesCreateEmptyCostResourcesArray();	//or return downgrade cost?
+		if(startLevel > targetLevel) return this.calculateDowngradeRefund(startLevel, targetLevel);
 		
 		let tmpUpgradeCost = resourcesCopyCostArray(this.baseUpgradeCost);// resourcesCreateEmptyCostResourcesArray();
 		let tmpTotalCost = resourcesCreateEmptyCostResourcesArray();
 		
+		if(startLevel == targetLevel) return tmpTotalCost;
+		
 		for(let i = 0; i < this.baseUpgradeCost.length; i++){
 			if(this.baseUpgradeCost[i].cost == 0.0) continue;
-			/* tmpUpgradeCost[i].cost = this.baseUpgradeCost[i].cost;
-			tmpUpgradeCost[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
-			tmpUpgradeCost[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
-			tmpUpgradeCost[i].refund = this.baseUpgradeCost[i].refund; */
-			
 			tmpTotalCost[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
 			tmpTotalCost[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
 			tmpTotalCost[i].refund = this.baseUpgradeCost[i].refund;
 		}
-		
 		if(targetLevel > startLevel){
 			for(let j = 0; j < targetLevel; j++){
 				if(j >= startLevel){
@@ -302,40 +313,115 @@ class BuildingBlueprintObject{
 					for(let i = 0; i < this.baseUpgradeCost.length; i++){
 						//if cost == 0, skip it
 						if(this.baseUpgradeCost[i].cost == 0.0) continue;
-						
 						tmpTotalCost[i].cost += tmpUpgradeCost[i].cost;
 					}
 				}
-				
 				//increase cost of next upgrade
 				resourcesLevelUpCost(tmpUpgradeCost);
-				/* for(let i = 0; i < this.baseUpgradeCost.length; i++){
-					//if cost == 0, skip it
-					if(this.baseUpgradeCost[i].cost == 0.0) continue;
-					//if linear for this resource, keep same
-					if(this.baseUpgradeCost[i].linearCostIncrease) continue;
-					
-					//otherwise multiply cost by the increase multiplier
-					tmpUpgradeCost[i].cost *= tmpUpgradeCost[i].costIncrease;
-				} */
 			}
-			
 			//rounding, just in case
 			for(let i = 0; i < this.baseBuildCost.length; i++){
 				if(this.baseUpgradeCost[i].cost == 0.0) continue;
-				
 				//if linear for this resource, keep same - especially if it is very small but important cost
 				if(this.baseUpgradeCost[i].linearCostIncrease) continue;
-				
 				tmpTotalCost[i].cost = (Math.floor(tmpTotalCost[i].cost*100))/100;
 			}
-			
 			return tmpTotalCost;
 		}
 		else{
 			return false;
 		}
 	}
+	
+	calculateDemolishRefund(startAmount, targetAmount){
+		if(startAmount < targetAmount) return this.calculateBuildCost(startAmount, targetAmount);
+		
+		let tmpDemolishRefund = resourcesCopyCostArray(this.baseBuildCost); 
+		let tmpTotalRefund = resourcesCreateEmptyCostResourcesArray();
+		
+		if(startAmount == targetAmount) return tmpTotalRefund;
+		
+		for(let i = 0; i < this.baseBuildCost.length; i++){
+			if(this.baseBuildCost[i].cost == 0.0) continue;
+			tmpTotalRefund[i].costIncrease = this.baseBuildCost[i].costIncrease;
+			tmpTotalRefund[i].linearCostIncrease = this.baseBuildCost[i].linearCostIncrease;
+			tmpTotalRefund[i].refund = this.baseBuildCost[i].refund;
+		}
+		
+		for(let j = 0; j < startAmount; j++){
+			if(j >= targetAmount){
+				//add cost of next building (from 0, finishing at current - 1)
+				for(let i = 0; i < this.baseBuildCost.length; i++){
+					//if cost == 0, skip it
+					if(this.baseBuildCost[i].cost == 0.0) continue;		
+					tmpTotalRefund[i].cost += tmpDemolishRefund[i].cost;
+				}
+			}
+			//increase cost/refund of next building
+			resourcesLevelUpCost(tmpDemolishRefund);
+		}
+		//apply refund penalty
+		for(let i = 0; i < this.baseBuildCost.length; i++){
+			tmpTotalRefund[i].cost *= tmpTotalRefund[i].refund;
+		}
+		//rounding, just in case
+		for(let i = 0; i < this.baseBuildCost.length; i++){
+			if(this.baseBuildCost[i].cost == 0.0) continue;
+			
+			//if linear for this resource, keep same - especially if it is very small but important cost
+			if(this.baseBuildCost[i].linearCostIncrease) continue;
+			
+			tmpTotalRefund[i].cost = (Math.floor(tmpTotalRefund[i].cost*100))/100;
+		}
+		
+		//returns only demolish refund, doesn't include upgrade refund
+		return tmpTotalRefund;
+	}
+	calculateDowngradeRefund(startLevel, targetLevel){
+		if(startLevel < targetLevel) return this.calculateUpgradeCost(startLevel, targetLevel);
+		
+		let tmpDowngradeRefund = resourcesCopyCostArray(this.baseUpgradeCost); 
+		let tmpTotalRefund = resourcesCreateEmptyCostResourcesArray();
+		
+		if(startLevel == targetLevel) return tmpTotalCost;
+		
+		for(let i = 0; i < this.baseUpgradeCost.length; i++){
+			if(this.baseUpgradeCost[i].cost == 0.0) continue;
+			tmpTotalRefund[i].costIncrease = this.baseUpgradeCost[i].costIncrease;
+			tmpTotalRefund[i].linearCostIncrease = this.baseUpgradeCost[i].linearCostIncrease;
+			tmpTotalRefund[i].refund = this.baseUpgradeCost[i].refund;
+		}
+		
+		for(let j = 0; j < startLevel; j++){
+			if( j >= targetLevel){
+				//add cost of next upgrade (from 0, finishing at current - 1)
+				for(let i = 0; i < this.baseUpgradeCost.length; i++){
+					//if cost == 0, skip it
+					if(this.baseUpgradeCost[i].cost == 0.0) continue;
+					tmpTotalRefund[i].cost += tmpDowngradeRefund[i].cost;
+				}
+			}
+			//increase cost/refund of next building
+			resourcesLevelUpCost(tmpDowngradeRefund);
+		}
+		//apply refund penalty
+		for(let i = 0; i < this.baseUpgradeCost.length; i++){
+			tmpTotalRefund[i].cost *= tmpTotalRefund[i].refund;
+		}
+		//rounding, just in case
+		for(let i = 0; i < this.baseUpgradeCost.length; i++){
+			if(this.baseUpgradeCost[i].cost == 0.0) continue;
+			
+			//if linear for this resource, keep same - especially if it is very small but important cost
+			if(this.baseUpgradeCost[i].linearCostIncrease) continue;
+			
+			tmpTotalRefund[i].cost = (Math.floor(tmpTotalRefund[i].cost*100))/100;
+		}
+		
+		//returns only downgrade refund, doesn't include amount of buildings
+		return tmpTotalRefund;
+	}
+	
 }
 class BuildingObject{
 	index = -1;
@@ -384,14 +470,15 @@ class BuildingObject{
 	enabled = true;
 	folded = false;
 	
+	//init starting upgrade/build prices and 0-amount refunds
 	initBuilding(){
 		this.initBuildCost();
 		this.initUpgradeCost();
+		this.initDemolishRefund();
+		this.initDowngradeRefund();
 		
-		this.refreshTotalBuildCost();
-		this.refreshTotalUpgradeCost();
+		this.refreshProductionAndConsumption();
 	}
-	
 	initBuildCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
@@ -400,7 +487,7 @@ class BuildingObject{
 		this.nextBuildCostEvenMore = tmpBlueprintObject.calculateBuildCost(0, BuildingsBuildEvenMoreAmount);
 		
 		this.nextBuildCostCustom = tmpBlueprintObject.calculateBuildCost(0, this.customBuildDemolishAmount);
-		
+		this.refreshTotalBuildCost();
 	}
 	initUpgradeCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
@@ -412,7 +499,36 @@ class BuildingObject{
 		this.nextUpgradeCostCustom = tmpBlueprintObject.calculateUpgradeCost(0, this.customUpgradeDowngradeAmount);
 		
 		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, 0);
+		this.refreshTotalUpgradeCost();
+	}
+	
+	initDemolishRefund(){
 		
+		this.nextDemolishRefund =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDemolishRefundMore =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDemolishRefundEvenMore =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDemolishRefundCustom =  resourcesCreateEmptyCostResourcesArray();
+		
+	}
+	initDowngradeRefund(){
+		this.nextDowngradeRefund =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDowngradeRefundMore =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDowngradeRefundEvenMore =  resourcesCreateEmptyCostResourcesArray();
+		this.nextDowngradeRefundCustom =  resourcesCreateEmptyCostResourcesArray();
+	
+	}
+	
+	refreshBuilding(){
+		this.refreshProductionAndConsumption();
+		this.refreshAllCostsAndRefunds();
+	}
+	
+	//get costs/refunds based on current count and level
+	refreshAllCostsAndRefunds(){
+		this.refreshBuildCost();
+		this.refreshUpgradeCost();
+		this.refreshDemolishRefund();
+		this.refreshDowngradeRefund();
 	}
 	
 	refreshBuildCost(){
@@ -436,19 +552,61 @@ class BuildingObject{
 		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level - 1, this.level);
 	}
 	
+	refreshDemolishRefund(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextDemolishRefund = tmpBlueprintObject.calculateDemolishRefund(this.count - 1, this.count);
+		this.nextDemolishRefundMore = tmpBlueprintObject.calculateDemolishRefund(this.count - BuildingsBuildMoreAmount, this.count);
+		this.nextDemolishRefundEvenMore = tmpBlueprintObject.calculateDemolishRefund(this.count - BuildingsBuildEvenMoreAmount, this.count);
+		
+		this.nextDemolishRefundCustom = tmpBlueprintObject.calculateDemolishRefund(this.count - this.customBuildDemolishAmount, this.count);
+	}
+	refreshDowngradeRefund(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextDowngradeRefund = tmpBlueprintObject.calculateDowngradeRefund(this.level - 1, this.level);
+		this.nextDowngradeRefundMore = tmpBlueprintObject.calculateDowngradeRefund(this.level - BuildingsUpgradeMoreAmount, this.level);
+		this.nextDowngradeRefundEvenMore = tmpBlueprintObject.calculateDowngradeRefund(this.level - BuildingsUpgradeEvenMoreAmount, this.level);
+		
+		this.nextDowngradeRefundCustom = tmpBlueprintObject.calculateDowngradeRefund(this.level - this.customUpgradeDowngradeAmount, this.level);
+		
+		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level - 1, this.level);
+	}
+	
+	//refresh only custom-amount related, for on-change event of input fields
 	refreshCustomBuildCost(tmpInputValue){
 		if(isNaN(tmpInputValue)) return false;
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextBuildCostCustom = tmpBlueprintObject.calculateBuildCost(this.count, this.count + tmpInputValue);
+		this.customBuildDemolishAmount = tmpInputValue;
 	}
 	refreshCustomUpgradeCost(tmpInputValue){
 		if(isNaN(tmpInputValue)) return false;
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
 		this.nextUpgradeCostCustom = tmpBlueprintObject.calculateUpgradeCost(this.level, this.level + tmpInputValue);
+		this.customUpgradeDowngradeAmount = tmpInputValue;
 	}
 	
+	refreshCustomDemolishReturn(tmpInputValue){
+		if(isNaN(tmpInputValue)) return false;
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextDemolishRefundCustom = tmpBlueprintObject.calculateDemolishRefund(this.count, this.count - tmpInputValue);
+		this.customBuildDemolishAmount = tmpInputValue;
+	}
+	refreshCustomDowngradeReturn(tmpInputValue){
+		if(isNaN(tmpInputValue)) return false;
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.nextDowngradeRefundCustom = tmpBlueprintObject.calculateDowngradeRefund(this.count, this.count - tmpInputValue);
+		this.customUpgradeDowngradeAmount = tmpInputValue;
+	}
+	
+	//get total build and upgrade cost for single building - for when new building gets built or when multiple are upgraded
+	//last upgrade cost is also refunded on demolish
+	//is total build cost even needed...?
 	refreshTotalBuildCost(){
 		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
 		
@@ -459,6 +617,35 @@ class BuildingObject{
 		
 		this.totalUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(0, this.level);
 	}
+	
+	//current building production
+	refreshProductionAndConsumption(){
+		this.refreshDailyProduction();
+		this.refreshDailyConsumption();
+	}
+	refreshDailyProduction(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.dailyProduction = tmpBlueprintObject.getBuildingProduction(this.count, this.level);
+	}
+	refreshDailyConsumption(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.dailyConsumption = tmpBlueprintObject.getBuildingConsumption(this.count, this.level);
+	}
+	
+	//return resource object if this building were to be built/demolished or upgraded/downgraded
+	calculateDailyProduction(targetAmount, targetLevel){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		return tmpBlueprintObject.getBuildingProduction(targetAmount, targetLevel);
+	}
+	calculateDailyConsumption(targetAmount, targetLevel){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		return tmpBlueprintObject.getBuildingConsumption(targetAmount, targetLevel);
+	}
+	
 	
 	tryBuild(tryBuildAmount = 1){
 		if(tryBuildAmount == 0) {
@@ -497,7 +684,7 @@ class BuildingObject{
 					if(tmpPartialComparsionResult != -1) {
 						console.log("Can only build it " + (i - 1) + " times.");
 						console.log("Insufficient resource: " + ResourcesNamesArray[tmpPartialComparsionResult]);
-						console.log(tmpPartialBuildCost);
+						//console.log(tmpPartialBuildCost);
 						return true;
 					}
 					

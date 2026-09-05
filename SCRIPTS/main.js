@@ -167,31 +167,61 @@ function bigNumberToString(inputNumber){
 			tmpInputNumber /= 10;
 		}
 		
-		// console.log(logBase(tmpInputNumber, 10));
 		let tmpMainOoM = Math.floor(tmpOoM/3);
-		// console.log(tmpMainOoM);
+		for(let i = 0; i < tmpMainOoM; i++) inputNumber /= 1000;
 		
+		let tmpReturnNumberSplit = inputNumber.toString().split('.');
+		let tmpReturnNumberText = "";
+		if(tmpReturnNumberSplit.length > 1){
+			tmpReturnNumberText = (tmpReturnNumberSplit[0] + '.' + tmpReturnNumberSplit[1].padEnd(2,'0').substr(0,2));
+		}
+		else{
+			 tmpReturnNumberText = (tmpReturnNumberSplit[0] + ".00");
+		}
+		
+		if(tmpMainOoM > 0){
+			if (tmpMainOoM >= mainOrdersOfMagnitudeArrayLength) {
+				tmpReturnNumberText += ('e' + (tmpMainOoM*3));
+			}
+			else{
+				tmpReturnNumberText += (' ' + mainOrdersOfMagnitudeArray[tmpMainOoM]);
+			}
+		}
+		
+		return tmpReturnNumberText;
+		
+		/*
 		if(tmpMainOoM <= 0 ){
-			return Number(inputNumber).toFixed(2);
+			
 		}
 		else if (tmpMainOoM >= mainOrdersOfMagnitudeArrayLength){
 			let tmpReturnNumber = inputNumber;
-			for(let i = 0; i < tmpMainOoM; i++) tmpReturnNumber /= 1000;
-			if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*100)/100;
-			else tmpReturnNumber = Math.ceil(tmpReturnNumber*100)/100;
+			
+			// if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*100)/100;
+			// else tmpReturnNumber = Math.ceil(tmpReturnNumber*100)/100;
+			
+			
+			
 			return (tmpReturnNumber).toFixed(2) + 'e' + (tmpMainOoM*3);
 		}
 		else{
 			let tmpReturnNumber = inputNumber;
 			for(let i = 0; i < tmpMainOoM; i++) tmpReturnNumber /= 1000;
-			if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*10)/10;
-			else tmpReturnNumber = Math.ceil(tmpReturnNumber*10)/10;
+			//if(tmpReturnNumber > 0) tmpReturnNumber = Math.floor(tmpReturnNumber*100)/100;
+			//else tmpReturnNumber = Math.ceil(tmpReturnNumber*100)/100;
 			
-			// return Number(tmpReturnNumber).toFixed(1) + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
-			// return Number(tmpReturnNumber).toFixed(1) + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
-			return (tmpReturnNumber).toFixed(2) + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
-			// return tmpReturnNumber + "&nbsp;" + mainOrdersOfMagnitudeArray[tmpMainOoM];
-		}
+			let tmpReturnNumberSplit = tmpReturnNumber.toString().split('.');
+			
+			let tmpReturnNumberText = "";
+			if(tmpReturnNumberSplit.length > 1){
+				tmpReturnNumberText = (tmpReturnNumberSplit[0] + '.' + tmpReturnNumberSplit[1].padEnd(2,'0').substr(0,1));
+			}
+			else{
+				tmpReturnNumberText = (tmpReturnNumberSplit[0] + ".00");
+			}
+			
+			return tmpReturnNumberText + " " + mainOrdersOfMagnitudeArray[tmpMainOoM];
+		}*/
 	}
 }
 

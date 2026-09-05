@@ -21,11 +21,26 @@ function scenario_earlyAlpha2(){
 	
 	SystemsHomeSystem = PlanetsArray[PlanetsHomePlanetIndex].system_id;
 	SystemsCurrentSystem = systemsGetSystemIndexById(PlanetsArray[PlanetsHomePlanetIndex].system_id);
+	
+	EarlyAlphaDebug();
 	//TimerDaysInYear = Math.round(PlanetsArray[0].orbitalPeroid);
 }
 
 //αβγδϵζηθικλμνξοπρστυϕχψω
 //ΑΒΓΔϵΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥϕΧΨΩ
+
+function EarlyAlphaDebug(){
+	
+	PlanetsArray[0].setStorageResource("Iron",1600.0);
+	PlanetsArray[0].setStorageResource("Scrap",50000.0);
+	PlanetsArray[0].setStorageResource("Steel",1600.0);
+	
+	PlanetsArray[0].buildings[0].count = 3;
+	PlanetsArray[0].buildings[0].level = 1;
+	
+	PlanetsArray[0].buildings[0].refreshBuilding();
+	//PlanetsArray[0].buildings[0].refreshAllCostsAndRefunds();
+}
 
 function earlyAlpha_Resources(){
 	var tmpResource;
@@ -36,6 +51,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [0,1];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -44,6 +60,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -52,6 +69,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -60,6 +78,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [0];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -68,6 +87,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [1,2];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -76,6 +96,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [1,2];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -84,6 +105,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [2,3];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -92,6 +114,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [1,3];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -100,6 +123,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -108,6 +132,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [4,5,8];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -116,6 +141,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 
 	tmpResource = new ResourceTypeObject();
@@ -124,6 +150,7 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [4,5];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
@@ -132,22 +159,25 @@ function earlyAlpha_Resources(){
 	tmpResource.categories = [0,8];
 	tmpResource.discovered = true;
 	tmpResource.naturalResource = true;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
 	tmpResource.name = "Steel";
 	tmpResource.description = "Refined sheets of plates, bolts, rods and ingots made out of steel.";
 	tmpResource.categories = [1,2];
-	tmpResource.discovered = true;
+	tmpResource.discovered = false;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	tmpResource = new ResourceTypeObject();
 	tmpResource.name = "Prefabricates";
 	tmpResource.description = "Prefabricated and standarized construction components for easy construction, repairs, maintenance and disassembly.";
 	tmpResource.categories = [1,7];
-	tmpResource.discovered = true;
+	tmpResource.discovered = false;
 	tmpResource.naturalResource = false;
+	tmpResource.index = ResourcesArray.length;
 	ResourcesArray.push(tmpResource);
 	
 	resourcesRefreshResources();
@@ -169,8 +199,6 @@ function earlyAlpha_NaturalResources(){
 	tmpPlanet.setBonusResource("Glass",0.75);
 	tmpPlanet.setBonusResource("Circuits",0.5);
 	
-	tmpPlanet.setStorageResource("Iron",1600.0);
-	tmpPlanet.setStorageResource("Steel",1600.0);
 	
 }
 function earlyAlpha_Systems(){
@@ -1638,21 +1666,71 @@ function earlyAlpha_AddBuildings(){
 	// tmpBuilding.requiredPlanetConditions = ["Habitable"];
 	//tmpBuilding.forbiddenPlanetTypes = [];
 	// tmpBuilding.forbiddenPlanetConditions = ["Dangerous biosphere", "Radioactive", "Death world"];
+	
 	tmpBuilding.unlocked = true;
+	tmpBuilding.canBeBuilt = true;
+	tmpBuilding.canBeUpgraded = true;
+	tmpBuilding.canBeDestroyed = true;
+	tmpBuilding.canBeDowngraded = true;
 	
-	tmpBuilding.setBuildCostByName("Iron", 100, 1);
-	//tmpBuilding.setBuildCostByName("Steel", 30, 2);
+	tmpBuilding.maxUpgrade = 2;
 	
-	tmpBuilding.setUpgradeCostByName("Steel", 100, 2);
-	//tmpBuilding.setUpgradeCostByName("Circuits", 5, 1.0);
+	tmpBuilding.setBuildCostByName("Iron", 50, 1, 1.0);
+	
+	tmpBuilding.setUpgradeCostByName("Steel", 100, 2, 0.5);
+	
+	tmpBuilding.setProductionByName("Scrap", 5.0, 1.5);
+	
 	
 	tmpBuilding.powerConsumed = 0;
 	
-	tmpBuilding.staffNeededBase = 4;
+	tmpBuilding.staffNeededBase = 1;
 	
 	tmpBuilding.mineralsDependant = true;
 	tmpBuilding.mineralsRatio = 1;
 	tmpBuilding.mineralsRequired = "Scrap";
+	
+	BuildingsArray.push(tmpBuilding);
+	
+	
+	
+	tmpBuilding = new BuildingBlueprintObject();
+	tmpBuilding.index = BuildingsArray.length;
+	tmpBuilding.name = "Scrap Refinery";
+	tmpBuilding.description = "Scrap Refinery converts collected scrap into iron and copper.";
+	tmpBuilding.categories = [2,8];
+	
+	//tmpBuilding.allowedPlanetTypes = [];
+	// tmpBuilding.requiredPlanetConditions = ["Habitable"];
+	//tmpBuilding.forbiddenPlanetTypes = [];
+	// tmpBuilding.forbiddenPlanetConditions = ["Dangerous biosphere", "Radioactive", "Death world"];
+	
+	tmpBuilding.unlocked = true;
+	tmpBuilding.canBeBuilt = true;
+	tmpBuilding.canBeUpgraded = true;
+	tmpBuilding.canBeDestroyed = true;
+	tmpBuilding.canBeDowngraded = true;
+	
+	tmpBuilding.maxUpgrade = 4;
+	
+	tmpBuilding.setBuildCostByName("Iron", 100, 1, 1.0);
+	
+	tmpBuilding.setUpgradeCostByName("Steel", 100, 2, 0.25);
+	
+	tmpBuilding.setProductionByName("Iron", 2.0, 2.0);
+	tmpBuilding.setProductionByName("Copper", 0.5, 2.0);
+
+	tmpBuilding.setConsumptionByName("Scrap", 10.0, 2.0);
+
+	
+	
+	tmpBuilding.powerConsumed = 0;
+	
+	tmpBuilding.staffNeededBase = 1;
+	
+	tmpBuilding.mineralsDependant = false;
+	// tmpBuilding.mineralsRatio = 1;
+	// tmpBuilding.mineralsRequired = "Scrap";
 	
 	BuildingsArray.push(tmpBuilding);
 	
