@@ -225,24 +225,36 @@ class BuildingBlueprintObject{
 	}
 	getBuildingProduction(buildingCount, buildingUpgrades){
 		let tmpArray = resourcesCopyProductionConsumptionArray(this.resourcesProduced);
+		let tmpBuildingsAmount = buildingCount;
+		let tmpUpgradesAmount = buildingUpgrades;
+		
+		if(buildingCount < 0) tmpBuildingsAmount = 0;
+		if(buildingUpgrades < 0) tmpUpgradesAmount = 0;
+		
 		for(let i = 0; i < tmpArray.length; i++){
 			if(!tmpArray[i].buildLinearAmountIncrease){
-				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,buildingCount);
+				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,tmpBuildingsAmount);
 			}
 			if(!tmpArray[i].upgradeLinearAmountIncrease){
-				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,buildingUpgrades);
+				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,tmpUpgradesAmount);
 			}
 		}
 		return tmpArray;
 	}
 	getBuildingConsumption(buildingCount, buildingUpgrades){
 		let tmpArray = resourcesCopyProductionConsumptionArray(this.resourcesConsumed);
+		let tmpBuildingsAmount = buildingCount;
+		let tmpUpgradesAmount = buildingUpgrades;
+		
+		if(buildingCount < 0) tmpBuildingsAmount = 0;
+		if(buildingUpgrades < 0) tmpUpgradesAmount = 0;
+		
 		for(let i = 0; i < tmpArray.length; i++){
 			if(!tmpArray[i].buildLinearAmountIncrease){
-				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,buildingCount);
+				tmpArray[i].amount *= Math.pow(tmpArray[i].buildAmountIncrease,tmpBuildingsAmount);
 			}
 			if(!tmpArray[i].upgradeLinearAmountIncrease){
-				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,buildingUpgrades);
+				tmpArray[i].amount *= Math.pow(tmpArray[i].upgradeAmountIncrease,tmpUpgradesAmount);
 			}
 		}
 		return tmpArray;
