@@ -3360,7 +3360,14 @@ function interfaceRefreshSingleBuilding(outputDocument, buildingIndex){
 }
 
 function interfaceRefreshBuildingRequiredStaff(outputDocument, buildingIndex){
+	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
 	
+	let tmpFoldedBuildingRequiredOperatorsCount = outputDocument.getElementById(BuildingMenuSingleBuildingFoldedRequiredOperatorsSpanIdPrefix + buildingIndex);
+	let tmpUnfoldedBuildingRequiredOperatorsCount = outputDocument.getElementById(BuildingMenuSingleBuildingUnfoldedRequiredOperatorsSpanIdPrefix + buildingIndex);
+	
+	tmpFoldedBuildingRequiredOperatorsCount.innerHTML = tmpBuilding.staffRequired * tmpBuilding.count;
+	tmpUnfoldedBuildingRequiredOperatorsCount.innerHTML = tmpBuilding.staffRequired * tmpBuilding.count;
 }
 function interfaceRefreshBuildingAlerts(outputDocument, buildingIndex){
 	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
@@ -3568,7 +3575,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 		if(tmpDifferenceEnergyProduced > 0.0){
 			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
 			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced, true);
-			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+			tmpPowerProducedValueSpan.innerHTML = '+' + tmpDifferenceEnergyProduced;
 		}
 		else if(tmpDifferenceEnergyProduced == 0.0){
 			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
@@ -3584,7 +3591,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 		if(tmpDifferenceEnergyProduced > 0.0){
 			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
 			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced, true);
-			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+			tmpPowerProducedValueSpan.innerHTML = '+' + tmpDifferenceEnergyProduced;
 		}
 		else if(tmpDifferenceEnergyProduced == 0.0){
 			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
@@ -3606,7 +3613,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 		if(tmpDifferenceEnergyConsumed > 0.0){
 			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
 			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed, true);
-			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+			tmpPowerConsumedValueSpan.innerHTML = '+' + tmpDifferenceEnergyConsumed;
 		}
 		else if(tmpDifferenceEnergyConsumed == 0.0){
 			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
@@ -3622,7 +3629,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 		if(tmpDifferenceEnergyConsumed > 0.0){
 			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
 			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed, true);
-			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+			tmpPowerConsumedValueSpan.innerHTML = '+' + tmpDifferenceEnergyConsumed;
 		}
 		else if(tmpDifferenceEnergyConsumed == 0.0){
 			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
@@ -3644,7 +3651,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 	if(actionType == "build" || actionType == "upgrade"){
 		if(tmpDifferenceAgentsRequired > 0){
 			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
-			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+			tmpStaffRequiredValueSpan.innerHTML = '+' + tmpDifferenceAgentsRequired;
 		}
 		else if(tmpDifferenceAgentsRequired == 0){
 			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
@@ -3658,7 +3665,7 @@ function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputD
 	else if (actionType == "demolish" || actionType == "downgrade"){
 		if(tmpDifferenceAgentsRequired > 0){
 			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
-			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+			tmpStaffRequiredValueSpan.innerHTML = '+' + tmpDifferenceAgentsRequired;
 		}
 		else if(tmpDifferenceAgentsRequired == 0){
 			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;

@@ -854,11 +854,11 @@ function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
 		
 		tmpNewValue = Math.floor(Number(inputValue.trim()));
 		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
-		for(var i = 0; i<tmpInputsArray.length; i++){
+		for(var i = 0; i < tmpInputsArray.length; i++){
 			tmpInputsArray[i].value = tmpNewValue;
 		}
 		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkOperatorsNumericInputClass);
-		for(var i = 0; i<tmpInputsArray.length; i++){
+		for(var i = 0; i < tmpInputsArray.length; i++){
 			tmpInputsArray[i].value = tmpNewValue;
 		}
 		BuildingsBulkBuyAmount = tmpNewValue;
