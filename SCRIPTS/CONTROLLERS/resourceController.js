@@ -403,6 +403,7 @@ function resourcesCopyProductionConsumptionArray(resourceArrayProductionConsumpt
 	return newArray;
 }
 
+//temp result arrays
 function resourcesGetSumCosts(resourceArrayCostsArray){
 	let newArray = resourcesCreateEmptyCostResourcesArray();
 	for(let i = 0; i < resourceArrayCostsArray.length; i++){
@@ -418,6 +419,22 @@ function resourcesGetMultipliedCost(resourceArrayCostsArray, resourceMultiplier)
 	return newArray;
 }
 
+function resourcesGetDifferenceProductionConsumption(resourceArrayA, resourceArrayB){
+	let newArray = resourcesCopyProductionConsumptionArray(resourceArrayA);
+	for(let i = 0; i < resourceArrayA.length; i++){
+		newArray[i].amount -= resourceArrayB[i].amount;
+	}
+	return newArray;
+}
+function resourcesGetMultipliedProductionConsumption(resourceArrayA, resoruceMultiplier){
+	let newArray = resourcesCopyProductionConsumptionArray(resourceArrayA);
+	for(let i = 0; i < resourceArrayA.length; i++){
+		newArray[i].amount *= resoruceMultiplier;
+	}
+	return newArray;
+}
+
+//modifying arrays
 function resourcesLevelUpCost(resourceArrayCost, levelUpAmount = 1){
 	for(let i = 0; i < resourceArrayCost.length; i++){
 		if(resourceArrayCost[i].cost == 0.0) continue;

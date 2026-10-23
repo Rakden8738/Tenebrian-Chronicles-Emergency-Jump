@@ -146,13 +146,13 @@ function isNotNaN(inputString){
 var mainOrdersOfMagnitudeArray = ["","k","M","T","Qa","Qi","Sx","Sp","Oc","No","Dc"];
 var mainOrdersOfMagnitudeArrayLength = mainOrdersOfMagnitudeArray.length;
 
-function bigNumberToString(inputNumber){
+function bigNumberToString(inputNumber, plusSign = false){
 	if(isNaN(inputNumber)) {
 		console.warn(inputNumber + " cannot be converted.");
-		return "0.0";
+		return "0.00";
 	}
 	else if(inputNumber == 0){
-		return "0.0";
+		return "0.00";
 	}
 	else{
 		let tmpInputNumber;
@@ -176,7 +176,7 @@ function bigNumberToString(inputNumber){
 			tmpReturnNumberText = (tmpReturnNumberSplit[0] + '.' + tmpReturnNumberSplit[1].padEnd(2,'0').substr(0,2));
 		}
 		else{
-			 tmpReturnNumberText = (tmpReturnNumberSplit[0] + ".00");
+			 tmpReturnNumberText = (tmpReturnNumberSplit[0] + ".".padEnd(3,'0'));
 		}
 		
 		if(tmpMainOoM > 0){
@@ -187,7 +187,7 @@ function bigNumberToString(inputNumber){
 				tmpReturnNumberText += (' ' + mainOrdersOfMagnitudeArray[tmpMainOoM]);
 			}
 		}
-		
+		if(plusSign && inputNumber > 0) tmpReturnNumberText = '+' + tmpReturnNumberText;
 		return tmpReturnNumberText;
 		
 		/*

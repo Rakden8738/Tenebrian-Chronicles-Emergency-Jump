@@ -118,11 +118,20 @@ class BuildingBlueprintObject{
 	resourcesConsumed = [];
 	
 	powerProduced = 0;
+	powerProducedCountMultiplier = 1.0;		//should be left as 1.0
+	powerProducedUpgradeMultiplier = 1.0;
+	
 	powerConsumed = 0;
+	powerConsumedCountMultiplier = 1.0;		//should be left as 1.0
+	powerConsumedUpgradeMultiplier = 1.0;
+	
 	powerMinimum = 0.1;				//ratio of power under which the building shuts down
 	powerSensitive = false;			//even the smallest power shortage prevents building from working
 	
-	staffNeededBase = 0;			//staff members needed at single lvl 1 building
+	staffNeededBase = 0;			//staff members needed at single lvl 0 building
+	staffNeededCountMultiplier = 1.0;	//should be left as 1.0
+	staffNeededLevelMultiplier = 1.0;
+	
 	staffNoneNeeded = false;		//no staff needed for building
 	staffMandatory = false;			//shuts down if understaffed
 	staffPenalty = 0.5;				//exp. value for understaffed penalty. Defalut 0.5 is (availStaff/reqStaff)^(0.5) - 70% efficiency when half of staff is present
@@ -158,7 +167,7 @@ class BuildingBlueprintObject{
 	
 	setBuildCostByName(resourceName, resourceCost, buildMultiplier = 1.0, refundRatio = ResourcesDefaultSellDowngradeRefundRatio){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
-		if(tmpIndex > 0){
+		if(tmpIndex >= 0){
 			this.baseBuildCost[tmpIndex].cost = resourceCost;
 			this.baseBuildCost[tmpIndex].costIncrease = buildMultiplier
 			this.baseBuildCost[tmpIndex].refund = refundRatio;
@@ -172,7 +181,7 @@ class BuildingBlueprintObject{
 	}
 	setUpgradeCostByName(resourceName, resourceCost, upgradeMultiplier = 1.0, refundRatio = ResourcesDefaultSellDowngradeRefundRatio){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
-		if(tmpIndex > 0){
+		if(tmpIndex >= 0){
 			this.baseUpgradeCost[tmpIndex].cost = resourceCost;
 			this.baseUpgradeCost[tmpIndex].costIncrease = upgradeMultiplier
 			this.baseUpgradeCost[tmpIndex].refund = refundRatio
@@ -186,7 +195,7 @@ class BuildingBlueprintObject{
 	}
 	setProductionByName(resourceName, resourceAmount, upgradeMultiplier = 1.0, buildMultiplier = 1.0){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
-		if(tmpIndex > 0){
+		if(tmpIndex >= 0){
 			this.resourcesProduced[tmpIndex].amount = resourceAmount;
 			this.resourcesProduced[tmpIndex].buildAmountIncrease = buildMultiplier;
 			if(buildMultiplier != 1.0) this.resourcesProduced[tmpIndex].buildLinearAmountIncrease = false;
@@ -202,7 +211,7 @@ class BuildingBlueprintObject{
 	}
 	setConsumptionByName(resourceName, resourceAmount, upgradeMultiplier = 1.0, buildMultiplier = 1.0){
 		let tmpIndex = ResourcesNamesArray.indexOf(resourceName);
-		if(tmpIndex > 0){
+		if(tmpIndex >= 0){
 			this.resourcesConsumed[tmpIndex].amount = resourceAmount;
 			this.resourcesConsumed[tmpIndex].buildAmountIncrease = buildMultiplier;
 			if(buildMultiplier != 1.0) this.resourcesConsumed[tmpIndex].buildLinearAmountIncrease = false;
@@ -434,6 +443,36 @@ class BuildingBlueprintObject{
 		return tmpTotalRefund;
 	}
 	
+	getProducedEnergy(buildingCount, buildingUpgrades){
+		let tmpEnergy = this.powerProduced;
+		if(tmpEnergy == 0) return 0;
+		if(this.powerProducedCountMultiplier != 1.0 && buildingCount > 0) tmpEnergy *= Math.pow(this.powerProducedCountMultiplier,buildingCount);
+		if(this.powerConsumedUpgradeMultiplier != 1.0 && buildingUpgrades > 0) tmpEnergy *= Math.pow(this.powerConsumedUpgradeMultiplier,buildingUpgrades);
+		
+		tmpEnergy = Math.ceil(tmpEnergy);
+		
+		return tmpEnergy;
+	}
+	getRequiredEnergy(buildingCount, buildingUpgrades){
+		let tmpEnergy = this.powerConsumed;
+		if(tmpEnergy == 0) return 0;
+		if(this.powerConsumedCountMultiplier != 1.0 && buildingCount > 0) tmpEnergy *= Math.pow(this.powerConsumedCountMultiplier,buildingCount);
+		if(this.powerConsumedUpgradeMultiplier != 1.0 && buildingUpgrades > 0) tmpEnergy *= Math.pow(this.powerConsumedUpgradeMultiplier,buildingUpgrades);
+		
+		tmpEnergy = Math.ceil(tmpEnergy);
+		
+		return tmpEnergy;
+	}
+	getStaffNeeded(buildingCount, buildingUpgrades){
+		let tmpStaff = this.staffNeededBase;
+		if(tmpStaff == 0) return 0;
+		if(this.staffNeededCountMultiplier != 1.0 && buildingCount > 0) tmpStaff *= Math.pow(this.staffNeededCountMultiplier,buildingCount);
+		if(this.staffNeededLevelMultiplier != 1.0 && buildingUpgrades > 0) tmpStaff *= Math.pow(this.staffNeededLevelMultiplier,buildingUpgrades);
+		
+		tmpStaff = Math.ceil(tmpStaff);
+		
+		return tmpStaff;
+	}
 }
 class BuildingObject{
 	index = -1;
@@ -489,6 +528,9 @@ class BuildingObject{
 		this.initDemolishRefund();
 		this.initDowngradeRefund();
 		
+		this.initPowers();
+		this.initStaff();
+		
 		this.refreshProductionAndConsumption();
 	}
 	initBuildCost(){
@@ -530,9 +572,23 @@ class BuildingObject{
 	
 	}
 	
+	initPowers(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.powerProduced = tmpBlueprintObject.getProducedEnergy(0,0);
+		this.powerConsumed = tmpBlueprintObject.getRequiredEnergy(0,0);
+	}
+	initStaff(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.staffRequired = tmpBlueprintObject.getStaffNeeded(0,0);
+	}
+	
 	refreshBuilding(){
 		this.refreshProductionAndConsumption();
 		this.refreshAllCostsAndRefunds();
+		this.refreshPowers();
+		this.refreshStaff();
 	}
 	
 	//get costs/refunds based on current count and level
@@ -583,6 +639,18 @@ class BuildingObject{
 		this.nextDowngradeRefundCustom = tmpBlueprintObject.calculateDowngradeRefund(this.level - this.customUpgradeDowngradeAmount, this.level);
 		
 		this.lastUpgradeCost = tmpBlueprintObject.calculateUpgradeCost(this.level - 1, this.level);
+	}
+	
+	refreshPowers(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.powerProduced = tmpBlueprintObject.getProducedEnergy(this.count,this.level);
+		this.powerConsumed = tmpBlueprintObject.getRequiredEnergy(this.count,this.level);
+	}
+	refreshStaff(){
+		let tmpBlueprintObject = BuildingsArray[this.blueprintIndex];
+		
+		this.staffRequired = tmpBlueprintObject.getStaffNeeded(this.count,this.level);
 	}
 	
 	//refresh only custom-amount related, for on-change event of input fields

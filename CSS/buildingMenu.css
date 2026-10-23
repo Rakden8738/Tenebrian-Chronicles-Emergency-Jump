@@ -460,32 +460,6 @@
 	color: hsla(0,100%,50%,1); */
 }
 
-
-
-
-.planetBuildingResourceHeaderCell{
-	text-align: left;
-}
-.planetBuildingResourceNameCell{
-	text-align: left;
-}
-.planetBuildingResourceName{
-	margin-left: 3px;
-}
-.planetBuildingTableColumnSpacing{
-	max-width: 1em;
-	width: 0.75em;
-}
-.planetBuildingResourceValue{
-	color: hsla(0,0%,100%,1);
-}
-.planetBuildingResourceChange{
-	color: hsla(180,0%,75%,0.66);
-}
-#planetBuildingRequiredResourcesTableRowSpacingRowTop td, #planetBuildingRequiredResourcesTableRowSpacingRowBottom td{
-	text-align: left;
-}
-
 #planetBuildingInfoPanelProductionChangesTable{
 	margin-top: 3px;
 }
@@ -501,7 +475,6 @@
 #planetBuildingInfoPanelConsumptionChangesTable span{}
 #planetBuildingInfoPanelConsumptionChangesTableBody{}
 
-
 #planetBuildingInfoPanelAvailableResourcesContainer{
 	box-sizing: border-box;
 	width: 100%;
@@ -515,13 +488,11 @@
 #planetBuildingInfoPanelAvailableResourcesTable span{}
 #planetBuildingInfoPanelAvailableResourcesTableBody{}
 
-
 /* #planetBuildingRequiredResourcesTableProducedHeader, #planetBuildingRequiredResourcesTableConsumedHeader{
 	color: hsla(180,50%,80%,0.4);
 	margin-left: 0px;
 	margin-top: 4px;
 } */
-
 
 #planetBuildingInfoPanelSettingsContainer{
 	width: 100%;
@@ -641,11 +612,9 @@
 	/*background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);*/
 	background-color: hsla(0,0%,0%,0.7);
 }
-.planetBuildingUnfoldedBuilding{
-	
-}
+.planetBuildingUnfoldedBuilding{}
 .planetBuildingFoldedBuilding{
-	min-height: 50px;
+	/* min-height: 50px; */
 }
 .planetBuildingFoldedBuilding .planetBuildingSingleBuildingAlertsContainer{
 	max-height: 50px;
@@ -662,7 +631,6 @@
 .planetBuildingFoldedBuilding .planetBuildingFoldedOnlyBuilding{
 	display: flex;
 }
-
 
 .planetBuildingSingleBuildingContainer{
 	display: inline-flex;
@@ -686,12 +654,13 @@
 	
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .planetBuildingSingleBuildingHeaderContainer{
 	padding: 4px;
     display: flex;
     justify-content: space-between;
+	width: calc(100% - 15px);
 }
 .planetBuildingSingleBuildingNameContainer{
 	padding: 0px;
@@ -714,21 +683,196 @@
 	font-size: 85%;
 }
 
-
-
-.planetBuildingResourceHeader{
-	color: hsla(180,50%,80%,0.4);
+.planetBuildingSingleBuildingResourcesTableContainer{
+	padding: 3px;
+	max-height: 120px;
+    overflow: auto;
+	
+	font-size: 65%;
+    line-height: 90%;
+	
+	mask-image: linear-gradient(180deg, transparent 0px, black 5px, black calc(100% - 5px), transparent 100%);
+	scrollbar-gutter: stable;
+}
+.planetBuildingSingleBuildingResourceTable{
+	min-width: 100%;
+}
+.planetBuildingSingleBuildingResourceTableBody{}
+.planetBuildingSingleBuildingResourceTableProductionHeaderRow, .planetBuildingSingleBuildingResourceTableConsumptionHeaderRow{}
+.planetBuildingSingleBuildingResourceTableProductionHeaderCell, .planetBuildingSingleBuildingResourceTableConsumptionHeaderCell{
+	text-align: left;
+}
+.planetBuildingSingleBuildingResourceTableProductionHeaderText, .planetBuildingSingleBuildingResourceTableConsumptionHeaderText{
+	color: hsla(180,50%,80%,0.5);
 	margin-left: 0px;
 	margin-bottom: 4px;
 	display: inline-block;
 }
 
 
+.planetBuildingSingleBuildingResourcesTableProducedResourceRow .planetBuildingSingleBuildingResourcesTableConsumedResourceRow{}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyRow, .planetBuildingSingleBuildingResourcesTableProducedEnergyRow{}
+.planetBuildingSingleBuildingResourcesTableRequiredStaffRow{}
+.planetBuildingSingleBuildingResourceTableHiddenRow{
+	display: none;
+}
+.planetBuildingSingleBuildingResourcesTableSpacingRow{}
+
+
+.planetBuildingSingleBuildingResourcesTableSpacingRowCell{
+	max-width: 1em;
+	width: 0.75em;
+	min-width: unset;
+	padding: 2px;
+}
+.planetBuildingSingleBuildingResourcesTableSpacingTopRow .planetBuildingSingleBuildingResourcesTableSpacingRowCell{}
+.planetBuildingSingleBuildingResourcesTableSpacingBottomRow .planetBuildingSingleBuildingResourcesTableSpacingRowCell{
+	padding: 4px;
+}
+.planetBuildingSingleBuildingResourcesTableSpacingExtraRow .planetBuildingSingleBuildingResourcesTableSpacingRowCell{}
+
+.planetBuildingSingleBuildingResourcesTableProducedResourceNameCell, .planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell{
+	text-align: left;
+	max-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceNameText, .planetBuildingSingleBuildingResourcesTableConsumedResourceNameText{
+	margin-left: 3px;
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceValueCell, .planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceValueText, .planetBuildingSingleBuildingResourcesTableConsumedResourceValueText{
+	color: hsla(0, 0%, 100%, 1);
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell, .planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceChangeText, .planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText{
+	color: hsla(0, 0%, 75%, 0.66);
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyNameCell{
+	text-align: left;
+	max-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyNameText{
+	margin-left: 3px;
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyValueCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyValueText{
+	color: hsla(0, 0%, 100%, 1);
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyChangeCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableProducedEnergyChangeText{
+	color: hsla(0, 0%, 100%, 0.66);
+}
+
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyNameCell{
+	text-align: left;
+	max-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyNameText{
+	margin-left: 3px;
+}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyValueCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyValueText{
+	color: hsla(0, 0%, 100%, 1);
+}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeText{
+	color: hsla(0, 0%, 100%, 0.66);
+}
+
+
+.planetBuildingSingleBuildingResourcesTableStaffRequiredNameCell{
+	text-align: left;
+	max-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableStaffRequiredNameText{
+	margin-left: 3px;
+}
+.planetBuildingSingleBuildingResourcesTableStaffRequiredValueCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableStaffRequiredValueText{
+	color: hsla(0, 0%, 100%, 1);
+}
+.planetBuildingSingleBuildingResourcesTableStaffRequiredChangeCell{
+	text-align: right;
+	min-width: unset;
+}
+.planetBuildingSingleBuildingResourcesTableStaffRequiredChangeText{
+	color: hsla(0, 0%, 100%, 0.66);
+}
 
 
 
-
-
+.planetBuildingSingleBuildingResourceTableValuePositive{
+	color: hsla(120, 75%, 65%, 1);
+}
+.planetBuildingSingleBuildingResourceTableValueNeutral{
+	color: hsla(60, 75%, 65%, 1);
+}
+.planetBuildingSingleBuildingResourceTableValueNegative{
+	color: hsla(0, 75%, 65%, 1);
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceChangeText.planetBuildingSingleBuildingResourceTableValuePositive, .planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText.planetBuildingSingleBuildingResourceTableValuePositive{
+	color: hsla(120, 75%, 65%, 0.66);
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceChangeText.planetBuildingSingleBuildingResourceTableValueNeutral, .planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText.planetBuildingSingleBuildingResourceTableValueNeutral{
+	color: hsla(60, 75%, 65%, 0.66);
+}
+.planetBuildingSingleBuildingResourcesTableProducedResourceChangeText.planetBuildingSingleBuildingResourceTableValueNegative, .planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText.planetBuildingSingleBuildingResourceTableValueNegative{
+	color: hsla(0, 75%, 65%, 0.66);
+}
+.planetBuildingSingleResourceTableSpacingCell{
+	max-width: 1em;
+	width: 0.75em;
+	min-width: unset;
+}
+/*
+.planetBuildingResourceHeader{
+	color: hsla(180,50%,80%,0.4);
+	margin-left: 0px;
+	margin-bottom: 4px;
+	display: inline-block;
+}
+.planetBuildingResourceHeaderCell{
+	text-align: left;
+}
+.planetBuildingResourceNameCell{
+	text-align: left;
+}
+.planetBuildingResourceName{
+	margin-left: 3px;
+}
+.planetBuildingTableColumnSpacing{
+	max-width: 1em;
+	width: 0.75em;
+}
+.planetBuildingResourceValue{
+	color: hsla(0,0%,100%,1);
+}
+.planetBuildingResourceChange{
+	color: hsla(180,0%,75%,0.66);
+}
+#planetBuildingRequiredResourcesTableRowSpacingRowTop td, #planetBuildingRequiredResourcesTableRowSpacingRowBottom td{
+	text-align: left;
+}*/
 
 
 .planetBuildingSingleBuildingBuildDemolishContainer{
@@ -738,7 +882,7 @@
 	min-width: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .planetBuildingSingleBuildingButtonsContainer{
 	padding: 2px;
@@ -795,7 +939,7 @@
 	min-width: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer{}
 .planetBuildingSingleBuildingControlContainer{
@@ -860,8 +1004,11 @@
 .planetBuildingSingleBuildingAlertsContainer{
 	padding: 0;
 	text-align: right;
-	position: absolute;
-	right: 20px;
+	
+	position: relative;
+	/* position: absolute;
+	right: 20px; */
+	
 	max-width: 100px;
     max-height: 60px;
     overflow: auto;
@@ -930,17 +1077,6 @@
 .planetBuldingUnfoldedBuildingContainer{
 	min-height: 100px;
 }
-.planetBuildingSingleBuildingResourcesContainer{
-	padding: 5px;
-	max-height: 120px;
-    overflow: auto;
-	
-	font-size: 65%;
-    line-height: 90%;
-}
-.planetBuildingSingleBuildingResourceListTable{
-	min-width: 100%;
-}
 
 .planetBuildingSingleBuildingSingleButtonText{
 	margin: 0px;
@@ -960,6 +1096,8 @@
 .planetBuildingSingleBuildingOperatorsUnfoldedContainer{
 	padding: 0px;
     margin: 0px;
+	display: flex;
+    justify-content: space-evenly;
 }
 .planetBuildingSingleBuildingOperatorHeaderContainer{
 	padding: 0px;
@@ -970,6 +1108,7 @@
 .planetBuildingSingleBuildingOperatorHeaderTextContainer{
 	padding: 0px;
 	margin: 4px;
+	margin-right: 1px;
 }
 .planetBuildingSingleBuildingOperatorHeaderText{
 	font-size: 85%;
@@ -979,7 +1118,9 @@
 	flex-direction: row;
     justify-content: space-between;
 	padding: 0px;
-	align-items: flex-end;
+	/* align-items: flex-end; */
+	align-items: center;
+	height: calc(100% - 32px);
 }
 .planetBuildingsSingleBuildingControlMenuLeftContainer{
 	float:left;

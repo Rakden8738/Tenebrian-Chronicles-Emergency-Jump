@@ -1610,7 +1610,7 @@
 								</div>
 							</div>		
 						</div>
-						<div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer planetBuldingUnfoldedBuildingContainer">
+						<!-- <div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer planetBuldingUnfoldedBuildingContainer">
 							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer">
 								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingHeaderContainer">
 									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingNameContainer">
@@ -1627,8 +1627,8 @@
 										</div>	
 									</div>
 								</div>
-								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer">
-									<table class="interfaceTable planetBuildingSingleBuildingResourceListTable">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesTableContainer">
+									<table class="interfaceTable planetBuildingSingleBuildingResourceTable">
 										<tbody class="interfaceTableBody">
 											<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableHeaderRow">
 												<td class="interfaceTableCell planetBuildingResourceHeaderCell" colspan=5>
@@ -1904,9 +1904,7 @@
 								</div>
 							</div>
 						</div>
-						
-						
-						
+						 -->
 						<div class="planetBuildingUnfoldedBuilding" id="planetBuildingSingleBuilding_0">
 							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer">
 								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer">
@@ -1925,77 +1923,138 @@
 											</div>	
 										</div>
 									</div>
-									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer planetBuildingUnfoldedOnlyBuilding">
-										<table class="interfaceTable planetBuildingSingleBuildingResourceListTable">
-											<tbody class="interfaceTableBody">
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableHeaderRow">
-													<td class="interfaceTableCell planetBuildingResourceHeaderCell" colspan=5>
-														<span class="interfaceText planetBuildingResourceHeader" id="planetBuildingSingleBuildingResourcesTableHeader_1">Production and consumption per day:</span>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesTableContainer planetBuildingUnfoldedOnlyBuilding">
+										<table class="interfaceTable planetBuildingSingleBuildingResourceTable" id="planetBuildingSingleBuildingResourceTable_1">
+											<tbody class="interfaceTableBody planetBuildingSingleBuildingResourceTableBody" id="planetBuildingSingleBuildingResourceTableBody_1">
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourceTableProductionHeaderRow" id="planetBuildingSingleBuildingResourceTableProductionHeaderRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourceTableProductionHeaderCell" id="planetBuildingSingleBuildingResourceTableProductionHeaderCell_1" colspan=5>
+														<span class="interfaceText planetBuildingSingleBuildingResourceTableProductionHeaderText" id="planetBuildingSingleBuildingResourceTableProductionHeaderText_1">Production:</span>
 													</td>
 												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceRow_1">
-													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceNameCell_1">
-														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceName_1">Steel:</span>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedResourceRow" id="planetBuildingSingleBuildingResourcesTableProducedResourceRow_1_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceNameText" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameText_1_1">Steel:</span>
 													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingLeft_1"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValueCell_1">
-														<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValue_1">+ 20.0</span>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceValueText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueText_1_1">+20.00</span>
 													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingRight_1"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChangeCell_1">
-														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChange_1">+ 5.0</span>
-													</td>
-												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceRow_2">
-													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceNameCell_2">
-														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceName_2">Ship Components:</span>
-													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingLeft_2"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValueCell_2">
-														<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceValue_2">+ 4.0</span>
-													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceSpacingRight_2"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChangeCell_2">
-														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowProducedResourceChange_2">+ 1.0</span>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceChangeText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeValue_1_1">+5.00</span>
 													</td>
 												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowSpacingRowTop">
-													<td class="interfaceTableCell" colspan=5>
-													
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedResourceRow" id="planetBuildingSingleBuildingResourcesTableProducedResourceRow_1_2">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceNameText" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameText_1_2">Ship Components:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceValueText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueText_1_2">+4.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceChangeText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeValue_1_2">+1.00</span>
 													</td>
 												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_1">
-													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_1">
-														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_1">Iron:</span>
-													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_1"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_1">
-														<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_1">- 10.0</span>
-													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_1"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_1">
-														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_1">- 2.5</span>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow" id="planetBuildingSingleBuildingResourcesTableSpacingTopRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell" colspan=5></td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourceTableConsumptionHeaderRow" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourceTableConsumptionHeaderCell" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderCell_1" colspan=5>
+														<span class="interfaceText planetBuildingSingleBuildingResourceTableConsumptionHeaderText" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderText_1">Consumption:</span>
 													</td>
 												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
-													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_2">
-														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_2">Carbon:</span>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedResourceRow" id="planetBuildingSingleBuildingResourcesTableConsumedResourceRow_1_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceNameText" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameText_1_1">Iron:</span>
 													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_2"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_2">
-														<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_2">- 4.0</span>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceValueText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueText_1_1">-10.00</span>
 													</td>
-													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_2"></td>
-													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_2">
-														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_2">- 1.0</span>
-													</td>
-												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowSpacingRowBottom">
-													<td class="interfaceTableCell" colspan=5>
-													
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeValue_1_1">-2.50</span>
 													</td>
 												</tr>
-												<tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedResourceRow" id="planetBuildingSingleBuildingResourcesTableConsumedResourceRow_1_2">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceNameText" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameText_1_2">Carbon:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceValueText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueText_1_2">-4.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeValue_1_2">-1.00</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow" id="planetBuildingSingleBuildingResourcesTableSpacingBottomRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell" colspan=5></td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyRow" id="planetBuildingSingleBuildingResourcesTableProducedEnergyRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyNameCell" id="planetBuildingSingleBuildingResourcesTableProducedEnergyNameCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyNameText" id="planetBuildingSingleBuildingResourcesTableProducedEnergyNameText_1">
+														Energy gain:
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyValueCell" id="planetBuildingSingleBuildingResourcesTableProducedEnergyValueCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyValueText" id="planetBuildingSingleBuildingResourcesTableProducedEnergyValueText_1">
+														20
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyChangeCell" id="planetBuildingSingleBuildingResourcesTableProducedEnergyChangeCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyChangeText" id="planetBuildingSingleBuildingResourcesTableProducedEnergyChangeText_1">
+														+5
+														</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyRow" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyNameCell" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyNameCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyNameText" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyNameText_1">
+														Energy cost:
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyValueCell" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyValueCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyValueText" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyValueText_1">
+														40
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeCell" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeText" id="planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeText_1">
+														+10
+														</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow" id="planetBuildingSingleBuildingResourcesTableSpacingExtraRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell" colspan=5></td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableRequiredStaffRow" id="planetBuildingSingleBuildingResourcesTableRequiredStaffRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredNameCell" id="planetBuildingSingleBuildingResourcesTableStaffRequiredNameCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredNameText" id="planetBuildingSingleBuildingResourcesTableStaffRequiredNameText_1">
+														Staff:
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredValueCell" id="planetBuildingSingleBuildingResourcesTableStaffRequiredValueCell_1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredValueText" id="planetBuildingSingleBuildingResourcesTableStaffRequiredValueText_1">
+														4
+														</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredChangeCell" id="interfaceTableCell1">
+														<span class="interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredChangeText" id="planetBuildingSingleBuildingResourcesTableStaffRequiredChangeText_1">
+														-1
+														</span>
+													</td>
+												</tr>
+												<!-- <tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
 													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_2">
 														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_2">Energy:</span>
 													</td>
@@ -2007,7 +2066,7 @@
 													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_2">
 														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_2">- 1</span>
 													</td>
-												</tr>										
+												</tr>	 -->									
 											</tbody>
 										</table>
 									</div>
@@ -2110,6 +2169,10 @@
 											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderTextContainer">
 												<span class="planetBuildingSingleBuildingOperatorHeaderText">Administrators:</span>
 											</div>
+											
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer">
+												<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PortraitAlert.png" title="Mandatory staff present.">
+											</div>	
 										</div>
 										<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuContainer" > 
 											<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuLeftContainer">									
@@ -2185,10 +2248,294 @@
 										<button class="planetBuildingsSingleBuildingSideButton" id="planetBuildingSingleBuildingFoldBuildingButton_0">
 											<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/Unfolded.png">
 										</button>
+									</div>								
+								</div>
+							</div>						
+						</div>
+						
+						<div class="planetBuildingUnfoldedBuilding" id="planetBuildingSingleBuilding_1">
+							<div class="planetBuildingElementsContainer planetBuildingSingleBuildingContainer">
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingHeaderContainer">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingNameContainer">
+											<span class="planetBuildingSingleBuildingHeaderText">Steel Foundry</span>
+										</div>
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountLevelContainer">
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingLevelContainer">
+												<span class="planetBuildingSingleBuildingHeaderText">Lv.</span>
+												<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText">1</span>
+											</div>
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAmountContainer">
+												<span class="planetBuildingSingleBuildingHeaderText">×</span>
+												<span class="planetBuildingSingleBuildingHeaderText interfaceDynamicText">2</span>
+											</div>	
+										</div>
 									</div>
-									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer">
-										<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PortraitAlert.png" title="Mandatory staff present.">
-									</div>									
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingResourcesTableContainer planetBuildingUnfoldedOnlyBuilding">
+										<table class="interfaceTable planetBuildingSingleBuildingResourceTable" id="planetBuildingSingleBuildingResourceTable_1">
+											<tbody class="interfaceTableBody planetBuildingSingleBuildingResourceTableBody" id="planetBuildingSingleBuildingResourceTableBody_1">
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourceTableProductionHeaderRow" id="planetBuildingSingleBuildingResourceTableProductionHeaderRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourceTableProductionHeaderCell" id="planetBuildingSingleBuildingResourceTableProductionHeaderCell_1" colspan=5>
+														<span class="interfaceText planetBuildingSingleBuildingResourceTableProductionHeaderText" id="planetBuildingSingleBuildingResourceTableProductionHeaderText_1">Production:</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedResourceRow" id="planetBuildingSingleBuildingResourcesTableProducedResourceRow_1_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceNameText" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameText_1_1">Steel:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceValueText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueText_1_1">+20.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceChangeText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeValue_1_1">-5.00</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedResourceRow" id="planetBuildingSingleBuildingResourcesTableProducedResourceRow_1_2">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceNameText" id="planetBuildingSingleBuildingResourcesTableProducedResourceNameText_1_2">Ship Components:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceValueText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableProducedResourceValueText_1_2">+4.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceChangeText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableProducedResourceChangeValue_1_2">-1.00</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow" id="planetBuildingSingleBuildingResourcesTableSpacingTopRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell" colspan=5></td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourceTableConsumptionHeaderRow" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourceTableConsumptionHeaderCell" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderCell_1" colspan=5>
+														<span class="interfaceText planetBuildingSingleBuildingResourceTableConsumptionHeaderText" id="planetBuildingSingleBuildingResourceTableConsumptionHeaderText_1">Consumption:</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedResourceRow" id="planetBuildingSingleBuildingResourcesTableConsumedResourceRow_1_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceNameText" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameText_1_1">Iron:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceValueText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueText_1_1">-10.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell_1_1">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeValue_1_1">+2.50</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedResourceRow" id="planetBuildingSingleBuildingResourcesTableConsumedResourceRow_1_2">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceNameText" id="planetBuildingSingleBuildingResourcesTableConsumedResourceNameText_1_2">Carbon:</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceValueText planetBuildingSingleBuildingResourceTableValueNegative" id="planetBuildingSingleBuildingResourcesTableConsumedResourceValueText_1_2">-4.00</span>
+													</td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell"></td>
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell_1_2">
+														<span class="interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText planetBuildingSingleBuildingResourceTableValuePositive" id="planetBuildingSingleBuildingResourcesTableConsumedResourceChangeValue_1_2">+1.00</span>
+													</td>
+												</tr>
+												<tr class="interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow" id="planetBuildingSingleBuildingResourcesTableSpacingBottomRow_1">
+													<td class="interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell" colspan=5></td>
+												</tr>
+												<!-- <tr class="interfaceTableRow" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceRow_2">
+													<td class="interfaceTableCell planetBuildingResourceNameCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceNameCell_2">
+														<span class="interfaceText planetBuildingResourceName" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceName_2">Energy:</span>
+													</td>
+													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingLeft_2"></td>
+													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValueCell_2">
+														<span class="interfaceText planetBuildingResourceValue" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceValue_2">- 4</span>
+													</td>
+													<td class="planetBuildingTableColumnSpacing" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceSpacingRight_2"></td>
+													<td class="interfaceTableCell" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChangeCell_2">
+														<span class="interfaceText planetBuildingResourceChange" id="planetBuildingSingleBuildingResourcesTableRowConsumedResourceChange_2">- 1</span>
+													</td>
+												</tr>	 -->									
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingBuildDemolishContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildButtonsContainer planetBuildingUnfoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+										</button>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDemolishButtonsContainer planetBuildingUnfoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+										</button>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildDemolishButtonsContainer">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Plus_Fancy.png">
+										</button>
+										<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Ex_Fancy.png">
+										</button>
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingUpgradeDowngradeContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeButtonsContainer planetBuildingUnfoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+										</button>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingDowngradeButtonsContainer planetBuildingUnfoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">5</span>
+										</button>
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+											<span class="planetBuildingSingleBuildingSingleButtonText">25</span>
+										</button>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingUpgradeDowngradeButtonsContainer">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Upgrade_Fancy.png">
+										</button>
+										<input type="number" min=0 step=1 value=10 class="interfaceInputNumber planetBuildingsSingleBuildingSingleInputNumber">
+										<button class="planetBuildingsSingleBuildingSingleButton">
+											<img class="planetBuildingSingleBuildingSingleButtonImage" src="RESOURCES/ICONS/Downgrade_Fancy.png">
+										</button>
+									</div>
+								</div>
+								<div class="planetBuildingElementsContainer planetBuildingSingleBuildingControlContainer">
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsFoldedContainer planetBuildingFoldedOnlyBuilding">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingOperatorButtonsContainer">
+											<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+												<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Plus_Simple.png">
+											</button>
+											<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+												<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Minus_Simple.png">
+											</button>
+											<span class="planetBuildingSingleBuildingOperatorsAssigned interfaceDynamicText">1</span>&nbsp;
+											<span class="planetBuildingSingleBuildingOperatorsSlash">/</span>&nbsp;
+											<span class="planetBuildingSingleBuildingOperatorsRequired interfaceDynamicText">4</span>
+										</div>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsFoldedContainer planetBuildingFoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSideButton" id="planetBuildingSingleBuildingUnfoldBuildingButton_0">
+											<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/Folded.png">
+										</button>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorsContainer planetBuildingSingleBuildingOperatorsUnfoldedContainer planetBuildingUnfoldedOnlyBuilding">
+										<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderContainer">
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorHeaderTextContainer">
+												<span class="planetBuildingSingleBuildingOperatorHeaderText">Administrators:</span>
+											</div>
+											<div class="planetBuildingElementsContainer planetBuildingSingleBuildingAlertsContainer">
+												<img class="planetBuildingAlertIcon" src="RESOURCES/ICONS/PortraitAlert.png" title="Mandatory staff present.">
+											</div>	
+										</div>
+										<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuContainer" > 
+											<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuLeftContainer">									
+												<div class="planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingOperatorButtonsContainer">
+													<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+														<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Plus_Simple.png">
+													</button>
+													<input type="number" min=0 step=1 value=10 class="interfaceInputNumberFixed planetBuildingsSingleBuildingAddRemoveOperatorInputNumber">
+													<button class="planetBuildingsSingleBuildingAddRemoveOperatorButton">
+														<img class="planetBuildingsSingleBuildingAddRemoveOperatorButtonImage" src="RESOURCES/ICONS/Minus_Simple.png">
+													</button>
+												</div>
+												<div class="planetBuildingElementsContainer planetBuildingSingleBuildingOperatorNumbersContainer">
+													<span class="planetBuildingSingleBuildingOperatorsAssigned interfaceDynamicText">16</span>&nbsp;
+													<span class="planetBuildingSingleBuildingOperatorsSlash">/</span>&nbsp;
+													<span class="planetBuildingSingleBuildingOperatorsRequired interfaceDynamicText">4</span>&ensp;
+													<span class="planetBuildingSingleBuildingOperatorEfficiencyValue" style="color:hsl(180,100%,50%)">(200%)</span>
+												</div>
+												<div class="planetBuildingElementsContainer planetBuildingSingleBuildingEfficiencyContainer">
+													<span class="planetBuildingSingleBuildingEfficiencyPrefix">Efficiency: </span>
+													<span class="planetBuildingSingleBuildingEfficiencyValue" style="color:hsl(120,100%,50%)">100%</span>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoIconContainer">
+														<img class="planetBuildingSingleBuildingInfoIcon" src="RESOURCES/ICONS/Info.png">	
+													</div>
+													<div class="planetBuildingElementsContainer planetBuildingSingleBuildingInfoContent">
+														<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+															<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Power3.png">&nbsp;
+															<span class="planetBuildingSingleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+														</div>
+														<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+															<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Portrait.png">&nbsp;
+															<span class="planetBuildingSingleBuildingSingleEfficiencyText" style="color:hsl(180,100%,50%)">200%</span>
+														</div>
+														<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+															<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Hazard.png">&nbsp;
+															<span class="planetBuildingSingleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+														</div>
+														<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+															<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Discontent.png">&nbsp;
+															<span class="planetBuildingSingleBuildingSingleEfficiencyText" style="color:hsl(60,100%,50%)">50%</span>
+														</div>
+														<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSingleEfficiencyContainer">
+															<img class="planetBuildingSingleBuildingSingleEfficiencyIcon" src="RESOURCES/ICONS/Minerals.png">&nbsp;
+															<span class="planetBuildingSingleBuildingSingleEfficiencyText" style="color:hsl(120,100%,50%)">100%</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="planetBuildingElementsContainer planetBuildingsSingleBuildingControlMenuRightContainer">
+												<button class="planetBuildingsSingleBuildingOperatorControlButton">
+													<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+													<span class="planetBuildingsSingleBuildingOperatorControlButtonText">FILL</span>
+												</button>
+												<button class="planetBuildingsSingleBuildingOperatorControlButton">
+													<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+													<span class="planetBuildingsSingleBuildingOperatorControlButtonText">SET</span>
+												</button>
+												<button class="planetBuildingsSingleBuildingOperatorControlButton">
+													<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+													<span class="planetBuildingsSingleBuildingOperatorControlButtonText">NONE</span>
+												</button>
+												<button class="planetBuildingsSingleBuildingOperatorControlButton">
+													<img class="planetBuildingsSingleBuildingOperatorControlButtonImage interfaceButton2x1" src="RESOURCES/ICONS/Symbol_questionmark.png">
+													<span class="planetBuildingsSingleBuildingOperatorControlButtonText">ALL</span>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="planetBuildingElementsContainer planetBuildingSingleBuildingSideButtonsContainer planetBuildingSingleBuildingSideButtonsUnfoldedContainer planetBuildingUnfoldedOnlyBuilding">
+										<button class="planetBuildingsSingleBuildingSideButton">
+											<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/PowerOn.png">
+										</button>
+										<button class="planetBuildingsSingleBuildingSideButton" id="planetBuildingSingleBuildingFoldBuildingButton_0">
+											<img class="planetBuildingSingleBuildingSideButtonImage" src="RESOURCES/ICONS/Unfolded.png">
+										</button>
+									</div>								
 								</div>
 							</div>						
 						</div>

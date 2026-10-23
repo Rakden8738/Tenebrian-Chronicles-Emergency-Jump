@@ -38,7 +38,22 @@ function EarlyAlphaDebug(){
 	PlanetsArray[0].buildings[0].count = 3;
 	PlanetsArray[0].buildings[0].level = 1;
 	
+	PlanetsArray[0].buildings[1].count = 1;
+	PlanetsArray[0].buildings[1].level = 1;
+	
+	BuildingsArray[0].powerConsumed = 5;
+	
+	BuildingsArray[1].powerProduced = 10;
+	BuildingsArray[1].powerConsumed = 20;
+	
+	BuildingsArray[0].staffNeededBase = 1;
+	BuildingsArray[0].staffNeededLevelMultiplier = 2.0;
+	
+	PlanetsArray[0].buildings[1].staffNeededBase = 2;
+	
 	PlanetsArray[0].buildings[0].refreshBuilding();
+	PlanetsArray[0].buildings[1].refreshBuilding();
+	
 	//PlanetsArray[0].buildings[0].refreshAllCostsAndRefunds();
 }
 
@@ -1675,11 +1690,13 @@ function earlyAlpha_AddBuildings(){
 	
 	tmpBuilding.maxUpgrade = 2;
 	
-	tmpBuilding.setBuildCostByName("Iron", 50, 1, 1.0);
+	tmpBuilding.setBuildCostByName("Iron", 50, 1);
 	
-	tmpBuilding.setUpgradeCostByName("Steel", 100, 2, 0.5);
+	tmpBuilding.setUpgradeCostByName("Steel", 100, 2);
 	
 	tmpBuilding.setProductionByName("Scrap", 5.0, 1.5);
+	tmpBuilding.setProductionByName("Ore", 0.5, 0.5);
+	
 	
 	
 	tmpBuilding.powerConsumed = 0;
@@ -1713,14 +1730,18 @@ function earlyAlpha_AddBuildings(){
 	
 	tmpBuilding.maxUpgrade = 4;
 	
-	tmpBuilding.setBuildCostByName("Iron", 100, 1, 1.0);
+	tmpBuilding.setBuildCostByName("Iron", 100, 1);
 	
-	tmpBuilding.setUpgradeCostByName("Steel", 100, 2, 0.25);
+	tmpBuilding.setUpgradeCostByName("Steel", 100, 2);
 	
 	tmpBuilding.setProductionByName("Iron", 2.0, 2.0);
 	tmpBuilding.setProductionByName("Copper", 0.5, 2.0);
+	tmpBuilding.setProductionByName("Ore", 1.0, 1.0);
+	tmpBuilding.setProductionByName("Scrap", 1.0, 0.5);
 
 	tmpBuilding.setConsumptionByName("Scrap", 10.0, 2.0);
+	tmpBuilding.setConsumptionByName("Ore", 0.5, 1.0);
+	tmpBuilding.setConsumptionByName("Stone", 0.5, 0.5);
 
 	
 	

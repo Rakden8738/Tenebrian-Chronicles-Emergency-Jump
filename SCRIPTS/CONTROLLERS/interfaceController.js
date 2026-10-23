@@ -633,7 +633,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpRequiredResourcesAmountCellText.innerHTML = "0.0";
 		tmpRequiredResourcesAmountCell.append(tmpRequiredResourcesAmountCellText);
 		let tmpRequiredResourcesSpacingCell2 = outputDocument.createElement("td");
-		tmpRequiredResourcesSpacingCell2.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpRequiredResourcesSpacingCell2.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpRequiredResourcesChangeCell = outputDocument.createElement("td");
 		tmpRequiredResourcesChangeCell.className = BuildingMenuLeftPanelTableResourceAmountCellClass + BuildingMenuLeftPanelTableResourceChangeCellClass;
 		let tmpRequiredResourcesChangeCellText = outputDocument.createElement("span");
@@ -642,7 +642,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpRequiredResourcesChangeCellText.innerHTML = "- 0.0";
 		tmpRequiredResourcesChangeCell.append(tmpRequiredResourcesChangeCellText);
 		let tmpRequiredResourcesSpacingCell3 = outputDocument.createElement("td");
-		tmpRequiredResourcesSpacingCell3.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpRequiredResourcesSpacingCell3.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpRequiredResourcesResultCell = outputDocument.createElement("td");
 		tmpRequiredResourcesResultCell.className = BuildingMenuLeftPanelTableResourceAmountCellClass + BuildingMenuLeftPanelTableResourceResultCellClass;
 		let tmpRequiredResourcesResultCellText = outputDocument.createElement("span");
@@ -684,7 +684,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpProducedResourcesAmountCellText.innerHTML = "0.0";
 		tmpProducedResourcesAmountCell.append(tmpProducedResourcesAmountCellText);
 		let tmpProducedResourcesSpacingCell2 = outputDocument.createElement("td");
-		tmpProducedResourcesSpacingCell2.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpProducedResourcesSpacingCell2.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpProducedResourcesChangeCell = outputDocument.createElement("td");
 		tmpProducedResourcesChangeCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass + BuildingMenuLeftPanelTableResourceChangeCellClass;
 		let tmpProducedResourcesChangeCellText = outputDocument.createElement("span");
@@ -693,7 +693,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpProducedResourcesChangeCellText.innerHTML = "+ 0.0";
 		tmpProducedResourcesChangeCell.append(tmpProducedResourcesChangeCellText);
 		let tmpProducedResourcesSpacingCell3 = outputDocument.createElement("td");
-		tmpProducedResourcesSpacingCell3.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpProducedResourcesSpacingCell3.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpProducedResourcesResultCell = outputDocument.createElement("td");
 		tmpProducedResourcesResultCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass + BuildingMenuLeftPanelTableResourceResultCellClass;
 		let tmpProducedResourcesResultCellText = outputDocument.createElement("span");
@@ -735,7 +735,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpConsumedResourcesAmountCellText.innerHTML = "0.0";
 		tmpConsumedResourcesAmountCell.append(tmpConsumedResourcesAmountCellText);
 		let tmpConsumedResourcesSpacingCell2 = outputDocument.createElement("td");
-		tmpConsumedResourcesSpacingCell2.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpConsumedResourcesSpacingCell2.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpConsumedResourcesChangeCell = outputDocument.createElement("td");
 		tmpConsumedResourcesChangeCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass + BuildingMenuLeftPanelTableResourceChangeCellClass;
 		let tmpConsumedResourcesChangeCellText = outputDocument.createElement("span");
@@ -744,7 +744,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpConsumedResourcesChangeCellText.innerHTML = "- 0.0";
 		tmpConsumedResourcesChangeCell.append(tmpConsumedResourcesChangeCellText);
 		let tmpConsumedResourcesSpacingCell3 = outputDocument.createElement("td");
-		tmpConsumedResourcesSpacingCell3.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass + BuildingMenuLeftPanelTableResourceResultCellClass;
+		tmpConsumedResourcesSpacingCell3.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass + BuildingMenuLeftPanelTableResourceResultCellClass;
 		let tmpConsumedResourcesResultCell = outputDocument.createElement("td");
 		tmpConsumedResourcesResultCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass;
 		let tmpConsumedResourcesResultCellText = outputDocument.createElement("span");
@@ -786,7 +786,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpAvailableResourcesAmountCellText.innerHTML = "0.0";
 		tmpAvailableResourcesAmountCell.append(tmpAvailableResourcesAmountCellText);
 		let tmpAvailableResourcesSpacingCell2 = outputDocument.createElement("td");
-		tmpAvailableResourcesSpacingCell2.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpAvailableResourcesSpacingCell2.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpAvailableResourcesChangeCell = outputDocument.createElement("td");
 		tmpAvailableResourcesChangeCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass;
 		let tmpAvailableResourcesChangeCellText = outputDocument.createElement("span");
@@ -795,7 +795,7 @@ function interfaceBuildMenuInitPlanetTables(outputDocument){
 		tmpAvailableResourcesChangeCellText.innerHTML = "0.0";
 		tmpAvailableResourcesChangeCell.append(tmpAvailableResourcesChangeCellText);
 		let tmpAvailableResourcesSpacingCell3 = outputDocument.createElement("td");
-		tmpAvailableResourcesSpacingCell3.classname = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
+		tmpAvailableResourcesSpacingCell3.className = BuildingMenuLeftPanelTableSpacingBetweenValuesCellClass;
 		let tmpAvailableResourcesImportExportCell = outputDocument.createElement("td");
 		tmpAvailableResourcesImportExportCell.className = BuildingMenuLeftPanelTableResourceProductionConsumptionCellClass + BuildingMenuLeftPanelTableResourceImportExportCellClass;
 		let tmpAvailableResourcesImportExportCellText = outputDocument.createElement("span");
@@ -944,7 +944,8 @@ function interfaceBuildMenuPlanetTablesRefreshRequiredResourcesTable(outputDocum
 			//value is a substracted cost, so if value is negative - must be some weird return-exception
 			if(tmpChangeValue < 0){
 				tmpChangeSpan.className = BuildingMenuLeftPanelTableResourceAmountTextClass + BuildingMenuLeftPanelTableResourceChangeTextClass + BuildingMenuLeftPanelTableResourcePositiveTextClass;
-				tmpChangeSpan.innerHTML = '+' + bigNumberToString(tmpChangeValue);
+				// tmpChangeSpan.innerHTML = '+' + bigNumberToString(tmpChangeValue);
+				tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue, true);
 			}
 			else{
 				tmpChangeSpan.className = BuildingMenuLeftPanelTableResourceAmountTextClass + BuildingMenuLeftPanelTableResourceChangeTextClass + BuildingMenuLeftPanelTableResourceNegativeTextClass;
@@ -995,7 +996,8 @@ function interfaceBuildMenuPlanetTablesRefreshRequiredResourcesTable(outputDocum
 			}
 			else{
 				tmpChangeSpan.className = BuildingMenuLeftPanelTableResourceAmountTextClass + BuildingMenuLeftPanelTableResourceChangeTextClass + BuildingMenuLeftPanelTableResourcePositiveTextClass;
-				tmpChangeSpan.innerHTML = '+' + bigNumberToString(tmpChangeValue);
+				// tmpChangeSpan.innerHTML = '+' + bigNumberToString(tmpChangeValue);
+				tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue, true);
 			}
 			
 			//if storage were to go negative as result, action is not allowed - make related row red
@@ -1099,7 +1101,7 @@ function interfaceBuildMenuPlanetTablesRefreshProducedResourcesTable(outputDocum
 		}
 		
 		tmpProductionSpan.innerHTML = bigNumberToString(tmpProductionValue);
-		tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue);
+		tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue, true);
 		tmpResultSpan.innerHTML = bigNumberToString(tmpResultValue);
 		
 		tmpEmptyTable = false;
@@ -1190,7 +1192,7 @@ function interfaceBuildMenuPlanetTablesRefreshConsumedResourcesTable(outputDocum
 		}
 		
 		tmpConsumptionSpan.innerHTML = bigNumberToString(tmpConsumptionValue);
-		tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue);
+		tmpChangeSpan.innerHTML = bigNumberToString(tmpChangeValue, true);
 		tmpResultSpan.innerHTML = bigNumberToString(tmpResultValue);
 		
 		tmpEmptyTable = false;
@@ -1265,17 +1267,119 @@ var BuildingMenuSingleBuildingInfoHeaderAmountPrefixClass = "planetBuildingSingl
 var BuildingMenuSingleBuildingInfoHeaderAmountValueClass = "planetBuildingSingleBuildingHeaderText interfaceDynamicText";
 var BuildingMenuSingleBuildingInfoHeaderAmountValueClassIdPrefix = "planetBuildingSingleBuildingAmount_";
 
-var BuildingMenuSingleBuildingInfoResourceTableContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingResourcesContainer planetBuildingUnfoldedOnlyBuilding";
-var BuildingMenuSingleBuildingInfoResourceTableClass = "interfaceTable planetBuildingSingleBuildingResourceListTable";
-var BuildingMenuSingleBuildingInfoResourceTableBodyClass = "interfaceTableBody";
 
-var BuildingMenuSingleBuildingInfoResourceTableHeaderRowClass = "interfaceTableRow";
-var BuildingMenuSingleBuildingInfoResourceTableHeaderCellClass = "interfaceTableCell planetBuildingResourceHeaderCell";
-var BuildingMenuSingleBuildingInfoResourceTableHeaderCellTextClass = "interfaceText planetBuildingResourceHeader";
 
-//TODO - variables for resources in table 
+var BuildingMenuSingleBuildingResourceTableContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingResourcesTableContainer planetBuildingUnfoldedOnlyBuilding";
+var BuildingMenuSingleBuildingResourceTableClass = "interfaceTable planetBuildingSingleBuildingResourceTable";
+var BuildingMenuSingleBuildingResourceTableIdPrefix = "planetBuildingSingleBuildingResourceTable_";
+var BuildingMenuSingleBuildingResourceTableBodyClass = "interfaceTableBody planetBuildingSingleBuildingResourceTableBody";
+var BuildingMenuSingleBuildingResourceTableBodyIdPrefix = "planetBuildingSingleBuildingResourceTableBody_";
 
-//TODO - variables for energy in table 
+var BuildingMenuSingleBuildingResourceTableProductionHeaderRowClass = "interfaceTableRow planetBuildingSingleBuildingResourceTableProductionHeaderRow";
+var BuildingMenuSingleBuildingResourceTableProductionHeaderRowIdPrefix = "planetBuildingSingleBuildingResourceTableProductionHeaderRow_";
+var BuildingMenuSingleBuildingResourceTableProductionHeaderCellClass = "interfaceTableCell planetBuildingSingleBuildingResourceTableProductionHeaderCell";
+var BuildingMenuSingleBuildingResourceTableProductionHeaderCellIdPrefix = "planetBuildingSingleBuildingResourceTableProductionHeaderCell_";
+var BuildingMenuSingleBuildingResourceTableProductionHeaderCellTextClass = "interfaceText planetBuildingSingleBuildingResourceTableProductionHeaderText";
+var BuildingMenuSingleBuildingResourceTableProductionHeaderCellTextIdPrefix = "planetBuildingSingleBuildingResourceTableProductionHeaderText_";
+
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowClass = "interfaceTableRow planetBuildingSingleBuildingResourceTableConsumptionHeaderRow";
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowIdPrefix = "planetBuildingSingleBuildingResourceTableConsumptionHeaderRow_";
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellClass = "interfaceTableCell planetBuildingSingleBuildingResourceTableConsumptionHeaderCell";
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellIdPrefix = "planetBuildingSingleBuildingResourceTableConsumptionHeaderCell_";
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellTextClass = "interfaceText planetBuildingSingleBuildingResourceTableConsumptionHeaderText";
+var BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellTextIdPrefix = "planetBuildingSingleBuildingResourceTableConsumptionHeaderText_";
+
+var BuildingMenuSingleBuildingResourceTableProductionRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedResourceRow";
+var BuildingMenuSingleBuildingResourceTableProductionRowIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceRow_";
+var BuildingMenuSingleBuildingResourceTableConsumptionRowIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceRow_";
+var BuildingMenuSingleBuildingResourceTableConsumptionRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedResourceRow";
+
+var BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyRow";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedRowIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyRow_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyRow";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedRowIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyRow_";
+var BuildingMenuSingleBuildingResourceTableRequiredStaffRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableRequiredStaffRow";
+var BuildingMenuSingleBuildingResourceTableRequiredStaffRowIdPrefix = "planetBuildingSingleBuildingResourcesTableRequiredStaffRow_";
+
+var BuildingMenuSingleBuildingResourceTableHiddenRowClass = " planetBuildingSingleBuildingResourceTableHiddenRow";
+var BuildingMenuSingleBuildingResourceTableSpacingRowClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableSpacingRow";
+var BuildingMenuSingleBuildingResourceTableSpacingRowTopClass = " planetBuildingSingleBuildingResourcesTableSpacingTopRow";
+var BuildingMenuSingleBuildingResourceTableSpacingRowBottomClass = " planetBuildingSingleBuildingResourcesTableSpacingBottomRow";
+var BuildingMenuSingleBuildingResourceTableSpacingRowExtraClass = " planetBuildingSingleBuildingResourcesTableSpacingExtraRow";
+var BuildingMenuSingleBuildingResourceTableSpacingRowTopIdPrefix = "planetBuildingSingleBuildingResourcesTableSpacingTopRow_";
+var BuildingMenuSingleBuildingResourceTableSpacingRowBottomIdPrefix = "planetBuildingSingleBuildingResourcesTableSpacingBottomRow_";
+var BuildingMenuSingleBuildingResourceTableSpacingRowExtraIdPrefix = "planetBuildingSingleBuildingResourcesTableSpacingExtraRow_";
+var BuildingMenuSingleBuildingResourceTableSpacingRowCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableSpacingRowCell";
+
+var BuildingMenuSingleBuildingResourceTableProductionNameCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceNameCell";
+var BuildingMenuSingleBuildingResourceTableProductionNameCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceNameCell_";
+var BuildingMenuSingleBuildingResourceTableProductionNameTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceNameText";
+var BuildingMenuSingleBuildingResourceTableProductionNameTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceNameText_";
+var BuildingMenuSingleBuildingResourceTableProductionValueCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceValueCell";
+var BuildingMenuSingleBuildingResourceTableProductionValueCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceValueCell_";
+var BuildingMenuSingleBuildingResourceTableProductionValueTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceValueText";
+var BuildingMenuSingleBuildingResourceTableProductionValueTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceValueText_";
+var BuildingMenuSingleBuildingResourceTableProductionChangeCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell";
+var BuildingMenuSingleBuildingResourceTableProductionChangeCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceChangeCell_";
+var BuildingMenuSingleBuildingResourceTableProductionChangeTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableProducedResourceChangeText";
+var BuildingMenuSingleBuildingResourceTableProductionChangeTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedResourceChangeText_";
+
+var BuildingMenuSingleBuildingResourceTableConsumptionNameCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell";
+var BuildingMenuSingleBuildingResourceTableConsumptionNameCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceNameCell_";
+var BuildingMenuSingleBuildingResourceTableConsumptionNameTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceNameText";
+var BuildingMenuSingleBuildingResourceTableConsumptionNameTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceNameText_";
+var BuildingMenuSingleBuildingResourceTableConsumptionValueCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell";
+var BuildingMenuSingleBuildingResourceTableConsumptionValueCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceValueCell_";
+var BuildingMenuSingleBuildingResourceTableConsumptionValueTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceValueText";
+var BuildingMenuSingleBuildingResourceTableConsumptionValueTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceValueText_";
+var BuildingMenuSingleBuildingResourceTableConsumptionChangeCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell";
+var BuildingMenuSingleBuildingResourceTableConsumptionChangeCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceChangeCell_";
+var BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass = "interfaceText planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText";
+var BuildingMenuSingleBuildingResourceTableConsumptionChangeTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedResourceChangeText_";
+
+var BuildingMenuSingleBuildingResourceTableEnergyProducedNameCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyNameCell";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedNameCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyNameCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedNameTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyNameText";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedNameTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyNameText_";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedValueCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyValueCell";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedValueCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyValueCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedValueTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyValueText";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedValueTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyValueText_";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedChangeCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableProducedEnergyChangeCell";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedChangeCellIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyChangeCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableProducedEnergyChangeText";
+var BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextIdPrefix = "planetBuildingSingleBuildingResourcesTableProducedEnergyChangeText_";
+
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedNameCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyNameCell";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedNameCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyNameCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedNameTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyNameText";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedNameTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyNameText_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedValueCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyValueCell";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedValueCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyValueCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedValueTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyValueText";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedValueTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyValueText_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeCell";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeCellIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeCell_";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeText";
+var BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextIdPrefix = "planetBuildingSingleBuildingResourcesTableConsumedEnergyChangeText_";
+
+var BuildingMenuSingleBuildingResourceTableStaffRequiredNameCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredNameCell";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredNameCellIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredNameCell_";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredNameTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredNameText";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredNameTextIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredNameText_";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredValueCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredValueCell";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredValueCellIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredValueCell_";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredValueTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredValueText";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredValueTextIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredValueText_";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredChangeCellClass = "interfaceTableCell planetBuildingSingleBuildingResourcesTableStaffRequiredChangeCell";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredChangeCellIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredChangeCell_";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass = "interfaceTableRow planetBuildingSingleBuildingResourcesTableStaffRequiredChangeText";
+var BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextIdPrefix = "planetBuildingSingleBuildingResourcesTableStaffRequiredChangeText_";
+
+var BuildingMenuSingleBuildingResourceTablePositiveValueClass = " planetBuildingSingleBuildingResourceTableValuePositive";
+var BuildingMenuSingleBuildingResourceTableNeutralValueClass = " planetBuildingSingleBuildingResourceTableValueNeutral";
+var BuildingMenuSingleBuildingResourceTableNegativeValueClass = " planetBuildingSingleBuildingResourceTableValueNegative";
+var BuildingMenuSingleBuildingResourceTableSpacingCellClass = "interfaceTableCell planetBuildingSingleResourceTableSpacingCell";
 
 var BuildingMenuSingleBuildingBuildDemolishContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingBuildDemolishContainer";
 var BuildingMenuSingleBuildingBuildButtonsContainerClass = "planetBuildingElementsContainer planetBuildingSingleBuildingButtonsContainer planetBuildingSingleBuildingBuildButtonsContainer planetBuildingUnfoldedOnlyBuilding";
@@ -1451,7 +1555,7 @@ var InterfaceBuildingMenuBuildingsOnList = 0;
 
 function interfaceBuildMenuInitBuildingsList(outputDocument){
 	var buildingListContainer = outputDocument.getElementById(InterfaceBuildingMenuPlanetListContainerID);
-	//return;
+	// return;
 	buildingListContainer.innerHTML = "";
 	
 	InterfaceBuildingMenuBuildingsOnList = 0;
@@ -1530,27 +1634,388 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingInfoHeaderContainer.append(tmpBuildingAmountLevelContainer);
 					
 					var tmpBuildingInfoResourceTableContainer = outputDocument.createElement("div");
-					tmpBuildingInfoResourceTableContainer.className = BuildingMenuSingleBuildingInfoResourceTableContainerClass;
+					tmpBuildingInfoResourceTableContainer.className = BuildingMenuSingleBuildingResourceTableContainerClass;
 						var tmpBuildingInfoResourceTable =  outputDocument.createElement("table");
-						tmpBuildingInfoResourceTable.className = BuildingMenuSingleBuildingInfoResourceTableClass;
+						tmpBuildingInfoResourceTable.className = BuildingMenuSingleBuildingResourceTableClass;
 							var tmpBuildingInfoResourceTableBody = outputDocument.createElement("tbody");
-							tmpBuildingInfoResourceTableBody.className = BuildingMenuSingleBuildingInfoResourceTableBodyClass;
-								var tmpBuildingInfoResourceTableHeaderRow = outputDocument.createElement("tr");
-								tmpBuildingInfoResourceTableHeaderRow.className = BuildingMenuSingleBuildingInfoResourceTableHeaderRowClass;
-									var tmpBuildingInfoResourceTableHeaderCell = outputDocument.createElement("td");
-									tmpBuildingInfoResourceTableHeaderCell.className = BuildingMenuSingleBuildingInfoResourceTableHeaderCellClass;
-									tmpBuildingInfoResourceTableHeaderCell.colSpan = 5;
-										var tmpBuildingInfoResourceTableHeaderCellText = outputDocument.createElement("span");
-										tmpBuildingInfoResourceTableHeaderCellText.className = BuildingMenuSingleBuildingInfoResourceTableHeaderCellTextClass;
-										tmpBuildingInfoResourceTableHeaderCellText.innerHTML = "Production and consumption per day:";
+							tmpBuildingInfoResourceTableBody.className = BuildingMenuSingleBuildingResourceTableBodyClass;
+							
+								var tmpBuildingInfoResourceTableProductionHeaderRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableProductionHeaderRow.className = BuildingMenuSingleBuildingResourceTableProductionHeaderRowClass;
+								tmpBuildingInfoResourceTableProductionHeaderRow.id = BuildingMenuSingleBuildingResourceTableProductionHeaderRowIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableProductionHeaderRow);
 								
-										//RESOURCE ROWS FOR LOOP GOES HERE, TODO
+									var tmpBuildingInfoResourceTableProductionHeaderCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProductionHeaderCell.className = BuildingMenuSingleBuildingResourceTableProductionHeaderCellClass;
+									tmpBuildingInfoResourceTableProductionHeaderCell.id = BuildingMenuSingleBuildingResourceTableProductionHeaderCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableProductionHeaderCell.colSpan = 5;
+									tmpBuildingInfoResourceTableProductionHeaderRow.append(tmpBuildingInfoResourceTableProductionHeaderCell);
+								
+										var tmpBuildingInfoResourceTableProductionHeaderText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableProductionHeaderText.className = BuildingMenuSingleBuildingResourceTableProductionHeaderCellTextClass;
+										tmpBuildingInfoResourceTableProductionHeaderText.id = BuildingMenuSingleBuildingResourceTableProductionHeaderCellTextIdPrefix;
+										tmpBuildingInfoResourceTableProductionHeaderText.innerHTML = "Production:";
+										tmpBuildingInfoResourceTableProductionHeaderCell.append(tmpBuildingInfoResourceTableProductionHeaderText);
+									
+								//produced
+								
+								var tmpBuildingIsProducing = false;
+								
+								for(let j = 0; j < ResourcesArray.length; j++){
+									let tmpIndex = j;
+									if(ResourceNamesDisplayInAlphabeticalOrder){
+										tmpIndex = ResourcesNamesSortedArrayIndexes[j];
+									}
+									
+									let tmpProducedResourceTableRow = outputDocument.createElement("tr");
+									tmpProducedResourceTableRow.className = BuildingMenuSingleBuildingResourceTableProductionRowClass;
+									tmpProducedResourceTableRow.id = BuildingMenuSingleBuildingResourceTableProductionRowIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+									tmpBuildingInfoResourceTableBody.append(tmpProducedResourceTableRow);
+									
+									if(tmpBuildingBlueprint.resourcesProduced[tmpIndex].amount == 0) {
+										tmpProducedResourceTableRow.className += BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+									else{
+										tmpBuildingIsProducing = true;
+									}
+									
+										let tmpProducedResourceTableNameCell = outputDocument.createElement("td");
+										tmpProducedResourceTableNameCell.className = BuildingMenuSingleBuildingResourceTableProductionNameCellClass;
+										tmpProducedResourceTableNameCell.id = BuildingMenuSingleBuildingResourceTableProductionNameCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpProducedResourceTableRow.append(tmpProducedResourceTableNameCell);
 										
-										//ENERGY ROWS GO HERE, TODO
+											let tmpProducedResourceTableNameSpan = outputDocument.createElement("span");
+											tmpProducedResourceTableNameSpan.className = BuildingMenuSingleBuildingResourceTableProductionNameTextClass;
+											tmpProducedResourceTableNameSpan.id = BuildingMenuSingleBuildingResourceTableProductionNameTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											tmpProducedResourceTableNameSpan.innerHTML = tmpBuildingBlueprint.resourcesProduced[tmpIndex].typeName;
+											tmpProducedResourceTableNameCell.append(tmpProducedResourceTableNameSpan);
+										
+										let tmpProducedResourceTableLeftSpacingCell = outputDocument.createElement("td");
+										tmpProducedResourceTableLeftSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+										tmpProducedResourceTableRow.append(tmpProducedResourceTableLeftSpacingCell);
+										
+										let tmpProducedResourceTableValueCell = outputDocument.createElement("td");
+										tmpProducedResourceTableValueCell.className = BuildingMenuSingleBuildingResourceTableProductionValueCellClass;
+										tmpProducedResourceTableValueCell.id = BuildingMenuSingleBuildingResourceTableProductionValueCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpProducedResourceTableRow.append(tmpProducedResourceTableValueCell);
+										
+											let tmpProducedResourceTableValueSpan = outputDocument.createElement("span");
+											tmpProducedResourceTableValueSpan.className = BuildingMenuSingleBuildingResourceTableProductionValueTextClass;
+											tmpProducedResourceTableValueSpan.id = BuildingMenuSingleBuildingResourceTableProductionValueTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											tmpProducedResourceTableValueSpan.innerHTML = "0.0";
+											tmpProducedResourceTableValueCell.append(tmpProducedResourceTableValueSpan);
+										
+										let tmpProducedResourceTableRightSpacingCell = outputDocument.createElement("td");
+										tmpProducedResourceTableRightSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+										tmpProducedResourceTableRow.append(tmpProducedResourceTableRightSpacingCell);
+										
+										let tmpProducedResourceTableChangeCell = outputDocument.createElement("td");
+										tmpProducedResourceTableChangeCell.className = BuildingMenuSingleBuildingResourceTableProductionChangeCellClass;
+										tmpProducedResourceTableChangeCell.id = BuildingMenuSingleBuildingResourceTableProductionChangeCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpProducedResourceTableRow.append(tmpProducedResourceTableChangeCell);
+										
+											let tmpProducedResourceTableChangeSpan = outputDocument.createElement("span");
+											tmpProducedResourceTableChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+											tmpProducedResourceTableChangeSpan.id = BuildingMenuSingleBuildingResourceTableProductionChangeTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											//tmpProducedResourceTableChangeSpan.innerHTML = '+' + bigNumberToString(tmpBuildingBlueprint.resourcesProduced[tmpIndex].amount);
+											tmpProducedResourceTableChangeSpan.innerHTML = '-';
+											tmpProducedResourceTableChangeCell.append(tmpProducedResourceTableChangeSpan);
+								}		
 								
-										tmpBuildingInfoResourceTableHeaderCell.append(tmpBuildingInfoResourceTableHeaderCellText);
-									tmpBuildingInfoResourceTableHeaderRow.append(tmpBuildingInfoResourceTableHeaderCell);
-								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableHeaderRow);
+								var tmpBuildingInfoResourceTableTopSpacingRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableTopSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableSpacingRowTopClass;
+								tmpBuildingInfoResourceTableTopSpacingRow.id = BuildingMenuSingleBuildingResourceTableSpacingRowTopIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableTopSpacingRow);
+								
+									var tmpBuildingInfoResourceTableTopSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableTopSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingRowCellClass;
+									tmpBuildingInfoResourceTableTopSpacingCell.colSpan = 5;
+									tmpBuildingInfoResourceTableTopSpacingRow.append(tmpBuildingInfoResourceTableTopSpacingCell);
+								
+								var tmpBuildingInfoResourceTableConsumptionHeaderRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableConsumptionHeaderRow.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowClass;
+								tmpBuildingInfoResourceTableConsumptionHeaderRow.id = BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableConsumptionHeaderRow);
+								
+									var tmpBuildingInfoResourceTableConsumptionHeaderCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumptionHeaderCell.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellClass;
+									tmpBuildingInfoResourceTableConsumptionHeaderCell.id = BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableConsumptionHeaderCell.colSpan = 5;
+									tmpBuildingInfoResourceTableConsumptionHeaderRow.append(tmpBuildingInfoResourceTableConsumptionHeaderCell);
+								
+										var tmpBuildingInfoResourceTableConsumptionHeaderText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableConsumptionHeaderText.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellTextClass;
+										tmpBuildingInfoResourceTableConsumptionHeaderText.id = BuildingMenuSingleBuildingResourceTableConsumptionHeaderCellTextIdPrefix;
+										tmpBuildingInfoResourceTableConsumptionHeaderText.innerHTML = "Consumption:";
+										tmpBuildingInfoResourceTableConsumptionHeaderCell.append(tmpBuildingInfoResourceTableConsumptionHeaderText);
+								
+								//consumed
+								
+								var tmpBuildingIsConsuming = false;
+								
+								for(let j = 0; j < ResourcesArray.length; j++){
+									let tmpIndex = j;
+									if(ResourceNamesDisplayInAlphabeticalOrder){
+										tmpIndex = ResourcesNamesSortedArrayIndexes[j];
+									}
+									
+									let tmpConsumedResourceTableRow = outputDocument.createElement("tr");
+									tmpConsumedResourceTableRow.className = BuildingMenuSingleBuildingResourceTableConsumptionRowClass;
+									tmpConsumedResourceTableRow.id = BuildingMenuSingleBuildingResourceTableConsumptionRowIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+									tmpBuildingInfoResourceTableBody.append(tmpConsumedResourceTableRow);
+									
+									if(tmpBuildingBlueprint.resourcesConsumed[tmpIndex].amount == 0) {
+										tmpConsumedResourceTableRow.className += BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+									else{
+										tmpBuildingIsConsuming = true;
+									}
+									
+										let tmpConsumedResourceTableNameCell = outputDocument.createElement("td");
+										tmpConsumedResourceTableNameCell.className = BuildingMenuSingleBuildingResourceTableConsumptionNameCellClass;
+										tmpConsumedResourceTableNameCell.id = BuildingMenuSingleBuildingResourceTableConsumptionNameCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpConsumedResourceTableRow.append(tmpConsumedResourceTableNameCell);
+										
+											let tmpConsumedResourceTableNameSpan = outputDocument.createElement("span");
+											tmpConsumedResourceTableNameSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionNameTextClass;
+											tmpConsumedResourceTableNameSpan.id = BuildingMenuSingleBuildingResourceTableConsumptionNameTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											tmpConsumedResourceTableNameSpan.innerHTML = tmpBuildingBlueprint.resourcesConsumed[tmpIndex].typeName;
+											tmpConsumedResourceTableNameCell.append(tmpConsumedResourceTableNameSpan);
+										
+										let tmpConsumedResourceTableLeftSpacingCell = outputDocument.createElement("td");
+										tmpConsumedResourceTableLeftSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+										tmpConsumedResourceTableRow.append(tmpConsumedResourceTableLeftSpacingCell);
+										
+										let tmpConsumedResourceTableValueCell = outputDocument.createElement("td");
+										tmpConsumedResourceTableValueCell.className = BuildingMenuSingleBuildingResourceTableConsumptionValueCellClass;
+										tmpConsumedResourceTableValueCell.id = BuildingMenuSingleBuildingResourceTableConsumptionValueCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpConsumedResourceTableRow.append(tmpConsumedResourceTableValueCell);
+										
+											let tmpConsumedResourceTableValueSpan = outputDocument.createElement("span");
+											tmpConsumedResourceTableValueSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionValueTextClass;
+											tmpConsumedResourceTableValueSpan.id = BuildingMenuSingleBuildingResourceTableConsumptionValueTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											tmpConsumedResourceTableValueSpan.innerHTML = "0.0";
+											tmpConsumedResourceTableValueCell.append(tmpConsumedResourceTableValueSpan);
+										
+										let tmpConsumedResourceTableRightSpacingCell = outputDocument.createElement("td");
+										tmpConsumedResourceTableRightSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+										tmpConsumedResourceTableRow.append(tmpConsumedResourceTableRightSpacingCell);
+										
+										let tmpConsumedResourceTableChangeCell = outputDocument.createElement("td");
+										tmpConsumedResourceTableChangeCell.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeCellClass;
+										tmpConsumedResourceTableChangeCell.id = BuildingMenuSingleBuildingResourceTableConsumptionChangeCellIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+										tmpConsumedResourceTableRow.append(tmpConsumedResourceTableChangeCell);
+										
+											let tmpConsumedResourceTableChangeSpan = outputDocument.createElement("span");
+											tmpConsumedResourceTableChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+											tmpConsumedResourceTableChangeSpan.id = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextIdPrefix + tmpBuilding.index + '_' + tmpIndex;
+											//tmpConsumedResourceTableChangeSpan.innerHTML = '-' + bigNumberToString(tmpBuildingBlueprint.resourcesConsumed[tmpIndex].amount);
+											tmpConsumedResourceTableChangeSpan.innerHTML = '-';
+											tmpConsumedResourceTableChangeCell.append(tmpConsumedResourceTableChangeSpan);
+								}
+								
+								var tmpBuildingInfoResourceTableBottomSpacingRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableBottomSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableSpacingRowBottomClass;
+								tmpBuildingInfoResourceTableBottomSpacingRow.id = BuildingMenuSingleBuildingResourceTableSpacingRowBottomIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableBottomSpacingRow);
+								
+									var tmpBuildingInfoResourceTableBottomSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableBottomSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingRowCellClass;
+									tmpBuildingInfoResourceTableBottomSpacingCell.colSpan = 5;
+									tmpBuildingInfoResourceTableBottomSpacingRow.append(tmpBuildingInfoResourceTableBottomSpacingCell);
+								
+								if(tmpBuildingIsProducing && tmpBuildingIsConsuming){
+									tmpBuildingInfoResourceTableTopSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableSpacingRowTopClass;
+								}
+								else{
+									tmpBuildingInfoResourceTableTopSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableSpacingRowTopClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									
+									if(tmpBuildingIsProducing){
+										tmpBuildingInfoResourceTableProductionHeaderRow.className = BuildingMenuSingleBuildingResourceTableProductionHeaderRowClass;
+										tmpBuildingInfoResourceTableConsumptionHeaderRow.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+									else if(tmpBuildingIsConsuming){
+										tmpBuildingInfoResourceTableProductionHeaderRow.className = BuildingMenuSingleBuildingResourceTableProductionHeaderRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										tmpBuildingInfoResourceTableConsumptionHeaderRow.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowClass;
+									}
+									else{
+										tmpBuildingInfoResourceTableProductionHeaderRow.className = BuildingMenuSingleBuildingResourceTableProductionHeaderRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										tmpBuildingInfoResourceTableConsumptionHeaderRow.className = BuildingMenuSingleBuildingResourceTableConsumptionHeaderRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										
+										tmpBuildingInfoResourceTableBottomSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableSpacingRowBottomClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+								}
+								
+								var tmpBuildingInfoResourceTableProducedEnergyRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableProducedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass;
+								tmpBuildingInfoResourceTableProducedEnergyRow.id = BuildingMenuSingleBuildingResourceTableEnergyProducedRowIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableProducedEnergyRow);
+								
+									var tmpBuildingInfoResourceTableProducedEnergyNameCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProducedEnergyNameCell.className = BuildingMenuSingleBuildingResourceTableEnergyProducedNameCellClass;
+									tmpBuildingInfoResourceTableProducedEnergyNameCell.id = BuildingMenuSingleBuildingResourceTableEnergyProducedNameCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableProducedEnergyRow.append(tmpBuildingInfoResourceTableProducedEnergyNameCell);
+									
+										var tmpBuildingInfoResourceTableProducedEnergyNameText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableProducedEnergyNameText.className = BuildingMenuSingleBuildingResourceTableEnergyProducedNameTextClass;
+										tmpBuildingInfoResourceTableProducedEnergyNameText.id = BuildingMenuSingleBuildingResourceTableEnergyProducedNameTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableProducedEnergyNameText.innerHTML = "Energy produced:";
+										tmpBuildingInfoResourceTableProducedEnergyNameCell.append(tmpBuildingInfoResourceTableProducedEnergyNameText);
+									
+									var tmpBuildingInfoResourceTableProducedEnergyLeftSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProducedEnergyLeftSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableProducedEnergyRow.append(tmpBuildingInfoResourceTableProducedEnergyLeftSpacingCell);
+									
+									var tmpBuildingInfoResourceTableProducedEnergyValueCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProducedEnergyValueCell.className = BuildingMenuSingleBuildingResourceTableEnergyProducedValueCellClass;
+									tmpBuildingInfoResourceTableProducedEnergyValueCell.id = BuildingMenuSingleBuildingResourceTableEnergyProducedValueCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableProducedEnergyRow.append(tmpBuildingInfoResourceTableProducedEnergyValueCell);
+									
+										var tmpBuildingInfoResourceTableProducedEnergyValueText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableProducedEnergyValueText.className = BuildingMenuSingleBuildingResourceTableEnergyProducedValueTextClass;
+										tmpBuildingInfoResourceTableProducedEnergyValueText.id = BuildingMenuSingleBuildingResourceTableEnergyProducedValueTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableProducedEnergyValueText.innerHTML = "0";
+										tmpBuildingInfoResourceTableProducedEnergyValueCell.append(tmpBuildingInfoResourceTableProducedEnergyValueText);
+									
+									var tmpBuildingInfoResourceTableProducedEnergyRightSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProducedEnergyRightSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableProducedEnergyRow.append(tmpBuildingInfoResourceTableProducedEnergyRightSpacingCell);
+									
+									var tmpBuildingInfoResourceTableProducedEnergyChangeCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableProducedEnergyChangeCell.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeCellClass;
+									tmpBuildingInfoResourceTableProducedEnergyChangeCell.id = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableProducedEnergyRow.append(tmpBuildingInfoResourceTableProducedEnergyChangeCell);
+								
+										var tmpBuildingInfoResourceTableProducedEnergyChangeText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableProducedEnergyChangeText.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
+										tmpBuildingInfoResourceTableProducedEnergyChangeText.id = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableProducedEnergyChangeText.innerHTML = "-";
+										tmpBuildingInfoResourceTableProducedEnergyChangeCell.append(tmpBuildingInfoResourceTableProducedEnergyChangeText);
+								
+								var tmpBuildingInfoResourceTableConsumedEnergyRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableConsumedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass;
+								tmpBuildingInfoResourceTableConsumedEnergyRow.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableConsumedEnergyRow);
+								
+									var tmpBuildingInfoResourceTableConsumedEnergyNameCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumedEnergyNameCell.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedNameCellClass;
+									tmpBuildingInfoResourceTableConsumedEnergyNameCell.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedNameCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.append(tmpBuildingInfoResourceTableConsumedEnergyNameCell);
+									
+										var tmpBuildingInfoResourceTableConsumedEnergyNameText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableConsumedEnergyNameText.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedNameTextClass;
+										tmpBuildingInfoResourceTableConsumedEnergyNameText.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedNameTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableConsumedEnergyNameText.innerHTML = "Energy consumed:";
+										tmpBuildingInfoResourceTableConsumedEnergyNameCell.append(tmpBuildingInfoResourceTableConsumedEnergyNameText);
+									
+									var tmpBuildingInfoResourceTableConsumedEnergyLeftSpaceingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumedEnergyLeftSpaceingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.append(tmpBuildingInfoResourceTableConsumedEnergyLeftSpaceingCell);
+									
+									var tmpBuildingInfoResourceTableConsumedEnergyValueCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumedEnergyValueCell.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedValueCellClass;
+									tmpBuildingInfoResourceTableConsumedEnergyValueCell.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedValueCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.append(tmpBuildingInfoResourceTableConsumedEnergyValueCell);
+									
+										var tmpBuildingInfoResourceTableConsumedEnergyValueText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableConsumedEnergyValueText.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedValueTextClass;
+										tmpBuildingInfoResourceTableConsumedEnergyValueText.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedValueTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableConsumedEnergyValueText.innerHTML = "0";
+										tmpBuildingInfoResourceTableConsumedEnergyValueCell.append(tmpBuildingInfoResourceTableConsumedEnergyValueText);
+									
+									var tmpBuildingInfoResourceTableConsumedEnergyRightSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumedEnergyRightSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.append(tmpBuildingInfoResourceTableConsumedEnergyRightSpacingCell);
+									
+									var tmpBuildingInfoResourceTableConsumedEnergyChangeCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableConsumedEnergyChangeCell.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeCellClass;
+									tmpBuildingInfoResourceTableConsumedEnergyChangeCell.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.append(tmpBuildingInfoResourceTableConsumedEnergyChangeCell);
+								
+										var tmpBuildingInfoResourceTableConsumedEnergyChangeText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableConsumedEnergyChangeText.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
+										tmpBuildingInfoResourceTableConsumedEnergyChangeText.id = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableConsumedEnergyChangeText.innerHTML = "-";
+										tmpBuildingInfoResourceTableConsumedEnergyChangeCell.append(tmpBuildingInfoResourceTableConsumedEnergyChangeText);
+								
+								if(tmpBuildingBlueprint.powerProduced > 0 && tmpBuildingBlueprint.powerConsumed > 0){
+									tmpBuildingInfoResourceTableProducedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass;
+									tmpBuildingInfoResourceTableConsumedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass;
+								}
+								else{
+									if(tmpBuildingBlueprint.powerProduced > 0){
+										tmpBuildingInfoResourceTableProducedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass;
+										tmpBuildingInfoResourceTableConsumedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+									else if(tmpBuildingBlueprint.powerConsumed > 0){
+										tmpBuildingInfoResourceTableProducedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										tmpBuildingInfoResourceTableConsumedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass;
+									}
+									else{
+										tmpBuildingInfoResourceTableProducedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyProducedRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										tmpBuildingInfoResourceTableConsumedEnergyRow.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+										
+										tmpBuildingInfoResourceTableBottomSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass + BuildingMenuSingleBuildingResourceTableHiddenRowClass;
+									}
+								}
+								
+								var tmpBuildingInfoResourceTableExtraSpacingRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableExtraSpacingRow.className = BuildingMenuSingleBuildingResourceTableSpacingRowClass;
+								tmpBuildingInfoResourceTableExtraSpacingRow.id = BuildingMenuSingleBuildingResourceTableSpacingRowExtraIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableExtraSpacingRow);
+								
+									var tmpBuildingInfoResourceTableExtraSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableExtraSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingRowCellClass;
+									tmpBuildingInfoResourceTableExtraSpacingCell.colSpan = 5;
+									tmpBuildingInfoResourceTableExtraSpacingRow.append(tmpBuildingInfoResourceTableExtraSpacingCell);
+								
+								var tmpBuildingInfoResourceTableRequiredStaffRow = outputDocument.createElement("tr");
+								tmpBuildingInfoResourceTableRequiredStaffRow.className = BuildingMenuSingleBuildingResourceTableRequiredStaffRowClass;
+								tmpBuildingInfoResourceTableRequiredStaffRow.id = BuildingMenuSingleBuildingResourceTableRequiredStaffRowIdPrefix + tmpBuilding.index;
+								tmpBuildingInfoResourceTableBody.append(tmpBuildingInfoResourceTableRequiredStaffRow);
+								
+									var tmpBuildingInfoResourceTableRequiredStaffNameCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableRequiredStaffNameCell.className = BuildingMenuSingleBuildingResourceTableStaffRequiredNameCellClass;
+									tmpBuildingInfoResourceTableRequiredStaffNameCell.id = BuildingMenuSingleBuildingResourceTableStaffRequiredNameCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableRequiredStaffRow.append(tmpBuildingInfoResourceTableRequiredStaffNameCell);
+									
+										var tmpBuildingInfoResourceTableRequiredStaffNameText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableRequiredStaffNameText.className = BuildingMenuSingleBuildingResourceTableStaffRequiredNameTextClass;
+										tmpBuildingInfoResourceTableRequiredStaffNameText.id = BuildingMenuSingleBuildingResourceTableStaffRequiredNameTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableRequiredStaffNameText.innerHTML = "Staff required:";
+										tmpBuildingInfoResourceTableRequiredStaffNameCell.append(tmpBuildingInfoResourceTableRequiredStaffNameText);
+									
+									var tmpBuildingInfoResourceTableRequiredStaffLeftSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableRequiredStaffLeftSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableRequiredStaffRow.append(tmpBuildingInfoResourceTableRequiredStaffLeftSpacingCell);
+									
+									var tmpBuildingInfoResourceTableRequiredStaffValueCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableRequiredStaffValueCell.className = BuildingMenuSingleBuildingResourceTableStaffRequiredValueCellClass;
+									tmpBuildingInfoResourceTableRequiredStaffValueCell.id = BuildingMenuSingleBuildingResourceTableStaffRequiredValueCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableRequiredStaffRow.append(tmpBuildingInfoResourceTableRequiredStaffValueCell);
+									
+										var tmpBuildingInfoResourceTableRequiredStaffValueText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableRequiredStaffValueText.className = BuildingMenuSingleBuildingResourceTableStaffRequiredValueTextClass;
+										tmpBuildingInfoResourceTableRequiredStaffValueText.id = BuildingMenuSingleBuildingResourceTableStaffRequiredValueTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableRequiredStaffValueText.innerHTML = "0";
+										tmpBuildingInfoResourceTableRequiredStaffValueCell.append(tmpBuildingInfoResourceTableRequiredStaffValueText);
+									
+									var tmpBuildingInfoResourceTableRequiredStaffRightSpacingCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableRequiredStaffRightSpacingCell.className = BuildingMenuSingleBuildingResourceTableSpacingCellClass;
+									tmpBuildingInfoResourceTableRequiredStaffRow.append(tmpBuildingInfoResourceTableRequiredStaffRightSpacingCell);
+									
+									var tmpBuildingInfoResourceTableRequiredStaffChangeCell = outputDocument.createElement("td");
+									tmpBuildingInfoResourceTableRequiredStaffChangeCell.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeCellClass;
+									tmpBuildingInfoResourceTableRequiredStaffChangeCell.id = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeCellIdPrefix + tmpBuilding.index;
+									tmpBuildingInfoResourceTableRequiredStaffRow.append(tmpBuildingInfoResourceTableRequiredStaffChangeCell);
+								
+										var tmpBuildingInfoResourceTableRequiredStaffChangeText = outputDocument.createElement("span");
+										tmpBuildingInfoResourceTableRequiredStaffChangeText.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
+										tmpBuildingInfoResourceTableRequiredStaffChangeText.id = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextIdPrefix + tmpBuilding.index;
+										tmpBuildingInfoResourceTableRequiredStaffChangeText.innerHTML = "-";
+										tmpBuildingInfoResourceTableRequiredStaffChangeCell.append(tmpBuildingInfoResourceTableRequiredStaffChangeText);
+								
+								
 							tmpBuildingInfoResourceTable.append(tmpBuildingInfoResourceTableBody);
 						tmpBuildingInfoResourceTableContainer.append(tmpBuildingInfoResourceTable);
 					tmpBuildingInfoContainer.append(tmpBuildingInfoHeaderContainer);
@@ -1564,7 +2029,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingBuildButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingBuildButtonSingle.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
 						tmpBuildingBuildButtonSingle.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "build", 1);};
-						tmpBuildingBuildButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingBuildButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingBuildButtonSingleImage = outputDocument.createElement("img");
 							tmpBuildingBuildButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingBuildButtonSingleImage.src = BuildingMenuSingleBuildingBuildImagePath;
@@ -1588,7 +2053,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingBuildButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingBuildButtonEvenMore.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildEvenMoreAmount);};
 						tmpBuildingBuildButtonEvenMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "build", BuildingsBuildEvenMoreAmount);};
-						tmpBuildingBuildButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingBuildButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingBuildButtonEvenMoreImage = outputDocument.createElement("img");
 							tmpBuildingBuildButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingBuildButtonEvenMoreImage.src = BuildingMenuSingleBuildingBuildImagePath;
@@ -1609,7 +2074,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDemolishButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDemolishButtonSingle.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
 						tmpBuildingDemolishButtonSingle.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "demolish", 1);};
-						tmpBuildingDemolishButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDemolishButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDemolishButtonSingleImage = outputDocument.createElement("img");
 							tmpBuildingDemolishButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDemolishButtonSingleImage.src = BuildingMenuSingleBuildingDemolishImagePath;
@@ -1619,7 +2084,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDemolishButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDemolishButtonMore.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildMoreAmount);};
 						tmpBuildingDemolishButtonMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "demolish", BuildingsBuildMoreAmount);};
-						tmpBuildingDemolishButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDemolishButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDemolishButtonMoreImage = outputDocument.createElement("img");
 							tmpBuildingDemolishButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDemolishButtonMoreImage.src = BuildingMenuSingleBuildingDemolishImagePath;
@@ -1633,7 +2098,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDemolishButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDemolishButtonEvenMore.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsBuildEvenMoreAmount);};
 						tmpBuildingDemolishButtonEvenMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "demolish", BuildingsBuildEvenMoreAmount);};
-						tmpBuildingDemolishButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDemolishButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDemolishButtonEvenMoreImage = outputDocument.createElement("img");
 							tmpBuildingDemolishButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDemolishButtonEvenMoreImage.src = BuildingMenuSingleBuildingDemolishImagePath;
@@ -1654,7 +2119,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingBuildCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingBuildCustomAmountButton.onclick = function() {interfaceBuildBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
 						tmpBuildingBuildCustomAmountButton.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "build", "input");};
-						tmpBuildingBuildCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingBuildCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingBuildCustomAmountButtonImage = outputDocument.createElement("img");
 							tmpBuildingBuildCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingBuildCustomAmountButtonImage.src = BuildingMenuSingleBuildingBuildImagePath;
@@ -1672,7 +2137,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDemolishCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDemolishCustomAmountButton.onclick = function() {interfaceDemolishBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
 						tmpBuildingDemolishCustomAmountButton.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "demolish", "input");};
-						tmpBuildingDemolishCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDemolishCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDemolishCustomAmountButtonImage = outputDocument.createElement("img");
 							tmpBuildingDemolishCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDemolishCustomAmountButtonImage.src = BuildingMenuSingleBuildingDemolishImagePath;
@@ -1694,7 +2159,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingUpgradeButtonSingle.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
 						tmpBuildingUpgradeButtonSingle.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "upgrade", 1);};
-						tmpBuildingUpgradeButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingUpgradeButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingUpgradeButtonSingleImage = outputDocument.createElement("img");
 							tmpBuildingUpgradeButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingUpgradeButtonSingleImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
@@ -1704,7 +2169,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingUpgradeButtonMore.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeMoreAmount);};
 						tmpBuildingUpgradeButtonMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "upgrade", BuildingsUpgradeMoreAmount);};
-						tmpBuildingUpgradeButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingUpgradeButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingUpgradeButtonMoreImage = outputDocument.createElement("img");
 							tmpBuildingUpgradeButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingUpgradeButtonMoreImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
@@ -1718,7 +2183,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingUpgradeButtonEvenMore.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeEvenMoreAmount);};
 						tmpBuildingUpgradeButtonEvenMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "upgrade", BuildingsUpgradeEvenMoreAmount);};
-						tmpBuildingUpgradeButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingUpgradeButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingUpgradeButtonEvenMoreImage = outputDocument.createElement("img");
 							tmpBuildingUpgradeButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingUpgradeButtonEvenMoreImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
@@ -1738,7 +2203,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDowngradeButtonSingle.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDowngradeButtonSingle.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, 1);};
 						tmpBuildingDowngradeButtonSingle.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "downgrade", 1);};
-						tmpBuildingDowngradeButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDowngradeButtonSingle.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDowngradeButtonSingleImage = outputDocument.createElement("img");
 							tmpBuildingDowngradeButtonSingleImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDowngradeButtonSingleImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
@@ -1748,7 +2213,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDowngradeButtonMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDowngradeButtonMore.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeMoreAmount);};
 						tmpBuildingDowngradeButtonMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "downgrade", BuildingsUpgradeMoreAmount);};
-						tmpBuildingDowngradeButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDowngradeButtonMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDowngradeButtonMoreImage = outputDocument.createElement("img");
 							tmpBuildingDowngradeButtonMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDowngradeButtonMoreImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
@@ -1762,7 +2227,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDowngradeButtonEvenMore.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDowngradeButtonEvenMore.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex, BuildingsUpgradeEvenMoreAmount);};
 						tmpBuildingDowngradeButtonEvenMore.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "downgrade", BuildingsUpgradeEvenMoreAmount);};
-						tmpBuildingDowngradeButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDowngradeButtonEvenMore.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDowngradeButtonEvenMoreImage = outputDocument.createElement("img");
 							tmpBuildingDowngradeButtonEvenMoreImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDowngradeButtonEvenMoreImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
@@ -1784,7 +2249,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingUpgradeCustomAmountButton.onclick = function() {interfaceUpgradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
 						tmpBuildingUpgradeCustomAmountButton.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "upgrade", "input");};
-						tmpBuildingUpgradeCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingUpgradeCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingUpgradeCustomAmountButtonImage = outputDocument.createElement("img");
 							tmpBuildingUpgradeCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingUpgradeCustomAmountButtonImage.src = BuildingMenuSingleBuildingUpgradeImagePath;
@@ -1802,7 +2267,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingDowngradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
 						tmpBuildingDowngradeCustomAmountButton.onclick = function() {interfaceDowngradeBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
 						tmpBuildingDowngradeCustomAmountButton.onmouseenter = function() {interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, i, "downgrade", "input");};
-						tmpBuildingDowngradeCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument);};
+						tmpBuildingDowngradeCustomAmountButton.onmouseleave = function() {interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, i);};
 							var tmpBuildingDowngradeCustomAmountButtonImage = outputDocument.createElement("img");
 							tmpBuildingDowngradeCustomAmountButtonImage.className = BuildingMenuSingleBuildingSingleButtonImageClass;
 							tmpBuildingDowngradeCustomAmountButtonImage.src = BuildingMenuSingleBuildingDowngradeImagePath;
@@ -2327,7 +2792,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 					tmpBuildingControlContainer.append(tmpBuildingFoldedSideButtonsContainer);
 					tmpBuildingControlContainer.append(tmpBuildingUnfoldedOperatorsContainer);
 					tmpBuildingControlContainer.append(tmpBuildingUnfoldedSideButtonsContainer);
-					tmpBuildingControlContainer.append(tmpBuildingControlAlertsContainer);
+					// tmpBuildingControlContainer.append(tmpBuildingControlAlertsContainer);
+					tmpBuildingUnfoldedOperatorsHeaderContainer.append(tmpBuildingControlAlertsContainer);
 				
 				tmpBuildingContainer.append(tmpBuildingInfoContainer);
 				tmpBuildingContainer.append(tmpBuildingBuildDemolishContainer);
@@ -2340,7 +2806,10 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 		InterfaceBuildingMenuBuildingsOnList++;
 		
 		interfaceInitSingleBuildingAlerts(outputDocument, tmpBuilding.index);
-		interfaceRefreshBuildingAlerts(outputDocument, tmpBuilding.index);
+		interfaceRefreshSingleBuilding(outputDocument, tmpBuilding.index);
+		// interfaceRefreshBuildingAlerts(outputDocument, tmpBuilding.index);
+		// interfaceRefreshBuildingProductionConsumptionTable(outputDocument, tmpBuilding.index);
+		// interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, tmpBuilding.index);
 	}
 	//console.log(InterfaceBuildingMenuBuildingsOnList);
 
@@ -2869,7 +3338,8 @@ function interfaceRefreshBuildingsList(outputDocument){
 			//refresh element's energy if building is visible, no point otherwise
 			
 			//refresh element's alerts if building is visible, no point otherwise
-			interfaceRefreshBuildingAlerts(outputDocument, i);
+			interfaceRefreshSingleBuilding(outputDocument, i);
+			//interfaceRefreshBuildingAlerts(outputDocument, i);
 			
 			InterfaceBuildingMenuBuildingsOnList++;
 		}
@@ -2882,11 +3352,414 @@ function interfaceRefreshBuildingsList(outputDocument){
 	else outputDocument.getElementById("planetBuildingMenuNoBuildingsAvailable").style.display = "none";
 }
 
+function interfaceRefreshSingleBuilding(outputDocument, buildingIndex){
+	interfaceRefreshBuildingRequiredStaff(outputDocument, buildingIndex);
+	interfaceRefreshBuildingAlerts(outputDocument, buildingIndex);
+	interfaceRefreshBuildingProductionConsumptionTable(outputDocument, buildingIndex);
+	interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, buildingIndex);
+}
+
+function interfaceRefreshBuildingRequiredStaff(outputDocument, buildingIndex){
+	
+}
 function interfaceRefreshBuildingAlerts(outputDocument, buildingIndex){
 	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
 	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
 	
 	//
+}
+function interfaceRefreshBuildingProductionConsumptionTable(outputDocument, buildingIndex){
+	interfaceRefreshBuildingCurrentProductionConsumptionTable(outputDocument, buildingIndex);
+}
+function interfaceRefreshBuildingCurrentProductionConsumptionTable(outputDocument, buildingIndex){
+	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+	
+	 //current value, productions
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpProductionValue = tmpBuilding.dailyProduction[i].amount;
+		if(tmpProductionValue == 0) continue;
+		
+		let tmpCurrentProducedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableProductionValueTextIdPrefix + buildingIndex + '_' + i);
+		
+		tmpCurrentProducedValueSpan.innerHTML = bigNumberToString(tmpProductionValue * tmpBuilding.count);
+	} 
+	
+	//current value, consumptions
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpConsumptionValue = tmpBuilding.dailyConsumption[i].amount;
+		if(tmpConsumptionValue == 0) continue;
+		
+		let tmpCurrentConsumedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableConsumptionValueTextIdPrefix + buildingIndex + '_' + i);
+		
+		tmpCurrentConsumedValueSpan.innerHTML = bigNumberToString(tmpConsumptionValue * tmpBuilding.count);
+	}
+	
+	//power
+	if(tmpBuilding.powerProduced > 0){
+		let tmpPowerProducedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyProducedValueTextIdPrefix + buildingIndex);
+		tmpPowerProducedValueSpan.innerHTML = tmpBuilding.powerProduced * tmpBuilding.count;
+	}
+	if(tmpBuilding.powerConsumed > 0){
+		let tmpPowerConsumedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyConsumedValueTextIdPrefix + buildingIndex);
+		tmpPowerConsumedValueSpan.innerHTML = tmpBuilding.powerConsumed * tmpBuilding.count;
+	}
+	
+	//staff
+	if(tmpBuilding.staffRequired > 0){
+		let tmpStaffRequiredValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableStaffRequiredValueTextIdPrefix + buildingIndex);
+		tmpStaffRequiredValueSpan.innerHTML = tmpBuilding.staffRequired * tmpBuilding.count;
+	}
+}
+function interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputDocument, buildingIndex, actionType, actionAmount){
+	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+	
+	let tmpCurrentBuildingCount = tmpBuilding.count;
+	let tmpCurrentBuildingLevel = tmpBuilding.level;
+	let tmpTargetBuildingCount;
+	let tmpTargetBuildingLevel;
+	
+	let tmpAmount = 1;
+	
+	if(actionAmount == "input"){
+		if(actionType == "build" || actionType == "demolish"){
+			tmpAmount = tmpBuilding.customBuildDemolishAmount;
+		}
+		else if (actionType == "upgrade" || actionType == "downgrade"){
+			tmpAmount = tmpBuilding.customUpgradeDowngradeAmount;
+		}
+	}
+	else{
+		tmpAmount = actionAmount;
+	}
+	
+	switch(actionType){
+		case "reset":
+			interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, buildingIndex);
+			return;
+		case "build":
+			tmpTargetBuildingCount = tmpCurrentBuildingCount + tmpAmount;
+			tmpTargetBuildingLevel = tmpCurrentBuildingLevel;
+			break;
+		case "demolish":
+			tmpTargetBuildingCount = tmpCurrentBuildingCount - tmpAmount;
+			tmpTargetBuildingLevel = tmpCurrentBuildingLevel;
+			break;
+		case "upgrade":
+			tmpTargetBuildingCount = tmpCurrentBuildingCount;
+			tmpTargetBuildingLevel = tmpCurrentBuildingLevel + tmpAmount;
+			break;
+		case "downgrade":
+			tmpTargetBuildingCount = tmpCurrentBuildingCount;
+			tmpTargetBuildingLevel = tmpCurrentBuildingLevel - tmpAmount;
+			break;
+		default:
+			interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, buildingIndex);
+			return;
+	}
+	
+	if(tmpTargetBuildingCount < 0) tmpTargetBuildingCount = 0;
+	if(tmpTargetBuildingLevel < 0) tmpTargetBuildingLevel = 0;
+	
+	let tmpSingleCurrentProducedResourcesArray = tmpBuilding.dailyProduction;
+	let tmpTotalCurrentProducedResourcesArray = resourcesGetMultipliedProductionConsumption(tmpSingleCurrentProducedResourcesArray, (tmpCurrentBuildingCount));
+	let tmpSingleChangedProducedResourcesArray = tmpBuildingBlueprint.getBuildingProduction(tmpTargetBuildingCount, tmpTargetBuildingLevel);
+	let tmpTotalChangedProducedResourcesArray = resourcesGetMultipliedProductionConsumption(tmpSingleChangedProducedResourcesArray, (tmpTargetBuildingCount));
+	let tmpDifferenceProducedResourcesArray = resourcesGetDifferenceProductionConsumption(tmpTotalChangedProducedResourcesArray,tmpTotalCurrentProducedResourcesArray);
+	
+	let tmpSingleCurrentConsumedResourcesArray = tmpBuilding.dailyConsumption;
+	let tmpTotalCurrentConsumedResourcesArray = resourcesGetMultipliedProductionConsumption(tmpSingleCurrentConsumedResourcesArray, (tmpCurrentBuildingCount));
+	let tmpSingleChangedConsumedResourcesArray = tmpBuildingBlueprint.getBuildingConsumption(tmpTargetBuildingCount, tmpTargetBuildingLevel);
+	let tmpTotalChangedConsumedResourcesArray = resourcesGetMultipliedProductionConsumption(tmpSingleChangedConsumedResourcesArray, (tmpTargetBuildingCount));
+	let tmpDifferenceConsumedResourcesArray = resourcesGetDifferenceProductionConsumption(tmpTotalChangedConsumedResourcesArray,tmpTotalCurrentConsumedResourcesArray);
+	
+	
+	let tmpCurrentEnergyProduced = tmpCurrentBuildingCount * tmpBuilding.powerProduced;
+	let tmpChangeEnergyProduced = tmpTargetBuildingCount * tmpBuildingBlueprint.getProducedEnergy(tmpTargetBuildingCount, tmpTargetBuildingLevel);
+	let tmpDifferenceEnergyProduced = tmpChangeEnergyProduced - tmpCurrentEnergyProduced;
+	
+	let tmpCurrentEnergyConsumed = tmpCurrentBuildingCount * tmpBuilding.powerConsumed;
+	let tmpChangeEnergyConsumed = tmpTargetBuildingCount * tmpBuildingBlueprint.getRequiredEnergy(tmpTargetBuildingCount, tmpTargetBuildingLevel);
+	let tmpDifferenceEnergyConsumed = tmpChangeEnergyConsumed - tmpCurrentEnergyConsumed;
+	
+	let tmpCurrentAgentsRequired = tmpCurrentBuildingCount * tmpBuilding.staffRequired;
+	let tmpChangeAgentsRequired = tmpTargetBuildingCount * tmpBuildingBlueprint.getStaffNeeded(tmpTargetBuildingCount, tmpTargetBuildingLevel);
+	let tmpDifferenceAgentsRequired = tmpChangeAgentsRequired - tmpCurrentAgentsRequired;
+	
+	//production
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpCurrentProducedChangeSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableProductionChangeTextIdPrefix + buildingIndex + '_' + i);
+		let tmpResultValue = tmpDifferenceProducedResourcesArray[i].amount;
+		if(actionType == "build" || actionType == "upgrade"){
+			if(tmpResultValue > 0.0){
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+				tmpCurrentProducedChangeSpan.innerHTML = bigNumberToString(tmpResultValue, true);
+			}
+			else if(tmpResultValue == 0.0){
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass;
+				tmpCurrentProducedChangeSpan.innerHTML = '-';
+			}
+			else{
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+				tmpCurrentProducedChangeSpan.innerHTML = bigNumberToString(tmpResultValue);
+			}
+		}
+		else if (actionType == "demolish" || actionType == "downgrade"){
+			if(tmpResultValue > 0.0){
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+				tmpCurrentProducedChangeSpan.innerHTML = bigNumberToString(tmpResultValue, true);
+			}
+			else if(tmpResultValue == 0.0){
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass;
+				tmpCurrentProducedChangeSpan.innerHTML = '-';
+			}
+			else{
+				tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+				tmpCurrentProducedChangeSpan.innerHTML = bigNumberToString(tmpResultValue);
+			}
+		}
+		else{
+			tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass;
+			tmpCurrentProducedChangeSpan.innerHTML = '-';
+		}
+	} 
+	//consumption
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpCurrentConsumedChangeSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableConsumptionChangeTextIdPrefix + buildingIndex + '_' + i);
+		let tmpResultValue = tmpDifferenceConsumedResourcesArray[i].amount;
+		if(actionType == "build" || actionType == "upgrade"){
+			if(tmpResultValue > 0.0){
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = bigNumberToString(tmpResultValue, true);
+			}
+			else if(tmpResultValue == 0.0){
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = '-';
+			}
+			else{
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = bigNumberToString(tmpResultValue);
+			}
+		}
+		else if (actionType == "demolish" || actionType == "downgrade"){
+			if(tmpResultValue > 0.0){
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = bigNumberToString(tmpResultValue, true);
+			}
+			else if(tmpResultValue == 0.0){
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = '-';
+			}
+			else{
+				tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+				tmpCurrentConsumedChangeSpan.innerHTML = bigNumberToString(tmpResultValue);
+			}
+		}
+		else{
+			tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass;
+			tmpCurrentConsumedChangeSpan.innerHTML = '-';
+		}
+	}
+	
+	//energy
+	let tmpPowerProducedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextIdPrefix + buildingIndex);
+	if(actionType == "build" || actionType == "upgrade"){
+		if(tmpDifferenceEnergyProduced > 0.0){
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced, true);
+			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+		}
+		else if(tmpDifferenceEnergyProduced == 0.0){
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
+			tmpPowerProducedValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced);
+			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+		}
+	}
+	else if (actionType == "demolish" || actionType == "downgrade"){
+		if(tmpDifferenceEnergyProduced > 0.0){
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced, true);
+			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+		}
+		else if(tmpDifferenceEnergyProduced == 0.0){
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
+			tmpPowerProducedValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+			// tmpPowerProducedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyProduced);
+			tmpPowerProducedValueSpan.innerHTML = tmpDifferenceEnergyProduced;
+		}
+	}
+	else{
+		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
+		tmpPowerProducedValueSpan.innerHTML = '-';
+	}
+	
+	let tmpPowerConsumedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextIdPrefix + buildingIndex);
+	if(actionType == "build" || actionType == "upgrade"){
+		if(tmpDifferenceEnergyConsumed > 0.0){
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed, true);
+			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+		}
+		else if(tmpDifferenceEnergyConsumed == 0.0){
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
+			tmpPowerConsumedValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed);
+			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+		}
+	}
+	else if (actionType == "demolish" || actionType == "downgrade"){
+		if(tmpDifferenceEnergyConsumed > 0.0){
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed, true);
+			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+		}
+		else if(tmpDifferenceEnergyConsumed == 0.0){
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
+			tmpPowerConsumedValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			// tmpPowerConsumedValueSpan.innerHTML = bigNumberToString(tmpDifferenceEnergyConsumed);
+			tmpPowerConsumedValueSpan.innerHTML = tmpDifferenceEnergyConsumed;
+		}
+	}
+	else{
+		tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
+		tmpPowerConsumedValueSpan.innerHTML = '-';
+	}
+	
+	//staff
+	let tmpStaffRequiredValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextIdPrefix + buildingIndex);
+	if(actionType == "build" || actionType == "upgrade"){
+		if(tmpDifferenceAgentsRequired > 0){
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+		}
+		else if(tmpDifferenceAgentsRequired == 0){
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
+			tmpStaffRequiredValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+		}
+	}
+	else if (actionType == "demolish" || actionType == "downgrade"){
+		if(tmpDifferenceAgentsRequired > 0){
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+		}
+		else if(tmpDifferenceAgentsRequired == 0){
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
+			tmpStaffRequiredValueSpan.innerHTML = '-';
+		}
+		else{
+			tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			tmpStaffRequiredValueSpan.innerHTML = tmpDifferenceAgentsRequired;
+		}
+	}
+	else{
+		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
+		tmpStaffRequiredValueSpan.innerHTML = '-';
+	}
+	
+}
+function interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, buildingIndex){
+	let tmpBuilding = PlanetsArray[PlanetsCurrentPlanet].buildings[buildingIndex];
+	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpCurrentProducedChangeSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableProductionChangeTextIdPrefix + buildingIndex + '_' + i);
+		let tmpCurrentProducedMultiplier = tmpBuildingBlueprint.resourcesProduced[i].upgradeAmountIncrease;
+		
+		if(tmpCurrentProducedMultiplier > 1.0){
+			tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			tmpCurrentProducedChangeSpan.innerHTML = '×' + bigNumberToString(tmpCurrentProducedMultiplier);
+		}
+		else if (tmpCurrentProducedMultiplier == 1.0){
+			tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass;// + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+			tmpCurrentProducedChangeSpan.innerHTML = '-';
+		}
+		else{
+			tmpCurrentProducedChangeSpan.className = BuildingMenuSingleBuildingResourceTableProductionChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+			tmpCurrentProducedChangeSpan.innerHTML = '×' + bigNumberToString(tmpCurrentProducedMultiplier);
+		}
+		
+	} 
+	
+	for(let i = 0; i < ResourcesArray.length; i++){
+		let tmpCurrentConsumedChangeSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableConsumptionChangeTextIdPrefix + buildingIndex + '_' + i);
+		let tmpCurrentConsumedMultiplier = tmpBuildingBlueprint.resourcesConsumed[i].upgradeAmountIncrease;
+		
+		if(tmpCurrentConsumedMultiplier > 1.0){
+			tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+			tmpCurrentConsumedChangeSpan.innerHTML = '×' + bigNumberToString(tmpCurrentConsumedMultiplier);
+		}
+		else if(tmpCurrentConsumedMultiplier == 1.0){
+			tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass;
+			tmpCurrentConsumedChangeSpan.innerHTML = '-';
+		}
+		else{
+			tmpCurrentConsumedChangeSpan.className = BuildingMenuSingleBuildingResourceTableConsumptionChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+			tmpCurrentConsumedChangeSpan.innerHTML = '×' + bigNumberToString(tmpCurrentConsumedMultiplier);
+		}
+	}
+	
+	let tmpPowerProducedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextIdPrefix + buildingIndex);
+	let tmpPowerProducedMultiplier = tmpBuildingBlueprint.powerProducedUpgradeMultiplier;
+	if(tmpPowerProducedMultiplier > 1.0){
+		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+		tmpPowerProducedValueSpan.innerHTML = '×' + bigNumberToString(tmpPowerProducedMultiplier);
+	}
+	else if(tmpPowerProducedMultiplier == 1.0){
+		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass;
+		tmpPowerProducedValueSpan.innerHTML = '-';
+	}
+	else{
+		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+		tmpPowerProducedValueSpan.innerHTML = '×' + bigNumberToString(tmpPowerProducedMultiplier);
+	}
+	
+	let tmpPowerConsumedValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextIdPrefix + buildingIndex);
+	let tmpPowerConsumedMultiplier = tmpBuildingBlueprint.powerConsumedUpgradeMultiplier;
+	if(tmpPowerConsumedMultiplier > 1.0){
+		tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+		tmpPowerConsumedValueSpan.innerHTML = '×' + bigNumberToString(tmpPowerConsumedMultiplier);
+	}
+	else if(tmpPowerConsumedMultiplier == 1.0){
+		tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass;
+		tmpPowerConsumedValueSpan.innerHTML = '-';
+	}
+	else{
+		tmpPowerConsumedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyConsumedChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+		tmpPowerConsumedValueSpan.innerHTML = '×' + bigNumberToString(tmpPowerConsumedMultiplier);
+	}
+	
+	let tmpStaffRequiredValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextIdPrefix + buildingIndex);
+	let tmpStaffRequiredMultiplier = tmpBuildingBlueprint.staffNeededLevelMultiplier;
+	if(tmpStaffRequiredMultiplier > 1.0){
+		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+		tmpStaffRequiredValueSpan.innerHTML = '×' + bigNumberToString(tmpStaffRequiredMultiplier);
+	}
+	else if(tmpStaffRequiredMultiplier == 1.0){
+		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass;
+		tmpStaffRequiredValueSpan.innerHTML = '-';
+	}
+	else{
+		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTablePositiveValueClass;
+		tmpStaffRequiredValueSpan.innerHTML = '×' + bigNumberToString(tmpStaffRequiredMultiplier);
+	}
 }
 
 function interfaceFoldUnfoldBuilding(outputDocument, buildingListIndex){
@@ -2983,6 +3856,7 @@ function interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, buildingList
 	
 	interfaceBuildMenuPlanetTablesRefreshAllTables(outputDocument, buildingListId, actionType, amountVariant);
 	interfaceBuildingMenuShowAllButAvailableResourcesTables(outputDocument);
+	interfaceRefreshBuildingRefreshChangeProductionConsumptionTable(outputDocument, buildingListId, actionType, amountVariant);
 	BuildingMenuResourcesListAutoScrollInterrupt = true;
 	
 	setTimeout(() => {
@@ -2991,9 +3865,10 @@ function interfaceSingleBuildingButtonsOnMouseEnter(outputDocument, buildingList
 		interfaceAutoScrollResourcesListElement(outputDocument);
 	},BuildingMenuResourcesListAutoScrollInterruptLength);
 }
-function interfaceSingleBuildingButtonsOnMouseLeave(outputDocument){
+function interfaceSingleBuildingButtonsOnMouseLeave(outputDocument, buildingListId){
 	// console.log("Mouse leave detected.");
 	interfaceBuildingMenuShowOnlyAvailableResourcesTable(outputDocument);
+	interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDocument, buildingListId);
 	BuildingMenuResourcesListAutoScrollInterrupt = true;
 	if(BuildingMenuResourcesListAutoScrollElement != null) BuildingMenuResourcesListAutoScrollElement.scroll(0,0);
 }
