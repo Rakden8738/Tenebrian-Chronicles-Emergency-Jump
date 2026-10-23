@@ -112,9 +112,9 @@
 	cursor: pointer;
 	background: hsla(60,100%,75%,0.0);
 	opacity: 0.70;
-	border: none;
 	backface-visibility: hidden;
 	will-change: transform;
+	transition-duration: 0.1s;
 }
 .planetBuildingButton:enabled:hover{
 	opacity:0.85;
@@ -123,7 +123,7 @@
 }
 .planetBuildingButton:enabled:active{
 	opacity:1.0;
-	transition-duration: 0.05s;
+	transition-duration: 0.15s;
 	scale:1;
 }
 .planetBuildingButton:disabled{
@@ -148,12 +148,8 @@
 	outline: solid hsla(180,75%,75%,0.5) 0px;
 	position: relative;
 }
-.planetBuildingButton:hover .planetBuildingButtonImage{
-	outline: solid hsla(180,75%,75%,1) 0px;
-}
-.planetBuildingButton:active .planetBuildingButtonImage{
-	outline: solid hsla(180,100%,75%,1) 0px;
-}
+.planetBuildingButton:hover .planetBuildingButtonImage{}
+.planetBuildingButton:active .planetBuildingButtonImage{}
 
 .planetBuildingButtonText{
 	width:80%;
@@ -185,6 +181,8 @@
 	background: none;
 	border: none;
 	opacity: 0.7;
+	will-change: transform;
+	transition-duration: 0.1s;
 }
 #planetBuildingInfoPanelHeaderPreviousPlanet:enabled:hover, #planetBuildingInfoPanelHeaderNextPlanet:enabled:hover{
 	opacity:0.85;
@@ -212,6 +210,8 @@
 	margin: auto;
 	top: 0;
 	bottom: 0;
+	
+	pointer-events: none;
 }
 
 #planetBuildingInfoPanelHeaderCurrentPlanet{
@@ -270,13 +270,13 @@
 	display: none;
 }
 #planetBuildingInfoPanelHeaderPlanetEnergyAvailableTextText{
-	color: hsl(120,100%,50%)
+	color: hsl(120,100%,50%);
 }
 #planetBuildingInfoPanelPlanetEnergyDeficitContainer{
 	display: none;
 }
 #planetBuildingInfoPanelHeaderPlanetEnergyDeficitTextText{
-	color: hsl(30,100%,50%)
+	color: hsl(30,100%,50%);
 }
 #planetBuildingInfoPanelResourcesContainer{	
 	max-height: 45%;
@@ -333,9 +333,7 @@
 
 #planetBuildingInfoPanelRequiredResourcesTableBody{}
 
-.planetBuildingInfoPanelResourceListTableHeaderRow{
-	
-}
+.planetBuildingInfoPanelResourceListTableHeaderRow{}
 .planetBuildingInfoPanelResourceListTableHiddenRow{
 	display: none;
 }
@@ -607,15 +605,13 @@
 	padding: 0px;
 	min-width: calc(100% - 2px);
 	margin-top: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding-top: 0px;
 	/*background-image: linear-gradient(180deg, hsla(180, 100%, 50%, 0.75) 0px, transparent 6px);*/
 	background-color: hsla(0,0%,0%,0.7);
 }
 .planetBuildingUnfoldedBuilding{}
-.planetBuildingFoldedBuilding{
-	/* min-height: 50px; */
-}
+.planetBuildingFoldedBuilding{}
 .planetBuildingFoldedBuilding .planetBuildingSingleBuildingAlertsContainer{
 	max-height: 50px;
 }
@@ -901,6 +897,8 @@
 	padding: 0;
 	position: relative;
 	opacity: 0.8;
+	transition-duration: 0.1s;
+	will-change: transform;
 }
 .planetBuildingsSingleBuildingSingleButton:enabled:hover{
 	opacity:0.9;
@@ -924,6 +922,7 @@
 	width: auto;
 	display: inline-block;
 	height: 100%;
+	pointer-events: none;
 }
 .planetBuildingsSingleBuildingSingleInputNumber{
 	width: 2.5em;
@@ -969,6 +968,8 @@
 	padding: 0;
 	position: relative;
 	opacity: 0.8;
+	transition-duration: 0.1s;
+	will-change: transform;
 	margin-right: 3px;
 }
 .planetBuildingsSingleBuildingAddRemoveOperatorButton:enabled:hover{
@@ -993,6 +994,7 @@
 	width: auto;
 	display: inline-block;
 	height: 100%;
+	pointer-events: none;
 }
 
 .planetBuildingSingleBuildingOperatorsAssigned{
@@ -1017,13 +1019,25 @@
 	padding-bottom: 10px;
 	mask-image: linear-gradient(180deg, black 0px, black calc(100% - 10px), transparent 100%);
 }
-.planetBuildingAlertIcon{
+.planetBuildingAlertIconContainer{
 	width: auto;
 	height: 1.25em;
 	margin: 0px;
-	/*display: inline-block;*/
 	display: none;
 	float: right;
+}
+.planetBuildingAlertIcon{
+	/* width: auto;
+	height: 1.25em;
+	margin: 0px;
+	display: inline-block;
+	display: none;
+	float: right; */
+	
+	width: auto;
+	display: inline-block;
+	height: 100%;
+	pointer-events: none;
 }
 
 .planetBuildingSingleBuildingSideButtonsContainer{
@@ -1047,8 +1061,11 @@
 	padding: 0;
 	position: relative;
 	opacity: 0.8;
+	transition-duration: 0.1s;
+	will-change: transform;
 	
 	box-sizing: border-box;
+	transition-duration: 0.1s;
 }
 .planetBuildingsSingleBuildingSideButton:enabled:hover{
 	opacity:0.9;
@@ -1072,6 +1089,7 @@
 	width: auto;
 	display: inline-block;
 	height: 100%;
+	pointer-events: none;
 }
 
 .planetBuldingUnfoldedBuildingContainer{
@@ -1177,6 +1195,7 @@
 .planetBuildingSingleBuildingInfoIcon{
 	width:100%;
 	height:100%;
+	pointer-events: none;
 }
 
 
@@ -1220,6 +1239,7 @@
 .planetBuildingSingleBuildingSingleEfficiencyIcon{
 	height: 100%;
 	width: auto;
+	pointer-events: none;
 }
 .planetBuildingSingleBuildingSingleEfficiencyText{
 	color: hsl(120,100%,50%);
@@ -1260,7 +1280,9 @@
 	pointer-events: auto;
 	cursor: pointer;
 	background: hsla(60,100%,75%,0.0);
-	opacity: 0.70;
+	opacity: 0.7;
+	transition-duration: 0.1s;
+	will-change: transform;
 	border: none;
 }
 .planetBuildingsSingleBuildingOperatorControlButton:enabled:hover{
@@ -1294,6 +1316,7 @@
 	object-fit: contain;
 	outline: solid hsla(180,75%,75%,0.5) 0px;
 	position: relative;
+	pointer-events: none;	
 }
 .planetBuildingsSingleBuildingOperatorControlButtonText{
 	width:80%;
@@ -1308,8 +1331,3 @@
 	width: 22px;
 	float: right;
 }
-
-
-
-
-

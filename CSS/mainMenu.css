@@ -37,6 +37,98 @@
 
 .mainMenuButton{
 	width: 240px;
+	min-height:150px;
+	
+	text-align: center;
+	vertical-align: bottom;
+	align-content: center;
+	
+	padding: 0px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	
+	box-sizing: border-box;
+	border: solid hsla(180,100%,75%,1) 1px;
+	outline: solid hsla(180,100%,75%,1) 2px;
+	
+	border-radius:0px;
+
+	background: hsla(210,100%,75%,0.05);
+	
+	margin: 15px;
+	
+	cursor: pointer;
+	will-change: transform;
+	transition-duration: 0.1s;
+}
+.mainMenuButton:enabled{
+	opacity: 0.70;
+}
+.mainMenuButton:hover{
+	font-style: bold;
+	
+	/* padding-top: 0px; */
+	/* padding-bottom: 0px; */
+	
+	margin-bottom:15px;
+	
+	/* border: solid hsla(180,100%,85%,1) 1px; */
+	/* outline: solid hsla(180,100%,75%,1) 2px; */
+	border-radius:1px;
+	
+	background: hsla(210,100%,0%,0.25);
+	
+	opacity:0.85;
+	transform: scale(1.05);
+	transition-duration: 0.15s;
+}
+.mainMenuButton:enabled:hover{
+	transform: scale(1.05);
+	transition-duration: 0.15s;
+	}
+.mainMenuButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.10s;
+	transform: scale(1.00);
+}
+.mainMenuButton:disabled{
+	opacity: 0.2;
+}
+.mainMenuButton:disabled:hover{}
+.mainMenuButton:disabled:active{}
+
+.mainMenuButtonImage{
+	border-bottom: solid hsla(180,100%,75%,0.75) 0px;
+	
+	width:120px;
+	height:auto;
+	object-fit: contain;
+
+	position: relative;
+	
+	pointer-events: none;
+}
+.mainMenuButtonTextContainer{
+	width: 100%;
+	border-top: solid hsla(180,100%,75%,0.75) 3px;
+	box-shadow: 0 -1px 0 hsla(180,100%,75%,1);
+	
+	padding: 5px;
+	
+	display: block;
+	bottom: 0px;
+	height: 20%;
+	position: relative;
+	box-sizing: border-box;
+}
+.mainMenuButtonText{
+	color: hsla(180,100%,80%,0.75);
+	
+	pointer-events: none;
+}
+
+/* .mainMenuButton{
+	width: 240px;
 	
 	min-height:150px;
 	
@@ -58,19 +150,19 @@
 	margin: 15px;
 	
 	cursor: pointer;
-}
-.mainMenuButton .mainMenuButtonImage{
+} */
+/* .mainMenuButton .mainMenuButtonImage{
 	border-bottom: solid hsla(180,100%,75%,0.75) 0px;
 	opacity: 0.75;
 	
 	pointer-events: none;
-}
-.mainMenuButton .mainMenuButtonText{
+} */
+/* .mainMenuButton .mainMenuButtonText{
 	border-top: solid hsla(180,100%,75%,0.75) 1px;
 	
 	pointer-events: none;
-}
-.mainMenuButton:hover{
+} */
+/* .mainMenuButton:hover{
 	font-style: bold;
 	
 	padding-top: 0px;
@@ -84,13 +176,13 @@
 	outline: solid hsla(180,100%,75%,1) 3px;
 	background: hsla(210,100%,0%,0.25);
 	
-}
-.mainMenuButton:hover .mainMenuButtonImage{
+} */
+/* .mainMenuButton:hover .mainMenuButtonImage{
 	border-bottom: solid hsla(180,100%,75%,1) 0px;
 	opacity: 1.0;
 	
-}
-.mainMenuButton:hover .mainMenuButtonText{
+} */
+/* .mainMenuButton:hover .mainMenuButtonText{
 	
 	padding-top: 4px;
 	border-top: solid hsla(180,100%,75%,1) 2px;
@@ -98,20 +190,23 @@
 	
 	color: hsla(180,100%,80%,1);
 	
-}
-.mainMenuButton:disabled{
+} */
+/* .mainMenuButton:disabled{
 	opacity: 0.5;
+} */
+
+/* .mainMenuButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.05s;
+	scale:1;
 }
-.mainMenuBlankSpace{
-	width: 240px;
-	
-	min-height:150px;
-	box-sizing: border-box;
-	border: solid hsla(180,75%,75%,0.0) 2px;
-	
-	margin: 15px;
-}
-.mainMenuButtonImage{
+.mainMenuButton:disabled:hover{
+	opacity:0.6;
+	scale:1.05;
+	transition-duration: 0.15s;
+}  */
+
+/* .mainMenuButtonImage{
 	width:120px;
 	height:auto;
 	object-fit: contain;
@@ -119,8 +214,8 @@
 	position: relative;
 	pointer-events: none;
 	
-}
-.mainMenuButtonText{
+} */
+/* .mainMenuButtonText{
 	display: block;
 	bottom: 0px;
 	height: 20%;
@@ -130,4 +225,14 @@
 	
 	padding: 5px;
 	pointer-events: none;
+} */
+.mainMenuBlankSpace{
+	width: 240px;
+	
+	min-height:150px;
+	box-sizing: border-box;
+	border: solid hsla(180,75%,75%,0.0) 2px;
+	
+	margin: 15px;
 }
+

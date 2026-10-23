@@ -133,7 +133,7 @@ var PlanetAtmospheres = {
 	"Carbon monoxide":["Carbon monoxide","CO",1],	//toxic and a bit reactive
 	"Chlorine":["Chlorine","Cl",3],					//reactive and toxic
 	"Ethane":["Etane","C2H6",0],					//fairy neutral and stable
-	"Fluorine":["Fluorine","F2",4],
+	"Fluorine":["Fluorine","F2",4],					//don't.
 	"Helium":["Helium","He",0],						//fairy neutral and stable
 	"Hydrogen":["Hydrogen","H2",1],					//a bit reactive
 	"Methane":["Methane","CH4",0],					//fairy neutral and stable

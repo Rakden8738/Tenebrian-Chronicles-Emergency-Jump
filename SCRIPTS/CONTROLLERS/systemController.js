@@ -45,7 +45,7 @@ class SystemObject{
 	
 	arrayID = -1;
 	
-	network = "Standalone";
+	network = "Not part of any ";
 	network_id = -1;
 	
 	starType = StarTypes[1];

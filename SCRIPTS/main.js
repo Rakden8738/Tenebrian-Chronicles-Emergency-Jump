@@ -72,8 +72,9 @@ function mainLoadGame(outputDocument){
 	//resourcesInitResources(outputDocument);
 	
 	interfaceRefreshMenuButtons(outputDocument);
-	interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
-	interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
+	interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelStorageTabID,InterfaceMainMenuButtonsID[24]); 
+	// interfacePlanetOverviewChangeTab(outputDocument,"planetOverviewResourcesPanelStorage"); 
+	// interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
 	
 	animationMoveBackground(outputDocument);
 	

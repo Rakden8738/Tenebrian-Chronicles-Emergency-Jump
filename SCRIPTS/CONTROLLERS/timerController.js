@@ -164,20 +164,26 @@ function timerMain(outputDocument){
 	timerUpdateCallendar(outputDocument);
 }
 
-function timerSwitchGamePause(){
-	if(TimerGamePaused) {
-		TimerGamePaused = false;
-	}
-	else {
+function timerSwitchGamePause(outputDocument){
+	// let tmpPauseSwitchElement = outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]);
+	let tmpPauseSwitchElement = outputDocument.getElementById(InterfaceMainMenuButtonsID[13]);
+	
+	if(tmpPauseSwitchElement.checked) {
 		TimerGamePaused = true;
 	}
+	else {
+		TimerGamePaused = false;
+	}
 }
-function timerSwitchAFKTimeBonus(){
-	if(TimerAFKBonusActive) {
-		TimerAFKBonusActive = false;
+function timerSwitchAFKTimeBonus(outputDocument){
+	// let tmpPauseAFKTimeBonusElement = outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]);
+	let tmpPauseAFKTimeBonusElement = outputDocument.getElementById(InterfaceMainMenuButtonsID[14]);
+	
+	if(tmpPauseAFKTimeBonusElement.checked) {
+		TimerAFKBonusActive = true;
 	}
 	else {
-		TimerAFKBonusActive = true;
+		TimerAFKBonusActive = false;
 	}
 }
 
@@ -280,21 +286,23 @@ function timerUpdateCallendar(outputDocument){
 	TimerCallendarYear.innerHTML = (TimerElapsedYears + 1);
 	TimerCallendarDay.innerHTML = (TimerDayOfYear + 1);
 	
+	TimerCallendarClockSpeed.innerHTML = "x"+ Number(1).toFixed(2);
+	
 	if(TimerAFKBonusActive) {
 		TimerCallendarClockSpeed.innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerFasterSpeedSeconds).toFixed(2);
-		TimerAFKBonusButton.src = InterfaceMainMenuIconPaths[34];
+		// TimerAFKBonusButton.src = InterfaceMainMenuIconPaths[34];
 	}	
 	else {
 		TimerCallendarClockSpeed.innerHTML = "x"+ Number(TimerRegularSpeedSeconds / TimerRegularSpeedSeconds).toFixed(2);
-		TimerAFKBonusButton.src = InterfaceMainMenuIconPaths[33];
+		// TimerAFKBonusButton.src = InterfaceMainMenuIconPaths[33];
 	}
 	
 	if(TimerGamePaused){
-		TimerPauseGameButton.src = InterfaceMainMenuIconPaths[30];
+		// TimerPauseGameButton.src = InterfaceMainMenuIconPaths[30];
 		TimerCallendarClockSpeed.innerHTML = "x"+ Number(0).toFixed(2);
 	}
 	else {
-		TimerPauseGameButton.src = InterfaceMainMenuIconPaths[29];
+		// TimerPauseGameButton.src = InterfaceMainMenuIconPaths[29];
 	}
 	
 	TimerCallendarAFKTime.innerHTML = Math.floor(TimerAccumulatedFasterTime/TimerStandardFasterDifference);

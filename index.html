@@ -39,7 +39,6 @@
 		<div class="interfaceBackgroundCover underInterfaceBackgroundCover" id="interfaceBackgroundCoverStars"> </div>
 		<div class="interfaceBackgroundCover underInterfaceBackgroundCover" id="interfaceBackgroundCoverGrid"> </div>
 		
-		
 		<div class="interfaceBar interfaceTopBar mainInterfaceBar" id="mainInterfaceTopBar">
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="mainInterfaceTopBarLeft">
 				<span class="interfaceText interfaceMainBarText" id="mainInterfaceLeftSideText1">
@@ -60,11 +59,11 @@
 					</span> 
 				</span>
 			</div>
-			
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="mainInterfaceTopBarMiddle">
-				<img class="interfaceButton interfaceBarButton" id="mainInterfaceWindowHomeImage">
+				<button class="interfaceButton interfaceBarButton interfaceMainTopBarButton" id="mainInterfaceWindowHomeButton">
+					<img class="interfaceButtonImage interfaceBarButtonImage interfaceMainTopBarButtonImage" id="mainInterfaceWindowHomeImage">
+				</button>
 			</div>
-			
 			<div class="interfaceBarElement interfaceTopBarElement interfaceBarRightElement" id="mainInterfaceTopBarRight">
 				<div class="interfaceElementContainer" id="mainInterfaceDateContainer">
 					<table class="interfaceTable" id="mainInterfaceDateTable">
@@ -111,52 +110,73 @@
 			</div>	
 		</div>
 		
-		
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="mainMenuWindow">
 			<div class="interfaceWindowContent" id="mainMenuContent">
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowPlanetsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowPlanetsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowPlanetsText">PLANETS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowPlanetsText">PLANETS</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSystemsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowSystemsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowSystemsText">STAR SYSTEMS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowSystemsText">STAR SYSTEMS</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGalaxyButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowGalaxyImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowGalaxyText">GALAXY MAP</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowGalaxyText">GALAXY MAP</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowNetworksButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowNetworksImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowNetworksText">GATE NETWORKS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowNetworksText">GATE NETWORKS</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowBuildingsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowBuildingsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowBuildingsText">BUILDINGS</span>	
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowBuildingsText">BUILDINGS</span>	
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowFleetsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowFleetsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowFleetsText">MANAGE FLEETS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowFleetsText">MANAGE FLEETS</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowResearchButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowResearchImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowResearchText">RESEARCH PANEL</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowResearchText">RESEARCH PANEL</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowMissionsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowMissionsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowMissionsText">PROJECTS AND MISSIONS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowMissionsText">PROJECTS AND MISSIONS</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowGovernmentButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowGovernmentImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowGovernmentText">GOVERNMENT OVERVIEW</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowGovernmentText">GOVERNMENT OVERVIEW</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowDiplomacyButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowDiplomacyImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowDiplomacyText">DIPLOMACY MENU</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowDiplomacyText">DIPLOMACY MENU</span>
+					</div>
 				</button>
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowArchivesButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowArchivesImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowArchivesText">ARCHIVES</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowArchivesText">ARCHIVES</span>
+					</div>
 				</button>
 				<!--
 				<div class="mainMenuBlankSpace" id="mainMenuWindowEmptySpace1">
@@ -165,7 +185,9 @@
 				-->
 				<button class="interfaceButton mainMenuButton" id="mainMenuWindowSettingsButton" disabled>
 					<img class="mainMenuButtonImage" id="mainMenuWindowSettingsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					<span class="mainMenuButtonText" id="mainMenuWindowSettingsText">GAME SETTINGS</span>
+					<div class="interfaceElementContainer mainMenuButtonTextContainer">
+						<span class="mainMenuButtonText" id="mainMenuWindowSettingsText">GAME SETTINGS</span>
+					</div>
 				</button>
 			</div>
 		</div>		
@@ -173,7 +195,9 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar planetOverviewMenuBar" id="planetOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetOverviewMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetOverviewMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="planetOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
 				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetOverviewMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="planetOverviewMenuWindowHeaderText">PLANET OVERVIEW</span>
@@ -710,8 +734,10 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="systemOverviewMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar systemOverviewMenuBar" id="systemOverviewMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="systemOverviewMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="systemOverviewMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="systemOverviewMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="systemOverviewMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="systemOverviewMenuWindowHeaderText">SYSTEM OVERVIEW</span>
 				</div>
@@ -748,12 +774,16 @@
 				</div>
 				<div class="systemOverviewElementsContainer" id="systemOverviewRightSide">
 					<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanel">
-						<div class="systemOverviewElementsContainer" id="systemOverviewPlayerPreviousSystemContainer">
-							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerPreviousSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<div class="systemOverviewElementsContainer" id="systemOverviewPreviousSystemButtonContainer">
+							<button class="systemOverviewElementsContainer systemOverviewSystemChangeButton" id="systemOverviewPreviousSystemButton">
+								<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewPreviousSystemButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
 						</div>		
 						<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelHeader">						
-							<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkPreviousSystem">
-								<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkPreviousSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewNetworkPreviousSystemButtonContainer">
+								<button class="systemOverviewElementsContainer systemOverviewSystemChangeButton" id="systemOverviewNetworkPreviousSystemButton">
+									<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewNetworkPreviousSystemButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+								</button>
 							</div>
 							
 							<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderCurrentSystem">
@@ -765,12 +795,16 @@
 								</div>
 							</div>
 							
-							<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewInfoPanelHeaderNetworkNextSystem">
-								<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderNetworkNextSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							<div class="systemOverviewElementsContainer systemOverviewInfoPanelHeaderElement" id="systemOverviewNetworkNextSystemButtonContainer">
+								<button class="systemOverviewElementsContainer systemOverviewSystemChangeButton" id="systemOverviewNetworkNextSystemButton">
+									<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewNetworkNextSystemButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">									
+								</button>
 							</div>					
 						</div>						
-						<div class="systemOverviewElementsContainer" id="systemOverviewPlayerNextSystemContainer">
-							<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewInfoPanelHeaderPlayerNextSystemImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+						<div class="systemOverviewElementsContainer" id="systemOverviewNextSystemButtonContainer">
+							<button class="systemOverviewElementsContainer systemOverviewSystemChangeButton" id="systemOverviewNextSystemButton">
+								<img class="systemOverviewInfoPanelHeaderSystemSmallArrow" id="systemOverviewNextSystemButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+							</button>
 						</div>
 						
 						<div class="systemOverviewElementsContainer" id="systemOverviewInfoPanelContent">
@@ -846,8 +880,10 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="galaxyMapMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar galaxyMapMenuBar" id="galaxyMapMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="galaxyMapMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="galaxyMapMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="galaxyMapMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="galaxyMapMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="galaxyMapMenuWindowHeaderText">GALAXY MAP</span>
 				</div>
@@ -1049,30 +1085,30 @@
 					<div class="galaxyMapElementsContainer" id="galaxyMapCanvasContainer">
 						<canvas class="interfaceCanvas" id="galaxyMapCanvas">Galaxy map should be here</canvas>
 					</div>
-					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapTopArrowContainer">
+					<button class="galaxyMapArrowButton galaxyMapVerticalArrowButton" id="galaxyMapTopArrowButton">
 						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapTopArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
-					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapLeftArrowContainer">
+					<button class="galaxyMapArrowButton galaxyMapHorizontalArrowButton" id="galaxyMapLeftArrowButton">
 						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapLeftArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
-					<button class="galaxyMapArrowButtonContainer galaxyMapHorizontalArrowContainer" id="galaxyMapRightArrowContainer">
+					<button class="galaxyMapArrowButton galaxyMapHorizontalArrowButton" id="galaxyMapRightArrowButton">
 						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapRightArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
-					<button class="galaxyMapArrowButtonContainer galaxyMapVerticalArrowContainer" id="galaxyMapBottomArrowContainer">
+					<button class="galaxyMapArrowButton galaxyMapVerticalArrowButton" id="galaxyMapBottomArrowButton">
 						<img class="interfaceButton galaxyMapArrowButtonImage" id="galaxyMapBottomArrowButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					
-					<button class="galaxyMapSideButtonContainer" id="galaxyMapFocusTargetContainer">
+					<button class="galaxyMapSideButton" id="galaxyMapFocusTargetButton">
 						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapFocusTargetButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
-					<button class="galaxyMapSideButtonContainer" id="galaxyMapReturnHomeContainer">
+					<button class="galaxyMapSideButton" id="galaxyMapReturnHomeButton">
 						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapReturnHomeButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 					
-					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomInContainer">
+					<button class="galaxyMapSideButton" id="galaxyMapZoomInButton">
 						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomInButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
-					<button class="galaxyMapSideButtonContainer" id="galaxyMapZoomOutContainer">
+					<button class="galaxyMapSideButton" id="galaxyMapZoomOutButton">
 						<img class="interfaceButton galaxyMapSideButtonImage" id="galaxyMapZoomOutButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 					</button>
 				</div>
@@ -1089,8 +1125,10 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="planetBuildingMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar planetBuildingMenuBar" id="planetBuildingMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="planetBuildingMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetBuildingMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="planetBuildingMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="planetBuildingMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="planetBuildingMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="planetBuildingMenuWindowHeaderText">PLANET BUILDINGS</span>
 				</div>
@@ -2554,8 +2592,10 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="settingsMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar settingsMenuBar" id="settingsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="settingsMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="settingsMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="settingsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="settingsMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="settingsMenuWindowHeaderText">SETTINGS MENU</span>
 				</div>
@@ -2567,10 +2607,10 @@
 			<div class="interfaceWindowContent interfaceWindowContentBackground" id="settingsMenuContentBackground"></div>
 			<div class="interfaceWindowContent" id="settingsMenuContent">
 				<div class="settingsMenuOption" id="settingsMenuOptionSaveGame">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
+					<button class="settingsMenuOptionButton" id="settingsMenuOptionSaveGameButton">
 						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionSaveGameImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionSaveGameText">Save game</span>
-					</div>
+					</button>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionAutosave">
 					<input type="checkbox" checked class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionAutosaveCheckbox">
@@ -2582,14 +2622,14 @@
 						<textarea class="interfaceTextarea" id="settingsMenuOptionExportImportTextarea" placeholder="Export/import data goes here."></textarea>
 					</div>
 					<div class="settingsMenuOption" id="settingsMenuOptionExportImportSaveContainer">
-						<div class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
+						<button class="settingsMenuOptionButton" id="settingsMenuOptionExportSaveButton">
 							<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionExportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="settingsMenuOptionButtonText" id="settingsMenuOptionExportSaveText">Export save</span>
-						</div>
-						<div class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
+						</button>
+						<button class="settingsMenuOptionButton" id="settingsMenuOptionImportSaveButton">
 							<img class="settingsMenuOptionButtonImage interfaceButton3x1" id="settingsMenuOptionImportSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 							<span class="settingsMenuOptionButtonText" id="settingsMenuOptionImportSaveText">Import save</span>
-						</div>
+						</button>
 					</div>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace2"></div>
@@ -2599,10 +2639,10 @@
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace3"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowIntro">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
+					<button class="settingsMenuOptionButton" id="settingsMenuOptionReplayIntroButton">
 						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionReplayIntroImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionReplayIntroText">Replay intro</span>
-					</div>
+					</button>
 				</div>
 				<div class="settingsMenuOption" id="settingsMenuOptionSkipIntro">
 					<input type="checkbox" class="interfaceInputCheckbox settingsMenuSettingCheckbox" id="settingsMenuOptionSkipIntroCheckbox">
@@ -2616,17 +2656,17 @@
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace5"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionShowCredits">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
+					<button class="settingsMenuOptionButton" id="settingsMenuOptionShowCreditsButton">
 						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionShowCreditsImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionShowCreditsText">Show credits</span>
-					</div>
+					</button>
 				</div>
 				<div class="settingsMenuSpace" id="settingsMenuEmptySpace6"></div>
 				<div class="settingsMenuOption" id="settingsMenuOptionWipeSave">
-					<div class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
+					<button class="settingsMenuOptionButton" id="settingsMenuOptionWipeSaveButton">
 						<img class="settingsMenuOptionButtonImage interfaceButton4x1" id="settingsMenuOptionWipeSaveImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
 						<span class="settingsMenuOptionButtonText" id="settingsMenuOptionWipeSaveText">Wipe save</span>
-					</div>
+					</button>
 				</div>
 			</div>
 			
@@ -2640,8 +2680,10 @@
 		<div class="interfaceWindow interfaceToggleableMenuElement" id="creditsMenuWindow">
 			<div class="interfaceBar interfaceTopBar interfaceWindowContentTopBar creditsMenuBar" id="creditsMenuTopBar">
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarLeftElement" id="creditsMenuTopBarLeft">
-					<img class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-					</div>
+					<button class="interfaceButton interfaceBarButton interfaceReturnButton" id="creditsMenuWindowHeaderReturnButton">
+						<img class="interfaceButtonImage interfaceBarButtonImage interfaceReturnButtonImage" id="creditsMenuWindowHeaderReturnButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+					</button>
+				</div>
 				<div class="interfaceBarElement interfaceTopBarElement interfaceBarMiddleElement" id="creditsMenuTopBarMiddle">
 					<span class="interfaceWindowHeaderText" id="creditsMenuWindowHeaderText">CREDITS</span>
 				</div>
@@ -2754,21 +2796,23 @@
 				</div>
 			</div>
 			<div class="interfaceBarElement interfaceBottomBarElement interfaceBarRightElement" id="mainInterfaceBottomBarRight">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseGameTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowPauseBonusTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
-				<img class="interfaceButton interfaceBarButton interfaceBottomBarButton" id="mainInterfaceWindowSettingsShortcutImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+				<input type="checkbox" class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowPauseGameTimeSwitchButton">
+				<input type="checkbox" class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowPauseBonusTimeSwitchButton">
+				<button class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowSettingsShortcutButton">
+					<img class="interfaceButtonImage interfaceBarButtonImage interfaceMainBottomBarButtonImage" id="mainInterfaceWindowSettingsShortcutButtonImage" src="RESOURCES/ICONS/Symbol_questionmark.png">
+				</button>
+				
+				<!-- <img class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowPauseGameTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> -->
+				<!-- <img class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowPauseBonusTimeImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> -->
+				<!-- <img class="interfaceButton interfaceBarButton interfaceMainBottomBarButton" id="mainInterfaceWindowSettingsShortcutImage" src="RESOURCES/ICONS/Symbol_questionmark.png"> -->
 			</div>
 		</div>
-		
 		
 		<div class="interfaceBackgroundCover overInterfaceBackgroundCover" id="mainOverInterfaceBackgroundCover"> </div>
 		<div class="messagesLayer" id="mainMessagesLayer">
 		</div>
-		
 	</body>
-
 	<script>
-
 	</script>
 </html>
 

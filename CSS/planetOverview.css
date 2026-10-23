@@ -120,6 +120,8 @@
 	box-sizing:border-box;
 	position: absolute;
 	display: inline-block;
+	
+	pointer-events: none;
 }
 #planetOverviewButtonsContainer{
 	background: hsla(300,100%,50%,0.0);
@@ -175,8 +177,13 @@
 	pointer-events: auto;
 	cursor: pointer;
 	box-sizing: border-box;
+	
+	transition-duration: 0.1s;
+	will-change: transform;
 }
 .planetOverviewButton:enabled:hover{
+	z-index: 10;
+	
 	opacity:0.85;
 	scale:1.1;
 	transition-duration: 0.15s;
@@ -265,10 +272,29 @@
 	padding: 0px;
 	
 	opacity: 0.8;
+	
+	transition-duration: 0.1s;
 }
-.planetOverviewChangePlanetButtonContainer:hover{
+/* .planetOverviewChangePlanetButtonContainer:hover{
 	scale:1.1;
 	opacity: 1;
+	transition-duration: 0.15s;
+} */
+.planetOverviewChangePlanetButtonContainer:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.planetOverviewChangePlanetButtonContainer:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.planetOverviewChangePlanetButtonContainer:disabled{
+	opacity:0.2;
+}
+.planetOverviewChangePlanetButtonContainer:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
 	transition-duration: 0.15s;
 }
 
@@ -544,6 +570,8 @@
 	box-sizing: border-box;
 	position:relative;
 	will-change: transform;
+	
+	transition-duration: 0.1s;
 }
 .planetOverviewResourcesPanelHeaderButton:active{
 	opacity:1.0;

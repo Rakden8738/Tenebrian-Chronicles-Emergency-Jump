@@ -292,14 +292,175 @@
 
 /* IMAGES AND BUTTONS */
 
-.interfaceButton{
-	
-}
 .interfaceBarImage{
 	width: 75px;
 	opacity: 0.75;
 }
+.interfaceButton{
+	
+}
+.interfaceButtonImage{
+	pointer-events: none;
+}
+
+.interfaceButton1x1{
+	pointer-events: none;
+}
+.interfaceButton2x1{
+	pointer-events: none;
+}
+.interfaceButton3x1{
+	pointer-events: none;
+}
+.interfaceButton4x1{
+	pointer-events: none;
+}
+.interfaceButton5x1{
+	pointer-events: none;
+}
+
+
+
 .interfaceBarButton{
+	position:relative;
+	
+	opacity: 0.70;
+	
+	pointer-events: auto;
+	cursor: pointer;
+	
+	padding:0px;
+	
+	outline: solid hsla(180,75%,75%,0.0) 0px;
+	border: none;
+	box-sizing: border-box;
+	background: hsla(60,100%,75%,0.0);
+	
+	justify-content: right;
+	align-items: center;
+	display: inline-flex;
+	
+	backface-visibility: hidden;
+	will-change: transform;
+	transition-duration: 0.1s;
+}
+.interfaceBarButton:enabled:hover{
+	opacity:0.85;
+	transform: scale(1.2);
+	transition-duration: 0.20s;
+}
+.interfaceBarButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.05s;
+	scale:1;
+}
+.interfaceBarButton:disabled{
+	opacity:0.2;
+}
+.interfaceBarButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+.interfaceBarButtonImage{
+	width:100%;
+	height:auto;
+	left:0px;
+	object-fit: contain;
+	outline: solid hsla(180,75%,75%,0.5) 0px;
+	position: relative;
+}
+.interfaceBarButton:hover .interfaceBarButtonImage{
+	outline: solid hsla(180,75%,75%,1) 0px;
+}
+.interfaceBarButton:active .interfaceBarButtonImage{
+	outline: solid hsla(180,100%,75%,1) 0px;
+}
+
+.interfaceMainTopBarButton{
+	width: 40px;
+	height: auto;
+	
+	top: 5px;
+	right:0;
+	bottom: 0;
+	left:0;
+	margin: auto;
+}
+.interfaceMainTopBarButton:enabled:hover{}
+.interfaceMainTopBarButton:enabled:active{}
+.interfaceMainTopBarButton:disabled{}
+.interfaceMainTopBarButton:disabled:hover{}
+.interfaceMainTopBarButtonImage{}
+.interfaceMainTopBarButton:hover .interfaceMainTopBarButtonImage{}
+.interfaceMainTopBarButton:active .interfaceMainTopBarButtonImage{}
+
+.interfaceReturnButton{
+	top: 20px;
+	
+	width: min(64px, 80%);
+	height: 80%;
+}
+.interfaceReturnButton:enabled:hover{}
+.interfaceReturnButton:enabled:active{}
+.interfaceReturnButton:disabled{}
+.interfaceReturnButton:disabled:hover{}
+.interfaceReturnButtonImage{}
+.interfaceReturnButton:hover .interfaceReturnButtonImage{}
+.interfaceReturnButton:active .interfaceReturnButtonImage{}
+
+.interfaceReturnButton{
+	top: 20px;
+	
+	width: min(64px, 80%);
+	height: 80%;
+}
+
+.interfaceMainBottomBarButton{
+	width: 40px;
+	height: 40px;
+	top: 0px;
+	background-size: cover;
+	appearance: none;
+	margin: 0;
+}
+.interfaceMainBottomBarButton:enabled:hover{}
+.interfaceMainBottomBarButton:enabled:active{}
+.interfaceMainBottomBarButton:enabled:checked{
+	opacity:0.85;
+}
+.interfaceMainBottomBarButton:enabled:checked:hover{
+	opacity:1.0;
+}
+.interfaceMainBottomBarButton:enabled:checked:active{
+	opacity:0.85;
+}
+.interfaceMainBottomBarButton:disabled{}
+.interfaceMainBottomBarButton:disabled:hover{}
+.interfaceMainBottomBarButtonImage{}
+.interfaceMainBottomBarButton:hover .interfaceMainBottomBarButtonImage{}
+.interfaceMainBottomBarButton:active .interfaceMainBottomBarButtonImage{}
+
+#mainInterfaceWindowPauseGameTimeSwitchButton{
+	background-image: url("../RESOURCES/ICONS/Pause OFF Fancy_Small.png");
+}
+#mainInterfaceWindowPauseGameTimeSwitchButton:checked{
+	background-image: url("../RESOURCES/ICONS/Pause ON Fancy_Small.png");
+}
+#mainInterfaceWindowPauseGameTimeSwitchButton:checked:after{
+	display: none;
+}
+#mainInterfaceWindowPauseBonusTimeSwitchButton{
+	background-image: url("../RESOURCES/ICONS/FastForward OFF Fancy_Small.png");
+}
+#mainInterfaceWindowPauseBonusTimeSwitchButton:checked{
+	background-image: url("../RESOURCES/ICONS/FastForward ON Fancy_Small.png");
+}
+#mainInterfaceWindowPauseBonusTimeSwitchButton:checked:after{
+	display: none;
+}
+
+.interfaceBarButtonOLD{
     width: 40px;
     opacity: 0.75;
     pointer-events: auto;
@@ -307,40 +468,18 @@
     top: 5px;
     position: relative;
 }
-.interfaceBarButton:hover{
+.interfaceBarButtonOLD:hover{
 	opacity: 1;
 	scale: 1.2;
 	
 	transition-duration: 0.25s;
 }
 .interfaceBottomBarButton{
-	width: 40px;
-	top: 0px;
+	
     position: relative;
 }
 
-.interfaceReturnButton{
-	opacity: 0.75;
-	
-	background: hsla(90,100%,50%,0.0);
-	
-	position: relative;
-	
-	right: 0px;
-	top: 20px;
-	
-	width: auto;
-	height: 80%;
-	
-	pointer-events: auto;
-	cursor: pointer;
-}
-.interfaceReturnButton:hover{
-	opacity: 1;
-	scale:1.20;
-	
-	 transition-duration: 0.4s;
-}
+
 
 .interfaceWindowHeaderText{
 	
@@ -384,6 +523,8 @@
 	
 	height: min(60px,100%);
 	width: auto;
+	
+	pointer-events:none;
 }
 
 .interfaceToggleableMenuElement{
@@ -545,7 +686,6 @@
 }
 
 .interfaceInputCheckbox{
-	background-image: none;
 	position: relative;
 	display: block;
 	box-sizing: border-box;
@@ -580,7 +720,7 @@
 	opacity: 0.35;
 }
 .interfaceInputCheckbox:checked{
-	background-image: url("../RESOURCES/ICONS/Square ON.png")
+	background-image: url("../RESOURCES/ICONS/Square ON.png");
 	/*background-color: hsl(180, 100%, 75%);*/
 }
 .interfaceInputCheckbox:checked:after{

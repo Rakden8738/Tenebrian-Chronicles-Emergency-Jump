@@ -233,6 +233,7 @@ function earlyAlpha_Systems(){
 	tmpSystem.starSize = StarSizes["Star"];
 	tmpSystem.starMass = 1.0;
 	tmpSystem.position = [0.0,0.0,0.0];
+	tmpSystem.planetsCounterClockwise = true;
 	
 	// tmpSystem.asteroids["Silicon"] = 0.0;
 	// tmpSystem.asteroids["Carbon"] = 0.0;
@@ -463,7 +464,7 @@ function earlyAlpha_Systems(){
 	tmpSystem.arrayID = SystemsArray.length;
 	tmpSystem.starType = StarTypes["Blue"];
 	tmpSystem.starSize = StarSizes["Supergiant"];
-	tmpSystem.starMass = 11.24;
+	tmpSystem.starMass = 41.24;
 	tmpSystem.position = [8.0,3.1,1.0];
 	
 	// tmpSystem.asteroids["Silicon"] = 5.0;
@@ -544,7 +545,7 @@ function earlyAlpha_Systems(){
 	tmpSystem.starMass = 0.21;
 	tmpSystem.position = [-7.0,-21.37,-30.0];
 	tmpSystem.planetsCounterClockwise = true;
-	tmpSystem.discovered = false;
+	tmpSystem.discovered = true;
 	
 	SystemsArray.push(tmpSystem);
 }

@@ -78,7 +78,8 @@ var InterfaceMainMenuIconPaths = [
 	"RESOURCES/MAIN_INTERFACE/Button_300x100.png",
 	"RESOURCES/MAIN_INTERFACE/Button_400x100.png",
 	"RESOURCES/MAIN_INTERFACE/Button_500x100.png",	//55
-];
+]; //InterfaceMainMenuIconPaths
+
 var InterfaceMainMenuButtonImagesID = [
 	"questionmark placeholder",
 	"padlock placeholder",
@@ -95,8 +96,8 @@ var InterfaceMainMenuButtonImagesID = [
 	"mainMenuWindowArchivesImage",	
 	"mainMenuWindowSettingsImage",
 	"mainInterfaceWindowHomeImage",
-	"mainInterfaceWindowSettingsShortcutImage",
-	"interfaceReturnButton",
+	"mainInterfaceWindowSettingsShortcutButtonImage",
+	"interfaceReturnButtonImage",
 	"settingsMenuWindowHeaderImage",
 	"gridButton300px",
 	"planetOverviewMenuWindowHeaderImage",
@@ -105,13 +106,13 @@ var InterfaceMainMenuButtonImagesID = [
 	"planetOverviewInfoPanelHeaderSystemNextPlanetImage",
 	"planetOverviewInfoPanelHeaderPlayerPreviousPlanetImage",
 	"planetOverviewInfoPanelHeaderPlayerNextPlanetImage",
-	"mainInterfaceWindowPauseGameTimeImage",
-	"mainInterfaceWindowPauseBonusTimeImage",
+	"mainInterfaceWindowPauseGameTimeSwitchButtonImage",
+	"mainInterfaceWindowPauseBonusTimeSwitchButtonImage",
 	"systemOverviewMenuWindowHeaderImage",
-	"systemOverviewInfoPanelHeaderNetworkPreviousSystemImage",
-	"systemOverviewInfoPanelHeaderNetworkNextSystemImage",
-	"systemOverviewInfoPanelHeaderPlayerPreviousSystemImage",
-	"systemOverviewInfoPanelHeaderPlayerNextSystemImage", //29
+	"systemOverviewNetworkPreviousSystemButtonImage",
+	"systemOverviewNetworkNextSystemButtonImage",
+	"systemOverviewPreviousSystemButtonImage",
+	"systemOverviewNextSystemButtonImage", //29
 	
 	"creditsMenuWindowHeaderImage",	
 	"galaxyMapMenuWindowHeaderImage",
@@ -134,7 +135,88 @@ var InterfaceMainMenuButtonImagesID = [
 	"interfaceButton3x1",
 	"interfaceButton4x1",
 	"interfaceButton5x1",	//49
-];
+]; //InterfaceMainMenuButtonImagesID
+
+var InterfaceMainMenuButtonsID = [
+	"mainMenuWindowPlanetsButton",
+	"mainMenuWindowSystemsButton",
+	"mainMenuWindowGalaxyButton",
+	"mainMenuWindowNetworksButton",
+	"mainMenuWindowBuildingsButton",
+	"mainMenuWindowFleetsButton",
+	"mainMenuWindowResearchButton",
+	"mainMenuWindowMissionsButton",
+	"mainMenuWindowGovernmentButton",
+	"mainMenuWindowDiplomacyButton",
+	
+	"mainMenuWindowArchivesButton",	//10
+	"mainInterfaceWindowHomeButton",
+	"mainInterfaceWindowSettingsShortcutButton",
+	"mainInterfaceWindowPauseGameTimeSwitchButton",
+	"mainInterfaceWindowPauseBonusTimeSwitchButton",
+	"interfaceReturnButton",
+	"planetOverviewInfoPanelHeaderSystemPreviousPlanetButton",
+	"planetOverviewInfoPanelHeaderSystemNextPlanetButton",
+	"planetOverviewPlayerPreviousPlanetButton",
+	"planetOverviewPlayerNextPlanetButton",
+	
+	"planetOverviewPlanetBuildingsButton",	//20
+	"planetOverviewGoToSystemButton",
+	"planetOverviewGoToHubButton",
+	"planetOverviewPlanetRoutesButton",
+	"planetOverviewResourcesPanelStorageButton",
+	"planetOverviewResourcesPanelProductionButton",
+	"planetOverviewResourcesPanelConsumptionButton",
+	"planetOverviewResourcesPanelBalanceButton",
+	"planetOverviewResourcesPanelResourcesButton",
+	"systemOverviewShowMapButton",
+	
+	"systemOverviewNetworkPreviousSystemButton",	//30
+	"systemOverviewNetworkNextSystemButton",
+	"systemOverviewPreviousSystemButton",
+	"systemOverviewNextSystemButton",
+	"galaxyMapTopArrowButton",
+	"galaxyMapLeftArrowButton",
+	"galaxyMapRightArrowButton",
+	"galaxyMapBottomArrowButton",
+	"galaxyMapFocusTargetButton",
+	"galaxyMapReturnHomeButton",
+	
+	"galaxyMapZoomInButton",		//40
+	"galaxyMapZoomOutButton",
+	"mainMenuWindowBuildingsButton",
+	"planetBuildingInfoPanelHeaderPreviousPlanet",
+	"planetBuildingInfoPanelHeaderNextPlanet",
+	"planetBuildingGoToPlanetButton",
+	"planetBuildingInfoPanelBulkBuildSettingInput",
+	"planetBuildingInfoPanelAutoAssignSettingInput",
+	"planetBuildingInfoPanelBuyMaxSettingInput",
+	"planetBuildingInfoPanelDemolishLockSettingInput",
+	
+	"mainMenuWindowSettingsButton",	//50
+	"settingsMenuOptionAnimatedMenuTabsChangeCheckbox",
+	"settingsMenuOptionSkipIntroCheckbox",
+	"settingsMenuOptionAutosaveCheckbox",
+	"settingsMenuOptionGalaxyMapParallaxCheckbox",
+	"settingsMenuOptionReplayIntroButton",
+	"settingsMenuOptionSaveGameButton",
+	"settingsMenuOptionExportSaveButton",
+	"settingsMenuOptionImportSaveButton",
+	"settingsMenuOptionWipeSaveButton",
+	
+	"settingsMenuOptionShowCreditsButton",	//60
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	
+	"",
+]; //InterfaceMainMenuButtonsID
 
 //main interface refresh and init
 
@@ -212,33 +294,50 @@ function interfaceInitMainInterface(outputDocument) {
 		
 	//home
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).src = InterfaceMainMenuIconPaths[13];
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).onclick = function() { interfaceEnterMainMenu(outputDocument,InterfaceMainMenuID); };
+	// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[13]).onclick = function() { interfaceEnterMainMenu(outputDocument,InterfaceMainMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[11]).onclick = function() { interfaceEnterMainMenu(outputDocument,InterfaceMainMenuID); };
 	
 	//mini settings
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).src = InterfaceMainMenuIconPaths[14];
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
+	// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[14]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[12]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
 	
 	//pause game
 	if(TimerGamePaused) {
-		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[30];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[30];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).checked = true;
+		outputDocument.getElementById(InterfaceMainMenuButtonsID[13]).checked = true;
 	}
 	else {
-		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[29];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).src = InterfaceMainMenuIconPaths[29];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).checked = false;
+		outputDocument.getElementById(InterfaceMainMenuButtonsID[13]).checked = false;
 	}
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).onclick = function() { timerSwitchGamePause(); };
+	// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[23]).onclick = function() { timerSwitchGamePause(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[13]).onclick = function() { timerSwitchGamePause(outputDocument); };
+	
 	//pause accelerated time
 	if(TimerAFKBonusActive) {
-		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[34];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[34];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).checked = true;
+		outputDocument.getElementById(InterfaceMainMenuButtonsID[14]).checked = true;
 	}
 	else {
-		outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[33];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).src = InterfaceMainMenuIconPaths[33];
+		// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).checked = false;
+		outputDocument.getElementById(InterfaceMainMenuButtonsID[14]).checked = false;
 	}
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).onclick = function() { timerSwitchAFKTimeBonus(); };
+	// outputDocument.getElementById(InterfaceMainMenuButtonImagesID[24]).onclick = function() { timerSwitchAFKTimeBonus(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[14]).onclick = function() { timerSwitchAFKTimeBonus(outputDocument); };
+	
 	//all returns
-	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[15]);
-	for(var i = 0; i < tmpArray.length; i++) {
-		tmpArray[i].src = InterfaceMainMenuIconPaths[15];
-		tmpArray[i].onclick = function() { interfaceReturnFromElement(outputDocument,InterfaceMainMenuID); };
+	var tmpReturnButtonsArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonsID[15]);
+	var tmpReturnButtonsImagesArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[15]);
+	for(var i = 0; i < tmpReturnButtonsArray.length; i++) {
+		tmpReturnButtonsArray[i].onclick = function() { interfaceReturnFromElement(outputDocument,InterfaceMainMenuID); };
+	}
+	for(var i = 0; i < tmpReturnButtonsImagesArray.length; i++) {
+		tmpReturnButtonsImagesArray[i].src = InterfaceMainMenuIconPaths[15];
 	}
 	//100px buttons if present
 	var tmpArray = outputDocument.getElementsByClassName(InterfaceMainMenuButtonImagesID[45]);
@@ -269,100 +368,72 @@ function interfaceInitMainInterface(outputDocument) {
 function interfaceInitPlanetOverviewMenu(outputDocument) {
 	//planets in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[2]).src = InterfaceMainMenuIconPaths[2];
-	outputDocument.getElementById("mainMenuWindowPlanetsButton").disabled = false;
-	outputDocument.getElementById("mainMenuWindowPlanetsButton").onclick = function() { interfaceEnterElement(outputDocument,PlanetOverviewMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[0]).disabled = false;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[0]).onclick = function() { interfaceEnterElement(outputDocument,PlanetOverviewMenuID); };
 	
 	//topbar image in settings menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[18]).src = InterfaceMainMenuIconPaths[2];
 	
 	//planet navigation buttons
+		//in system
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[19]).src = InterfaceMainMenuIconPaths[23];
-	outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemPreviousPlanetButton").onclick = function() { interfacePlanetOverviewSystemPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[16]).onclick = function() { interfacePlanetOverviewSystemPreviousPlanet(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[20]).src = InterfaceMainMenuIconPaths[24];
-	outputDocument.getElementById("planetOverviewInfoPanelHeaderSystemNextPlanetButton").onclick = function() { interfacePlanetOverviewSystemNextPlanet(outputDocument); };
-	
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[17]).onclick = function() { interfacePlanetOverviewSystemNextPlanet(outputDocument); };
+		//next player's
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[21]).src = InterfaceMainMenuIconPaths[27];
-	outputDocument.getElementById("planetOverviewPlayerPreviousPlanetButton").onclick = function() { interfacePlanetOverviewPlayerPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[18]).onclick = function() { interfacePlanetOverviewPlayerPreviousPlanet(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[22]).src = InterfaceMainMenuIconPaths[28];
-	outputDocument.getElementById("planetOverviewPlayerNextPlanetButton").onclick = function() { interfacePlanetOverviewPlayerNextPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[19]).onclick = function() { interfacePlanetOverviewPlayerNextPlanet(outputDocument); };
 	
 	//function buttons
 	
-	outputDocument.getElementById("planetOverviewPlanetBuildingsButton").onclick = 
-		function() { interfacePlanetOverviewPlanetBuildings(outputDocument); };
-	outputDocument.getElementById("planetOverviewGoToSystemButton").onclick = 
-		function() { interfacePlanetOverviewGoToSystem(outputDocument); };
-	outputDocument.getElementById("planetOverviewGoToHubButton").onclick = 
-		function() { interfacePlanetOverviewGoToHub(outputDocument); };
-	outputDocument.getElementById("planetOverviewPlanetRoutesButton").onclick = 
-		function() { interfacePlanetOverviewPlanetRoutes(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[20]).onclick = function() { interfacePlanetOverviewPlanetBuildings(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[21]).onclick = function() { interfacePlanetOverviewGoToSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[22]).onclick = function() { interfacePlanetOverviewGoToHub(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[23]).onclick = function() { interfacePlanetOverviewPlanetRoutes(outputDocument); };
 		
 	//planet resource tabs
-	outputDocument.getElementById("planetOverviewResourcesPanelStorageButton").onclick = function() { 
-		if(!InterfacePlanetOverviewTabChanging) {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelStorageTabID); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelStorageButton");
-		}
-	};
-	outputDocument.getElementById("planetOverviewResourcesPanelProductionButton").onclick = function() { 
-		if(!InterfacePlanetOverviewTabChanging) {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelProductionTabID); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelProductionButton");
-		}
-	};
-	outputDocument.getElementById("planetOverviewResourcesPanelConsumptionButton").onclick = function() { 
-		if(!InterfacePlanetOverviewTabChanging) {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelConsumptionTabID); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelConsumptionButton");
-		}
-	};
-	outputDocument.getElementById("planetOverviewResourcesPanelBalanceButton").onclick = function() { 
-		if(!InterfacePlanetOverviewTabChanging) {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelBalanceTabID); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelBalanceButton");
-		}
-	};
-	outputDocument.getElementById("planetOverviewResourcesPanelResourcesButton").onclick = function() { 
-		if(!InterfacePlanetOverviewTabChanging) {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
-		}
-	};
-	
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[24]).onclick = function() { interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelStorageTabID,InterfaceMainMenuButtonsID[24]); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[25]).onclick = function() { interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelProductionTabID,InterfaceMainMenuButtonsID[25]); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[26]).onclick = function() { interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelConsumptionTabID,InterfaceMainMenuButtonsID[26]); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[27]).onclick = function() { interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelBalanceTabID,InterfaceMainMenuButtonsID[27]); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[28]).onclick = function() { interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID,InterfaceMainMenuButtonsID[28]); };
+
+
 	interfaceRefreshPlanetOverview(outputDocument);
 	
 }
 function interfaceInitSystemOverviewMenu(outputDocument) {
 	//system in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[3]).src = InterfaceMainMenuIconPaths[3];
-	outputDocument.getElementById("mainMenuWindowSystemsButton").disabled = false;
-	outputDocument.getElementById("mainMenuWindowSystemsButton").onclick = function() { interfaceEnterElement(outputDocument,SystemOverviewMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[1]).disabled = false;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[1]).onclick = function() { interfaceEnterElement(outputDocument,SystemOverviewMenuID); };
 	
 	//topbar image in system overview menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[25]).src = InterfaceMainMenuIconPaths[3];
 	
 	//function buttons
-	outputDocument.getElementById("systemOverviewShowMapButton").onclick = 
-		function() { interfaceSystemOverviewShowOnMap(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[29]).onclick = function() { interfaceSystemOverviewShowOnMap(outputDocument); };
 	
 	//system navigation buttons
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[26]).src = InterfaceMainMenuIconPaths[23];
-	outputDocument.getElementById("systemOverviewInfoPanelHeaderNetworkPreviousSystem").onclick = function() { interfaceSystemOverviewNetworkPreviousSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[30]).onclick = function() { interfaceSystemOverviewNetworkPreviousSystem(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[27]).src = InterfaceMainMenuIconPaths[24];
-	outputDocument.getElementById("systemOverviewInfoPanelHeaderNetworkNextSystem").onclick = function() { interfaceSystemOverviewNetworkNextSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[31]).onclick = function() { interfaceSystemOverviewNetworkNextSystem(outputDocument); };
 	
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[28]).src = InterfaceMainMenuIconPaths[27];
-	outputDocument.getElementById("systemOverviewPlayerPreviousSystemContainer").onclick = function() { interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[32]).onclick = function() { interfaceSystemOverviewDiscoveredPreviousSystem(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[29]).src = InterfaceMainMenuIconPaths[28];
-	outputDocument.getElementById("systemOverviewPlayerNextSystemContainer").onclick = function() { interfaceSystemOverviewDiscoveredNextSystem(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[33]).onclick = function() { interfaceSystemOverviewDiscoveredNextSystem(outputDocument); };
 	
 	interfaceRefreshSystemOverview(outputDocument);
 }
 function interfaceInitGalaxyMapMenu(outputDocument){
 	//galaxy in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[4]).src = InterfaceMainMenuIconPaths[4];
-	outputDocument.getElementById("mainMenuWindowGalaxyButton").disabled = false;
-	outputDocument.getElementById("mainMenuWindowGalaxyButton").onclick = function() { interfaceEnterElement(outputDocument,GalaxyMapMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[2]).disabled = false;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[2]).onclick = function() { interfaceEnterElement(outputDocument,GalaxyMapMenuID); };
 	
 	//topbar image in galaxy map menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[31]).src = InterfaceMainMenuIconPaths[4];
@@ -370,63 +441,61 @@ function interfaceInitGalaxyMapMenu(outputDocument){
 	//galaxy map navigation buttons
 		//top
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).src = InterfaceMainMenuIconPaths[37];//22
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[32]).onclick = function() { galaxyMoveGalaxyMapUp(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[34]).onclick = function() { galaxyMoveGalaxyMapUp(outputDocument); };
 		//right
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).src = InterfaceMainMenuIconPaths[38];//24
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[34]).onclick = function() { galaxyMoveGalaxyMapRight(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[36]).onclick = function() { galaxyMoveGalaxyMapRight(outputDocument); };
 		//bottom
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).src = InterfaceMainMenuIconPaths[39];//21
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[35]).onclick = function() { galaxyMoveGalaxyMapDown(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[37]).onclick = function() { galaxyMoveGalaxyMapDown(outputDocument); };
 		//left
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).src = InterfaceMainMenuIconPaths[40];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[33]).onclick = function() { galaxyMoveGalaxyMapLeft(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[35]).onclick = function() { galaxyMoveGalaxyMapLeft(outputDocument); };
 	
 		//zoom in
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).src = InterfaceMainMenuIconPaths[41];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[36]).onclick = function() { galaxyZoomMap(outputDocument, (+ 1), true); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[40]).onclick = function() { galaxyZoomMap(outputDocument, (+ 1), true); };
 		//zoom out
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).src = InterfaceMainMenuIconPaths[43];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[37]).onclick = function() { galaxyZoomMap(outputDocument, (- 1), true); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[41]).onclick = function() { galaxyZoomMap(outputDocument, (- 1), true); };
 	
 		//return home
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).src = InterfaceMainMenuIconPaths[47];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[38]).onclick = function() { galaxyResetCameraPosition(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[39]).onclick = function() { galaxyResetCameraPosition(outputDocument); };
 		//focus target
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).src = InterfaceMainMenuIconPaths[45];//23
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[39]).onclick = function() { galaxyMapFocusOnSystemByIndex(outputDocument, GalaxyMapSelectedSystem);  };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[38]).onclick = function() { galaxyMapFocusOnSystemByIndex(outputDocument, GalaxyMapSelectedSystem);  };
 	
 	interfaceRefreshGalaxyMap(outputDocument);
 }
 function interfaceInitBuildMenu(outputDocument){
 	//build in main menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[40]).src = InterfaceMainMenuIconPaths[49];
-	outputDocument.getElementById("mainMenuWindowBuildingsButton").disabled = false;
-	outputDocument.getElementById("mainMenuWindowBuildingsButton").onclick = function() { interfaceEnterElement(outputDocument,BuildMenuID); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[42]).disabled = false;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[42]).onclick = function() { interfaceEnterElement(outputDocument,BuildMenuID); };
 	
 	//topbar image in build menu
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[41]).src = InterfaceMainMenuIconPaths[49];
 	
 	//planet navigation buttons
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[42]).src = InterfaceMainMenuIconPaths[23];
-	outputDocument.getElementById("planetBuildingInfoPanelHeaderPreviousPlanet").onclick = function() { interfacePlanetBuildingsPreviousPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[43]).onclick = function() { interfacePlanetBuildingsPreviousPlanet(outputDocument); };
 	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[43]).src = InterfaceMainMenuIconPaths[24];
-	outputDocument.getElementById("planetBuildingInfoPanelHeaderNextPlanet").onclick = function() { interfacePlanetBuildingsNextPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[44]).onclick = function() { interfacePlanetBuildingsNextPlanet(outputDocument); };
 	
 	//main buttons
-	
-	outputDocument.getElementById("planetBuildingGoToPlanetButton").onclick = 
-		function() { interfacePlanetBuildingGoToPlanet(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[45]).onclick = function() { interfacePlanetBuildingGoToPlanet(outputDocument); };
 	
 	//left menu options
 	
-	outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").onchange = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
-	outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").onkeyup = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
-	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").onchange = function(){ interfaceBuildMenuAutoReassignStaff(outputDocument); };
-	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").checked = BuildingsAutoAssignStaffEnabled;
-	outputDocument.getElementById("planetBuildingInfoPanelBuyMaxSettingInput").onchange = function(){ interfaceBuildMenuTryBuyMax(outputDocument); };
-	outputDocument.getElementById("planetBuildingInfoPanelBuyMaxSettingInput").checked = BuildingsTryBuyMaxEnabled;
-	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").onchange = function(){ interfaceBuildMenuDemolishLock(outputDocument); };
-	outputDocument.getElementById("planetBuildingInfoPanelDemolishLockSettingInput").checked = BuildingsDemolishLockEnabled;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[46]).onchange = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[46]).onkeyup = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[47]).onchange = function(){ interfaceBuildMenuAutoReassignStaff(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[47]).checked = BuildingsAutoAssignStaffEnabled;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[48]).onchange = function(){ interfaceBuildMenuTryBuyMax(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[48]).checked = BuildingsTryBuyMaxEnabled;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[49]).onchange = function(){ interfaceBuildMenuDemolishLock(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[49]).checked = BuildingsDemolishLockEnabled;
 	
 	
 	interfaceBuildMenuInitPlanetTables(outputDocument);
@@ -435,6 +504,41 @@ function interfaceInitBuildMenu(outputDocument){
 	
 	interfaceRefreshBuildMenu(outputDocument);
 }
+function interfaceInitSettingsMenu(outputDocument) {
+	//settings in main menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[50]).disabled = false;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[50]).onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
+	
+	//topbar image in settings menu
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[16]).src = InterfaceMainMenuIconPaths[16];
+	
+	//settings buttons
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[51]).onclick = function() { interfaceSettingsSwitchFastMenuChange(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[52]).onclick = function() { interfaceSettingsSwitchIntroSkip(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[53]).onclick = function() { interfaceSettingsSwitchAutosave(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[54]).onclick = function() { interfaceSettingsSwitchGalaxyMapParralax(outputDocument); };
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[55]).onclick = function() { animationDisplayIntro(outputDocument);	};
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[56]).onclick = function() { saveSaveGame(); };
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[57]).onclick = function() { saveExportSave(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[58]).onclick = function() { loadImportSave(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[59]).onclick = function() { saveLoadWipeSave(outputDocument); };
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[60]).onclick = function() { interfaceEnterElement(outputDocument,CreditsMenuID); };
+	
+	//buttons on/off
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[51]).checked = SettingsInstantMenuNavigation;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[52]).checked = ProgressIntroDisplayedOrSkipped;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[53]).checked = SettingSaveAutosave;
+	outputDocument.getElementById(InterfaceMainMenuButtonsID[54]).checked = GalaxyMapPerspectiveEnabled;
+	
+	//other
+	
+	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[30]).src = InterfaceMainMenuIconPaths[35];
+}
+
 
 var BuildingMenuCategoriesContainerId = "planetBuildingMenuBuildingCategoriesContainer";
 var BuildingMenuSingleCategoryContainerClass = "planetBuildingElementsContainer planetBuildingCategoryElement";
@@ -1479,8 +1583,101 @@ var BuildingMenuSingleBuildingSideButtonPowerButtonIdPrefix = "planetBuildingsSi
 var BuildingMenuSingleBuildingSideButtonPoweredOnImagePath = "RESOURCES/ICONS/PowerOn.png";
 var BuildingMenuSingleBuildingSideButtonPoweredOffImagePath = "RESOURCES/ICONS/PowerOff.png";
 
+var BuildingMenuSingleBuildingAlertContainerClass = "planetBuildingAlertIconContainer";
 var BuildingMenuSingleBuildingSingleAlertClass = "planetBuildingAlertIcon";
-var BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix = "planetBuildingSingleBuildingAlertUnpowered_";
+
+//[containerID, iconID, iconPathIndex, altText]
+var BuildingMenuSingleBuildingAlertContainerIdPrefixesArray = [
+	["planetBuildingSingleBuildingAlertUnpowered_","planetBuildingSingleBuildingAlertUnpoweredImage_",10,"This building is currently turned off and not functioning."],
+	["planetBuildingSingleBuildingAlertPowerCritical_","planetBuildingSingleBuildingAlertPowerCriticalImage_",15,"Not enough power for this building to start working even on low efficiency."],
+	["planetBuildingSingleBuildingAlertPowerInsufficient_","planetBuildingSingleBuildingAlertPowerInsufficientImage_",14,"Insufficient power is reducing this building's efficiency."],
+	["planetBuildingSingleBuildingAlertPowerConsumedAndGenerated_","planetBuildingSingleBuildingAlertPowerConsumedAndGeneratedImage_",13,"This building requires power to start generating (more) power."],
+	["planetBuildingSingleBuildingAlertPowerSensitive_","planetBuildingSingleBuildingAlertPowerSensitiveImage_",16,"This building requires uninterrupted power supply to function."],
+	
+	["planetBuildingSingleBuildingAlertSensitiveIssue_","planetBuildingSingleBuildingAlertSensitiveIssueImage_",19,"Unstable power supply prevents this building from working."],
+	["planetBuildingSingleBuildingAlertOverstaffed_","planetBuildingSingleBuildingAlertOverstaffedImage_",1,"This building is running with extra efficiency due to extra staff being present."],
+	["planetBuildingSingleBuildingAlertUnderstaffed_","planetBuildingSingleBuildingAlertUnderstaffedImage_",2,"Insufficient staff is reducing this building's efficiency."],
+	["planetBuildingSingleBuildingAlertNoStaff_","planetBuildingSingleBuildingAlertNoStaffImage_",3,"This building is disabled due to lack of staff."],
+	["planetBuildingSingleBuildingAlertNoStaffBonus_","planetBuildingSingleBuildingAlertNoStaffBonusImage_",1,"This building is receiving no additional efficiency from extra staff."],
+	
+	["planetBuildingSingleBuildingAlertStaffMandatory_","planetBuildingSingleBuildingAlertStaffMandatoryImage_",4,"This building only functions if fully staffed."],
+	["planetBuildingSingleBuildingAlertStaffMandatoryIssue_","planetBuildingSingleBuildingAlertStaffMandatoryIssueImage_",7,"Insufficient staff prevents this building from working."],
+	["planetBuildingSingleBuildingAlertStaffNotNeededIssue_","planetBuildingSingleBuildingAlertStaffNotNeededIssueImage_",5,"Staff is not needed for this building."],
+	["planetBuildingSingleBuildingAlertHazard_","planetBuildingSingleBuildingAlertHazardImage_",36,"This building is sensitive to hazardous conditions."],
+	["planetBuildingSingleBuildingAlertHazardIssue_","planetBuildingSingleBuildingAlertHazardIssueImage_",38,"Hazardous environment reduces this building's efficiency."],
+	
+	["planetBuildingSingleBuildingAlertHazardCritical_","planetBuildingSingleBuildingAlertHazardCriticalImage_",39,"Environment is too hazardous for this building to function."],
+	["planetBuildingSingleBuildingAlertHazardUnaffected_","planetBuildingSingleBuildingAlertHazardUnaffectedImage_",37,"This building is not affected by hazardous conditions."],
+	["planetBuildingSingleBuildingAlertMineralsRequired_","planetBuildingSingleBuildingAlertMineralsRequiredImage_",28,"This building requires resource deposits to be present on planet."],
+	["planetBuildingSingleBuildingAlertMineralsRequiredDifferent_","planetBuildingSingleBuildingAlertMineralsRequiredDifferentImage_",29,"Required resource deposits are different from expected output."],
+	["planetBuildingSingleBuildingAlertMineralsOutputLimited_","planetBuildingSingleBuildingAlertMineralsOutputLimitedImage_",30,"Some of this building's output resources are completely missing and cannot be extracted here."],
+	
+	["planetBuildingSingleBuildingAlertMineralsOutputMissing_","planetBuildingSingleBuildingAlertMineralsOutputMissingImage_",31,"There are no resources present that this building can extract."],
+	["planetBuildingSingleBuildingAlertMineralsInputInsufficient_","planetBuildingSingleBuildingAlertMineralsInputInsufficientImage_",34,"Resource deposits are insufficient for amount of buildings of this type. Efficiency reduced."],
+	["planetBuildingSingleBuildingAlertMineralsInputMissing_","planetBuildingSingleBuildingAlertMineralsInputMissingImage_",35,"Required resource deposits for this building are missing."],
+	["planetBuildingSingleBuildingAlertUnrestUnaffected_","planetBuildingSingleBuildingAlertUnrestUnaffectedImage_",21,"This building is not affected by unrest and discontent."],
+	["planetBuildingSingleBuildingAlertUnrestIssue_","planetBuildingSingleBuildingAlertUnrestIssueImage_",22,"Unrest and discontent are reducing this building's efficiency."],
+	
+	["planetBuildingSingleBuildingAlertUnrestCritical_","planetBuildingSingleBuildingAlertUnrestCriticalImage_",23,"Unrest and discontent are making it too dangerous for this building to function."],
+	["planetBuildingSingleBuildingAlertUnrestSensitive_","planetBuildingSingleBuildingAlertUnrestSensitiveImage_",24,"This building can only work at secure and safe places."],
+	["planetBuildingSingleBuildingAlertUnrestSensitiveIssue_","planetBuildingSingleBuildingAlertUnrestSensitiveIssueImage_",27,"Unrest and discontent presence prevents this building from working."]//,
+	//["","",,""],
+];
+var BuildingMenuSingleBuildingAlertIconPathesArray = [
+	"RESOURCES/ICONS/Portrait.png",	//0
+	"RESOURCES/ICONS/Portrait_Green.png",
+	"RESOURCES/ICONS/Portrait_Yellow.png",
+	"RESOURCES/ICONS/Portrait_Red.png",	
+	
+	"RESOURCES/ICONS/PortraitAlert.png",	//4
+	"RESOURCES/ICONS/PortraitAlert_Green.png",
+	"RESOURCES/ICONS/PortraitAlert_Yellow.png",
+	"RESOURCES/ICONS/PortraitAlert_Red.png",
+	
+	"RESOURCES/ICONS/TurnedOff.png",	//8
+	"RESOURCES/ICONS/TurnedOff_Green.png",
+	"RESOURCES/ICONS/TurnedOff_Yellow.png",
+	"RESOURCES/ICONS/TurnedOff_Red.png",
+	
+	"RESOURCES/ICONS/Power3.png",	//12
+	"RESOURCES/ICONS/Power3_Green.png",
+	"RESOURCES/ICONS/Power3_Yellow.png",
+	"RESOURCES/ICONS/Power3_Red.png",
+	
+	"RESOURCES/ICONS/PowerAlert2.png",	//16
+	"RESOURCES/ICONS/PowerAlert2_Green.png",
+	"RESOURCES/ICONS/PowerAlert2_Yellow.png",
+	"RESOURCES/ICONS/PowerAlert2_Red.png",
+	
+	"RESOURCES/ICONS/Discontent.png",	//20
+	"RESOURCES/ICONS/Discontent_Green.png",
+	"RESOURCES/ICONS/Discontent_Yellow.png",
+	"RESOURCES/ICONS/Discontent_Red.png",
+	
+	"RESOURCES/ICONS/DiscontentAlert.png",	//24
+	"RESOURCES/ICONS/DiscontentAlert_Green.png",
+	"RESOURCES/ICONS/DiscontentAlert_Yellow.png",
+	"RESOURCES/ICONS/DiscontentAlert_Red.png",
+	
+	"RESOURCES/ICONS/Minerals.png",	//28
+	"RESOURCES/ICONS/Minerals_Green.png",
+	"RESOURCES/ICONS/Minerals_Yellow.png",
+	"RESOURCES/ICONS/Minerals_Red.png",
+	
+	"RESOURCES/ICONS/MineralsAlert.png",	//32
+	"RESOURCES/ICONS/MineralsAlert_Green.png",
+	"RESOURCES/ICONS/MineralsAlert_Yellow.png",
+	"RESOURCES/ICONS/MineralsAlert_Red.png",
+	
+	"RESOURCES/ICONS/Hazard.png",	//36
+	"RESOURCES/ICONS/Hazard_Green.png",
+	"RESOURCES/ICONS/Hazard_Yellow.png",
+	"RESOURCES/ICONS/Hazard_Red.png",
+];	//BuildingMenuSingleBuildingAlertIconPathesArray
+
+
+
+/* var BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix = "planetBuildingSingleBuildingAlertUnpowered_";
 var BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix = "planetBuildingSingleBuildingAlertPowerCritical_";
 var BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix = "planetBuildingSingleBuildingAlertPowerInsufficient_";
 var BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix = "planetBuildingSingleBuildingAlertPowerConsumedAndGenerated_";
@@ -1509,48 +1706,57 @@ var BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix = "planetBuild
 var BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix = "planetBuildingSingleBuildingAlertUnrestIssue_";
 var BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix = "planetBuildingSingleBuildingAlertUnrestCritical_";
 var BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix = "planetBuildingSingleBuildingAlertUnrestSensitive_";
-var BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix = "planetBuildingSingleBuildingAlertUnrestSensitiveIssue_";
+var BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix = "planetBuildingSingleBuildingAlertUnrestSensitiveIssue_"; */
 
-var BuildingMenuSingleBuildingSingleAlertIconStaffCyan = "RESOURCES/ICONS/Portrait.png";
+/* var BuildingMenuSingleBuildingSingleAlertIconStaffCyan = "RESOURCES/ICONS/Portrait.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffGreen = "RESOURCES/ICONS/Portrait_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffYellow = "RESOURCES/ICONS/Portrait_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffRed = "RESOURCES/ICONS/Portrait_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryCyan = "RESOURCES/ICONS/PortraitAlert.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryGreen = "RESOURCES/ICONS/PortraitAlert_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryYellow = "RESOURCES/ICONS/PortraitAlert_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryRed = "RESOURCES/ICONS/PortraitAlert_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconTurnedOffCyan = "RESOURCES/ICONS/TurnedOff.png";
 var BuildingMenuSingleBuildingSingleAlertIconTurnedOffGreen = "RESOURCES/ICONS/TurnedOff_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconTurnedOffYellow = "RESOURCES/ICONS/TurnedOff_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconTurnedOffRed = "RESOURCES/ICONS/TurnedOff_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconEnergyCyan = "RESOURCES/ICONS/Power3.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergyGreen = "RESOURCES/ICONS/Power3_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergyYellow = "RESOURCES/ICONS/Power3_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergyRed = "RESOURCES/ICONS/Power3_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveCyan = "RESOURCES/ICONS/PowerAlert2.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveGreen = "RESOURCES/ICONS/PowerAlert2_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveYellow = "RESOURCES/ICONS/PowerAlert2_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveRed = "RESOURCES/ICONS/PowerAlert2_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconUnrestCyan = "RESOURCES/ICONS/Discontent.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestGreen = "RESOURCES/ICONS/Discontent_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestYellow = "RESOURCES/ICONS/Discontent_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestRed = "RESOURCES/ICONS/Discontent_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveCyan = "RESOURCES/ICONS/DiscontentAlert.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveGreen = "RESOURCES/ICONS/DiscontentAlert_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveYellow = "RESOURCES/ICONS/DiscontentAlert_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveRed = "RESOURCES/ICONS/DiscontentAlert_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconMineralsCyan = "RESOURCES/ICONS/Minerals.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsGreen = "RESOURCES/ICONS/Minerals_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsYellow = "RESOURCES/ICONS/Minerals_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsRed = "RESOURCES/ICONS/Minerals_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueCyan = "RESOURCES/ICONS/MineralsAlert.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueGreen = "RESOURCES/ICONS/MineralsAlert_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueYellow = "RESOURCES/ICONS/MineralsAlert_Yellow.png";
 var BuildingMenuSingleBuildingSingleAlertIconMineralsIssueRed = "RESOURCES/ICONS/MineralsAlert_Red.png";
+
 var BuildingMenuSingleBuildingSingleAlertIconHazardCyan = "RESOURCES/ICONS/Hazard.png";
 var BuildingMenuSingleBuildingSingleAlertIconHazardGreen = "RESOURCES/ICONS/Hazard_Green.png";
 var BuildingMenuSingleBuildingSingleAlertIconHazardYellow = "RESOURCES/ICONS/Hazard_Yellow.png";
-var BuildingMenuSingleBuildingSingleAlertIconHazardRed = "RESOURCES/ICONS/Hazard_Red.png";
+var BuildingMenuSingleBuildingSingleAlertIconHazardRed = "RESOURCES/ICONS/Hazard_Red.png"; */
 
 var InterfaceBuildingMenuBuildingsOnList = 0;
 
@@ -2447,7 +2653,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 										tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerPowerIdPrefix + tmpBuilding.index;
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage = outputDocument.createElement("img");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
-											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconEnergyCyan;
+											// tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconEnergyCyan;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerImage.src = BuildingMenuSingleBuildingAlertIconPathesArray[12];
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText = outputDocument.createElement("span");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyPowerContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyPowerValueIdPrefix + tmpBuilding.index;
@@ -2461,7 +2668,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 										tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerStaffIdPrefix + tmpBuilding.index;
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage = outputDocument.createElement("img");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
-											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconStaffCyan;
+											// tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconStaffCyan;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerImage.src = BuildingMenuSingleBuildingAlertIconPathesArray[0];
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText = outputDocument.createElement("span");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyStaffContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyStaffValueIdPrefix + tmpBuilding.index;
@@ -2475,7 +2683,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 										tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerHazardIdPrefix + tmpBuilding.index;
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage = outputDocument.createElement("img");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
-											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconHazardCyan;
+											// tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconHazardCyan;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerImage.src = BuildingMenuSingleBuildingAlertIconPathesArray[36];
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText = outputDocument.createElement("span");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyHazardContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyHazardValueIdPrefix + tmpBuilding.index;
@@ -2489,7 +2698,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 										tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerDiscontentIdPrefix + tmpBuilding.index;
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage = outputDocument.createElement("img");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
-											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconUnrestCyan;
+											// tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconUnrestCyan;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerImage.src = BuildingMenuSingleBuildingAlertIconPathesArray[20];
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText = outputDocument.createElement("span");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyDiscontentContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyDiscontentValueIdPrefix + tmpBuilding.index;
@@ -2503,7 +2713,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 										tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainer.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyContainerMineralsIdPrefix + tmpBuilding.index;
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage = outputDocument.createElement("img");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyImageClass;
-											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconMineralsCyan;
+											// tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.src = BuildingMenuSingleBuildingSingleAlertIconMineralsCyan;
+											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerImage.src = BuildingMenuSingleBuildingAlertIconPathesArray[28];
 											var tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText = outputDocument.createElement("span");
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.className = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyValueClass;
 											tmpBuildingUnfoldedOperatorsSingleEfficiencyMineralsContainerText.id = BuildingMenuSingleBuildingEfficiencyInfoSingleEfficiencyMineralsValueIdPrefix + tmpBuilding.index;
@@ -2612,192 +2823,25 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 					var tmpBuildingControlAlertsContainer = outputDocument.createElement("div");
 					tmpBuildingControlAlertsContainer.className = BuildingMenuSingleBuildingControlAlertsContainerClass;
 					
-						var tmpBuildingControlAlertsUnpowered = outputDocument.createElement("img");
-						tmpBuildingControlAlertsUnpowered.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnpowered.id = BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnpowered.src = BuildingMenuSingleBuildingSingleAlertIconTurnedOffYellow;
-						tmpBuildingControlAlertsUnpowered.title = "This building is currently turned off and not functioning.";
-						
-						var tmpBuildingControlAlertsPowerCritical = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsPowerInsufficient = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsPowerConsumedAndGenerated = outputDocument.createElement("img");
-						tmpBuildingControlAlertsPowerCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsPowerCritical.id = BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsPowerCritical.src = BuildingMenuSingleBuildingSingleAlertIconEnergyRed;
-						tmpBuildingControlAlertsPowerCritical.title = "Not enough power for this building to start working even on low efficiency.";
-						tmpBuildingControlAlertsPowerInsufficient.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsPowerInsufficient.id = BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsPowerInsufficient.src = BuildingMenuSingleBuildingSingleAlertIconEnergyYellow;
-						tmpBuildingControlAlertsPowerInsufficient.title = "Insufficient power is reducing this building's efficiency.";
-						tmpBuildingControlAlertsPowerConsumedAndGenerated.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsPowerConsumedAndGenerated.id = BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsPowerConsumedAndGenerated.src = BuildingMenuSingleBuildingSingleAlertIconEnergyGreen;
-						tmpBuildingControlAlertsPowerConsumedAndGenerated.title = "This building requires power to start generating (more) power.";
-						
-						var tmpBuildingControlAlertsPowerSensitive = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsPowerSensitiveIssue = outputDocument.createElement("img");
-						tmpBuildingControlAlertsPowerSensitive.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsPowerSensitive.id = BuildingMenuSingleBuildingSingleAlertPowerSensitiveIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsPowerSensitive.src = BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveCyan;
-						tmpBuildingControlAlertsPowerSensitive.title = "This building requires uninterrupted power supply to function.";
-						
-						tmpBuildingControlAlertsPowerSensitiveIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsPowerSensitiveIssue.id = BuildingMenuSingleBuildingSingleAlertPowerSensitiveIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsPowerSensitiveIssue.src = BuildingMenuSingleBuildingSingleAlertIconEnergySensitiveRed;
-						tmpBuildingControlAlertsPowerSensitiveIssue.title = "Unstable power supply prevents this building from working.";
-																				
-						var tmpBuildingControlAlertsOverstaffed = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsUnderstaffed = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsNoStaff = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsNoStaffBonus = outputDocument.createElement("img");
-						tmpBuildingControlAlertsOverstaffed.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsOverstaffed.id = BuildingMenuSingleBuildingSingleAlertOverstaffedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsOverstaffed.src = BuildingMenuSingleBuildingSingleAlertIconStaffGreen;
-						tmpBuildingControlAlertsOverstaffed.title = "This building is running with extra efficiency due to extra staff being present.";
-						tmpBuildingControlAlertsUnderstaffed.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnderstaffed.id = BuildingMenuSingleBuildingSingleAlertUnderstaffedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnderstaffed.src = BuildingMenuSingleBuildingSingleAlertIconStaffYellow;
-						tmpBuildingControlAlertsUnderstaffed.title = "Insufficient staff is reducing this building's efficiency.";
-						tmpBuildingControlAlertsNoStaff.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsNoStaff.id = BuildingMenuSingleBuildingSingleAlertNoStaffIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsNoStaff.src = BuildingMenuSingleBuildingSingleAlertIconStaffRed;
-						tmpBuildingControlAlertsNoStaff.title = "This building is disabled due to lack of staff.";
-						tmpBuildingControlAlertsNoStaffBonus.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsNoStaffBonus.id = BuildingMenuSingleBuildingSingleAlertNoStaffBonusIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsNoStaffBonus.src = BuildingMenuSingleBuildingSingleAlertIconStaffCyan;
-						tmpBuildingControlAlertsNoStaffBonus.title = "This building is receiving no additional efficiency from extra staff.";
-						
-						var tmpBuildingControlAlertsStaffMandatory = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsStaffMandatoryIssue = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsStaffNotNeededIssue = outputDocument.createElement("img");
-						tmpBuildingControlAlertsStaffMandatory.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsStaffMandatory.id = BuildingMenuSingleBuildingSingleAlertStaffMandatoryIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsStaffMandatory.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryCyan;
-						tmpBuildingControlAlertsStaffMandatory.title = "This building only functions if fully staffed.";
-						tmpBuildingControlAlertsStaffMandatoryIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsStaffMandatoryIssue.id = BuildingMenuSingleBuildingSingleAlertStaffMandatoryIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsStaffMandatoryIssue.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryRed;
-						tmpBuildingControlAlertsStaffMandatoryIssue.title = "Insufficient staff prevents this building from working.";
-						tmpBuildingControlAlertsStaffNotNeededIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsStaffNotNeededIssue.id = BuildingMenuSingleBuildingSingleAlertStaffNotNeededIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsStaffNotNeededIssue.src = BuildingMenuSingleBuildingSingleAlertIconStaffMandatoryGreen;
-						tmpBuildingControlAlertsStaffNotNeededIssue.title = "Staff is not needed for this building.";
-						
-						var tmpBuildingControlAlertsHazardUnaffected = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsHazard = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsHazardIssue = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsHazardCritical = outputDocument.createElement("img");
-						tmpBuildingControlAlertsHazardUnaffected.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsHazardUnaffected.id = BuildingMenuSingleBuildingSingleAlertHazardUnaffectedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsHazardUnaffected.src = BuildingMenuSingleBuildingSingleAlertIconHazardGreen;
-						tmpBuildingControlAlertsHazardUnaffected.title = "This building is not affected by hazardous conditions.";
-						tmpBuildingControlAlertsHazard.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsHazard.id = BuildingMenuSingleBuildingSingleAlertHazardIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsHazard.src = BuildingMenuSingleBuildingSingleAlertIconHazardCyan;
-						tmpBuildingControlAlertsHazard.title = "This building is sensitive to hazardous conditions.";
-						tmpBuildingControlAlertsHazardIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsHazardIssue.id = BuildingMenuSingleBuildingSingleAlertHazardIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsHazardIssue.src = BuildingMenuSingleBuildingSingleAlertIconHazardYellow;
-						tmpBuildingControlAlertsHazardIssue.title = "Hazardous environment reduces this building's efficiency.";
-						tmpBuildingControlAlertsHazardCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsHazardCritical.id = BuildingMenuSingleBuildingSingleAlertHazardCriticalIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsHazardCritical.src = BuildingMenuSingleBuildingSingleAlertIconHazardRed;
-						tmpBuildingControlAlertsHazardCritical.title = "Environment is too hazardous for this building to function.";
-					
-						var tmpBuildingControlAlertsMineralsRequired = outputDocument.createElement("img");				//cyan
-						var tmpBuildingControlAlertsMineralsRequiredDifferent = outputDocument.createElement("img");	//green
-						var tmpBuildingControlAlertsMineralsOutputLimited = outputDocument.createElement("img");	//yellow
-						var tmpBuildingControlAlertsMineralsOutputMissing = outputDocument.createElement("img");	//red
-						var tmpBuildingControlAlertsMineralsRequiredOvermined = outputDocument.createElement("img");	//critical yellow
-						var tmpBuildingControlAlertsMineralsRequiredMissing = outputDocument.createElement("img");	//critical red
-						tmpBuildingControlAlertsMineralsRequired.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsRequired.id = BuildingMenuSingleBuildingSingleAlertMineralsRequiredIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsRequired.src = BuildingMenuSingleBuildingSingleAlertIconMineralsCyan;
-						tmpBuildingControlAlertsMineralsRequired.title = "This building requires resource deposits to be present on planet.";
-						tmpBuildingControlAlertsMineralsRequiredDifferent.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsRequiredDifferent.id = BuildingMenuSingleBuildingSingleAlertMineralsRequiredDifferentIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsRequiredDifferent.src = BuildingMenuSingleBuildingSingleAlertIconMineralsGreen;
-						tmpBuildingControlAlertsMineralsRequiredDifferent.title = "Required resource deposits are different from expected output.";
-						tmpBuildingControlAlertsMineralsOutputLimited.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsOutputLimited.id = BuildingMenuSingleBuildingSingleAlertMineralsOutputLimitedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsOutputLimited.src = BuildingMenuSingleBuildingSingleAlertIconMineralsYellow;
-						tmpBuildingControlAlertsMineralsOutputLimited.title = "Some of this building's output resources are completely missing and cannot be extracted here.";
-						tmpBuildingControlAlertsMineralsOutputMissing.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsOutputMissing.id = BuildingMenuSingleBuildingSingleAlertMineralsOutputMissingIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsOutputMissing.src = BuildingMenuSingleBuildingSingleAlertIconMineralsRed;
-						tmpBuildingControlAlertsMineralsOutputMissing.title = "There are no resources present that this building is expected to extract.";
-						tmpBuildingControlAlertsMineralsRequiredOvermined.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsRequiredOvermined.id = BuildingMenuSingleBuildingSingleAlertMineralsInputInsufficientIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsRequiredOvermined.src = BuildingMenuSingleBuildingSingleAlertIconMineralsIssueYellow;
-						tmpBuildingControlAlertsMineralsRequiredOvermined.title = "Resource deposits are insufficient for amount of buildings of this type. Efficiency reduced.";
-						tmpBuildingControlAlertsMineralsRequiredMissing.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsMineralsRequiredMissing.id = BuildingMenuSingleBuildingSingleAlertMineralsInputMissingIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsMineralsRequiredMissing.src = BuildingMenuSingleBuildingSingleAlertIconMineralsIssueRed;
-						tmpBuildingControlAlertsMineralsRequiredMissing.title = "Required resource deposits for this building are missing ";
-						
-						var tmpBuildingControlAlertsUnrestUnaffected = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsUnrestIssue = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsUnrestCritical = outputDocument.createElement("img");
-						tmpBuildingControlAlertsUnrestUnaffected.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnrestUnaffected.id = BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnrestUnaffected.src = BuildingMenuSingleBuildingSingleAlertIconUnrestGreen;
-						tmpBuildingControlAlertsUnrestUnaffected.title = "This building is not affected by unrest and discontent."; 
-						tmpBuildingControlAlertsUnrestIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnrestIssue.id = BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnrestIssue.src = BuildingMenuSingleBuildingSingleAlertIconUnrestYellow;
-						tmpBuildingControlAlertsUnrestIssue.title = "Unrest and discontent are reducing this building's efficiency.";
-						tmpBuildingControlAlertsUnrestCritical.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnrestCritical.id = BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnrestCritical.src = BuildingMenuSingleBuildingSingleAlertIconUnrestRed;
-						tmpBuildingControlAlertsUnrestCritical.title = "Unrest and discontent are making it too dangerous for this building to function.";
-						
-						var tmpBuildingControlAlertsUnrestSensitive = outputDocument.createElement("img");
-						var tmpBuildingControlAlertsUnrestSensitiveIssue = outputDocument.createElement("img");
-						tmpBuildingControlAlertsUnrestSensitive.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnrestSensitive.id = BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnrestSensitive.src = BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveCyan;
-						tmpBuildingControlAlertsUnrestSensitive.title = "This building can only work at secure and safe places.";
-						tmpBuildingControlAlertsUnrestSensitiveIssue.className = BuildingMenuSingleBuildingSingleAlertClass;
-						tmpBuildingControlAlertsUnrestSensitiveIssue.id = BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix + tmpBuilding.index;
-						tmpBuildingControlAlertsUnrestSensitiveIssue.src = BuildingMenuSingleBuildingSingleAlertIconUnrestSensitiveRed;
-						tmpBuildingControlAlertsUnrestSensitiveIssue.title = "Unrest and discontent presence prevents this building from working.";
-						
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnpowered);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerCritical);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerInsufficient);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerConsumedAndGenerated);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerSensitive);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsPowerSensitiveIssue);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsOverstaffed);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnderstaffed);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsNoStaff);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsNoStaffBonus);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffMandatory);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffMandatoryIssue);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsStaffNotNeededIssue);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazard);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardIssue);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardCritical);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsHazardUnaffected);
-						
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequired);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredDifferent);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsOutputLimited);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsOutputMissing);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredOvermined);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsMineralsRequiredMissing);
-						
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestUnaffected);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestIssue);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestCritical);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestSensitive);
-						tmpBuildingControlAlertsContainer.append(tmpBuildingControlAlertsUnrestSensitiveIssue);
-					
+						for(let j = 0; j < BuildingMenuSingleBuildingAlertContainerIdPrefixesArray.length; j++){
+							let tmpAlertContainer = outputDocument.createElement("div");
+							tmpAlertContainer.className = BuildingMenuSingleBuildingAlertContainerClass;
+							tmpAlertContainer.id = BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[j][0] + tmpBuilding.index;
+							tmpAlertContainer.title = BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[j][3];
+							
+							let tmpAlertIcon = outputDocument.createElement("img");
+							tmpAlertIcon.className = BuildingMenuSingleBuildingSingleAlertClass;
+							tmpAlertIcon.id = BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[j][1] + tmpBuilding.index;
+							tmpAlertIcon.src = BuildingMenuSingleBuildingAlertIconPathesArray[BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[j][2]];
+							
+							tmpAlertContainer.append(tmpAlertIcon);
+							tmpBuildingControlAlertsContainer.append(tmpAlertContainer);
+						}
+
 					tmpBuildingControlContainer.append(tmpBuildingFoldedOperatorsContainer);
 					tmpBuildingControlContainer.append(tmpBuildingFoldedSideButtonsContainer);
 					tmpBuildingControlContainer.append(tmpBuildingUnfoldedOperatorsContainer);
 					tmpBuildingControlContainer.append(tmpBuildingUnfoldedSideButtonsContainer);
-					// tmpBuildingControlContainer.append(tmpBuildingControlAlertsContainer);
 					tmpBuildingUnfoldedOperatorsHeaderContainer.append(tmpBuildingControlAlertsContainer);
 				
 				tmpBuildingContainer.append(tmpBuildingInfoContainer);
@@ -2827,46 +2871,39 @@ function interfaceInitSingleBuildingAlerts(outputDocument, buildingIndex){
 	let tmpBuilding = tmpPlanet.buildings[buildingIndex];
 	let tmpBuildingBlueprint = BuildingsArray[tmpBuilding.blueprintIndex];
 	
-	let tmpBuildingControlAlertsUnpowered = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnpoweredIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsUnpowered = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[0][0] + buildingIndex);
+	let tmpBuildingControlAlertsPowerCritical = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[1][0] + buildingIndex);
+	let tmpBuildingControlAlertsPowerInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[2][0] + buildingIndex);
+	let tmpBuildingControlAlertsPowerConsumedAndGenerated = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[3][0] + buildingIndex);
+	let tmpBuildingControlAlertsPowerSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[4][0] + buildingIndex);
 	
-	let tmpBuildingControlAlertsPowerSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerSensitiveIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsPowerSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerSensitiveIssueIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsPowerSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[5][0] + buildingIndex);
+	let tmpBuildingControlAlertsOverstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[6][0] + buildingIndex);
+	let tmpBuildingControlAlertsUnderstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[7][0] + buildingIndex);
+	let tmpBuildingControlAlertsNoStaff = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[8][0] + buildingIndex);
+	let tmpBuildingControlAlertsNoStaffBonus = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[9][0] + buildingIndex);
 	
-	let tmpBuildingControlAlertsPowerCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerCriticalIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsPowerInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerInsufficientIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsStaffMandatory = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[10][0] + buildingIndex);
+	let tmpBuildingControlAlertsStaffMandatoryIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[11][0] + buildingIndex);
+	let tmpBuildingControlAlertsStaffNotNeededIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[12][0] + buildingIndex);
+	let tmpBuildingControlAlertsHazardSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[13][0] + buildingIndex);
+	let tmpBuildingControlAlertsHazardIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[14][0] + buildingIndex);
 	
-	let tmpBuildingControlAlertsPowerConsumedAndGenerated = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertPowerConsumedAndGeneratedIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsHazardCritical = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[15][0] + buildingIndex);
+	let tmpBuildingControlAlertsHazardUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[16][0] + buildingIndex);
+	let tmpBuildingControlAlertsMineralsRequired = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[17][0] + buildingIndex);
+	let tmpBuildingControlAlertsMineralsRequiredDifferent = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[18][0] + buildingIndex);
+	let tmpBuildingControlAlertsMineralsOutputLimited = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[19][0] + buildingIndex);
 	
-	let tmpBuildingControlAlertsStaffMandatory = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffMandatoryIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsStaffMandatoryIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffMandatoryIssueIdPrefix + buildingIndex);
+	let tmpBuildingControlAlertsMineralsOutputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[20][0] + buildingIndex);
+	let tmpBuildingControlAlertsMineralsInputInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[21][0] + buildingIndex);
+	let tmpBuildingControlAlertsMineralsInputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[22][0] + buildingIndex);
+	let tmpBuildingControlAlertsUnrestUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[23][0] + buildingIndex);
+	let tmpBuildingControlAlertsUnrestIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[24][0] + buildingIndex);
 	
-	let tmpBuildingControlAlertsStaffNotNeededIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertStaffNotNeededIssueIdPrefix + buildingIndex);
-	
-	let tmpBuildingControlAlertsOverstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertOverstaffedIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsUnderstaffed = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnderstaffedIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsNoStaffBonus = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertNoStaffBonusIdPrefix + buildingIndex);
-	
-	let tmpBuildingControlAlertsNoStaff = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertNoStaffIdPrefix + buildingIndex);
-	
-	let tmpBuildingControlAlertsHazardSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsHazardIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardIssueIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsHazardCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardCriticalIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsHazardUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertHazardUnaffectedIdPrefix + buildingIndex);
-	
-	let tmpBuildingControlAlertsMineralsRequired = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsRequiredIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsMineralsRequiredDifferent = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsRequiredDifferentIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsMineralsOutputLimited = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsOutputLimitedIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsMineralsOutputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsOutputMissingIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsMineralsInputInsufficient = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsInputInsufficientIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsMineralsInputMissing = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertMineralsInputMissingIdPrefix + buildingIndex);
-	
-	let tmpBuildingControlAlertsUnrestSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsUnrestSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestSensitiveIssueIdPrefix + buildingIndex);	
-	
-	let tmpBuildingControlAlertsUnrestUnaffected = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestUnaffectedIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsUnrestIssue = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestIssueIdPrefix + buildingIndex);
-	let tmpBuildingControlAlertsUnrestCritical = outputDocument.getElementById(BuildingMenuSingleBuildingSingleAlertUnrestCriticalIdPrefix + buildingIndex);
-	
+	let tmpBuildingControlAlertsUnrestCritical = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[25][0] + buildingIndex);
+	let tmpBuildingControlAlertsUnrestSensitive = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[26][0] + buildingIndex);
+	let tmpBuildingControlAlertsUnrestSensitiveIssue = outputDocument.getElementById(BuildingMenuSingleBuildingAlertContainerIdPrefixesArray[27][0] + buildingIndex);	
 	
 	//disabled symbol
 	if(!tmpBuilding.enabled) tmpBuildingControlAlertsUnpowered.style.display = "inline-block";
@@ -2953,7 +2990,7 @@ function interfaceBuildMenuToggleCategory(outputDocument, categoryId){
 } 
 
 function interfaceBuildMenuBulkBuyChanged(outputDocument){
-	let tmpInputElement = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput");
+	let tmpInputElement = outputDocument.getElementById(InterfaceMainMenuButtonsID[46]);
 	let tmpInputValue = tmpInputElement.value;
 	let tmpParsedValue = buildingsValidateBulkBuyValue(tmpInputValue);
 	
@@ -3064,60 +3101,6 @@ function interfaceBuildMenuDemolishLock(outputDocument){
 	buildingsToggleDemolishLock();
 }
 
-function interfaceInitSettingsMenu(outputDocument) {
-	//settings in main menu
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[12]).src = InterfaceMainMenuIconPaths[12];
-	outputDocument.getElementById("mainMenuWindowSettingsButton").disabled = false;
-	outputDocument.getElementById("mainMenuWindowSettingsButton").onclick = function() { interfaceEnterElement(outputDocument,SettingsMenuID); };
-	
-	//topbar image in settings menu
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[16]).src = InterfaceMainMenuIconPaths[16];
-	
-	//settings buttons
-	outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").onclick = function() { interfaceSettingsSwitchFastMenuChange(outputDocument); };
-	outputDocument.getElementById("settingsMenuOptionSkipIntroCheckbox").onclick = function() { interfaceSettingsSwitchIntroSkip(outputDocument); };
-	outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").onclick = function() { interfaceSettingsSwitchAutosave(outputDocument); };
-	outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").onclick = function() { interfaceSettingsSwitchGalaxyMapParralax(outputDocument); };
-	
-	outputDocument.getElementById("settingsMenuOptionReplayIntroButton").onclick = function() { 
-		/*outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[20];
-		setTimeout(() => {
-			outputDocument.getElementById("settingsMenuOptionReplayIntroImage").src = InterfaceMainMenuIconPaths[19];
-		},InterfaceButtonsTurnOffClickEffectTimer*1000);*/
-		animationDisplayIntro(outputDocument);
-	};
-	
-	outputDocument.getElementById("settingsMenuOptionSaveGameButton").onclick = function() { 
-		/*outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[20];
-		setTimeout(() => {
-			outputDocument.getElementById("settingsMenuOptionSaveGameImage").src = InterfaceMainMenuIconPaths[19];
-		},InterfaceButtonsTurnOffClickEffectTimer*1000);*/
-		saveSaveGame();
-	};
-	
-	outputDocument.getElementById("settingsMenuOptionExportSaveButton").onclick = function() { 
-		saveExportSave(outputDocument);
-	};
-	outputDocument.getElementById("settingsMenuOptionImportSaveButton").onclick = function() { 
-		loadImportSave(outputDocument);
-	};
-	outputDocument.getElementById("settingsMenuOptionWipeSaveButton").onclick = function() { 
-		saveLoadWipeSave(outputDocument);
-	};
-	outputDocument.getElementById("settingsMenuOptionShowCreditsButton").onclick = function() { 
-		interfaceEnterElement(outputDocument,CreditsMenuID);
-	};
-	
-	//buttons on/off
-	outputDocument.getElementById("settingsMenuOptionAutosaveCheckbox").checked = SettingSaveAutosave;
-	outputDocument.getElementById("settingsMenuOptionAnimatedMenuTabsChangeCheckbox").checked = SettingsInstantMenuNavigation;
-	outputDocument.getElementById("settingsMenuOptionSkipIntroCheckbox").checked = ProgressIntroDisplayedOrSkipped;
-	outputDocument.getElementById("settingsMenuOptionGalaxyMapParallaxCheckbox").checked = GalaxyMapPerspectiveEnabled;
-	
-	//other
-	
-	outputDocument.getElementById(InterfaceMainMenuButtonImagesID[30]).src = InterfaceMainMenuIconPaths[35];
-}
 
 function interfaceSettingsSwitchFastMenuChange(outputDocument) {
 	settingsToggleInstantMenuNavigation();
@@ -3222,8 +3205,9 @@ function interfaceRefreshPlanetOverview(outputDocument) {
 			}
 		}
 		else {
-			interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID, true); 
-			interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
+			// interfacePlanetOverviewChangeTab(outputDocument,ResourcePanelNaturalResourcesTabID, true); 
+			interfacePlanetOverviewChangeTab(outputDocument, ResourcePanelNaturalResourcesTabID, InterfaceMainMenuButtonsID[28], true); 
+			// interfacePlanetOverviewActivateTabHeader(outputDocument,"planetOverviewResourcesPanelResourcesButton");
 			
 			interfacePlanetOverviewDisableButtons(outputDocument);
 			
@@ -4792,41 +4776,47 @@ function interfaceChangeMenuTab(outputDocument, destinationTabID, instantChange 
 //planet overview buttonsvar PlanetOverviewMenuID = "planetOverviewMenuWindow";
 
 var InterfacePlanetOverviewCurrentTab = "";
-var InterfacePlanetOverviewCurrentTabHeader = "planetOverviewResourcesPanelStorageButton";
+var InterfacePlanetOverviewDefaultTabHeader = "planetOverviewResourcesPanelStorageButton";
+var InterfacePlanetOverviewCurrentTabHeader = InterfacePlanetOverviewDefaultTabHeader;
 var InterfacePlanetOverviewTabChanging = false;
 
-function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, instantChange = SettingsInstantMenuNavigation) {
-	if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
+function interfacePlanetOverviewChangeTab(outputDocument, destinationTabID, headerTabID, instantChange = SettingsInstantMenuNavigation) {
 	
-	if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
-	
-	var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTab);
-	var tmpDestinationTab = outputDocument.getElementById(destinationTabID);	
-	
-	if(instantChange) {
-		tmpOriginTab.style.visibility = "hidden";
-		tmpOriginTab.style.opacity = 0.0;
+	if(!InterfacePlanetOverviewTabChanging){
+		if(destinationTabID == InterfacePlanetOverviewCurrentTab) return;
 		
-		tmpDestinationTab.style.visibility = "inherit";
-		tmpDestinationTab.style.opacity = 1.0;
+		if(InterfacePlanetOverviewCurrentTab == "") InterfacePlanetOverviewCurrentTab = "planetOverviewResourcesPanelStorage";
+		
+		var tmpOriginTab = outputDocument.getElementById(InterfacePlanetOverviewCurrentTab);
+		var tmpDestinationTab = outputDocument.getElementById(destinationTabID);	
+		
+		if(instantChange) {
+			tmpOriginTab.style.visibility = "hidden";
+			tmpOriginTab.style.opacity = 0.0;
+			
+			tmpDestinationTab.style.visibility = "inherit";
+			tmpDestinationTab.style.opacity = 1.0;
+			}
+		else {
+			var tmpOpacity = parseFloat(window.getComputedStyle(tmpOriginTab).opacity);
+			
+			InterfacePlanetOverviewTabChanging = true;
+			
+			newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewCurrentTab, InterfaceChangeMenuTabFadeOutTime, 0, tmpOpacity);
+			setTimeout(()=>{
+					newAnimatedElementOpacity_Inherit(outputDocument, destinationTabID, InterfaceChangeMenuTabFadeInTime, 1, 0);
+					setTimeout(()=>{
+						InterfacePlanetOverviewTabChanging = false;
+					},1000*(InterfaceChangeMenuTabFadeInTime+0.025));
+				},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
 		}
-	else {
-		var tmpOpacity = parseFloat(window.getComputedStyle(tmpOriginTab).opacity);
 		
-		InterfacePlanetOverviewTabChanging = true;
+		InterfacePlanetOverviewCurrentTab = destinationTabID;
 		
-		newAnimatedElementOpacity_Inherit(outputDocument, InterfacePlanetOverviewCurrentTab, InterfaceChangeMenuTabFadeOutTime, 0, tmpOpacity);
-		setTimeout(()=>{
-				newAnimatedElementOpacity_Inherit(outputDocument, destinationTabID, InterfaceChangeMenuTabFadeInTime, 1, 0);
-				setTimeout(()=>{
-					InterfacePlanetOverviewTabChanging = false;
-				},1000*(InterfaceChangeMenuTabFadeInTime+0.025));
-			},1000*(InterfaceChangeMenuTabFadeInDelay + InterfaceChangeMenuTabFadeOutTime));
+		interfaceRefreshInterface(outputDocument);
+		
+		interfacePlanetOverviewActivateTabHeader(outputDocument, headerTabID);
 	}
-	
-	InterfacePlanetOverviewCurrentTab = destinationTabID;
-	
-	interfaceRefreshInterface(outputDocument);
 	
 	return;
 }

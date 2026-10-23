@@ -140,7 +140,7 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 	
-	outline: solid hsla(180,75%,75%,0.0) 1px;
+	outline: solid hsla(180,75%,75%,0.0) 0px;
 	
 	padding:0px;
 	
@@ -158,6 +158,9 @@
 	background: hsla(60,100%,75%,0.0);
 	
 	opacity: 0.70;
+	
+	will-change: transform;
+	transition-duration: 0.15s;
 }
 .galaxyMapButton:enabled:hover{
 	opacity:0.85;
@@ -177,10 +180,10 @@
 	transition-duration: 0.15s;
 }
 .galaxyMapButton:hover .galaxyMapButtonImage{
-	outline: solid hsla(180,75%,75%,1) 1px;
+	outline: solid hsla(180,75%,75%,1) 0px;
 }
 .galaxyMapButton:active .galaxyMapButtonImage{
-	outline: solid hsla(180,100%,75%,1) 1px;
+	outline: solid hsla(180,100%,75%,1) 0px;
 }
 .galaxyMapButtonImage{
 	width:100%;
@@ -189,7 +192,7 @@
 	left:0px;
 	object-fit: contain;
 	
-	outline: solid hsla(180,75%,75%,0.5) 1px;
+	outline: solid hsla(180,75%,75%,0.5) 0px;
 	
 	position: relative;
 }
@@ -323,20 +326,42 @@
 	min-height: 300px;*/
 }
 
-.galaxyMapArrowButtonContainer{
+.galaxyMapArrowButton{
 	position: absolute;
 	z-index: 5;
 	padding: 0;
 	background: transparent;
 	border: 0px;
+	
+	opacity: 0.7;
+	will-change: transform;
+	transition-duration: 0.1s;
 }
-.galaxyMapVerticalArrowContainer{
+.galaxyMapArrowButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.galaxyMapArrowButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.galaxyMapArrowButton:disabled{
+	opacity:0.2;
+}
+.galaxyMapArrowButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+
+.galaxyMapVerticalArrowButton{
 	left: calc(50% - 75px);
 	width: calc(150px + 0%);
 	
 	height: calc(30px + 0%);
 }
-.galaxyMapHorizontalArrowContainer{
+.galaxyMapHorizontalArrowButton{
 	top: calc(50% - 75px);
 	height: calc(150px + 0%);
 	
@@ -346,9 +371,11 @@
 	width: 100%;
 	height: 100%;
 	margin: 0;
-	opacity: 0.6;
+	/* opacity: 0.6; */
+	
+	pointer-events:none;
 }
-.galaxyMapArrowButtonImage:hover{
+/* .galaxyMapArrowButtonImage:hover{
 	opacity: 0.75;
 }
 .galaxyMapArrowButtonImage:active{
@@ -356,9 +383,9 @@
 }
 .galaxyMapArrowButtonImage:disabled{
 	opacity: 0.3;
-}
+} */
 
-.galaxyMapSideButtonContainer{
+.galaxyMapSideButton{
 	z-index: 5;
 	padding: 0;
 	background: transparent;
@@ -369,14 +396,38 @@
 	height: 40px;
 	
 	position:absolute;
+	
+	will-change: transform;
+	opacity: 0.7;
+	transition-duration: 0.1s;
 }
+.galaxyMapSideButton:enabled:hover{
+	opacity:0.85;
+	scale:1.1;
+	transition-duration: 0.15s;
+}
+.galaxyMapSideButton:enabled:active{
+	opacity:1.0;
+	transition-duration: 0.15s;
+}
+.galaxyMapSideButton:disabled{
+	opacity:0.2;
+}
+.galaxyMapSideButton:disabled:hover{
+	opacity:0.4;
+	scale:1.05;
+	transition-duration: 0.15s;
+}
+
 .galaxyMapSideButtonImage{
 	width: 100%;
 	height: 100%;
 	margin: 0;
-	opacity: 0.6;
+	/* opacity: 0.6; */
+	
+	pointer-events:none;
 }
-.galaxyMapSideButtonImage:hover{
+/* .galaxyMapSideButtonImage:hover{
 	opacity: 0.75;
 }
 .galaxyMapSideButtonImage:active{
@@ -384,43 +435,35 @@
 }
 .galaxyMapSideButtonImage:disabled{
 	opacity: 0.3;
-}
+} */
 
-#galaxyMapTopArrowContainer{
+#galaxyMapTopArrowButton{
 	top: 0px;
 }
-#galaxyMapTopArrowButtonImage{
-	
-}
-#galaxyMapLeftArrowContainer{
+#galaxyMapTopArrowButtonImage{}
+#galaxyMapLeftArrowButton{
 	left: 0px;
 }
-#galaxyMapLeftArrowButtonImage{
-	
-}
-#galaxyMapRightArrowContainer{
+#galaxyMapLeftArrowButtonImage{}
+#galaxyMapRightArrowButton{
 	right: 0px;
 }
-#galaxyMapRightArrowButtonImage{
-	
-}
-#galaxyMapBottomArrowContainer{
+#galaxyMapRightArrowButtonImage{}
+#galaxyMapBottomArrowButton{
 	bottom: 0px;
 }
-#galaxyMapBottomArrowButtonImage{
-	
-}
+#galaxyMapBottomArrowButtonImage{}
 
-#galaxyMapZoomInContainer{
+#galaxyMapZoomInButton{
 	bottom: 80px;
 }
-#galaxyMapZoomOutContainer{
+#galaxyMapZoomOutButton{
 	bottom: 40px;
 }
 
-#galaxyMapReturnHomeContainer{
+#galaxyMapReturnHomeButton{
 	top: 40px;
 }
-#galaxyMapFocusTargetContainer{
+#galaxyMapFocusTargetButton{
 	top: 80px;
 }
