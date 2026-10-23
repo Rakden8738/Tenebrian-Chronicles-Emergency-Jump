@@ -41,15 +41,20 @@ function EarlyAlphaDebug(){
 	PlanetsArray[0].buildings[1].count = 1;
 	PlanetsArray[0].buildings[1].level = 1;
 	
+	BuildingsArray[0].powerProduced = 15;
 	BuildingsArray[0].powerConsumed = 5;
+	BuildingsArray[0].powerProducedUpgradeMultiplier = 1.1;
+	BuildingsArray[0].powerConsumedUpgradeMultiplier = 0.9;
 	
 	BuildingsArray[1].powerProduced = 10;
 	BuildingsArray[1].powerConsumed = 20;
+	BuildingsArray[1].powerProducedUpgradeMultiplier = 0.9;
+	BuildingsArray[1].powerConsumedUpgradeMultiplier = 1.1;
 	
 	BuildingsArray[0].staffNeededBase = 1;
 	BuildingsArray[0].staffNeededLevelMultiplier = 2.0;
 	
-	PlanetsArray[0].buildings[1].staffNeededBase = 2;
+	BuildingsArray[1].staffNeededBase = 2;
 	
 	PlanetsArray[0].buildings[0].refreshBuilding();
 	PlanetsArray[0].buildings[1].refreshBuilding();

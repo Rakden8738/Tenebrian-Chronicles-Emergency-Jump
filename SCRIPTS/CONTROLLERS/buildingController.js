@@ -487,6 +487,7 @@ class BuildingObject{
 	
 	customBuildDemolishAmount = BuildingsBulkBuyAmount;
 	customUpgradeDowngradeAmount = BuildingsBulkBuyAmount;
+	customAgentsAddRemoveAmount = BuildingsBulkBuyAmount;
 	
 	nextBuildCost = [];
 	nextBuildCostMore = [];
@@ -836,6 +837,7 @@ var BuildingsUpgradeMoreAmount = 5;
 var BuildingsUpgradeEvenMoreAmount = 10;
 
 var BuildingsBulkBuyDefaultAmount = 10;
+var BuildingsBulkBuyMinimumAmount = 1;
 var BuildingsBulkBuyLimit = 100;
 var BuildingsBulkBuyLimitEnabled = true;
 
@@ -845,6 +847,17 @@ var BuildingsTryBuyMaxEnabled = true;
 var BuildingsDemolishLockEnabled = true;
 var BuildingsBulkBuyNumericInputClass = "planetBuildingsSingleBuildingSingleInputNumber";
 var BuildingsBulkOperatorsNumericInputClass = "planetBuildingsSingleBuildingAddRemoveOperatorInputNumber";
+
+function buildingsValidateBulkBuyValue(inputValue){
+	//if no effect, return false
+	if(BuildingsBulkBuyAmount == inputValue) return false;
+	//return false if value, after trimming is NaN after trimming/pre-processing text
+	if(!isNotNaN(inputValue)) return false;
+	//if negative, return min allowed value
+	if(inputValue < 1) return BuildingsBulkBuyMinimumAmount;
+	//round down if received decimal
+	return Math.floor(inputValue);
+}
 
 function buildingsTrySetBulkBuyInputs(outputDocument, inputValue){
 	var tmpInputsArray = [];

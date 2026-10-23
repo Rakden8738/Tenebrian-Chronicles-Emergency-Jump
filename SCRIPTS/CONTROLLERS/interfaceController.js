@@ -420,6 +420,7 @@ function interfaceInitBuildMenu(outputDocument){
 	//left menu options
 	
 	outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").onchange = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
+	outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").onkeyup = function(){ interfaceBuildMenuBulkBuyChanged(outputDocument); };
 	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").onchange = function(){ interfaceBuildMenuAutoReassignStaff(outputDocument); };
 	outputDocument.getElementById("planetBuildingInfoPanelAutoAssignSettingInput").checked = BuildingsAutoAssignStaffEnabled;
 	outputDocument.getElementById("planetBuildingInfoPanelBuyMaxSettingInput").onchange = function(){ interfaceBuildMenuTryBuyMax(outputDocument); };
@@ -2132,6 +2133,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingBuildDemolishCustomAmountInput.step = 1;
 						tmpBuildingBuildDemolishCustomAmountInput.value = BuildingsBulkBuyAmount;
 						tmpBuildingBuildDemolishCustomAmountInput.id = BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + tmpBuilding.index;
+						tmpBuildingBuildDemolishCustomAmountInput.onchange = function() {interfaceBuildMenuCustomBuildDemolishChanged(outputDocument, tmpBuilding.index);};
 						
 						var tmpBuildingDemolishCustomAmountButton = outputDocument.createElement("button");
 						tmpBuildingDemolishCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
@@ -2262,6 +2264,7 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 						tmpBuildingUpgradeDowngradeCustomAmountInput.step = 1;
 						tmpBuildingUpgradeDowngradeCustomAmountInput.value = BuildingsBulkBuyAmount;
 						tmpBuildingUpgradeDowngradeCustomAmountInput.id = BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + tmpBuilding.index;
+						tmpBuildingUpgradeDowngradeCustomAmountInput.onchange = function() {interfaceBuildMenuCustomUpgradeDowngradeChanged(outputDocument, tmpBuilding.index);};
 						
 						var tmpBuildingDowngradeCustomAmountButton = outputDocument.createElement("button");
 						tmpBuildingDowngradeCustomAmountButton.className = BuildingMenuSingleBuildingSingleButtonClass;
@@ -2378,6 +2381,8 @@ function interfaceBuildMenuInitBuildingsList(outputDocument){
 									tmpBuildingUnfoldedOperatorsCustomAmountInput.step = 1;
 									tmpBuildingUnfoldedOperatorsCustomAmountInput.value = BuildingsBulkBuyAmount;
 									tmpBuildingUnfoldedOperatorsCustomAmountInput.id = BuildingMenuSingleBuildingOperatorCustomInputIdPrefix + tmpBuilding.index;
+									tmpBuildingUnfoldedOperatorsCustomAmountInput.onchange = function() {interfaceBuildMenuCustomAgentsChanged(outputDocument, tmpBuilding.index);};
+									
 									var tmpBuildingUnfoldedOperatorsRemoveOperatorButton = outputDocument.createElement("button");
 									tmpBuildingUnfoldedOperatorsRemoveOperatorButton.className = BuildingMenuSingleBuildingAddRemoveOperatorButtonClass;
 									tmpBuildingUnfoldedOperatorsRemoveOperatorButton.onclick = function () {interfaceRemoveStaffFromBuilding(outputDocument, tmpBuilding.index, tmpBuilding.blueprintIndex);};
@@ -2948,23 +2953,107 @@ function interfaceBuildMenuToggleCategory(outputDocument, categoryId){
 } 
 
 function interfaceBuildMenuBulkBuyChanged(outputDocument){
-	var tmpInputValue = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value;
-	//if nothing got changed, do not recalculate
-	if(BuildingsBulkBuyAmount == tmpInputValue) return;
+	let tmpInputElement = outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput");
+	let tmpInputValue = tmpInputElement.value;
+	let tmpParsedValue = buildingsValidateBulkBuyValue(tmpInputValue);
 	
-	if(!buildingsTrySetBulkBuyInputs(outputDocument, tmpInputValue)){
-		//if failed to set, reset value to 1
-		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
-	}
-	else if(tmpInputValue < 1){
-		//if set to negative, set expected minimum (1)
-		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = 1;
+	if(tmpParsedValue == false){
+		//validation failed, revert to last
+		tmpInputElement.value = BuildingsBulkBuyAmount;
+		
+		//do not change values
+		return;
 	}
 	else{
-		//otherwise round value down if it isn't integral.
-		outputDocument.getElementById("planetBuildingInfoPanelBulkBuildSettingInput").value = Math.floor(tmpInputValue);
+		//set values in input fields
+		let tmpInputsArray = [];
+		
+		//build, demolish, upgrade, downgrade
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkBuyNumericInputClass);
+		for(let i = 0; i < tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpParsedValue;
+		}
+		
+		//agents
+		tmpInputsArray = outputDocument.getElementsByClassName(BuildingsBulkOperatorsNumericInputClass);
+		for(let i = 0; i < tmpInputsArray.length; i++){
+			tmpInputsArray[i].value = tmpParsedValue;
+		}
+		
+		//set values in current planet buildings
+		let tmpCurrentPlanetBuildingsArray = PlanetsArray[PlanetsCurrentPlanet].buildings;
+		for(let i = 0; i < tmpCurrentPlanetBuildingsArray.length; i++){
+			tmpCurrentPlanetBuildingsArray[i].customBuildDemolishAmount = tmpParsedValue;
+			tmpCurrentPlanetBuildingsArray[i].customUpgradeDowngradeAmount = tmpParsedValue;
+			tmpCurrentPlanetBuildingsArray[i].customAgentsAddRemoveAmount = tmpParsedValue;
+			tmpCurrentPlanetBuildingsArray[i].refreshAllCostsAndRefunds();
+		}
+		
+		BuildingsBulkBuyAmount = tmpParsedValue;
 	}
 }
+function interfaceBuildMenuCustomBuildDemolishChanged(outputDocument, buildingListId){
+	let tmpInputElement = outputDocument.getElementById(BuildingMenuSingleBuildingSingleBuildDemolishInputIdPrefix + buildingListId);
+	let tmpCurrentPlanetBuildingsArray = PlanetsArray[PlanetsCurrentPlanet].buildings;
+	let tmpBuilding = tmpCurrentPlanetBuildingsArray[buildingListId];
+	
+	let tmpInputValue = tmpInputElement.value;
+	let tmpParsedValue = buildingsValidateBulkBuyValue(tmpInputValue);
+	
+	if(tmpParsedValue == false){
+		//validation failed, revert to last
+		tmpInputElement.value = tmpBuilding.customUpgradeDowngradeAmount;
+		
+		//do not change values
+		return;
+	}
+	else{
+		tmpBuilding.customBuildDemolishAmount = tmpParsedValue;
+		tmpBuilding.refreshBuildCost();
+		tmpBuilding.refreshDemolishRefund();
+	}
+}
+function interfaceBuildMenuCustomUpgradeDowngradeChanged(outputDocument, buildingListId){
+	let tmpInputElement = outputDocument.getElementById(BuildingMenuSingleBuildingSingleUpgradeDowngradeInputIdPrefix + buildingListId);
+	let tmpCurrentPlanetBuildingsArray = PlanetsArray[PlanetsCurrentPlanet].buildings;
+	let tmpBuilding = tmpCurrentPlanetBuildingsArray[buildingListId];
+	
+	let tmpInputValue = tmpInputElement.value;
+	let tmpParsedValue = buildingsValidateBulkBuyValue(tmpInputValue);
+	
+	if(tmpParsedValue == false){
+		//validation failed, revert to last
+		tmpInputElement.value = tmpBuilding.customBuildDemolishAmount;
+		
+		//do not change values
+		return;
+	}
+	else{
+		tmpBuilding.customUpgradeDowngradeAmount = tmpParsedValue;
+		tmpBuilding.refreshUpgradeCost();
+		tmpBuilding.refreshDowngradeRefund();
+	}
+}
+function interfaceBuildMenuCustomAgentsChanged(outputDocument, buildingListId){
+	let tmpInputElement = outputDocument.getElementById(BuildingMenuSingleBuildingOperatorCustomInputIdPrefix + buildingListId);
+	let tmpCurrentPlanetBuildingsArray = PlanetsArray[PlanetsCurrentPlanet].buildings;
+	let tmpBuilding = tmpCurrentPlanetBuildingsArray[buildingListId];
+	
+	let tmpInputValue = tmpInputElement.value;
+	let tmpParsedValue = buildingsValidateBulkBuyValue(tmpInputValue);
+	
+	if(tmpParsedValue == false){
+		//validation failed, revert to last
+		tmpInputElement.value = tmpBuilding.customAgentsAddRemoveAmount;
+		
+		//do not change values
+		return;
+	}
+	else{
+		tmpBuilding.customAgentsAddRemoveAmount = tmpParsedValue;
+	}
+}
+
 function interfaceBuildMenuAutoReassignStaff(outputDocument){
 	buildingsToggleAutoAssignStaff();
 }
@@ -3734,7 +3823,7 @@ function interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDoc
 		tmpPowerProducedValueSpan.innerHTML = '-';
 	}
 	else{
-		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
+		tmpPowerProducedValueSpan.className = BuildingMenuSingleBuildingResourceTableEnergyProducedChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
 		tmpPowerProducedValueSpan.innerHTML = '×' + bigNumberToString(tmpPowerProducedMultiplier);
 	}
 	
@@ -3756,7 +3845,7 @@ function interfaceRefreshBuildingClearChangeProductionConsumptionTable(outputDoc
 	let tmpStaffRequiredValueSpan = outputDocument.getElementById(BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextIdPrefix + buildingIndex);
 	let tmpStaffRequiredMultiplier = tmpBuildingBlueprint.staffNeededLevelMultiplier;
 	if(tmpStaffRequiredMultiplier > 1.0){
-		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNegativeValueClass;
+		tmpStaffRequiredValueSpan.className = BuildingMenuSingleBuildingResourceTableStaffRequiredChangeTextClass + BuildingMenuSingleBuildingResourceTableNeutralValueClass;
 		tmpStaffRequiredValueSpan.innerHTML = '×' + bigNumberToString(tmpStaffRequiredMultiplier);
 	}
 	else if(tmpStaffRequiredMultiplier == 1.0){
